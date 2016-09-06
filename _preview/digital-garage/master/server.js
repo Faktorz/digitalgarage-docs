@@ -12,6 +12,10 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 var path  = require("path");
 
+app.use(express.static(path.join(__dirname, '_images')));
+app.use(express.static(path.join(__dirname, '_javascripts')));
+app.use(express.static(path.join(__dirname, '_stylesheets')));
+
 app.get('/',function(req,res){
   res.sendFile(__dirname + '/welcome/index.html');
 });
