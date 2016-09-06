@@ -10,6 +10,7 @@ app.engine('html', require('ejs').renderFile);
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+var path  = require("path");
 
 app.get('/',function(req,res){
   res.sendFile(path.join('/welcome/index.html'));
