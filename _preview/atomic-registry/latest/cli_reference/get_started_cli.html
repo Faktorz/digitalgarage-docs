@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en-us"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en-us"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if lt IE 10]> <html class="no-js lt-ie10" lang="en-us"> <![endif]-->
+<!--[if !IE]> > <![endif]-->
+<html class='no-js' lang='en'>
+<!-- <![endif] -->
+<head>
+<title>Atomic Registry Latest | CLI Reference | Get Started with the CLI</title>
+<meta charset='utf-8'>
+<meta content='' name='description'>
+<meta content='Project Atomic. Sponsored by Red Hat, Inc.' name='author'>
+<meta content='initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width' name='viewport'>
+
+<link href='http://www.projectatomic.io/images/favicon.ico' rel='shortcut icon'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-57x57-precomposed.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-72x72-precomposed.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-114x114-precomposed.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='http://www.projectatomic.io/blog/feed.xml' rel='alternate' title='Project Atomic' type='application/atom+xml'>
+<link href="http://www.projectatomic.io/stylesheets/application.css" rel="stylesheet" type="text/css" />
+<link href="http://www.projectatomic.io/stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body class=' docs docs_introduction docs_introduction_index source-md'>
+<section class='container' id='page-wrap'>
+  <div class='row'>
+  <div class='col-md-3 col-lg-2' id='sidebar'>
+    <div id='nav-primary'>
+      <nav class='navbar navbar-default' role='navigation'>
+        <div class='navbar-header'>
+          <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse'>
+            <span class='sr-only'>
+              Toggle navigation
+            </span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='http://www.projectatomic.io/'>
+            Project Atomic
+          </a>
+        </div>
+        <div class='collapse navbar-collapse navbar-ex1-collapse'>
+          <ul class='nav navbar-nav'>
+            <li><a class="get-started" href="http://www.projectatomic.io/download">Get Started</a></li>
+            <li><a class="documentation" href="http://www.projectatomic.io/docs">Documentation</a></li>
+            <li><a class="developer-community" href="http://www.projectatomic.io/community">Developer Community</a></li>
+            <li><a class="on-github" href="https://github.com/projectatomic/">On GitHub</a></li>
+            <li><a class="ask" href="http://ask.projectatomic.io/">Ask</a></li>
+            <li><a class="blog" href="http://www.projectatomic.io/blog">Blog</a></li>
+            <li><a class="twitter" href="http://www.twitter.com/projectatomic">Twitter</a></li>
+            <li><a class="facebook" href="https://www.facebook.com/projectatomic">Facebook</a></li>
+            <li><a class="google" href="https://plus.google.com/108727025270662383247/posts">Google+</a></li>
+            <li><a class="rss" href="http://www.projectatomic.io/blog/feed.xml">RSS</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+<section class='col-lg-10 col-md-9 container-fluid' id='content'>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser.
+<a href="http://browsehappy.com/">Upgrade your browser today</a> or
+<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<div class='row'>
+  <div class='col-sm-9'>
+    <h2>Get Started with the CLI</h2>
+    <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#installing-the-cli">Installing the CLI</a>
+<ul class="sectlevel2">
+<li><a href="#cli-windows">For Windows</a></li>
+<li><a href="#cli-mac">For Mac OS X</a></li>
+<li><a href="#cli-linux">For Linux</a></li>
+</ul>
+</li>
+<li><a href="#basic-setup-and-login">Basic Setup and Login</a></li>
+<li><a href="#cli-configuration-files">CLI Configuration Files</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#what-s-next">What&#8217;s Next?</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Atomic Registry CLI exposes commands for managing your applications, as well as
+lower level tools to interact with each component of your system. This topic
+guides you through getting started with the CLI, including installation and
+logging in to create your first project.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Some sections of this document refer to OpenShift. Atomic Registry is
+based on OpenShift technology.
+endif::[]
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing-the-cli"><a class="anchor" href="#installing-the-cli"></a>Installing the CLI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Installation options for the CLI vary depending on your operating system.</p>
+</div>
+<div class="sect2">
+<h3 id="cli-windows"><a class="anchor" href="#cli-windows"></a>For Windows</h3>
+<div class="paragraph">
+<p>The CLI for Windows is provided as a <strong><em>zip</em></strong> archive; you can download it from
+the <a href="https://github.com/openshift/origin/releases">Releases page</a> of the OpenShift
+Origin source repository on GitHub:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/openshift/origin/releases"><strong>Download the CLI from GitHub</strong></a></p>
+</div>
+<div class="paragraph">
+<p>Then, unzip the archive with a ZIP program and move the <code>oc</code> binary to a
+directory on your PATH. To check your PATH, open the Command Prompt and run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>C:\&gt; path</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cli-mac"><a class="anchor" href="#cli-mac"></a>For Mac OS X</h3>
+<div class="paragraph">
+<p>The CLI for Mac OS X is provided as a <strong><em>zip</em></strong> archive; you can download it from
+the <a href="https://github.com/openshift/origin/releases">Releases page</a> of the OpenShift
+Origin source repository on GitHub:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/openshift/origin/releases"><strong>Download the CLI from GitHub</strong></a></p>
+</div>
+<div class="paragraph">
+<p>Then,
+unzip the archive with a ZIP program
+and move the <code>oc</code> binary to a directory on your PATH.
+To check your PATH, open a Terminal window and run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ echo $PATH</pre>
+</div>
+</div>
+<div id="homebrew" class="paragraph">
+<p>Alternatively, Mac OS X users can install the CLI using
+<a href="http://brew.sh/">Homebrew</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ brew install openshift-cli</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cli-linux"><a class="anchor" href="#cli-linux"></a>For Linux</h3>
+<div class="paragraph">
+<p>The CLI for Linux is provided as a <strong><em>tar.gz</em></strong> archive; you can download it from
+the <a href="https://github.com/openshift/origin/releases">Releases page</a> of the OpenShift
+Origin source repository on GitHub:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/openshift/origin/releases"><strong>Download the CLI from GitHub</strong></a></p>
+</div>
+<div class="paragraph">
+<p>Then, unpack the archive and move the <code>oc</code> binary to a directory on your PATH.
+To check your path, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ echo $PATH</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To unpack the archive:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ tar -xf &lt;file&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="basic-setup-and-login"><a class="anchor" href="#basic-setup-and-login"></a>Basic Setup and Login</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>oc login</code> command is the best way to initially set up the CLI,
+and it serves as the entry point for most users. The interactive flow helps you
+establish a session to an Atomic Registry server with the provided credentials. The
+information is automatically saved in a <a href="#cli-configuration-files">CLI
+configuration file</a> that is then used for subsequent commands.</p>
+</div>
+<div class="paragraph">
+<p>The following example shows the interactive setup and login using the <code>oc
+login</code> command:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Initial CLI Setup</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc login
+OpenShift server [https://localhost:8443]: https://openshift.example.com <i class="conum" data-value="1"></i><b>(1)</b>
+
+Username: alice <i class="conum" data-value="2"></i><b>(2)</b>
+Authentication required for https://openshift.example.com (openshift)
+Password: ******
+Login successful. <i class="conum" data-value="3"></i><b>(3)</b>
+
+You don't have any projects. You can try to create a new project, by running
+
+    $ oc new-project &lt;projectname&gt; <i class="conum" data-value="4"></i><b>(4)</b>
+
+Welcome to {product-title}! See 'oc help' to get started.</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The command prompts for the Atomic Registry server URL.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The command prompts for login credentials: a user name and password.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A session is established with the server, and a session token is received.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>If you do not have a project, information is given on how to create one.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When you have completed the CLI configuration, subsequent commands use the
+configuration file for the server, session token, and project information.</p>
+</div>
+<div class="paragraph">
+<p>You can log out of CLI using the <code>oc logout</code> command:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc logout
+User, alice, logged out of https://openshift.example.com</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If you log in after creating or being granted access to a project, a project you
+have access to is automatically set as the current default, until
+<a href="#projects">switching to another one</a>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc login
+Username: alice
+Authentication required for https://openshift.example.com (openshift)
+Password:
+Login successful.
+
+Using project "aliceproject".</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="../dev_guide/authentication.html#dev-guide-authentication">Additional options</a> are also available for
+the <code>oc login</code> command.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you have access to administrator credentials but are no longer logged in as
+the <a href="../architecture/core_concepts/projects_and_users.html#users">default
+system user</a> <strong>system:admin</strong>, you can log back in as this user at any time as
+long as the credentials are still present in your
+<a href="../cli_reference/get_started_cli.html#cli-configuration-files">CLI
+configuration file</a>. The following command logs in and switches to the <strong>default</strong>
+project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc login -u system:admin -n default</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cli-configuration-files"><a class="anchor" href="#cli-configuration-files"></a>CLI Configuration Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A CLI configuration file permanently stores <code>oc</code> options and contains a series
+of <a href="../architecture/additional_concepts/authentication.html#architecture-additional-concepts-authentication">authentication</a>
+mechanisms and Atomic Registry server connection information associated with
+nicknames.</p>
+</div>
+<div class="paragraph">
+<p>As described in the previous section, the <code>oc login</code> command automatically
+creates and manages CLI configuration files. All information gathered by the
+command is stored in a configuration file located in
+<strong><em>~/.kube/config</em></strong>. The current CLI configuration can be viewed using the following command:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Viewing the CLI Configuration</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc config view
+apiVersion: v1
+clusters:
+- cluster:
+    server: https://openshift.example.com
+  name: openshift
+contexts:
+- context:
+    cluster: openshift
+    namespace: aliceproject
+    user: alice
+  name: alice
+current-context: alice
+kind: Config
+preferences: {}
+users:
+- name: alice
+  user:
+    token: NDM2N2MwODgtNjI1Yy10N3VhLTg1YmItYzI4NDEzZDUyYzVi</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>CLI configuration files can be used to <a href="manage_cli_profiles.html#cli-reference-manage-cli-profiles">setup
+multiple CLI profiles</a> using various Atomic Registry servers, namespaces, and users so
+that you can switch easily between them. The CLI can support multiple
+configuration files; they are loaded at runtime and merged together along with
+any override options specified from the command line.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="projects"><a class="anchor" href="#projects"></a>Projects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most <code>oc</code> commands run in the context of a
+<a href="../architecture/core_concepts/projects_and_users.html#projects">project</a>. The <code>oc login</code>
+selects a default project during <a href="#basic-setup-and-login">initial setup</a> to
+be used with subsequent commands. Use the following command to display the
+project currently in use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc project</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you have access to multiple projects, use the following syntax to switch to a
+particular project by specifying the project name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc project &lt;project_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>$ oc project project02
+Now using project 'project02'.
+
+$ oc project project03
+Now using project 'project03'.
+
+$ oc project
+Using project 'project03'.</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-s-next"><a class="anchor" href="#what-s-next"></a>What&#8217;s Next?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you have <a href="get_started_cli.html#basic-setup-and-login">logged in</a>,
+explore administrator <a href="admin_cli_operations.html#cli-reference-admin-cli-operations">CLI operations</a>.</p>
+</div>
+</div>
+</div>
+  </div>
+
+  <div class='col-sm-3 hidden-print'>
+    <h2>Atomic Registry</h2>
+    <nav role='navigation'>
+      <ul class='docbrowser nav nav-vertical'>
+        <li class='disabled'>
+          <h3>Quickstart</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../registry_quickstart/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../registry_quickstart/developers.html">Developers</a></li>
+            <!-- <li role="menuitem"><a>Administrators</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-0-2">
+                <span id="sgSpan-0-2" class="fa fa-caret-right"></span>&nbsp;Administrators
+              </a>
+              <ul id="topicSubGroup-0-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/system_configuration.html">System Configuration</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/uninstall.html">Uninstall</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Architecture</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../architecture/index.html">Overview</a></li>
+            <!-- <li role="menuitem"><a>Infrastructure Components</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-1">
+                <span id="sgSpan-1-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/image_registry.html">Image Registry</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/web_console.html">Web Console</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Core Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-2">
+                <span id="sgSpan-1-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-1-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/containers_and_images.html">Images</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/builds_and_image_streams.html">Image Streams</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Additional Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-3">
+                <span id="sgSpan-1-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-1-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authentication.html">Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authorization.html">Authorization</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Installation and Configuration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+              <li role="menuitem" class=""><a href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+              <li role="menuitem" class=""><a href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+              <li role="menuitem" class=""><a href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <!-- <li role="menuitem"><a>Advanced LDAP Configuration</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-4">
+                <span id="sgSpan-2-4" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-2-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</strong></a><li>
+              </ul>
+            </li>
+              <li role="menuitem" class=""><a href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+        <li class='disabled'>
+          <h3>Cluster Administration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../admin_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/manage_users.html">Managing Users</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/image_policy.html">Image Policy</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/quota.html">Setting Quotas</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+        <li class='disabled'>
+          <h3>User Guide</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../dev_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/authentication.html">Authentication</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/managing_images.html">Managing Images</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+        <li class='disabled'>
+          <h3>CLI Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../cli_reference/index.html">Overview</a></li>
+              <li role="menuitem" class=" active"><a href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+              <li role="menuitem" class=""><a href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+        <li class='disabled'>
+          <h3>REST API Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../rest_api/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+</section>
+</div>
+<div class='row'>
+<div class='col-md-offset-3 col-md-9 col-lg-offset-2 col-lg-10' id='footer'>
+  <footer>
+<hr class='visible-print'>
+
+&copy; 2014&ndash;2016 Project Atomic. Sponsored by Red Hat, Inc.
+<div class='edit-this-page pull-right'>
+<a href="https://github.com/openshift/openshift-docs#contributing-to-openshift-documentation"><i class="icon fa fa-fw fa-github"></i>Edit this page on GitHub</a>
+</div>
+        <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik-osasteam.rhcloud.com/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 4]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+<noscript><p><img src="https://piwik-osasteam.rhcloud.com/piwik/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+</footer>
+</div>
+</div>
+
+</section>
+
+<script src="http://www.projectatomic.io/javascripts/application.js" type="text/javascript"></script>
+
+
+</body>
+</html>

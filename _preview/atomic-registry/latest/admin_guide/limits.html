@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en-us"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en-us"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if lt IE 10]> <html class="no-js lt-ie10" lang="en-us"> <![endif]-->
+<!--[if !IE]> > <![endif]-->
+<html class='no-js' lang='en'>
+<!-- <![endif] -->
+<head>
+<title>Atomic Registry Latest | Cluster Administration | Setting Limit Ranges</title>
+<meta charset='utf-8'>
+<meta content='' name='description'>
+<meta content='Project Atomic. Sponsored by Red Hat, Inc.' name='author'>
+<meta content='initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width' name='viewport'>
+
+<link href='http://www.projectatomic.io/images/favicon.ico' rel='shortcut icon'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-57x57-precomposed.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-72x72-precomposed.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-114x114-precomposed.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='http://www.projectatomic.io/blog/feed.xml' rel='alternate' title='Project Atomic' type='application/atom+xml'>
+<link href="http://www.projectatomic.io/stylesheets/application.css" rel="stylesheet" type="text/css" />
+<link href="http://www.projectatomic.io/stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body class=' docs docs_introduction docs_introduction_index source-md'>
+<section class='container' id='page-wrap'>
+  <div class='row'>
+  <div class='col-md-3 col-lg-2' id='sidebar'>
+    <div id='nav-primary'>
+      <nav class='navbar navbar-default' role='navigation'>
+        <div class='navbar-header'>
+          <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse'>
+            <span class='sr-only'>
+              Toggle navigation
+            </span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='http://www.projectatomic.io/'>
+            Project Atomic
+          </a>
+        </div>
+        <div class='collapse navbar-collapse navbar-ex1-collapse'>
+          <ul class='nav navbar-nav'>
+            <li><a class="get-started" href="http://www.projectatomic.io/download">Get Started</a></li>
+            <li><a class="documentation" href="http://www.projectatomic.io/docs">Documentation</a></li>
+            <li><a class="developer-community" href="http://www.projectatomic.io/community">Developer Community</a></li>
+            <li><a class="on-github" href="https://github.com/projectatomic/">On GitHub</a></li>
+            <li><a class="ask" href="http://ask.projectatomic.io/">Ask</a></li>
+            <li><a class="blog" href="http://www.projectatomic.io/blog">Blog</a></li>
+            <li><a class="twitter" href="http://www.twitter.com/projectatomic">Twitter</a></li>
+            <li><a class="facebook" href="https://www.facebook.com/projectatomic">Facebook</a></li>
+            <li><a class="google" href="https://plus.google.com/108727025270662383247/posts">Google+</a></li>
+            <li><a class="rss" href="http://www.projectatomic.io/blog/feed.xml">RSS</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+<section class='col-lg-10 col-md-9 container-fluid' id='content'>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser.
+<a href="http://browsehappy.com/">Upgrade your browser today</a> or
+<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<div class='row'>
+  <div class='col-sm-9'>
+    <h2>Setting Limit Ranges</h2>
+    <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a>
+<ul class="sectlevel2">
+<li><a href="#container-limits">Container Limits</a></li>
+<li><a href="#pod-limits">Pod Limits</a></li>
+<li><a href="#image-limits">Image Limits</a></li>
+<li><a href="#image-stream-limits">Image Stream Limits</a></li>
+</ul>
+</li>
+<li><a href="#creating-a-limit-range">Creating a Limit Range</a></li>
+<li><a href="#viewing-limits">Viewing Limits</a></li>
+<li><a href="#deleting-limits">Deleting Limits</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A limit range, defined by a <code><strong>LimitRange</strong></code> object, enumerates
+<a href="../dev_guide/compute_resources.html#dev-compute-resources">compute resource
+constraints</a> in a <a href="../dev_guide/projects.html#dev-guide-projects">project</a> at the pod,
+container, image and image stream level, and specifies the amount of resources
+that a pod, container, image or image stream can consume.</p>
+</div>
+<div class="paragraph">
+<p>All resource create and modification requests are evaluated against each
+<code><strong>LimitRange</strong></code> object in the project. If the resource violates any of the
+enumerated constraints, then the resource is rejected. If the resource does not
+set an explicit value, and if the constraint supports a default value, then the
+default value is applied to the resource.</p>
+</div>
+<div id="limit-range-def" class="exampleblock">
+<div class="title">Example 1. Core Limit Range Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">LimitRange</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">core-resource-limits</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">limits</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: &quot;Pod&quot;</span></span>
+      <span style="color:#606">max</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1Gi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+      <span style="color:#606">min</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">200m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">6Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: &quot;Container&quot;</span></span>
+      <span style="color:#606">max</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="6"></i><b>(6)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1Gi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="7"></i><b>(7)</b>
+      <span style="color:#606">min</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">100m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="8"></i><b>(8)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="9"></i><b>(9)</b>
+      <span style="color:#606">default</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">300m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="10"></i><b>(10)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">200Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="11"></i><b>(11)</b>
+      <span style="color:#606">defaultRequest</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">200m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="12"></i><b>(12)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">100Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="13"></i><b>(13)</b>
+      <span style="color:#606">maxLimitRequestRatio</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="14"></i><b>(14)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The name of the limit range document.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The maximum amount of CPU that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The maximum amount of memory that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The minimum amount of CPU that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The minimum amount of memory that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The maximum amount of CPU that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>The maximum amount of memory that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>The minimum amount of CPU that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>The minimum amount of memory that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>The default amount of CPU that a container will be limited to use if not
+specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="11"></i><b>11</b></td>
+<td>The default amount of memory that a container will be limited to use if not specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="12"></i><b>12</b></td>
+<td>The default amount of CPU that a container will request to use if not specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="13"></i><b>13</b></td>
+<td>The default amount of memory that a container will request to use if not specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="14"></i><b>14</b></td>
+<td>The maximum amount of CPU burst that a container can make as a ratio of its limit over request.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Atomic Registry Limit Range Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">LimitRange</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">openshift-resource-limits</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">limits</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: openshift.io/Image</span></span>
+      <span style="color:#606">max</span>:
+        <span style="color:#606">storage</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1Gi </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: openshift.io/ImageStream</span></span>
+      <span style="color:#606">max</span>:
+        <span style="color:#606">openshift.io/image-tags</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">20 </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+        <span style="color:#606">openshift.io/images</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">30 </span></span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The maximum size of an image that can be pushed to an internal registry.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The maximum number of unique image tags per image stream&#8217;s spec.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The maximum number of unique image references per image stream&#8217;s status.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Both core and Atomic Registry resources can be specified in just one limit range
+object. They are separated here into two examples for clarity.</p>
+</div>
+<div class="sect2">
+<h3 id="container-limits"><a class="anchor" href="#container-limits"></a>Container Limits</h3>
+<div class="paragraph">
+<p><strong>Supported Resources:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CPU</p>
+</li>
+<li>
+<p>Memory</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Supported Constraints:</strong></p>
+</div>
+<div class="paragraph">
+<p>Per container, the following must hold true if specified:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Container</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Min</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>Min[resource]</code> less than or equal to <code>container.resources.requests[resource]</code>
+(required) less than or equal to <code>container/resources.limits[resource]</code>
+(optional)</p>
+</div>
+<div class="paragraph">
+<p>If the configuration defines a <code>min</code> CPU, then the request value must be greater
+than the CPU value. A limit value does not need to be specified.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Max</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>container.resources.limits[resource]</code> (required) less than or equal to
+<code>Max[resource]</code></p>
+</div>
+<div class="paragraph">
+<p>If the configuration defines a <code>max</code> CPU, then you do not need to define a
+request value, but a limit value does need to be set that satisfies the maximum
+CPU constraint.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>MaxLimitRequestRatio</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>MaxLimitRequestRatio[resource]</code> less than or equal to (
+<code>container.resources.limits[resource]</code> /
+<code>container.resources.requests[resource]</code>)</p>
+</div>
+<div class="paragraph">
+<p>If a configuration defines a <code>maxLimitRequestRatio</code> value, then any new
+containers must have both a request and limit value. Additionally,
+Atomic Registry calculates a limit to request ratio by dividing the limit by the
+request.</p>
+</div>
+<div class="paragraph">
+<p>For example, if a container has <code>cpu: 500</code> in the <code>limit</code> value, and
+<code>cpu: 100</code> in the <code>request</code> value, then its limit to request ratio for <code>cpu</code> is
+<code>5</code>. This ratio must be less than or equal to the <code>maxLimitRequestRatio</code>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Supported Defaults:</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>Default[resource]</code></dt>
+<dd>
+<p>Defaults <code>container.resources.limit[resource]</code> to specified value if none.</p>
+</dd>
+<dt class="hdlist1"><code>Default Requests[resource]</code></dt>
+<dd>
+<p>Defaults <code>container.resources.requests[resource]</code> to specified value if none.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pod-limits"><a class="anchor" href="#pod-limits"></a>Pod Limits</h3>
+<div class="paragraph">
+<p><strong>Supported Resources:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CPU</p>
+</li>
+<li>
+<p>Memory</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Supported Constraints:</strong></p>
+</div>
+<div class="paragraph">
+<p>Across all containers in a pod, the following must hold true:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Pod</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Enforced Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Min</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>Min[resource]</code> less than or equal to <code>container.resources.requests[resource]</code>
+(required) less than or equal to <code>container.resources.limits[resource]</code>
+(optional)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Max</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>container.resources.limits[resource]</code> (required) less than or equal to
+<code>Max[resource]</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>MaxLimitRequestRatio</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>MaxLimitRequestRatio[resource]</code> less than or equal to (
+<code>container.resources.limits[resource]</code> /
+<code>container.resources.requests[resource]</code>)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="image-limits"><a class="anchor" href="#image-limits"></a>Image Limits</h3>
+<div class="paragraph">
+<p><strong>Supported Resources:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Storage</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Resource type name:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>openshift.io/Image</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Per image, the following must hold true if specified:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. Image</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Max</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>image.dockerimagemetadata.size</code> less than or equal to <code>Max[resource]</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To prevent blobs exceeding the limit from being uploaded to the registry, the
+registry must be configured to enforce quota. An environment variable
+<code><strong>REGISTRY_MIDDLEWARE_REPOSITORY_OPENSHIFT_ENFORCEQUOTA</strong></code> must be set to
+<code><strong>true</strong></code> which is done by default for new deployments. To update older
+deployment configuration, refer to
+<a href="../install_config/upgrading/manual_upgrades.html#enforcing-quota-in-the-registry">Enforcing
+quota in the Registry</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The image size is not always available in the manifest of an uploaded image.
+This is especially the case for images built with Docker 1.10 or higher and
+pushed to a v2 registry. If such an image is pulled with an older Docker daemon,
+the image manifest will be converted by the registry to schema v1 lacking all
+the size information. No storage limit set on images will prevent it from being
+uploaded.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/openshift/origin/issues/7706">The issue</a> is being
+addressed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="image-stream-limits"><a class="anchor" href="#image-stream-limits"></a>Image Stream Limits</h3>
+<div class="paragraph">
+<p><strong>Supported Resources:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>openshift.io/image-tags</code></p>
+</li>
+<li>
+<p><code>openshift.io/images</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Resource type name:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>openshift.io/ImageStream</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Per image stream, the following must hold true if specified:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. ImageStream</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Max[openshift.io/image-tags]</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>length( uniqueimagetags( imagestream.spec.tags ) )</code> less than or equal to <code>Max[openshift.io/image-tags]</code></p>
+</div>
+<div class="paragraph">
+<p><code>uniqueimagetags</code> returns unique references to images of given spec tags.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Max[openshift.io/images]</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>length( uniqueimages( imagestream.status.tags ) )</code> less than or equal to <code>Max[openshift.io/images]</code></p>
+</div>
+<div class="paragraph">
+<p><code>uniqueimages</code> returns unique image names found in status tags. The name equals
+image&#8217;s digest.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="counting-of-image-references"><a class="anchor" href="#counting-of-image-references"></a>Counting of Image References</h4>
+<div class="paragraph">
+<p>Resource <code>openshift.io/image-tags</code> represents unique
+<a href="../dev_guide/managing_images.html#referencing-images-in-image-streams">image
+references</a>. Possible references are an <code><strong>ImageStreamTag</strong></code>, an
+<code><strong>ImageStreamImage</strong></code> and a <code><strong>DockerImage</strong></code>. They may be created using commands
+<code>oc tag</code> and <code>oc import-image</code> or by using
+<a href="../dev_guide/managing_images.html#adding-tag">tag tracking</a>. No distinction
+is made between internal and external references. However, each unique reference
+tagged in the image stream&#8217;s specification is counted just once. It does not
+restrict pushes to an internal Docker registry in any way, but is useful for tag
+restriction.</p>
+</div>
+<div class="paragraph">
+<p>Resource <code>openshift.io/images</code> represents unique image names recorded in image
+stream status. It allows for restriction of a number of images that can be
+pushed to the internal registry. Internal and external references are not
+distinguished.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-limit-range"><a class="anchor" href="#creating-a-limit-range"></a>Creating a Limit Range</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To apply a limit range to a project, create a <a href="#limit-range-def">limit range
+object definition</a> on your file system to your desired specifications, then run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create -f &lt;limit_range_file&gt; -n &lt;project&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="viewing-limits"><a class="anchor" href="#viewing-limits"></a>Viewing Limits</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can view any limit ranges defined in a project by navigating in the web
+console to the project&#8217;s <strong>Settings</strong> tab.</p>
+</div>
+<div class="paragraph">
+<p>You can also use the CLI to view limit range details:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, get the list of limit ranges defined in the project. For example, for a
+project called <strong>demoproject</strong>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get limits -n demoproject
+NAME              AGE
+resource-limits   6d</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Then, describe the limit range you are interested in, for example the
+<strong>resource-limits</strong> limit range:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe limits resource-limits
+Name:                     limits
+Namespace:                default
+Type                      Resource                 Min  Max Request Limit Limit/Request
+----                      --------                 ---  --- ------- ----- -------------
+Pod                       memory                   6Mi  1Gi -       -     -
+Pod                       cpu                      200m  2  -       -     -
+Container                 cpu                      100m  2  200m    300m  10
+Container                 memory                   4Mi  1Gi 100Mi   200Mi -
+openshift.io/Image        storage                  -    1Gi -       -     -
+openshift.io/ImageStream  openshift.io/image-tags  -    10  -       -     -
+openshift.io/ImageStream  openshift.io/images      -    12  -       -     -</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deleting-limits"><a class="anchor" href="#deleting-limits"></a>Deleting Limits</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Remove any active limit range to no longer enforce the limits of a project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc delete limits &lt;limit_name&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+  </div>
+
+  <div class='col-sm-3 hidden-print'>
+    <h2>Atomic Registry</h2>
+    <nav role='navigation'>
+      <ul class='docbrowser nav nav-vertical'>
+        <li class='disabled'>
+          <h3>Quickstart</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../registry_quickstart/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../registry_quickstart/developers.html">Developers</a></li>
+            <!-- <li role="menuitem"><a>Administrators</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-0-2">
+                <span id="sgSpan-0-2" class="fa fa-caret-right"></span>&nbsp;Administrators
+              </a>
+              <ul id="topicSubGroup-0-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/system_configuration.html">System Configuration</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/uninstall.html">Uninstall</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Architecture</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../architecture/index.html">Overview</a></li>
+            <!-- <li role="menuitem"><a>Infrastructure Components</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-1">
+                <span id="sgSpan-1-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/image_registry.html">Image Registry</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/web_console.html">Web Console</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Core Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-2">
+                <span id="sgSpan-1-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-1-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/containers_and_images.html">Images</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/builds_and_image_streams.html">Image Streams</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Additional Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-3">
+                <span id="sgSpan-1-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-1-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authentication.html">Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authorization.html">Authorization</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Installation and Configuration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+              <li role="menuitem" class=""><a href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+              <li role="menuitem" class=""><a href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+              <li role="menuitem" class=""><a href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <!-- <li role="menuitem"><a>Advanced LDAP Configuration</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-4">
+                <span id="sgSpan-2-4" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-2-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</strong></a><li>
+              </ul>
+            </li>
+              <li role="menuitem" class=""><a href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+        <li class='disabled'>
+          <h3>Cluster Administration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../admin_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/manage_users.html">Managing Users</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/image_policy.html">Image Policy</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/quota.html">Setting Quotas</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+              <li role="menuitem" class=" active"><a href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+        <li class='disabled'>
+          <h3>User Guide</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../dev_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/authentication.html">Authentication</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/managing_images.html">Managing Images</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+        <li class='disabled'>
+          <h3>CLI Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../cli_reference/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+              <li role="menuitem" class=""><a href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+        <li class='disabled'>
+          <h3>REST API Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../rest_api/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+</section>
+</div>
+<div class='row'>
+<div class='col-md-offset-3 col-md-9 col-lg-offset-2 col-lg-10' id='footer'>
+  <footer>
+<hr class='visible-print'>
+
+&copy; 2014&ndash;2016 Project Atomic. Sponsored by Red Hat, Inc.
+<div class='edit-this-page pull-right'>
+<a href="https://github.com/openshift/openshift-docs#contributing-to-openshift-documentation"><i class="icon fa fa-fw fa-github"></i>Edit this page on GitHub</a>
+</div>
+        <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik-osasteam.rhcloud.com/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 4]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+<noscript><p><img src="https://piwik-osasteam.rhcloud.com/piwik/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+</footer>
+</div>
+</div>
+
+</section>
+
+<script src="http://www.projectatomic.io/javascripts/application.js" type="text/javascript"></script>
+
+
+</body>
+</html>

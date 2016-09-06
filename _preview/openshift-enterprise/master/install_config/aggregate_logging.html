@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Enterprise Branch Build | Installation and Configuration | Aggregating Container Logs</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../master/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../master/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../master/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../master/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://assets.openshift.net/app/assets/site/tracking.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"></a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="hidden-xs dropdown"> <a href="#" class="dropdown-toggle nav-log-in" data-toggle="dropdown"> My Account<span class="caret"></span> </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://openshift.redhat.com/app/console">OpenShift Web Console</a></li>
+          <li><a href="https://console.preview.openshift.com/">(Next Gen) Web Console</a></li>
+          <li><a href="https://hub.openshift.com/users/auth/github">OpenShift Hub</a></li>
+        </ul>
+      </li>
+      <li class="hidden-xs hidden-sm"><a class="nav-sign-up" href="https://www.openshift.com/devpreview/register.html">Sign up for Free</a></li>
+    </ul>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../welcome/index.html">OpenShift Enterprise Branch Build</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../install_config/index.html">Installation and Configuration</a>
+      </li>
+      
+      <li class="hidden-xs active">
+        Aggregating Container Logs
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../welcome/index.html">Welcome</a></li>
+            <li><a class="" href="../welcome/revhistory_all.html">All Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Release Notes
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../release_notes/index.html">Overview</a></li>
+            <li><a class="" href="../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
+            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../release_notes/revhistory_release_notes.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../getting_started/administrators.html">Setting Up a Cluster</a></li>
+            <li><a class="" href="../getting_started/revhistory_getting_started.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../architecture/revhistory_architecture.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Installation and Configuration
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../install_config/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+              </a>
+              <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+
+                  <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/advanced_install.html">Advanced Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
+
+                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+              </a>
+              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/downgrade.html">Downgrading</a></li>
+            <li><a class="" href="../install_config/master_node_configuration.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+            <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+            <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
+                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/configuring_sdn.html">Configuring the SDN</a></li>
+            <li><a class="" href="../install_config/configuring_aws.html">Configuring for AWS</a></li>
+            <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
+            <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
+                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              </a>
+              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_nfs.html">Using NFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_glusterfs.html">Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_cinder.html">Using OpenStack Cinder</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_ceph_rbd.html">Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_aws.html">Using AWS Elastic Block Store</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_gce.html">Using GCE Persistent Disk</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_iscsi.html">Using iSCSI</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_fibre_channel.html">Using Fibre Channel</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/dynamically_provisioning_pvs.html">Dynamic Provisioning</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/pod_security_context.html">Volume Security</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/selector_label_binding.html">Selector-Label Volume Binding</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
+                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              </a>
+              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/shared_storage.html">Sharing an NFS PV Across Two Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/ceph_example.html">Complete Example Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_example.html">Complete Example Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/privileged_pod_storage.html">Mounting Volumes To Privileged Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_backed_registry.html">Backing Docker Registry with GlusterFS Storage</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/binding_pv_by_label.html">Binding Persistent Volumes by Label</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/http_proxies.html">Working with HTTP Proxies</a></li>
+            <li><a class="" href="../install_config/build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../install_config/configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
+            <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
+            <li><a class=" active" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
+            <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+            <li><a class="" href="../install_config/revhistory_install_config.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Administrator Solutions
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../admin_solutions/index.html">Overview</a></li>
+            <li><a class="" href="../admin_solutions/master_node_config.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../admin_solutions/user_role_mgmt.html">User and Role Management</a></li>
+            <li><a class="" href="../admin_solutions/authentication.html">Authentication</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
+            <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
+            <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../admin_guide/scoped_tokens.html">Scoped Tokens</a></li>
+            <li><a class="" href="../admin_guide/monitoring_images.html">Monitoring Images</a></li>
+            <li><a class="" href="../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class="" href="../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+            <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
+            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
+            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
+            <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
+            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
+            <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
+            <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
+            <li><a class="" href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../admin_guide/sdn_troubleshooting.html">Troubleshooting Networking</a></li>
+            <li><a class="" href="../admin_guide/revhistory_admin_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+            <li><a class="" href="../cli_reference/revhistory_cli_reference.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li><a class="" href="../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-5">
+                <span id="sgSpan-8-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-8-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-6">
+                <span id="sgSpan-8-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-8-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/revhistory_dev_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li><a class="" href="../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../creating_images/custom.html">Custom Builder</a></li>
+            <li><a class="" href="../creating_images/revhistory_creating_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup10">
+        <span id="tgSpan10" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup10" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-0">
+                <span id="sgSpan-10-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-10-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/python.html">Python</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-1">
+                <span id="sgSpan-10-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-10-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-2">
+                <span id="sgSpan-10-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-10-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-3">
+                <span id="sgSpan-10-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-10-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-4">
+                <span id="sgSpan-10-4" class="fa fa-caret-right"></span>&nbsp;xPaaS Middleware Images
+              </a>
+              <ul id="topicSubGroup-10-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/xpaas_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../using_images/revhistory_using_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup11">
+        <span id="tgSpan11" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup11" class="collapse  list-unstyled">
+            <li><a class="" href="../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+            <li><a class="" href="../rest_api/revhistory_rest_api.html">Revision History</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Aggregating Container Logs</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#pre-deployment-configuration">Pre-deployment Configuration</a></li>
+<li><a href="#aggregate-logging-specifying-deployer-parameters">Specifying Deployer Parameters</a></li>
+<li><a href="#deploying-the-efk-stack">Deploying the EFK Stack</a></li>
+<li><a href="#aggregate-logging-understanding-the-deployment">Understanding and Adjusting the Deployment</a>
+<ul class="sectlevel2">
+<li><a href="#aggregated-ops">Ops Cluster</a></li>
+<li><a href="#aggregated-elasticsearch">Elasticsearch</a></li>
+<li><a href="#aggregated-fluentd">Fluentd</a></li>
+<li><a href="#aggregate-logging-kibana">Kibana</a></li>
+<li><a href="#configuring-curator">Curator</a></li>
+</ul>
+</li>
+<li><a href="#aggregate-logging-cleanup">Cleanup</a></li>
+<li><a href="#aggregate-logging-upgrading">Upgrading</a></li>
+<li><a href="#troubleshooting-kibana">Troubleshooting Kibana</a></li>
+<li><a href="#sending-logs-to-an-external-elasticsearch-instance">Sending Logs to an External Elasticsearch Instance</a></li>
+<li><a href="#aggregate-logging-performing-elasticsearch-maintenance-operations">Performing Administrative Elasticsearch Operations</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As an OpenShift Enterprise cluster administrator, you can deploy the EFK stack to
+aggregate logs for a range of OpenShift Enterprise services. Application developers
+can view the logs of the projects for which they have view access. The EFK stack
+aggregates logs from hosts and applications, whether coming from multiple
+containers or even deleted pods.</p>
+</div>
+<div class="paragraph">
+<p>The EFK stack is a modified version of the
+<a href="https://www.elastic.co/videos/introduction-to-the-elk-stack">ELK stack</a> and is
+comprised of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>: An object store where all logs are stored.</p>
+</li>
+<li>
+<p><a href="http://www.fluentd.org/architecture">Fluentd</a>: Gathers logs from nodes and feeds them to Elasticsearch.</p>
+</li>
+<li>
+<p><a href="https://www.elastic.co/guide/en/kibana/current/introduction.html">Kibana</a>: A web UI for Elasticsearch.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once deployed in a cluster, the stack aggregates logs from all nodes and
+projects into Elasticsearch, and provides a Kibana UI to view any logs. Cluster
+administrators can view all logs, but application developers can only view logs
+for projects they have permission to view. The stack components communicate
+securely.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><a href="../install_config/install/prerequisites.html#managing-docker-container-logs">Managing
+Docker Container Logs</a> discusses the use of <code>json-file</code> logging driver options
+to manage container logs and prevent filling node disks.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pre-deployment-configuration"><a class="anchor" href="#pre-deployment-configuration"></a>Pre-deployment Configuration</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ensure that you have  deployed a router for the cluster.</p>
+</li>
+<li>
+<p>Ensure that you have <a href="../install_config/persistent_storage/index.html#install-config-persistent-storage-index">the
+necessary storage</a> for Elasticsearch. Note that each Elasticsearch replica
+requires its own storage volume. See
+<a href="#aggregated-elasticsearch">Elasticsearch</a> for more information.</p>
+</li>
+<li>
+<p>Ansible-based installs should create the <strong>logging-deployer-template</strong>
+template in the <strong>openshift</strong> project.
+Otherwise you can create it with the following command:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc apply -n openshift -f \
+    /usr/share/openshift/examples/infrastructure-templates/enterprise/logging-deployer.yaml</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Create a new project. Once implemented in a single project, the EFK stack
+collects logs for every project within your OpenShift Enterprise cluster. The
+examples in this topic use <strong>logging</strong> as an example project:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm new-project logging --node-selector=""
+$ oc project logging</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Specifying an empty
+<a href="../admin_guide/managing_projects.html#using-node-selectors">node
+selector</a> on the project is recommended, as Fluentd should be deployed
+throughout the cluster and any selector would restrict where it is
+deployed. To control component placement, specify node selectors per component to
+be applied to their deployment configurations.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Create the logging <a href="../admin_guide/service_accounts.html#admin-guide-service-accounts">service
+accounts</a> and custom roles:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-app logging-deployer-account-template</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you deployed logging previously, for example in a different project, then
+it is normal for the cluster roles to fail to be created because they already exist.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Enable the deployer service account to create an OAuthClient (normally
+a cluster administrator privilege) for Kibana to use later when authenticating
+against the master.</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-cluster-role-to-user oauth-editor \
+       system:serviceaccount:logging:logging-deployer <i class="conum" data-value="1"></i><b>(1)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Use the project you created earlier (for example, <strong>logging</strong>) when specifying
+this service account.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Enable the Fluentd service account to mount and read system logs by adding
+it to the <strong>privileged</strong> security context, and also enable it to read pod metadata
+by giving it the <strong>cluster-reader</strong> role:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-user privileged  \
+    system:serviceaccount:logging:aggregated-logging-fluentd <i class="conum" data-value="1"></i><b>(1)</b>
+$ oadm policy add-cluster-role-to-user cluster-reader \
+    system:serviceaccount:logging:aggregated-logging-fluentd <i class="conum" data-value="1"></i><b>(1)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Use the project you created earlier (for example, <strong>logging</strong>) when specifying
+this service account.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="aggregate-logging-specifying-deployer-parameters"><a class="anchor" href="#aggregate-logging-specifying-deployer-parameters"></a>Specifying Deployer Parameters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Parameters for the EFK deployment may be specified in the
+form of a <a href="../dev_guide/configmaps.html#dev-guide-configmaps">ConfigMap</a>,
+a <a href="../dev_guide/secrets.html#dev-guide-secrets">secret</a>,
+or template parameters (which are passed to the deployer in
+environment variables). The deployer looks for each value first in a
+<strong>logging-deployer</strong> ConfigMap, then a <strong>logging-deployer</strong> secret, then as
+an environment variable. Any or all may be omitted if not needed.</p>
+</div>
+<div class="paragraph">
+<p>The available parameters are outlined below. Typically, you should at
+least specify the host name at which Kibana should be exposed to client
+browsers, and also the master URL where client browsers will be directed to
+for authenticating to OpenShift Enterprise.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a <a href="../dev_guide/configmaps.html#dev-guide-configmaps">ConfigMap</a> to
+provide most deployer parameters. An invocation supplying the most important
+parameters might be:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create configmap logging-deployer \
+   --from-literal kibana-hostname=kibana.example.com \
+   --from-literal public-master-url=https://master.example.com:8443 \
+   --from-literal es-cluster-size=3 \
+   --from-literal es-instance-ram=8G</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edit the ConfigMap YAML file after creating it:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit configmap logging-deployer</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Other parameters are available. Read the
+<a href="aggregate_logging.html#aggregated-elasticsearch">ElasticSearch
+section</a> before choosing ElasticSearch parameters for the deployer,
+and the <a href="aggregate_logging.html#aggregated-fluentd">Fluentd section</a>
+for some possible parameters:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 30%;">
+<col style="width: 70%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>kibana-hostname</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The external host name for web clients to reach Kibana.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>public-master-url</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The external URL for the master; used for OAuth purposes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>es-cluster-size</em></strong> (default: 1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of instances of
+Elasticsearch to deploy. Redundancy requires at least three, and more can be
+used for scaling.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>es-instance-ram</em></strong> (default: 8G)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amount of RAM to reserve per Elasticsearch instance. The default is 8G (for 8GB), and it
+must be at least 512M. Possible suffixes are G,g,M,m.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>es-pvc-prefix</em></strong> (default: <strong>logging-es-</strong>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix for the names of persistent volume claims to be used as storage for
+Elasticsearch instances; a number will be appended per instance (for example,
+<strong>logging-es-1</strong>). If they do not already exist, they will be created with size
+<strong><em>es-pvc-size</em></strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>es-pvc-size</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Size of the persistent volume claim to create per ElasticSearch instance, 100G,
+for example. If omitted, no PVCs are created and ephemeral volumes are used instead.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>es-pvc-dynamic</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set to <code><strong>true</strong></code> to have created persistent volume claims annotated so that their
+backing storage can be dynamically provisioned (if that is available for your
+cluster).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>storage-group</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of a supplemental group ID for access to Elasticsearch storage volumes;
+backing volumes should allow access by this group ID (defaults to 65534).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong><em>fluentd-nodeselector</em></strong> (default: <strong>logging-infra-fluentd=true</strong>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A node selector that specifies which nodes are eligible targets
+for deploying Fluentd instances.
+All nodes where Fluentd should run (typically, all) must have this label
+before Fluentd will be able to run and collect logs.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>es-nodeselector</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A node selector that specifies which nodes are eligible targets
+for deploying Elasticsearch instances. This can be used to place
+these instances on nodes reserved and/or optimized for running them.
+For example, the selector could be <code><strong>node-type=infrastructure</strong></code>. At least
+one active node must have this label before Elasticsearch will deploy.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>kibana-nodeselector</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A node selector that specifies which nodes are eligible targets
+for deploying Kibana instances.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>curator-nodeselector</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A node selector that specifies which nodes are eligible targets
+for deploying Curator instances.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>enable-ops-cluster</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set to <code><strong>true</strong></code>, configures a second Elasticsearch cluster and Kibana for
+operations logs. Fluentd splits
+logs between the main cluster and a cluster reserved for operations
+logs (which consists of <strong><em>/var/log/messages</em></strong> on nodes and the logs from the
+projects <strong>default</strong>, <strong>openshift</strong>, and <strong>openshift-infra</strong>).
+This means a second Elasticsearch and Kibana are deployed. The deployments
+are distinguishable by the <strong>-ops</strong> included in their names and have parallel
+deployment options listed below.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>kibana-ops-hostname, es-ops-instance-ram, es-ops-pvc-size, es-ops-pvc-prefix, es-ops-cluster-size, es-ops-nodeselector, kibana-ops-nodeselector, curator-ops-nodeselector</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parallel parameters for the ops log cluster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>image-pull-secret</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the name of an existing pull secret to be used for pulling component
+images from an authenticated registry.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Create a <a href="../dev_guide/secrets.html#dev-guide-secrets">secret</a> to provide security-related files to the deployer. The contents of the secret are optional, and will be randomly generated if not supplied.</p>
+<div class="paragraph">
+<p>You can supply the following files when creating a new secret, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create secret generic logging-deployer \
+   --from-file kibana.crt=/path/to/cert \
+   --from-file kibana.key=/path/to/key</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 30%;">
+<col style="width: 70%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">File Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>kibana.crt</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A browser-facing certificate for the Kibana server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>kibana.key</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A key to be used with the Kibana certificate.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>kibana-ops.crt</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A browser-facing certificate for the Ops Kibana server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>kibana-ops.key</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A key to be used with the Ops Kibana certificate.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>server-tls.json</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON TLS options to override the Kibana server defaults. Refer to
+<a href="https://nodejs.org/api/tls.html#tls_tls_connect_options_callback">Node.JS</a> docs
+for available options.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>ca.crt</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A certificate for a CA that will be used to sign all certificates generated by
+the deployer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>ca.key</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A matching CA key.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deploying-the-efk-stack"><a class="anchor" href="#deploying-the-efk-stack"></a>Deploying the EFK Stack</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The EFK stack is deployed using a
+<a href="../dev_guide/templates.html#dev-guide-templates">template</a> to
+create a deployer pod that reads the deployment parameters and manages
+the deployment.</p>
+</div>
+<div class="paragraph">
+<p>Run the deployer, optionally specifying parameters (described in the table
+below), for example:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Without template parameters:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-app logging-deployer-template</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With parameters:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-app logging-deployer-template \
+             --param IMAGE_VERSION=3.3.0 \
+             --param MODE=install</pre>
+</div>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 30%;">
+<col style="width: 70%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>IMAGE_PREFIX</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The prefix for logging component images. For example, setting the prefix to
+<strong>registry.access.redhat.com/openshift3/ose-</strong> creates <strong>registry.access.redhat.com/openshift3/ose-logging-deployer:latest</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>IMAGE_VERSION</em></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The version for logging component images. For example, setting the version to
+<strong>v3.2</strong> creates <strong>registry.access.redhat.com/openshift3/ose-logging-deployer:v3.2</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>MODE</em></strong> (default: <strong>install</strong>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mode to run the deployer in; one of <code><strong>install, uninstall, reinstall, upgrade, migrate, start, stop</strong></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Running the deployer creates a deployer pod and prints its name. Wait until the
+pod is running. This can take up to a few minutes for OpenShift Enterprise to
+retrieve the deployer image from the registry. Watch its process with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get pod/&lt;pod_name&gt; -w</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It will eventually enter <strong>Running</strong> status and end in <strong>Complete</strong> status. If takes
+too long to start, retrieve more details about the pod and any associated events
+with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe pod/&lt;pod_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check the logs if the deployment does not complete successfully:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc logs -f &lt;pod_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once deployment completes successfully, you may need to
+<a href="aggregate_logging.html#aggregated-fluentd">label the nodes for
+Fluentd to deploy on</a>, and may have other adjustments to make to the
+deployed components. These tasks are described in the next section.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="aggregate-logging-understanding-the-deployment"><a class="anchor" href="#aggregate-logging-understanding-the-deployment"></a>Understanding and Adjusting the Deployment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes adjustments that you can make to deployed components.</p>
+</div>
+<div class="sect2">
+<h3 id="aggregated-ops"><a class="anchor" href="#aggregated-ops"></a>Ops Cluster</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The logs for the <strong>default</strong>, <strong>openshift</strong>, and <strong>openshift-infra</strong> projects are
+automatically aggregated and grouped into the <strong>.operations</strong> item in the Kibana
+interface.</p>
+</div>
+<div class="paragraph">
+<p>The project where you have deployed the EFK stack (<strong>logging</strong>, as documented
+here) is <em>not</em> aggregated into <strong>.operations</strong> and is found under its ID.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you set <code><strong>enable-ops-cluster</strong></code> to <strong>true</strong> for the deployer, Fluentd is
+configured to split logs between the main ElasticSearch cluster and another
+cluster reserved for operations logs (which are defined as node system logs and
+the projects <strong>default</strong>, <strong>openshift</strong>, and <strong>openshift-infra</strong>). Therefore, a
+separate Elasticsearch cluster, a separate Kibana, and a separate Curator are
+deployed to index, access, and manage operations logs. These deployments are set
+apart with names that include <code>-ops</code>. Keep these separate deployments in mind if
+you enabled this option. Most of the following discussion also applies to the
+operations cluster if present, just with the names changed to include <code>-ops</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aggregated-elasticsearch"><a class="anchor" href="#aggregated-elasticsearch"></a>Elasticsearch</h3>
+<div class="paragraph">
+<p>A highly-available environment requires at least three replicas of
+Elasticsearch; each on a different host. Elasticsearch replicas require their
+own storage, but an OpenShift Enterprise deployment configuration shares storage
+volumes between all its pods. So, when scaled up, the EFK deployer ensures each
+replica of Elasticsearch has its own deployment configuration.</p>
+</div>
+<div class="paragraph">
+<p>It is possible to scale your cluster up after creation by adding more
+deployments from a template; however, scaling up (or down) requires
+the correct procedure and an awareness of clustering parameters (to be
+described in a separate section). It is best to indicate the
+desired scale at first deployment.</p>
+</div>
+<div class="paragraph">
+<p>Refer to
+<a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/hardware.html">Elastic&#8217;s
+documentation</a> for considerations involved in choosing storage and
+network location as directed below.</p>
+</div>
+<div class="paragraph">
+<p><strong>Viewing all Elasticsearch Deployments</strong></p>
+</div>
+<div class="paragraph">
+<p>To view all current Elasticsearch deployments:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get dc --selector logging-infra=elasticsearch</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="logging-node-selector" class="paragraph">
+<p><strong>Node Selector</strong></p>
+</div>
+<div class="paragraph">
+<p>Because Elasticsearch can use a lot of resources, all members of a cluster
+should have low latency network connections to each other and to any remote
+storage. Ensure this by directing the instances to dedicated nodes, or a
+dedicated region within your cluster, using a
+<a href="../admin_guide/managing_projects.html#using-node-selectors">node selector</a>.</p>
+</div>
+<div class="paragraph">
+<p>To configure a node selector, specify the <code><strong>es-nodeselector</strong></code> configuration
+option at deployment. This applies to all Elasticsearch deployments; if you need
+to individualize the node selectors, you must manually edit each deployment
+configuration after deployment.</p>
+</div>
+<div id="aggregated-logging-persistent-storage" class="paragraph">
+<p><strong>Persistent Elasticsearch Storage</strong></p>
+</div>
+<div class="paragraph">
+<p>By default, the deployer creates an ephemeral deployment in which all of a pod&#8217;s
+data is lost upon restart. For production usage, specify a persistent storage
+volume for each Elasticsearch deployment configuration. You can create
+the necessary
+<a href="../architecture/additional_concepts/storage.html#persistent-volume-claims">persistent
+volume claims</a> before deploying or have them created for you. The PVCs must be
+named based on the <code><strong>es-pvc-prefix</strong></code> setting, which defaults to <code>logging-es-</code>;
+each PVC name will have a sequence number added to it, so <code>logging-es-1</code>,
+<code>logging-es-2</code>, and so on. If a PVC needed for the deployment exists already, it
+is used; if not, and <code><strong>es-pvc-size</strong></code> has been specified, it is created with a
+request for that size.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using NFS storage as a volume or a persistent volume (or via NAS such as
+Gluster) is not supported for Elasticsearch storage, as Lucene relies on file
+system behavior that NFS does not supply. Data corruption and other problems can
+occur. If NFS storage is a requirement, you can allocate a large file on a
+volume to serve as a storage device and mount it locally on one host.
+For example, if your NFS storage volume is mounted at <strong><em>/nfs/storage</em></strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ truncate -s 1T /nfs/storage/elasticsearch-1
+$ mkfs.xfs /nfs/storage/elasticsearch-1
+$ mount -o loop /nfs/storage/elasticsearch-1 /usr/local/es-storage
+$ chown 1000:1000 /usr/local/es-storage</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, use <strong><em>/usr/local/es-storage</em></strong> as a host-mount as described below.
+Use a different backing file as storage for each Elasticsearch replica.
+Performance under this solution is significantly worse than using actual local
+drives.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>It is possible to use a local disk volume (if available) on each
+node host as storage for an Elasticsearch replica. Doing so requires
+some preparation as follows.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The relevant service account must be given the privilege to mount and edit a
+local volume:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-user privileged  \
+       system:serviceaccount:logging:aggregated-logging-elasticsearch <i class="conum" data-value="1"></i><b>(1)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Use the project you created earlier (for example, <strong>logging</strong>) when specifying
+this service account.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Each Elasticsearch replica definition must be patched to claim that privilege,
+for example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ for dc in $(oc get deploymentconfig --selector logging-infra=elasticsearch -o name); do
+    oc scale $dc --replicas=0
+    oc patch $dc \
+       -p '{"spec":{"template":{"spec":{"containers":[{"name":"elasticsearch","securityContext":{"privileged": true}}]}}}}'
+  done</pre>
+</div>
+</div>
+</li>
+<li>
+<p>The Elasticsearch replicas must be located on the correct nodes to use the local
+storage, and should not move around even if those nodes are taken down for a
+period of time. This requires giving each Elasticsearch replica a node selector
+that is unique to a node where an administrator has allocated storage for it. To
+configure a node selector, edit each Elasticsearch deployment configuration and
+add or edit the <strong>nodeSelector</strong> section to specify a unique label that you have
+applied for each desired node:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">apiVersion: v1
+kind: DeploymentConfig
+spec:
+  template:
+    spec:
+      nodeSelector:
+        logging-es-node: "1" <i class="conum" data-value="1"></i><b>(1)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This label should uniquely identify a replica with a single node that bears that
+label, in this case <code><strong>logging-es-node=1</strong></code>. Use the <code>oc label</code> command to apply
+labels to nodes as needed.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To automate applying the node selector you can instead use the <code>oc patch</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc patch dc/logging-es-&lt;suffix&gt; \
+   -p '{"spec":{"template":{"spec":{"nodeSelector":{"logging-es-node":"1"}}}}}'</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Once these steps are taken, a local host mount can be applied to each replica
+as in this example (where we assume storage is mounted at the same path on each node):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ for dc in $(oc get deploymentconfig --selector logging-infra=elasticsearch -o name); do
+    oc set volume $dc \
+          --add --overwrite --name=elasticsearch-storage \
+          --type=hostPath --path=/usr/local/es-storage
+    oc deploy --latest $dc
+    oc scale $dc --replicas=1
+  done</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="scaling-elasticsearch" class="paragraph">
+<p><strong>Changing the Scale of Elasticsearch</strong></p>
+</div>
+<div class="paragraph">
+<p>If you need to scale up the number of Elasticsearch instances your cluster uses,
+it is not as simple as scaling up an Elasticsearch deployment configuration.
+This is due to the nature of persistent volumes and how Elasticsearch is
+configured to store its data and recover the cluster. Instead, scaling up
+requires creating a deployment configuration for each Elasticsearch cluster
+node.</p>
+</div>
+<div class="paragraph">
+<p>By far the simplest way to change the scale of Elasticsearch is to
+reinstall the whole deployment. Assuming you have supplied persistent
+storage for the deployment, this should not be very disruptive. Simply
+re-run the deployer with the updated <code><strong>es-cluster-size</strong></code> configuration
+value and the <code><strong>MODE=reinstall</strong></code> template parameter. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit configmap logging-deployer
+  [change es-cluster-size value to 5]
+$ oc new-app logging-deployer-template --param MODE=reinstall</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you previously deployed using template parameters rather than a ConfigMap,
+this would be a good time to create a ConfigMap instead for future deployer
+execution.</p>
+</div>
+<div class="paragraph">
+<p>If you do not wish to reinstall, for instance because you have made
+customizations that you would like to preserve, then it is possible to add new
+Elasticsearch deployment configurations to the cluster using a template supplied
+by the deployer. This requires a more complicated procedure however.</p>
+</div>
+<div class="paragraph">
+<p>During installation, the deployer
+<a href="../install_config/imagestreams_templates.html#install-config-imagestreams-templates">creates
+templates</a> with the Elasticsearch configurations provided to it:
+<code>logging-es-template</code> (and <code>logging-es-ops-template</code> if the deployer was run
+with <code><strong>ENABLE_OPS_CLUSTER=true</strong></code>). You can use these for scaling, but you need
+to adjust the size-related parameters in the templates:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 30%;">
+<col style="width: 70%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>NODE_QUORUM</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The quorum required to elect a new master. Should be more than half the intended cluster size.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>RECOVER_AFTER_NODES</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When restarting the cluster, require this many nodes to be present before starting recovery.
+Defaults to one less than the cluster size to allow for one missing node.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>RECOVER_EXPECTED_NODES</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When restarting the cluster, wait for this number of nodes to be present before starting recovery.
+By default, the same as the cluster size.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The node quorum and recovery settings in the template were set based on the
+<code><strong>es-[ops-]cluster-size</strong></code> value initially provided to the deployer. Since the
+cluster size is changing, those values need to be overridden.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The existing deployment configurations for that cluster also need to have the
+three environment variable values above updated. To edit each of the
+configurations for the cluster in series, you may use the following command:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit $(oc get dc -l component=es[-ops] -o name)</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Edit the environment variables supplied so that the next time they restart,
+they will begin with the correct values. For example, for a cluster of size
+5, you would set <code><strong>NODE_QUORUM</strong></code> to <code>3</code>, <code><strong>RECOVER_AFTER_NODES</strong></code> to <code>4</code>, and
+<code><strong>RECOVER_EXPECTED_NODES</strong></code> to <code>5</code>.</p>
+</div>
+</li>
+<li>
+<p>Create additional deployment configurations by running the following command
+against the Elasticsearch cluster you want to to scale up for
+(<code>logging-es-template</code> or <code>logging-es-ops-template</code>), overriding the parameters
+as above.</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-app logging-es[-ops]-template \
+     --param NODE_QUORUM=3 \
+     --param RECOVER_AFTER_NODES=4 \
+     --param RECOVER_EXPECTED_NODES=5</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>These deployments will be named differently, but all will have the <code>logging-es</code>
+prefix.</p>
+</div>
+</li>
+<li>
+<p>Each new deployment configuration is created without a persistent volume. If you
+want to attach a persistent volume to it, after creation you can use the <code>oc set
+volume</code> command to do so, for example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc volume dc/logging-es-&lt;suffix&gt; \
+          --add --overwrite --name=elasticsearch-storage \
+          --type=persistentVolumeClaim --claim-name=&lt;your_pvc&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>After the intended number of deployment configurations are created, scale up
+each new one to deploy it:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc scale --replicas=1 dc/logging-es-&lt;suffix&gt;</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aggregated-fluentd"><a class="anchor" href="#aggregated-fluentd"></a>Fluentd</h3>
+<div class="paragraph">
+<p>Fluentd is deployed as a DaemonSet that deploys replicas according to a node
+label selector (which you can specify with the deployer parameter
+<code><strong>fluentd-nodeselector</strong></code>; the default is <code>logging-infra-fluentd</code>).</p>
+</div>
+<div class="paragraph">
+<p>Once you have ElasticSearch running as desired, label the nodes intended for
+Fluentd deployment to feed their logs into ES. The example below would label a
+node named <code>node.example.com</code> using the default Fluentd node selector:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc label node/node.example.com logging-infra-fluentd=true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can label all nodes with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc label node --all logging-infra-fluentd=true</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Labeling nodes requires cluster administrator capability.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="fluentd-use-journald" class="paragraph">
+<p><strong>Having Fluentd Use the Systemd Journal as the Log Source</strong></p>
+</div>
+<div class="paragraph">
+<p>By default, Fluentd reads from <strong><em>/var/log/messages</em></strong> and
+<strong><em>/var/log/containers/&lt;container&gt;.log</em></strong> for system logs and container logs,
+respectively. You can instead use the systemd journal as the log source. There
+are three deployer configuration parameters available in the deployer ConfigMap:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 30%;">
+<col style="width: 70%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>use-journal</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The default is empty, which tells the deployer to have Fluentd check which log
+driver Docker is using. If Docker is using <code>--log-driver=journald</code>, Fluentd
+reads from the systemd journal, otherwise, it assumes docker is using the
+<code>json-file</code> log driver and reads from the <strong><em>/var/log</em></strong> file sources. You can
+specify the <code><strong>use-journal</strong></code> option as <code>true</code> or <code>false</code> to be explicit about
+which log source to use. Using the systemd journal requires <code>docker-1.10</code> or
+later, and Docker must be configured to use <code>--log-driver=journald</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>journal-source</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The default is empty, so that when using the systemd journal, Fluentd first looks for
+<strong><em>/var/log/journal</em></strong>, and if that is not available, uses <strong><em>/run/log/journal</em></strong>
+as the journal source. You can specify <code><strong>journal-source</strong></code> with an explicit
+journal path. For example, if you want Fluentd to always read logs
+from the transient in-memory journal, set <code><strong>journal-source</strong></code>=<strong><em>/run/log/journal</em></strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>journal-read-from-head</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If this setting is <strong>false</strong>, Fluentd starts reading from the end of the journal,
+ignoring historical logs. If this setting is <strong>true</strong>, Fluentd starts reading
+logs from the beginning of the journal.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It may require several minutes, or hours, depending on the size of your
+journal, before any new log entries are available in Elasticsearch, when using
+<code>journal-read-from-head=true</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="fluentd-log-external-elasticsearch" class="paragraph">
+<p><strong>Having Fluentd Send Logs to Another Elasticsearch</strong></p>
+</div>
+<div class="paragraph">
+<p>You can configure Fluentd to send a copy of each log message to both the
+Elasticsearch instance included with OpenShift Enterprise aggregated logging, <em>and</em>
+to an external Elasticsearch instance. For example, if you already have an
+Elasticsearch instance set up for auditing purposes, or data warehousing, you
+can send a copy of each log message to that Elasticsearch.</p>
+</div>
+<div class="paragraph">
+<p>This feature is controlled via environment variables on Fluentd, which can be
+modified as described below.</p>
+</div>
+<div class="paragraph">
+<p>If its environment variable <code><strong>ES_COPY</strong></code> is <strong>true</strong>, Fluentd sends a copy of the
+logs to another Elasticsearch. The names for the copy variables are just like
+the current <code><strong>ES_HOST</strong></code>, <code><strong>OPS_HOST</strong></code>, and other variables, except that they add
+<code>_COPY</code>: <code><strong>ES_COPY_HOST</strong></code>, <code><strong>OPS_COPY_HOST</strong></code>, and so on. There are some
+additional parameters added:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>ES_COPY_SCHEME</strong></code>, <code><strong>OPS_COPY_SCHEME</strong></code> - can use either <code>http</code> or <code>https</code> - defaults
+to <code>https</code></p>
+</li>
+<li>
+<p><code><strong>ES_COPY_USERNAME</strong></code>, <code><strong>OPS_COPY_USERNAME</strong></code> - user name to use to authenticate to
+Elasticsearch using username/password auth</p>
+</li>
+<li>
+<p><code><strong>ES_COPY_PASSWORD</strong></code>, <code><strong>OPS_COPY_PASSWORD</strong></code> - password to use to authenticate to
+Elasticsearch using username/password auth</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To set the parameters:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit the template for the Fluentd daemonset:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit -n logging template logging-fluentd-template</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add or edit the environment variable <code><strong>ES_COPY</strong></code> to have the value <code>"true"</code> (with the quotes),
+and add or edit the COPY variables listed above.</p>
+</div>
+</li>
+<li>
+<p>Recreate the Fluentd daemonset from the template:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc delete daemonset logging-fluentd
+$ oc new-app logging-fluentd-template</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="fluentd-throttling" class="paragraph">
+<p><strong>Throttling logs in Fluentd</strong></p>
+</div>
+<div class="paragraph">
+<p>For projects that are especially verbose, an administrator can throttle down the
+rate at which the logs are read in by Fluentd before being processed.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Throttling can contribute to log aggregation falling behind for the configured
+projects; log entries can be lost if a pod is deleted before Fluentd catches up.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Throttling does not work when using the systemd journal as the log
+source. The throttling implementation depends on being able to throttle the
+reading of the individual log files for each project. When reading from the
+journal, there is only a single log source, no log files, so no file-based
+throttling is available. There is not a method of restricting the log
+entries that are read into the Fluentd process.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To tell Fluentd which projects it should be restricting, edit the throttle
+configuration in its ConfigMap after deployment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit configmap/logging-fluentd</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The format of the <strong><em>throttle-config.yaml</em></strong> key is a YAML file that contains
+project names and the desired rate at which logs are read in on each
+node. The default is 1000 lines at a time per node. For example:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">logging:
+  read_lines_limit: 500
+
+test-project:
+  read_lines_limit: 10
+
+.operations:
+  read_lines_limit: 100</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aggregate-logging-kibana"><a class="anchor" href="#aggregate-logging-kibana"></a>Kibana</h3>
+<div class="paragraph">
+<p>To access the Kibana console from the OpenShift Enterprise web console, add the
+<code><strong>loggingPublicURL</strong></code> parameter in the <strong><em>/etc/origin/master/master-config.yaml</em></strong>
+file, with the URL of the Kibana console (the <code><strong>kibana-hostname</strong></code> parameter).
+The value must be an HTTPS URL:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">...
+assetConfig:
+  ...
+  loggingPublicURL: "https://kibana.example.com"
+...</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Setting the <code><strong>loggingPublicURL</strong></code> parameter creates a <strong>View Archive</strong> button on the
+OpenShift Enterprise web console under the <strong>Browse</strong> &#8594; <strong>Pods</strong> &#8594; <strong>&lt;pod_name&gt;</strong> &#8594;
+<strong>Logs</strong> tab. This links to the Kibana console.</p>
+</div>
+<div class="paragraph">
+<p>You can scale the Kibana deployment as usual for redundancy:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc scale dc/logging-kibana --replicas=2</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can see the user interface by visiting the site specified at the
+<code><strong>KIBANA_HOSTNAME</strong></code> variable.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://www.elastic.co/guide/en/kibana/4.1/discover.html">Kibana
+documentation</a> for more information on Kibana.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-curator"><a class="anchor" href="#configuring-curator"></a>Curator</h3>
+<div class="paragraph">
+<p>Curator allows administrators to configure scheduled Elasticsearch maintenance
+operations to be performed automatically on a per-project basis. It is scheduled
+to perform actions daily based on its configuration. Only one Curator pod is
+recommended per Elasticsearch cluster. Curator is configured via a YAML
+configuration file with the following structure:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$PROJECT_NAME:
+  $ACTION:
+    $UNIT: $VALUE
+
+$PROJECT_NAME:
+  $ACTION:
+    $UNIT: $VALUE
+ ...</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The available parameters are:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 30%;">
+<col style="width: 70%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Variable Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>$PROJECT_NAME</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The actual name of a project, such as <strong>myapp-devel</strong>. For OpenShift Enterprise <strong>operations</strong>
+logs, use the name <code>.operations</code> as the project name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>$ACTION</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The action to take, currently only <code>delete</code> is allowed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>$UNIT</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One of <code>days</code>, <code>weeks</code>, or <code>months</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>$VALUE</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An integer for the number of units.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>.defaults</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use <code>.defaults</code> as the <code><strong>$PROJECT_NAME</strong></code> to set the defaults for projects that are
+not specified.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>runhour</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Number) the hour of the day in 24-hour format at which to run the Curator jobs. For
+use with <code>.defaults</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>runminute</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Number) the minute of the hour at which to run the Curator jobs. For use with <code>.defaults</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For example, to configure Curator to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>delete indices in the <strong>myapp-dev</strong> project older than <code>1 day</code></p>
+</li>
+<li>
+<p>delete indices in the <strong>myapp-qe</strong> project older than <code>1 week</code></p>
+</li>
+<li>
+<p>delete <strong>operations</strong> logs older than <code>8 weeks</code></p>
+</li>
+<li>
+<p>delete all other projects indices after they are <code>30 days</code> old</p>
+</li>
+<li>
+<p>run the Curator jobs at midnight every day</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">myapp-dev:
+ delete:
+   days: 1
+
+myapp-qe:
+  delete:
+    weeks: 1
+
+.operations:
+  delete:
+    weeks: 8
+
+.defaults:
+  delete:
+    days: 30
+  runhour: 0
+  runminute: 0</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When you use <code>month</code> as the <code><strong>$UNIT</strong></code> for an operation, Curator starts counting at
+the first day of the current month, not the current day of the current month.
+For example, if today is April 15, and you want to delete indices that are 2 months
+older than today (delete: months: 2), Curator does not delete indices that are dated
+older than February 15; it deletes indices older than February 1. That is, it
+goes back to the first day of the current month, then goes back two whole months
+from that date. If you want to be exact with Curator, it is best to use days
+(for example, <code>delete: days: 30</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="aggregate-logging-creating-the-curator-configuration"><a class="anchor" href="#aggregate-logging-creating-the-curator-configuration"></a>Creating the Curator Configuration</h4>
+<div class="paragraph">
+<p>The deployer provides a ConfigMap from which Curator reads its
+configuration.  You may edit or replace this ConfigMap to reconfigure
+Curator. Currently the <code>logging-curator</code> ConfigMap is used to
+configure both your ops and non-ops Curator instances. Any <code>.operations</code>
+configurations will be in the same location as your application logs
+configurations.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To edit the provided ConfigMap to configure your Curator instances:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit configmap/logging-curator</pre>
+</div>
+</div>
+</li>
+<li>
+<p>To replace the provided ConfigMap instead:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ create /path/to/mycuratorconfig.yaml
+$ oc create configmap logging-curator -o yaml \
+  --from-file=config.yaml=/path/to/mycuratorconfig.yaml | \
+  oc replace -f -</pre>
+</div>
+</div>
+</li>
+<li>
+<p>After you make your changes, redeploy Curator:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc deploy --latest dc/logging-curator
+$ oc deploy --latest dc/logging-curator-ops</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="aggregate-logging-cleanup"><a class="anchor" href="#aggregate-logging-cleanup"></a>Cleanup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Remove everything generated during the deployment while leaving other project
+contents intact:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-app logging-deployer-template --param MODE=uninstall</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="aggregate-logging-upgrading"><a class="anchor" href="#aggregate-logging-upgrading"></a>Upgrading</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To upgrade the EFK logging stack, see
+<a href="../install_config/upgrading/manual_upgrades.html#manual-upgrading-efk-logging-stack">Manual
+Upgrades</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="troubleshooting-kibana"><a class="anchor" href="#troubleshooting-kibana"></a>Troubleshooting Kibana</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using the Kibana console with OpenShift Enterprise can cause problems that are easily
+solved, but are not accompanied with useful error messages. Check the following
+troubleshooting sections if you are experiencing any problems when deploying
+Kibana on OpenShift Enterprise:</p>
+</div>
+<div class="paragraph">
+<p><strong>Login Loop</strong></p>
+</div>
+<div class="paragraph">
+<p>The OAuth2 proxy on the Kibana console must share a secret with the master
+host&#8217;s OAuth2 server. If the secret is not identical on both servers, it can
+cause a login loop where you are continuously redirected back to the Kibana
+login page.</p>
+</div>
+<div class="paragraph">
+<p>To fix this issue, delete the current OAuthClient, and create a new one, using the
+same template as before:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc delete oauthclient/kibana-proxy
+$ oc new-app logging-support-template</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Cryptic Error When Viewing the Console</strong></p>
+</div>
+<div class="paragraph">
+<p>When attempting to visit the Kibana console, you may receive a browser
+error instead:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">{"error":"invalid_request","error_description":"The request is missing a required parameter,
+ includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed."}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This can be caused by a mismatch between the OAuth2 client and server. The
+return address for the client must be in a whitelist so the server can securely
+redirect back after logging in.</p>
+</div>
+<div class="paragraph">
+<p>Fix this issue by replacing the OAuthClient entry:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc delete oauthclient/kibana-proxy
+$ oc new-app logging-support-template</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If the problem persists, check that you are accessing Kibana at a URL listed in
+the OAuth client. This issue can be caused by accessing the URL at a forwarded
+port, such as 1443 instead of the standard 443 HTTPS port. You can adjust the
+server whitelist by editing the OAuth client:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit oauthclient/kibana-proxy</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>503 Error When Viewing the Console</strong></p>
+</div>
+<div class="paragraph">
+<p>If you receive a proxy error when viewing the Kibana console, it could be caused
+by one of two issues.</p>
+</div>
+<div class="paragraph">
+<p>First, Kibana may not be recognizing pods. If Elasticsearch is slow in starting
+up, Kibana may timeout trying to reach it. Check whether the relevant service
+has any endpoints:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe service logging-kibana
+Name:                   logging-kibana
+[...]
+Endpoints:              &lt;none&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If any Kibana pods are live, endpoints will be listed. If they are not, check
+the state of the Kibana pods and deployment. You may need to scale the
+deployment down and back up again.</p>
+</div>
+<div class="paragraph">
+<p>The second possible issue may be caused if the route for accessing the Kibana
+service is masked. This can happen if you perform a test deployment in one
+project, then deploy in a different project without completely removing the
+first deployment. When multiple routes are sent to the same destination, the
+default router will only route to the first created. Check the problematic route
+to see if it is defined in multiple places:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get route  --all-namespaces --selector logging-infra=support</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sending-logs-to-an-external-elasticsearch-instance"><a class="anchor" href="#sending-logs-to-an-external-elasticsearch-instance"></a>Sending Logs to an External Elasticsearch Instance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Fluentd sends logs to the value of the <code><strong>ES_HOST</strong></code>, <code><strong>ES_PORT</strong></code>, <code><strong>OPS_HOST</strong></code>,
+and <code><strong>OPS_PORT</strong></code> environment variables of the Elasticsearch deployment
+configuration. The application logs are directed to the <code><strong>ES_HOST</strong></code> destination,
+and operations logs to <code><strong>OPS_HOST</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>To direct logs to a specific Elasticsearch instance, edit the deployment
+configuration and replace the value of the above variables with the desired
+instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit dc/&lt;deployment_configuration&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For an external Elasticsearch instance to contain both application and
+operations logs, you can set <code><strong>ES_HOST</strong></code> and <code><strong>OPS_HOST</strong></code> to the same destination,
+while ensuring that <code><strong>ES_PORT</strong></code> and <code><strong>OPS_PORT</strong></code> also have the same value.</p>
+</div>
+<div class="paragraph">
+<p>If your externally hosted Elasticsearch instance does not use TLS, update the
+<code><strong>_CLIENT_CERT</strong></code>, <code><strong>_CLIENT_KEY</strong></code>, and <code><strong>_CA</strong></code> variables to be empty. If it does
+use TLS, but not mutual TLS, update the <code><strong>_CLIENT_CERT</strong></code> and <code><strong>_CLIENT_KEY</strong></code>
+variables to be empty and patch or recreate the <strong>logging-fluentd</strong> secret with
+the appropriate <code><strong>_CA</strong></code> value for communicating with your Elasticsearch instance.
+If it uses Mutual TLS as the provided Elasticsearch instance does, patch or
+recreate the <strong>logging-fluentd</strong> secret with your client key, client cert, and CA.</p>
+</div>
+<div class="paragraph">
+<p>Since Fluentd is deployed by a DaemonSet, update the
+<strong>logging-fluentd-template</strong> template, delete your current DaemonSet, and recreate
+it with <code>oc new-app logging-fluentd-template</code> after seeing all previous Fluentd
+pods have terminated.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you are not using the provided Kibana and Elasticsearch images, you will not
+have the same multi-tenant capabilities and your data will not be restricted by
+user access to a particular project.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="aggregate-logging-performing-elasticsearch-maintenance-operations"><a class="anchor" href="#aggregate-logging-performing-elasticsearch-maintenance-operations"></a>Performing Administrative Elasticsearch Operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As of the Deployer version
+3.2.0,
+an administrator certificate, key, and CA that can be used to communicate with and perform
+administrative operations on Elasticsearch are provided within the
+<strong>logging-elasticsearch</strong> secret.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To confirm whether or not your EFK installation provides these, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe secret logging-elasticsearch</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If they are not available, refer to
+<a href="../install_config/upgrading/manual_upgrades.html#manual-upgrading-efk-logging-stack">Manual
+Upgrades</a> to ensure you are on the latest version first.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Connect to an Elasticsearch pod that is in the cluster on which you are
+attempting to perform maintenance.</p>
+</li>
+<li>
+<p>To find a pod in a cluster use either:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get pods -l component=es -o name | head -1
+$ oc get pods -l component=es-ops -o name | head -1</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Connect to a pod:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc rsh &lt;your_Elasticsearch_pod&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Once connected to an Elasticsearch container, you can use the certificates mounted
+from the secret to communicate with Elasticsearch per its 1.5
+<a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.5/docs.html">Document APIs</a>.</p>
+<div class="paragraph">
+<p>Fluentd sends its logs to Elasticsearch using the index format <strong>{project_name}.{project_uuid}.YYYY.MM.DD</strong>
+where YYYY.MM.DD is the date of the log record.</p>
+</div>
+<div class="paragraph">
+<p>For example, to delete all logs for the <strong>logging</strong> project with uuid <strong>3b3594fa-2ccd-11e6-acb7-0eb6b35eaee3</strong>
+from June 15, 2016, we can run:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ curl --key /etc/elasticsearch/keys/admin-key --cert /etc/elasticsearch/keys/admin-cert \
+  --cacert /etc/elasticsearch/keys/admin-ca -XDELETE \
+  "https://localhost:9200/logging.3b3594fa-2ccd-11e6-acb7-0eb6b35eaee3.2016.06.15"</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-openshift">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <a href="https://www.redhat.com/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="../../master/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

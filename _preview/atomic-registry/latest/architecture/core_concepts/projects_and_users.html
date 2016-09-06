@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en-us"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en-us"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if lt IE 10]> <html class="no-js lt-ie10" lang="en-us"> <![endif]-->
+<!--[if !IE]> > <![endif]-->
+<html class='no-js' lang='en'>
+<!-- <![endif] -->
+<head>
+<title>Atomic Registry Latest | Architecture | Core Concepts | Projects and Users</title>
+<meta charset='utf-8'>
+<meta content='' name='description'>
+<meta content='Project Atomic. Sponsored by Red Hat, Inc.' name='author'>
+<meta content='initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width' name='viewport'>
+
+<link href='http://www.projectatomic.io/images/favicon.ico' rel='shortcut icon'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-57x57-precomposed.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-72x72-precomposed.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-114x114-precomposed.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='http://www.projectatomic.io/blog/feed.xml' rel='alternate' title='Project Atomic' type='application/atom+xml'>
+<link href="http://www.projectatomic.io/stylesheets/application.css" rel="stylesheet" type="text/css" />
+<link href="http://www.projectatomic.io/stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body class=' docs docs_introduction docs_introduction_index source-md'>
+<section class='container' id='page-wrap'>
+  <div class='row'>
+  <div class='col-md-3 col-lg-2' id='sidebar'>
+    <div id='nav-primary'>
+      <nav class='navbar navbar-default' role='navigation'>
+        <div class='navbar-header'>
+          <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse'>
+            <span class='sr-only'>
+              Toggle navigation
+            </span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='http://www.projectatomic.io/'>
+            Project Atomic
+          </a>
+        </div>
+        <div class='collapse navbar-collapse navbar-ex1-collapse'>
+          <ul class='nav navbar-nav'>
+            <li><a class="get-started" href="http://www.projectatomic.io/download">Get Started</a></li>
+            <li><a class="documentation" href="http://www.projectatomic.io/docs">Documentation</a></li>
+            <li><a class="developer-community" href="http://www.projectatomic.io/community">Developer Community</a></li>
+            <li><a class="on-github" href="https://github.com/projectatomic/">On GitHub</a></li>
+            <li><a class="ask" href="http://ask.projectatomic.io/">Ask</a></li>
+            <li><a class="blog" href="http://www.projectatomic.io/blog">Blog</a></li>
+            <li><a class="twitter" href="http://www.twitter.com/projectatomic">Twitter</a></li>
+            <li><a class="facebook" href="https://www.facebook.com/projectatomic">Facebook</a></li>
+            <li><a class="google" href="https://plus.google.com/108727025270662383247/posts">Google+</a></li>
+            <li><a class="rss" href="http://www.projectatomic.io/blog/feed.xml">RSS</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+<section class='col-lg-10 col-md-9 container-fluid' id='content'>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser.
+<a href="http://browsehappy.com/">Upgrade your browser today</a> or
+<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<div class='row'>
+  <div class='col-sm-9'>
+    <h2>Projects and Users</h2>
+    <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#users">Users</a></li>
+<li><a href="#namespaces">Namespaces</a></li>
+<li><a href="#projects">Projects</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="users"><a class="anchor" href="#users"></a>Users</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Interaction with Atomic Registry is associated with a user. An Atomic Registry
+user object represents an actor which may be granted permissions in the system
+by</p>
+</div>
+<div class="paragraph">
+<p>Several types of users can exist:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regular users</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the way most interactive Atomic Registry users will be
+represented. Regular users are created automatically in the system upon
+first login, or can be created via the API. Regular users are represented
+with the <code><strong>User</strong></code> object. Examples: <code>joe</code> <code>alice</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>System users</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Many of these are created automatically when the infrastructure
+ is defined, mainly for the purpose of enabling the infrastructure to
+ interact with the API securely. They include a cluster administrator
+ (with access to everything), a per-node user, users for use by routers
+ and registries, and various others. Finally, there is an <code><strong>anonymous</strong></code>
+ system user that is used by default for unauthenticated requests. Examples:
+<code>system:admin</code> <code>system:openshift-registry</code> <code>system:node:node1.example.com</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Service accounts</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">These are special system users associated with projects; some are created automatically when
+the project is first created, while project administrators can create more
+for the purpose of defining access to the contents of each <a href="#projects">project</a>.
+Service accounts are represented with the <code><strong>ServiceAccount</strong></code> object. Examples:
+<code>system:serviceaccount:default:deployer</code> <code>system:serviceaccount:foo:builder</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Every user must <a href="../additional_concepts/authentication.html#architecture-additional-concepts-authentication">authenticate</a> in
+some way in order to access Atomic Registry. API requests with no authentication
+or invalid authentication are authenticated as requests by the <code><strong>anonymous</strong></code>
+system user. Once authenticated, policy determines what the user is
+<a href="../additional_concepts/authorization.html#architecture-additional-concepts-authorization">authorized</a> to do.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="namespaces"><a class="anchor" href="#namespaces"></a>Namespaces</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Kubernetes namespace provides a mechanism to scope resources in a cluster.
+In Atomic Registry, a <a href="#projects">project</a> is a Kubernetes namespace with
+additional annotations.</p>
+</div>
+<div class="paragraph">
+<p>Namespaces provide a unique scope for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Named resources to avoid basic naming collisions.</p>
+</li>
+<li>
+<p>Delegated management authority to trusted users.</p>
+</li>
+<li>
+<p>The ability to limit community resource consumption.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Most objects in the system are scoped by namespace, but some are
+excepted and have no namespace, including nodes and users.</p>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/admin/namespaces.md">Kubernetes
+documentation</a> has more information on namespaces.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="projects"><a class="anchor" href="#projects"></a>Projects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A project is a Kubernetes namespace with additional annotations, and is the central vehicle
+by which access to resources for regular users is managed.
+A project allows a community of users to organize and manage their content in
+isolation from other communities. Users must be given access to projects by administrators,
+or if allowed to create projects, automatically have access to their own projects.</p>
+</div>
+<div class="paragraph">
+<p>Projects can have a separate <code><strong>name</strong></code>, <code><strong>displayName</strong></code>, and <code><strong>description</strong></code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The mandatory <code><strong>name</strong></code> is a unique identifier for the project and is most visible when using the CLI tools or API. The maximum name length is 63 characters.</p>
+</li>
+<li>
+<p>The optional <code><strong>displayName</strong></code> is how the project is displayed in the web console (defaults to <code><strong>name</strong></code>).</p>
+</li>
+<li>
+<p>The optional <code><strong>description</strong></code> can be a more detailed description of the project and is also visible in the web console.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each project scopes its own set of:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Objects</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pods, services, replication controllers, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Policies</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rules for which users can or cannot perform actions on objects.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Constraints</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quotas for each kind of object that can be limited.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Service accounts</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service accounts act automatically with designated access to objects in the project.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Cluster administrators can <a href="../../dev_guide/projects.html#dev-guide-projects">create projects</a>
+and
+for the project to any member of the user community.
+Cluster administrators can also allow developers to create</p>
+</div>
+<div class="paragraph">
+<p>Developers and administrators can <a href="../../dev_guide/projects.html#dev-guide-projects">interact
+with projects</a> using <a href="../../cli_reference/index.html#cli-reference-index">the CLI</a> or the
+<a href="../infrastructure_components/web_console.html#architecture-infrastructure-components-web-console">web console</a>.</p>
+</div>
+</div>
+</div>
+  </div>
+
+  <div class='col-sm-3 hidden-print'>
+    <h2>Atomic Registry</h2>
+    <nav role='navigation'>
+      <ul class='docbrowser nav nav-vertical'>
+        <li class='disabled'>
+          <h3>Quickstart</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../registry_quickstart/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../../registry_quickstart/developers.html">Developers</a></li>
+            <!-- <li role="menuitem"><a>Administrators</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-0-2">
+                <span id="sgSpan-0-2" class="fa fa-caret-right"></span>&nbsp;Administrators
+              </a>
+              <ul id="topicSubGroup-0-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../registry_quickstart/administrators/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../registry_quickstart/administrators/system_configuration.html">System Configuration</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../registry_quickstart/administrators/uninstall.html">Uninstall</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Architecture</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../architecture/index.html">Overview</a></li>
+            <!-- <li role="menuitem"><a>Infrastructure Components</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-1">
+                <span id="sgSpan-1-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/infrastructure_components/image_registry.html">Image Registry</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/infrastructure_components/web_console.html">Web Console</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Core Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-2">
+                <span id="sgSpan-1-2" class="fa fa-caret-down"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-1-2" class="nav-tertiary list-unstyled collapse in">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/core_concepts/containers_and_images.html">Images</strong></a><li>
+
+                  <li class=" active">&nbsp;<a role="menuitem" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/core_concepts/builds_and_image_streams.html">Image Streams</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Additional Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-3">
+                <span id="sgSpan-1-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-1-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/additional_concepts/authentication.html">Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/additional_concepts/authorization.html">Authorization</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/additional_concepts/other_api_objects.html">Other API Objects</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Installation and Configuration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+              <li role="menuitem" class=""><a href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+              <li role="menuitem" class=""><a href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+              <li role="menuitem" class=""><a href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <!-- <li role="menuitem"><a>Advanced LDAP Configuration</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-4">
+                <span id="sgSpan-2-4" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-2-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../install_config/advanced_ldap_configuration/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</strong></a><li>
+              </ul>
+            </li>
+              <li role="menuitem" class=""><a href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+        <li class='disabled'>
+          <h3>Cluster Administration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../admin_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/manage_users.html">Managing Users</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/image_policy.html">Image Policy</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/quota.html">Setting Quotas</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/limits.html">Setting Limit Ranges</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/backup_restore.html">Backup and Restore</a></li>
+        <li class='disabled'>
+          <h3>User Guide</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../dev_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../../dev_guide/authentication.html">Authentication</a></li>
+              <li role="menuitem" class=""><a href="../../dev_guide/managing_images.html">Managing Images</a></li>
+              <li role="menuitem" class=""><a href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+        <li class='disabled'>
+          <h3>CLI Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../cli_reference/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+              <li role="menuitem" class=""><a href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+        <li class='disabled'>
+          <h3>REST API Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../rest_api/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+              <li role="menuitem" class=""><a href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+</section>
+</div>
+<div class='row'>
+<div class='col-md-offset-3 col-md-9 col-lg-offset-2 col-lg-10' id='footer'>
+  <footer>
+<hr class='visible-print'>
+
+&copy; 2014&ndash;2016 Project Atomic. Sponsored by Red Hat, Inc.
+<div class='edit-this-page pull-right'>
+<a href="https://github.com/openshift/openshift-docs#contributing-to-openshift-documentation"><i class="icon fa fa-fw fa-github"></i>Edit this page on GitHub</a>
+</div>
+        <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik-osasteam.rhcloud.com/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 4]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+<noscript><p><img src="https://piwik-osasteam.rhcloud.com/piwik/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+</footer>
+</div>
+</div>
+
+</section>
+
+<script src="http://www.projectatomic.io/javascripts/application.js" type="text/javascript"></script>
+
+
+</body>
+</html>

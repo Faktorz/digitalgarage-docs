@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en-us"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en-us"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if lt IE 10]> <html class="no-js lt-ie10" lang="en-us"> <![endif]-->
+<!--[if !IE]> > <![endif]-->
+<html class='no-js' lang='en'>
+<!-- <![endif] -->
+<head>
+<title>Atomic Registry Latest | REST API Reference | Overview</title>
+<meta charset='utf-8'>
+<meta content='' name='description'>
+<meta content='Project Atomic. Sponsored by Red Hat, Inc.' name='author'>
+<meta content='initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width' name='viewport'>
+
+<link href='http://www.projectatomic.io/images/favicon.ico' rel='shortcut icon'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-57x57-precomposed.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-72x72-precomposed.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-114x114-precomposed.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='http://www.projectatomic.io/blog/feed.xml' rel='alternate' title='Project Atomic' type='application/atom+xml'>
+<link href="http://www.projectatomic.io/stylesheets/application.css" rel="stylesheet" type="text/css" />
+<link href="http://www.projectatomic.io/stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body class=' docs docs_introduction docs_introduction_index source-md'>
+<section class='container' id='page-wrap'>
+  <div class='row'>
+  <div class='col-md-3 col-lg-2' id='sidebar'>
+    <div id='nav-primary'>
+      <nav class='navbar navbar-default' role='navigation'>
+        <div class='navbar-header'>
+          <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse'>
+            <span class='sr-only'>
+              Toggle navigation
+            </span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='http://www.projectatomic.io/'>
+            Project Atomic
+          </a>
+        </div>
+        <div class='collapse navbar-collapse navbar-ex1-collapse'>
+          <ul class='nav navbar-nav'>
+            <li><a class="get-started" href="http://www.projectatomic.io/download">Get Started</a></li>
+            <li><a class="documentation" href="http://www.projectatomic.io/docs">Documentation</a></li>
+            <li><a class="developer-community" href="http://www.projectatomic.io/community">Developer Community</a></li>
+            <li><a class="on-github" href="https://github.com/projectatomic/">On GitHub</a></li>
+            <li><a class="ask" href="http://ask.projectatomic.io/">Ask</a></li>
+            <li><a class="blog" href="http://www.projectatomic.io/blog">Blog</a></li>
+            <li><a class="twitter" href="http://www.twitter.com/projectatomic">Twitter</a></li>
+            <li><a class="facebook" href="https://www.facebook.com/projectatomic">Facebook</a></li>
+            <li><a class="google" href="https://plus.google.com/108727025270662383247/posts">Google+</a></li>
+            <li><a class="rss" href="http://www.projectatomic.io/blog/feed.xml">RSS</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+<section class='col-lg-10 col-md-9 container-fluid' id='content'>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser.
+<a href="http://browsehappy.com/">Upgrade your browser today</a> or
+<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<div class='row'>
+  <div class='col-sm-9'>
+    <h2>Overview</h2>
+    <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#rest-api-authentication">Authentication</a>
+<ul class="sectlevel2">
+<li><a href="#rest-api-session-tokens">Session Tokens</a></li>
+<li><a href="#rest-api-serviceaccount-tokens">Service Account Tokens</a></li>
+</ul>
+</li>
+<li><a href="#rest-api-examples">Examples</a>
+<ul class="sectlevel2">
+<li><a href="#rest-api-example-curl">cURL</a></li>
+<li><a href="#rest-api-example-python">Python</a></li>
+<li><a href="#rest-api-docker-login">Docker Login</a></li>
+</ul>
+</li>
+<li><a href="#rest-api-websockets">Websockets and Watching for Changes</a></li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+The Atomic Registry distribution of Kubernetes includes the
+<a href="../rest_api/kubernetes_v1.html#rest-api-kubernetes-v1">Kubernetes v1 REST
+API</a> and the <a href="../rest_api/openshift_v1.html#rest-api-openshift-v1">OpenShift
+v1 REST API</a>. These are RESTful APIs accessible via HTTP(s) on the
+Atomic Registry master servers.</p>
+</div>
+<div class="paragraph">
+<p>These REST APIs can be used to manage end-user applications, the cluster, and
+the users of the cluster.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rest-api-authentication"><a class="anchor" href="#rest-api-authentication"></a>Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>API calls must be authenticated with an access token or X.509 certificate. See
+<a href="../architecture/additional_concepts/authentication.html#api-authentication">Authentication</a>
+in the Architecture documentation for an overview.</p>
+</div>
+<div class="paragraph">
+<p>This section highlights the token authentication method. With token
+authentication, a bearer token must be passed in as an
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.8">HTTP
+Authorization header</a>. There are two types of access tokens: session and service
+account.</p>
+</div>
+<div class="sect2">
+<h3 id="rest-api-session-tokens"><a class="anchor" href="#rest-api-session-tokens"></a>Session Tokens</h3>
+<div class="paragraph">
+<p>A <em>session token</em> is short-lived, expiring within 24 hours by default. It
+represents a
+<a href="../architecture/additional_concepts/authentication.html#users-and-groups">user</a>.
+After logging in, the session token may be obtained with the <code>oc whoami</code>
+command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc login -u test_user
+Using project "test".
+$ oc whoami --token
+dIAo76N-W-GXK3S_w_KsC6DmH3MzP79zq7jbMQvCOUo</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rest-api-serviceaccount-tokens"><a class="anchor" href="#rest-api-serviceaccount-tokens"></a>Service Account Tokens</h3>
+<div class="paragraph">
+<p><em>Service account tokens</em> are long-lived tokens. They are
+<a href="https://tools.ietf.org/html/rfc7519">JSON Web Token (JWT)</a> formatted tokens
+and are much longer strings than session tokens. See
+<a href="../dev_guide/service_accounts.html#using-a-service-accounts-credentials-externally">Using
+a Service Account’s Credentials Externally</a> for steps on using these tokens to
+authenticate using the CLI.</p>
+</div>
+<div class="paragraph">
+<p>A service account token may be obtained with these commands:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a service account in the current project (<strong>test</strong>) named <strong>robot</strong>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc create serviceaccount robot
+serviceaccount "robot" created</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Grant a role to the service account. In this example, assign the <strong>robot</strong> service
+account in the <strong>test</strong> project the <strong>admin</strong> role:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc policy add-role-to-user admin system:serviceaccounts:test:robot</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Describe the service account to discover the secret token name:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc describe serviceaccount robot
+Name:		robot
+Namespace:	test
+Labels:		&lt;none&gt;
+
+Image pull secrets:	robot-dockercfg-rdrpg
+
+Mountable secrets: 	robot-token-2dsne
+                   	robot-dockercfg-rdrpg
+
+Tokens:            	robot-token-2dsne
+                   	robot-token-9efwm</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Describe the secret token to get the token value:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$  oc describe secret robot-token-2dsne
+Name:		robot-token-2dsne
+Namespace:	test
+Labels:		&lt;none&gt;
+Annotations:	kubernetes.io/service-account.name=robot,kubernetes.io/service-account.uid=ea70e4c7-0663-11e6-b279-fa163e610e01
+
+Type:	kubernetes.io/service-account-token
+
+Data
+===
+token:		fyJhbGciOiJSUzI1NiIyInR5cCI2IkpXVCJ9...
+ca.crt:		1070 bytes
+namespace:	8 bytes</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The token value may be used as an in an authorization header to
+<a href="#rest-api-examples">authenticate API calls</a>, the
+<a href="../dev_guide/service_accounts.html#using-a-service-accounts-credentials-externally">CLI</a>
+or in the <a href="#rest-api-docker-login">docker login command</a>. Service accounts may
+be created and deleted as needed with the appropriate role(s) assigned. See
+<a href="../architecture/additional_concepts/authorization.html#roles">Authorization</a>
+in the Architecture documentation for a deeper discussion on roles.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rest-api-examples"><a class="anchor" href="#rest-api-examples"></a>Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These examples are provided as a reference to provide quick success making
+REST API calls. They use insecure methods. In these examples a simple <code>GET</code>
+call is made to
+<a href="../rest_api/openshift_v1.html#rest-api-openshift-v1">list available resources</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="rest-api-example-curl"><a class="anchor" href="#rest-api-example-curl"></a>cURL</h3>
+<div class="exampleblock">
+<div class="title">Example 1. Request (Insecure)</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>$ curl -X GET -H "Authorization: Bearer &lt;token&gt;" https://openshift.redhat.com:8443/oapi/v1 --insecure</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Result (Truncated)</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "kind": "APIResourceList",
+  "groupVersion": "v1",
+  "resources": [
+    {
+      "name": "buildconfigs",
+      "namespaced": true,
+      "kind": "BuildConfig"
+    },
+    {
+      "name": "buildconfigs/instantiate",
+      "namespaced": true,
+      "kind": "BuildRequest"
+    },
+    {
+      "name": "buildconfigs/instantiatebinary",
+      "namespaced": true,
+      "kind": "BinaryBuildRequestOptions"
+    },
+    {
+      "name": "buildconfigs/webhooks",
+      "namespaced": true,
+      "kind": "Status"
+    },
+    {
+      "name": "builds",
+      "namespaced": true,
+      "kind": "Build"
+    },
+    ...
+    {
+      "name": "subjectaccessreviews",
+      "namespaced": true,
+      "kind": "SubjectAccessReview"
+    },
+    {
+      "name": "templates",
+      "namespaced": true,
+      "kind": "Template"
+    },
+    {
+      "name": "useridentitymappings",
+      "namespaced": false,
+      "kind": "UserIdentityMapping"
+    },
+    {
+      "name": "users",
+      "namespaced": false,
+      "kind": "User"
+    }
+  ]
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rest-api-example-python"><a class="anchor" href="#rest-api-example-python"></a>Python</h3>
+<div class="exampleblock">
+<div class="title">Example 3. Interactive Python API Call Using "requests" Module (Insecure)</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>&gt;&gt;&gt; import requests
+&gt;&gt;&gt; url = 'https://openshift.redhat.com:8443/oapi/v1'
+&gt;&gt;&gt; headers = {'Authorization': 'Bearer dIAo76N-W-GXK3S_w_KsC6DmH3MzP79zq7jbMQvCOUo'}
+&gt;&gt;&gt; requests.get(url, headers=headers, verify=False)
+/usr/lib/python2.7/site-packages/requests/packages/urllib3/connectionpool.py:791: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.org/en/latest/security.html
+  InsecureRequestWarning)
+&lt;Response [200]&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rest-api-docker-login"><a class="anchor" href="#rest-api-docker-login"></a>Docker Login</h3>
+<div class="paragraph">
+<p>The Atomic Registry integrated Docker registry must be authenticated using
+either a <a href="#rest-api-session-tokens">user session</a> or
+<a href="#rest-api-serviceaccount-tokens">service account</a> token. The value of the
+token must be used as the value for the <code>--password</code> argument. The user and
+email argument values are ignored:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ docker login -p &lt;token_value&gt; -u unused -e unused &lt;registry&gt;[:&lt;port&gt;]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rest-api-websockets"><a class="anchor" href="#rest-api-websockets"></a>Websockets and Watching for Changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The API is designed to work via the
+<a href="https://tools.ietf.org/html/rfc6455">websocket protocol</a>. API requests may
+take the form of "one-shot" calls to list resources or by passing in query
+parameter <code>watch=true</code>. When watching an endpoint, changes to the system may be
+observed through an open endpoint. Using callbacks, dynamic systems may be
+developed that integrate with the API.</p>
+</div>
+<div class="paragraph">
+<p>For more information and examples, see the Mozilla Developer Network page on
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications">Writing
+WebSocket client applications</a>.</p>
+</div>
+</div>
+</div>
+  </div>
+
+  <div class='col-sm-3 hidden-print'>
+    <h2>Atomic Registry</h2>
+    <nav role='navigation'>
+      <ul class='docbrowser nav nav-vertical'>
+        <li class='disabled'>
+          <h3>Quickstart</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../registry_quickstart/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../registry_quickstart/developers.html">Developers</a></li>
+            <!-- <li role="menuitem"><a>Administrators</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-0-2">
+                <span id="sgSpan-0-2" class="fa fa-caret-right"></span>&nbsp;Administrators
+              </a>
+              <ul id="topicSubGroup-0-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/system_configuration.html">System Configuration</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/uninstall.html">Uninstall</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Architecture</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../architecture/index.html">Overview</a></li>
+            <!-- <li role="menuitem"><a>Infrastructure Components</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-1">
+                <span id="sgSpan-1-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/image_registry.html">Image Registry</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/web_console.html">Web Console</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Core Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-2">
+                <span id="sgSpan-1-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-1-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/containers_and_images.html">Images</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/builds_and_image_streams.html">Image Streams</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Additional Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-3">
+                <span id="sgSpan-1-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-1-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authentication.html">Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authorization.html">Authorization</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Installation and Configuration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+              <li role="menuitem" class=""><a href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+              <li role="menuitem" class=""><a href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+              <li role="menuitem" class=""><a href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <!-- <li role="menuitem"><a>Advanced LDAP Configuration</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-4">
+                <span id="sgSpan-2-4" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-2-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</strong></a><li>
+              </ul>
+            </li>
+              <li role="menuitem" class=""><a href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+        <li class='disabled'>
+          <h3>Cluster Administration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../admin_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/manage_users.html">Managing Users</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/image_policy.html">Image Policy</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/quota.html">Setting Quotas</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+        <li class='disabled'>
+          <h3>User Guide</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../dev_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/authentication.html">Authentication</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/managing_images.html">Managing Images</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+        <li class='disabled'>
+          <h3>CLI Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../cli_reference/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+              <li role="menuitem" class=""><a href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+        <li class='disabled'>
+          <h3>REST API Reference</h3>
+        </li>
+              <li role="menuitem" class=" active"><a href="../rest_api/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+</section>
+</div>
+<div class='row'>
+<div class='col-md-offset-3 col-md-9 col-lg-offset-2 col-lg-10' id='footer'>
+  <footer>
+<hr class='visible-print'>
+
+&copy; 2014&ndash;2016 Project Atomic. Sponsored by Red Hat, Inc.
+<div class='edit-this-page pull-right'>
+<a href="https://github.com/openshift/openshift-docs#contributing-to-openshift-documentation"><i class="icon fa fa-fw fa-github"></i>Edit this page on GitHub</a>
+</div>
+        <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik-osasteam.rhcloud.com/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 4]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+<noscript><p><img src="https://piwik-osasteam.rhcloud.com/piwik/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+</footer>
+</div>
+</div>
+
+</section>
+
+<script src="http://www.projectatomic.io/javascripts/application.js" type="text/javascript"></script>
+
+
+</body>
+</html>

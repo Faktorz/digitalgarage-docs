@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Dedicated Branch Build | Architecture | Additional Concepts | Authentication</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../../master/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../../master/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../../master/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../../master/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://assets.openshift.net/app/assets/site/tracking.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"></a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="hidden-xs dropdown"> <a href="#" class="dropdown-toggle nav-log-in" data-toggle="dropdown"> My Account<span class="caret"></span> </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://openshift.redhat.com/app/console">OpenShift Web Console</a></li>
+          <li><a href="https://console.preview.openshift.com/">(Next Gen) Web Console</a></li>
+          <li><a href="https://hub.openshift.com/users/auth/github">OpenShift Hub</a></li>
+        </ul>
+      </li>
+      <li class="hidden-xs hidden-sm"><a class="nav-sign-up" href="https://www.openshift.com/devpreview/register.html">Sign up for Free</a></li>
+    </ul>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../welcome/index.html">OpenShift Dedicated Branch Build</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../architecture/index.html">Architecture</a>
+      </li>
+      <li class="hidden-xs active"><a href="../../architecture/additional_concepts/networking.html">Additional Concepts</a></li>
+      <li class="hidden-xs active">
+        Authentication
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:ykypjfbua0a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search defaultToRefinement="Dedicated Branch Build"></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+            <li><a class="" href="../../welcome/revhistory_all.html">All Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Release Notes
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../../release_notes/index.html">Overview</a></li>
+            <li><a class="" href="../../release_notes/osd_3_2_release_notes.html">OpenShift Dedicated 3.2 Release Notes</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/dedicated_administrators.html">Administering a Cluster</a></li>
+            <li><a class="" href="../../getting_started/revhistory_getting_started.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-down"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse in list-unstyled">
+            <li><a class="" href="../../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-down"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse in">
+
+                  <li><a class="" href="../../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class=" active" href="../../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../architecture/revhistory_architecture.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-right"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup4" class="collapse  list-unstyled">
+            <li><a class="" href="../../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../../admin_guide/osd_imagestreams_templates.html">Managing the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class="" href="../../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../../admin_guide/osd_build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../../admin_guide/osd_configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../../admin_guide/revhistory_admin_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+            <li><a class="" href="../../cli_reference/revhistory_cli_reference.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-5">
+                <span id="sgSpan-6-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-6-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-6">
+                <span id="sgSpan-6-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-6-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../../dev_guide/revhistory_dev_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../../creating_images/custom.html">Custom Builder</a></li>
+            <li><a class="" href="../../creating_images/revhistory_creating_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-0">
+                <span id="sgSpan-8-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-8-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-1">
+                <span id="sgSpan-8-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-8-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-2">
+                <span id="sgSpan-8-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-8-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-3">
+                <span id="sgSpan-8-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-8-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-4">
+                <span id="sgSpan-8-4" class="fa fa-caret-right"></span>&nbsp;xPaaS Middleware Images
+              </a>
+              <ul id="topicSubGroup-8-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/xpaas_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../using_images/revhistory_using_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li><a class="" href="../../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+            <li><a class="" href="../../rest_api/revhistory_rest_api.html">Revision History</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Authentication</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#users-and-groups">Users and Groups</a></li>
+<li><a href="#api-authentication">API Authentication</a>
+<ul class="sectlevel2">
+<li><a href="#authentication-impersonation">Impersonation</a></li>
+</ul>
+</li>
+<li><a href="#oauth">OAuth</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The authentication layer identifies the user associated with requests to the
+OpenShift Dedicated API. The authorization layer then uses information about the
+requesting user to determine if the request should be allowed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="users-and-groups"><a class="anchor" href="#users-and-groups"></a>Users and Groups</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <em>user</em> in OpenShift Dedicated is an entity that can make requests to the
+OpenShift Dedicated API. Typically, this represents the account of a developer or
+administrator that is interacting with OpenShift Dedicated.</p>
+</div>
+<div class="paragraph">
+<p>A user can be assigned to one or more <em>groups</em>, each of which represent a
+certain set of users. Groups are useful when
+managing authorization policies
+to grant permissions to multiple users at once, for example allowing
+access to <a href="../core_concepts/index.html#architecture-core-concepts-index">objects</a> within a
+<a href="../core_concepts/projects_and_users.html#projects">project</a>, versus granting
+them to users individually.</p>
+</div>
+<div class="paragraph">
+<p>In addition to explicitly defined groups, there are also
+system groups, or <em>virtual groups</em>, that are automatically provisioned by
+OpenShift.</p>
+</div>
+<div class="paragraph">
+<p>In the default set of virtual groups, note the following in
+particular:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 71.4286%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Virtual Group</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>system:authenticated</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Automatically associated with all authenticated users.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>system:authenticated:oauth</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Automatically associated with all users authenticated with an OAuth access token.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>system:unauthenticated</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Automatically associated with all unauthenticated users.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="api-authentication"><a class="anchor" href="#api-authentication"></a>API Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Requests to the OpenShift Dedicated API are authenticated using the following
+methods:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">OAuth Access Tokens</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Obtained from the OpenShift Dedicated OAuth server using the <code><em>&lt;master&gt;</em>/oauth/authorize</code> and <code><em>&lt;master&gt;</em>/oauth/token</code> endpoints.</p>
+</li>
+<li>
+<p>Sent as an <code>Authorization: Bearer&#8230;&#8203;</code> header or an <code>access_token=&#8230;&#8203;</code> query parameter</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">X.509 Client Certificates</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires a HTTPS connection to the API server.</p>
+</li>
+<li>
+<p>Verified by the API server against a trusted certificate authority bundle.</p>
+</li>
+<li>
+<p>The API server creates and distributes certificates to controllers to authenticate themselves.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Any request with an invalid access token or an invalid certificate is rejected
+by the authentication layer with a 401 error.</p>
+</div>
+<div class="paragraph">
+<p>If no access token or certificate is presented, the authentication layer assigns
+the <code>system:anonymous</code> virtual user and the <code>system:unauthenticated</code> virtual
+group to the request. This allows the authorization layer to determine which
+requests, if any, an anonymous user is allowed to make.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="../../rest_api/index.html#rest-api-index">REST API Overview</a> for more information
+and examples.</p>
+</div>
+<div class="sect2">
+<h3 id="authentication-impersonation"><a class="anchor" href="#authentication-impersonation"></a>Impersonation</h3>
+<div class="paragraph">
+<p>A request to the OpenShift Dedicated API may include an <strong>Impersonate-User</strong> header,
+which indicates that the requester wants to have the request handled as though
+it came from the specified user. This can be done on the command line by passing
+the <code><strong>--as=username</strong></code> flag.</p>
+</div>
+<div class="paragraph">
+<p>Before User A is allowed to impersonate User B, User A is first authenticated.
+Then, an authorization check occurs to ensure that User A is allowed to
+impersonate the user named User B. If User A is requesting to impersonate a
+service account (<strong>system:serviceaccount:namespace:name</strong>), OpenShift Dedicated checks
+to ensure that User A can impersonate the <strong>serviceaccount</strong> named <strong>name</strong> in
+<strong>namespace</strong>. If the check fails, the request fails with a 403 (Forbidden) error
+code.</p>
+</div>
+<div class="paragraph">
+<p>By default, project administrators and editors are allowed to impersonate
+service accounts in their namespace. The <strong>sudoers</strong> role allows a user to
+impersonate <strong>system:admin</strong>, which in turn has cluster administrator permissions.
+This grants some protection against typos (but not security) for someone
+administering the cluster. For example, <code>oc delete nodes --all</code> would be
+forbidden, but <code>oc delete nodes --all --as=system:admin</code> would be allowed. You
+can add a user to that group using <code>oadm policy add-cluster-role-to-user sudoer
+&lt;username&gt;</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="oauth"><a class="anchor" href="#oauth"></a>OAuth</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The OpenShift Dedicated master includes a built-in OAuth server. Users obtain OAuth
+access tokens to authenticate themselves to the API.</p>
+</div>
+<div class="paragraph">
+<p>When a person requests a new OAuth token, the OAuth server uses the configured
+identity provider
+to determine the identity of the person making the request.</p>
+</div>
+<div class="paragraph">
+<p>It then determines what user that identity maps to, creates an access token for
+that user, and returns the token for use.</p>
+</div>
+<div class="paragraph">
+<p><strong>OAuth Clients</strong> <a id="oauth-clients"></a></p>
+</div>
+<div class="paragraph">
+<p>Every request for an OAuth token must specify the OAuth client that will
+receive and use the token. The following OAuth clients are automatically created
+when starting the OpenShift Dedicated API:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">OAuth Client</th>
+<th class="tableblock halign-left valign-top">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openshift-web-console</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requests tokens for the web console.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openshift-browser-client</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requests tokens at <code><em>&lt;master&gt;</em>/oauth/token/request</code> with a user-agent that can handle interactive logins.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openshift-challenging-client</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requests tokens with a user-agent that can handle <code>WWW-Authenticate</code> challenges.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To register additional clients:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>$ oc create -f &lt;(echo '
+kind: OAuthClient
+apiVersion: v1
+metadata:
+ name: demo <i class="conum" data-value="1"></i><b>(1)</b>
+secret: "..." <i class="conum" data-value="2"></i><b>(2)</b>
+redirectURIs:
+ - "http://www.example.com/" <i class="conum" data-value="3"></i><b>(3)</b>
+grantMethod: prompt <i class="conum" data-value="4"></i><b>(4)</b>
+')</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>name</code> of the OAuth client is used as the <code>client_id</code> parameter when making requests to <code><em>&lt;master&gt;</em>/oauth/authorize</code> and <code><em>&lt;master&gt;</em>/oauth/token</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>secret</code> is used as the <code>client_secret</code> parameter when making requests to <code><em>&lt;master&gt;</em>/oauth/token</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>redirect_uri</code> parameter specified in requests to <code><em>&lt;master&gt;</em>/oauth/authorize</code> and <code><em>&lt;master&gt;</em>/oauth/token</code> must be equal to (or prefixed by) one of the URIs in <code>redirectURIs</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <code>grantMethod</code> is used to determine what action to take when this client requests tokens and has not yet been granted access by the user. Uses the same values seen in <a href="../../install_config/configuring_authentication.html#grant-options">Grant Options</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Service Accounts as OAuth Clients</strong></p>
+</div>
+<div class="paragraph">
+<p>A <a href="../../admin_guide/service_accounts.html">service account</a> can be used as a
+constrained form of OAuth client. Service accounts can only request a subset of
+scopes that allow access to some basic user information and role-based power
+inside of the service account&#8217;s own namespace. Specifically, <code>user:info</code>,
+<code>user:check-access</code>, and <code>role:&lt;anyrole&gt;:&lt;serviceaccount.namespace only&gt;[:!]</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>client_id</code> value is <code>system:serviceaccount:&lt;namespace&gt;:&lt;serviceaccount.name&gt;</code>.</p>
+</li>
+<li>
+<p><code>client_secret</code> can be any of the API tokens for that service account. For example, <code>oc sa get-token serviceaccount.name</code>.</p>
+</li>
+<li>
+<p><code>redirect_uris</code> come from any annotation on the service account that has the prefix <code>serviceaccounts.openshift.io/oauth-redirecturi.</code>. For example, <code>serviceaccounts.openshift.io/oauth-redirecturi.one</code>.</p>
+</li>
+<li>
+<p>To get <code>WWW-Authenticate</code> challenges, set the <code>serviceaccounts.openshift.io/oauth-want-challenges</code> to <code>true</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Integrations</strong> <a id="integrations"></a></p>
+</div>
+<div class="paragraph">
+<p>All requests for OAuth tokens involve a request to <code><em>&lt;master&gt;</em>/oauth/authorize</code>.
+Most authentication integrations place an authenticating proxy in front of this
+endpoint, or configure OpenShift Dedicated to validate credentials against a backing
+identity provider.
+Requests to <code><em>&lt;master&gt;</em>/oauth/authorize</code> can come from user-agents that cannot
+display interactive login pages, such as the CLI. Therefore, OpenShift Dedicated
+supports authenticating using a <code>WWW-Authenticate</code> challenge in addition to
+interactive login flows.</p>
+</div>
+<div class="paragraph">
+<p>If an authenticating proxy is placed in front of the
+<code><em>&lt;master&gt;</em>/oauth/authorize</code> endpoint, it should send unauthenticated,
+non-browser user-agents <code>WWW-Authenticate</code> challenges, rather than displaying an
+interactive login page or redirecting to an interactive login flow.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To prevent cross-site request forgery (CSRF) attacks against browser clients, Basic authentication challenges
+should only be sent if a <code>X-CSRF-Token</code> header is present on the request. Clients that expect
+to receive Basic <code>WWW-Authenticate</code> challenges should set this header to a non-empty value.</p>
+</div>
+<div class="paragraph">
+<p>If the authenticating proxy cannot support <code>WWW-Authenticate</code> challenges, or if
+OpenShift Dedicated is configured to use an identity provider that does not support
+WWW-Authenticate challenges, users can visit <code><em>&lt;master&gt;</em>/oauth/token/request</code>
+using a browser to obtain an access token manually.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Obtaining OAuth Tokens</strong> <a id="obtaining-oauth-tokens"></a></p>
+</div>
+<div class="paragraph">
+<p>The OAuth server supports standard <a href="https://tools.ietf.org/html/rfc6749#section-4.1">authorization code grant</a> and the <a href="https://tools.ietf.org/html/rfc6749#section-4.2">implicit grant</a> OAuth authorization flows.</p>
+</div>
+<div class="paragraph">
+<p>When requesting an OAuth token using the implicit grant flow (<code>response_type=token</code>) with a client_id configured to request WWW-Authenticate challenges (like <code>openshift-challenging-client</code>), these are the possible server responses from <code>/oauth/authorize</code>, and how they should be handled:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 44.4444%;">
+<col style="width: 44.4445%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Status</th>
+<th class="tableblock halign-left valign-top">Content</th>
+<th class="tableblock halign-left valign-top">Client response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>302</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>Location</code> header containing an <code>access_token</code> parameter in the URL fragment (<a href="https://tools.ietf.org/html/rfc6749#section-4.2.2">RFC 4.2.2</a>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Use the <code>access_token</code> value as the OAuth token</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>302</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>Location</code> header containing an <code>error</code> query parameter (<a href="https://tools.ietf.org/html/rfc6749#section-4.1.2.1">RFC 4.1.2.1</a>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Fail, optionally surfacing the <code>error</code> (and optional <code>error_description</code>) query values to the user</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>302</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Other <code>Location</code> header</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Follow the redirect, and process the result using these rules</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>401</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>WWW-Authenticate</code> header present</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Respond to challenge if type is recognized (e.g. <code>Basic</code>, <code>Negotiate</code>, etc), resubmit request, and process the result using these rules</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>401</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>WWW-Authenticate</code> header missing</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>No challenge authentication is possible. Fail and show response body (which might contain links or details on alternate methods to obtain an OAuth token)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Other</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Other</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Fail, optionally surfacing response body to the user</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-openshift">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <a href="https://www.redhat.com/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="../../../master/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

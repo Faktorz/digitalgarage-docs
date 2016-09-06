@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Origin Latest | Installation and Configuration | Configuring the SDN</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../latest/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../latest/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../latest/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../latest/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script async src="//www.google-analytics.com/analytics.js" type="text/javascript"></script>
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-40375612-1', 'openshift.org');
+  ga('set', 'forceSSL', true);
+  ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift navbar-origin" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand origin" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../welcome/index.html">OpenShift Origin Latest</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../install_config/index.html">Installation and Configuration</a>
+      </li>
+      
+      <li class="hidden-xs active">
+        Configuring the SDN
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:vdyz7waqya4';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>What's New?
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../whats_new/index.html">Overview</a></li>
+            <li><a class="" href="../whats_new/applications.html">Applications</a></li>
+            <li><a class="" href="../whats_new/carts_vs_images.html">Cartridges vs Images</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../getting_started/administrators.html">Setting Up a Cluster</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Installation and Configuration
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../install_config/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+              </a>
+              <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+
+                  <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/advanced_install.html">Advanced Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
+
+                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+              </a>
+              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/master_node_configuration.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+            <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+            <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-9">
+                <span id="sgSpan-4-9" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-4-9" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</a></li>
+              </ul>
+            </li>
+            <li><a class=" active" href="../install_config/configuring_sdn.html">Configuring the SDN</a></li>
+            <li><a class="" href="../install_config/configuring_aws.html">Configuring for AWS</a></li>
+            <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
+            <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-14">
+                <span id="sgSpan-4-14" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              </a>
+              <ul id="topicSubGroup-4-14" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_nfs.html">Using NFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_glusterfs.html">Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_cinder.html">Using OpenStack Cinder</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_ceph_rbd.html">Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_aws.html">Using AWS Elastic Block Store</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_gce.html">Using GCE Persistent Disk</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_iscsi.html">Using iSCSI</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_fibre_channel.html">Using Fibre Channel</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/dynamically_provisioning_pvs.html">Dynamic Provisioning</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/pod_security_context.html">Volume Security</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/selector_label_binding.html">Selector-Label Volume Binding</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
+                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              </a>
+              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/shared_storage.html">Sharing an NFS PV Across Two Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/ceph_example.html">Complete Example Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_example.html">Complete Example Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/privileged_pod_storage.html">Mounting Volumes To Privileged Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_backed_registry.html">Backing Docker Registry with GlusterFS Storage</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/binding_pv_by_label.html">Binding Persistent Volumes by Label</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/http_proxies.html">Working with HTTP Proxies</a></li>
+            <li><a class="" href="../install_config/build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../install_config/configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
+            <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
+            <li><a class="" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
+            <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
+            <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
+            <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../admin_guide/monitoring_images.html">Monitoring Images</a></li>
+            <li><a class="" href="../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class="" href="../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+            <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
+            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
+            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
+            <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
+            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
+            <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
+            <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
+            <li><a class="" href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../admin_guide/sdn_troubleshooting.html">Troubleshooting Networking</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-7-5">
+                <span id="sgSpan-7-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-7-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-7-6">
+                <span id="sgSpan-7-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-7-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li><a class="" href="../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-0">
+                <span id="sgSpan-9-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-9-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-1">
+                <span id="sgSpan-9-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-9-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-2">
+                <span id="sgSpan-9-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-9-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-3">
+                <span id="sgSpan-9-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-9-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup10">
+        <span id="tgSpan10" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup10" class="collapse  list-unstyled">
+            <li><a class="" href="../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Configuring the SDN</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#configuring-sdn-config-pod-network-ansible">Configuring the Pod Network with Ansible</a></li>
+<li><a href="#configuring-the-pod-network-on-masters">Configuring the Pod Network on Masters</a></li>
+<li><a href="#configuring-the-pod-network-on-nodes">Configuring the Pod Network on Nodes</a></li>
+<li><a href="#migrating-between-sdn-plugins">Migrating Between SDN Plug-ins</a></li>
+<li><a href="#external-access-to-the-cluster-network">External Access to the Cluster Network</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="../architecture/additional_concepts/sdn.html#architecture-additional-concepts-sdn">OpenShift Origin SDN</a> enables
+communication between pods across the OpenShift Origin cluster, establishing a <em>pod
+network</em>. Two <a href="../architecture/additional_concepts/sdn.html#architecture-additional-concepts-sdn">SDN plug-ins</a>
+are currently available (<strong>ovs-subnet</strong> and <strong>ovs-multitenant</strong>), which provide
+different methods for configuring the pod network.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-sdn-config-pod-network-ansible"><a class="anchor" href="#configuring-sdn-config-pod-network-ansible"></a>Configuring the Pod Network with Ansible</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For initial <a href="../install_config/install/advanced_install.html#install-config-install-advanced-install">advanced installations</a>,
+the <strong>ovs-subnet</strong> plug-in is installed and configured by default, though it can
+be
+<a href="../install_config/install/advanced_install.html#configuring-ansible">overridden during installation</a>
+using the
+<a href="../install_config/install/advanced_install.html#configuring-cluster-variables"><code><strong>os_sdn_network_plugin_name</strong></code> parameter</a>,
+which is configurable in the Ansible inventory file.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Example SDN Configuration with Ansible</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre># Configure the multi-tenant SDN plugin (default is 'redhat/openshift-ovs-subnet')
+# os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
+
+# Disable the OpenShift SDN plugin
+# openshift_use_openshift_sdn=False
+
+# Configure SDN cluster network CIDR block. This network block should
+# be a private block and should not conflict with existing network
+# blocks in your infrastructure that pods may require access to.
+# Can not be changed after deployment.
+#osm_cluster_network_cidr=10.1.0.0/16
+
+# default subdomain to use for exposed routes
+#openshift_master_default_subdomain=apps.test.example.com
+
+# Configure SDN cluster network and kubernetes service CIDR blocks. These
+# network blocks should be private and should not conflict with network blocks
+# in your infrastructure that pods may require access to. Can not be changed
+# after deployment.
+#osm_cluster_network_cidr=10.1.0.0/16
+#openshift_portal_net=172.30.0.0/16
+
+# Configure number of bits to allocate to each host’s subnet e.g. 8
+# would mean a /24 network on the host.
+#osm_host_subnet_length=8
+
+# This variable specifies the service proxy implementation to use:
+# either iptables for the pure-iptables version (the default),
+# or userspace for the userspace proxy.
+#openshift_node_proxy_mode=iptables</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-the-pod-network-on-masters"><a class="anchor" href="#configuring-the-pod-network-on-masters"></a>Configuring the Pod Network on Masters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cluster administrators can control pod network settings on masters by modifying
+parameters in the <code><strong>networkConfig</strong></code> section of the
+<a href="../install_config/master_node_configuration.html#install-config-master-node-configuration">master configuration file</a>
+(located at <strong><em>/etc/origin/master/master-config.yaml</em></strong> by default):</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">networkConfig</span>:
+  <span style="color:#606">clusterNetworkCIDR</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10.128.0.0/14 </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">hostSubnetLength</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">9 </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+  <span style="color:#606">networkPluginName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">redhat/openshift-ovs-subnet</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+  <span style="color:#606">serviceNetworkCIDR</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.30.0.0/16 </span></span> <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Cluster network for node IP allocation</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Number of bits for pod IP allocation within a node</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Set to <strong>redhat/openshift-ovs-subnet</strong> for the <strong>ovs-subnet</strong> plug-in or
+<strong>redhat/openshift-ovs-multitenant</strong> for the <strong>ovs-multitenant</strong> plug-in</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Service IP allocation for the cluster</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code><strong>serviceNetworkCIDR</strong></code> and <code><strong>hostSubnetLength</strong></code> values cannot be changed
+after the cluster is first created, and <code><strong>clusterNetworkCIDR</strong></code> can only be
+changed to be a larger network that still contains the original network. For
+example, given the default value of <strong>10.128.0.0/14</strong>, you could change
+<code><strong>clusterNetworkCIDR</strong></code> to <strong>10.128.0.0/9</strong> (i.e., the entire upper half of net
+10) but not to <strong>10.64.0.0/16</strong>, because that does not overlap the original value.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-the-pod-network-on-nodes"><a class="anchor" href="#configuring-the-pod-network-on-nodes"></a>Configuring the Pod Network on Nodes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cluster administrators can control pod network settings on nodes by modifying
+parameters in the <code><strong>networkConfig</strong></code> section of the
+<a href="../install_config/master_node_configuration.html#install-config-master-node-configuration">node configuration file</a>
+(located at <strong><em>/etc/origin/node/node-config.yaml</em></strong> by default):</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">networkConfig</span>:
+  <span style="color:#606">mtu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1450 </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">networkPluginName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">redhat/openshift-ovs-subnet</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Maximum transmission unit (MTU) for the pod overlay network</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Set to <strong>redhat/openshift-ovs-subnet</strong> for the <strong>ovs-subnet</strong> plug-in or
+<strong>redhat/openshift-ovs-multitenant</strong> for the <strong>ovs-multitenant</strong> plug-in</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="migrating-between-sdn-plugins"><a class="anchor" href="#migrating-between-sdn-plugins"></a>Migrating Between SDN Plug-ins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are already using one SDN plug-in and want to switch to another:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Change the <code><strong>networkPluginName</strong></code> parameter on all
+<a href="#configuring-the-pod-network-on-masters">masters</a> and
+<a href="#configuring-the-pod-network-on-nodes">nodes</a> in their configuration files.</p>
+</li>
+<li>
+<p>Restart the <strong>origin-master</strong> service on masters and the <strong>origin-node</strong> service
+on nodes.</p>
+</li>
+<li>
+<p>If the existing plug-in is OpenShift Origin SDN plug-in, then cleanup
+OpenShift Origin SDN specific artifacts:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc delete clusternetwork --all
+$ oc delete hostsubnets --all
+$ oc delete netnamespaces --all</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When switching from the <strong>ovs-subnet</strong> to the <strong>ovs-multitenant</strong> OpenShift Origin SDN plug-in,
+all the existing projects in the cluster will be fully isolated (assigned unique VNIDs).
+Cluster administrators can choose to <a href="../admin_guide/pod_network.html#admin-guide-pod-network">modify
+the project networks</a> using the administrator CLI.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="external-access-to-the-cluster-network"><a class="anchor" href="#external-access-to-the-cluster-network"></a>External Access to the Cluster Network</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If a host that is external to OpenShift Origin requires access to the cluster network,
+you have two options:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Configure the host as an OpenShift Origin node but mark it
+<a href="../admin_guide/manage_nodes.html#marking-nodes-as-unschedulable-or-schedulable">unschedulable</a>
+so that the master does not schedule containers on it.</p>
+</li>
+<li>
+<p>Create a tunnel between your host and a host that is on the cluster network.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Both options are presented as part of a practical use-case in the documentation
+for configuring <a href="../install_config/routing_from_edge_lb.html#install-config-routing-from-edge-lb">routing from an
+edge load-balancer to containers within OpenShift Origin SDN</a>.</p>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-origin-docs">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="footer_social">
+          <a href="https://twitter.com/openshift" class="first">
+            <span>
+              <i class="fa fa-twitter-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://github.com/openshift/origin">
+            <span>
+              <i class="fa fa-github fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://plus.google.com/communities/114361859072744017486">
+            <span>
+              <i class="fa fa-google-plus-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://www.facebook.com/openshift">
+            <span>
+              <i class="fa fa-facebook-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <a id="footer_logo" href="https://www.redhat.com/">
+          <img alt="Red Hat" src="https://assets.openshift.net/app/assets/redhat.svg">
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-center">
+        <a id="powered_by_openshift" title="Powered by OpenShift Online with the DIY Cartridge" href="https://hub.openshift.com/quickstarts/92-do-it-yourself-0-1">
+          <img src="https://www.openshift.com/sites/default/files/images/powered-transparent-white.png" alt="Powered by OpenShift Online">
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-right">
+        <a id="built_with_asciibinder" title="Built with AsciiBinder docs management system" href="http://asciibinder.org/">
+          <img src="../../latest/_images/asciibinder_web_logo.svg" alt="AsciiBinder">
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="attribution">
+          <button type="button" class="btn btn-link" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-content="
+            '<a target='_blank' href='https://www.flickr.com/photos/eflon/3655695161/'>Spin</a>' by <a target='_blank' href='https://www.flickr.com/photos/eflon/'>eflon</a>,</br> used under <a target='_blank' href='https://creativecommons.org/licenses/by/2.0/'>CC BY 2.0</a> </br>Color tint added to original">
+            Image attribution
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+    </script>
+  </div>
+</footer>
+</body>
+</html>

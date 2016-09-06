@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Dedicated Branch Build | Cluster Administration | Setting Quotas</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../master/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../master/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../master/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../master/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://assets.openshift.net/app/assets/site/tracking.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"></a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="hidden-xs dropdown"> <a href="#" class="dropdown-toggle nav-log-in" data-toggle="dropdown"> My Account<span class="caret"></span> </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://openshift.redhat.com/app/console">OpenShift Web Console</a></li>
+          <li><a href="https://console.preview.openshift.com/">(Next Gen) Web Console</a></li>
+          <li><a href="https://hub.openshift.com/users/auth/github">OpenShift Hub</a></li>
+        </ul>
+      </li>
+      <li class="hidden-xs hidden-sm"><a class="nav-sign-up" href="https://www.openshift.com/devpreview/register.html">Sign up for Free</a></li>
+    </ul>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../welcome/index.html">OpenShift Dedicated Branch Build</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../admin_guide/index.html">Cluster Administration</a>
+      </li>
+      
+      <li class="hidden-xs active">
+        Setting Quotas
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:ykypjfbua0a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search defaultToRefinement="Dedicated Branch Build"></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../welcome/index.html">Welcome</a></li>
+            <li><a class="" href="../welcome/revhistory_all.html">All Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Release Notes
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../release_notes/index.html">Overview</a></li>
+            <li><a class="" href="../release_notes/osd_3_2_release_notes.html">OpenShift Dedicated 3.2 Release Notes</a></li>
+            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../release_notes/revhistory_release_notes.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../getting_started/dedicated_administrators.html">Administering a Cluster</a></li>
+            <li><a class="" href="../getting_started/revhistory_getting_started.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../architecture/revhistory_architecture.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../admin_guide/osd_imagestreams_templates.html">Managing the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class=" active" href="../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../admin_guide/osd_build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../admin_guide/osd_configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../admin_guide/revhistory_admin_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+            <li><a class="" href="../cli_reference/revhistory_cli_reference.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-5">
+                <span id="sgSpan-6-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-6-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-6">
+                <span id="sgSpan-6-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-6-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/revhistory_dev_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../creating_images/custom.html">Custom Builder</a></li>
+            <li><a class="" href="../creating_images/revhistory_creating_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-0">
+                <span id="sgSpan-8-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-8-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/python.html">Python</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-1">
+                <span id="sgSpan-8-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-8-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-2">
+                <span id="sgSpan-8-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-8-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-3">
+                <span id="sgSpan-8-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-8-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-4">
+                <span id="sgSpan-8-4" class="fa fa-caret-right"></span>&nbsp;xPaaS Middleware Images
+              </a>
+              <ul id="topicSubGroup-8-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/xpaas_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../using_images/revhistory_using_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li><a class="" href="../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+            <li><a class="" href="../rest_api/revhistory_rest_api.html">Revision History</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Setting Quotas</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#managed-by-quota">Resources Managed by Quota</a></li>
+<li><a href="#quota-scopes">Quota Scopes</a></li>
+<li><a href="#quota-enforcement">Quota Enforcement</a></li>
+<li><a href="#requests-vs-limits">Requests vs Limits</a></li>
+<li><a href="#sample-resource-quota-definitions">Sample Resource Quota Definitions</a></li>
+<li><a href="#create-a-quota">Creating a Quota</a></li>
+<li><a href="#viewing-a-quota">Viewing a Quota</a></li>
+<li><a href="#configuring-quota-sync-period">Configuring Quota Synchronization Period</a></li>
+<li><a href="#accounting-quota-dc">Accounting for Quota in Deployment Configurations</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A resource quota, defined by a <code><strong>ResourceQuota</strong></code> object, provides constraints
+that limit aggregate resource consumption per project. It can limit the quantity
+of objects that can be created in a project by type, as well as the total amount
+of compute resources that may be consumed by resources in that project.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>See the <a href="../dev_guide/compute_resources.html#dev-guide-compute-resources">Developer Guide</a> for more on
+compute resources.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="managed-by-quota"><a class="anchor" href="#managed-by-quota"></a>Resources Managed by Quota</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following describes the set of compute resources and object types that may be
+managed by a quota.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Compute Resources Managed by Quota</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Resource Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>cpu</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of CPU requests cannot exceed
+this value.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>memory</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of memory requests cannot
+exceed this value.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>requests.cpu</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of CPU requests cannot exceed
+this value.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>requests.memory</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of memory requests cannot
+exceed this value.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>limits.cpu</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of CPU limits cannot exceed
+this value.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>limits.memory</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of memory limits cannot exceed
+this value.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Object Counts Managed by Quota</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Resource Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>pods</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of pods in a non-terminal state that can exist in the project.
+A pod is in a terminal state if <code>status.phase in (Failed, Succeeded)</code> is true.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>replicationcontrollers</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of replication controllers that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>resourcequotas</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of resource quotas that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>services</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of services that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>secrets</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of secrets that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>configmaps</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of <code><strong>ConfigMap</strong></code> objects that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>persistentvolumeclaims</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of persistent volume claims that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>openshift.io/imagestreams</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of image streams that can exist in the project.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quota-scopes"><a class="anchor" href="#quota-scopes"></a>Quota Scopes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each quota can have an associated set of <em>scopes</em>. A quota will only
+measure usage for a resource if it matches the intersection of enumerated
+scopes.</p>
+</div>
+<div class="paragraph">
+<p>When a scope is added to a quota, it limits the number of resources it supports
+to those that pertain to the scope. Resources specified on the quota outside of
+the allowed set results in a validation error.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Scope</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>Terminating</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Match pods where <code>spec.activeDeadlineSeconds &gt;= 0</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>NotTerminating</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Match pods where <code>spec.activeDeadlineSeconds is nil</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>BestEffort</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Match pods that have best effort quality of service for either <code><strong>cpu</strong></code> or
+<code><strong>memory</strong></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>NotBestEffort</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Match pods that do not have best effort quality of service for <code><strong>cpu</strong></code> and
+<code><strong>memory</strong></code>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A <strong>BestEffort</strong> scope restricts a quota to limit the following resources:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>pods</strong></code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A <strong>Terminating</strong>, <strong>NotTerminating</strong>, and <strong>NotBestEffort</strong> scope restricts a quota
+to tracking the following resources:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>pods</strong></code></p>
+</li>
+<li>
+<p><code><strong>memory</strong></code></p>
+</li>
+<li>
+<p><code><strong>requests.memory</strong></code></p>
+</li>
+<li>
+<p><code><strong>limits.memory</strong></code></p>
+</li>
+<li>
+<p><code><strong>cpu</strong></code></p>
+</li>
+<li>
+<p><code><strong>requests.cpu</strong></code></p>
+</li>
+<li>
+<p><code><strong>limits.cpu</strong></code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quota-enforcement"><a class="anchor" href="#quota-enforcement"></a>Quota Enforcement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After a resource quota for a project is first created, the project restricts the
+ability to create any new resources that may violate a quota constraint until it
+has calculated updated usage statistics.</p>
+</div>
+<div class="paragraph">
+<p>After a quota is created and usage statistics are updated, the project accepts
+the creation of new content. When you create or modify resources, your quota
+usage is incremented immediately upon the request to create or modify the
+resource.</p>
+</div>
+<div class="paragraph">
+<p>When you delete a resource, your quota use is decremented during the next full
+recalculation of quota statistics for the project.
+A <a href="#configuring-quota-sync-period">configurable amount of time</a> determines
+how long it takes to reduce quota usage statistics to their current observed
+system value.</p>
+</div>
+<div class="paragraph">
+<p>If project modifications exceed a quota usage limit, the server denies the
+action, and an appropriate error message is returned to the user explaining the
+quota constraint violated, and what their currently observed usage stats are in
+the system.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="requests-vs-limits"><a class="anchor" href="#requests-vs-limits"></a>Requests vs Limits</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When allocating
+<a href="../dev_guide/compute_resources.html#dev-compute-resources">compute
+resources</a>, each container may specify a request and a limit value for either
+CPU or memory. The quota can be configured to quota either value.</p>
+</div>
+<div class="paragraph">
+<p>If the quota has a value specified for <code><strong>requests.cpu</strong></code> or <code><strong>requests.memory</strong></code>,
+then it requires that every incoming container makes an explicit request for
+those resources. If the quota has a value specified for <code><strong>limits.cpu</strong></code> or
+<code><strong>limits.memory</strong></code>, then it requires that every incoming container specifies an
+explicit limit for those resources.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sample-resource-quota-definitions"><a class="anchor" href="#sample-resource-quota-definitions"></a>Sample Resource Quota Definitions</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="title">Example 1. <strong><em>core-object-counts.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ResourceQuota</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">core-object-counts</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">hard</span>:
+    <span style="color:#606">configmaps</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">persistentvolumeclaims</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#606">replicationcontrollers</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">20</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span style="color:#606">secrets</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+    <span style="color:#606">services</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of <code><strong>ConfigMap</strong></code> objects that can exist in the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The total number of persistent volume claims (PVCs) that can exist in the
+project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The total number of replication controllers that can exist in the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The total number of secrets that can exist in the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The total number of services that can exist in the project.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. <strong><em>openshift-object-counts.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ResourceQuota</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift-object-counts</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">hard</span>:
+    <span style="color:#606">openshift.io/imagestreams</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of image streams that can exist in the project.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. <strong><em>compute-resources.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ResourceQuota</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">compute-resources</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">hard</span>:
+    <span style="color:#606">pods</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">requests.cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#606">requests.memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1Gi </span></span><i class="conum" data-value="3"></i><b>(3)</b>
+    <span style="color:#606">limits.cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+    <span style="color:#606">limits.memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">2Gi </span></span> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of pods in a non-terminal state that can exist in the
+project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Across all pods in a non-terminal state, the sum of CPU requests cannot
+exceed 1 core.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Across all pods in a non-terminal state, the sum of memory requests cannot
+exceed 1Gi.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Across all pods in a non-terminal state, the sum of CPU limits cannot exceed
+2 cores.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Across all pods in a non-terminal state, the sum of memory limits cannot
+exceed 2Gi.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. <strong><em>besteffort.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ResourceQuota</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">besteffort</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">hard</span>:
+    <span style="color:#606">pods</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">scopes</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">BestEffort </span></span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of pods in a non-terminal state with <strong>BestEffort</strong> quality
+of service that can exist in the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Restricts the quota to only matching pods that have <strong>BestEffort</strong> quality of
+service for either memory or CPU.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. <strong><em>compute-resources-long-running.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-resources-long-running
+spec:
+  hard:
+    pods: "4" <i class="conum" data-value="1"></i><b>(1)</b>
+    limits.cpu: "4" <i class="conum" data-value="2"></i><b>(2)</b>
+    limits.memory: "2Gi" <i class="conum" data-value="3"></i><b>(3)</b>
+  scopes:
+  - NotTerminating <i class="conum" data-value="4"></i><b>(4)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of pods in a non-terminal state.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Across all pods in a non-terminal state, the sum of CPU limits cannot exceed this value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Across all pods in a non-terminal state, the sum of memory limits cannot exceed this value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Restricts the quota to only matching pods where <code>spec.activeDeadlineSeconds is nil</code>.  For example,
+this quota would not charge for build or deployer pods.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 6. <strong><em>compute-resources-time-bound.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-resources-time-bound
+spec:
+  hard:
+    pods: "2" <i class="conum" data-value="1"></i><b>(1)</b>
+    limits.cpu: "1" <i class="conum" data-value="2"></i><b>(2)</b>
+    limits.memory: "1Gi" <i class="conum" data-value="3"></i><b>(3)</b>
+  scopes:
+  - Terminating <i class="conum" data-value="4"></i><b>(4)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of pods in a non-terminal state.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Across all pods in a non-terminal state, the sum of CPU limits cannot exceed this value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Across all pods in a non-terminal state, the sum of memory limits cannot exceed this value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Restricts the quota to only matching pods where <code>spec.activeDeadlineSeconds &gt;=0</code>.  For example,
+this quota would charge for build or deployer pods, but not long running pods like a web server or database.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-a-quota"><a class="anchor" href="#create-a-quota"></a>Creating a Quota</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create a quota, first define the quota to your specifications in a file, for
+example as seen in
+<a href="../admin_guide/quota.html#sample-resource-quota-definitions">Sample Resource
+Quota Definitions</a>. Then, create using that file to apply it to a project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create -f &lt;resource_quota_definition&gt; [-n &lt;project_name&gt;]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create -f resource-quota.json -n demoproject</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="viewing-a-quota"><a class="anchor" href="#viewing-a-quota"></a>Viewing a Quota</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can view usage statistics related to any hard limits defined in a project&#8217;s
+quota by navigating in the web console to the project&#8217;s <strong>Settings</strong> tab.</p>
+</div>
+<div class="paragraph">
+<p>You can also use the CLI to view quota details:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, get the list of quotas defined in the project. For example, for a project
+called <strong>demoproject</strong>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get quota -n demoproject
+NAME                AGE
+besteffort          11m
+compute-resources   2m
+core-object-counts  29m</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Then, describe the quota you are interested in, for example the
+<strong>core-object-counts</strong> quota:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe quota core-object-counts -n demoproject
+Name:			core-object-counts
+Namespace:		demoproject
+Resource		Used	Hard
+--------		----	----
+configmaps		3	10
+persistentvolumeclaims	0	4
+replicationcontrollers	3	20
+secrets			9	10
+services		2	10</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-quota-sync-period"><a class="anchor" href="#configuring-quota-sync-period"></a>Configuring Quota Synchronization Period</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When a set of resources are deleted, the synchronization time frame of resources
+is determined by the <code><strong>resource-quota-sync-period</strong></code> setting in the
+<strong><em>/etc/origin/master/master-config.yaml</em></strong> file.</p>
+</div>
+<div class="paragraph">
+<p>Before quota usage is restored, a user may encounter problems when attempting to
+reuse the resources. You can change the <code><strong>resource-quota-sync-period</strong></code> setting
+to have the set of resources regenerate at the desired amount of time (in
+seconds) and for the resources to be available again:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kubernetesMasterConfig</span>:
+  <span style="color:#606">apiLevels</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1beta3</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+  <span style="color:#606">apiServerArguments</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">controllerArguments</span>:
+    <span style="color:#606">resource-quota-sync-period</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10s</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>After making any changes, restart the master service to apply them.</p>
+</div>
+<div class="paragraph">
+<p>Adjusting the regeneration time can be helpful for creating resources and
+determining resource usage when automation is used.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code><strong>resource-quota-sync-period</strong></code> setting is designed to balance system
+performance. Reducing the sync period can result in a heavy load on the master.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="accounting-quota-dc"><a class="anchor" href="#accounting-quota-dc"></a>Accounting for Quota in Deployment Configurations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If a quota has been defined for your project, see
+<a href="../dev_guide/deployments.html#deployment-resources">Deployment Resources</a>
+for considerations on any deployment configurations.</p>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-openshift">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <a href="https://www.redhat.com/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="../../master/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

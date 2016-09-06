@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Enterprise Branch Build | Cluster Administration | Managing Security Context Constraints</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../master/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../master/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../master/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../master/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://assets.openshift.net/app/assets/site/tracking.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"></a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="hidden-xs dropdown"> <a href="#" class="dropdown-toggle nav-log-in" data-toggle="dropdown"> My Account<span class="caret"></span> </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://openshift.redhat.com/app/console">OpenShift Web Console</a></li>
+          <li><a href="https://console.preview.openshift.com/">(Next Gen) Web Console</a></li>
+          <li><a href="https://hub.openshift.com/users/auth/github">OpenShift Hub</a></li>
+        </ul>
+      </li>
+      <li class="hidden-xs hidden-sm"><a class="nav-sign-up" href="https://www.openshift.com/devpreview/register.html">Sign up for Free</a></li>
+    </ul>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../welcome/index.html">OpenShift Enterprise Branch Build</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../admin_guide/index.html">Cluster Administration</a>
+      </li>
+      
+      <li class="hidden-xs active">
+        Managing Security Context Constraints
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../welcome/index.html">Welcome</a></li>
+            <li><a class="" href="../welcome/revhistory_all.html">All Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Release Notes
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../release_notes/index.html">Overview</a></li>
+            <li><a class="" href="../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
+            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../release_notes/revhistory_release_notes.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../getting_started/administrators.html">Setting Up a Cluster</a></li>
+            <li><a class="" href="../getting_started/revhistory_getting_started.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../architecture/revhistory_architecture.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-right"></span>Installation and Configuration
+      </a>
+      <ul id="topicGroup4" class="collapse  list-unstyled">
+            <li><a class="" href="../install_config/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+              </a>
+              <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+
+                  <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/advanced_install.html">Advanced Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
+
+                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+              </a>
+              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/downgrade.html">Downgrading</a></li>
+            <li><a class="" href="../install_config/master_node_configuration.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+            <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+            <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
+                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/configuring_sdn.html">Configuring the SDN</a></li>
+            <li><a class="" href="../install_config/configuring_aws.html">Configuring for AWS</a></li>
+            <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
+            <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
+                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              </a>
+              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_nfs.html">Using NFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_glusterfs.html">Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_cinder.html">Using OpenStack Cinder</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_ceph_rbd.html">Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_aws.html">Using AWS Elastic Block Store</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_gce.html">Using GCE Persistent Disk</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_iscsi.html">Using iSCSI</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_fibre_channel.html">Using Fibre Channel</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/dynamically_provisioning_pvs.html">Dynamic Provisioning</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/pod_security_context.html">Volume Security</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/selector_label_binding.html">Selector-Label Volume Binding</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
+                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              </a>
+              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/shared_storage.html">Sharing an NFS PV Across Two Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/ceph_example.html">Complete Example Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_example.html">Complete Example Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/privileged_pod_storage.html">Mounting Volumes To Privileged Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_backed_registry.html">Backing Docker Registry with GlusterFS Storage</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/binding_pv_by_label.html">Binding Persistent Volumes by Label</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/http_proxies.html">Working with HTTP Proxies</a></li>
+            <li><a class="" href="../install_config/build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../install_config/configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
+            <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
+            <li><a class="" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
+            <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+            <li><a class="" href="../install_config/revhistory_install_config.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Administrator Solutions
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../admin_solutions/index.html">Overview</a></li>
+            <li><a class="" href="../admin_solutions/master_node_config.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../admin_solutions/user_role_mgmt.html">User and Role Management</a></li>
+            <li><a class="" href="../admin_solutions/authentication.html">Authentication</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-down"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup6" class="collapse in list-unstyled">
+            <li><a class="" href="../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
+            <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
+            <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../admin_guide/scoped_tokens.html">Scoped Tokens</a></li>
+            <li><a class="" href="../admin_guide/monitoring_images.html">Monitoring Images</a></li>
+            <li><a class=" active" href="../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class="" href="../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+            <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
+            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
+            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
+            <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
+            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
+            <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
+            <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
+            <li><a class="" href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../admin_guide/sdn_troubleshooting.html">Troubleshooting Networking</a></li>
+            <li><a class="" href="../admin_guide/revhistory_admin_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+            <li><a class="" href="../cli_reference/revhistory_cli_reference.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li><a class="" href="../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-5">
+                <span id="sgSpan-8-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-8-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-6">
+                <span id="sgSpan-8-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-8-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/revhistory_dev_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li><a class="" href="../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../creating_images/custom.html">Custom Builder</a></li>
+            <li><a class="" href="../creating_images/revhistory_creating_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup10">
+        <span id="tgSpan10" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup10" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-0">
+                <span id="sgSpan-10-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-10-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/python.html">Python</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-1">
+                <span id="sgSpan-10-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-10-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-2">
+                <span id="sgSpan-10-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-10-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-3">
+                <span id="sgSpan-10-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-10-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-4">
+                <span id="sgSpan-10-4" class="fa fa-caret-right"></span>&nbsp;xPaaS Middleware Images
+              </a>
+              <ul id="topicSubGroup-10-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/xpaas_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../using_images/revhistory_using_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup11">
+        <span id="tgSpan11" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup11" class="collapse  list-unstyled">
+            <li><a class="" href="../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+            <li><a class="" href="../rest_api/revhistory_rest_api.html">Revision History</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Managing Security Context Constraints</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#listing-security-context-constraints">Listing Security Context Constraints</a></li>
+<li><a href="#examining-a-security-context-constraints-object">Examining a Security Context Constraints Object</a></li>
+<li><a href="#creating-new-security-context-constraints">Creating New Security Context Constraints</a></li>
+<li><a href="#deleting-security-context-constraints">Deleting Security Context Constraints</a></li>
+<li><a href="#updating-security-context-constraints">Updating Security Context Constraints</a></li>
+<li><a href="#updating-the-default-security-context-constraints">Updating the Default Security Context Constraints</a></li>
+<li><a href="#how-do-i">How Do I?</a>
+<ul class="sectlevel2">
+<li><a href="#grant-access-to-the-privileged-scc">Grant Access to the Privileged SCC</a></li>
+<li><a href="#grant-a-service-account-access-to-the-privileged-scc">Grant a Service Account Access to the Privileged SCC</a></li>
+<li><a href="#enable-images-to-run-with-user-in-the-dockerfile">Enable Images to Run with USER in the Dockerfile</a></li>
+<li><a href="#enable-dockerhub-images-that-require-root">Enable Dockerhub Images that Require Root</a></li>
+<li><a href="#use-mount-host-on-the-registry">Use --mount-host on the Registry</a></li>
+<li><a href="#provide-additional-capabilities">Provide Additional Capabilities</a></li>
+<li><a href="#modify-cluster-default-behavior">Modify Cluster Default Behavior</a></li>
+<li><a href="#use-the-hostpath-volume-plugin">Use the hostPath Volume Plug-in</a></li>
+<li><a href="#ensure-that-admission-attempts-to-use-a-specific-scc-first">Ensure That Admission Attempts to Use a Specific SCC First</a></li>
+<li><a href="#add-an-scc-to-a-user-or-group">Add an SCC to a User or Group</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Security context constraints allow administrators to control permissions for
+pods. To learn more about this API type, see the
+<a href="../architecture/additional_concepts/authorization.html#security-context-constraints">security
+context constraints</a> (SCCs) architecture documentation. You can manage SCCs in
+your instance as normal API
+<a href="../architecture/core_concepts/index.html#architecture-core-concepts-index">objects</a> using
+<a href="../cli_reference/index.html#cli-reference-index">the CLI</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You must have
+<a href="../architecture/additional_concepts/authorization.html#roles"><strong>cluster-admin</strong>
+privileges</a> to manage SCCs.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="listing-security-context-constraints"><a class="anchor" href="#listing-security-context-constraints"></a>Listing Security Context Constraints</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To get a current list of SCCs:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get scc
+
+NAME               PRIV      CAPS      SELINUX     RUNASUSER          FSGROUP    SUPGROUP   PRIORITY   READONLYROOTFS   VOLUMES
+anyuid             false     []        MustRunAs   RunAsAny           RunAsAny   RunAsAny   10         false            [awsElasticBlockStore azureFile cephFS cinder configMap downwardAPI emptyDir fc flexVolume flocker gcePersistentDisk gitRepo glusterfs iscsi nfs persistentVolumeClaim rbd secret]
+hostaccess         false     []        MustRunAs   MustRunAsRange     RunAsAny   RunAsAny   &lt;none&gt;     false            [*]
+hostmount-anyuid   false     []        MustRunAs   RunAsAny           RunAsAny   RunAsAny   &lt;none&gt;     false            [*]
+nonroot            false     []        MustRunAs   MustRunAsNonRoot   RunAsAny   RunAsAny   &lt;none&gt;     false            [awsElasticBlockStore azureFile cephFS cinder configMap downwardAPI emptyDir fc flexVolume flocker gcePersistentDisk gitRepo glusterfs iscsi nfs persistentVolumeClaim rbd secret]
+privileged         true      []        RunAsAny    RunAsAny           RunAsAny   RunAsAny   &lt;none&gt;     false            [*]
+restricted         false     []        MustRunAs   MustRunAsRange     RunAsAny   RunAsAny   &lt;none&gt;     false            [awsElasticBlockStore azureFile cephFS cinder configMap downwardAPI emptyDir fc flexVolume flocker gcePersistentDisk gitRepo glusterfs iscsi nfs persistentVolumeClaim rbd secret]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="examining-a-security-context-constraints-object"><a class="anchor" href="#examining-a-security-context-constraints-object"></a>Examining a Security Context Constraints Object</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To examine a particular SCC, use <code>oc get</code>, <code>oc describe</code>, <code>oc export</code>, or <code>oc
+edit</code>. For example, to examine the <strong>restricted</strong> SCC:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe scc restricted
+
+Name:						restricted
+Priority:					&lt;none&gt;
+Access:
+  Users:					&lt;none&gt;
+  Groups:					system:authenticated
+Settings:
+  Allow Privileged:				false
+  Default Add Capabilities:			&lt;none&gt;
+  Required Drop Capabilities:			&lt;none&gt;
+  Allowed Capabilities:				&lt;none&gt;
+  Allowed Volume Types:				awsElasticBlockStore,azureFile,cephFS,cinder,configMap,downwardAPI,emptyDir,fc,flexVolume,flocker,gcePersistentDisk,gitRepo,glusterfs,iscsi,nfs,persistentVolumeClaim,rbd,secret
+  Allow Host Network:				false
+  Allow Host Ports:				false
+  Allow Host PID:				false
+  Allow Host IPC:				false
+  Read Only Root Filesystem:			false
+  Run As User Strategy: MustRunAsRange
+    UID:					&lt;none&gt;
+    UID Range Min:				&lt;none&gt;
+    UID Range Max:				&lt;none&gt;
+  SELinux Context Strategy: MustRunAs
+    User:					&lt;none&gt;
+    Role:					&lt;none&gt;
+    Type:					&lt;none&gt;
+    Level:					&lt;none&gt;
+  FSGroup Strategy: RunAsAny
+    Ranges:					&lt;none&gt;
+  Supplemental Groups Strategy: RunAsAny
+    Ranges:					&lt;none&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In order to preserve customized SCCs during upgrades, do not edit settings on
+the default SCCs other than priority, users, and groups.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-new-security-context-constraints"><a class="anchor" href="#creating-new-security-context-constraints"></a>Creating New Security Context Constraints</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create a new SCC:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Define the SCC in a JSON or YAML file:</p>
+<div class="exampleblock">
+<div class="title">Example 1. Security Context Constraint Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">kind: SecurityContextConstraints
+apiVersion: v1
+metadata:
+  name: scc-admin
+allowPrivilegedContainer: true
+runAsUser:
+  type: RunAsAny
+seLinuxContext:
+  type: RunAsAny
+fsGroup:
+  type: RunAsAny
+supplementalGroups:
+  type: RunAsAny
+users:
+- my-admin-user
+groups:
+- my-admin-group</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Optionally, you can add drop capabilities to an SCC by setting the
+<code><strong>requiredDropCapabilities:</strong></code> field with the desired values. Any specified
+capabilities will be dropped from the container. For example, to create an SCC
+with the <code><strong>KILL</strong></code>, <code><strong>MKNOD</strong></code>, and <code><strong>SYS_CHROOT</strong></code> required drop capabilities, add
+the following to the SCC object:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">requiredDropCapabilities:
+- KILL
+- MKNOD
+- SYS_CHROOT</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can see the list of possible values in the
+<a href="https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities">Docker
+documentation</a>.</p>
+</div>
+</li>
+<li>
+<p>Then, run <code>oc create</code> passing the file to create it:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create -f scc_admin.yaml
+securitycontextconstraints/scc-admin</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Verify that the SCC was created:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get scc
+NAME         PRIV      CAPS      HOSTDIR   SELINUX     RUNASUSER
+privileged   true      []        true      RunAsAny    RunAsAny
+restricted   false     []        false     MustRunAs   MustRunAsRange
+scc-admin    true      []        false     RunAsAny    RunAsAny</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deleting-security-context-constraints"><a class="anchor" href="#deleting-security-context-constraints"></a>Deleting Security Context Constraints</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To delete an SCC:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc delete scc &lt;scc_name&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you delete the default SCCs, they will not be regenerated upon restart,
+unless you delete all SCCs. If any constraint already exists within the system,
+no regeneration will take place.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="updating-security-context-constraints"><a class="anchor" href="#updating-security-context-constraints"></a>Updating Security Context Constraints</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To update an existing SCC:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit scc &lt;scc_name&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In order to preserve customized SCCs during upgrades, do not edit settings on
+the default SCCs other than priority, users, and groups.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="updating-the-default-security-context-constraints"><a class="anchor" href="#updating-the-default-security-context-constraints"></a>Updating the Default Security Context Constraints</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Default SCCs will be created when the master is started if they are missing. To reset SCCs
+to defaults, or update existing SCCs to new default definitions after an upgrade you may:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Delete any SCC you would like to be reset and let it be recreated by restarting the master</p>
+</li>
+<li>
+<p>Use the <code>oadm policy reconcile-sccs</code> command</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <code>oadm policy reconcile-sccs</code> command will set all SCC policies to the default
+values but retain any additional users and groups as well as priorities you may have already set.
+To view which SCCs will be changed you may run the command with no options or by
+specifying your preferred output with the <code>-o &lt;format&gt;</code> option.</p>
+</div>
+<div class="paragraph">
+<p>After reviewing it is recommended that you back up your existing SCCs and then
+use the <code>--confirm</code> option to persist the data.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you would like to reset priorities and grants, use the
+<code>--additive-only=false</code> option.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you have customized settings other than priority, users, or groups in an SCC,
+you will lose those settings when you reconcile.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-do-i"><a class="anchor" href="#how-do-i"></a>How Do I?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following describe common scenarios and procedures using SCCs.</p>
+</div>
+<div class="sect2">
+<h3 id="grant-access-to-the-privileged-scc"><a class="anchor" href="#grant-access-to-the-privileged-scc"></a>Grant Access to the Privileged SCC</h3>
+<div class="paragraph">
+<p>In some cases, an administrator might want to allow users or groups outside the
+administrator group access to create more privileged pods. To do so, you can:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Determine the user or group you would like to have access to the SCC.</p>
+</li>
+<li>
+<p>Run:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-user &lt;scc_name&gt; &lt;user_name&gt;
+$ oadm policy add-scc-to-group &lt;scc_name&gt; &lt;group_name&gt;</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For example, to allow the <strong>e2e-user</strong> access to the <strong>privileged</strong> SCC, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-user privileged e2e-user</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="grant-a-service-account-access-to-the-privileged-scc"><a class="anchor" href="#grant-a-service-account-access-to-the-privileged-scc"></a>Grant a Service Account Access to the Privileged SCC</h3>
+<div class="paragraph">
+<p>First, create a <a href="../dev_guide/service_accounts.html#dev-guide-service-accounts">service account</a>.
+For example, to create service account <code>mysvcacct</code> in project <code>myproject</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create serviceaccount mysvcacct -n myproject</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, add the service account to the <code>privileged</code> SCC.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-user privileged system:serviceaccount:myproject:mysvcacct</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enable-images-to-run-with-user-in-the-dockerfile"><a class="anchor" href="#enable-images-to-run-with-user-in-the-dockerfile"></a>Enable Images to Run with USER in the Dockerfile</h3>
+<div class="paragraph">
+<p>To relax the security in your cluster so that images are not forced to run as a
+pre-allocated UID, without granting everyone access to the <strong>privileged</strong> SCC:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Grant all authenticated users access to the <strong>anyuid</strong> SCC:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-group anyuid system:authenticated</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This allows images to run as the root UID if no <strong>USER</strong> is specified in the
+<strong><em>Dockerfile</em></strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enable-dockerhub-images-that-require-root"><a class="anchor" href="#enable-dockerhub-images-that-require-root"></a>Enable Dockerhub Images that Require Root</h3>
+<div class="paragraph">
+<p>Some Dockerhub images (examples: <code>postgres</code> and <code>redis</code>) require root access and
+have certain expectations about how volumes are owned.  For these images, add
+the service account to the <code>anyuid</code> SCC.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-user anyuid system:serviceaccount:myproject:mysvcacct</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-mount-host-on-the-registry"><a class="anchor" href="#use-mount-host-on-the-registry"></a>Use --mount-host on the Registry</h3>
+<div class="paragraph">
+<p>It is recommended that
+<a href="../architecture/additional_concepts/storage.html#architecture-additional-concepts-storage">persistent storage</a> using
+<code><strong>PersistentVolume</strong></code> and <code><strong>PersistentVolumeClaim</strong></code> objects be used for
+<a href="../install_config/install/docker_registry.html#install-config-install-docker-registry">registry deployments</a>. If
+you are testing and would like to instead use the <code>oadm registry</code> command with
+the <code>--mount-host</code> option, you must first create a new
+<a href="service_accounts.html#admin-guide-service-accounts">service account</a> for the registry and add it to the
+<strong>privileged</strong> SCC. See the
+<a href="../install_config/install/docker_registry.html#storage-for-the-registry">Administrator
+Guide</a> for full instructions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="provide-additional-capabilities"><a class="anchor" href="#provide-additional-capabilities"></a>Provide Additional Capabilities</h3>
+<div class="paragraph">
+<p>In some cases, an image may require capabilities that Docker does not provide
+out of the box. You can provide the ability to request additional capabilities
+in the pod specification which will be validated against an SCC.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This allows images to run with elevated capabilities and should be used only if
+necessary. You should not edit the default <strong>restricted</strong> SCC to enable additional
+capabilities.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When used in conjunction with a non-root user, you must also ensure that the
+file that requires the additional capability is granted the capabilities using
+the <code>setcap</code> command. For example, in the <strong><em>Dockerfile</em></strong> of the image:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">setcap cap_net_raw,cap_net_admin+p /usr/bin/ping</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Further, if a capability is provided by default in Docker, you do not need to
+modify the pod specification to request it. For example, <code><strong>NET_RAW</strong></code> is provided
+by default and capabilities should already be set on <code><strong>ping</strong></code>, therefore no
+special steps should be required to run <code><strong>ping</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>To provide additional capabilities:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a new SCC</p>
+</li>
+<li>
+<p>Add the allowed capability using the <code><strong>allowedCapabilities</strong></code> field.</p>
+</li>
+<li>
+<p>When creating the pod, request the capability in the
+<code><strong>securityContext.capabilities.add</strong></code> field.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="modify-cluster-default-behavior"><a class="anchor" href="#modify-cluster-default-behavior"></a>Modify Cluster Default Behavior</h3>
+<div class="paragraph">
+<p>To modify your cluster so that it does not pre-allocate UIDs, allows containers
+to run as any user, and prevents privileged containers:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In order to preserve customized SCCs during upgrades, do not edit settings on
+the default SCCs other than priority, users, and groups.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit the <strong>restricted</strong> SCC:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"> $ oc edit scc restricted</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Change <code><strong>runAsUser.Type</strong></code> to <strong>RunAsAny</strong>.</p>
+</li>
+<li>
+<p>Ensure <code><strong>allowPrivilegedContainer</strong></code> is set to false.</p>
+</li>
+<li>
+<p>Save the changes.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To modify your cluster so that it does not pre-allocate UIDs and does not allow
+containers to run as root:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit the <strong>restricted</strong> SCC:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"> $ oc edit scc restricted</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Change <code><strong>runAsUser.Type</strong></code> to <strong>MustRunAsNonRoot</strong>.</p>
+</li>
+<li>
+<p>Save the changes.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-the-hostpath-volume-plugin"><a class="anchor" href="#use-the-hostpath-volume-plugin"></a>Use the hostPath Volume Plug-in</h3>
+<div class="paragraph">
+<p>To relax the security in your cluster so that pods are allowed to use the
+<code>hostPath</code> volume plug-in without granting everyone access to the <strong>privileged</strong>
+SCC:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit the <strong>restricted</strong> SCC:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit scc restricted</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add <code><strong>allowHostDirVolumePlugin: true</strong></code>.</p>
+</li>
+<li>
+<p>Save the changes.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ensure-that-admission-attempts-to-use-a-specific-scc-first"><a class="anchor" href="#ensure-that-admission-attempts-to-use-a-specific-scc-first"></a>Ensure That Admission Attempts to Use a Specific SCC First</h3>
+<div class="paragraph">
+<p>You may control the sort ordering of SCCs in admission by setting the <code>Priority</code>
+field of the SCCs.  Please see the
+<a href="../architecture/additional_concepts/authorization.html#scc-prioritization">SCC
+Prioritization</a> section for more information on sorting.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-an-scc-to-a-user-or-group"><a class="anchor" href="#add-an-scc-to-a-user-or-group"></a>Add an SCC to a User or Group</h3>
+<div class="paragraph">
+<p>To add an SCC to a user:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-user &lt;scc_name&gt; &lt;user_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To add an SCC to a service account:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-user &lt;scc_name&gt;  \
+    system:serviceaccount:&lt;serviceaccount_namespace&gt;:&lt;serviceaccount_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To add an SCC to a group:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-group &lt;scc_name&gt; &lt;group_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To add an SCC to all service accounts in a namespace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-group &lt;scc_name&gt;  \
+    system:serviceaccounts:&lt;serviceaccount_namespace&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-openshift">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <a href="https://www.redhat.com/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="../../master/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

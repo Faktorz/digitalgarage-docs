@@ -13,15 +13,25 @@ openshift-origin:
       name: Milestone 5
       dir: stable
 openshift-online:
-  name: OpenShift Online
-  author: OpenShift Documentation Project <dev@lists.openshift.redhat.com>
+  name: the Digital Garage
+  author: the Digital Garage <dev@thedigitalgarage.io>
   site: commercial
   site_name: Documentation
-  site_url: https://docs.openshift.com/
+  site_url: https://docs.thedigitalgarage.io/
   branches:
     online:
-      name: '(Next Gen) Developer Preview'
+      name: 'Developer Preview'
       dir: online
+digital-garage:
+  name: the Digital Garage
+  author: the Digital Garage <dev@thedigitalgarage.io>
+  site: commercial
+  site_name: Documentation
+  site_url: https://docs.thedigitalgarage.io/
+  branches:
+    online:
+      name: 'Developer Preview'
+      dir: digitalgarage
 openshift-enterprise:
   name: OpenShift Enterprise
   author: OpenShift Documentation Project <dev@lists.openshift.redhat.com>

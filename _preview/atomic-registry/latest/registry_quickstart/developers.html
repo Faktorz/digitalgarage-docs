@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en-us"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en-us"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if lt IE 10]> <html class="no-js lt-ie10" lang="en-us"> <![endif]-->
+<!--[if !IE]> > <![endif]-->
+<html class='no-js' lang='en'>
+<!-- <![endif] -->
+<head>
+<title>Atomic Registry Latest | Quickstart | Developers</title>
+<meta charset='utf-8'>
+<meta content='' name='description'>
+<meta content='Project Atomic. Sponsored by Red Hat, Inc.' name='author'>
+<meta content='initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width' name='viewport'>
+
+<link href='http://www.projectatomic.io/images/favicon.ico' rel='shortcut icon'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-57x57-precomposed.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-72x72-precomposed.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-114x114-precomposed.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='http://www.projectatomic.io/blog/feed.xml' rel='alternate' title='Project Atomic' type='application/atom+xml'>
+<link href="http://www.projectatomic.io/stylesheets/application.css" rel="stylesheet" type="text/css" />
+<link href="http://www.projectatomic.io/stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body class=' docs docs_introduction docs_introduction_index source-md'>
+<section class='container' id='page-wrap'>
+  <div class='row'>
+  <div class='col-md-3 col-lg-2' id='sidebar'>
+    <div id='nav-primary'>
+      <nav class='navbar navbar-default' role='navigation'>
+        <div class='navbar-header'>
+          <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse'>
+            <span class='sr-only'>
+              Toggle navigation
+            </span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='http://www.projectatomic.io/'>
+            Project Atomic
+          </a>
+        </div>
+        <div class='collapse navbar-collapse navbar-ex1-collapse'>
+          <ul class='nav navbar-nav'>
+            <li><a class="get-started" href="http://www.projectatomic.io/download">Get Started</a></li>
+            <li><a class="documentation" href="http://www.projectatomic.io/docs">Documentation</a></li>
+            <li><a class="developer-community" href="http://www.projectatomic.io/community">Developer Community</a></li>
+            <li><a class="on-github" href="https://github.com/projectatomic/">On GitHub</a></li>
+            <li><a class="ask" href="http://ask.projectatomic.io/">Ask</a></li>
+            <li><a class="blog" href="http://www.projectatomic.io/blog">Blog</a></li>
+            <li><a class="twitter" href="http://www.twitter.com/projectatomic">Twitter</a></li>
+            <li><a class="facebook" href="https://www.facebook.com/projectatomic">Facebook</a></li>
+            <li><a class="google" href="https://plus.google.com/108727025270662383247/posts">Google+</a></li>
+            <li><a class="rss" href="http://www.projectatomic.io/blog/feed.xml">RSS</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+<section class='col-lg-10 col-md-9 container-fluid' id='content'>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser.
+<a href="http://browsehappy.com/">Upgrade your browser today</a> or
+<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<div class='row'>
+  <div class='col-sm-9'>
+    <h2>Getting Started for Developers</h2>
+    <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#using-the-registry">Using the Registry</a>
+<ul class="sectlevel2">
+<li><a href="#docker-commands">Docker Commands</a></li>
+<li><a href="#docker-login-sessions">Docker Login Sessions</a></li>
+</ul>
+</li>
+<li><a href="#what-s-next">What&#8217;s Next?</a>
+<ul class="sectlevel2">
+<li><a href="#using-service-account-tokens-for-docker-login">Using Service Account Tokens for Docker Login</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-the-registry"><a class="anchor" href="#using-the-registry"></a>Using the Registry</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Launch the registry in a web browser. Depending on the configuration you may
+see images you have access to.</p>
+</li>
+<li>
+<p>Create a project. This is a namespace and will be part of the image name in
+the form of <code>&lt;registry_hostname&gt;/&lt;project&gt;/&lt;image&gt;</code>. You will be the administrator of projects you create.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>There are several configuration options for Atomic Registry. Your administrator
+may have disabled project self-provisioning. Sharing images may also be disabled.
+In this configuration you may only be able to pull existing images.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="docker-commands"><a class="anchor" href="#docker-commands"></a>Docker Commands</h3>
+<div class="paragraph">
+<p>Images are pushed and pulled from the docker command line. The docker command
+line reference is found on the bottom of the web interface overview page.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Atomic Registry uses a token as a password for docker login. Copy the <strong>docker
+login</strong> command from the web interface and paste it into a terminal window.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ sudo docker login -p &lt;token&gt; -u unused -e unused &lt;hostname&gt;:5000</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Your username and password credentials are not valid when logging in with Docker
+CLI. Use the token for the password argument.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Tag an image. Here we tag a <strong>centos</strong> base image into the registry using the
+project name we created above.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ sudo docker tag centos &lt;registry_hostname&gt;/&lt;project&gt;/&lt;image&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Push the image to the registry.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ sudo docker push &lt;registry_hostname&gt;/&lt;project&gt;/&lt;image&gt;</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker-login-sessions"><a class="anchor" href="#docker-login-sessions"></a>Docker Login Sessions</h3>
+<div class="paragraph">
+<p>Atomic Registry uses a session token for the Docker login command. With the
+default configuration this token will expire within 24 hours. Contact the
+Atomic Registry administrator for extending the session timeout.</p>
+</div>
+<div class="paragraph">
+<p>If a long-lived Docker login is desired use a service account token. This may be
+used in place of the Docker login password value:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ sudo docker login -p &lt;service_account_token&gt; -u unused -e unused &lt;hostname&gt;:5000</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Throughout this document <strong>sudo</strong> is prepended to example <strong>docker</strong> commands.
+Depending on your environment <strong>sudo</strong> may not be required. This impacts where the
+Docker credentials file is stored. With <strong>sudo</strong>, Docker login credentials are
+stored in <strong><em>/root/.docker/config.json</em></strong>. Without <strong>sudo</strong>, Docker login credentials are stored in
+<strong><em>~/.docker/config.json</em></strong>, which will be a different path if not logged in as
+<strong>root</strong> user. This would cause docker commands to fail authentication if <strong>sudo</strong>
+is used inconsistently.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-s-next"><a class="anchor" href="#what-s-next"></a>What&#8217;s Next?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See the Atomic Registry User Guide for these topics:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../dev_guide/authentication.html#dev-guide-authentication">authentication</a></p>
+</li>
+<li>
+<p><a href="../dev_guide/managing_images.html#dev-guide-managing-images">managing images</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="using-service-account-tokens-for-docker-login"><a class="anchor" href="#using-service-account-tokens-for-docker-login"></a>Using Service Account Tokens for Docker Login</h3>
+<div class="paragraph">
+<p>For long-lived, token-based authentication, users may create
+<a href="../admin_guide/service_accounts.html#admin-guide-service-accounts">service
+account tokens</a> to authenticate with Docker. This is particularly useful when
+integrating automation. Service accounts must be configured using the CLI. See
+<a href="../cli_reference/get_started_cli.html#cli-reference-get-started-cli">Getting
+Started with the CLI</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a service account in the current project named <strong>push</strong>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create serviceaccount push</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the registry role to the service account. In this example, we grant the
+service account the <strong>registry-editor</strong> role. We are using the <strong>test</strong> project.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc policy add-role-to-user registry-editor system:serviceaccounts:test:push</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Describe the service account to display the secret token name.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe sa push
+Name:		push
+Namespace:	test
+Labels:		&lt;none&gt;
+
+Image pull secrets:	push-dockercfg-39j62
+
+Mountable secrets: 	push-token-5518o
+                   	push-dockercfg-39j62
+
+Tokens:            	push-token-5518o
+                   	push-token-htcxd</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Describe the token to get the secret value.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe secret push-token-5518o
+Name:		push-token-5518o
+Namespace:	test
+Labels:		&lt;none&gt;
+Annotations:	kubernetes.io/service-account.name=push,kubernetes.io/service-account.uid=9eb24eeb-12d8-11e6-a276-0afb45fc7af5
+
+Type:	kubernetes.io/service-account-token
+
+Data
+====
+token:		eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+ca.crt:		1066 bytes
+namespace:	8 bytes</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Copy the token value and use as the value to the <strong>--password</strong> argument in the <code>docker login</code>
+command. Notice that the values for the username and email arguments are not used, so
+they can be any string.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ sudo docker login -p eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9... -u unused -e unused &lt;registry_url&gt;:5000</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Service accounts may be deleted, which disables further authentication attempts.
+For example, as soon as the service account is deleted, <code>docker push</code> will no longer
+succeed if logged in with this service account token.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc delete serviceaccount push</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+  </div>
+
+  <div class='col-sm-3 hidden-print'>
+    <h2>Atomic Registry</h2>
+    <nav role='navigation'>
+      <ul class='docbrowser nav nav-vertical'>
+        <li class='disabled'>
+          <h3>Quickstart</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../registry_quickstart/index.html">Overview</a></li>
+              <li role="menuitem" class=" active"><a href="../registry_quickstart/developers.html">Developers</a></li>
+            <!-- <li role="menuitem"><a>Administrators</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-0-2">
+                <span id="sgSpan-0-2" class="fa fa-caret-right"></span>&nbsp;Administrators
+              </a>
+              <ul id="topicSubGroup-0-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/system_configuration.html">System Configuration</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/uninstall.html">Uninstall</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Architecture</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../architecture/index.html">Overview</a></li>
+            <!-- <li role="menuitem"><a>Infrastructure Components</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-1">
+                <span id="sgSpan-1-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/image_registry.html">Image Registry</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/web_console.html">Web Console</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Core Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-2">
+                <span id="sgSpan-1-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-1-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/containers_and_images.html">Images</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/builds_and_image_streams.html">Image Streams</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Additional Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-3">
+                <span id="sgSpan-1-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-1-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authentication.html">Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authorization.html">Authorization</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Installation and Configuration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+              <li role="menuitem" class=""><a href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+              <li role="menuitem" class=""><a href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+              <li role="menuitem" class=""><a href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <!-- <li role="menuitem"><a>Advanced LDAP Configuration</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-4">
+                <span id="sgSpan-2-4" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-2-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</strong></a><li>
+              </ul>
+            </li>
+              <li role="menuitem" class=""><a href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+        <li class='disabled'>
+          <h3>Cluster Administration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../admin_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/manage_users.html">Managing Users</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/image_policy.html">Image Policy</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/quota.html">Setting Quotas</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+        <li class='disabled'>
+          <h3>User Guide</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../dev_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/authentication.html">Authentication</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/managing_images.html">Managing Images</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+        <li class='disabled'>
+          <h3>CLI Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../cli_reference/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+              <li role="menuitem" class=""><a href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+        <li class='disabled'>
+          <h3>REST API Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../rest_api/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+</section>
+</div>
+<div class='row'>
+<div class='col-md-offset-3 col-md-9 col-lg-offset-2 col-lg-10' id='footer'>
+  <footer>
+<hr class='visible-print'>
+
+&copy; 2014&ndash;2016 Project Atomic. Sponsored by Red Hat, Inc.
+<div class='edit-this-page pull-right'>
+<a href="https://github.com/openshift/openshift-docs#contributing-to-openshift-documentation"><i class="icon fa fa-fw fa-github"></i>Edit this page on GitHub</a>
+</div>
+        <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik-osasteam.rhcloud.com/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 4]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+<noscript><p><img src="https://piwik-osasteam.rhcloud.com/piwik/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+</footer>
+</div>
+</div>
+
+</section>
+
+<script src="http://www.projectatomic.io/javascripts/application.js" type="text/javascript"></script>
+
+
+</body>
+</html>

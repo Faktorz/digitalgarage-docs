@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en-us"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en-us"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if lt IE 10]> <html class="no-js lt-ie10" lang="en-us"> <![endif]-->
+<!--[if !IE]> > <![endif]-->
+<html class='no-js' lang='en'>
+<!-- <![endif] -->
+<head>
+<title>Atomic Registry Latest | Cluster Administration | Managing Projects</title>
+<meta charset='utf-8'>
+<meta content='' name='description'>
+<meta content='Project Atomic. Sponsored by Red Hat, Inc.' name='author'>
+<meta content='initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width' name='viewport'>
+
+<link href='http://www.projectatomic.io/images/favicon.ico' rel='shortcut icon'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-57x57-precomposed.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-72x72-precomposed.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-114x114-precomposed.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='http://www.projectatomic.io/blog/feed.xml' rel='alternate' title='Project Atomic' type='application/atom+xml'>
+<link href="http://www.projectatomic.io/stylesheets/application.css" rel="stylesheet" type="text/css" />
+<link href="http://www.projectatomic.io/stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body class=' docs docs_introduction docs_introduction_index source-md'>
+<section class='container' id='page-wrap'>
+  <div class='row'>
+  <div class='col-md-3 col-lg-2' id='sidebar'>
+    <div id='nav-primary'>
+      <nav class='navbar navbar-default' role='navigation'>
+        <div class='navbar-header'>
+          <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse'>
+            <span class='sr-only'>
+              Toggle navigation
+            </span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='http://www.projectatomic.io/'>
+            Project Atomic
+          </a>
+        </div>
+        <div class='collapse navbar-collapse navbar-ex1-collapse'>
+          <ul class='nav navbar-nav'>
+            <li><a class="get-started" href="http://www.projectatomic.io/download">Get Started</a></li>
+            <li><a class="documentation" href="http://www.projectatomic.io/docs">Documentation</a></li>
+            <li><a class="developer-community" href="http://www.projectatomic.io/community">Developer Community</a></li>
+            <li><a class="on-github" href="https://github.com/projectatomic/">On GitHub</a></li>
+            <li><a class="ask" href="http://ask.projectatomic.io/">Ask</a></li>
+            <li><a class="blog" href="http://www.projectatomic.io/blog">Blog</a></li>
+            <li><a class="twitter" href="http://www.twitter.com/projectatomic">Twitter</a></li>
+            <li><a class="facebook" href="https://www.facebook.com/projectatomic">Facebook</a></li>
+            <li><a class="google" href="https://plus.google.com/108727025270662383247/posts">Google+</a></li>
+            <li><a class="rss" href="http://www.projectatomic.io/blog/feed.xml">RSS</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+<section class='col-lg-10 col-md-9 container-fluid' id='content'>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser.
+<a href="http://browsehappy.com/">Upgrade your browser today</a> or
+<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<div class='row'>
+  <div class='col-sm-9'>
+    <h2>Managing Projects</h2>
+    <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#selfprovisioning-projects">Self-provisioning Projects</a>
+<ul class="sectlevel2">
+<li><a href="#modifying-the-template-for-new-projects">Modifying the Template for New Projects</a></li>
+<li><a href="#disabling-self-provisioning">Disabling Self-provisioning</a></li>
+</ul>
+</li>
+<li><a href="#limit-projects-per-user">Limiting Number of Self-Provisioned Projects Per User</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In Atomic Registry, projects are used to isolate content from groups of developers. As an administrator, you can give developers access to certain projects, allow them to create their own, and give them administrator rights.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="selfprovisioning-projects"><a class="anchor" href="#selfprovisioning-projects"></a>Self-provisioning Projects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can allow developers to create their own projects. There is an endpoint
+that will provision a project according to a
+<a href="../dev_guide/templates.html#dev-guide-templates">template</a>. The web console and <code>oc new-project</code>
+command use this endpoint when a developer <a href="../dev_guide/projects.html#dev-guide-projects">creates a new project</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="modifying-the-template-for-new-projects"><a class="anchor" href="#modifying-the-template-for-new-projects"></a>Modifying the Template for New Projects</h3>
+<div class="paragraph">
+<p>The API server automatically provisions projects based on the template that is
+defined in the <code>projectRequestTemplate</code> parameter of the <strong><em>master-config.yaml</em></strong>
+file. If the parameter is not defined, the API server creates a default template
+that creates a project with the requested name, and assigns the requesting user
+to the "admin" role for that project.</p>
+</div>
+<div class="paragraph">
+<p>To create your own custom project template:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start with the current default project template:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm create-bootstrap-project-template -o yaml &gt; template.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Use a text editor to modify the <strong><em>template.yaml</em></strong> file by adding objects or modifying existing objects.</p>
+</li>
+<li>
+<p>Load the template:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc create -f template.yaml -n default</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Modify the <strong><em>master-config.yaml</em></strong> file to reference the loaded template:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>...
+projectConfig:
+  projectRequestTemplate: "default/project-request"
+  ...</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When a project request is submitted, the API substitutes the following parameters into the template:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PROJECT_NAME</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the project. Required.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PROJECT_DISPLAYNAME</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The display name of the project. May be empty.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PROJECT_DESCRIPTION</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The description of the project. May be empty.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PROJECT_ADMIN_USER</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the administrating user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>PROJECT_REQUESTING_USER</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the requesting user.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Access to the API is granted to developers with the
+<a href="../architecture/additional_concepts/authorization.html#roles"><code>self-provisioner</code>
+role</a> and the <code>self-provisioners</code> cluster role binding. This role is available
+to all authenticated developers by default.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="disabling-self-provisioning"><a class="anchor" href="#disabling-self-provisioning"></a>Disabling Self-provisioning</h3>
+<div class="paragraph">
+<p>Removing the <code>self-provisioners</code>
+<a href="../architecture/additional_concepts/authorization.html#roles">cluster role</a>
+from authenticated user groups will deny permissions for self-provisioning any new projects.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy remove-cluster-role-from-group self-provisioner system:authenticated system:authenticated:oauth</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When disabling self-provisioning, set the <code>projectRequestMessage</code> parameter in the
+<strong><em>master-config.yaml</em></strong> file instructing developers on how to request a new
+project. This parameter is a string that will be presented to the developer in
+the web console and command line when they attempt to self-provision a project.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Contact your system administrator at projectname@example.com to request a project.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>To request a new project, fill out the project request form located at
+https://internal.example.com/openshift-project-request.</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="limit-projects-per-user"><a class="anchor" href="#limit-projects-per-user"></a>Limiting Number of Self-Provisioned Projects Per User</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The number of self-provisioned projects requested by a given user can be limited
+with the <code><strong>ProjectRequestLimit</strong></code>
+<a href="../architecture/additional_concepts/admission_controllers.html#architecture-additional-concepts-admission-controllers">admission
+control plug-in</a>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If your project request template was created in Atomic Registry 3.1 or earlier
+using the process described in
+<a href="#modifying-the-template-for-new-projects">Modifying the Template for New
+Projects</a>, then the generated template does not include the annotation
+<code><strong>openshift.io/requester: ${PROJECT_REQUESTING_USER}</strong></code>, which is used for the
+<code><strong>ProjectRequestLimitConfig</strong></code>. You must add the annotation.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In order to specify limits for users, a configuration must be specified for the
+plug-in within the master configuration file
+(<strong><em>/etc/origin/master/master-config.yaml</em></strong>). The plug-in configuration takes a
+list of user label selectors and the associated maximum project requests:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ProjectRequestLimitConfig</span></span>
+<span style="color:#606">limits</span>:
+- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">selector:</span><span style="color:#D20">
+    label1=value1
+    label2=value2</span></span>
+  <span style="color:#606">maxProjects</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10</span></span>
+- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">selector:</span><span style="color:#D20">
+    label3=value3</span></span>
+  <span style="color:#606">maxProjects</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Selectors are evaluated in order. The first one matching the current user will
+be used to determine the maximum number of projects. If a selector is not
+specified, a limit applies to all users. If a maximum number of projects is not
+specified, then an unlimited number of projects are allowed for a specific
+selector.</p>
+</div>
+<div class="paragraph">
+<p>The following configuration sets a global limit of 2 projects per user while allowing 10
+projects for users with a label of <code>level=advanced</code> and unlimited projects for
+users with a label of <code>level=admin</code>.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">admissionConfig</span>:
+  <span style="color:#606">pluginConfig</span>:
+    <span style="color:#606">ProjectRequestLimit</span>:
+      <span style="color:#606">configuration</span>:
+        <span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+        <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ProjectRequestLimitConfig</span></span>
+        <span style="color:#606">limits</span>:
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">selector:</span><span style="color:#D20">
+            level: admin </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">selector:</span><span style="color:#D20">
+            level: advanced </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+          <span style="color:#606">maxProjects</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10</span></span>
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">maxProjects: 2 </span></span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>For selector <code>level=admin</code> no <code><strong>maxProjects</strong></code> is specified. This means that users
+with this label will not have a maximum of project requests</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>For selector <code>level=advanced</code> a maximum number of 10 projects will be allowed.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>For the third entry, no selector is specified. This means that it will be applied
+to any user that doesn&#8217;t satisfy the previous two rules. Because rules are evaluated
+in order, this rule should be specified last.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><a href="../admin_guide/manage_users.html#managing-users-managing-user-and-group-labels">Managing
+User and Group Labels</a> provides further guidance on how to add, remove, or show
+labels for users and groups.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once your changes are made, restart Atomic Registry for the changes to take
+effect.</p>
+</div>
+</div>
+</div>
+  </div>
+
+  <div class='col-sm-3 hidden-print'>
+    <h2>Atomic Registry</h2>
+    <nav role='navigation'>
+      <ul class='docbrowser nav nav-vertical'>
+        <li class='disabled'>
+          <h3>Quickstart</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../registry_quickstart/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../registry_quickstart/developers.html">Developers</a></li>
+            <!-- <li role="menuitem"><a>Administrators</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-0-2">
+                <span id="sgSpan-0-2" class="fa fa-caret-right"></span>&nbsp;Administrators
+              </a>
+              <ul id="topicSubGroup-0-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/system_configuration.html">System Configuration</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/uninstall.html">Uninstall</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Architecture</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../architecture/index.html">Overview</a></li>
+            <!-- <li role="menuitem"><a>Infrastructure Components</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-1">
+                <span id="sgSpan-1-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/image_registry.html">Image Registry</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/web_console.html">Web Console</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Core Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-2">
+                <span id="sgSpan-1-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-1-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/containers_and_images.html">Images</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/builds_and_image_streams.html">Image Streams</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Additional Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-3">
+                <span id="sgSpan-1-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-1-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authentication.html">Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authorization.html">Authorization</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Installation and Configuration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+              <li role="menuitem" class=""><a href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+              <li role="menuitem" class=""><a href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+              <li role="menuitem" class=""><a href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <!-- <li role="menuitem"><a>Advanced LDAP Configuration</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-4">
+                <span id="sgSpan-2-4" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-2-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</strong></a><li>
+              </ul>
+            </li>
+              <li role="menuitem" class=""><a href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+        <li class='disabled'>
+          <h3>Cluster Administration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../admin_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/manage_users.html">Managing Users</a></li>
+              <li role="menuitem" class=" active"><a href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/image_policy.html">Image Policy</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/quota.html">Setting Quotas</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+        <li class='disabled'>
+          <h3>User Guide</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../dev_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/authentication.html">Authentication</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/managing_images.html">Managing Images</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+        <li class='disabled'>
+          <h3>CLI Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../cli_reference/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+              <li role="menuitem" class=""><a href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+        <li class='disabled'>
+          <h3>REST API Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../rest_api/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+</section>
+</div>
+<div class='row'>
+<div class='col-md-offset-3 col-md-9 col-lg-offset-2 col-lg-10' id='footer'>
+  <footer>
+<hr class='visible-print'>
+
+&copy; 2014&ndash;2016 Project Atomic. Sponsored by Red Hat, Inc.
+<div class='edit-this-page pull-right'>
+<a href="https://github.com/openshift/openshift-docs#contributing-to-openshift-documentation"><i class="icon fa fa-fw fa-github"></i>Edit this page on GitHub</a>
+</div>
+        <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik-osasteam.rhcloud.com/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 4]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+<noscript><p><img src="https://piwik-osasteam.rhcloud.com/piwik/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+</footer>
+</div>
+</div>
+
+</section>
+
+<script src="http://www.projectatomic.io/javascripts/application.js" type="text/javascript"></script>
+
+
+</body>
+</html>

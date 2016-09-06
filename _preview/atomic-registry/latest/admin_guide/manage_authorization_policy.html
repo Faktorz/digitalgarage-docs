@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en-us"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en-us"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if lt IE 10]> <html class="no-js lt-ie10" lang="en-us"> <![endif]-->
+<!--[if !IE]> > <![endif]-->
+<html class='no-js' lang='en'>
+<!-- <![endif] -->
+<head>
+<title>Atomic Registry Latest | Cluster Administration | Managing Authorization Policies</title>
+<meta charset='utf-8'>
+<meta content='' name='description'>
+<meta content='Project Atomic. Sponsored by Red Hat, Inc.' name='author'>
+<meta content='initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width' name='viewport'>
+
+<link href='http://www.projectatomic.io/images/favicon.ico' rel='shortcut icon'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-57x57-precomposed.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-72x72-precomposed.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-114x114-precomposed.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='http://www.projectatomic.io/blog/feed.xml' rel='alternate' title='Project Atomic' type='application/atom+xml'>
+<link href="http://www.projectatomic.io/stylesheets/application.css" rel="stylesheet" type="text/css" />
+<link href="http://www.projectatomic.io/stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body class=' docs docs_introduction docs_introduction_index source-md'>
+<section class='container' id='page-wrap'>
+  <div class='row'>
+  <div class='col-md-3 col-lg-2' id='sidebar'>
+    <div id='nav-primary'>
+      <nav class='navbar navbar-default' role='navigation'>
+        <div class='navbar-header'>
+          <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse'>
+            <span class='sr-only'>
+              Toggle navigation
+            </span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='http://www.projectatomic.io/'>
+            Project Atomic
+          </a>
+        </div>
+        <div class='collapse navbar-collapse navbar-ex1-collapse'>
+          <ul class='nav navbar-nav'>
+            <li><a class="get-started" href="http://www.projectatomic.io/download">Get Started</a></li>
+            <li><a class="documentation" href="http://www.projectatomic.io/docs">Documentation</a></li>
+            <li><a class="developer-community" href="http://www.projectatomic.io/community">Developer Community</a></li>
+            <li><a class="on-github" href="https://github.com/projectatomic/">On GitHub</a></li>
+            <li><a class="ask" href="http://ask.projectatomic.io/">Ask</a></li>
+            <li><a class="blog" href="http://www.projectatomic.io/blog">Blog</a></li>
+            <li><a class="twitter" href="http://www.twitter.com/projectatomic">Twitter</a></li>
+            <li><a class="facebook" href="https://www.facebook.com/projectatomic">Facebook</a></li>
+            <li><a class="google" href="https://plus.google.com/108727025270662383247/posts">Google+</a></li>
+            <li><a class="rss" href="http://www.projectatomic.io/blog/feed.xml">RSS</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+<section class='col-lg-10 col-md-9 container-fluid' id='content'>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser.
+<a href="http://browsehappy.com/">Upgrade your browser today</a> or
+<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<div class='row'>
+  <div class='col-sm-9'>
+    <h2>Managing Authorization Policies</h2>
+    <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#viewing-roles-and-bindings">Viewing Roles and Bindings</a>
+<ul class="sectlevel2">
+<li><a href="#viewing-cluster-policy">Viewing Cluster Policy</a></li>
+<li><a href="#viewing-local-policy">Viewing Local Policy</a></li>
+</ul>
+</li>
+<li><a href="#managing-role-bindings">Managing Role Bindings</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use <a href="../cli_reference/index.html#cli-reference-index">the CLI</a> to view
+<a href="../architecture/additional_concepts/authorization.html#architecture-additional-concepts-authorization">authorization
+policies</a> and the administrator CLI to manage the
+<a href="../architecture/additional_concepts/authorization.html#architecture-additional-concepts-authorization">roles and bindings</a>
+within a policy.</p>
+</div>
+<div class="paragraph">
+<p>The web console also provides some basic management of authorization roles.
+Through the web console users and groups may be assigned <strong>registry-admin</strong>,
+<strong>registry-editor</strong> or <strong>registry-viewer</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="viewing-roles-and-bindings"><a class="anchor" href="#viewing-roles-and-bindings"></a>Viewing Roles and Bindings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="../architecture/additional_concepts/authorization.html#roles">Roles</a> grant
+various levels of access in the system-wide
+<a href="../architecture/additional_concepts/authorization.html#cluster-policy-and-local-policy">cluster
+policy</a> as well as project-scoped
+<a href="../architecture/additional_concepts/authorization.html#cluster-policy-and-local-policy">local
+policies</a>.
+<a href="../architecture/additional_concepts/authentication.html#users-and-groups">Users
+and groups</a> can be associated with, or <em>bound</em> to, multiple roles at the same
+time.  You can view details about the roles and their bindings using the <code>oc
+describe</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Users with the <strong>cluster-admin</strong>
+<a href="../architecture/additional_concepts/authorization.html#roles">default role</a>
+in the cluster policy can view cluster policy and all local policies. Users with
+the <strong>admin</strong>
+<a href="../architecture/additional_concepts/authorization.html#roles">default role</a>
+in a given local policy can view that project-scoped policy.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Review a full list of verbs in the
+<a href="../architecture/additional_concepts/authorization.html#evaluating-authorization">Evaluating
+Authorization</a> section.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="viewing-cluster-policy"><a class="anchor" href="#viewing-cluster-policy"></a>Viewing Cluster Policy</h3>
+<div class="paragraph">
+<p>To view the cluster roles and their associated rule sets in the cluster policy:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc describe clusterPolicy default</pre>
+</div>
+</div>
+<div id="viewing-cluster-roles" class="exampleblock">
+<div class="title">Example 1. Viewing Cluster Roles</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe clusterPolicy default
+Name:					default
+Created:				5 days ago
+Labels:					&lt;none&gt;
+Annotations:				&lt;none&gt;
+Last Modified:				2016-03-17 13:25:27 -0400 EDT
+admin					Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[create delete deletecollection get list patch update watch]	[]				[]			[]				[configmaps endpoints persistentvolumeclaims pods pods/attach pods/exec pods/log pods/portforward pods/proxy replicationcontrollers replicationcontrollers/scale secrets serviceaccounts services services/proxy]
+					[create delete deletecollection get list patch update watch]	[]				[]			[]				[buildconfigs buildconfigs/instantiate buildconfigs/instantiatebinary buildconfigs/webhooks buildlogs builds builds/clone builds/custom builds/docker builds/log builds/source deploymentconfigrollbacks deploymentconfigs deploymentconfigs/log deploymentconfigs/scale deployments generatedeploymentconfigs imagestreamimages imagestreamimports imagestreammappings imagestreams imagestreams/secrets imagestreamtags localresourceaccessreviews localsubjectaccessreviews processedtemplates projects resourceaccessreviews rolebindings roles routes subjectaccessreviews templateconfigs templates]
+					[create delete deletecollection get list patch update watch]	[]				[]			[autoscaling]			[horizontalpodautoscalers]
+					[create delete deletecollection get list patch update watch]	[]				[]			[batch]				[jobs]
+					[create delete deletecollection get list patch update watch]	[]				[]			[extensions]			[daemonsets horizontalpodautoscalers jobs replicationcontrollers/scale]
+					[get list watch]						[]				[]			[]				[bindings configmaps endpoints events imagestreams/status limitranges minions namespaces namespaces/status nodes persistentvolumeclaims persistentvolumes pods pods/log pods/status policies policybindings replicationcontrollers replicationcontrollers/status resourcequotas resourcequotas/status resourcequotausages routes/status securitycontextconstraints serviceaccounts services]
+					[get update]							[]				[]			[]				[imagestreams/layers]
+					[update]							[]				[]			[]				[routes/status]
+basic-user				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get]								[]				[~]			[]				[users]
+					[list]								[]				[]			[]				[projectrequests]
+					[get list]							[]				[]			[]				[clusterroles]
+					[list]								[]				[]			[]				[projects]
+					[create]							[]				IsPersonalSubjectAccessReview	[]			[]				[localsubjectaccessreviews subjectaccessreviews]
+cluster-admin				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[*]								[]				[]			[*]				[*]
+					[*]								[*]				[]			[]				[]
+cluster-reader				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get list watch]						[]				[]			[]				[bindings buildconfigs buildconfigs/instantiate buildconfigs/instantiatebinary buildconfigs/webhooks buildlogs builds builds/clone builds/details builds/log clusternetworks clusterpolicies clusterpolicybindings clusterrolebindings clusterroles configmaps deploymentconfigrollbacks deploymentconfigs deploymentconfigs/log deploymentconfigs/scale deployments endpoints events generatedeploymentconfigs groups hostsubnets identities images imagestreamimages imagestreamimports imagestreammappings imagestreams imagestreams/status imagestreamtags limitranges localresourceaccessreviews localsubjectaccessreviews minions namespaces netnamespaces nodes oauthclientauthorizations oauthclients persistentvolumeclaims persistentvolumes pods pods/log policies policybindings processedtemplates projectrequests projects replicationcontrollers resourceaccessreviews resourcequotas resourcequotausages rolebindings roles routes routes/status securitycontextconstraints serviceaccounts services subjectaccessreviews templateconfigs templates useridentitymappings users]
+					[get list watch]						[]				[]			[autoscaling]			[horizontalpodautoscalers]
+					[get list watch]						[]				[]			[batch]				[jobs]
+					[get list watch]						[]				[]			[extensions]			[daemonsets horizontalpodautoscalers jobs replicationcontrollers/scale]
+					[create]							[]				[]			[]				[resourceaccessreviews subjectaccessreviews]
+					[get]								[]				[]			[]				[nodes/metrics]
+					[create get]							[]				[]			[]				[nodes/stats]
+					[get]								[*]				[]			[]				[]
+cluster-status				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get]								[/api /api/* /apis /apis/* /healthz /healthz/* /oapi /oapi/* /osapi /osapi/ /version]					[]			[]		[]
+edit					Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[create delete deletecollection get list patch update watch]	[]				[]			[]				[configmaps endpoints persistentvolumeclaims pods pods/attach pods/exec pods/log pods/portforward pods/proxy replicationcontrollers replicationcontrollers/scale secrets serviceaccounts services services/proxy]
+					[create delete deletecollection get list patch update watch]	[]				[]			[]				[buildconfigs buildconfigs/instantiate buildconfigs/instantiatebinary buildconfigs/webhooks buildlogs builds builds/clone builds/custom builds/docker builds/log builds/source deploymentconfigrollbacks deploymentconfigs deploymentconfigs/log deploymentconfigs/scale deployments generatedeploymentconfigs imagestreamimages imagestreamimports imagestreammappings imagestreams imagestreams/secrets imagestreamtags processedtemplates routes templateconfigs templates]
+					[create delete deletecollection get list patch update watch]	[]				[]			[autoscaling]			[horizontalpodautoscalers]
+					[create delete deletecollection get list patch update watch]	[]				[]			[batch]				[jobs]
+					[create delete deletecollection get list patch update watch]	[]				[]			[extensions]			[daemonsets horizontalpodautoscalers jobs replicationcontrollers/scale]
+					[get list watch]						[]				[]			[]				[bindings configmaps endpoints events imagestreams/status limitranges minions namespaces namespaces/status nodes persistentvolumeclaims persistentvolumes pods pods/log pods/status projects replicationcontrollers replicationcontrollers/status resourcequotas resourcequotas/status resourcequotausages routes/status securitycontextconstraints serviceaccounts services]
+					[get update]							[]				[]			[]				[imagestreams/layers]
+registry-admin				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[create delete deletecollection get list patch update watch]	[]				[]			[]				[imagestreamimages imagestreamimports imagestreammappings imagestreams imagestreams/secrets imagestreamtags]
+					[create delete deletecollection get list patch update watch]	[]				[]			[]				[localresourceaccessreviews localsubjectaccessreviews resourceaccessreviews rolebindings roles subjectaccessreviews]
+					[get update]							[]				[]			[]				[imagestreams/layers]
+					[get list watch]						[]				[]			[]				[policies policybindings]
+					[get]								[]				[]			[]				[namespaces projects]
+registry-editor				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get]								[]				[]			[]				[namespaces projects]
+					[create delete deletecollection get list patch update watch]	[]				[]			[]				[imagestreamimages imagestreamimports imagestreammappings imagestreams imagestreams/secrets imagestreamtags]
+					[get update]							[]				[]			[]				[imagestreams/layers]
+registry-viewer				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get list watch]						[]				[]			[]				[imagestreamimages imagestreamimports imagestreammappings imagestreams imagestreamtags]
+					[get]								[]				[]			[]				[imagestreams/layers namespaces projects]
+self-provisioner			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[create]							[]				[]			[]				[projectrequests]
+system:build-controller			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get list watch]						[]				[]			[]				[builds]
+					[update]							[]				[]			[]				[builds]
+					[create]							[]				[]			[]				[builds/custom builds/docker builds/source]
+					[get]								[]				[]			[]				[imagestreams]
+					[create delete get list]					[]				[]			[]				[pods]
+					[create patch update]						[]				[]			[]				[events]
+system:daemonset-controller		Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[list watch]							[]				[]			[extensions]			[daemonsets]
+					[list watch]							[]				[]			[]				[pods]
+					[list watch]							[]				[]			[]				[nodes]
+					[update]							[]				[]			[extensions]			[daemonsets/status]
+					[create delete]							[]				[]			[]				[pods]
+					[create]							[]				[]			[]				[pods/binding]
+					[create patch update]						[]				[]			[]				[events]
+system:deployer				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get list]							[]				[]			[]				[replicationcontrollers]
+					[get update]							[]				[]			[]				[replicationcontrollers]
+					[create get list watch]						[]				[]			[]				[pods]
+					[get]								[]				[]			[]				[pods/log]
+					[update]							[]				[]			[]				[imagestreamtags]
+system:deployment-controller		Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[list watch]							[]				[]			[]				[replicationcontrollers]
+					[get update]							[]				[]			[]				[replicationcontrollers]
+					[create delete get list update]					[]				[]			[]				[pods]
+					[create patch update]						[]				[]			[]				[events]
+system:discovery			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get]								[/api /api/* /apis /apis/* /oapi /oapi/* /osapi /osapi/ /version]							[]			[]			[]
+system:hpa-controller			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get list watch]						[]				[]			[extensions autoscaling]	[horizontalpodautoscalers]
+					[update]							[]				[]			[extensions autoscaling]	[horizontalpodautoscalers/status]
+					[get update]							[]				[]			[extensions ]			[replicationcontrollers/scale]
+					[get update]							[]				[]			[]				[deploymentconfigs/scale]
+					[create patch update]						[]				[]			[]				[events]
+					[list]								[]				[]			[]				[pods]
+					[proxy]								[]				[https:heapster:]	[]				[services]
+system:image-builder			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get update]							[]				[]			[]				[imagestreams/layers]
+					[update]							[]				[]			[]				[builds/details]
+system:image-pruner			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[delete]							[]				[]			[]				[images]
+					[get list]							[]				[]			[]				[buildconfigs builds deploymentconfigs images imagestreams pods replicationcontrollers]
+					[update]							[]				[]			[]				[imagestreams/status]
+system:image-puller			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get]								[]				[]			[]				[imagestreams/layers]
+system:image-pusher			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get update]							[]				[]			[]				[imagestreams/layers]
+system:job-controller			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[list watch]							[]				[]			[extensions batch]		[jobs]
+					[update]							[]				[]			[extensions batch]		[jobs/status]
+					[list watch]							[]				[]			[]				[pods]
+					[create delete]							[]				[]			[]				[pods]
+					[create patch update]						[]				[]			[]				[events]
+system:master				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[*]								[]				[]			[*]				[*]
+system:namespace-controller		Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[delete get list watch]						[]				[]			[]				[namespaces]
+					[update]							[]				[]			[]				[namespaces/finalize namespaces/status]
+					[delete deletecollection get list]				[]				[]			[*]				[*]
+system:node				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[create]							[]				[]			[]				[localsubjectaccessreviews subjectaccessreviews]
+					[get list watch]						[]				[]			[]				[services]
+					[create get list watch]						[]				[]			[]				[nodes]
+					[update]							[]				[]			[]				[nodes/status]
+					[create patch update]						[]				[]			[]				[events]
+					[get list watch]						[]				[]			[]				[pods]
+					[create delete get]						[]				[]			[]				[pods]
+					[update]							[]				[]			[]				[pods/status]
+					[get]								[]				[]			[]				[configmaps secrets]
+					[get]								[]				[]			[]				[persistentvolumeclaims persistentvolumes]
+					[get]								[]				[]			[]				[endpoints]
+system:node-admin			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get list watch]						[]				[]			[]				[nodes]
+					[proxy]								[]				[]			[]				[nodes]
+					[*]								[]				[]			[]				[nodes/log nodes/metrics nodes/proxy nodes/stats]
+system:node-proxier			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[list watch]							[]				[]			[]				[endpoints services]
+system:node-reader			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get list watch]						[]				[]			[]				[nodes]
+					[get]								[]				[]			[]				[nodes/metrics]
+					[create get]							[]				[]			[]				[nodes/stats]
+system:oauth-token-deleter		Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[delete]							[]				[]			[]				[oauthaccesstokens oauthauthorizetokens]
+system:pv-binder-controller		Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[list watch]							[]				[]			[]				[persistentvolumes]
+					[create delete get update]					[]				[]			[]				[persistentvolumes]
+					[update]							[]				[]			[]				[persistentvolumes/status]
+					[list watch]							[]				[]			[]				[persistentvolumeclaims]
+					[get update]							[]				[]			[]				[persistentvolumeclaims]
+					[update]							[]				[]			[]				[persistentvolumeclaims/status]
+system:pv-provisioner-controller	Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[list watch]							[]				[]			[]				[persistentvolumes]
+					[create delete get update]					[]				[]			[]				[persistentvolumes]
+					[update]							[]				[]			[]				[persistentvolumes/status]
+					[list watch]							[]				[]			[]				[persistentvolumeclaims]
+					[get update]							[]				[]			[]				[persistentvolumeclaims]
+					[update]							[]				[]			[]				[persistentvolumeclaims/status]
+system:pv-recycler-controller		Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[list watch]							[]				[]			[]				[persistentvolumes]
+					[create delete get update]					[]				[]			[]				[persistentvolumes]
+					[update]							[]				[]			[]				[persistentvolumes/status]
+					[list watch]							[]				[]			[]				[persistentvolumeclaims]
+					[get update]							[]				[]			[]				[persistentvolumeclaims]
+					[update]							[]				[]			[]				[persistentvolumeclaims/status]
+					[list watch]							[]				[]			[]				[pods]
+					[create delete get]						[]				[]			[]				[pods]
+					[create patch update]						[]				[]			[]				[events]
+system:registry				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[delete get]							[]				[]			[]				[images]
+					[get]								[]				[]			[]				[imagestreamimages imagestreams imagestreams/secrets imagestreamtags]
+					[update]							[]				[]			[]				[imagestreams]
+					[create]							[]				[]			[]				[imagestreammappings]
+					[list]								[]				[]			[]				[resourcequotas]
+system:replication-controller		Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[list watch]							[]				[]			[]				[replicationcontrollers]
+					[get update]							[]				[]			[]				[replicationcontrollers]
+					[update]							[]				[]			[]				[replicationcontrollers/status]
+					[list watch]							[]				[]			[]				[pods]
+					[create delete]							[]				[]			[]				[pods]
+					[create patch update]						[]				[]			[]				[events]
+system:router				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[list watch]							[]				[]			[]				[endpoints routes]
+					[update]							[]				[]			[]				[routes/status]
+system:sdn-manager			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[create delete get list watch]					[]				[]			[]				[hostsubnets]
+					[create delete get list watch]					[]				[]			[]				[netnamespaces]
+					[get list watch]						[]				[]			[]				[nodes]
+					[create get]							[]				[]			[]				[clusternetworks]
+system:sdn-reader			Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get list watch]						[]				[]			[]				[hostsubnets]
+					[get list watch]						[]				[]			[]				[netnamespaces]
+					[get list watch]						[]				[]			[]				[nodes]
+					[get]								[]				[]			[]				[clusternetworks]
+					[get list watch]						[]				[]			[]				[namespaces]
+system:webhook				Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[create get]							[]				[]			[]				[buildconfigs/webhooks]
+view					Verbs								Non-Resource URLs		Extension			Resource Names		API Groups			Resources
+					[get list watch]						[]				[]			[]				[bindings buildconfigs buildconfigs/instantiate buildconfigs/instantiatebinary buildconfigs/webhooks buildlogs builds builds/clone builds/log configmaps deploymentconfigrollbacks deploymentconfigs deploymentconfigs/log deploymentconfigs/scale deployments endpoints events generatedeploymentconfigs imagestreamimages imagestreamimports imagestreammappings imagestreams imagestreams/status imagestreamtags limitranges minions namespaces namespaces/status nodes persistentvolumeclaims persistentvolumes pods pods/log pods/status processedtemplates projects replicationcontrollers replicationcontrollers/status resourcequotas resourcequotas/status resourcequotausages routes routes/status securitycontextconstraints serviceaccounts services templateconfigs templates]
+					[get list watch]						[]				[]			[autoscaling]			[horizontalpodautoscalers]
+					[get list watch]						[]				[]			[batch]				[jobs]
+					[get list watch]						[]				[]			[extensions]			[daemonsets horizontalpodautoscalers jobs]</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To view the current set of cluster bindings, which shows the users and groups that are bound to various roles:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc describe clusterPolicyBindings :default</pre>
+</div>
+</div>
+<div id="viewing-cluster-bindings" class="exampleblock">
+<div class="title">Example 2. Viewing Cluster Bindings</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe clusterPolicyBindings :default
+Name:						:default
+Created:					4 hours ago
+Labels:						&lt;none&gt;
+Last Modified:					2015-06-10 17:22:26 +0000 UTC
+Policy:						&lt;none&gt;
+RoleBinding[basic-users]:
+						Role:	basic-user
+						Users:	[]
+						Groups:	[system:authenticated]
+RoleBinding[cluster-admins]:
+						Role:	cluster-admin
+						Users:	[]
+						Groups:	[system:cluster-admins]
+RoleBinding[cluster-readers]:
+						Role:	cluster-reader
+						Users:	[]
+						Groups:	[system:cluster-readers]
+RoleBinding[cluster-status-binding]:
+						Role:	cluster-status
+						Users:	[]
+						Groups:	[system:authenticated system:unauthenticated]
+RoleBinding[self-provisioners]:
+						Role:	self-provisioner
+						Users:	[]
+						Groups:	[system:authenticated]
+RoleBinding[system:build-controller]:
+						Role:	system:build-controller
+						Users:	[system:serviceaccount:openshift-infra:build-controller]
+						Groups:	[]
+RoleBinding[system:deployment-controller]:
+						Role:	system:deployment-controller
+						Users:	[system:serviceaccount:openshift-infra:deployment-controller]
+						Groups:	[]
+RoleBinding[system:masters]:
+						Role:	system:master
+						Users:	[]
+						Groups:	[system:masters]
+RoleBinding[system:node-proxiers]:
+						Role:	system:node-proxier
+						Users:	[]
+						Groups:	[system:nodes]
+RoleBinding[system:nodes]:
+						Role:	system:node
+						Users:	[]
+						Groups:	[system:nodes]
+RoleBinding[system:oauth-token-deleters]:
+						Role:	system:oauth-token-deleter
+						Users:	[]
+						Groups:	[system:authenticated system:unauthenticated]
+RoleBinding[system:registrys]:
+						Role:	system:registry
+						Users:	[]
+						Groups:	[system:registries]
+RoleBinding[system:replication-controller]:
+						Role:	system:replication-controller
+						Users:	[system:serviceaccount:openshift-infra:replication-controller]
+						Groups:	[]
+RoleBinding[system:routers]:
+						Role:	system:router
+						Users:	[]
+						Groups:	[system:routers]
+RoleBinding[system:sdn-readers]:
+						Role:	system:sdn-reader
+						Users:	[]
+						Groups:	[system:nodes]
+RoleBinding[system:webhooks]:
+						Role:	system:webhook
+						Users:	[]
+						Groups:	[system:authenticated system:unauthenticated]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-local-policy"><a class="anchor" href="#viewing-local-policy"></a>Viewing Local Policy</h3>
+<div class="paragraph">
+<p>While the list of local roles and their associated rule sets are not viewable
+within a local policy, all of the
+<a href="../architecture/additional_concepts/authorization.html#roles">default roles</a>
+are still applicable and can be added to users or groups, other than the
+<strong>cluster-admin</strong> default role. The local bindings, however, are viewable.</p>
+</div>
+<div class="paragraph">
+<p>To view the current set of local bindings, which shows the users and groups that
+are bound to various roles:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc describe policyBindings :default</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default, the current project is used when viewing local policy.
+Alternatively, a project can be specified with the <code>-n</code> flag. This is useful for
+viewing the local policy of another project, if the user already has the <strong>admin</strong>
+<a href="../architecture/additional_concepts/authorization.html#roles">default role</a>
+in it.</p>
+</div>
+<div id="viewing-local-bindings" class="exampleblock">
+<div class="title">Example 3. Viewing Local Bindings</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe policyBindings :default -n joe-project
+Name:					:default
+Created:				About a minute ago
+Labels:					&lt;none&gt;
+Last Modified:				2015-06-10 21:55:06 +0000 UTC
+Policy:					&lt;none&gt;
+RoleBinding[admins]:
+					Role:	admin
+					Users:	[joe]
+					Groups:	[]
+RoleBinding[system:deployers]:
+					Role:	system:deployer
+					Users:	[system:serviceaccount:joe-project:deployer]
+					Groups:	[]
+RoleBinding[system:image-builders]:
+					Role:	system:image-builder
+					Users:	[system:serviceaccount:joe-project:builder]
+					Groups:	[]
+RoleBinding[system:image-pullers]:
+					Role:	system:image-puller
+					Users:	[]
+					Groups:	[system:serviceaccounts:joe-project]</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>By default in a local policy, only the binding for the <strong>admin</strong> role is
+immediately listed. However, if other
+<a href="../architecture/additional_concepts/authorization.html#roles">default roles</a>
+are added to users and groups within a local policy, they become listed as well.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="managing-role-bindings"><a class="anchor" href="#managing-role-bindings"></a>Managing Role Bindings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Adding, or <em>binding</em>, a
+<a href="../architecture/additional_concepts/authorization.html#roles">role</a> to
+<a href="../architecture/additional_concepts/authentication.html#users-and-groups">users
+or groups</a> gives the user or group the relevant access granted by the role. You
+can add and remove roles to and from users and groups using <code>oadm policy</code>
+commands.</p>
+</div>
+<div class="paragraph">
+<p>When managing a user or group&#8217;s associated roles for a local policy using the
+following operations, a project may be specified with the <code>-n</code> flag. If it is
+not specified, then the current project is used.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Local Policy Operations</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ oadm policy who-can <em>&lt;verb&gt;</em> <em>&lt;resource&gt;</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates which users can perform an action on a resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ oadm policy add-role-to-user <em>&lt;role&gt;</em> <em>&lt;username&gt;</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Binds a given role to specified users in the current project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ oadm policy remove-role-from-user <em>&lt;role&gt;</em> <em>&lt;username&gt;</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Removes a given role from specified users in the current project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ oadm policy remove-user <em>&lt;username&gt;</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Removes specified users and all of their roles in the current project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ oadm policy add-role-to-group <em>&lt;role&gt;</em> <em>&lt;groupname&gt;</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Binds a given role to specified groups in the current project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ oadm policy remove-role-from-group <em>&lt;role&gt;</em> <em>&lt;groupname&gt;</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Removes a given role from specified groups in the current project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ oadm policy remove-group <em>&lt;groupname&gt;</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Removes specified groups and all of their roles in the current project.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You can also manage role bindings for the cluster policy using the following
+operations. The <code>-n</code> flag is not used used for these operations because the
+cluster policy uses non-namespaced resources.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Cluster Policy Operations</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ oadm policy add-cluster-role-to-user <em>&lt;role&gt;</em> <em>&lt;username&gt;</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Binds a given role to specified users for all projects in the cluster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ oadm policy remove-cluster-role-from-user <em>&lt;role&gt;</em> <em>&lt;username&gt;</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Removes a given role from specified users for all projects in the cluster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ oadm policy add-cluster-role-to-group <em>&lt;role&gt;</em> <em>&lt;groupname&gt;</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Binds a given role to specified groups for all projects in the cluster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$ oadm policy remove-cluster-role-from-group <em>&lt;role&gt;</em> <em>&lt;groupname&gt;</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Removes a given role from specified groups for all projects in the cluster.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For example, you can add the <strong>admin</strong> role to the <strong>alice</strong> user in <strong>joe-project</strong>
+by running:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-role-to-user admin alice -n joe-project</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can then view the local bindings and verify the addition in the output:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe policyBindings :default -n joe-project
+Name:					:default
+Created:				5 minutes ago
+Labels:					&lt;none&gt;
+Last Modified:				2015-06-10 22:00:44 +0000 UTC
+Policy:					&lt;none&gt;
+RoleBinding[admins]:
+					Role:	admin
+					Users:	[alice joe] <i class="conum" data-value="1"></i><b>(1)</b>
+					Groups:	[]
+RoleBinding[system:deployers]:
+					Role:	system:deployer
+					Users:	[system:serviceaccount:joe-project:deployer]
+					Groups:	[]
+RoleBinding[system:image-builders]:
+					Role:	system:image-builder
+					Users:	[system:serviceaccount:joe-project:builder]
+					Groups:	[]
+RoleBinding[system:image-pullers]:
+					Role:	system:image-puller
+					Users:	[]
+					Groups:	[system:serviceaccounts:joe-project]</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <strong>alice</strong> user has been added to the <strong>admins</strong> <code><strong>RoleBinding</strong></code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+  </div>
+
+  <div class='col-sm-3 hidden-print'>
+    <h2>Atomic Registry</h2>
+    <nav role='navigation'>
+      <ul class='docbrowser nav nav-vertical'>
+        <li class='disabled'>
+          <h3>Quickstart</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../registry_quickstart/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../registry_quickstart/developers.html">Developers</a></li>
+            <!-- <li role="menuitem"><a>Administrators</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-0-2">
+                <span id="sgSpan-0-2" class="fa fa-caret-right"></span>&nbsp;Administrators
+              </a>
+              <ul id="topicSubGroup-0-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/system_configuration.html">System Configuration</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../registry_quickstart/administrators/uninstall.html">Uninstall</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Architecture</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../architecture/index.html">Overview</a></li>
+            <!-- <li role="menuitem"><a>Infrastructure Components</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-1">
+                <span id="sgSpan-1-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/image_registry.html">Image Registry</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/infrastructure_components/web_console.html">Web Console</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Core Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-2">
+                <span id="sgSpan-1-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-1-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/containers_and_images.html">Images</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/core_concepts/builds_and_image_streams.html">Image Streams</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Additional Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-3">
+                <span id="sgSpan-1-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-1-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authentication.html">Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/authorization.html">Authorization</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Installation and Configuration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+              <li role="menuitem" class=""><a href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+              <li role="menuitem" class=""><a href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+              <li role="menuitem" class=""><a href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <!-- <li role="menuitem"><a>Advanced LDAP Configuration</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-4">
+                <span id="sgSpan-2-4" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-2-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</strong></a><li>
+              </ul>
+            </li>
+              <li role="menuitem" class=""><a href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+        <li class='disabled'>
+          <h3>Cluster Administration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../admin_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/manage_users.html">Managing Users</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+              <li role="menuitem" class=" active"><a href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/image_policy.html">Image Policy</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/quota.html">Setting Quotas</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+              <li role="menuitem" class=""><a href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+        <li class='disabled'>
+          <h3>User Guide</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../dev_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/authentication.html">Authentication</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/managing_images.html">Managing Images</a></li>
+              <li role="menuitem" class=""><a href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+        <li class='disabled'>
+          <h3>CLI Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../cli_reference/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+              <li role="menuitem" class=""><a href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+        <li class='disabled'>
+          <h3>REST API Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../rest_api/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+              <li role="menuitem" class=""><a href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+</section>
+</div>
+<div class='row'>
+<div class='col-md-offset-3 col-md-9 col-lg-offset-2 col-lg-10' id='footer'>
+  <footer>
+<hr class='visible-print'>
+
+&copy; 2014&ndash;2016 Project Atomic. Sponsored by Red Hat, Inc.
+<div class='edit-this-page pull-right'>
+<a href="https://github.com/openshift/openshift-docs#contributing-to-openshift-documentation"><i class="icon fa fa-fw fa-github"></i>Edit this page on GitHub</a>
+</div>
+        <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik-osasteam.rhcloud.com/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 4]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+<noscript><p><img src="https://piwik-osasteam.rhcloud.com/piwik/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+</footer>
+</div>
+</div>
+
+</section>
+
+<script src="http://www.projectatomic.io/javascripts/application.js" type="text/javascript"></script>
+
+
+</body>
+</html>

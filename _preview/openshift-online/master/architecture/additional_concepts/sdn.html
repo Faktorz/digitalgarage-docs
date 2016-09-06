@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>the Digital Garage Branch Build | Architecture | Additional Concepts | OpenShift SDN</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../../master/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../../master/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../../master/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../../master/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://assets.openshift.net/app/assets/site/tracking.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"></a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="hidden-xs dropdown"> <a href="#" class="dropdown-toggle nav-log-in" data-toggle="dropdown"> My Account<span class="caret"></span> </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://openshift.redhat.com/app/console">OpenShift Web Console</a></li>
+          <li><a href="https://console.preview.openshift.com/">(Next Gen) Web Console</a></li>
+          <li><a href="https://hub.openshift.com/users/auth/github">OpenShift Hub</a></li>
+        </ul>
+      </li>
+      <li class="hidden-xs hidden-sm"><a class="nav-sign-up" href="https://www.openshift.com/devpreview/register.html">Sign up for Free</a></li>
+    </ul>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../architecture/index.html">Architecture</a>
+      </li>
+      <li class="hidden-xs active"><a href="../../architecture/additional_concepts/networking.html">Additional Concepts</a></li>
+      <li class="hidden-xs active">
+        OpenShift SDN
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:nh-uallhxiy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../../getting_started/basic_walkthrough.html">Basic Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/beyond_the_basics.html">Beyond the Basics</a></li>
+            <li><a class="" href="../../getting_started/devpreview_faq.html">Developer Preview FAQ</a></li>
+            <li><a class="" href="../../getting_started/online_v2_vs_v3.html">Comparing OpenShift 2 and 3</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-down"></span>Architecture
+      </a>
+      <ul id="topicGroup2" class="collapse in list-unstyled">
+            <li><a class="" href="../../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
+                <span id="sgSpan-2-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-2-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-3">
+                <span id="sgSpan-2-3" class="fa fa-caret-down"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-2-3" class="nav-tertiary list-unstyled collapse in">
+
+                  <li><a class="" href="../../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class=" active" href="../../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup4" class="collapse  list-unstyled">
+            <li><a class="" href="../../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-5">
+                <span id="sgSpan-4-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-4-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-6">
+                <span id="sgSpan-4-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-4-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../../using_images/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
+                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-2">
+                <span id="sgSpan-6-2" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-6-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-3">
+                <span id="sgSpan-6-3" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-6-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-4">
+                <span id="sgSpan-6-4" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-5">
+                <span id="sgSpan-6-5" class="fa fa-caret-right"></span>&nbsp;xPaaS Middleware Images
+              </a>
+              <ul id="topicSubGroup-6-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/xpaas_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>OpenShift SDN</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#sdn-design-on-masters">Design on Masters</a></li>
+<li><a href="#sdn-design-on-nodes">Design on Nodes</a></li>
+<li><a href="#sdn-packet-flow">Packet Flow</a></li>
+<li><a href="#network-isolation-multitenant">Network Isolation</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>the Digital Garage uses a software-defined networking (SDN) approach to provide a unified
+cluster network that enables communication between pods across the the Digital Garage
+cluster. This pod network is established and maintained by the
+which configures an overlay network using Open vSwitch (OVS).</p>
+</div>
+<div class="paragraph">
+<p>the Digital Garage SDN provides two SDN plug-ins for configuring the pod network:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>ovs-subnet</strong> plug-in is the original plug-in which provides a "flat" pod
+network where every pod can communicate with every other pod and service.</p>
+</li>
+<li>
+<p>The <strong>ovs-multitenant</strong> plug-in provides the Digital Garage project level isolation for
+pods and services. Each project receives a unique Virtual Network ID (VNID)
+that identifies traffic from pods assigned to the project. Pods from different
+projects cannot send packets to or receive packets from pods and services of a
+different project.</p>
+<div class="paragraph">
+<p>However, projects which receive VNID 0 are more privileged in that they are
+allowed to communicate with all other pods, and all other pods can communicate
+with them. In the Digital Garage clusters, the <strong>default</strong> project has VNID 0. This
+facilitates certain services like the load balancer, etc. to communicate with
+all other pods in the cluster and vice versa.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Following is a detailed discussion of the design and operation of
+the Digital Garage SDN, which may be useful for troubleshooting.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sdn-design-on-masters"><a class="anchor" href="#sdn-design-on-masters"></a>Design on Masters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On an the Digital Garage master, the Digital Garage SDN maintains a registry of nodes,
+stored in <strong>etcd</strong>. When the system administrator registers a node,
+the Digital Garage SDN allocates an unused subnet from the cluster network and
+stores this subnet in the registry. When a node is deleted, the Digital Garage SDN
+deletes the subnet from the registry and considers the subnet available to be
+allocated again.</p>
+</div>
+<div class="paragraph">
+<p>In the default configuration, the cluster network is the <strong>10.128.0.0/14</strong> network
+(i.e. <strong>10.128.0.0</strong> - <strong>10.131.255.255</strong>), and nodes are allocated <strong>/23</strong> subnets
+(i.e., <strong>10.128.0.0/23</strong>, <strong>10.128.2.0/23</strong>, <strong>10.128.4.0/23</strong>, and so on). This means
+that the cluster network has 512 subnets available to assign to nodes, and a
+given node is allocated 510 addresses that it can assign to the containers
+running on it. The size and address range of the cluster network are
+configurable, as is the host subnet size.</p>
+</div>
+<div class="paragraph">
+<p>Note that the Digital Garage SDN on a master does not configure the local (master)
+host to have access to any cluster network. Consequently, a master host does not
+have access to pods via the cluster network, unless it is also running as a
+node.</p>
+</div>
+<div class="paragraph">
+<p>When using the <strong>ovs-multitenant</strong> plug-in, the the Digital Garage SDN master also
+watches for the creation and deletion of projects, and assigns VXLAN VNIDs to
+them, which will be used later by the nodes to isolate traffic correctly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sdn-design-on-nodes"><a class="anchor" href="#sdn-design-on-nodes"></a>Design on Nodes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On a node, the Digital Garage SDN first registers the local host with the SDN
+master in the aforementioned registry so that the master allocates a subnet to
+the node.</p>
+</div>
+<div class="paragraph">
+<p>Next, the Digital Garage SDN creates and configures six network devices:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>br0</strong>, the OVS bridge device that pod containers will be attached to.
+the Digital Garage SDN also configures a set of non-subnet-specific flow rules on this
+bridge. The <strong>ovs-multitenant</strong> plug-in does this immediately.</p>
+</li>
+<li>
+<p><strong>lbr0</strong>, a Linux bridge device, which is configured as Docker&#8217;s bridge and
+given the cluster subnet gateway address (eg, 10.128.x.1/23).</p>
+</li>
+<li>
+<p><strong>tun0</strong>, an OVS internal port (port 2 on <strong>br0</strong>). This <em>also</em> gets assigned the
+cluster subnet gateway address, and is used for external network
+access. the Digital Garage SDN configures <strong>netfilter</strong> and routing rules to enable access
+from the cluster subnet to the external network via NAT.</p>
+</li>
+<li>
+<p><strong>vlinuxbr</strong> and <strong>vovsbr</strong>, two Linux peer virtual Ethernet interfaces.
+<strong>vlinuxbr</strong> is added to <strong>lbr0</strong> and <strong>vovsbr</strong> is added to <strong>br0</strong> (port 9 with the
+<strong>ovs-subnet</strong> plug-in and port 3 with the <strong>ovs-multitenant</strong> plug-in) to provide
+connectivity for containers created directly with Docker outside of the Digital Garage.</p>
+</li>
+<li>
+<p><strong>vxlan0</strong>, the OVS VXLAN device (port 1 on <strong>br0</strong>), which provides access to
+containers on remote nodes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each time a pod is started on the host, the Digital Garage SDN:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>moves the host side of the pod&#8217;s veth interface pair from the <strong>lbr0</strong> bridge
+(where Docker placed it when starting the container) to the OVS bridge <strong>br0</strong>.</p>
+</li>
+<li>
+<p>adds OpenFlow rules to the OVS database to route traffic addressed to the new
+pod to the correct OVS port.</p>
+</li>
+<li>
+<p>in the case of the <strong>ovs-multitenant</strong> plug-in, adds OpenFlow rules to tag
+traffic coming from the pod with the pod&#8217;s VNID, and to allow traffic into the
+pod if the traffic&#8217;s VNID matches the pod&#8217;s VNID (or is the privileged VNID 0).
+Non-matching traffic is filtered out by a generic rule.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The pod is allocated an IP address in the cluster subnet by Docker itself
+because Docker is told to use the <strong>lbr0</strong> bridge, which the Digital Garage SDN has
+assigned the cluster gateway address (eg. 10.128.x.1/23). Note that the <strong>tun0</strong>
+is also assigned the cluster gateway IP address because it is the default
+gateway for all traffic destined for external networks, but these two interfaces
+do not conflict because the <strong>lbr0</strong> interface is only used for IPAM and no
+the Digital Garage SDN pods are connected to it.</p>
+</div>
+<div class="paragraph">
+<p>the Digital Garage SDN nodes also watch for subnet updates from the SDN master. When a
+new subnet is added, the node adds OpenFlow rules on <strong>br0</strong> so that packets with
+a destination IP address the remote subnet go to <strong>vxlan0</strong> (port 1 on <strong>br0</strong>) and
+thus out onto the network. The <strong>ovs-subnet</strong> plug-in sends all packets across the
+VXLAN with VNID 0, but the <strong>ovs-multitenant</strong> plug-in uses the appropriate VNID
+for the source container.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sdn-packet-flow"><a class="anchor" href="#sdn-packet-flow"></a>Packet Flow</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Suppose you have two containers, A and B, where the peer virtual Ethernet device
+for container A&#8217;s <strong>eth0</strong> is named <strong>vethA</strong> and the peer for container B&#8217;s <strong>eth0</strong>
+is named <strong>vethB</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If Docker&#8217;s use of peer virtual Ethernet devices is not already familiar to you,
+review <a href="https://docs.docker.com/engine/userguide/networking/dockernetworks/">Docker&#8217;s advanced networking
+documentation</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now suppose first that container A is on the local host and container B is also
+on the local host. Then the flow of packets from container A to container B is
+as follows:</p>
+</div>
+<div class="paragraph">
+<p><strong><em>eth0</em></strong> <em>(in A&#8217;s netns) &#8594; <strong>vethA</strong> &#8594; <strong>br0</strong> &#8594; <strong>vethB</strong> &#8594; <strong>eth0</strong> (in B&#8217;s netns)</em></p>
+</div>
+<div class="paragraph">
+<p>Next, suppose instead that container A is on the local host and container B is
+on a remote host on the cluster network. Then the flow of packets from container
+A to container B is as follows:</p>
+</div>
+<div class="paragraph">
+<p><strong><em>eth0</em></strong> <em>(in A&#8217;s netns) &#8594; <strong>vethA</strong> &#8594; <strong>br0</strong> &#8594; <strong>vxlan0</strong> &#8594;
+network <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> &#8594; <strong>vxlan0</strong> &#8594; <strong>br0</strong> &#8594; <strong>vethB</strong> &#8594; <strong>eth0</strong> (in B&#8217;s netns)</em></p>
+</div>
+<div class="paragraph">
+<p>Finally, if container A connects to an external host, the traffic looks like:</p>
+</div>
+<div class="paragraph">
+<p><strong><em>eth0</em></strong> <em>(in A&#8217;s netns) &#8594; <strong>vethA</strong> &#8594; <strong>br0</strong> &#8594; <strong>tun0</strong> &#8594; (NAT) &#8594; <strong>eth0</strong> (physical device) &#8594; Internet</em></p>
+</div>
+<div class="paragraph">
+<p>Almost all packet delivery decisions are performed with OpenFlow rules in the
+OVS bridge <strong>br0</strong>, which simplifies the plug-in network architecture and provides
+flexible routing. In the case of the <strong>ovs-multitenant</strong> plug-in, this also
+provides enforceable <a href="#network-isolation-multitenant">network isolation</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="network-isolation-multitenant"><a class="anchor" href="#network-isolation-multitenant"></a>Network Isolation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use the <strong>ovs-multitenant</strong> plug-in to achieve network isolation. When a
+packet exits a pod assigned to a non-default project, the OVS bridge <strong>br0</strong> tags
+that packet with the project&#8217;s assigned VNID. If the packet is directed to
+another IP address in the node&#8217;s cluster subnet, the OVS bridge only allows the
+packet to be delivered to the destination pod if the VNIDs match.</p>
+</div>
+<div class="paragraph">
+<p>If a packet is received from another node via the VXLAN tunnel, the Tunnel ID
+is used as the VNID, and the OVS bridge only allows the packet to be delivered
+to a local pod if the tunnel ID matches the destination pod&#8217;s VNID.</p>
+</div>
+<div class="paragraph">
+<p>Packets destined for other cluster subnets are tagged with their VNID and
+delivered to the VXLAN tunnel with a tunnel destination address of the node
+owning the cluster subnet.</p>
+</div>
+<div class="paragraph">
+<p>As described before, VNID 0 is privileged in that traffic with any VNID is
+allowed to enter any pod assigned VNID 0, and traffic with VNID 0 is allowed to
+enter any pod. Only the <strong>default</strong> the Digital Garage project is assigned VNID 0;
+all other projects are assigned unique, isolation-enabled VNIDs. Cluster
+administrators can optionally
+for the project using the administrator CLI.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. After this point, device names refer to devices on container B&#8217;s host.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-openshift">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <a href="https://www.redhat.com/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="../../../master/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

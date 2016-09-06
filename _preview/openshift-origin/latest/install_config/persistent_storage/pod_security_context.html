@@ -1,0 +1,1847 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Origin Latest | Installation and Configuration | Configuring Persistent Storage | Volume Security</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../../latest/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../../latest/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../../latest/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../../latest/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script async src="//www.google-analytics.com/analytics.js" type="text/javascript"></script>
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-40375612-1', 'openshift.org');
+  ga('set', 'forceSSL', true);
+  ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift navbar-origin" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand origin" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../welcome/index.html">OpenShift Origin Latest</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../install_config/index.html">Installation and Configuration</a>
+      </li>
+      <li class="hidden-xs active"><a href="../../install_config/persistent_storage/index.html">Configuring Persistent Storage</a></li>
+      <li class="hidden-xs active">
+        Volume Security
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:vdyz7waqya4';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>What's New?
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../../whats_new/index.html">Overview</a></li>
+            <li><a class="" href="../../whats_new/applications.html">Applications</a></li>
+            <li><a class="" href="../../whats_new/carts_vs_images.html">Cartridges vs Images</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/administrators.html">Setting Up a Cluster</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Installation and Configuration
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../../install_config/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+              </a>
+              <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+
+                  <li><a class="" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
+
+                  <li><a class="" href="../../install_config/install/advanced_install.html">Advanced Installation</a></li>
+
+                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
+
+                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+              </a>
+              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/master_node_configuration.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+            <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+            <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-9">
+                <span id="sgSpan-4-9" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-4-9" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/configuring_sdn.html">Configuring the SDN</a></li>
+            <li><a class="" href="../../install_config/configuring_aws.html">Configuring for AWS</a></li>
+            <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
+            <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-14">
+                <span id="sgSpan-4-14" class="fa fa-caret-down"></span>&nbsp;Configuring Persistent Storage
+              </a>
+              <ul id="topicSubGroup-4-14" class="nav-tertiary list-unstyled collapse in">
+
+                  <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_nfs.html">Using NFS</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_glusterfs.html">Using GlusterFS</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_cinder.html">Using OpenStack Cinder</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_ceph_rbd.html">Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_aws.html">Using AWS Elastic Block Store</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_gce.html">Using GCE Persistent Disk</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_iscsi.html">Using iSCSI</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_fibre_channel.html">Using Fibre Channel</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/dynamically_provisioning_pvs.html">Dynamic Provisioning</a></li>
+
+                  <li><a class=" active" href="../../install_config/persistent_storage/pod_security_context.html">Volume Security</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/selector_label_binding.html">Selector-Label Volume Binding</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
+                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              </a>
+              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/shared_storage.html">Sharing an NFS PV Across Two Pods</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/ceph_example.html">Complete Example Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/gluster_example.html">Complete Example Using GlusterFS</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/privileged_pod_storage.html">Mounting Volumes To Privileged Pods</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/gluster_backed_registry.html">Backing Docker Registry with GlusterFS Storage</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/binding_pv_by_label.html">Binding Persistent Volumes by Label</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/http_proxies.html">Working with HTTP Proxies</a></li>
+            <li><a class="" href="../../install_config/build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../../install_config/configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
+            <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
+            <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
+            <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
+            <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../../admin_guide/monitoring_images.html">Monitoring Images</a></li>
+            <li><a class="" href="../../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class="" href="../../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+            <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
+            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
+            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
+            <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
+            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
+            <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
+            <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
+            <li><a class="" href="../../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../../admin_guide/sdn_troubleshooting.html">Troubleshooting Networking</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-7-5">
+                <span id="sgSpan-7-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-7-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-7-6">
+                <span id="sgSpan-7-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-7-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li><a class="" href="../../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-0">
+                <span id="sgSpan-9-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-9-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-1">
+                <span id="sgSpan-9-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-9-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-2">
+                <span id="sgSpan-9-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-9-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-3">
+                <span id="sgSpan-9-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-9-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup10">
+        <span id="tgSpan10" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup10" class="collapse  list-unstyled">
+            <li><a class="" href="../../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Volume Security</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#sccs-defaults-allowed-ranges">SCCs, Defaults, and Allowed Ranges</a></li>
+<li><a href="#supplemental-groups">Supplemental Groups</a></li>
+<li><a href="#fsgroup">fsGroup</a></li>
+<li><a href="#user-id">User IDs</a></li>
+<li><a href="#selinuxoptions">SELinux Options</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This topic provides a general guide on pod security as it relates to volume
+security. For information on pod-level security in general, see
+<a href="../../admin_guide/manage_scc.html#admin-guide-manage-scc">Managing Security Context Constraints
+(SCC)</a> and the
+<a href="../../architecture/additional_concepts/authorization.html#security-context-constraints">Security
+Context Constraint</a> concept topic. For information on the OpenShift Origin
+persistent volume (PV) framework in general, see the
+<a href="../../architecture/additional_concepts/storage.html#architecture-additional-concepts-storage">Persistent Storage</a>
+concept topic.</p>
+</div>
+<div class="paragraph">
+<p>Accessing persistent storage requires coordination between the cluster and/or
+storage administrator and the end developer. The cluster administrator creates
+PVs, which abstract the underlying physical storage. The developer creates pods
+and, optionally, PVCs, which bind to PVs, based on matching criteria, such as
+capacity.</p>
+</div>
+<div class="paragraph">
+<p>Multiple persistent volume claims (PVCs) within the same project can bind to the
+same PV. However, once a PVC binds to a PV, that PV cannot be bound by a claim
+outside of the first claim&#8217;s project. If the underlying storage needs to be
+accessed by multiple projects, then each project needs its own PV, which can
+point to the same physical storage. In this sense, a bound PV is tied to a
+project. For a detailed PV and PVC example, see the guide for
+<a href="https://github.com/openshift/origin/tree/master/examples/wordpress">WordPress and
+MySQL using NFS</a>.</p>
+</div>
+<div class="paragraph">
+<p>For the cluster administrator, granting pods access to PVs involves:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>knowing the group ID and/or user ID assigned to the actual storage,</p>
+</li>
+<li>
+<p>understanding SELinux considerations, and</p>
+</li>
+<li>
+<p>ensuring that these IDs are allowed in the range of legal IDs defined for the
+project and/or the SCC that matches the requirements of the pod.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Group IDs, the user ID, and SELinux values are defined in the
+<code><strong>SecurityContext</strong></code> section in a pod definition. Group IDs are global to the pod
+and apply to all containers defined in the pod. User IDs can also be global, or
+specific to each container. Four sections control access to volumes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#supplemental-groups"><code><strong>supplementalGroups</strong></code></a></p>
+</li>
+<li>
+<p><a href="#fsgroup"><code><strong>fsGroup</strong></code></a></p>
+</li>
+<li>
+<p><a href="#user-id"><code><strong>runAsUser</strong></code></a></p>
+</li>
+<li>
+<p><a href="#selinuxoptions"><code><strong>seLinuxOptions</strong></code></a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sccs-defaults-allowed-ranges"><a class="anchor" href="#sccs-defaults-allowed-ranges"></a>SCCs, Defaults, and Allowed Ranges</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SCCs influence whether or not a pod is given a default user ID, <code><strong>fsGroup</strong></code> ID,
+supplemental group ID, and SELinux label. They also influence whether or not IDs
+supplied in the pod definition (or in the image) will be validated against a
+range of allowable IDs. If validation is required and fails, then the pod will
+also fail.</p>
+</div>
+<div class="paragraph">
+<p>SCCs define strategies, such as <code><strong>runAsUser</strong></code>, <code><strong>supplementalGroups</strong></code>, and
+<code><strong>fsGroup</strong></code>. These strategies help decide whether the pod is authorized.
+Strategy values set to <strong>RunAsAny</strong> are essentially stating that the pod can do
+what it wants regarding that strategy. Authorization is skipped for that
+strategy and no OpenShift Origin default is produced based on that strategy.
+Therefore, IDs and SELinux labels in the resulting container are based on
+container defaults instead of OpenShift Origin policies.</p>
+</div>
+<div class="paragraph">
+<p>For a quick summary of <strong>RunAsAny</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Any ID defined in the pod definition (or image) is allowed.</p>
+</li>
+<li>
+<p>Absence of an ID in the pod definition (and in the image) results in the
+container assigning an ID, which is <strong>root</strong> (0) for Docker.</p>
+</li>
+<li>
+<p>No SELinux labels are defined, so Docker will assign a unique label.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For these reasons, SCCs with <strong>RunAsAny</strong> for ID-related strategies should be
+protected so that ordinary developers do not have access to the SCC. On the
+other hand, SCC strategies set to <strong>MustRunAs</strong> or <strong>MustRunAsRange</strong> trigger ID
+validation (for ID-related strategies), and cause default values to be supplied
+by OpenShift Origin to the container when those values are not supplied directly
+in the pod definition or image.</p>
+</div>
+<div class="paragraph">
+<p>SCCs may define the range of allowed IDs (user or groups). If range checking is
+required (for example, using <strong>MustRunAs</strong>) and the allowable range is not defined
+in the SCC, then the project determines the ID range. Therefore, projects
+support ranges of allowable ID. However, unlike SCCs, projects do not define
+strategies, such as <code><strong>runAsUser</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>Allowable ranges are helpful not only because they define the boundaries for
+container IDs, but also because the minimum value in the range becomes the
+default value for the ID in question. For example, if the SCC ID strategy value
+is <strong>MustRunAs</strong>, the minimum value of an ID range is <strong>100</strong>, and the ID is absent
+from the pod definition, then 100 is provided as the default for this ID.</p>
+</div>
+<div class="paragraph">
+<p>As part of pod admission, the SCCs available to a pod are examined (roughly, in
+priority order followed by most restrictive) to best match the requests of the
+pod. Setting a SCC&#8217;s strategy type to <strong>RunAsAny</strong> is less restrictive, whereas a
+type of <strong>MustRunAs</strong> is more restrictive. All of these strategies are evaluated.
+To see which SCC was assigned to a pod, use the <code>oc get pod</code> command:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># oc get pod &lt;pod_name&gt; -o yaml
+...
+metadata:
+  annotations:
+    openshift.io/scc: nfs-scc <i class="conum" data-value="1"></i><b>(1)</b>
+  name: nfs-pod1 <i class="conum" data-value="2"></i><b>(2)</b>
+  namespace: default <i class="conum" data-value="3"></i><b>(3)</b>
+...</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Name of the SCC that the pod used (in this case, a custom SCC).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Name of the pod.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Name of the project. "Namespace" is interchangeable with "project" in
+OpenShift Origin. See
+<a href="../../architecture/core_concepts/projects_and_users.html#namespaces">Projects
+and Users</a> for details.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>It may not be immediately obvious which SCC was matched by a pod, so the command
+above can be very useful in understanding the UID, supplemental groups, and
+SELinux relabeling in a live container.</p>
+</div>
+<div class="paragraph">
+<p>Any SCC with a strategy set to <strong>RunAsAny</strong> allows specific values for that
+strategy to be defined in the pod definition (and/or image). When this applies
+to the user ID (<code><strong>runAsUser</strong></code>) it is prudent to restrict access to the SCC to
+prevent a container from being able to run as root.</p>
+</div>
+<div class="paragraph">
+<p>Because pods often match the <strong>restricted</strong> SCC, it is worth knowing the security
+this entails. The <strong>restricted</strong> SCC has the following characteristics:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User IDs are constrained due to the <code><strong>runAsUser</strong></code> strategy being set to
+<strong>MustRunAsRange</strong>. This forces user ID validation.</p>
+</li>
+<li>
+<p>Because a range of allowable user IDs is not defined in the SCC (see <code>oc export
+scc restricted</code> for more details), the project&#8217;s
+<code><strong>openshift.io/sa.scc.uid-range</strong></code> range will be used for range checking and for
+a default ID, if needed.</p>
+</li>
+<li>
+<p>A default user ID is produced when a user ID is not specified in the pod
+definition due to <code><strong>runAsUser</strong></code> being set to <strong>MustRunAsRange</strong>.</p>
+</li>
+<li>
+<p>An SELinux label is required (<code>seLinuxContext</code> set to <em>MustRunAs</em>), which uses
+the project&#8217;s default MCS label.</p>
+</li>
+<li>
+<p>Arbitrary supplemental group IDs are allowed because no range checking is
+required. This is a result of both the <code><strong>supplementalGroups</strong></code> and <code><strong>fsGroup</strong></code>
+strategies being set to <strong>RunAsAny</strong>.</p>
+</li>
+<li>
+<p>Default supplemental groups are not produced for the running pod due to
+<strong>RunAsAny</strong> for the two group strategies above. Therefore, if no groups are
+defined in the pod definition (or in the image), the container(s) will have no
+supplemental groups predefined.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following shows the <strong>default</strong> project and a custom SCC (<strong>my-custom-scc</strong>),
+which summarizes the interactions of the SCC and the project:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get project default -o yaml <i class="conum" data-value="1"></i><b>(1)</b>
+...
+metadata:
+  annotations: <i class="conum" data-value="2"></i><b>(2)</b>
+    openshift.io/sa.scc.mcs: s0:c1,c0 <i class="conum" data-value="3"></i><b>(3)</b>
+    openshift.io/sa.scc.supplemental-groups: 1000000000/10000 <i class="conum" data-value="4"></i><b>(4)</b>
+    openshift.io/sa.scc.uid-range: 1000000000/10000 <i class="conum" data-value="5"></i><b>(5)</b>
+
+$ oc get scc my-custom-scc -o yaml <i class="conum" data-value="6"></i><b>(6)</b>
+...
+fsGroup:
+  type: MustRunAs <i class="conum" data-value="7"></i><b>(7)</b>
+  ranges:
+  - min: 5000
+    max: 6000
+runAsUser:
+  type: MustRunAsRange <i class="conum" data-value="8"></i><b>(8)</b>
+  uidRangeMin: 65534
+  uidRangeMax: 65634
+seLinuxContext: <i class="conum" data-value="9"></i><b>(9)</b>
+  type: MustRunAs
+  SELinuxOptions: <i class="conum" data-value="10"></i><b>(10)</b>
+    user: &lt;selinux-user-name&gt;
+    role: ...
+    type: ...
+    level: ...
+supplementalGroups:
+  type: MustRunAs <i class="conum" data-value="7"></i><b>(7)</b>
+  ranges:
+  - min: 5000
+    max: 6000</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><strong>default</strong> is the name of the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Default values are only produced when the corresponding SCC strategy is not
+<strong>RunAsAny</strong>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>SELinux default when not defined in the pod definition or in the SCC.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Range of allowable group IDs. ID validation only occurs when the SCC
+strategy is <strong>RunAsAny</strong>. There can be more than one range specified, separated by
+commas. See below for <a href="#volsec-rangeformats">supported formats</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Same as <strong>&lt;4&gt;</strong> but for user IDs. Also, only a single range of user IDs is
+supported.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td><strong>MustRunAs</strong> enforces group ID range checking and provides the container&#8217;s
+groups default. Based on this SCC definition, the default is 5000 (the minimum
+ID value). If the range was omitted from the SCC, then the default would be
+1000000000 (derived from the project). The other supported type, <strong>RunAsAny</strong>, does not
+perform range checking, thus allowing any group ID, and produces no default
+groups.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td><strong>MustRunAsRange</strong> enforces user ID range checking and provides a UID default.
+<strong>Based on this SCC, the default UID is 65534 (the minimum value). If the minimum
+*and maximum range were omitted from the SCC, the default user ID would be
+*1000000000 (derived from the project). *MustRunAsNonRoot</strong> and <strong>RunAsAny</strong> are
+*the other supported types. The range of allowed IDs can be defined to include
+*any user IDs required for the target storage.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>When set to <strong>MustRunAs</strong>, the container is created with the SCC&#8217;s SELinux
+options, or the MCS default defined in the project. A type of <strong>RunAsAny</strong>
+indicates that SELinux context is not required, and, if not defined in the pod,
+is not set in the container.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>The SELinux user name, role name, type, and labels can be defined here.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div id="volsec-rangeformats" class="paragraph">
+<p>Two formats are supported for allowed ranges:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>M/N</code>, where <code>M</code> is the starting ID and <code>N</code> is the count, so the range becomes
+<code>M</code> through (and including) <code>M+N-1</code>.</p>
+</li>
+<li>
+<p><code>M-N</code>, where <code>M</code> is again the starting ID and <code>N</code> is the ending ID. The default
+group ID is the starting ID in the first range, which is <code>1000000000</code> in this
+project. If the SCC did not define a minimum group ID, then the project&#8217;s
+default ID is applied.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="supplemental-groups"><a class="anchor" href="#supplemental-groups"></a>Supplemental Groups</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Read <a href="#sccs-defaults-allowed-ranges">SCCs, Defaults, and Allowed Ranges</a>
+before working with supplemental groups.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is generally preferable to use group IDs (supplemental or
+<a href="#fsgroup">fsGroup</a>) to gain access to persistent storage versus using
+<a href="#user-id">user IDs</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Supplemental groups are regular Linux groups. When a process runs in Linux, it
+has a UID, a GID, and one or more supplemental groups. These attributes can be
+set for a container&#8217;s main process. The <code><strong>supplementalGroups</strong></code> IDs are typically
+used for controlling access to shared storage, such as NFS and GlusterFS,
+whereas <a href="#fsgroup">fsGroup</a> is used for controlling access to block storage,
+such as Ceph RBD and iSCSI.</p>
+</div>
+<div class="paragraph">
+<p>The OpenShift Origin shared storage plug-ins mount volumes such that the POSIX
+permissions on the mount match the permissions on the target storage. For
+example, if the target storage&#8217;s owner ID is <strong>1234</strong> and its group ID is <strong>5678</strong>, then
+the mount on the host node and in the container will have those same IDs.
+Therefore, the container&#8217;s main process must match one or both of those IDs in
+order to access the volume.</p>
+</div>
+<div id="nfs-example" class="paragraph">
+<p>For example, consider the following NFS export.</p>
+</div>
+<div class="paragraph">
+<p>On an OpenShift Origin node:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>showmount</code> requires access to the ports used by <code>rpcbind</code> and <code>rpc.mount</code> on
+the NFS server)</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># showmount -e &lt;nfs-server-ip-or-hostname&gt;
+Export list for f21-nfs.vm:
+/opt/nfs  *</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>On the NFS server:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># cat /etc/exports
+/opt/nfs *(rw,sync,no_root_squash)
+...
+
+# ls -lZ /opt/nfs -d
+drwxrws---. nfsnobody 5555 unconfined_u:object_r:usr_t:s0   /opt/nfs
+
+# id nfsnobody
+uid=65534(nfsnobody) gid=65534(nfsnobody) groups=65534(nfsnobody)</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In the above, the owner is 65534 (<strong>nfsnobody</strong>), but the suggestions and examples in
+this topic apply to any non-root owner.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <strong><em>/opt/nfs/</em></strong> export is accessible by UID <strong>65534</strong> and the group <strong>5555</strong>. In
+general, containers should not run as root, so in this NFS example, containers
+which are not run as UID <strong>65534</strong> or are not members the group <strong>5555</strong> will not be
+able to access the NFS export.</p>
+</div>
+<div class="paragraph">
+<p>Often, the SCC matching the pod does not allow a specific user ID to be
+specified, thus using supplemental groups is a more flexible way to grant
+storage access to a pod. For example, to grant NFS access to the export above,
+the group <strong>5555</strong> can be defined in the pod definition:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Pod</span></span>
+<span style="color:#f8f;background:#505"><span style="color:#f4f">...</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">containers</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: ...</span></span>
+    <span style="color:#606">volumeMounts</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: nfs </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+      <span style="color:#606">mountPath</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/usr/share/... </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+  <span style="color:#606">securityContext</span>: <i class="conum" data-value="3"></i><b>(3)</b>
+    <span style="color:#606">supplementalGroups</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[5555] </span></span><i class="conum" data-value="4"></i><b>(4)</b>
+  <span style="color:#606">volumes</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: nfs </span></span><i class="conum" data-value="5"></i><b>(5)</b>
+    <span style="color:#606">nfs</span>:
+      <span style="color:#606">server</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">&lt;nfs_server_ip_or_host&gt;</span></span>
+      <span style="color:#606">path</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/opt/nfs </span></span> <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Name of the volume mount. Must match the name in the <code><strong>volumes</strong></code> section.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>NFS export path as seen in the container.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Pod global security context. Applies to all containers in the pod. Each
+container can also define its <code><strong>securityContext</strong></code>, however group IDs are global
+to the pod and cannot be defined for individual containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Supplemental groups, which is an array of IDs, is set to 5555. This grants
+group access to the export.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Name of the volume. Must match the name in the <code><strong>volumeMounts</strong></code> section.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Actual NFS export path on the NFS server.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>All containers in the above pod (assuming the matching SCC or project allows the
+group <strong>5555</strong>) will be members of the group <strong>5555</strong> and have access to the volume,
+regardless of the container&#8217;s user ID. However, the assumption above is
+critical. Sometimes, the SCC does not define a range of allowable group IDs but
+requires group ID validation (due to <code><strong>supplementalGroups</strong></code> set to <strong>MustRunAs</strong>;
+note this is not the case for the <strong>restricted</strong> SCC). The project will not likely
+allow a group ID of <strong>5555</strong>, unless the project has been customized for access to
+this NFS export. So in this scenario, the above pod will fail because its group
+ID of <strong>5555</strong> is not within the SCC&#8217;s or the project&#8217;s range of allowed group
+IDs.</p>
+</div>
+<div id="scc-supplemental-groups" class="paragraph">
+<p><strong>Supplemental Groups and Custom SCCs</strong></p>
+</div>
+<div class="paragraph">
+<p>To remedy the situation in <a href="#nfs-example">the previous example</a>, a custom SCC
+can be created such that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a minimum and max group ID are defined,</p>
+</li>
+<li>
+<p>ID range checking is enforced, and</p>
+</li>
+<li>
+<p>the group ID of <strong>5555</strong> is allowed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is better to create new SCCs versus modifying a predefined SCC, or changing
+the range of allowed IDs in the predefined projects.</p>
+</div>
+<div class="paragraph">
+<p>The easiest way to create a new SCC is to export an existing SCC and customize
+the YAML file to meet the requirements of the new SCC. For example:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use the <strong>restricted</strong> SCC as a template for the new SCC:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc export scc restricted &gt; new-scc.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edit the <strong><em>new-scc.yaml</em></strong> file to your desired specifications.</p>
+</li>
+<li>
+<p>Create the new SCC:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create -f new-scc.yaml</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>oc edit scc</code> command can be used to modify an instantiated SCC.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here is a fragment of a new SCC named <strong>nfs-scc</strong>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc export scc nfs-scc
+
+allowHostDirVolumePlugin: false <i class="conum" data-value="1"></i><b>(1)</b>
+...
+kind: SecurityContextConstraints
+metadata:
+  ...
+  name: nfs-scc <i class="conum" data-value="2"></i><b>(2)</b>
+priority: 9 <i class="conum" data-value="3"></i><b>(3)</b>
+...
+supplementalGroups:
+  type: MustRunAs <i class="conum" data-value="4"></i><b>(4)</b>
+  ranges:
+  -  min: 5000 <i class="conum" data-value="5"></i><b>(5)</b>
+     max: 6000
+...</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>allow*</code> bools are the same as for the <strong>restricted</strong> SCC.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Name of the new SCC.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Numerically larger numbers have greater priority. Nil or omitted is the lowest
+priority. Higher priority SCCs sort before lower priority SCCs and thus have a
+better chance of matching a new pod.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td><code><strong>supplementalGroups</strong></code> is a strategy and it is set to <strong>MustRunAs</strong>, which means
+group ID checking is required.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Multiple ranges are supported. The allowed group ID range here is 5000 through
+5999, with the default supplemental group being 5000.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When the same pod shown earlier runs against this new SCC (assuming, of course,
+the pod has access to the new SCC), it will start because the group <strong>5555</strong>,
+supplied in the pod definition, is now allowed by the custom SCC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fsgroup"><a class="anchor" href="#fsgroup"></a>fsGroup</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Read <a href="#sccs-defaults-allowed-ranges">SCCs, Defaults, and Allowed Ranges</a>
+before working with supplemental groups.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is generally preferable to use group IDs
+(<a href="#supplemental-groups">supplemental</a> or <code><strong>fsGroup</strong></code>) to gain access to
+persistent storage versus using <a href="#user-id">user IDs</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code><strong>fsGroup</strong></code> defines a pod&#8217;s "file system group" ID, which is added to the
+container&#8217;s supplemental groups. The <code><strong>supplementalGroups</strong></code> ID applies to shared
+storage, whereas the <code><strong>fsGroup</strong></code> ID is used for block storage.</p>
+</div>
+<div class="paragraph">
+<p>Block storage, such as Ceph RBD, iSCSI, and various cloud storage, is typically
+dedicated to a single pod which has requested the block storage volume, either
+directly or using a PVC. Unlike shared storage, block storage is taken over by a
+pod, meaning that user and group IDs supplied in the pod definition (or image)
+are applied to the actual, physical block device. Typically, block storage is
+not shared.</p>
+</div>
+<div class="paragraph">
+<p>A <code><strong>fsGroup</strong></code> definition is shown below in the following pod definition
+fragment:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Pod</span></span>
+<span style="color:#f8f;background:#505"><span style="color:#f4f">...</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">containers</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: ...</span></span>
+  <span style="color:#606">securityContext</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">fsGroup</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5555 </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+  <span style="color:#F00;background-color:#FAA">...</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>As with <code><strong>supplementalGroups</strong></code>, <code><strong>fsGroup</strong></code> must be defined globally to the pod,
+not per container.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>5555 will become the group ID for the volume&#8217;s group permissions and for all new
+files created in the volume.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>As with <code><strong>supplementalGroups</strong></code>, all containers in the above pod (assuming the
+matching SCC or project allows the group <strong>5555</strong>) will be members of the group
+<strong>5555</strong>, and will have access to the block volume, regardless of the container&#8217;s
+user ID. If the pod matches the <strong>restricted</strong> SCC, whose <code><strong>fsGroup</strong></code> strategy is
+<strong>RunAsAny</strong>, then any <code><strong>fsGroup</strong></code> ID (including <strong>5555</strong>) will be accepted.
+However, if the SCC has its <code><strong>fsGroup</strong></code> strategy set to <strong>MustRunAs</strong>, and <strong>5555</strong>
+is not in the allowable range of <code><strong>fsGroup</strong></code> IDs, then the pod will fail to run.</p>
+</div>
+<div id="scc-fsgroup" class="paragraph">
+<p><strong>fsGroups and Custom SCCs</strong></p>
+</div>
+<div class="paragraph">
+<p>To remedy the situation in the previous example, a custom SCC can be created such that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a minimum and maximum group ID are defined,</p>
+</li>
+<li>
+<p>ID range checking is enforced,  and</p>
+</li>
+<li>
+<p>the group ID of <strong>5555</strong> is allowed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is better to create new SCCs versus modifying a predefined SCC, or changing
+the range of allowed IDs in the predefined projects.</p>
+</div>
+<div class="paragraph">
+<p>Consider the following fragment of a new SCC definition:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># oc export scc new-scc
+...
+kind: SecurityContextConstraints
+...
+fsGroup:
+  type: MustRunAs <i class="conum" data-value="1"></i><b>(1)</b>
+  ranges: <i class="conum" data-value="2"></i><b>(2)</b>
+  - max: 6000
+    min: 5000 <i class="conum" data-value="3"></i><b>(3)</b>
+...</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><strong>MustRunAs</strong> triggers group ID range checking, whereas <strong>RunAsAny</strong> does not
+require range checking.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The range of allowed group IDs is 5000 through, and including, 5999. Multiple
+ranges are supported. The allowed group ID range here is 5000 through 5999, with
+the default <code><strong>fsGroup</strong></code> being 5000.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The minimum value (or the entire range) can be omitted from the SCC, and thus
+range checking and generating a default value will defer to the project&#8217;s
+<code><strong>openshift.io/sa.scc.supplemental-groups</strong></code> range. <code><strong>fsGroup</strong></code> and
+<code><strong>supplementalGroups</strong></code> use the same group field in the project; there is not a
+separate range for <code><strong>fsGroup</strong></code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When the pod shown above runs against this new SCC (assuming, of course, the pod
+has access to the new SCC), it will start because the group <strong>5555</strong>, supplied in
+the pod definition, is allowed by the custom SCC. Additionally, the pod will
+"take over" the block device, so when the block storage is viewed by a process
+outside of the pod, it will actually have <strong>5555</strong> as its group ID.</p>
+</div>
+<div class="paragraph">
+<p>Currently the list of volumes which support block ownership (block) management
+include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AWS Elastic Block Store</p>
+</li>
+<li>
+<p>OpenStack Cinder</p>
+</li>
+<li>
+<p>Ceph RBD</p>
+</li>
+<li>
+<p>GCE Persistent Disk</p>
+</li>
+<li>
+<p>iSCSI</p>
+</li>
+<li>
+<p>emptyDir</p>
+</li>
+<li>
+<p>gitRepo</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-id"><a class="anchor" href="#user-id"></a>User IDs</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Read <a href="#sccs-defaults-allowed-ranges">SCCs, Defaults, and Allowed Ranges</a>
+before working with supplemental groups.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is generally preferable to use group IDs
+(<a href="#supplemental-groups">supplemental</a> or <a href="#fsgroup">fsGroup</a>) to gain
+access to persistent storage versus using user IDs.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>User IDs can be defined in the container image or in the pod definition. In the
+pod definition, a single user ID can be defined globally to all containers, or
+specific to individual containers (or both). A user ID is supplied as shown in
+the pod definition fragment below:</p>
+</div>
+<div id="pod-user-id-65534" class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">spec</span>:
+  <span style="color:#606">containers</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: ...</span></span>
+    <span style="color:#606">securityContext</span>:
+      <span style="color:#606">runAsUser</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">65534</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>ID 65534 in the above is container-specific and matches the owner ID on the
+export. If the NFS export&#8217;s owner ID was <strong>54321</strong>, then that number would be used
+in the pod definition. Specifying <code><strong>securityContext</strong></code> outside of the container
+definition makes the ID global to all containers in the pod.</p>
+</div>
+<div class="paragraph">
+<p>Similar to group IDs, user IDs may be validated according to policies set in the
+SCC and/or project. If the SCC&#8217;s <code><strong>runAsUser</strong></code> strategy is set to <strong>RunAsAny</strong>,
+then any user ID defined in the pod definition or in the image is allowed.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This means even a UID of <strong>0</strong> (root) is allowed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If, instead, the <code><strong>runAsUser</strong></code> strategy is set to <strong>MustRunAsRange</strong>, then a
+supplied user ID will be validated against a range of allowed IDs. If the pod
+supplies no user ID, then the default ID is the minimum value of the range of
+allowable user IDs.</p>
+</div>
+<div class="paragraph">
+<p>Returning to the earlier <a href="#nfs-example">NFS example</a>, the container needs its
+UID set to <strong>65534</strong>, which is shown in the pod fragment above. Assuming the
+<strong>default</strong> project and the <strong>restricted</strong> SCC, the pod&#8217;s requested user ID of
+<strong>65534</strong> will <strong>not</strong> be allowed, and therefore the pod will fail. The pod fails
+because:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>it requests <strong>65534</strong> as its user ID,</p>
+</li>
+<li>
+<p>all available SCCs use <strong>MustRunAsRange</strong> for their <code><strong>runAsUser</strong></code> strategy, so UID
+range checking is required, and</p>
+</li>
+<li>
+<p><strong>65534</strong> is not included in the SCC or project&#8217;s user ID range.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To address this situation, the recommended path would be to create a new SCC
+with the appropriate user ID range. A new project could also be created with the
+appropriate user ID range defined. There are other, less-preferred options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>restricted</strong> SCC could be modified to include <strong>65534</strong> within its minimum and
+maximum user ID range. This is not recommended as you should avoid modifying the
+predefined SCCs if possible.</p>
+</li>
+<li>
+<p>The <strong>restricted</strong> SCC could be modified to use <strong>RunAsAny</strong> for the <code><strong>runAsUser</strong></code>
+value, thus eliminating ID range checking. This is strongly not recommended, as
+containers could run as root.</p>
+</li>
+<li>
+<p>The <strong>default</strong> project&#8217;s UID range could be changed to allow a user ID of
+<strong>65534</strong>. This is not generally advisable because only a single range of user IDs
+can be specified.</p>
+</li>
+</ul>
+</div>
+<div id="scc-runasuser" class="paragraph">
+<p><strong>User IDs and Custom SCCs</strong></p>
+</div>
+<div class="paragraph">
+<p>It is good practice to avoid modifying the predefined SCCs if possible. The
+preferred approach is to create a custom SCC that better fits an organization&#8217;s
+security needs, or <a href="../../dev_guide/projects.html#create-a-project">create a
+new project</a> that supports the desired user IDs.</p>
+</div>
+<div class="paragraph">
+<p>To remedy the situation in the previous example, a custom SCC can be created
+such that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a minimum and maximum user ID is defined,</p>
+</li>
+<li>
+<p>UID range checking is still enforced, and</p>
+</li>
+<li>
+<p>the UID of <strong>65534</strong> will be allowed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc export scc nfs-scc
+
+allowHostDirVolumePlugin: false <i class="conum" data-value="1"></i><b>(1)</b>
+...
+kind: SecurityContextConstraints
+metadata:
+  ...
+  name: nfs-scc <i class="conum" data-value="2"></i><b>(2)</b>
+priority: 9 <i class="conum" data-value="3"></i><b>(3)</b>
+requiredDropCapabilities: null
+runAsUser:
+  type: MustRunAsRange <i class="conum" data-value="4"></i><b>(4)</b>
+  uidRangeMax: 65534 <i class="conum" data-value="5"></i><b>(5)</b>
+  uidRangeMin: 65534
+...</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>allow*</code> bools are the same as for the <strong>restricted</strong> SCC.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The name of this new SCC is <strong>nfs-scc</strong>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Numerically larger numbers have greater priority. Nil or omitted is the lowest
+priority. Higher priority SCCs sort before lower priority SCCs, and thus have a
+better chance of matching a new pod.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <code><strong>runAsUser</strong></code> strategy is set to <strong>MustRunAsRange</strong>, which means UID range
+checking is enforced.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The UID range is 65534 through 65534 (a range of one value).</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, with <code><strong>runAsUser: 65534</strong></code> shown in the previous pod definition fragment,
+the pod matches the new <strong>nfs-scc</strong> and is able to run with a UID of 65534.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="selinuxoptions"><a class="anchor" href="#selinuxoptions"></a>SELinux Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All predefined SCCs, except for the <strong>privileged</strong> SCC, set the <code><strong>seLinuxContext</strong></code>
+to <strong>MustRunAs</strong>. So the SCCs most likely to match a pod&#8217;s requirements will force
+the pod to use an SELinux policy. The SELinux policy used by the pod can be
+defined in the pod itself, in the image, in the SCC, or in the project (which
+provides the default).</p>
+</div>
+<div class="paragraph">
+<p>SELinux labels can be defined in a pod&#8217;s <code><strong>securityContext.seLinuxOptions</strong></code>
+section, and supports <code><strong>user</strong></code>, <code><strong>role</strong></code>, <code><strong>type</strong></code>, and <code><strong>level</strong></code>:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Level and MCS label are used interchangeably in this topic.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">...
+ securityContext: <i class="conum" data-value="1"></i><b>(1)</b>
+    seLinuxOptions:
+      level: "s0:c123,c456" <i class="conum" data-value="2"></i><b>(2)</b>
+...</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code><strong>level</strong></code> can be defined globally for the entire pod, or individually for each
+container.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>SELinux level label.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Here are fragments from an SCC and from the <strong>default</strong> project:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc export scc scc-name
+...
+seLinuxContext:
+  type: MustRunAs <i class="conum" data-value="1"></i><b>(1)</b>
+
+# oc export project default
+...
+metadata:
+  annotations:
+    openshift.io/sa.scc.mcs: s0:c1,c0 <i class="conum" data-value="2"></i><b>(2)</b>
+...</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><strong>MustRunAs</strong> causes volume relabeling.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>If the label is not provided in the pod or in the SCC, then the default comes
+from the project.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>All predefined SCCs, except for the <strong>privileged</strong> SCC, set the <code><strong>seLinuxContext</strong></code>
+to <strong>MustRunAs</strong>. This forces pods to use MCS labels, which can be defined in the
+pod definition, the image, or provided as a default.</p>
+</div>
+<div class="paragraph">
+<p>The SCC determines whether or not to require an SELinux label and can provide a
+default label. If the <code><strong>seLinuxContext</strong></code> strategy is set to <strong>MustRunAs</strong> and the
+pod (or image) does not define a label, OpenShift Origin defaults to a label
+chosen from the SCC itself or from the project.</p>
+</div>
+<div class="paragraph">
+<p>If <code><strong>seLinuxContext</strong></code> is set to <strong>RunAsAny</strong>, then no
+default labels are provided, and the container determines the final label. In
+the case of Docker, the container will use a unique MCS label, which will not
+likely match the labeling on existing storage mounts. Volumes which support
+SELinux management will be relabeled so that they are accessible by the
+specified label and, depending on how exclusionary the label is, only that
+label.</p>
+</div>
+<div class="paragraph">
+<p>This means two things for unprivileged containers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The volume will be given a <code><strong>type</strong></code> which is accessible by unprivileged
+containers. This <code><strong>type</strong></code> is usually <strong>svirt_sandbox_file_t</strong>.</p>
+</li>
+<li>
+<p>If a <code><strong>level</strong></code> is specified, the volume will be labeled with the given MCS
+label.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For a volume to be accessible by a pod, the pod must have both categories of the volume.
+So a pod with <strong>s0:c1,c2</strong> will be able to access a volume with <strong>s0:c1,c2</strong>. A volume with
+<strong>s0</strong> will be accessible by all pods.</p>
+</div>
+<div class="paragraph">
+<p>If pods fail authorization, or if the storage mount is failing due to
+permissions errors, then there is a possibility that SELinux enforcement is
+interfering. One way to check for this is to run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># ausearch -m avc --start recent</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This examines the log file for AVC (Access Vector Cache) errors.</p>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-origin-docs">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="footer_social">
+          <a href="https://twitter.com/openshift" class="first">
+            <span>
+              <i class="fa fa-twitter-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://github.com/openshift/origin">
+            <span>
+              <i class="fa fa-github fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://plus.google.com/communities/114361859072744017486">
+            <span>
+              <i class="fa fa-google-plus-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://www.facebook.com/openshift">
+            <span>
+              <i class="fa fa-facebook-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <a id="footer_logo" href="https://www.redhat.com/">
+          <img alt="Red Hat" src="https://assets.openshift.net/app/assets/redhat.svg">
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-center">
+        <a id="powered_by_openshift" title="Powered by OpenShift Online with the DIY Cartridge" href="https://hub.openshift.com/quickstarts/92-do-it-yourself-0-1">
+          <img src="https://www.openshift.com/sites/default/files/images/powered-transparent-white.png" alt="Powered by OpenShift Online">
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-right">
+        <a id="built_with_asciibinder" title="Built with AsciiBinder docs management system" href="http://asciibinder.org/">
+          <img src="../../../latest/_images/asciibinder_web_logo.svg" alt="AsciiBinder">
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="attribution">
+          <button type="button" class="btn btn-link" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-content="
+            '<a target='_blank' href='https://www.flickr.com/photos/eflon/3655695161/'>Spin</a>' by <a target='_blank' href='https://www.flickr.com/photos/eflon/'>eflon</a>,</br> used under <a target='_blank' href='https://creativecommons.org/licenses/by/2.0/'>CC BY 2.0</a> </br>Color tint added to original">
+            Image attribution
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+    </script>
+  </div>
+</footer>
+</body>
+</html>

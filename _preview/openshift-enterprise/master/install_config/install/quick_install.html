@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Enterprise Branch Build | Installation and Configuration | Installing | Quick Installation</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../../master/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../../master/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../../master/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../../master/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://assets.openshift.net/app/assets/site/tracking.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"></a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="hidden-xs dropdown"> <a href="#" class="dropdown-toggle nav-log-in" data-toggle="dropdown"> My Account<span class="caret"></span> </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://openshift.redhat.com/app/console">OpenShift Web Console</a></li>
+          <li><a href="https://console.preview.openshift.com/">(Next Gen) Web Console</a></li>
+          <li><a href="https://hub.openshift.com/users/auth/github">OpenShift Hub</a></li>
+        </ul>
+      </li>
+      <li class="hidden-xs hidden-sm"><a class="nav-sign-up" href="https://www.openshift.com/devpreview/register.html">Sign up for Free</a></li>
+    </ul>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../welcome/index.html">OpenShift Enterprise Branch Build</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../install_config/index.html">Installation and Configuration</a>
+      </li>
+      <li class="hidden-xs active"><a href="../../install_config/install/index.html">Installing</a></li>
+      <li class="hidden-xs active">
+        Quick Installation
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+            <li><a class="" href="../../welcome/revhistory_all.html">All Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Release Notes
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../../release_notes/index.html">Overview</a></li>
+            <li><a class="" href="../../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/administrators.html">Setting Up a Cluster</a></li>
+            <li><a class="" href="../../getting_started/revhistory_getting_started.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../architecture/revhistory_architecture.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Installation and Configuration
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../../install_config/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
+                <span id="sgSpan-4-1" class="fa fa-caret-down"></span>&nbsp;Installing
+              </a>
+              <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse in">
+
+                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+
+                  <li><a class=" active" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
+
+                  <li><a class="" href="../../install_config/install/advanced_install.html">Advanced Installation</a></li>
+
+                  <li><a class="" href="../../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
+
+                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
+
+                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+              </a>
+              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/downgrade.html">Downgrading</a></li>
+            <li><a class="" href="../../install_config/master_node_configuration.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+            <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+            <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
+                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/configuring_sdn.html">Configuring the SDN</a></li>
+            <li><a class="" href="../../install_config/configuring_aws.html">Configuring for AWS</a></li>
+            <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
+            <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
+                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              </a>
+              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_nfs.html">Using NFS</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_glusterfs.html">Using GlusterFS</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_cinder.html">Using OpenStack Cinder</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_ceph_rbd.html">Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_aws.html">Using AWS Elastic Block Store</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_gce.html">Using GCE Persistent Disk</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_iscsi.html">Using iSCSI</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_fibre_channel.html">Using Fibre Channel</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/dynamically_provisioning_pvs.html">Dynamic Provisioning</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/pod_security_context.html">Volume Security</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/selector_label_binding.html">Selector-Label Volume Binding</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
+                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              </a>
+              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/shared_storage.html">Sharing an NFS PV Across Two Pods</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/ceph_example.html">Complete Example Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/gluster_example.html">Complete Example Using GlusterFS</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/privileged_pod_storage.html">Mounting Volumes To Privileged Pods</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/gluster_backed_registry.html">Backing Docker Registry with GlusterFS Storage</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/binding_pv_by_label.html">Binding Persistent Volumes by Label</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/http_proxies.html">Working with HTTP Proxies</a></li>
+            <li><a class="" href="../../install_config/build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../../install_config/configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
+            <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
+            <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+            <li><a class="" href="../../install_config/revhistory_install_config.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Administrator Solutions
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../../admin_solutions/index.html">Overview</a></li>
+            <li><a class="" href="../../admin_solutions/master_node_config.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../../admin_solutions/user_role_mgmt.html">User and Role Management</a></li>
+            <li><a class="" href="../../admin_solutions/authentication.html">Authentication</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
+            <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
+            <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../../admin_guide/scoped_tokens.html">Scoped Tokens</a></li>
+            <li><a class="" href="../../admin_guide/monitoring_images.html">Monitoring Images</a></li>
+            <li><a class="" href="../../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class="" href="../../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+            <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
+            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
+            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
+            <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
+            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
+            <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
+            <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
+            <li><a class="" href="../../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../../admin_guide/sdn_troubleshooting.html">Troubleshooting Networking</a></li>
+            <li><a class="" href="../../admin_guide/revhistory_admin_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+            <li><a class="" href="../../cli_reference/revhistory_cli_reference.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li><a class="" href="../../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-5">
+                <span id="sgSpan-8-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-8-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-6">
+                <span id="sgSpan-8-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-8-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../../dev_guide/revhistory_dev_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li><a class="" href="../../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../../creating_images/custom.html">Custom Builder</a></li>
+            <li><a class="" href="../../creating_images/revhistory_creating_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup10">
+        <span id="tgSpan10" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup10" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-0">
+                <span id="sgSpan-10-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-10-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-1">
+                <span id="sgSpan-10-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-10-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-2">
+                <span id="sgSpan-10-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-10-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-3">
+                <span id="sgSpan-10-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-10-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-4">
+                <span id="sgSpan-10-4" class="fa fa-caret-right"></span>&nbsp;xPaaS Middleware Images
+              </a>
+              <ul id="topicSubGroup-10-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/xpaas_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../using_images/revhistory_using_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup11">
+        <span id="tgSpan11" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup11" class="collapse  list-unstyled">
+            <li><a class="" href="../../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+            <li><a class="" href="../../rest_api/revhistory_rest_api.html">Revision History</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Quick Installation</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#quick-before-you-begin">Before You Begin</a></li>
+<li><a href="#running-an-interactive-installation">Running an Interactive Installation</a></li>
+<li><a href="#defining-an-installation-configuration-file">Defining an Installation Configuration File</a></li>
+<li><a href="#running-an-unattended-installation">Running an Unattended Installation</a></li>
+<li><a href="#quick-verifying-the-installation">Verifying the Installation</a></li>
+<li><a href="#uninstalling-quick">Uninstalling OpenShift Enterprise</a></li>
+<li><a href="#quick-install-whats-next">What&#8217;s Next?</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <em>quick installation</em> method allows you to use an interactive CLI utility,
+the <code>atomic-openshift-installer</code> command, to install OpenShift Enterprise across a
+set of hosts. This installer can deploy OpenShift Enterprise components on targeted
+hosts by either installing RPMs or running containerized services.</p>
+</div>
+<div class="paragraph">
+<p>This installation method is provided to make the installation experience easier
+by <a href="#running-an-interactive-installation">interactively gathering the data</a>
+needed to run on each host. The installer is a self-contained wrapper intended
+for usage on a Red Hat Enterprise Linux (RHEL) 7 system. While RHEL Atomic Host
+is supported for running containerized OpenShift Enterprise services, the installer is
+<a href="../../install_config/install/prerequisites.html#software-prerequisites">provided
+by an RPM</a> not available by default in RHEL Atomic Host, and must therefore be
+run from a RHEL 7 system. The host initiating the installation does not need to
+be intended for inclusion in the OpenShift Enterprise cluster, but it can be.</p>
+</div>
+<div class="paragraph">
+<p>In addition to running <a href="#running-an-interactive-installation">interactive
+installations</a> from scratch, the <code>atomic-openshift-installer</code> command can also
+be run or re-run using a predefined installation configuration file. This file
+can be used with the installer to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>run an <a href="#running-an-unattended-installation">unattended installation</a>,</p>
+</li>
+<li>
+<p><a href="../../install_config/adding_hosts_to_existing_cluster.html#adding-nodes-or-reinstalling-quick">add nodes</a> to an existing cluster,</p>
+</li>
+<li>
+<p><a href="../../install_config/upgrading/index.html#install-config-upgrading-index">upgrade your cluster</a>, or</p>
+</li>
+<li>
+<p><a href="../../install_config/adding_hosts_to_existing_cluster.html#adding-nodes-or-reinstalling-quick">reinstall</a> the OpenShift Enterprise cluster
+completely.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can use the <a href="advanced_install.html#install-config-install-advanced-install">advanced installation</a>
+method for more complex environments.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-before-you-begin"><a class="anchor" href="#quick-before-you-begin"></a>Before You Begin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The installer allows you to install OpenShift Enterprise
+<a href="../../architecture/infrastructure_components/kubernetes_infrastructure.html#master">master</a>
+and
+<a href="../../architecture/infrastructure_components/kubernetes_infrastructure.html#node">node</a>
+components on a defined set of hosts.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>By default, any hosts you designate as masters during the installation process
+are automatically also configured as nodes so that the masters are configured as
+part of the
+<a href="../../architecture/additional_concepts/networking.html#openshift-sdn">OpenShift Enterprise
+SDN</a>. The node component on the masters, however, are marked unscheduable, which
+blocks pods from being scheduled on it. After the installation, you can
+<a href="../../admin_guide/manage_nodes.html#marking-nodes-as-unschedulable-or-schedulable">mark
+them schedulable</a> if you want.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Before installing OpenShift Enterprise, you must first
+<a href="../../install_config/install/prerequisites.html#install-config-install-prerequisites">satisfy the prerequisites</a>
+on your hosts, which includes verifying system and environment requirements and
+properly installing and configuring Docker. You must also be prepared to provide
+or validate the following information for each of your targeted hosts during the
+course of the installation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User name on the target host that should run the Ansible-based installation
+(can be root or non-root)</p>
+</li>
+<li>
+<p>Host name</p>
+</li>
+<li>
+<p>Whether to install components for master, node, or both</p>
+</li>
+<li>
+<p>Whether to use the RPM or containerized method</p>
+</li>
+<li>
+<p>Internal and external IP addresses</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you are interested in installing OpenShift Enterprise using the containerized method
+(optional for RHEL but required for RHEL Atomic Host), see
+<a href="../../install_config/install/rpm_vs_containerized.html#install-config-install-rpm-vs-containerized">RPM vs
+Containerized</a> to ensure that you understand the differences between these
+methods, then return to this topic to continue.</p>
+</div>
+<div class="paragraph">
+<p>After following the instructions in the
+<a href="../../install_config/install/prerequisites.html#install-config-install-prerequisites">Prerequisites</a> topic and
+deciding between the RPM and containerized methods, you can continue to running
+an <a href="#running-an-interactive-installation">interactive</a> or
+<a href="#running-an-unattended-installation">unattended</a> installation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running-an-interactive-installation"><a class="anchor" href="#running-an-interactive-installation"></a>Running an Interactive Installation</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ensure you have read through <a href="#quick-before-you-begin">Before You Begin</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can start the interactive installation by running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ atomic-openshift-installer install</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then follow the on-screen instructions to install a new OpenShift Enterprise cluster.</p>
+</div>
+<div class="paragraph">
+<p>After it has finished, ensure that you back up the
+<strong><em>~/.config/openshift/installer.cfg.yml</em></strong>
+<a href="#defining-an-installation-configuration-file">installation configuration
+file</a> that is created, as it is required if you later want to re-run the
+installation, add hosts to the cluster, or
+<a href="../../install_config/upgrading/index.html#install-config-upgrading-index">upgrade your cluster</a>. Then,
+<a href="#quick-verifying-the-installation">verify the installation</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="defining-an-installation-configuration-file"><a class="anchor" href="#defining-an-installation-configuration-file"></a>Defining an Installation Configuration File</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The installer can use a predefined installation configuration file, which
+contains information about your installation, individual hosts, and cluster.
+When running an <a href="#running-an-interactive-installation">interactive
+installation</a>, an installation configuration file based on your answers is
+created for you in <strong><em>~/.config/openshift/installer.cfg.yml</em></strong>. The file is
+created if you are instructed to exit the installation to manually modify the
+configuration or when the installation completes. You can also create the
+configuration file manually from scratch to perform an
+<a href="#running-an-unattended-installation">unattended installation</a>.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Installation Configuration File Specification</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">version</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v2 </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+<span style="color:#606">variant</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift-enterprise </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+<span style="color:#606">variant_version</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">3.2 </span></span><i class="conum" data-value="3"></i><b>(3)</b>
+<span style="color:#606">ansible_log_path</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/tmp/ansible.log </span></span><i class="conum" data-value="4"></i><b>(4)</b>
+<span style="color:#606">deployment</span>:
+  <span style="color:#606">ansible_ssh_user</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">root </span></span><i class="conum" data-value="5"></i><b>(5)</b>
+  <span style="color:#606">hosts</span>: <i class="conum" data-value="6"></i><b>(6)</b>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ip: 10.0.0.1 </span></span><i class="conum" data-value="7"></i><b>(7)</b>
+    <span style="color:#606">hostname</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master-private.example.com </span></span><i class="conum" data-value="7"></i><b>(7)</b>
+    <span style="color:#606">public_ip</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">24.222.0.1 </span></span><i class="conum" data-value="8"></i><b>(8)</b>
+    <span style="color:#606">public_hostname</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master.example.com </span></span><i class="conum" data-value="8"></i><b>(8)</b>
+    <span style="color:#606">roles</span>: <i class="conum" data-value="9"></i><b>(9)</b>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node</span></span>
+    <span style="color:#606">containerized</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true </span></span><i class="conum" data-value="10"></i><b>(10)</b>
+    <span style="color:#606">connect_to</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">24.222.0.1 </span></span><i class="conum" data-value="11"></i><b>(11)</b>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ip: 10.0.0.2</span></span>
+    <span style="color:#606">hostname</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node1-private.example.com</span></span>
+    <span style="color:#606">public_ip</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">24.222.0.2</span></span>
+    <span style="color:#606">public_hostname</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node1.example.com</span></span>
+    <span style="color:#606">node_labels</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{'region': 'infra'} </span></span><i class="conum" data-value="12"></i><b>(12)</b>
+    <span style="color:#606">roles</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node</span></span>
+    <span style="color:#606">connect_to</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10.0.0.2</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ip: 10.0.0.3</span></span>
+    <span style="color:#606">hostname</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node2-private.example.com</span></span>
+    <span style="color:#606">public_ip</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">24.222.0.3</span></span>
+    <span style="color:#606">public_hostname</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node2.example.com</span></span>
+    <span style="color:#606">roles</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node</span></span>
+    <span style="color:#606">connect_to</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10.0.0.3</span></span>
+  <span style="color:#606">roles</span>: <i class="conum" data-value="13"></i><b>(13)</b>
+    <span style="color:#606">master</span>:
+      <span style="color:#F00;background-color:#FAA">&lt;variable_name1&gt;</span>: <span style="color:#F00;background-color:#FAA">&quot;&lt;value1&gt;&quot; </span><i class="conum" data-value="14"></i><b>(14)</b>
+      <span style="color:#F00;background-color:#FAA">&lt;variable_name2&gt;</span>: <span style="color:#F00;background-color:#FAA">&quot;&lt;value2&gt;&quot;</span>
+    <span style="color:#606">node</span>:
+      <span style="color:#F00;background-color:#FAA">&lt;variable_name1&gt;</span>: <span style="color:#F00;background-color:#FAA">&quot;&lt;value1&gt;&quot; </span> <i class="conum" data-value="14"></i><b>(14)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The version of this installation configuration file. As of OpenShift Enterprise 3.3,
+the only valid version here is <code>v2</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The OpenShift Enterprise variant to install. For OSE, set this to
+<code>openshift-enterprise</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A valid version your selected variant: <code>3.2</code>, <code>3.1</code>, or <code>3.0</code>. If not specified,
+this defaults to the newest version for the specified variant.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Defines where the Ansible logs are stored. By default, this is the
+<strong><em>/tmp/ansible.log</em></strong> file.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Defines which user Ansible uses to SSH in to remote systems for gathering
+facts and for the installation. By default, this is the root user, but you can
+set it to any user that has <strong>sudo</strong> privileges.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Defines a list of the hosts onto which you want to install the OpenShift Enterprise
+master and node components.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Required. Allows the installer to connect to the system and gather facts
+before proceeding with the install.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Required for unattended installations. If these details are not specified,
+then this information is pulled from the facts gathered by the installer, and
+you are asked to confirm the details. If undefined for an unattended
+installation, the installation fails.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>Determines the type of services that are installed. Specified as a list.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>If set to <strong>true</strong>, containerized OpenShift Enterprise services are run on target master
+and node hosts instead of installed using RPM packages. If set to <strong>false</strong> or
+unset, the default RPM method is used. RHEL Atomic Host requires the
+containerized method, and is automatically selected for you based on the
+detection of the <strong><em>/run/ostree-booted</em></strong> file. See
+<a href="../../install_config/install/rpm_vs_containerized.html#install-config-install-rpm-vs-containerized">RPM vs
+Containerized</a> for more details.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="11"></i><b>11</b></td>
+<td>The IP address that Ansible attempts to connect to when installing,
+upgrading, or uninstalling the systems. If the configuration file was
+auto-generated, then this is the value you first enter for the host during that
+interactive install process.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="12"></i><b>12</b></td>
+<td>Node labels can optionally be set per-host.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="13"></i><b>13</b></td>
+<td>Defines a dictionary of roles across the deployment.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="14"></i><b>14</b></td>
+<td>Any ansible variables that should only be applied to hosts assigned a role can be defined.
+For examples, see <a href="../../install_config/install/advanced_install.html#configuring-ansible">Configuring Ansible</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running-an-unattended-installation"><a class="anchor" href="#running-an-unattended-installation"></a>Running an Unattended Installation</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ensure you have read through the <a href="#quick-before-you-begin">Before You Begin</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Unattended installations allow you to define your hosts and cluster
+configuration in an
+<a href="#defining-an-installation-configuration-file">installation configuration
+file</a> before running the installer so that you do not have to go through all of
+the <a href="#running-an-interactive-installation">interactive installation</a>
+questions and answers. It also allows you to resume an interactive installation
+you may have left unfinished, and quickly get back to where you left off.</p>
+</div>
+<div class="paragraph">
+<p>To run an unattended installation, first define an
+<a href="#defining-an-installation-configuration-file">installation configuration
+file</a> at <strong><em>~/.config/openshift/installer.cfg.yml</em></strong>. Then, run the installer with
+the <code>-u</code> flag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ atomic-openshift-installer -u install</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default in interactive or unattended mode, the installer uses the
+configuration file located at <strong><em>~/.config/openshift/installer.cfg.yml</em></strong> if the
+file exists. If it does not exist, attempting to start an unattended
+installation fails.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can specify a different location for the configuration file
+using the <code>-c</code> option, but doing so will require you to specify the file
+location every time you run the installation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ atomic-openshift-installer -u -c &lt;/path/to/file&gt; install</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After the unattended installation finishes, ensure that you back up the
+<strong><em>~/.config/openshift/installer.cfg.yml</em></strong> file that was used, as it is required
+if you later want to re-run the installation, add hosts to the cluster, or
+<a href="../../install_config/upgrading/index.html#install-config-upgrading-index">upgrade your cluster</a>. Then,
+<a href="#quick-verifying-the-installation">verify the installation</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-verifying-the-installation"><a class="anchor" href="#quick-verifying-the-installation"></a>Verifying the Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After the installation completes, verify that the master is started and nodes
+are registered and reporting in <strong>Ready</strong> status. <strong>On the master host</strong>, run the
+following as root:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># oc get nodes
+
+NAME                      LABELS                                                                     STATUS
+master.example.com        kubernetes.io/hostname=master.example.com,region=infra,zone=default        Ready,SchedulingDisabled
+node1.example.com         kubernetes.io/hostname=node1.example.com,region=primary,zone=east          Ready
+node2.example.com         kubernetes.io/hostname=node2.example.com,region=primary,zone=west          Ready</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, see <a href="#quick-install-whats-next">What&#8217;s Next</a> for the next steps on
+configuring your OpenShift Enterprise cluster.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="uninstalling-quick"><a class="anchor" href="#uninstalling-quick"></a>Uninstalling OpenShift Enterprise</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can uninstall OpenShift Enterprise on all hosts in your cluster using the
+installer by running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ atomic-openshift-installer uninstall</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the
+<a href="../install/advanced_install.html#uninstalling-advanced">advanced
+installation method</a> for more options.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-install-whats-next"><a class="anchor" href="#quick-install-whats-next"></a>What&#8217;s Next?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you have a working OpenShift Enterprise instance, you can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../install_config/configuring_authentication.html#install-config-configuring-authentication">Configure
+authentication</a>; by default, authentication is set to
+<a href="../../install_config/configuring_authentication.html#DenyAllPasswordIdentityProvider">Deny
+All</a>.</p>
+</li>
+<li>
+<p>Configure the automatically-deployed <a href="docker_registry.html#install-config-install-docker-registry">integrated Docker registry</a>.</p>
+</li>
+<li>
+<p>Configure the automatically-deployed <a href="deploy_router.html#install-config-install-deploy-router">router</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-openshift">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <a href="https://www.redhat.com/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="../../../master/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

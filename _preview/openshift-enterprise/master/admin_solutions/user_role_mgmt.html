@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Enterprise Branch Build | Administrator Solutions | User and Role Management</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../master/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../master/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../master/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../master/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://assets.openshift.net/app/assets/site/tracking.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"></a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="hidden-xs dropdown"> <a href="#" class="dropdown-toggle nav-log-in" data-toggle="dropdown"> My Account<span class="caret"></span> </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://openshift.redhat.com/app/console">OpenShift Web Console</a></li>
+          <li><a href="https://console.preview.openshift.com/">(Next Gen) Web Console</a></li>
+          <li><a href="https://hub.openshift.com/users/auth/github">OpenShift Hub</a></li>
+        </ul>
+      </li>
+      <li class="hidden-xs hidden-sm"><a class="nav-sign-up" href="https://www.openshift.com/devpreview/register.html">Sign up for Free</a></li>
+    </ul>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../welcome/index.html">OpenShift Enterprise Branch Build</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../admin_solutions/index.html">Administrator Solutions</a>
+      </li>
+      
+      <li class="hidden-xs active">
+        User and Role Management
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../welcome/index.html">Welcome</a></li>
+            <li><a class="" href="../welcome/revhistory_all.html">All Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Release Notes
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../release_notes/index.html">Overview</a></li>
+            <li><a class="" href="../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
+            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../release_notes/revhistory_release_notes.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../getting_started/administrators.html">Setting Up a Cluster</a></li>
+            <li><a class="" href="../getting_started/revhistory_getting_started.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../architecture/revhistory_architecture.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-right"></span>Installation and Configuration
+      </a>
+      <ul id="topicGroup4" class="collapse  list-unstyled">
+            <li><a class="" href="../install_config/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+              </a>
+              <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+
+                  <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/advanced_install.html">Advanced Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
+
+                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+              </a>
+              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/downgrade.html">Downgrading</a></li>
+            <li><a class="" href="../install_config/master_node_configuration.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+            <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+            <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
+                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/configuring_sdn.html">Configuring the SDN</a></li>
+            <li><a class="" href="../install_config/configuring_aws.html">Configuring for AWS</a></li>
+            <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
+            <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
+                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              </a>
+              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_nfs.html">Using NFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_glusterfs.html">Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_cinder.html">Using OpenStack Cinder</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_ceph_rbd.html">Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_aws.html">Using AWS Elastic Block Store</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_gce.html">Using GCE Persistent Disk</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_iscsi.html">Using iSCSI</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_fibre_channel.html">Using Fibre Channel</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/dynamically_provisioning_pvs.html">Dynamic Provisioning</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/pod_security_context.html">Volume Security</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/selector_label_binding.html">Selector-Label Volume Binding</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
+                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              </a>
+              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/shared_storage.html">Sharing an NFS PV Across Two Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/ceph_example.html">Complete Example Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_example.html">Complete Example Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/privileged_pod_storage.html">Mounting Volumes To Privileged Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_backed_registry.html">Backing Docker Registry with GlusterFS Storage</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/binding_pv_by_label.html">Binding Persistent Volumes by Label</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/http_proxies.html">Working with HTTP Proxies</a></li>
+            <li><a class="" href="../install_config/build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../install_config/configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
+            <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
+            <li><a class="" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
+            <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+            <li><a class="" href="../install_config/revhistory_install_config.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-down"></span>Administrator Solutions
+      </a>
+      <ul id="topicGroup5" class="collapse in list-unstyled">
+            <li><a class="" href="../admin_solutions/index.html">Overview</a></li>
+            <li><a class="" href="../admin_solutions/master_node_config.html">Master and Node Configuration</a></li>
+            <li><a class=" active" href="../admin_solutions/user_role_mgmt.html">User and Role Management</a></li>
+            <li><a class="" href="../admin_solutions/authentication.html">Authentication</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
+            <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
+            <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../admin_guide/scoped_tokens.html">Scoped Tokens</a></li>
+            <li><a class="" href="../admin_guide/monitoring_images.html">Monitoring Images</a></li>
+            <li><a class="" href="../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class="" href="../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+            <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
+            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
+            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
+            <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
+            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
+            <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
+            <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
+            <li><a class="" href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../admin_guide/sdn_troubleshooting.html">Troubleshooting Networking</a></li>
+            <li><a class="" href="../admin_guide/revhistory_admin_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+            <li><a class="" href="../cli_reference/revhistory_cli_reference.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li><a class="" href="../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-5">
+                <span id="sgSpan-8-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-8-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-6">
+                <span id="sgSpan-8-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-8-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/revhistory_dev_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li><a class="" href="../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../creating_images/custom.html">Custom Builder</a></li>
+            <li><a class="" href="../creating_images/revhistory_creating_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup10">
+        <span id="tgSpan10" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup10" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-0">
+                <span id="sgSpan-10-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-10-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/python.html">Python</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-1">
+                <span id="sgSpan-10-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-10-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-2">
+                <span id="sgSpan-10-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-10-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-3">
+                <span id="sgSpan-10-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-10-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-4">
+                <span id="sgSpan-10-4" class="fa fa-caret-right"></span>&nbsp;xPaaS Middleware Images
+              </a>
+              <ul id="topicSubGroup-10-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/xpaas_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../using_images/revhistory_using_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup11">
+        <span id="tgSpan11" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup11" class="collapse  list-unstyled">
+            <li><a class="" href="../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+            <li><a class="" href="../rest_api/revhistory_rest_api.html">Revision History</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>User and Role Management</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#limiting-and-monitoring-users-and-projects">Limiting and Monitoring Users and Projects</a>
+<ul class="sectlevel2">
+<li><a href="#setting-limits-users-projects">Setting Limits for Users and Projects</a></li>
+<li><a href="#limit-number-projects">Limiting the Number of Projects a User Can Have</a></li>
+<li><a href="#control-monitor-resources">Controlling and Monitoring Resource Usage</a></li>
+</ul>
+</li>
+<li><a href="#determine-default-user-roles">Determining Which Roles Users Get by Default</a>
+<ul class="sectlevel2">
+<li><a href="#leveraging-default-groups">Leveraging Default Groups</a></li>
+<li><a href="#view-roles-users-project">Viewing Roles and Users for a Project</a></li>
+<li><a href="#view-roles-users-cluster">Viewing Roles and Users for the Cluster</a></li>
+</ul>
+</li>
+<li><a href="#control-user-roles">Controlling User Permissions with Roles</a>
+<ul class="sectlevel2">
+<li><a href="#adding-a-role-to-a-user">Adding a Role to a User</a></li>
+<li><a href="#removing-a-role-from-a-user">Removing a Role from a User</a></li>
+<li><a href="#adding-a-cluster-role-to-a-user-for-all-projects">Adding a Cluster Role to a User for All Projects</a></li>
+<li><a href="#removing-a-cluster-role-from-a-user-for-all-projects">Removing a Cluster Role from a User for All Projects</a></li>
+<li><a href="#adding-a-role-to-a-group">Adding a Role to a Group</a></li>
+<li><a href="#removing-a-role-from-a-group">Removing a Role from a Group</a></li>
+<li><a href="#adding-a-cluster-role-to-a-group-for-all-projects">Adding a Cluster Role to a Group for All Projects</a></li>
+<li><a href="#removing-a-cluster-role-from-a-group-for-all-projects">Removing a Cluster Role from a Group for All Projects</a></li>
+</ul>
+</li>
+<li><a href="#share-templates-cluster">Sharing Templates for Use in Projects Across the Cluster</a></li>
+<li><a href="#create-cluster-admin">How to Create a Cluster Administrator User</a>
+<ul class="sectlevel2">
+<li><a href="#create-an-administrator-within-a-project">Create an Administrator Within a Project</a></li>
+<li><a href="#creating-a-cluster-administrator">Creating a Cluster Administrator</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As an OpenShift cluster administrator, you can manage users and roles, as well
+as the projects, templates, and available resources they manage themselves. For
+now, this topic focuses on common operations a cluster administrator needs to
+perform. You can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../admin_solutions/user_role_mgmt.html#setting-limits-users-projects">Place quotas and limits on projects</a>,
+enabling you to control pod and container limits, object counts, and compute
+resources.</p>
+</li>
+<li>
+<p><a href="../admin_solutions/user_role_mgmt.html#limit-number-projects">Limit the number of projects a user can have</a>.</p>
+</li>
+<li>
+<p><a href="../admin_solutions/user_role_mgmt.html#control-monitor-resources">Monitor resource usage</a>,
+enabling you to check the amount of used resources, such as CPU usage.</p>
+</li>
+<li>
+<p><a href="../admin_solutions/user_role_mgmt.html#determine-default-user-roles">Determine which roles users get by default</a>.</p>
+</li>
+<li>
+<p><a href="../admin_solutions/user_role_mgmt.html#control-user-roles">Apply roles to users and service accounts</a>,
+enabling you to control what they are able to do in OpenShift projects and in
+the cluster.</p>
+</li>
+<li>
+<p><a href="../admin_solutions/user_role_mgmt.html#share-templates-cluster">Share templates with all projects in the cluster</a>.</p>
+</li>
+<li>
+<p><a href="../admin_solutions/user_role_mgmt.html#create-cluster-admin">Create other cluster administrators</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="limiting-and-monitoring-users-and-projects"><a class="anchor" href="#limiting-and-monitoring-users-and-projects"></a>Limiting and Monitoring Users and Projects</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="setting-limits-users-projects"><a class="anchor" href="#setting-limits-users-projects"></a>Setting Limits for Users and Projects</h3>
+<div class="paragraph">
+<p><strong>How can I create limits for users and projects?</strong></p>
+</div>
+<div class="paragraph">
+<p>You can place limits within your OpenShift cluster using <a href="../admin_guide/quota.html#admin-guide-quota">ResourceQuotas</a>
+and
+<a href="../admin_guide/limits.html#admin-guide-limits">LimitRanges</a>,
+These quotas and limits allow you to control pod and container limits, object
+counts, and compute resources. Currently, these limits and quotas only apply to
+projects and not to users. However, you can make a quota-like
+<a href="../admin_solutions/user_role_mgmt.html#limit-number-projects">limit on how many project requests a user can make</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Use Case: I want to create a quota in my "awesomeproject", so that there is a maximum of only 10 pods that can be created in the project.</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a <strong><em>resource-quota.yaml</em></strong> file with the following contents:</p>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-resources
+spec:
+  hard:
+    pods: "10"</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the quota using the file you just wrote to apply it to the "awesomeproject":</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc create -f resource-quota.yaml -n awesomeproject</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After the quota has been in effect for a little while, you can view the usage statistics for the hard limit set on pods.</p>
+</div>
+</li>
+<li>
+<p>If required, list the quotas defined in the project to see the names of all defined quotas:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>$ oc get quota -n awesomeproject
+NAME                AGE
+resource-quota      39m</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Describe the resource quota for which you want statistics:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>$ oc describe quota resource-quota -n awesomeproject
+Name:			resource-quota
+Namespace:		awesomeproject
+Resource		Used	Hard
+--------		----	----
+pods     		3	10</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Optionally, you can
+<a href="../admin_guide/quota.html#configuring-quota-sync-period">configure the quota synchronization period</a>, which controls how long to wait before restoring quota usage after resources are deleted.</p>
+</li>
+<li>
+<p>If you want to remove an active quota to no longer enforce the limits of a project:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc delete quota &lt;quota_name&gt;</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>The use case above is just a basic example. Below is the same procedure, but with references to all the available options:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To create project limits or quotas, you must first write a .yaml file that describes the resource that you want to restrict:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This <strong><em>LimitRange</em></strong> example explains all the
+<a href="../admin_guide/limits.html#container-limits">container limits</a> and
+<a href="../admin_guide/limits.html#pod-limits">pod limits</a> that you can place within
+your project:</p>
+<div class="exampleblock">
+<div class="title">Example 1. Core Limit Range Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">LimitRange</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">core-resource-limits</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">limits</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: &quot;Pod&quot;</span></span>
+      <span style="color:#606">max</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1Gi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+      <span style="color:#606">min</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">200m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">6Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: &quot;Container&quot;</span></span>
+      <span style="color:#606">max</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="6"></i><b>(6)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1Gi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="7"></i><b>(7)</b>
+      <span style="color:#606">min</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">100m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="8"></i><b>(8)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="9"></i><b>(9)</b>
+      <span style="color:#606">default</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">300m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="10"></i><b>(10)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">200Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="11"></i><b>(11)</b>
+      <span style="color:#606">defaultRequest</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">200m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="12"></i><b>(12)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">100Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="13"></i><b>(13)</b>
+      <span style="color:#606">maxLimitRequestRatio</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="14"></i><b>(14)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The name of the limit range document.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The maximum amount of CPU that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The maximum amount of memory that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The minimum amount of CPU that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The minimum amount of memory that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The maximum amount of CPU that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>The maximum amount of memory that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>The minimum amount of CPU that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>The minimum amount of memory that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>The default amount of CPU that a container will be limited to use if not
+specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="11"></i><b>11</b></td>
+<td>The default amount of memory that a container will be limited to use if not specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="12"></i><b>12</b></td>
+<td>The default amount of CPU that a container will request to use if not specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="13"></i><b>13</b></td>
+<td>The default amount of memory that a container will request to use if not specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="14"></i><b>14</b></td>
+<td>The maximum amount of CPU burst that a container can make as a ratio of its limit over request.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. OpenShift Enterprise Limit Range Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">LimitRange</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">openshift-resource-limits</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">limits</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: openshift.io/Image</span></span>
+      <span style="color:#606">max</span>:
+        <span style="color:#606">storage</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1Gi </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: openshift.io/ImageStream</span></span>
+      <span style="color:#606">max</span>:
+        <span style="color:#606">openshift.io/image-tags</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">20 </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+        <span style="color:#606">openshift.io/images</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">30 </span></span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The maximum size of an image that can be pushed to an internal registry.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The maximum number of unique image tags per image stream&#8217;s spec.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The maximum number of unique image references per image stream&#8217;s status.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Both core and OpenShift Enterprise resources can be specified in just one limit range
+object. They are separated here into two examples for clarity.</p>
+</div>
+<div class="paragraph">
+<p>+
+* These <strong><em>ResourceQuota</em></strong> examples explain all the
+<a href="../admin_guide/quota.html#sample-resource-quota-definitions">Object Counts</a>
+and
+<a href="../admin_guide/quota.html#sample-resource-quota-definitions">Compute Resources</a> that you can place within your project:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. <strong><em>core-object-counts.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ResourceQuota</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">core-object-counts</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">hard</span>:
+    <span style="color:#606">configmaps</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">persistentvolumeclaims</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#606">replicationcontrollers</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">20</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span style="color:#606">secrets</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+    <span style="color:#606">services</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of <code><strong>ConfigMap</strong></code> objects that can exist in the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The total number of persistent volume claims (PVCs) that can exist in the
+project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The total number of replication controllers that can exist in the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The total number of secrets that can exist in the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The total number of services that can exist in the project.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. <strong><em>openshift-object-counts.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ResourceQuota</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift-object-counts</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">hard</span>:
+    <span style="color:#606">openshift.io/imagestreams</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of image streams that can exist in the project.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. <strong><em>compute-resources.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ResourceQuota</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">compute-resources</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">hard</span>:
+    <span style="color:#606">pods</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">requests.cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#606">requests.memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1Gi </span></span><i class="conum" data-value="3"></i><b>(3)</b>
+    <span style="color:#606">limits.cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+    <span style="color:#606">limits.memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">2Gi </span></span> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of pods in a non-terminal state that can exist in the
+project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Across all pods in a non-terminal state, the sum of CPU requests cannot
+exceed 1 core.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Across all pods in a non-terminal state, the sum of memory requests cannot
+exceed 1Gi.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Across all pods in a non-terminal state, the sum of CPU limits cannot exceed
+2 cores.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Across all pods in a non-terminal state, the sum of memory limits cannot
+exceed 2Gi.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+. Once you have defined your limit range object file, you can create a limit range:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc create -f &lt;limit_range_file&gt; -n &lt;project_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+The <code>-n</code> flag is optional. Use it to create the limit in a different project
+than the one you currently are in.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limit-number-projects"><a class="anchor" href="#limit-number-projects"></a>Limiting the Number of Projects a User Can Have</h3>
+<div class="paragraph">
+<p>You can
+<a href="../admin_guide/managing_projects.html#limit-projects-per-user">limit the number of projects</a> that a user may request by categorizing users with label selectors with the <code>oc label</code> command. A label selector consists of the label name and the label value:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>label=value</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once users are labeled, you must
+<a href="../admin_guide/managing_projects.html#modifying-the-template-for-new-projects">modify the default project template</a> in the <strong><em>master-config.yaml</em></strong> file
+<a href="../architecture/additional_concepts/admission_controllers.html#architecture-additional-concepts-admission-controllers">using an admission control plug-in</a>. This allows some users to create more projects than others, and you can define different values (or levels) for each label.</p>
+</div>
+<div class="paragraph">
+<p><strong>Use Case: You want to define 3 different levels for your users which define how
+*many projects they can request.</strong></p>
+</div>
+<div class="paragraph">
+<p>The label is named <code>level</code>, and the possible values are  <code>bronze</code>, <code>silver</code>,
+<code>gold</code>, and <code>platinum</code>. Platinum users do not have a maximum number of project
+requests, gold users can request up to 10 projects, silver users up to 7
+projects, bronze users up to 5 projects, and any users without a label are by
+default only allowed 2 projects.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Apply label selectors to users. For example, to apply the <code>level</code> label selector with a value of <code>bronze</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc label user &lt;user_name&gt; level=bronze</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Repeat this step for all bronze users, and then for the other levels.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Each user can only have one value per label. For example, a user cannot be both
+<code>gold</code> and <code>silver</code> for the level label. However, when configuring the
+<strong><em>master-config.yaml</em></strong> file, you could select users that have any value for a
+label with a wildcard; for example, <code>level=*</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Optionally, verify the previous step by viewing the list of labeled users for each value:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc get users -l level=bronze
+$ oc get users -l level=silver
+$ oc get users -l level=gold
+$ oc get users -l level=platinum</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you need to remove a label from a user to make a correction:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc label user &lt;user_name&gt; level-</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Modify the <strong><em>master-config.yaml</em></strong> file to define project limits for this label with the numbers stated in this use case. Find the <code>admissionConfig</code> line and create the configuration below it:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">admissionConfig</span>:
+  <span style="color:#606">pluginConfig</span>:
+    <span style="color:#606">ProjectRequestLimit</span>:
+      <span style="color:#606">configuration</span>:
+        <span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+        <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ProjectRequestLimitConfig</span></span>
+        <span style="color:#606">limits</span>:
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">selector:</span><span style="color:#D20">
+            level: platinum</span></span>
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">selector:</span><span style="color:#D20">
+            level: gold</span></span>
+          <span style="color:#606">maxProjects</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10</span></span>
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">selector:</span><span style="color:#D20">
+            level: silver</span></span>
+          <span style="color:#606">maxProjects</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">7</span></span>
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">selector:</span><span style="color:#D20">
+            level: bronze</span></span>
+          <span style="color:#606">maxProjects</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5</span></span>
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">maxProjects: 2</span></span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Restart the master host for the changes to take effect.</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ systemctl restart atomic-openshift-master</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you use a custom project template to limit the number of projects per user,
+then  you must ensure that you keep the modifications by including the
+following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ProjectRequester = "openshift.io/requester"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ownership is established using the <code><strong>openshift.io/requester</strong></code> annotation, so
+your custom project template must have the same annotation.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="control-monitor-resources"><a class="anchor" href="#control-monitor-resources"></a>Controlling and Monitoring Resource Usage</h3>
+<div class="paragraph">
+<p>If you configure a project to have ResourceQuota restrictions, then the amount
+of the defined quota currently being used is stored on the ResourceQuota object
+itself. In that case, you could check the amount of used resources, such as CPU
+usage:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc get quota</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, this would not tell you what is actually being consumed.
+To determine what is actually being consumed, use the <code>oc describe</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc describe quota &lt;quota-name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can set up
+<a href="../install_config/cluster_metrics.html#install-config-cluster-metrics">cluster metrics</a> for more detailed statistics.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="determine-default-user-roles"><a class="anchor" href="#determine-default-user-roles"></a>Determining Which Roles Users Get by Default</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When a user first logs in, there is a default set of permissions that is
+applied to that user. The scope of permissions that a user can have is
+controlled by the
+<a href="../architecture/additional_concepts/authorization.html#roles">various types</a>
+of
+<a href="../admin_guide/manage_authorization_policy.html#admin-guide-manage-authorization-policy">roles within OpenShift</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ClusterRoles</code></p>
+</li>
+<li>
+<p><code>ClusterRoleBindings</code></p>
+</li>
+<li>
+<p><code>Roles</code> (project-scoped)</p>
+</li>
+<li>
+<p><code>RoleBindings</code> (project-scoped)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You may want to modify the default set of permissions. In order to do this, it&#8217;s important to understand the default groups and roles assigned, and to be aware of the roles and users bound to
+<a href="../admin_solutions/user_role_mgmt.html#view-roles-users-project">each project</a> or
+<a href="../admin_solutions/user_role_mgmt.html#view-roles-users-cluster">the entire cluster</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="leveraging-default-groups"><a class="anchor" href="#leveraging-default-groups"></a>Leveraging Default Groups</h3>
+<div class="paragraph">
+<p>There are special groups that are assigned to users. You can target users with these groups, but you cannot modify them. These special groups are as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Group</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>system:authenticated</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is assigned to all users who are identifiable to the API. Everyone who is not <code>system:anonymous</code> (the user) is in this group.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>system:authenticated:oauth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is assigned to all users who have identified using an oauth token issued by the embedded oauth server. This is not applied to service accounts (they use service account tokens), or certificate users.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>system:unauthenticated</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is assigned to users who have not presented credentials. Invalid credentials are rejected with a 401 error, so this is specifically users who did not try to authenticate at all.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You may find it helpful to target users with the special groups listed above.
+For example, you could share a template with all users by granting
+<code>system:authenticated</code> access to the template.</p>
+</div>
+<div class="paragraph">
+<p>The "default" permissions of users are defined by which roles are bound to the
+<code>system:authenticated</code> and <code>sytem:authenticated:oauth</code> groups. As mentioned
+above, you are not able to modify membership to these groups, but you can
+<a href="../admin_guide/manage_authorization_policy.html#managing-role-bindings">change the roles bound to these groups</a>.
+For example, to bind a role to the <code>system:authenticated</code> group for all projects
+in the cluster:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy add-cluster-role-to-group &lt;role&gt; system:authenticated</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Currently, by default the <code>system:authenticated</code> and <code>sytem:authenticated:oauth</code>
+groups receive the following roles:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Role</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>shared-resource-viewer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For the <code>openshift</code> project. Allows users to see templates and pull images.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basic-user</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For the the entire cluster. Allows users to see their own account, check for information about requesting projects, see which projects they can view, and check their own permissions.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>self-provisioner</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows users to request projects.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>system:oauth-token-deleter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows users to delete any oauth token for which they know the details.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cluster-status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows users to see which APIs are enabled, and basic API server information such as versions.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>system:webhook</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows users to hit the webhooks for a build if they have enough additional information.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="view-roles-users-project"><a class="anchor" href="#view-roles-users-project"></a>Viewing Roles and Users for a Project</h3>
+<div class="paragraph">
+<p>To view a list of all users that are bound to the project and their roles:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>$ oc get rolebindings
+NAME                    ROLE                    USERS     GROUPS                                 SERVICE ACCOUNTS   SUBJECTS
+system:image-pullers    /system:image-puller              system:serviceaccounts:asdfasdf4asdf
+admin                   /admin                  jsmith
+system:deployers        /system:deployer                                                         deployer
+system:image-builders   /system:image-builder                                                    builder</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view-roles-users-cluster"><a class="anchor" href="#view-roles-users-cluster"></a>Viewing Roles and Users for the Cluster</h3>
+<div class="paragraph">
+<p>To view a list of users and what they have access to across the entire cluster:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>$ oc get clusterrolebindings
+NAME                                            ROLE                                       USERS           GROUPS                                         SERVICE ACCOUNTS                                   SUBJECTS
+system:job-controller                           /system:job-controller                                                                                    openshift-infra/job-controller
+system:build-controller                         /system:build-controller                                                                                  openshift-infra/build-controller
+system:node-admins                              /system:node-admin                         system:master   system:node-admins
+registry-registry-role                          /system:registry                                                                                          default/registry
+system:pv-provisioner-controller                /system:pv-provisioner-controller                                                                         openshift-infra/pv-provisioner-controller
+basic-users                                     /basic-user                                                system:authenticated
+system:namespace-controller                     /system:namespace-controller                                                                              openshift-infra/namespace-controller
+system:discovery-binding                        /system:discovery                                          system:authenticated, system:unauthenticated
+system:build-strategy-custom-binding            /system:build-strategy-custom                              system:authenticated
+cluster-status-binding                          /cluster-status                                            system:authenticated, system:unauthenticated
+system:webhooks                                 /system:webhook                                            system:authenticated, system:unauthenticated
+system:gc-controller                            /system:gc-controller                                                                                     openshift-infra/gc-controller
+cluster-readers                                 /cluster-reader                                            system:cluster-readers
+system:pv-recycler-controller                   /system:pv-recycler-controller                                                                            openshift-infra/pv-recycler-controller
+system:daemonset-controller                     /system:daemonset-controller                                                                              openshift-infra/daemonset-controller
+cluster-admins                                  /cluster-admin                             system:admin    system:cluster-admins
+system:hpa-controller                           /system:hpa-controller                                                                                    openshift-infra/hpa-controller
+system:build-strategy-source-binding            /system:build-strategy-source                              system:authenticated
+system:replication-controller                   /system:replication-controller                                                                            openshift-infra/replication-controller
+system:sdn-readers                              /system:sdn-reader                                         system:nodes
+system:build-strategy-docker-binding            /system:build-strategy-docker                              system:authenticated
+system:routers                                  /system:router                                             system:routers
+system:oauth-token-deleters                     /system:oauth-token-deleter                                system:authenticated, system:unauthenticated
+system:node-proxiers                            /system:node-proxier                                       system:nodes
+system:nodes                                    /system:node                                               system:nodes
+self-provisioners                               /self-provisioner                                          system:authenticated:oauth
+system:service-serving-cert-controller          /system:service-serving-cert-controller                                                                   openshift-infra/service-serving-cert-controller
+system:registrys                                /system:registry                                           system:registries
+system:pv-binder-controller                     /system:pv-binder-controller                                                                              openshift-infra/pv-binder-controller
+system:build-strategy-jenkinspipeline-binding   /system:build-strategy-jenkinspipeline                     system:authenticated
+system:deployment-controller                    /system:deployment-controller                                                                             openshift-infra/deployment-controller
+system:masters                                  /system:master                                             system:masters
+system:service-load-balancer-controller         /system:service-load-balancer-controller                                                                  openshift-infra/service-load-balancer-controller</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>These commands can generate huge lists, so you may want to pipe the output into a text file that you can search through more easily.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="control-user-roles"><a class="anchor" href="#control-user-roles"></a>Controlling User Permissions with Roles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can define
+<a href="../admin_guide/manage_authorization_policy.html#admin-guide-manage-authorization-policy">roles</a> (or permissions)
+for a user before their initial log in so they can start working immediately.
+You can assign many different types of roles to users such as admin,
+basic-user, self-provisioner, and cluster-reader.</p>
+</div>
+<div class="paragraph">
+<p>For a complete list of all available roles:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following section includes examples of some common operations related to
+adding (binding) and removing roles from users and groups. For a complete list
+of available local policy operations, see
+<a href="../admin_guide/manage_authorization_policy.html#managing-role-bindings">Managing Role Bindings</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="adding-a-role-to-a-user"><a class="anchor" href="#adding-a-role-to-a-user"></a>Adding a Role to a User</h3>
+<div class="paragraph">
+<p>To bind a role to a user for the current project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy add-role-to-user &lt;role&gt; &lt;user_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can specify a project with the <code>-n</code> flag.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removing-a-role-from-a-user"><a class="anchor" href="#removing-a-role-from-a-user"></a>Removing a Role from a User</h3>
+<div class="paragraph">
+<p>To remove a role from a user for the current project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy remove-role-from-user &lt;role&gt; &lt;user_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can specify a project with the <code>-n</code> flag.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-cluster-role-to-a-user-for-all-projects"><a class="anchor" href="#adding-a-cluster-role-to-a-user-for-all-projects"></a>Adding a Cluster Role to a User for All Projects</h3>
+<div class="paragraph">
+<p>To bind a
+<a href="../architecture/additional_concepts/authorization.html#cluster-policy-and-local-policy">cluster role</a>
+to a user for all projects:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy add-cluster-role-to-user &lt;role&gt; &lt;user_name&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removing-a-cluster-role-from-a-user-for-all-projects"><a class="anchor" href="#removing-a-cluster-role-from-a-user-for-all-projects"></a>Removing a Cluster Role from a User for All Projects</h3>
+<div class="paragraph">
+<p>To remove a
+<a href="../architecture/additional_concepts/authorization.html#cluster-policy-and-local-policy">cluster role</a>
+from a user for all projects:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy remove-cluster-role-from-user &lt;role&gt; &lt;user_name&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-role-to-a-group"><a class="anchor" href="#adding-a-role-to-a-group"></a>Adding a Role to a Group</h3>
+<div class="paragraph">
+<p>To bind a role to a specified group in the current project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy add-role-to-group &lt;role&gt; &lt;groupname&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can specify a project with the <code>-n</code> flag.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removing-a-role-from-a-group"><a class="anchor" href="#removing-a-role-from-a-group"></a>Removing a Role from a Group</h3>
+<div class="paragraph">
+<p>To remove a role from a specified group in the current project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy remove-role-from-group &lt;role&gt; &lt;groupname&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can specify a project with the <code>-n</code> flag.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-cluster-role-to-a-group-for-all-projects"><a class="anchor" href="#adding-a-cluster-role-to-a-group-for-all-projects"></a>Adding a Cluster Role to a Group for All Projects</h3>
+<div class="paragraph">
+<p>To bind a role to a specified group for all projects in the cluster:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy add-cluster-role-to-group &lt;role&gt; &lt;groupname&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removing-a-cluster-role-from-a-group-for-all-projects"><a class="anchor" href="#removing-a-cluster-role-from-a-group-for-all-projects"></a>Removing a Cluster Role from a Group for All Projects</h3>
+<div class="paragraph">
+<p>To remove a role from a specified group for all projects in the cluster:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy remove-cluster-role-from-group &lt;role&gt; &lt;groupname&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="share-templates-cluster"><a class="anchor" href="#share-templates-cluster"></a>Sharing Templates for Use in Projects Across the Cluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Templates are project-scoped resources, so you cannot create them to be readily
+available at a cluster level. The easiest way to share templates across the entire
+cluster is with the <code>openshift</code> project, which by default is already set up to
+share templates. The templates can be annotated, and are displayed in the web
+console where users can access them. Users have <code>get</code> access only to the
+templates and images in this project, via the <code>shared-resource-viewer</code> role.</p>
+</div>
+<div class="paragraph">
+<p>The <code>shared-resource-viewer</code> role exists to allow templates to be shared across
+project boundaries. Users with this role have the ability to see all existing
+templates and pull images from that project. However, the user still needs to
+know which project to look in, because they will not be able to view the project
+in their <code>oc get projects</code> list.</p>
+</div>
+<div class="paragraph">
+<p>By default, this role is granted to the <code>system:authenticated</code> group in the
+<code>openshift</code> project. This allows users to process the
+specified template from the <code>openshift</code> project and create the items in the
+current project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc process openshift//&lt;template-name&gt; | oc create -f -</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also add the registry viewer role to a user, allowing them to view and
+pull images from a project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc policy add-role-to-user registry-viewer &lt;user-name&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-cluster-admin"><a class="anchor" href="#create-cluster-admin"></a>How to Create a Cluster Administrator User</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cluster administrator is a very powerful role, which has ultimate control
+within the cluster, including the power to destroy that cluster. You can grant
+this role to other users if they absolutely need to have ultimate control.
+However, you may first want to examine the other available roles if you do not
+want to create such a powerful user. For example, <code>admin</code> is a constrained
+role that has the power to do many things inside of their project, but cannot
+affect (or destroy) the entire cluster.</p>
+</div>
+<div class="sect2">
+<h3 id="create-an-administrator-within-a-project"><a class="anchor" href="#create-an-administrator-within-a-project"></a>Create an Administrator Within a Project</h3>
+<div class="paragraph">
+<p>To create a basic administrator role within a project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy add-role-to-user admin &lt;user_name&gt; -n &lt;project_name&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-a-cluster-administrator"><a class="anchor" href="#creating-a-cluster-administrator"></a>Creating a Cluster Administrator</h3>
+<div class="paragraph">
+<p>To create a cluster administrator with ultimate control over the cluster:</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Be very careful when granting cluster administrator role to a user. Ensure that
+the user truly needs that level of power within the cluster. When OpenShift is
+first installed, a certificate based user is created and the credentials are
+saved in <strong><em>admin.kubeconfig</em></strong>. This cluster administrator user can do absolutely
+anything to any resource on the entire cluster, which can result in destruction
+if not used carefully.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oadm policy add-cluster-role-to-user cluster-admin &lt;user_name&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-openshift">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <a href="https://www.redhat.com/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="../../master/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

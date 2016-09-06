@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Enterprise Branch Build | Installation and Configuration | Configuring Persistent Storage | Using NFS</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../../master/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../../master/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../../master/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../../master/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://assets.openshift.net/app/assets/site/tracking.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"></a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="hidden-xs dropdown"> <a href="#" class="dropdown-toggle nav-log-in" data-toggle="dropdown"> My Account<span class="caret"></span> </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://openshift.redhat.com/app/console">OpenShift Web Console</a></li>
+          <li><a href="https://console.preview.openshift.com/">(Next Gen) Web Console</a></li>
+          <li><a href="https://hub.openshift.com/users/auth/github">OpenShift Hub</a></li>
+        </ul>
+      </li>
+      <li class="hidden-xs hidden-sm"><a class="nav-sign-up" href="https://www.openshift.com/devpreview/register.html">Sign up for Free</a></li>
+    </ul>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../welcome/index.html">OpenShift Enterprise Branch Build</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../install_config/index.html">Installation and Configuration</a>
+      </li>
+      <li class="hidden-xs active"><a href="../../install_config/persistent_storage/index.html">Configuring Persistent Storage</a></li>
+      <li class="hidden-xs active">
+        Using NFS
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+            <li><a class="" href="../../welcome/revhistory_all.html">All Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Release Notes
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../../release_notes/index.html">Overview</a></li>
+            <li><a class="" href="../../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/administrators.html">Setting Up a Cluster</a></li>
+            <li><a class="" href="../../getting_started/revhistory_getting_started.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../architecture/revhistory_architecture.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Installation and Configuration
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../../install_config/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+              </a>
+              <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+
+                  <li><a class="" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
+
+                  <li><a class="" href="../../install_config/install/advanced_install.html">Advanced Installation</a></li>
+
+                  <li><a class="" href="../../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
+
+                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
+
+                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+              </a>
+              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/downgrade.html">Downgrading</a></li>
+            <li><a class="" href="../../install_config/master_node_configuration.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+            <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+            <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
+                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/configuring_sdn.html">Configuring the SDN</a></li>
+            <li><a class="" href="../../install_config/configuring_aws.html">Configuring for AWS</a></li>
+            <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
+            <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
+                <span id="sgSpan-4-15" class="fa fa-caret-down"></span>&nbsp;Configuring Persistent Storage
+              </a>
+              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse in">
+
+                  <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
+
+                  <li><a class=" active" href="../../install_config/persistent_storage/persistent_storage_nfs.html">Using NFS</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_glusterfs.html">Using GlusterFS</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_cinder.html">Using OpenStack Cinder</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_ceph_rbd.html">Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_aws.html">Using AWS Elastic Block Store</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_gce.html">Using GCE Persistent Disk</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_iscsi.html">Using iSCSI</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_fibre_channel.html">Using Fibre Channel</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/dynamically_provisioning_pvs.html">Dynamic Provisioning</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/pod_security_context.html">Volume Security</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/selector_label_binding.html">Selector-Label Volume Binding</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
+                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              </a>
+              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/shared_storage.html">Sharing an NFS PV Across Two Pods</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/ceph_example.html">Complete Example Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/gluster_example.html">Complete Example Using GlusterFS</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/privileged_pod_storage.html">Mounting Volumes To Privileged Pods</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/gluster_backed_registry.html">Backing Docker Registry with GlusterFS Storage</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/binding_pv_by_label.html">Binding Persistent Volumes by Label</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/http_proxies.html">Working with HTTP Proxies</a></li>
+            <li><a class="" href="../../install_config/build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../../install_config/configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
+            <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
+            <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+            <li><a class="" href="../../install_config/revhistory_install_config.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Administrator Solutions
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../../admin_solutions/index.html">Overview</a></li>
+            <li><a class="" href="../../admin_solutions/master_node_config.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../../admin_solutions/user_role_mgmt.html">User and Role Management</a></li>
+            <li><a class="" href="../../admin_solutions/authentication.html">Authentication</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
+            <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
+            <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../../admin_guide/scoped_tokens.html">Scoped Tokens</a></li>
+            <li><a class="" href="../../admin_guide/monitoring_images.html">Monitoring Images</a></li>
+            <li><a class="" href="../../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class="" href="../../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+            <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
+            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
+            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
+            <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
+            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
+            <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
+            <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
+            <li><a class="" href="../../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../../admin_guide/sdn_troubleshooting.html">Troubleshooting Networking</a></li>
+            <li><a class="" href="../../admin_guide/revhistory_admin_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+            <li><a class="" href="../../cli_reference/revhistory_cli_reference.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li><a class="" href="../../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-5">
+                <span id="sgSpan-8-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-8-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-8-6">
+                <span id="sgSpan-8-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-8-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../../dev_guide/revhistory_dev_guide.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li><a class="" href="../../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../../creating_images/custom.html">Custom Builder</a></li>
+            <li><a class="" href="../../creating_images/revhistory_creating_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup10">
+        <span id="tgSpan10" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup10" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-0">
+                <span id="sgSpan-10-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-10-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-1">
+                <span id="sgSpan-10-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-10-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-2">
+                <span id="sgSpan-10-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-10-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-3">
+                <span id="sgSpan-10-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-10-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-10-4">
+                <span id="sgSpan-10-4" class="fa fa-caret-right"></span>&nbsp;xPaaS Middleware Images
+              </a>
+              <ul id="topicSubGroup-10-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/xpaas_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../using_images/revhistory_using_images.html">Revision History</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup11">
+        <span id="tgSpan11" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup11" class="collapse  list-unstyled">
+            <li><a class="" href="../../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+            <li><a class="" href="../../rest_api/revhistory_rest_api.html">Revision History</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Persistent Storage Using NFS</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#nfs-provisioning">Provisioning</a></li>
+<li><a href="#nfs-enforcing-disk-quotas">Enforcing Disk Quotas</a></li>
+<li><a href="#nfs-volume-security">NFS Volume Security</a>
+<ul class="sectlevel2">
+<li><a href="#nfs-supplemental-groups">Group IDs</a></li>
+<li><a href="#nfs-user-ids">User IDs</a></li>
+<li><a href="#nfs-selinux">SELinux</a></li>
+<li><a href="#nfs-export-settings">Export Settings</a></li>
+</ul>
+</li>
+<li><a href="#nfs-reclaiming-resources">Reclaiming Resources</a></li>
+<li><a href="#nfs-automation">Automation</a></li>
+<li><a href="#nfs-additional-config-and-troubleshooting">Additional Configuration and Troubleshooting</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OpenShift Enterprise clusters can be provisioned with
+<a href="../../architecture/additional_concepts/storage.html#architecture-additional-concepts-storage">persistent storage</a>
+using NFS. Persistent volumes (PVs) and persistent volume claims (PVCs) provide
+a convenient method for sharing a volume across a project. While the
+NFS-specific information contained in a PV definition could also be defined
+directly in a pod definition, doing so does not create the volume as a distinct
+cluster resource, making the volume more susceptible to conflicts.</p>
+</div>
+<div class="paragraph">
+<p>This topic covers the specifics of using the NFS persistent storage type. Some
+familiarity with OpenShift Enterprise and
+<a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/ch-nfs.html">NFS</a>
+is beneficial. See the
+<a href="../../architecture/additional_concepts/storage.html#architecture-additional-concepts-storage">Persistent Storage</a>
+concept topic for details on the OpenShift Enterprise persistent volume (PV) framework in
+general.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nfs-provisioning"><a class="anchor" href="#nfs-provisioning"></a>Provisioning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Storage must exist in the underlying infrastructure before it can be mounted as
+a volume in OpenShift Enterprise. To provision NFS volumes, a list of NFS servers and
+export paths are all that is required.</p>
+</div>
+<div class="paragraph">
+<p>You must first create an object definition for the PV:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. PV Object Definition Using NFS</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">PersistentVolume</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">pv0001 </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">capacity</span>:
+    <span style="color:#606">storage</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5Gi </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+  <span style="color:#606">accessModes</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ReadWriteOnce </span></span><i class="conum" data-value="3"></i><b>(3)</b>
+  <span style="color:#606">nfs</span>: <i class="conum" data-value="4"></i><b>(4)</b>
+    <span style="color:#606">path</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/tmp </span></span><i class="conum" data-value="5"></i><b>(5)</b>
+    <span style="color:#606">server</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.17.0.2 </span></span><i class="conum" data-value="6"></i><b>(6)</b>
+  <span style="color:#606">persistentVolumeReclaimPolicy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Recycle </span></span> <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The name of the volume. This is the PV identity in various <code>oc &lt;command&gt;
+pod</code> commands.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The amount of storage allocated to this volume.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Though this appears to be related to controlling access to the volume, it is
+actually used similarly to labels and used to match a PVC to a PV. Currently, no
+access rules are enforced based on the <code><strong>accessModes</strong></code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The volume type being used, in this case the <strong>nfs</strong> plug-in.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The path that is exported by the NFS server.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The host name or IP address of the NFS server.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>The reclaim policy for the PV. This defines what happens to a volume when released
+from its claim. Valid options are <strong>Retain</strong> (default) and <strong>Recycle</strong>. See
+<a href="#nfs-reclaiming-resources">Reclaiming Resources</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Each NFS volume must be mountable by all schedulable nodes in the cluster.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Save the definition to a file, for example <strong><em>nfs-pv.yaml</em></strong>, and create the PV:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create -f nfs-pv.yaml
+persistentvolume "pv0001" created</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Verify that the PV was created:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># oc get pv
+NAME                     LABELS    CAPACITY     ACCESSMODES   STATUS      CLAIM     REASON    AGE
+pv0001                   &lt;none&gt;    5368709120   RWO           Available                       31s</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The next step can be to create a persistent volume claim (PVC) which will bind
+to the new PV:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. PVC Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">PersistentVolumeClaim</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nfs-claim1</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">accessModes</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ReadWriteOnce </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">resources</span>:
+    <span style="color:#606">requests</span>:
+      <span style="color:#606">storage</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1Gi </span></span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>As mentioned above for PVs, the <code><strong>accessModes</strong></code> do not enforce security, but
+rather act as labels to match a PV to a PVC.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This claim will look for PVs offering <strong>1Gi</strong> or greater capacity.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Save the definition to a file, for example <strong><em>nfs-claim.yaml</em></strong>, and create the
+PVC:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># oc create -f nfs-claim.yaml</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nfs-enforcing-disk-quotas"><a class="anchor" href="#nfs-enforcing-disk-quotas"></a>Enforcing Disk Quotas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use disk partitions to enforce disk quotas and size constraints. Each
+partition can be its own export. Each export is one PV. OpenShift Enterprise enforces
+unique names for PVs, but the uniqueness of the NFS volume&#8217;s server and path is
+up to the administrator.</p>
+</div>
+<div class="paragraph">
+<p>Enforcing quotas in this way allows the developer to request persistent storage
+by a specific amount (for example, 10Gi) and be matched with a corresponding
+volume of equal or greater capacity.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nfs-volume-security"><a class="anchor" href="#nfs-volume-security"></a>NFS Volume Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section covers NFS volume security, including matching permissions and
+SELinux considerations. The reader is expected to understand the basics of POSIX
+permissions, process UIDs, supplemental groups, and SELinux.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>See the full
+<a href="../../install_config/persistent_storage/pod_security_context.html#install-config-persistent-storage-pod-security-context">Volume
+Security</a> topic before implementing NFS volumes.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Developers request NFS storage by referencing, in the <code><strong>volumes</strong></code> section of
+their pod definition, either a PVC by name or the NFS volume plug-in directly.</p>
+</div>
+<div class="paragraph">
+<p>The <strong><em>/etc/exports</em></strong> file on the NFS server contains the accessible NFS
+directories. The target NFS directory has POSIX owner and group IDs. The
+OpenShift Enterprise NFS plug-in mounts the container&#8217;s NFS directory with the same
+POSIX ownership and permissions found on the exported NFS directory. However,
+the container is not run with its effective UID equal to the owner of the NFS
+mount, which is the desired behavior.</p>
+</div>
+<div class="paragraph">
+<p>As an example, if the target NFS directory appears on the NFS server as:</p>
+</div>
+<div id="nfs-export" class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># ls -lZ /opt/nfs -d
+drwxrws---. nfsnobody 5555 unconfined_u:object_r:usr_t:s0   /opt/nfs
+
+# id nfsnobody
+uid=65534(nfsnobody) gid=65534(nfsnobody) groups=65534(nfsnobody)</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Then the container must match SELinux labels, and either run with a UID of
+<strong>65534</strong> (<strong>nfsnobody</strong> owner) or with <strong>5555</strong> in its supplemental groups in order
+to access the directory.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The owner ID of 65534 is used as an example. Even though NFS&#8217;s <strong>root_squash</strong>
+maps <strong>root</strong> (0) to <strong>nfsnobody</strong> (65534), NFS exports can have arbitrary owner
+IDs. Owner 65534 is not required for NFS exports.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="nfs-supplemental-groups"><a class="anchor" href="#nfs-supplemental-groups"></a>Group IDs</h3>
+<div class="paragraph">
+<p>The recommended way to handle NFS access (assuming it is not an option to change
+permissions on the NFS export) is to use supplemental groups. Supplemental
+groups in OpenShift Enterprise are used for shared storage, of which NFS is an
+example. In contrast, block storage, such as Ceph RBD or iSCSI, use the
+<strong>fsGroup</strong> SCC strategy and  the <strong>fsGroup</strong> value in the pod&#8217;s
+<code><strong>securityContext</strong></code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is generally preferable to use supplemental group IDs to gain access to
+persistent storage versus using <a href="#nfs-user-ids">user IDs</a>. Supplemental
+groups are covered further in the full
+<a href="pod_security_context.html#supplemental-groups">Volume Security</a> topic.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Because the group ID on the <a href="#nfs-export">example target NFS directory</a> shown
+above is 5555, the pod can define that group ID using <code><strong>supplementalGroups</strong></code>
+under the pod-level <code><strong>securityContext</strong></code> definition. For example:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">spec:
+  containers:
+    - name:
+    ...
+  securityContext: <i class="conum" data-value="1"></i><b>(1)</b>
+    supplementalGroups: [5555] <i class="conum" data-value="2"></i><b>(2)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code><strong>securityContext</strong></code> must be defined at the pod level, not under a specific container.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>An array of GIDs defined for the pod. In this case, there is one element in the array;
+additional GIDs would be comma-separated.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Assuming there are no custom SCCs that might satisfy the pod&#8217;s requirements, the
+pod will likely match the <strong>restricted</strong> SCC. This SCC has the
+<code><strong>supplementalGroups</strong></code> strategy set to <strong>RunAsAny</strong>, meaning that any supplied
+group ID will be accepted without range checking.</p>
+</div>
+<div class="paragraph">
+<p>As a result, the above pod will pass admissions and will be launched. However,
+if group ID range checking is desired, a custom SCC, as described in
+<a href="pod_security_context.html#scc-supplemental-groups">pod security and custom
+SCCs</a>, is the preferred solution. A custom SCC can be created such that minimum
+and maximum group IDs are defined, group ID range checking is enforced, and a
+group ID of 5555 is allowed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="nfs-user-ids"><a class="anchor" href="#nfs-user-ids"></a>User IDs</h3>
+<div class="paragraph">
+<p>User IDs can be defined in the container image or in the pod definition. The
+full <a href="pod_security_context.html#user-id">Volume Security</a> topic covers
+controlling storage access based on user IDs, and should be read prior to
+setting up NFS persistent storage.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is generally preferable to use <a href="#nfs-supplemental-groups">supplemental
+group IDs</a> to gain access to persistent storage versus using user IDs.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the <a href="#nfs-export">example target NFS directory</a> shown above, the container
+needs its UID set to 65534 (ignoring group IDs for the moment), so the following
+can be added to the pod definition:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">spec</span>:
+  <span style="color:#606">containers</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name:</span></span>
+  <span style="color:#F00;background-color:#FAA">...</span>
+    <span style="color:#606">securityContext</span>:
+      <span style="color:#606">runAsUser</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">65534 </span></span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Pods contain a <code><strong>securtityContext</strong></code> specific to each container (shown here) and
+a pod-level <code><strong>securityContext</strong></code> which applies to all containers defined in the pod.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>65534 is the <strong>nfsnobody</strong> user.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Assuming the <strong>default</strong> project and the <strong>restricted</strong> SCC, the pod&#8217;s requested
+user ID of 65534 will, unfortunately, not be allowed, and therefore the pod will
+fail. The pod fails because of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It requests 65534 as its user ID.</p>
+</li>
+<li>
+<p>All SCCs available to the pod are examined to see which SCC will allow a user ID
+of 65534 (actually, all policies of the SCCs are checked but the focus here is
+on user ID).</p>
+</li>
+<li>
+<p>Because all available SCCs use <strong>MustRunAsRange</strong> for their <code><strong>runAsUser</strong></code>
+strategy, UID range checking is required.</p>
+</li>
+<li>
+<p>65534 is not included in the SCC or project&#8217;s user ID range.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is generally considered a good practice not to modify the predefined SCCs.
+The preferred way to fix this situation is to create a custom SCC, as described
+in the full <a href="pod_security_context.html#scc-runasuser">Volume Security</a> topic.
+A custom SCC can be created such that minimum and maximum user IDs are defined,
+UID range checking is still enforced, and the UID of 65534 will be allowed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="nfs-selinux"><a class="anchor" href="#nfs-selinux"></a>SELinux</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>See the full <a href="pod_security_context.html#selinuxoptions">Volume Security</a>
+topic for information on controlling storage access in conjunction with using
+SELinux.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>By default, SELinux does not allow writing from a pod to a remote NFS server.
+The NFS volume mounts correctly, but is read-only.</p>
+</div>
+<div class="paragraph">
+<p>To enable writing to NFS volumes with SELinux enforcing on each node, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># setsebool -P virt_use_nfs 1
+# setsebool -P virt_sandbox_use_nfs 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>-P</code> option above makes the bool persistent between reboots.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>virt_use_nfs</strong> boolean is defined by the <strong><em>docker-selinux</em></strong> package. If an
+error is seen indicating that this bool is not defined, ensure this package has
+been installed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="nfs-export-settings"><a class="anchor" href="#nfs-export-settings"></a>Export Settings</h3>
+<div class="paragraph">
+<p>In order to enable arbitrary container users to read and write the volume, each
+exported volume on the NFS server should conform to the following conditions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each export must be:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">/&lt;example_fs&gt; *(rw,root_squash,no_wdelay)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>no_wdelay</code> option prevents the server from delaying writes, which greatly
+improves read-after-write consistency.</p>
+</div>
+</li>
+<li>
+<p>The firewall must be configured to allow traffic to the mount point. For NFSv4,
+the default port is 2049 (<strong>nfs</strong>). For NFSv3, there are three ports to configure:
+2049 (<strong>nfs</strong>), 20048 (<strong>mountd</strong>), and 111 (<strong>portmapper</strong>).</p>
+<div class="listingblock">
+<div class="title">NFSv4</div>
+<div class="content">
+<pre class="nowrap"># iptables -I INPUT 1 -p tcp --dport 2049 -j ACCEPT</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">NFSv3</div>
+<div class="content">
+<pre class="nowrap"># iptables -I INPUT 1 -p tcp --dport 2049 -j ACCEPT
+# iptables -I INPUT 1 -p tcp --dport 20048 -j ACCEPT
+# iptables -I INPUT 1 -p tcp --dport 111 -j ACCEPT</pre>
+</div>
+</div>
+</li>
+<li>
+<p>The NFS export and directory must be set up so that it is accessible by the
+target pods. Either set the export to be owned by the container&#8217;s primary UID,
+or supply the pod group access using <code><strong>supplementalGroups</strong></code>, as shown in
+<a href="#nfs-supplemental-groups">Group IDs</a> above. See the full
+<a href="pod_security_context.html#install-config-persistent-storage-pod-security-context">Volume Security</a> topic for additional pod
+security information as well.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nfs-reclaiming-resources"><a class="anchor" href="#nfs-reclaiming-resources"></a>Reclaiming Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NFS implements the OpenShift Enterprise <strong>Recyclable</strong> plug-in interface. Automatic
+processes handle reclamation tasks based on policies set on each persistent
+volume.</p>
+</div>
+<div class="paragraph">
+<p>By default, persistent volumes are set to <strong>Retain</strong>. NFS volumes which are set to
+<strong>Recycle</strong> are scrubbed (i.e., <code>rm -rf</code> is run on the volume) after being
+released from their claim (i.e, after the user&#8217;s <code><strong>PersistentVolumeClaim</strong></code> bound
+to the volume is deleted). Once recycled, the NFS volume can be bound to a new
+claim.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nfs-automation"><a class="anchor" href="#nfs-automation"></a>Automation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Clusters can be provisioned with persistent storage using NFS in the following
+ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#nfs-enforcing-disk-quotas">Enforce storage quotas</a> using disk partitions.</p>
+</li>
+<li>
+<p>Enforce security by <a href="#nfs-volume-security">restricting volumes</a> to the
+project that has a claim to them.</p>
+</li>
+<li>
+<p>Configure <a href="#nfs-reclaiming-resources">reclamation of discarded resources</a> for
+each PV.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>They are many ways that you can use scripts to automate the above tasks. You can
+use an
+<a href="https://github.com/openshift/openshift-ansible/tree/master/roles/kube_nfs_volumes">example
+Ansible playbook</a> to help you get started.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nfs-additional-config-and-troubleshooting"><a class="anchor" href="#nfs-additional-config-and-troubleshooting"></a>Additional Configuration and Troubleshooting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Depending on what version of NFS is being used and how it is configured, there
+may be additional configuration steps needed for proper export and security
+mapping. The following are some that may apply:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NFSv4 mount incorrectly shows all files with ownership of <strong>nobody:nobody</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Could be attributed to the ID mapping settings (/etc/idmapd.conf) on your NFS</p>
+</li>
+<li>
+<p>See <a href="https://access.redhat.com/solutions/33455">this Red Hat Solution</a>.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabling ID mapping on NFSv4</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>On both the NFS client and server, run:</p>
+<div class="listingblock">
+<div class="content">
+<pre># echo 'Y' &gt; /sys/module/nfsd/parameters/nfs4_disable_idmapping</pre>
+</div>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-openshift">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <a href="https://www.redhat.com/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="../../../master/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

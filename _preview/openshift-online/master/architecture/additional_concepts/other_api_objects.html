@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>the Digital Garage Branch Build | Architecture | Additional Concepts | Other API Objects</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../../master/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../../master/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../../master/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../../master/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://assets.openshift.net/app/assets/site/tracking.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"></a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="hidden-xs dropdown"> <a href="#" class="dropdown-toggle nav-log-in" data-toggle="dropdown"> My Account<span class="caret"></span> </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://openshift.redhat.com/app/console">OpenShift Web Console</a></li>
+          <li><a href="https://console.preview.openshift.com/">(Next Gen) Web Console</a></li>
+          <li><a href="https://hub.openshift.com/users/auth/github">OpenShift Hub</a></li>
+        </ul>
+      </li>
+      <li class="hidden-xs hidden-sm"><a class="nav-sign-up" href="https://www.openshift.com/devpreview/register.html">Sign up for Free</a></li>
+    </ul>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../architecture/index.html">Architecture</a>
+      </li>
+      <li class="hidden-xs active"><a href="../../architecture/additional_concepts/networking.html">Additional Concepts</a></li>
+      <li class="hidden-xs active">
+        Other API Objects
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:nh-uallhxiy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../../getting_started/basic_walkthrough.html">Basic Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/beyond_the_basics.html">Beyond the Basics</a></li>
+            <li><a class="" href="../../getting_started/devpreview_faq.html">Developer Preview FAQ</a></li>
+            <li><a class="" href="../../getting_started/online_v2_vs_v3.html">Comparing OpenShift 2 and 3</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-down"></span>Architecture
+      </a>
+      <ul id="topicGroup2" class="collapse in list-unstyled">
+            <li><a class="" href="../../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
+                <span id="sgSpan-2-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-2-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-3">
+                <span id="sgSpan-2-3" class="fa fa-caret-down"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-2-3" class="nav-tertiary list-unstyled collapse in">
+
+                  <li><a class="" href="../../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class=" active" href="../../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup4" class="collapse  list-unstyled">
+            <li><a class="" href="../../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-5">
+                <span id="sgSpan-4-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-4-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-6">
+                <span id="sgSpan-4-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-4-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../../using_images/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
+                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-2">
+                <span id="sgSpan-6-2" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-6-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-3">
+                <span id="sgSpan-6-3" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-6-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-4">
+                <span id="sgSpan-6-4" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-5">
+                <span id="sgSpan-6-5" class="fa fa-caret-right"></span>&nbsp;xPaaS Middleware Images
+              </a>
+              <ul id="topicSubGroup-6-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/xpaas_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Other API Objects</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#limitrange">LimitRange</a></li>
+<li><a href="#resourcequota">ResourceQuota</a></li>
+<li><a href="#resource">Resource</a></li>
+<li><a href="#secret">Secret</a></li>
+<li><a href="#persistentvolume">PersistentVolume</a></li>
+<li><a href="#persistentvolumeclaim">PersistentVolumeClaim</a></li>
+<li><a href="#oauth-objects">OAuth Objects</a>
+<ul class="sectlevel2">
+<li><a href="#oauthclient">OAuthClient</a></li>
+<li><a href="#oauthclientauthorization">OAuthClientAuthorization</a></li>
+<li><a href="#oauthauthorizetoken">OAuthAuthorizeToken</a></li>
+<li><a href="#oauthaccesstoken">OAuthAccessToken</a></li>
+</ul>
+</li>
+<li><a href="#user-objects">User Objects</a>
+<ul class="sectlevel2">
+<li><a href="#identity">Identity</a></li>
+<li><a href="#user">User</a></li>
+<li><a href="#useridentitymapping">UserIdentityMapping</a></li>
+<li><a href="#group">Group</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="limitrange"><a class="anchor" href="#limitrange"></a>LimitRange</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A limit range provides a mechanism to enforce min/max limits placed on resources
+in a Kubernetes
+<a href="../core_concepts/projects_and_users.html#namespaces">namespace</a>.</p>
+</div>
+<div class="paragraph">
+<p>By adding a limit range to your namespace, you can enforce the minimum and
+maximum amount of CPU and Memory consumed by an individual pod or container.</p>
+</div>
+<div class="paragraph">
+<p>See the
+<a href="https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/admission_control_limit_range.md">Kubernetes
+documentation</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resourcequota"><a class="anchor" href="#resourcequota"></a>ResourceQuota</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kubernetes can limit both the number of objects created in a
+<a href="../core_concepts/projects_and_users.html#namespaces">namespace</a>, and the
+total amount of resources requested across objects in a namespace. This
+facilitates sharing of a single Kubernetes cluster by several teams, each in a
+namespace, as a mechanism of preventing one team from starving another team of
+cluster resources.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/admin/resource-quota.md">Kubernetes
+documentation</a> or contact your administrator for more information on <code><strong>ResourceQuota</strong></code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resource"><a class="anchor" href="#resource"></a>Resource</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Kubernetes <code><strong>Resource</strong></code> is something that can be requested by, allocated to,
+or consumed by a pod or container. Examples include memory (RAM), CPU,
+disk-time, and network bandwidth.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="../../dev_guide/compute_resources.html#dev-guide-compute-resources">Developer Guide</a> and
+<a href="http://kubernetes.io/docs/user-guide/compute-resources/">Kubernetes
+documentation</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="secret"><a class="anchor" href="#secret"></a>Secret</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="../../dev_guide/secrets.html#dev-guide-secrets">Secrets</a> are storage for sensitive
+information, such as keys, passwords, and certificates. They are accessible by
+the intended pod(s), but held separately from their definitions.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="persistentvolume"><a class="anchor" href="#persistentvolume"></a>PersistentVolume</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <a href="../../dev_guide/persistent_volumes.html#dev-guide-persistent-volumes">persistent volume</a> is an object
+(<code><strong>PersistentVolume</strong></code>) in the infrastructure provisioned by the cluster
+administrator. Persistent volumes provide durable storage for stateful
+applications.</p>
+</div>
+<div class="paragraph">
+<p>See the
+<a href="https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/persistent-storage.md">Kubernetes
+documentation</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="persistentvolumeclaim"><a class="anchor" href="#persistentvolumeclaim"></a>PersistentVolumeClaim</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code><strong>PersistentVolumeClaim</strong></code> object is a
+<a href="../../dev_guide/persistent_volumes.html#dev-guide-persistent-volumes">request for storage by a pod
+author</a>. Kubernetes matches the claim against the pool of available volumes and
+binds them together. The claim is then used as a volume by a pod. Kubernetes
+makes sure the volume is available on the same node as the pod that requires it.</p>
+</div>
+<div class="paragraph">
+<p>See the
+<a href="https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/persistent-storage.md">Kubernetes
+documentation</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="oauth-objects"><a class="anchor" href="#oauth-objects"></a>OAuth Objects</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="oauthclient"><a class="anchor" href="#oauthclient"></a>OAuthClient</h3>
+<div class="paragraph">
+<p>An <code><strong>OAuthClient</strong></code> represents an OAuth client, as described in
+<a href="https://tools.ietf.org/html/rfc6749#section-2">RFC 6749, section 2</a>.</p>
+</div>
+<div class="paragraph">
+<p>The following <code><strong>OAuthClient</strong></code> objects are automatically created:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>openshift-web-console</code>
+</td>
+<td class="hdlist2">
+<p>Client used to request tokens for the web console</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>openshift-browser-client</code>
+</td>
+<td class="hdlist2">
+<p>Client used to request tokens at /oauth/token/request with a user-agent that can handle interactive logins</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>openshift-challenging-client</code>
+</td>
+<td class="hdlist2">
+<p>Client used to request tokens with a user-agent that can handle WWW-Authenticate challenges</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. <code><strong>OAuthClient</strong></code> Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">OAuthClient</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">openshift-web-console</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">selflink</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/osapi/v1/oAuthClients/openshift-web-console</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">resourceVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2015-01-01T01:01:01Z</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">respondWithChallenges</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+<span style="color:#606">secret</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">45e27750-a8aa-11e4-b2ea-3c970e4b7ffe</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+<span style="color:#606">redirectURIs</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://localhost:8443</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>name</code> is used as the <code>client_id</code> parameter in OAuth requests.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When <code>respondWithChallenges</code> is set to <code>true</code>, unauthenticated requests to
+<code>/oauth/authorize</code> will result in <code>WWW-Authenticate</code> challenges, if supported by
+the configured authentication methods.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The value in the <code>secret</code> parameter is used as the <code>client_secret</code> parameter
+in an authorization code flow.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>One or more absolute URIs can be placed in the <code>redirectURIs</code> section. The
+<code>redirect_uri</code> parameter sent with authorization requests must be prefixed by
+one of the specified <code>redirectURIs</code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="oauthclientauthorization"><a class="anchor" href="#oauthclientauthorization"></a>OAuthClientAuthorization</h3>
+<div class="paragraph">
+<p>An <code><strong>OAuthClientAuthorization</strong></code> represents an approval by a <code><strong>User</strong></code> for a
+particular <code><strong>OAuthClient</strong></code> to be given an <code><strong>OAuthAccessToken</strong></code> with particular
+scopes.</p>
+</div>
+<div class="paragraph">
+<p>Creation of <code><strong>OAuthClientAuthorization</strong></code> objects is done during an
+authorization request to the <code><strong>OAuth</strong></code> server.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. <code><strong>OAuthClientAuthorization</strong></code> Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#f8f;background:#505"><span style="color:#f4f">---</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">OAuthClientAuthorization</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bob:openshift-web-console</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">resourceVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2015-01-01T01:01:01-00:00</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">clientName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">openshift-web-console</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">userName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bob</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">userUID</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">9311ac33-0fde-11e5-97a1-3c970e4b7ffe</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">scopes</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[]</span></span>
+<span style="color:#f8f;background:#505"><span style="color:#f4f">---</span></span>-</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="oauthauthorizetoken"><a class="anchor" href="#oauthauthorizetoken"></a>OAuthAuthorizeToken</h3>
+<div class="paragraph">
+<p>An <code><strong>OAuthAuthorizeToken</strong></code> represents an <code><strong>OAuth</strong></code> authorization code, as
+described in <a href="https://tools.ietf.org/html/rfc6749#section-1.3.1">RFC 6749, section
+1.3.1</a>.</p>
+</div>
+<div class="paragraph">
+<p>An <code><strong>OAuthAuthorizeToken</strong></code> is created by a request to the /oauth/authorize endpoint,
+as described in <a href="https://tools.ietf.org/html/rfc6749#section-4.1.1">RFC 6749,
+section 4.1.1</a>.</p>
+</div>
+<div class="paragraph">
+<p>An <code><strong>OAuthAuthorizeToken</strong></code> can then be used to obtain an <code><strong>OAuthAccessToken</strong></code>
+with a request to the <strong>/oauth/token</strong> endpoint, as described in
+<a href="https://tools.ietf.org/html/rfc6749#section-4.1.3">RFC 6749, section 4.1.3</a>.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. <code><strong>OAuthAuthorizeToken</strong></code> Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">OAuthAuthorizeToken</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">MDAwYjM5YjMtMzM1MC00NDY4LTkxODItOTA2OTE2YzE0M2Fj</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">resourceVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2015-01-01T01:01:01-00:00</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">clientName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">openshift-web-console</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+<span style="color:#606">expiresIn</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">300 </span></span><i class="conum" data-value="3"></i><b>(3)</b>
+<span style="color:#606">scopes</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[]</span></span>
+<span style="color:#606">redirectURI</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://localhost:8443/console/oauth</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+<span style="color:#606">userName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bob</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b>
+<span style="color:#606">userUID</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">9311ac33-0fde-11e5-97a1-3c970e4b7ffe</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>name</code> represents  the token name, used as an authorization code to exchange
+for an OAuthAccessToken.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>clientName</code> value is the OAuthClient that requested this token.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>expiresIn</code> value is the expiration in seconds from the
+creationTimestamp.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <code>redirectURI</code> value is the location where the user was redirected to
+during the authorization flow that resulted in this token.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><code>userName</code> represents the name of the User this token allows obtaining an
+OAuthAccessToken for.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td><code>userUID</code> represents the UID of the User this token allows obtaining an
+OAuthAccessToken for.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="oauthaccesstoken"><a class="anchor" href="#oauthaccesstoken"></a>OAuthAccessToken</h3>
+<div class="paragraph">
+<p>An <code><strong>OAuthAccessToken</strong></code> represents an <code><strong>OAuth</strong></code> access token, as described in
+<a href="https://tools.ietf.org/html/rfc6749#section-1.4">RFC 6749, section 1.4</a>.</p>
+</div>
+<div class="paragraph">
+<p>An <code><strong>OAuthAccessToken</strong></code> is created by a request to the <strong>/oauth/token</strong> endpoint,
+as described in <a href="https://tools.ietf.org/html/rfc6749#section-4.1.3">RFC 6749,
+section 4.1.3</a>.</p>
+</div>
+<div class="paragraph">
+<p>Access tokens are used as bearer tokens to authenticate to the API.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. <code><strong>OAuthAccessToken</strong></code> Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">OAuthAccessToken</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ODliOGE5ZmMtYzczYi00Nzk1LTg4MGEtNzQyZmUxZmUwY2Vh</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">resourceVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2015-01-01T01:01:02-00:00</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">clientName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">openshift-web-console</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+<span style="color:#606">expiresIn</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">86400 </span></span><i class="conum" data-value="3"></i><b>(3)</b>
+<span style="color:#606">scopes</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[]</span></span>
+<span style="color:#606">redirectURI</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://localhost:8443/console/oauth</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+<span style="color:#606">userName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bob</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b>
+<span style="color:#606">userUID</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">9311ac33-0fde-11e5-97a1-3c970e4b7ffe</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="6"></i><b>(6)</b>
+<span style="color:#606">authorizeToken</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">MDAwYjM5YjMtMzM1MC00NDY4LTkxODItOTA2OTE2YzE0M2Fj</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>name</code> is the token name, which is used as a bearer token to authenticate to
+the API.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>clientName</code> value is the OAuthClient that requested this token.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>expiresIn</code> value is the expiration in seconds from the
+creationTimestamp.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <code>redirectURI</code> is where the user was redirected to during the
+authorization flow that resulted in this token.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><code>userName</code> represents the User this token allows authentication as.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td><code>userUID</code> represents the User this token allows authentication as.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td><code>authorizeToken</code> is the name of the OAuthAuthorizationToken used to obtain
+this token, if any.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-objects"><a class="anchor" href="#user-objects"></a>User Objects</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="identity"><a class="anchor" href="#identity"></a>Identity</h3>
+<div class="paragraph">
+<p>When a user logs into the Digital Garage, they do so using a configured
+This determines the user&#8217;s identity, and provides that information to
+the Digital Garage.</p>
+</div>
+<div class="paragraph">
+<p>the Digital Garage then looks for a <code><strong>UserIdentityMapping</strong></code> for that <code><strong>Identity</strong></code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the <code><strong>Identity</strong></code> already exists, but is not mapped to a <code><strong>User</strong></code>, login
+fails.</p>
+</li>
+<li>
+<p>If the <code><strong>Identity</strong></code> already exists, and is mapped to a <code><strong>User</strong></code>, the user is
+given an <code><strong>OAuthAccessToken</strong></code> for the mapped <code><strong>User</strong></code>.</p>
+</li>
+<li>
+<p>If the <code><strong>Identity</strong></code> does not exist, an <code><strong>Identity</strong></code>, <code><strong>User</strong></code>, and
+<code><strong>UserIdentityMapping</strong></code> are created, and the user is given an
+<code><strong>OAuthAccessToken</strong></code> for the mapped <code><strong>User</strong></code>.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. <code><strong>Identity</strong></code> Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Identity</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">anypassword:bob</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">uid</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">9316ebad-0fde-11e5-97a1-3c970e4b7ffe</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">resourceVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2015-01-01T01:01:01-00:00</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">providerName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">anypassword</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+<span style="color:#606">providerUserName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bob</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+<span style="color:#606">user</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bob</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+  <span style="color:#606">uid</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">9311ac33-0fde-11e5-97a1-3c970e4b7ffe</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The identity name must be in the form providerName:providerUserName.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>providerName</code> is the name of the identity provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>providerUserName</code> is the name that uniquely represents this identity in the scope of the identity provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <code>name</code> in the <code>user</code> parameter is the name of the user this identity maps to.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The <code>uid</code> represents the UID of the user this identity maps to.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="user"><a class="anchor" href="#user"></a>User</h3>
+<div class="paragraph">
+<p>A <code><strong>User</strong></code> represents an actor in the system. Users are granted permissions by</p>
+</div>
+<div class="paragraph">
+<p>User objects are created automatically on first login, or can be created via the
+API.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 6. <code><strong>User</strong></code> Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">User</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bob</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">uid</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">9311ac33-0fde-11e5-97a1-3c970e4b7ffe</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">resourceVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2015-01-01T01:01:01-00:00</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">identities</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">anypassword:bob</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+<span style="color:#606">fullName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Bob User</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+
+<span style="color:#F00;background-color:#FAA">&lt;1&gt; `name` is the user name used when adding roles to a user.</span>
+<span style="color:#F00;background-color:#FAA">&lt;2&gt; The values in `identities` are Identity objects that map to this user. May be `null` or empty for users that cannot log in.</span>
+<span style="color:#F00;background-color:#FAA">&lt;3&gt; The `fullName` value is an optional display name of user.</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="useridentitymapping"><a class="anchor" href="#useridentitymapping"></a>UserIdentityMapping</h3>
+<div class="paragraph">
+<p>A <code><strong>UserIdentityMapping</strong></code> maps an <code><strong>Identity</strong></code> to a <code><strong>User</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>Creating, updating, or deleting a <code><strong>UserIdentityMapping</strong></code> modifies the
+corresponding fields in the <code><strong>Identity</strong></code> and  <code><strong>User</strong></code> objects.</p>
+</div>
+<div class="paragraph">
+<p>An <code><strong>Identity</strong></code> can only map to a single <code><strong>User</strong></code>, so logging in as a particular
+identity unambiguously determines the <code><strong>User</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>A <code><strong>User</strong></code> can have multiple identities mapped to it. This allows multiple login
+methods to identify the same <code><strong>User</strong></code>.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7. <code><strong>UserIdentityMapping</strong></code> Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">UserIdentityMapping</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">anypassword:bob</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">uid</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">9316ebad-0fde-11e5-97a1-3c970e4b7ffe</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">resourceVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">identity</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">anypassword:bob</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">uid</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">9316ebad-0fde-11e5-97a1-3c970e4b7ffe</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">user</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bob</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">uid</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">9311ac33-0fde-11e5-97a1-3c970e4b7ffe</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#F00;background-color:#FAA">&lt;1&gt; `*UserIdentityMapping*` name matches the mapped `*Identity*` name</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="group"><a class="anchor" href="#group"></a>Group</h3>
+<div class="paragraph">
+<p>A <code><strong>Group</strong></code> represents a list of users in the system. Groups are granted permissions by</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 8. <code><strong>Group</strong></code> Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Group</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">developers</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2015-01-01T01:01:01-00:00</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">users</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bob</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>name</code> is the group name used when adding roles to a group.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The values in <code>users</code> are the names of User objects that are members of this group.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-openshift">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <a href="https://www.redhat.com/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+          <div class="col-xs-12 col-md-4">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="../../../master/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

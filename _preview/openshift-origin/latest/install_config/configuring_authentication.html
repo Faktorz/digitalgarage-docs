@@ -1,0 +1,2980 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Origin Latest | Installation and Configuration | Configuring Authentication and User Agent</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../latest/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../latest/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../latest/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../latest/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script async src="//www.google-analytics.com/analytics.js" type="text/javascript"></script>
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-40375612-1', 'openshift.org');
+  ga('set', 'forceSSL', true);
+  ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift navbar-origin" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand origin" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../welcome/index.html">OpenShift Origin Latest</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../install_config/index.html">Installation and Configuration</a>
+      </li>
+      
+      <li class="hidden-xs active">
+        Configuring Authentication and User Agent
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:vdyz7waqya4';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>What's New?
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../whats_new/index.html">Overview</a></li>
+            <li><a class="" href="../whats_new/applications.html">Applications</a></li>
+            <li><a class="" href="../whats_new/carts_vs_images.html">Cartridges vs Images</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../getting_started/administrators.html">Setting Up a Cluster</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Installation and Configuration
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../install_config/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+              </a>
+              <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+
+                  <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/advanced_install.html">Advanced Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
+
+                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+              </a>
+              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/master_node_configuration.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+            <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class=" active" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+            <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-9">
+                <span id="sgSpan-4-9" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-4-9" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/configuring_sdn.html">Configuring the SDN</a></li>
+            <li><a class="" href="../install_config/configuring_aws.html">Configuring for AWS</a></li>
+            <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
+            <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-14">
+                <span id="sgSpan-4-14" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              </a>
+              <ul id="topicSubGroup-4-14" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_nfs.html">Using NFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_glusterfs.html">Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_cinder.html">Using OpenStack Cinder</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_ceph_rbd.html">Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_aws.html">Using AWS Elastic Block Store</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_gce.html">Using GCE Persistent Disk</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_iscsi.html">Using iSCSI</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_fibre_channel.html">Using Fibre Channel</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/dynamically_provisioning_pvs.html">Dynamic Provisioning</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/pod_security_context.html">Volume Security</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/selector_label_binding.html">Selector-Label Volume Binding</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
+                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              </a>
+              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/shared_storage.html">Sharing an NFS PV Across Two Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/ceph_example.html">Complete Example Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_example.html">Complete Example Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/privileged_pod_storage.html">Mounting Volumes To Privileged Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_backed_registry.html">Backing Docker Registry with GlusterFS Storage</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/binding_pv_by_label.html">Binding Persistent Volumes by Label</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/http_proxies.html">Working with HTTP Proxies</a></li>
+            <li><a class="" href="../install_config/build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../install_config/configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
+            <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
+            <li><a class="" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
+            <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
+            <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
+            <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../admin_guide/monitoring_images.html">Monitoring Images</a></li>
+            <li><a class="" href="../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class="" href="../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+            <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
+            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
+            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
+            <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
+            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
+            <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
+            <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
+            <li><a class="" href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../admin_guide/sdn_troubleshooting.html">Troubleshooting Networking</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-7-5">
+                <span id="sgSpan-7-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-7-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-7-6">
+                <span id="sgSpan-7-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-7-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li><a class="" href="../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-0">
+                <span id="sgSpan-9-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-9-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-1">
+                <span id="sgSpan-9-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-9-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-2">
+                <span id="sgSpan-9-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-9-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-3">
+                <span id="sgSpan-9-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-9-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup10">
+        <span id="tgSpan10" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup10" class="collapse  list-unstyled">
+            <li><a class="" href="../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Configuring Authentication and User Agent</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#identity-providers-ansible">Configuring Identity Providers with Ansible</a></li>
+<li><a href="#identity-providers">Identity Providers</a>
+<ul class="sectlevel2">
+<li><a href="#mapping-identities-to-users">Mapping Identities to Users</a></li>
+<li><a href="#AllowAllPasswordIdentityProvider">Allow All</a></li>
+<li><a href="#DenyAllPasswordIdentityProvider">Deny All</a></li>
+<li><a href="#HTPasswdPasswordIdentityProvider">HTPasswd</a></li>
+<li><a href="#KeystonePasswordIdentityProvider">Keystone</a></li>
+<li><a href="#LDAPPasswordIdentityProvider">LDAP Authentication</a></li>
+<li><a href="#BasicAuthPasswordIdentityProvider">Basic Authentication (Remote)</a></li>
+<li><a href="#RequestHeaderIdentityProvider">Request Header</a></li>
+<li><a href="#GitHub">GitHub</a></li>
+<li><a href="#GitLab">GitLab</a></li>
+<li><a href="#Google">Google</a></li>
+<li><a href="#OpenID">OpenID Connect</a></li>
+</ul>
+</li>
+<li><a href="#token-options">Token Options</a></li>
+<li><a href="#grant-options">Grant Options</a></li>
+<li><a href="#session-options">Session Options</a></li>
+<li><a href="#configuring-user-agent">User Agent</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The OpenShift Origin
+<a href="../architecture/infrastructure_components/kubernetes_infrastructure.html#master">master</a>
+includes a built-in
+<a href="../architecture/additional_concepts/authentication.html#oauth">OAuth
+server</a>. Developers and administrators obtain
+<a href="../architecture/additional_concepts/authentication.html#api-authentication">OAuth
+access tokens</a> to authenticate themselves to the API.</p>
+</div>
+<div class="paragraph">
+<p>As an administrator, you can configure OAuth using the
+<a href="../install_config/master_node_configuration.html#install-config-master-node-configuration">master configuration file</a> to specify an
+<a href="#identity-providers">identity provider</a>.
+This can be done during an
+<a href="../install_config/install/advanced_install.html#configuring-cluster-variables">advanced installation</a> or configured after installation.</p>
+</div>
+<div class="paragraph">
+<p>If you installed OpenShift Origin using
+the
+<a href="../install_config/install/advanced_install.html#install-config-install-advanced-install">Advanced Installation</a>
+method, the
+<a href="#AllowAllPasswordIdentityProvider">Allow All</a> identity provider is
+used by default, which allows access for all user names and
+passwords.</p>
+</div>
+<div class="paragraph">
+<p>When running a master without a configuration file, the
+<a href="#AllowAllPasswordIdentityProvider">Allow All</a> identity provider is used by
+default, which allows any non-empty user name and password to log in. This is
+useful for testing purposes. To use other identity providers, or to modify any
+<a href="#token-options">token</a>, <a href="#grant-options">grant</a>, or
+<a href="#session-options">session options</a>, you must run the master from a
+configuration file.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><a href="../architecture/additional_concepts/authorization.html#roles">Roles</a> need
+to be assigned to administer the setup with an external user.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="identity-providers-ansible"><a class="anchor" href="#identity-providers-ansible"></a>Configuring Identity Providers with Ansible</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For initial <a href="../install_config/install/advanced_install.html#install-config-install-advanced-install">advanced installations</a>, the
+<a href="../install_config/configuring_authentication.html#DenyAllPasswordIdentityProvider">Deny All</a> identity provider is configured by default,
+though it can be
+<a href="../install_config/install/advanced_install.html#configuring-ansible">overridden during installation</a> using the
+<a href="../install_config/install/advanced_install.html#configuring-cluster-variables"><code><strong>openshift_master_identity_providers</strong></code> parameter</a>, which is configurable in the inventory file.
+<a href="../install_config/install/advanced_install.html#advanced-install-session-options">Session options in the OAuth configuration</a> are also configurable in the inventory file.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Example Identity Provider Configuration with Ansible</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># htpasswd auth
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
+# Defining htpasswd users
+#openshift_master_htpasswd_users={'user1': '&lt;pre-hashed password&gt;', 'user2': '&lt;pre-hashed password&gt;'
+# or
+#openshift_master_htpasswd_file=&lt;path to local pre-generated htpasswd file&gt;
+
+# Allow all auth
+#openshift_master_identity_providers=[{'name': 'allow_all', 'login': 'true', 'challenge': 'true', 'kind': 'AllowAllPasswordIdentityProvider'}]
+
+# LDAP auth
+#openshift_master_identity_providers=[{'name': 'my_ldap_provider', 'challenge': 'true', 'login': 'true', 'kind': 'LDAPPasswordIdentityProvider', 'attributes': {'id': ['dn'], 'email': ['mail'], 'name': ['cn'], 'preferredUsername': ['uid']}, 'bindDN': '', 'bindPassword': '', 'ca': '', 'insecure': 'false', 'url': 'ldap://ldap.example.com:389/ou=users,dc=example,dc=com?uid'}]
+# Configuring the ldap ca certificate
+#openshift_master_ldap_ca=&lt;ca text&gt;
+# or
+#openshift_master_ldap_ca_file=&lt;path to local ca file to use&gt;
+
+# Available variables for configuring certificates for other identity providers:
+#openshift_master_openid_ca
+#openshift_master_openid_ca_file
+#openshift_master_request_header_ca
+#openshift_master_request_header_ca_file</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="identity-providers"><a class="anchor" href="#identity-providers"></a>Identity Providers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can configure the master host for authentication using your desired identity
+provider by modifying the
+<a href="../install_config/master_node_configuration.html#install-config-master-node-configuration">master configuration
+file</a>. The following sections detail the identity providers supported by
+OpenShift Origin.</p>
+</div>
+<div class="paragraph">
+<p>There are four parameters common to all identity providers:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>name</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The provider name is prefixed to provider user names to form an
+identity name.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>challenge</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>When <strong>true</strong>, unauthenticated token requests from non-web
+clients (like the CLI) are sent a <code>WWW-Authenticate</code> challenge header. Not
+supported by all identity providers.</p>
+</div>
+<div class="paragraph">
+<p>To prevent cross-site request forgery (CSRF) attacks against browser clients
+Basic authentication challenges are only sent if a <code>X-CSRF-Token</code> header is
+present on the request. Clients that expect to receive Basic <code>WWW-Authenticate</code>
+challenges should set this header to a non-empty value.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>login</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>When <strong>true</strong>, unauthenticated token requests from web clients
+(like the web console) are redirected to a login page backed by this provider.
+Not supported by all identity providers.</p>
+</div>
+<div class="paragraph">
+<p>If you want users to be sent to a branded page before being redirected to
+the identity provider&#8217;s login, then set <code><strong>oauthConfig &#8594; alwaysShowProviderSelection: true</strong></code>
+in the master configuration file. This provider selection page can be
+<a href="../install_config/web_console_customization.html#customizing-the-login-page">customized</a>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>mappingMethod</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Defines how new identities are mapped to users when they login. See <a href="#mapping-identities-to-users">Mapping Identities to Users</a> for more information.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When adding or changing identity providers, you can map identities from the new
+provider to existing users by setting the <code><strong>mappingMethod</strong></code> parameter to
+<code><strong>add</strong></code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="mapping-identities-to-users"><a class="anchor" href="#mapping-identities-to-users"></a>Mapping Identities to Users</h3>
+<div class="paragraph">
+<p>Setting the <code><strong>mappingMethod</strong></code> parameter in a
+<a href="../install_config/master_node_configuration.html#install-config-master-node-configuration">master configuration file</a>
+determines how identities are mapped to users:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">...
+oauthConfig:
+  identityProviders:
+  - name: htpasswd_auth
+    challenge: true
+    login: false
+    mappingMethod: "claim"
+...</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When set to the default <code><strong>claim</strong></code> value, OAuth will fail if the identity is
+mapped to a previously-existing user name. The following table outlines the use
+cases for the available <code><strong>mappingMethod</strong></code> parameter values:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>claim</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The default value. Provisions a user with the identity&#8217;s preferred
+user name. Fails if a user with that user name is already mapped to another
+identity.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>lookup</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Looks up an existing identity, user identity mapping, and user,
+but does not automatically provision users or identities. This allows cluster
+administrators to set up identities and users manually, or using an external
+process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>generate</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provisions a user with the identity&#8217;s preferred user name. If a
+user with the preferred user name is already mapped to an existing identity, a
+unique user name is generated. For example, <strong>myuser2</strong>. This method should not be
+used in combination with external processes that require exact matches between
+OpenShift Origin user names and identity provider user names, such as LDAP group
+sync.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>add</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provisions a user with the identity&#8217;s preferred user name. If a user
+with that user name already exists, the identity is mapped to the existing user,
+adding to any existing identity mappings for the user. Required when multiple
+identity providers are configured that identify the same set of users and map to
+the same user names.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="AllowAllPasswordIdentityProvider"><a class="anchor" href="#AllowAllPasswordIdentityProvider"></a>Allow All</h3>
+<div class="paragraph">
+<p>Set <strong>AllowAllPasswordIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to
+allow any non-empty user name and password to log in. This is the default
+identity provider when running OpenShift Origin without a
+<a href="../install_config/master_node_configuration.html#install-config-master-node-configuration">master configuration file</a>.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Master Configuration Using <strong>AllowAllPasswordIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: my_allow_provider <i class="conum" data-value="1"></i><b>(1)</b>
+    challenge: true <i class="conum" data-value="2"></i><b>(2)</b>
+    login: true <i class="conum" data-value="3"></i><b>(3)</b>
+    mappingMethod: claim <i class="conum" data-value="4"></i><b>(4)</b>
+    provider:
+      apiVersion: v1
+      kind: AllowAllPasswordIdentityProvider</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This provider name is prefixed to provider user names to form an identity
+name.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from non-web clients (like
+the CLI) are sent a <code>WWW-Authenticate</code> challenge header for this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
+console) are redirected to a login page backed by this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Controls how mappings are established between this provider&#8217;s identities and user objects,
+<a href="#mapping-identities-to-users">as described above</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="DenyAllPasswordIdentityProvider"><a class="anchor" href="#DenyAllPasswordIdentityProvider"></a>Deny All</h3>
+<div class="paragraph">
+<p>Set <strong>DenyAllPasswordIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to
+deny access for all user names and passwords.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. Master Configuration Using <strong>DenyAllPasswordIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: my_deny_provider <i class="conum" data-value="1"></i><b>(1)</b>
+    challenge: true <i class="conum" data-value="2"></i><b>(2)</b>
+    login: true <i class="conum" data-value="3"></i><b>(3)</b>
+    mappingMethod: claim <i class="conum" data-value="4"></i><b>(4)</b>
+    provider:
+      apiVersion: v1
+      kind: DenyAllPasswordIdentityProvider</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This provider name is prefixed to provider user names to form an identity
+name.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from non-web clients (like the
+CLI) are sent a <code>WWW-Authenticate</code> challenge header for this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
+console) are redirected to a login page backed by this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Controls how mappings are established between this provider&#8217;s identities and user objects,
+<a href="#mapping-identities-to-users">as described above</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="HTPasswdPasswordIdentityProvider"><a class="anchor" href="#HTPasswdPasswordIdentityProvider"></a>HTPasswd</h3>
+<div class="paragraph">
+<p>Set <strong>HTPasswdPasswordIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to
+validate user names and passwords against a flat file generated using
+<a href="http://httpd.apache.org/docs/2.4/programs/htpasswd.html"><code>htpasswd</code></a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>htpasswd</code> utility is in the <code>httpd-tools</code> package:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># yum install httpd-tools</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>OpenShift Origin supports the Bcrypt, SHA-1, and MD5 cryptographic hash
+functions, and MD5 is the default for <code>htpasswd</code>. Plaintext, encrypted text, and
+other hash functions are not currently supported.</p>
+</div>
+<div class="paragraph">
+<p>The flat file is reread if its modification time changes, without requiring a
+server restart.</p>
+</div>
+<div class="paragraph">
+<p>To create the file, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ htpasswd -c &lt;/path/to/users.htpasswd&gt; &lt;user_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To add or update a login to the file, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ htpasswd &lt;/path/to/users.htpasswd&gt; &lt;user_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To remove a login from the file, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ htpasswd -D &lt;/path/to/users.htpasswd&gt; &lt;user_name&gt;</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. Master Configuration Using <strong>HTPasswdPasswordIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: my_htpasswd_provider <i class="conum" data-value="1"></i><b>(1)</b>
+    challenge: true <i class="conum" data-value="2"></i><b>(2)</b>
+    login: true <i class="conum" data-value="3"></i><b>(3)</b>
+    mappingMethod: claim <i class="conum" data-value="4"></i><b>(4)</b>
+    provider:
+      apiVersion: v1
+      kind: HTPasswdPasswordIdentityProvider
+      file: /path/to/users.htpasswd <i class="conum" data-value="5"></i><b>(5)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This provider name is prefixed to provider user names to form an identity
+name.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from non-web clients (like the
+CLI) are sent a <code>WWW-Authenticate</code> challenge header for this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
+console) are redirected to a login page backed by this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Controls how mappings are established between this provider&#8217;s identities and user objects,
+<a href="#mapping-identities-to-users">as described above</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>File generated using
+<a href="http://httpd.apache.org/docs/2.4/programs/htpasswd.html"><code>htpasswd</code></a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="KeystonePasswordIdentityProvider"><a class="anchor" href="#KeystonePasswordIdentityProvider"></a>Keystone</h3>
+<div class="paragraph">
+<p>Set <strong>KeystonePasswordIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to
+validate user names and passwords against an OpenStack Keystone v3 server.
+This enables shared authentication with an OpenStack server configured to store
+users in an internal Keystone database.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. Master Configuration Using <strong>KeystonePasswordIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: my_keystone_provider <i class="conum" data-value="1"></i><b>(1)</b>
+    challenge: true <i class="conum" data-value="2"></i><b>(2)</b>
+    login: true <i class="conum" data-value="3"></i><b>(3)</b>
+    mappingMethod: claim <i class="conum" data-value="4"></i><b>(4)</b>
+    provider:
+      apiVersion: v1
+      kind: KeystonePasswordIdentityProvider
+      domainName: default <i class="conum" data-value="5"></i><b>(5)</b>
+      url: http://keystone.example.com:5000 <i class="conum" data-value="6"></i><b>(6)</b>
+      ca: ca.pem <i class="conum" data-value="7"></i><b>(7)</b>
+      certFile: keystone.pem <i class="conum" data-value="8"></i><b>(8)</b>
+      keyFile: keystonekey.pem <i class="conum" data-value="9"></i><b>(9)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This provider name is prefixed to provider user names to form an identity name.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from non-web clients (like the
+CLI) are sent a <code>WWW-Authenticate</code> challenge header for this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
+console) are redirected to a login page backed by this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Controls how mappings are established between this provider&#8217;s identities and user objects,
+<a href="#mapping-identities-to-users">as described above</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Keystone domain name. In Keystone, usernames are domain-specific. Only a single domain is supported.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The URL to use to connect to the Keystone server (required).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Optional: Certificate bundle to use to validate server certificates for the configured URL.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Optional: Client certificate to present when making requests to the configured URL.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>Key for the client certificate. Required if <code><strong>certFile</strong></code> is specified.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="LDAPPasswordIdentityProvider"><a class="anchor" href="#LDAPPasswordIdentityProvider"></a>LDAP Authentication</h3>
+<div class="paragraph">
+<p>Set <strong>LDAPPasswordIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to
+validate user names and passwords against an LDAPv3 server, using simple bind
+authentication.</p>
+</div>
+<div class="paragraph">
+<p>During authentication, the LDAP directory is searched for an entry that matches
+the provided user name. If a single unique match is found, a simple bind is
+attempted using the distinguished name (DN) of the entry plus the provided
+password.</p>
+</div>
+<div class="paragraph">
+<p>These are the steps taken:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Generate a search filter by combining the attribute and filter in the
+configured <code><strong>url</strong></code> with the user-provided user name.</p>
+</li>
+<li>
+<p>Search the directory using the generated filter. If the search does not return
+exactly one entry, deny access.</p>
+</li>
+<li>
+<p>Attempt to bind to the LDAP server using the DN of the entry retrieved from
+the search, and the user-provided password.</p>
+</li>
+<li>
+<p>If the bind is unsuccessful, deny access.</p>
+</li>
+<li>
+<p>If the bind is successful, build an identity using the configured attributes
+as the identity, email address, display name, and preferred user name.</p>
+</li>
+</ol>
+</div>
+<div id="ldap-url" class="paragraph">
+<p>The configured <code><strong>url</strong></code> is an RFC 2255 URL, which specifies the LDAP host and
+search parameters to use. The syntax of the URL is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">ldap://host:port/basedn?attribute?scope?filter</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For the above example:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">URL Component</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><code>ldap</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>For regular LDAP, use the string <code>ldap</code>. For secure LDAP
+(LDAPS), use <code>ldaps</code> instead.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><code>host:port</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The name and port of the LDAP server. Defaults to
+<code>localhost:389</code> for ldap and <code>localhost:636</code> for LDAPS.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><code>basedn</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The DN of the branch of the directory where all searches should
+start from. At the very least, this must be the top of your directory tree, but
+it could also specify a subtree in the directory.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><code>attribute</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The attribute to search for. Although RFC 2255 allows a
+comma-separated list of attributes, only the first attribute will be used, no
+matter how many are provided. If no attributes are provided, the default is to
+use <code>uid</code>. It is recommended to choose an attribute that will be unique across
+all entries in the subtree you will be using.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><code>scope</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The scope of the search. Can be either either <code>one</code> or <code>sub</code>.
+If the scope is not provided, the default is to use a scope of <code>sub</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><code>filter</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A valid LDAP search filter. If not provided, defaults to
+<code>(objectClass=*)</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>When doing searches, the attribute, filter, and provided user name are combined
+to create a search filter that looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">(&amp;(&lt;filter&gt;)(&lt;attribute&gt;=&lt;username&gt;))</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, consider a URL of:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">ldap://ldap.example.com/o=Acme?cn?sub?(enabled=true)</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When a client attempts to connect using a user name of <code>bob</code>, the resulting
+search filter will be <code>(&amp;(enabled=true)(cn=bob))</code>.</p>
+</div>
+<div class="paragraph">
+<p>If the LDAP directory requires authentication to search, specify a <code>bindDN</code> and
+<code>bindPassword</code> to use to perform the entry search.</p>
+</div>
+<div id="ldap-example-config" class="exampleblock">
+<div class="title">Example 6. Master Configuration Using <strong>LDAPPasswordIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: "my_ldap_provider" <i class="conum" data-value="1"></i><b>(1)</b>
+    challenge: true <i class="conum" data-value="2"></i><b>(2)</b>
+    login: true <i class="conum" data-value="3"></i><b>(3)</b>
+    mappingMethod: claim <i class="conum" data-value="4"></i><b>(4)</b>
+    provider:
+      apiVersion: v1
+      kind: LDAPPasswordIdentityProvider
+      attributes:
+        id: <i class="conum" data-value="5"></i><b>(5)</b>
+        - dn
+        email: <i class="conum" data-value="6"></i><b>(6)</b>
+        - mail
+        name: <i class="conum" data-value="7"></i><b>(7)</b>
+        - cn
+        preferredUsername: <i class="conum" data-value="8"></i><b>(8)</b>
+        - uid
+      bindDN: "" <i class="conum" data-value="9"></i><b>(9)</b>
+      bindPassword: "" <i class="conum" data-value="10"></i><b>(10)</b>
+      ca: my-ldap-ca-bundle.crt <i class="conum" data-value="11"></i><b>(11)</b>
+      insecure: false <i class="conum" data-value="12"></i><b>(12)</b>
+      url: "ldap://ldap.example.com/ou=users,dc=acme,dc=com?uid" <i class="conum" data-value="13"></i><b>(13)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This provider name is prefixed to the returned user ID to form an identity
+name.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from non-web clients (like the
+CLI) are sent a <code>WWW-Authenticate</code> challenge header for this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
+console) are redirected to a login page backed by this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Controls how mappings are established between this provider&#8217;s identities and user objects,
+<a href="#mapping-identities-to-users">as described above</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>List of attributes to use as the identity. First non-empty attribute is
+used. At least one attribute is required. If none of the listed attribute have a
+value, authentication fails.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>List of attributes to use as the email address. First non-empty attribute is
+used.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>List of attributes to use as the display name. First non-empty attribute is
+used.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>List of attributes to use as the preferred user name when provisioning a
+user for this identity. First non-empty attribute is used.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>Optional DN to use to bind during the search phase.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>Optional password to use to bind during the search phase. This value may also be
+provided in an
+<a href="../install_config/master_node_configuration.html#master-node-configuration-passwords-and-other-data">environment
+variable, external file, or encrypted file</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="11"></i><b>11</b></td>
+<td>Certificate bundle to use to validate server certificates for the
+configured URL. If empty, system trusted roots are used. Only applies if
+<strong>insecure: false</strong>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="12"></i><b>12</b></td>
+<td>When <strong>true</strong>, no TLS connection is made to the server. When <strong>false</strong>,
+<code>ldaps://</code> URLs connect using TLS, and <code>ldap://</code> URLs are upgraded to TLS.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="13"></i><b>13</b></td>
+<td>An RFC 2255 URL which specifies the LDAP host and search parameters to use,
+<a href="#ldap-url">as described above</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="BasicAuthPasswordIdentityProvider"><a class="anchor" href="#BasicAuthPasswordIdentityProvider"></a>Basic Authentication (Remote)</h3>
+<div class="paragraph">
+<p>Set <strong>BasicAuthPasswordIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to
+validate user names and passwords against a remote server using a
+server-to-server Basic authentication request. User names and passwords are
+validated against a remote URL that is protected by Basic authentication and
+returns JSON.</p>
+</div>
+<div class="paragraph">
+<p>A <code>401</code> response indicates failed authentication.</p>
+</div>
+<div class="paragraph">
+<p>A non-<code>200</code> status, or the presence of a non-empty "error" key, indicates an
+error:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">{"error":"Error message"}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A <code>200</code> status with a <code>sub</code> (subject) key indicates success:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">{"sub":"userid"} <i class="conum" data-value="1"></i><b>(1)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The subject must be unique to the authenticated user and must not be able to
+be modified.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A successful response may optionally provide additional data, such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A display name using the <code>name</code> key. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">{"sub":"userid", "name": "User Name", ...}</pre>
+</div>
+</div>
+</li>
+<li>
+<p>An email address using the <code>email</code> key. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">{"sub":"userid", "email":"user@example.com", ...}</pre>
+</div>
+</div>
+</li>
+<li>
+<p>A preferred user name using the <code>preferred_username</code> key. This is useful when
+the unique, unchangeable subject is a database key or UID, and a more
+human-readable name exists. This is used as a hint when provisioning the
+OpenShift Origin user for the authenticated identity. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">{"sub":"014fbff9a07c", "preferred_username":"bob", ...}</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="basic-auth-example-config" class="exampleblock">
+<div class="title">Example 7. Master Configuration Using <strong>BasicAuthPasswordIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: my_remote_basic_auth_provider <i class="conum" data-value="1"></i><b>(1)</b>
+    challenge: true <i class="conum" data-value="2"></i><b>(2)</b>
+    login: true <i class="conum" data-value="3"></i><b>(3)</b>
+    mappingMethod: claim <i class="conum" data-value="4"></i><b>(4)</b>
+    provider:
+      apiVersion: v1
+      kind: BasicAuthPasswordIdentityProvider
+      url: https://www.example.com/remote-idp <i class="conum" data-value="5"></i><b>(5)</b>
+      ca: /path/to/ca.file <i class="conum" data-value="6"></i><b>(6)</b>
+      certFile: /path/to/client.crt <i class="conum" data-value="7"></i><b>(7)</b>
+      keyFile: /path/to/client.key <i class="conum" data-value="8"></i><b>(8)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This provider name is prefixed to the returned user ID to form an identity
+name.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from non-web clients (like the
+CLI) are sent a <code>WWW-Authenticate</code> challenge header for this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
+console) are redirected to a login page backed by this provider.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Controls how mappings are established between this provider&#8217;s identities and user objects,
+<a href="#mapping-identities-to-users">as described above</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>URL accepting credentials in Basic authentication headers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Optional: Certificate bundle to use to validate server certificates for the
+configured URL.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Optional: Client certificate to present when making requests to the
+configured URL.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Key for the client certificate. Required if <code><strong>certFile</strong></code> is specified.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="RequestHeaderIdentityProvider"><a class="anchor" href="#RequestHeaderIdentityProvider"></a>Request Header</h3>
+<div class="paragraph">
+<p>Set <strong>RequestHeaderIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to
+identify users from request header values, such as <code>X-Remote-User</code>. It is
+typically used in combination with an authenticating proxy, which sets the
+request header value. This is similar to how
+<a href="https://access.redhat.com/documentation/en-US/OpenShift_Enterprise/2/html/Deployment_Guide/Configuring_OpenShift_Enterprise_Authentication.html">the remote user plug-in in OpenShift Enterprise 2</a> allowed administrators to
+provide Kerberos, LDAP, and many other forms of enterprise authentication.</p>
+</div>
+<div class="paragraph">
+<p>For users to authenticate using this identity provider, they must access
+<em><a href="https://&lt;master&gt;/oauth/authorize" class="bare">https://&lt;master&gt;/oauth/authorize</a></em> via an authenticating proxy. You can either proxy the
+entire master API server so that all access goes through the proxy, or you can
+configure the OAuth server to redirect unauthenticated requests to the proxy.</p>
+</div>
+<div class="paragraph">
+<p>To redirect unauthenticated requests from clients expecting login flows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Set the <code><strong>login</strong></code> parameter to <strong>true</strong>.</p>
+</li>
+<li>
+<p>Set the <code><strong>provider.loginURL</strong></code> parameter to the proxy URL to send those clients to.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To redirect unauthenticated requests from clients expecting <code>WWW-Authenticate</code>
+challenges:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Set the <code><strong>challenge</strong></code> parameter to <strong>true</strong>.</p>
+</li>
+<li>
+<p>Set the <code><strong>provider.challengeURL</strong></code> parameter to the proxy URL to send those
+clients to.</p>
+</li>
+</ol>
+</div>
+<div id="RequestHeaderIDP-urlquerytokens" class="paragraph">
+<p>The <code><strong>provider.challengeURL</strong></code> and <code><strong>provider.loginURL</strong></code> parameters can include
+the following tokens in the query portion of the URL:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>${url}</code> is replaced with the current URL, escaped to be safe in a query parameter.</p>
+<div class="paragraph">
+<p>For example: <code>https://www.example.com/sso-login?then=${url}</code></p>
+</div>
+</li>
+<li>
+<p><code>${query}</code> is replaced with the current query string, unescaped.</p>
+<div class="paragraph">
+<p>For example: <code>https://www.example.com/auth-proxy/oauth/authorize?${query}</code></p>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you expect unauthenticated requests to reach the OAuth server, a <code><strong>clientCA</strong></code>
+parameter should be set for this identity provider, so that incoming requests
+are checked for a valid client certificate before the request&#8217;s headers are
+checked for a user name. Otherwise, any direct request to the OAuth server can
+impersonate any identity from this provider, merely by setting a request header.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="reqhead-auth-example-config" class="exampleblock">
+<div class="title">Example 8. Master Configuration Using <strong>RequestHeaderIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: my_request_header_provider <i class="conum" data-value="1"></i><b>(1)</b>
+    challenge: true <i class="conum" data-value="2"></i><b>(2)</b>
+    login: true <i class="conum" data-value="3"></i><b>(3)</b>
+    mappingMethod: claim <i class="conum" data-value="4"></i><b>(4)</b>
+    provider:
+      apiVersion: v1
+      kind: RequestHeaderIdentityProvider
+      challengeURL: "https://www.example.com/challenging-proxy/oauth/authorize?${query}" <i class="conum" data-value="5"></i><b>(5)</b>
+      loginURL: "https://www.example.com/login-proxy/oauth/authorize?${query}" <i class="conum" data-value="6"></i><b>(6)</b>
+      clientCA: /path/to/client-ca.file <i class="conum" data-value="7"></i><b>(7)</b>
+      clientCommonNames: <i class="conum" data-value="8"></i><b>(8)</b>
+      - my-auth-proxy
+      headers: <i class="conum" data-value="9"></i><b>(9)</b>
+      - X-Remote-User
+      - SSO-User
+      emailHeaders: <i class="conum" data-value="10"></i><b>(10)</b>
+      - X-Remote-User-Email
+      nameHeaders: <i class="conum" data-value="11"></i><b>(11)</b>
+      - X-Remote-User-Display-Name
+      preferredUsernameHeaders: <i class="conum" data-value="12"></i><b>(12)</b>
+      - X-Remote-User-Login</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This provider name is prefixed to the user name in the request header to
+form an identity name.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><strong>RequestHeaderIdentityProvider</strong> can only respond to clients that request
+<code>WWW-Authenticate</code> challenges by redirecting to a configured <code>challengeURL</code>. The
+configured URL should respond with a <code>WWW-Authenticate</code> challenge.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><strong>RequestHeaderIdentityProvider</strong> can only respond to clients requesting a
+login flow by redirecting to a configured <code>loginURL</code>. The configured URL should
+respond with a login flow.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Controls how mappings are established between this provider&#8217;s identities and user objects,
+<a href="#mapping-identities-to-users">as described above</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Optional: URL to redirect unauthenticated <em>/oauth/authorize</em> requests to,
+for clients which expect interactive logins. <em>${url}</em> is replaced with the
+current URL, escaped to be safe in a query parameter. <em>${query}</em> is replaced
+with the current query string.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Optional: URL to redirect unauthenticated <em>/oauth/authorize</em> requests to,
+for clients which expect <code>WWW-Authenticate</code> challenges. <em>${url}</em> is replaced
+with the current URL, escaped to be safe in a query parameter. <em>${query}</em> is
+replaced with the current query string.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Optional: PEM-encoded certificate bundle. If set, a valid client certificate
+must be presented and validated against the certificate authorities in the
+specified file before the request headers are checked for user names.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Optional: list of common names (<code>cn</code>). If set, a valid client certificate with
+a Common Name (<code>cn</code>) in the specified list must be presented before the request headers
+are checked for user names. If empty, any Common Name is allowed. Can only be used in combination
+with <code>clientCA</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>Header names to check, in order, for the user identity. The first header containing
+a value is used as the identity. Required, case-insensitive.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>Header names to check, in order, for an email address. The first header containing
+a value is used as the email address. Optional, case-insensitive.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="11"></i><b>11</b></td>
+<td>Header names to check, in order, for a display name. The first header containing
+a value is used as the display name. Optional, case-insensitive.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="12"></i><b>12</b></td>
+<td>Header names to check, in order, for a preferred user name, if different than the immutable
+identity determined from the headers specified in <code>headers</code>. The first header containing
+a value is used as the preferred user name when provisioning. Optional, case-insensitive.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 9. Apache Authentication Using <strong>RequestHeaderIdentityProvider</strong></div>
+<div class="content">
+<div class="paragraph">
+<p>This example configures an authentication proxy on the same host as the master.
+Having the proxy and master on the same host is merely a convenience and may not
+be suitable for your environment. For example, if you were already
+<a href="../install_config/install/deploy_router.html#install-config-install-deploy-router">running a router</a> on the
+master, port 443 would not be available.</p>
+</div>
+<div class="paragraph">
+<p>It is also important to note that while this reference configuration uses
+Apache&#8217;s <strong>mod_auth_form</strong>, it is by no means required and other proxies can
+easily be used if the following requirements are met:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Block the <code>X-Remote-User</code> header from client requests to prevent spoofing.</p>
+</li>
+<li>
+<p>Enforce client certificate authentication in the
+<strong>RequestHeaderIdentityProvider</strong> configuration.</p>
+</li>
+<li>
+<p>Require the <code>X-Csrf-Token</code> header be set for all authentication request using
+the challenge flow.</p>
+</li>
+<li>
+<p>Only the <em>/oauth/authorize</em> endpoint should be proxied, and redirects should
+not be rewritten to allow the backend server to send the client to the correct
+location.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Installing the Prerequisites</strong></p>
+</div>
+<div class="paragraph">
+<p>The <strong>mod_auth_form</strong> module is shipped as part of the <strong>mod_session</strong> package that
+is found in the <a href="https://access.redhat.com/solutions/392003">Optional channel</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># yum install -y httpd mod_ssl mod_session apr-util-openssl</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Generate a CA for validating requests that submit the trusted header. This CA
+should be used as the file name for <code><strong>clientCA</strong></code> in the
+<a href="#requestheader-master-ca-config">master&#8217;s identity provider configuration</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># oadm ca create-signer-cert \
+  --cert='/etc/origin/master/proxyca.crt' \
+  --key='/etc/origin/master/proxyca.key' \
+  --name='openshift-proxy-signer@1432232228' \
+  --serial='/etc/origin/master/proxyca.serial.txt'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Generate a client certificate for the proxy. This can be done using any x509
+certificate tooling. For convenience, the <code>oadm</code> CLI can be used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># oadm create-api-client-config \
+  --certificate-authority='/etc/origin/master/proxyca.crt' \
+  --client-dir='/etc/origin/master/proxy' \
+  --signer-cert='/etc/origin/master/proxyca.crt' \
+  --signer-key='/etc/origin/master/proxyca.key' \
+  --signer-serial='/etc/origin/master/proxyca.serial.txt' \
+  --user='system:proxy' <i class="conum" data-value="1"></i><b>(1)</b>
+
+# pushd /etc/origin/master
+# cp master.server.crt /etc/pki/tls/certs/localhost.crt <i class="conum" data-value="2"></i><b>(2)</b>
+# cp master.server.key /etc/pki/tls/private/localhost.key
+# cp ca.crt /etc/pki/CA/certs/ca.crt
+# cat proxy/system\:proxy.crt \
+  proxy/system\:proxy.key &gt; \
+  /etc/pki/tls/certs/authproxy.pem
+# popd</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The user name can be anything, however it is useful to give it a descriptive
+name as it will appear in logs.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When running the authentication proxy on a different host name than the
+master, it is important to generate a certificate that matches the host name
+instead of using the default master certificate as shown above. The value for
+<code><strong>masterPublicURL</strong></code> in the <strong><em>/etc/origin/master/master-config.yaml</em></strong> file
+must be included in the <code>X509v3 Subject Alternative Name</code> in the certificate
+that is specified for <code><strong>SSLCertificateFile</strong></code>. If a new certificate needs to be
+created, the <code>oadm ca create-server-cert</code> command can be used.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Configuring Apache</strong></p>
+</div>
+<div class="paragraph">
+<p>Unlike OpenShift Enterprise 2, this proxy does not need to reside on the same
+host as the master. It uses a client certificate to connect to the master, which
+is configured to trust the <code>X-Remote-User</code> header.</p>
+</div>
+<div class="paragraph">
+<p>Configure Apache per the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">LoadModule auth_form_module modules/mod_auth_form.so
+LoadModule session_module modules/mod_session.so
+LoadModule request_module modules/mod_request.so
+
+# Nothing needs to be served over HTTP.  This virtual host simply redirects to
+# HTTPS.
+&lt;VirtualHost *:80&gt;
+  DocumentRoot /var/www/html
+  RewriteEngine              On
+  RewriteRule     ^(.*)$     https://%{HTTP_HOST}$1 [R,L]
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+  # This needs to match the certificates you generated.  See the CN and X509v3
+  # Subject Alternative Name in the output of:
+  # openssl x509 -text -in /etc/pki/tls/certs/localhost.crt
+  ServerName www.example.com
+
+  DocumentRoot /var/www/html
+  SSLEngine on
+  SSLCertificateFile /etc/pki/tls/certs/localhost.crt
+  SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+  SSLCACertificateFile /etc/pki/CA/certs/ca.crt
+
+  SSLProxyEngine on
+  SSLProxyCACertificateFile /etc/pki/CA/certs/ca.crt
+  # It's critical to enforce client certificates on the Master.  Otherwise
+  # requests could spoof the X-Remote-User header by accessing the Master's
+  # /oauth/authorize endpoint directly.
+  SSLProxyMachineCertificateFile /etc/pki/tls/certs/authproxy.pem
+
+  # Send all requests to the console
+  RewriteEngine              On
+  RewriteRule     ^/console(.*)$     https://%{HTTP_HOST}:8443/console$1 [R,L]
+
+  # In order to using the challenging-proxy an X-Csrf-Token must be present.
+  RewriteCond %{REQUEST_URI} ^/challenging-proxy
+  RewriteCond %{HTTP:X-Csrf-Token} ^$ [NC]
+  RewriteRule ^.* - [F,L]
+
+  &lt;Location /challenging-proxy/oauth/authorize&gt;
+    # Insert your backend server name/ip here.
+    ProxyPass https://[MASTER]:8443/oauth/authorize
+    AuthType basic
+  &lt;/Location&gt;
+
+  &lt;Location /login-proxy/oauth/authorize&gt;
+    # Insert your backend server name/ip here.
+    ProxyPass https://[MASTER]:8443/oauth/authorize
+
+    # mod_auth_form providers are implemented by mod_authn_dbm, mod_authn_file,
+    # mod_authn_dbd, mod_authnz_ldap and mod_authn_socache.
+    AuthFormProvider file
+    AuthType form
+    AuthName openshift
+    ErrorDocument 401 /login.html
+  &lt;/Location&gt;
+
+  &lt;ProxyMatch /oauth/authorize&gt;
+    AuthUserFile /etc/origin/master/htpasswd
+    AuthName openshift
+    Require valid-user
+    RequestHeader set X-Remote-User %{REMOTE_USER}s
+
+    # For ldap:
+    # AuthBasicProvider ldap
+    # AuthLDAPURL "ldap://ldap.example.com:389/ou=People,dc=my-domain,dc=com?uid?sub?(objectClass=*)"
+
+    # It's possible to remove the mod_auth_form usage and replace it with
+    # something like mod_auth_kerb, mod_auth_gsspai or even mod_auth_mellon.
+    # The former would be able to support both the login and challenge flows
+    # from the Master.  Mellon would likely only support the login flow.
+
+    # For Kerberos
+    # yum install mod_auth_gssapi
+    # AuthType GSSAPI
+    # GssapiCredStore keytab:/etc/httpd.keytab
+  &lt;/ProxyMatch&gt;
+
+&lt;/VirtualHost&gt;
+
+RequestHeader unset X-Remote-User</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Additional mod_auth_form Requirements</strong></p>
+</div>
+<div class="paragraph">
+<p>A sample login page is available from the
+<a href="https://github.com/openshift/openshift-extras/tree/master/misc/form_auth">openshift_extras</a>
+repository. This file should be placed in the <code><strong>DocumentRoot</strong></code> location
+(<strong><em>/var/www/html</em></strong> by default).</p>
+</div>
+<div class="paragraph">
+<p><strong>Creating Users</strong></p>
+</div>
+<div class="paragraph">
+<p>At this point, you can create the users in the system Apache is using to store
+accounts information. In this example, file-backed authentication is used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># yum -y install httpd-tools
+# touch /etc/origin/master/htpasswd
+# htpasswd /etc/origin/master/htpasswd &lt;user_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Configuring the Master</strong></p>
+</div>
+<div id="requestheader-master-ca-config" class="paragraph">
+<p>The <code><strong>identityProviders</strong></code> stanza in the
+<strong><em>/etc/origin/master/master-config.yaml</em></strong> file must be updated as well:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  identityProviders:
+  - name: requestheader
+    challenge: true
+    login: true
+    provider:
+      apiVersion: v1
+      kind: RequestHeaderIdentityProvider
+      challengeURL: "https://[MASTER]/challenging-proxy/oauth/authorize?${query}"
+      loginURL: "https://[MASTER]/login-proxy/oauth/authorize?${query}"
+      clientCA: /etc/origin/master/proxyca.crt
+      headers:
+      - X-Remote-User</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Restarting Services</strong></p>
+</div>
+<div class="paragraph">
+<p>Finally, restart the following services:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># systemctl restart httpd
+# systemctl restart origin-master</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Verifying the Configuration</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Test by bypassing the proxy. You should be able to request a token if you
+supply the correct client certificate and header:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># curl -L -k -H "X-Remote-User: joe" \
+   --cert /etc/pki/tls/certs/authproxy.pem \
+   https://[MASTER]:8443/oauth/token/request</pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you do not supply the client certificate, the request should be denied:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># curl -L -k -H "X-Remote-User: joe" \
+   https://[MASTER]:8443/oauth/token/request</pre>
+</div>
+</div>
+</li>
+<li>
+<p>This should show a redirect to the configured <code><strong>challengeURL</strong></code> (with
+additional query parameters):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># curl -k -v -H 'X-Csrf-Token: 1' \
+   '&lt;masterPublicURL&gt;/oauth/authorize?client_id=openshift-challenging-client&amp;response_type=token'</pre>
+</div>
+</div>
+</li>
+<li>
+<p>This should show a 401 response with a <code>WWW-Authenticate</code> basic challenge:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">#  curl -k -v -H 'X-Csrf-Token: 1' \
+    '&lt;redirected challengeURL from step 3 +query&gt;'</pre>
+</div>
+</div>
+</li>
+<li>
+<p>This should show a redirect with an access token:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">#  curl -k -v -u &lt;your_user&gt;:&lt;your_password&gt; \
+    -H 'X-Csrf-Token: 1' '&lt;redirected_challengeURL_from_step_3 +query&gt;'</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="GitHub"><a class="anchor" href="#GitHub"></a>GitHub</h3>
+<div class="paragraph">
+<p>Set <strong>GitHubIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to use
+<a href="https://github.com/">GitHub</a> as an identity provider, using the
+<a href="https://developer.github.com/v3/oauth/">OAuth integration</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using GitHub as an identity provider requires users to get a token using
+<code>&lt;master&gt;/oauth/token/request</code> to use with command-line tools.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using GitHub as an identity provider allows any GitHub user to authenticate to your server.
+You can limit authentication to members of specific GitHub organizations with the
+<code>organizations</code> configuration attribute, as shown below.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="title">Example 10. Master Configuration Using <strong>GitHubIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: github <i class="conum" data-value="1"></i><b>(1)</b>
+    challenge: false <i class="conum" data-value="2"></i><b>(2)</b>
+    login: true <i class="conum" data-value="3"></i><b>(3)</b>
+    mappingMethod: claim <i class="conum" data-value="4"></i><b>(4)</b>
+    provider:
+      apiVersion: v1
+      kind: GitHubIdentityProvider
+      clientID: ... <i class="conum" data-value="5"></i><b>(5)</b>
+      clientSecret: ... <i class="conum" data-value="6"></i><b>(6)</b>
+      organizations: <i class="conum" data-value="7"></i><b>(7)</b>
+      - myorganization1
+      - myorganization2</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This provider name is prefixed to the GitHub numeric user ID to form an
+identity name. It is also used to build the callback URL.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><strong>GitHubIdentityProvider</strong> cannot be used to send <code>WWW-Authenticate</code>
+challenges.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
+console) are redirected to GitHub to log in.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Controls how mappings are established between this provider&#8217;s identities and user objects,
+<a href="#mapping-identities-to-users">as described above</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The client ID of a
+<a href="https://github.com/settings/applications/new">registered GitHub OAuth
+application</a>. The application must be configured with a callback URL of
+<code>&lt;master&gt;/oauth2callback/&lt;identityProviderName&gt;</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The client secret issued by GitHub. This value may also be provided in an
+<a href="../install_config/master_node_configuration.html#master-node-configuration-passwords-and-other-data">environment
+variable, external file, or encrypted file</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Optional list of organizations. If specified, only GitHub users that are members of
+at least one of the listed organizations will be allowed to log in. If the GitHub OAuth
+application configured in <strong>clientID</strong> is not owned by the organization, an organization
+owner must grant third-party access in order to use this option. This can be done during
+the first GitHub login by the organization&#8217;s administrator, or from the GitHub organization settings.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="GitLab"><a class="anchor" href="#GitLab"></a>GitLab</h3>
+<div class="paragraph">
+<p>Set <strong>GitLabIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to use
+<a href="https://gitlab.com/">GitLab.com</a> or any other GitLab instance as an identity provider, using the
+<a href="http://doc.gitlab.com/ce/integration/oauth_provider.html">OAuth integration</a>.
+The OAuth provider feature requires GitLab version 7.7.0 or higher.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using GitLab as an identity provider requires users to get a token using
+<code>&lt;master&gt;/oauth/token/request</code> to use with command-line tools.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="title">Example 11. Master Configuration Using <strong>GitLabIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: gitlab <i class="conum" data-value="1"></i><b>(1)</b>
+    challenge: true <i class="conum" data-value="2"></i><b>(2)</b>
+    login: true <i class="conum" data-value="3"></i><b>(3)</b>
+    mappingMethod: claim <i class="conum" data-value="4"></i><b>(4)</b>
+    provider:
+      apiVersion: v1
+      kind: GitLabIdentityProvider
+      url: ... <i class="conum" data-value="5"></i><b>(5)</b>
+      clientID: ... <i class="conum" data-value="6"></i><b>(6)</b>
+      clientSecret: ... <i class="conum" data-value="7"></i><b>(7)</b>
+      ca: ... <i class="conum" data-value="8"></i><b>(8)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This provider name is prefixed to the GitLab numeric user ID to form an
+identity name. It is also used to build the callback URL.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from non-web clients (like
+the CLI) are sent a <code>WWW-Authenticate</code> challenge header for this provider.
+This uses the <a href="http://doc.gitlab.com/ce/api/oauth2.html#resource-owner-password-credentials">Resource Owner Password Credentials</a>
+grant flow to obtain an access token from GitLab.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><strong>GitLabIdentityProvider</strong> cannot be used to send <code>WWW-Authenticate</code>
+challenges.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
+console) are redirected to GitLab to log in.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Controls how mappings are established between this provider&#8217;s identities and user objects,
+<a href="#mapping-identities-to-users">as described above</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The host URL of a GitLab OAuth provider. This could either be <code>https://gitlab.com/</code>
+or any other self hosted instance of GitLab.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>The client ID of a
+<a href="https://gitlab.com/oauth/applications/new">registered GitLab OAuth
+application</a>. The application must be configured with a callback URL of
+<code>&lt;master&gt;/oauth2callback/&lt;identityProviderName&gt;</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>The client secret issued by GitLab. This value may also be provided in an
+<a href="../install_config/master_node_configuration.html#master-node-configuration-passwords-and-other-data">environment
+variable, external file, or encrypted file</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>CA is an optional trusted certificate authority bundle to use when making
+requests to the GitLab instance. If empty, the default system roots are used.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Google"><a class="anchor" href="#Google"></a>Google</h3>
+<div class="paragraph">
+<p>Set <strong>GoogleIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to use Google
+as an identity provider, using
+<a href="https://developers.google.com/identity/protocols/OpenIDConnect">Google&#8217;s OpenID
+Connect integration</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using Google as an identity provider requires users to get a token using
+<code>&lt;master&gt;/oauth/token/request</code> to use with command-line tools.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using Google as an identity provider allows any Google user to authenticate to your server.
+You can limit authentication to members of a specific hosted domain with the
+<code>hostedDomain</code> configuration attribute, as shown below.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="title">Example 12. Master Configuration Using <strong>GoogleIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: google <i class="conum" data-value="1"></i><b>(1)</b>
+    challenge: false <i class="conum" data-value="2"></i><b>(2)</b>
+    login: true <i class="conum" data-value="3"></i><b>(3)</b>
+    mappingMethod: claim <i class="conum" data-value="4"></i><b>(4)</b>
+    provider:
+      apiVersion: v1
+      kind: GoogleIdentityProvider
+      clientID: ... <i class="conum" data-value="5"></i><b>(5)</b>
+      clientSecret: ... <i class="conum" data-value="6"></i><b>(6)</b>
+      hostedDomain: "" <i class="conum" data-value="7"></i><b>(7)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This provider name is prefixed to the Google numeric user ID to form an
+identity name. It is also used to build the redirect URL.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><strong>GoogleIdentityProvider</strong> cannot be used to send <code>WWW-Authenticate</code>
+challenges.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
+console) are redirected to Google to log in.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Controls how mappings are established between this provider&#8217;s identities and user objects,
+<a href="#mapping-identities-to-users">as described above</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The client ID of a <a href="https://console.developers.google.com/">registered
+Google project</a>. The project must be configured with a redirect URI of
+<code>&lt;master&gt;/oauth2callback/&lt;identityProviderName&gt;</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The client secret issued by Google. This value may also be provided in an
+<a href="../install_config/master_node_configuration.html#master-node-configuration-passwords-and-other-data">environment
+variable, external file, or encrypted file</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Optional
+<a href="https://developers.google.com/identity/protocols/OpenIDConnect#hd-param">hosted
+domain</a> to restrict sign-in accounts to. If empty, any Google account is allowed
+to authenticate.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="OpenID"><a class="anchor" href="#OpenID"></a>OpenID Connect</h3>
+<div class="paragraph">
+<p>Set <strong>OpenIDIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to integrate
+with an OpenID Connect identity provider using an
+<a href="http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">Authorization Code Flow</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>ID Token</strong> and <strong>UserInfo</strong> decryptions are not supported.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>By default, the <strong>openid</strong> scope is requested. If required, extra scopes can be
+specified in the <code><strong>extraScopes</strong></code> field.</p>
+</div>
+<div class="paragraph">
+<p>Claims are read from the JWT <code>id_token</code> returned from the OpenID identity
+provider and, if specified, from the JSON returned by the <code><strong>UserInfo</strong></code> URL.</p>
+</div>
+<div class="paragraph">
+<p>At least one claim must be configured to use as the user&#8217;s identity. The
+<a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">standard identity claim</a> is <code>sub</code>.</p>
+</div>
+<div class="paragraph">
+<p>You can also indicate which claims to use as the user&#8217;s preferred user name,
+display name, and email address. If multiple claims are specified, the first one
+with a non-empty value is used. The
+<a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">standard claims</a> are:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>sub</code>
+</td>
+<td class="hdlist2">
+<p>The user identity.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>preferred_username</code>
+</td>
+<td class="hdlist2">
+<p>The preferred user name when provisioning a user.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>email</code>
+</td>
+<td class="hdlist2">
+<p>Email address.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>name</code>
+</td>
+<td class="hdlist2">
+<p>Display name.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using an OpenID Connect identity provider requires users to get a token using
+<code>&lt;master&gt;/oauth/token/request</code> to use with command-line tools.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="title">Example 13. Standard Master Configuration Using <strong>OpenIDIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: my_openid_connect <i class="conum" data-value="1"></i><b>(1)</b>
+    challenge: true <i class="conum" data-value="2"></i><b>(2)</b>
+    login: true <i class="conum" data-value="3"></i><b>(3)</b>
+    mappingMethod: claim <i class="conum" data-value="4"></i><b>(4)</b>
+    provider:
+      apiVersion: v1
+      kind: OpenIDIdentityProvider
+      clientID: ... <i class="conum" data-value="5"></i><b>(5)</b>
+      clientSecret: ... <i class="conum" data-value="6"></i><b>(6)</b>
+      claims:
+        id:
+        - sub <i class="conum" data-value="7"></i><b>(7)</b>
+        preferredUsername:
+        - preferred_username
+        name:
+        - name
+        email:
+        - email
+      urls:
+        authorize: https://myidp.example.com/oauth2/authorize <i class="conum" data-value="8"></i><b>(8)</b>
+        token: https://myidp.example.com/oauth2/token <i class="conum" data-value="9"></i><b>(9)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This provider name is prefixed to the value of the identity claim to form an
+identity name. It is also used to build the redirect URL.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from non-web clients (like
+the CLI) are sent a <code>WWW-Authenticate</code> challenge header for this provider.
+This requires the OpenID provider to support the
+<a href="https://tools.ietf.org/html/rfc6749#section-1.3.3">Resource Owner Password Credentials</a> grant flow.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><strong>OpenIDIdentityProvider</strong> cannot be used to send <code>WWW-Authenticate</code>
+challenges.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
+console) are redirected to the authorize URL to log in.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Controls how mappings are established between this provider&#8217;s identities and user objects,
+<a href="#mapping-identities-to-users">as described above</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The client ID of a client registered with the OpenID provider. The client
+must be allowed to redirect to <code>&lt;master&gt;/oauth2callback/&lt;identityProviderName&gt;</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>The client secret. This value may also be provided in an
+<a href="../install_config/master_node_configuration.html#master-node-configuration-passwords-and-other-data">environment
+variable, external file, or encrypted file</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Use the value of the <code>sub</code> claim in the returned <code>id_token</code> as the user&#8217;s
+identity.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td><a href="http://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint">Authorization Endpoint</a>
+described in the OpenID spec. Must use <code>https</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td><a href="http://openid.net/specs/openid-connect-core-1_0.html#TokenEndpoint">Token Endpoint</a>
+described in the OpenID spec. Must use <code>https</code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>A custom certificate bundle, extra scopes, extra authorization request
+parameters, and <code><strong>userInfo</strong></code> URL can also be specified:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 14. Full Master Configuration Using <strong>OpenIDIdentityProvider</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  identityProviders:
+  - name: my_openid_connect
+    challenge: false
+    login: true
+    mappingMethod: claim
+    provider:
+      apiVersion: v1
+      kind: OpenIDIdentityProvider
+      clientID: ...
+      clientSecret: ...
+      ca: my-openid-ca-bundle.crt <i class="conum" data-value="1"></i><b>(1)</b>
+      extraScopes: <i class="conum" data-value="2"></i><b>(2)</b>
+      - email
+      - profile
+      extraAuthorizeParameters: <i class="conum" data-value="3"></i><b>(3)</b>
+        include_granted_scopes: "true"
+      claims:
+        id: <i class="conum" data-value="4"></i><b>(4)</b>
+        - custom_id_claim
+        - sub
+        preferredUsername: <i class="conum" data-value="5"></i><b>(5)</b>
+        - preferred_username
+        - email
+        name: <i class="conum" data-value="6"></i><b>(6)</b>
+        - nickname
+        - given_name
+        - name
+        email: <i class="conum" data-value="7"></i><b>(7)</b>
+        - custom_email_claim
+        - email
+      urls:
+        authorize: https://myidp.example.com/oauth2/authorize
+        token: https://myidp.example.com/oauth2/token
+        userInfo: https://myidp.example.com/oauth2/userinfo <i class="conum" data-value="8"></i><b>(8)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Certificate bundle to use to validate server certificates for the configured
+URLs. If empty, system trusted roots are used.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Optional list of scopes to request, in addition to the <strong>openid</strong> scope,
+during the authorization token request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Optional map of extra parameters to add to the authorization token request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>List of claims to use as the identity. First non-empty claim is used. At
+least one claim is required. If none of the listed claims have a value,
+authentication fails.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>List of claims to use as the preferred user name when provisioning a user
+for this identity. First non-empty claim is used.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>List of claims to use as the display name. First non-empty claim is used.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>List of claims to use as the email address. First non-empty claim is used.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td><a href="http://openid.net/specs/openid-connect-core-1_0.html#UserInfo">UserInfo Endpoint</a> described in the OpenID spec. Must use <code>https</code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="token-options"><a class="anchor" href="#token-options"></a>Token Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The OAuth server generates two kinds of tokens:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Access tokens
+</td>
+<td class="hdlist2">
+<p>Longer-lived tokens that grant access to the API.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Authorize codes
+</td>
+<td class="hdlist2">
+<p>Short-lived tokens whose only use is to be exchanged for
+an access token.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Use the <code><strong>tokenConfig</strong></code> stanza to set token options:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 15. Master Configuration Token Options</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  tokenConfig:
+    accessTokenMaxAgeSeconds: 86400 <i class="conum" data-value="1"></i><b>(1)</b>
+    authorizeTokenMaxAgeSeconds: 300 <i class="conum" data-value="2"></i><b>(2)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Set <code><strong>accessTokenMaxAgeSeconds</strong></code> to control the lifetime of access tokens.
+The default lifetime is 24 hours.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Set <code><strong>authorizeTokenMaxAgeSeconds</strong></code> to control the lifetime of authorize
+codes. The default lifetime is five minutes.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grant-options"><a class="anchor" href="#grant-options"></a>Grant Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When the OAuth server receives token requests for a client to which the user
+has not previously granted permission, the action that the OAuth server takes
+is dependent on the OAuth client&#8217;s grant strategy.</p>
+</div>
+<div class="paragraph">
+<p>When the OAuth client requesting token does not provide its own grant strategy,
+the server-wide default strategy is used. To configure the default strategy,
+set the <code><strong>method</strong></code> value in the <code><strong>grantConfig</strong></code> stanza. Valid values for
+<code><strong>method</strong></code> are:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>auto</code>
+</td>
+<td class="hdlist2">
+<p>Auto-approve the grant and retry the request.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>prompt</code>
+</td>
+<td class="hdlist2">
+<p>Prompt the user to approve or deny the grant.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>deny</code>
+</td>
+<td class="hdlist2">
+<p>Auto-deny the grant and return a failure error to the client.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="title">Example 16. Master Configuration Grant Options</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  grantConfig:
+    method: auto</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="session-options"><a class="anchor" href="#session-options"></a>Session Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The OAuth server uses a signed and encrypted cookie-based session during login
+and redirect flows.</p>
+</div>
+<div class="paragraph">
+<p>Use the <code><strong>sessionConfig</strong></code> stanza to set session options:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 17. Master Configuration Session Options</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oauthConfig:
+  ...
+  sessionConfig:
+    sessionMaxAgeSeconds: 300 <i class="conum" data-value="1"></i><b>(1)</b>
+    sessionName: ssn <i class="conum" data-value="2"></i><b>(2)</b>
+    sessionSecretsFile: "..." <i class="conum" data-value="3"></i><b>(3)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Controls the maximum age of a session; sessions auto-expire once a token
+request is complete. If <a href="#grant-options">auto-grant</a> is not enabled, sessions
+must last as long as the user is expected to take to approve or reject a client
+authorization request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Name of the cookie used to store the session.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>File name containing serialized <code><strong>SessionSecrets</strong></code> object. If empty, a
+random signing and encryption secret is generated at each server start.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If no <code><strong>sessionSecretsFile</strong></code> is specified, a random signing and encryption
+secret is generated at each start of the master server. This means that any
+logins in progress will have their sessions invalidated if the master is
+restarted. It also means that if multiple masters are configured, they will not
+be able to decode sessions generated by one of the other masters.</p>
+</div>
+<div class="paragraph">
+<p>To specify the signing and encryption secret to use, specify a
+<code><strong>sessionSecretsFile</strong></code>. This allows you separate secret values from the
+configuration file and keep the configuration file distributable, for example
+for debugging purposes.</p>
+</div>
+<div class="paragraph">
+<p>Multiple secrets can be specified in the <code><strong>sessionSecretsFile</strong></code> to enable
+rotation. New sessions are signed and encrypted using the first secret in the
+list. Existing sessions are decrypted and authenticated by each secret until one
+succeeds.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 18. Session Secret Configuration:</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">apiVersion: v1
+kind: SessionSecrets
+secrets: <i class="conum" data-value="1"></i><b>(1)</b>
+- authentication: "..." <i class="conum" data-value="2"></i><b>(2)</b>
+  encryption: "..." <i class="conum" data-value="3"></i><b>(3)</b>
+- authentication: "..."
+  encryption: "..."
+...</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>List of secrets used to authenticate and encrypt cookie sessions. At least
+one secret must be specified. Each secret must set an authentication and
+encryption secret.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Signing secret, used to authenticate sessions using HMAC. Recommended to use
+a secret with 32 or 64 bytes.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Encrypting secret, used to encrypt sessions. Must be 16, 24, or 32
+characters long, to select AES-128, AES-192, or AES-256.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-user-agent"><a class="anchor" href="#configuring-user-agent"></a>User Agent</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Administrators can prevent clients from accessing the API by their <code>User-Agent</code>
+header in the new <code><strong>userAgentMatching</strong></code> configuration setting.</p>
+</div>
+<div class="paragraph">
+<p>For example, you can deny clients using particular libraries or binaries. This
+example denies the Kubernetes 1.2 client binary, OpenShift Origin 1.1.3
+binary, and the POST and PUT <strong>httpVerbs</strong>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">policyConfig:
+  userAgentMatchingConfig:
+    defaultRejectionMessage: "Your client is too old.  Go to https://example.org to update it."
+    deniedClients:
+    - regex: '\w+/v(?:(?:1\.1\.1)|(?:1\.0\.1)) \(.+/.+\) openshift/\w{7}'
+    - regex: '\w+/v(?:1\.1\.3) \(.+/.+\) openshift/\w{7}'
+      httpVerbs:
+      - POST
+      - PUT
+    - regex: '\w+/v1\.2\.0 \(.+/.+\) kubernetes/\w{7}'
+      httpVerbs:
+      - POST
+      - PUT
+    requiredClients: null</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Administrators can also deny clients that do not exactly match the expect
+clients:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">policyConfig:
+  userAgentMatchingConfig:
+    defaultRejectionMessage: "Your client is too old.  Go to https://example.org to update it."
+    deniedClients: []
+    requiredClients:
+    - regex: '\w+/v1\.1\.3 \(.+/.+\) openshift/\w{7}'
+    - regex: '\w+/v1\.2\.0 \(.+/.+\) kubernetes/\w{7}'
+      httpVerbs:
+      - POST
+      - PUT</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When the client&#8217;s user agent mismatches the configuration, errors occur. To
+ensure that mutating requests match, enforce a whitelist. Rules are mapped to
+specific verbs, so you can ban mutating requests while allowing non-mutating
+requests.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-origin-docs">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="footer_social">
+          <a href="https://twitter.com/openshift" class="first">
+            <span>
+              <i class="fa fa-twitter-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://github.com/openshift/origin">
+            <span>
+              <i class="fa fa-github fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://plus.google.com/communities/114361859072744017486">
+            <span>
+              <i class="fa fa-google-plus-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://www.facebook.com/openshift">
+            <span>
+              <i class="fa fa-facebook-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <a id="footer_logo" href="https://www.redhat.com/">
+          <img alt="Red Hat" src="https://assets.openshift.net/app/assets/redhat.svg">
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-center">
+        <a id="powered_by_openshift" title="Powered by OpenShift Online with the DIY Cartridge" href="https://hub.openshift.com/quickstarts/92-do-it-yourself-0-1">
+          <img src="https://www.openshift.com/sites/default/files/images/powered-transparent-white.png" alt="Powered by OpenShift Online">
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-right">
+        <a id="built_with_asciibinder" title="Built with AsciiBinder docs management system" href="http://asciibinder.org/">
+          <img src="../../latest/_images/asciibinder_web_logo.svg" alt="AsciiBinder">
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="attribution">
+          <button type="button" class="btn btn-link" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-content="
+            '<a target='_blank' href='https://www.flickr.com/photos/eflon/3655695161/'>Spin</a>' by <a target='_blank' href='https://www.flickr.com/photos/eflon/'>eflon</a>,</br> used under <a target='_blank' href='https://creativecommons.org/licenses/by/2.0/'>CC BY 2.0</a> </br>Color tint added to original">
+            Image attribution
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+    </script>
+  </div>
+</footer>
+</body>
+</html>

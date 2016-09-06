@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en-us"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en-us"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt-ie10 lt-ie9" lang="en-us"> <![endif]-->
+<!--[if lt IE 10]> <html class="no-js lt-ie10" lang="en-us"> <![endif]-->
+<!--[if !IE]> > <![endif]-->
+<html class='no-js' lang='en'>
+<!-- <![endif] -->
+<head>
+<title>Atomic Registry Latest | Architecture | Core Concepts | Image Streams</title>
+<meta charset='utf-8'>
+<meta content='' name='description'>
+<meta content='Project Atomic. Sponsored by Red Hat, Inc.' name='author'>
+<meta content='initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width' name='viewport'>
+
+<link href='http://www.projectatomic.io/images/favicon.ico' rel='shortcut icon'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-57x57-precomposed.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-72x72-precomposed.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='http://www.projectatomic.io/images/apple-touch-icon-114x114-precomposed.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='http://www.projectatomic.io/blog/feed.xml' rel='alternate' title='Project Atomic' type='application/atom+xml'>
+<link href="http://www.projectatomic.io/stylesheets/application.css" rel="stylesheet" type="text/css" />
+<link href="http://www.projectatomic.io/stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body class=' docs docs_introduction docs_introduction_index source-md'>
+<section class='container' id='page-wrap'>
+  <div class='row'>
+  <div class='col-md-3 col-lg-2' id='sidebar'>
+    <div id='nav-primary'>
+      <nav class='navbar navbar-default' role='navigation'>
+        <div class='navbar-header'>
+          <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse'>
+            <span class='sr-only'>
+              Toggle navigation
+            </span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='http://www.projectatomic.io/'>
+            Project Atomic
+          </a>
+        </div>
+        <div class='collapse navbar-collapse navbar-ex1-collapse'>
+          <ul class='nav navbar-nav'>
+            <li><a class="get-started" href="http://www.projectatomic.io/download">Get Started</a></li>
+            <li><a class="documentation" href="http://www.projectatomic.io/docs">Documentation</a></li>
+            <li><a class="developer-community" href="http://www.projectatomic.io/community">Developer Community</a></li>
+            <li><a class="on-github" href="https://github.com/projectatomic/">On GitHub</a></li>
+            <li><a class="ask" href="http://ask.projectatomic.io/">Ask</a></li>
+            <li><a class="blog" href="http://www.projectatomic.io/blog">Blog</a></li>
+            <li><a class="twitter" href="http://www.twitter.com/projectatomic">Twitter</a></li>
+            <li><a class="facebook" href="https://www.facebook.com/projectatomic">Facebook</a></li>
+            <li><a class="google" href="https://plus.google.com/108727025270662383247/posts">Google+</a></li>
+            <li><a class="rss" href="http://www.projectatomic.io/blog/feed.xml">RSS</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+<section class='col-lg-10 col-md-9 container-fluid' id='content'>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser.
+<a href="http://browsehappy.com/">Upgrade your browser today</a> or
+<a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+<div class='row'>
+  <div class='col-sm-9'>
+    <h2>Builds and Image Streams</h2>
+    <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#image-streams">Image Streams</a>
+<ul class="sectlevel2">
+<li><a href="#image-stream-mappings">Image Stream Mappings</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="image-streams"><a class="anchor" href="#image-streams"></a>Image Streams</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An <em>image stream</em> comprises any number of
+<a href="containers_and_images.html#docker-images">Docker images</a> identified by tags.
+It presents a single virtual view of related images, similar to a Docker image
+repository, and may contain images from any of the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Its own image repository in Atomic Registry&#8217;s
+<a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">integrated
+registry</a></p>
+</li>
+<li>
+<p>Other image streams</p>
+</li>
+<li>
+<p>Docker image repositories from external registries</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Image Stream Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ImageStream</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">annotations</span>:
+    <span style="color:#606">openshift.io/generated-by</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OpenShiftNewApp</span></span>
+  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">2016-01-29T13:33:49Z</span></span>
+  <span style="color:#606">generation</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1</span></span>
+  <span style="color:#606">labels</span>:
+    <span style="color:#606">app</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ruby-sample-build</span></span>
+    <span style="color:#606">template</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">application-template-stibuild</span></span>
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">origin-ruby-sample</span></span>
+  <span style="color:#606">namespace</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">test</span></span>
+  <span style="color:#606">resourceVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">633</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">selflink</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/oapi/v1/namespaces/test/imagestreams/origin-ruby-sample</span></span>
+  <span style="color:#606">uid</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ee2b9405-c68c-11e5-8a99-525400f25e34</span></span>
+<span style="color:#606">spec</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span>
+<span style="color:#606">status</span>:
+  <span style="color:#606">dockerImageRepository</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.30.56.218:5000/test/origin-ruby-sample</span></span>
+  <span style="color:#606">tags</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">items:</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">created: 2016-01-29T13:40:11Z</span></span>
+      <span style="color:#606">dockerImageReference</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.30.56.218:5000/test/origin-ruby-sample@sha256:47463d94eb5c049b2d23b03a9530bf944f8f967a0fe79147dd6b9135bf7dd13d</span></span>
+      <span style="color:#606">generation</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1</span></span>
+      <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sha256:47463d94eb5c049b2d23b03a9530bf944f8f967a0fe79147dd6b9135bf7dd13d</span></span>
+    <span style="color:#606">tag</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">latest</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="image-stream-mappings"><a class="anchor" href="#image-stream-mappings"></a>Image Stream Mappings</h3>
+<div class="paragraph">
+<p>When the
+<a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">integrated
+registry</a> receives a new image, it creates and sends an <code><strong>ImageStreamMapping</strong></code>
+to Atomic Registry, providing the image&#8217;s namespace (i.e., its project), name,
+tag, and Docker metadata.</p>
+</div>
+<div class="paragraph">
+<p>This information is used to create a new image (if it does not already exist)
+and to tag the image into the image stream. Atomic Registry stores complete
+metadata about each image, such as commands, entrypoint, and environment
+variables. Images in Atomic Registry are immutable and the maximum name length
+is 63 characters.</p>
+</div>
+<div class="paragraph">
+<p>The following <code><strong>ImageStreamMapping</strong></code> example results in an image being tagged as
+<strong>test/origin-ruby-sample:latest</strong>:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Image Stream Mapping Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ImageStreamMapping</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">origin-ruby-sample</span></span>
+  <span style="color:#606">namespace</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">test</span></span>
+<span style="color:#606">tag</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">latest</span></span>
+<span style="color:#606">image</span>:
+  <span style="color:#606">dockerImageLayers</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:ee1dd2cb6df21971f4af6de0f1d7782b81fb63156801cfde2bb47b4247c23c29</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">196634330</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:ca062656bff07f18bff46be00f40cfbb069687ec124ac0aa038fd676cfaea092</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">177723024</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:63d529c59c92843c395befd065de516ee9ed4995549f8218eac6ff088bfa6b6e</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">55679776</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:92114219a04977b5563d7dff71ec4caa3a37a15b266ce42ee8f43dba9798c966</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">11939149</span></span>
+  <span style="color:#606">dockerImageMetadata</span>:
+    <span style="color:#606">Architecture</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">amd64</span></span>
+    <span style="color:#606">Config</span>:
+      <span style="color:#606">Cmd</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/usr/libexec/s2i/run</span></span>
+      <span style="color:#606">Entrypoint</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">container-entrypoint</span></span>
+      <span style="color:#606">Env</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">RACK_ENV=production</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_NAMESPACE=test</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_SOURCE=https://github.com/openshift/ruby-hello-world.git</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">EXAMPLE=sample-app</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_NAME=ruby-sample-build-1</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">STI_SCRIPTS_URL=image:///usr/libexec/s2i</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">STI_SCRIPTS_PATH=/usr/libexec/s2i</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">HOME=/opt/app-root/src</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">BASH_ENV=/opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ENV=/opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">PROMPT_COMMAND=. /opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">RUBY_VERSION=2.2</span></span>
+      <span style="color:#606">ExposedPorts</span>:
+        <span style="color:#606">8080/tcp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span>
+      <span style="color:#606">Labels</span>:
+        <span style="color:#606">build-date</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">2015-12-23</span></span>
+        <span style="color:#606">io.k8s.description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Platform for building and running Ruby 2.2 applications</span></span>
+        <span style="color:#606">io.k8s.display-name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.30.56.218:5000/test/origin-ruby-sample:latest</span></span>
+        <span style="color:#606">io.openshift.build.commit.author</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Ben Parees &lt;bparees@users.noreply.github.com&gt;</span></span>
+        <span style="color:#606">io.openshift.build.commit.date</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Wed Jan 20 10:14:27 2016 -0500</span></span>
+        <span style="color:#606">io.openshift.build.commit.id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">00cadc392d39d5ef9117cbc8a31db0889eedd442</span></span>
+        <span style="color:#606">io.openshift.build.commit.message</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">'Merge pull request</span></span> <span style="color:#777">#51 from php-coder/fix_url_and_sti'</span>
+        <span style="color:#606">io.openshift.build.commit.ref</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master</span></span>
+        <span style="color:#606">io.openshift.build.image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">centos/ruby-22-centos7@sha256:3a335d7d8a452970c5b4054ad7118ff134b3a6b50a2bb6d0c07c746e8986b28e</span></span>
+        <span style="color:#606">io.openshift.build.source-location</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://github.com/openshift/ruby-hello-world.git</span></span>
+        <span style="color:#606">io.openshift.builder-base-version</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">8d95148</span></span>
+        <span style="color:#606">io.openshift.builder-version</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">8847438ba06307f86ac877465eadc835201241df</span></span>
+        <span style="color:#606">io.openshift.expose-services</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">8080:http</span></span>
+        <span style="color:#606">io.openshift.s2i.scripts-url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">image:///usr/libexec/s2i</span></span>
+        <span style="color:#606">io.openshift.tags</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">builder,ruby,ruby22</span></span>
+        <span style="color:#606">io.s2i.scripts-url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">image:///usr/libexec/s2i</span></span>
+        <span style="color:#606">license</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">GPLv2</span></span>
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">CentOS Base Image</span></span>
+        <span style="color:#606">vendor</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">CentOS</span></span>
+      <span style="color:#606">User</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1001</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">WorkingDir</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/opt/app-root/src</span></span>
+    <span style="color:#606">Container</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">86e9a4a3c760271671ab913616c51c9f3cea846ca524bf07c04a6f6c9e103a76</span></span>
+    <span style="color:#606">ContainerConfig</span>:
+      <span style="color:#606">AttachStdout</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+      <span style="color:#606">Cmd</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/bin/sh</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">-c</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">tar -C /tmp -xf - &amp;&amp; /usr/libexec/s2i/assemble</span></span>
+      <span style="color:#606">Entrypoint</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">container-entrypoint</span></span>
+      <span style="color:#606">Env</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">RACK_ENV=production</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_NAME=ruby-sample-build-1</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_NAMESPACE=test</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_SOURCE=https://github.com/openshift/ruby-hello-world.git</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">EXAMPLE=sample-app</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">STI_SCRIPTS_URL=image:///usr/libexec/s2i</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">STI_SCRIPTS_PATH=/usr/libexec/s2i</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">HOME=/opt/app-root/src</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">BASH_ENV=/opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ENV=/opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">PROMPT_COMMAND=. /opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">RUBY_VERSION=2.2</span></span>
+      <span style="color:#606">ExposedPorts</span>:
+        <span style="color:#606">8080/tcp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span>
+      <span style="color:#606">Hostname</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ruby-sample-build-1-build</span></span>
+      <span style="color:#606">Image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">centos/ruby-22-centos7@sha256:3a335d7d8a452970c5b4054ad7118ff134b3a6b50a2bb6d0c07c746e8986b28e</span></span>
+      <span style="color:#606">OpenStdin</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+      <span style="color:#606">StdinOnce</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+      <span style="color:#606">User</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1001</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">WorkingDir</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/opt/app-root/src</span></span>
+    <span style="color:#606">Created</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">2016-01-29T13:40:00Z</span></span>
+    <span style="color:#606">DockerVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1.8.2.fc21</span></span>
+    <span style="color:#606">Id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">9d7fd5e2d15495802028c569d544329f4286dcd1c9c085ff5699218dbaa69b43</span></span>
+    <span style="color:#606">Parent</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">57b08d979c86f4500dc8cad639c9518744c8dd39447c055a3517dc9c18d6fccd</span></span>
+    <span style="color:#606">Size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">441976279</span></span>
+    <span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1.0</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">DockerImage</span></span>
+  <span style="color:#606">dockerImageMetadataVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1.0</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">dockerImageReference</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.30.56.218:5000/test/origin-ruby-sample@sha256:47463d94eb5c049b2d23b03a9530bf944f8f967a0fe79147dd6b9135bf7dd13d</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+  </div>
+
+  <div class='col-sm-3 hidden-print'>
+    <h2>Atomic Registry</h2>
+    <nav role='navigation'>
+      <ul class='docbrowser nav nav-vertical'>
+        <li class='disabled'>
+          <h3>Quickstart</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../registry_quickstart/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../../registry_quickstart/developers.html">Developers</a></li>
+            <!-- <li role="menuitem"><a>Administrators</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-0-2">
+                <span id="sgSpan-0-2" class="fa fa-caret-right"></span>&nbsp;Administrators
+              </a>
+              <ul id="topicSubGroup-0-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../registry_quickstart/administrators/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../registry_quickstart/administrators/system_configuration.html">System Configuration</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../registry_quickstart/administrators/uninstall.html">Uninstall</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Architecture</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../architecture/index.html">Overview</a></li>
+            <!-- <li role="menuitem"><a>Infrastructure Components</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-1">
+                <span id="sgSpan-1-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/infrastructure_components/image_registry.html">Image Registry</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/infrastructure_components/web_console.html">Web Console</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Core Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-2">
+                <span id="sgSpan-1-2" class="fa fa-caret-down"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-1-2" class="nav-tertiary list-unstyled collapse in">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/core_concepts/containers_and_images.html">Images</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</strong></a><li>
+
+                  <li class=" active">&nbsp;<a role="menuitem" href="../../architecture/core_concepts/builds_and_image_streams.html">Image Streams</strong></a><li>
+              </ul>
+            </li>
+            <!-- <li role="menuitem"><a>Additional Concepts</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-3">
+                <span id="sgSpan-1-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-1-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/additional_concepts/authentication.html">Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/additional_concepts/authorization.html">Authorization</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../architecture/additional_concepts/other_api_objects.html">Other API Objects</strong></a><li>
+              </ul>
+            </li>
+        <li class='disabled'>
+          <h3>Installation and Configuration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+              <li role="menuitem" class=""><a href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+              <li role="menuitem" class=""><a href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+              <li role="menuitem" class=""><a href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <!-- <li role="menuitem"><a>Advanced LDAP Configuration</a></li> -->
+            <li role="menuitem" class="">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-4">
+                <span id="sgSpan-2-4" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-2-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../install_config/advanced_ldap_configuration/index.html">Overview</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</strong></a><li>
+
+                  <li class="">&nbsp;<a role="menuitem" href="../../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</strong></a><li>
+              </ul>
+            </li>
+              <li role="menuitem" class=""><a href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+        <li class='disabled'>
+          <h3>Cluster Administration</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../admin_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/manage_users.html">Managing Users</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/image_policy.html">Image Policy</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/quota.html">Setting Quotas</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/limits.html">Setting Limit Ranges</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+              <li role="menuitem" class=""><a href="../../admin_guide/backup_restore.html">Backup and Restore</a></li>
+        <li class='disabled'>
+          <h3>User Guide</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../dev_guide/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../../dev_guide/authentication.html">Authentication</a></li>
+              <li role="menuitem" class=""><a href="../../dev_guide/managing_images.html">Managing Images</a></li>
+              <li role="menuitem" class=""><a href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+        <li class='disabled'>
+          <h3>CLI Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../cli_reference/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+              <li role="menuitem" class=""><a href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+        <li class='disabled'>
+          <h3>REST API Reference</h3>
+        </li>
+              <li role="menuitem" class=""><a href="../../rest_api/index.html">Overview</a></li>
+              <li role="menuitem" class=""><a href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+              <li role="menuitem" class=""><a href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+</section>
+</div>
+<div class='row'>
+<div class='col-md-offset-3 col-md-9 col-lg-offset-2 col-lg-10' id='footer'>
+  <footer>
+<hr class='visible-print'>
+
+&copy; 2014&ndash;2016 Project Atomic. Sponsored by Red Hat, Inc.
+<div class='edit-this-page pull-right'>
+<a href="https://github.com/openshift/openshift-docs#contributing-to-openshift-documentation"><i class="icon fa fa-fw fa-github"></i>Edit this page on GitHub</a>
+</div>
+        <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik-osasteam.rhcloud.com/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 4]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+<noscript><p><img src="https://piwik-osasteam.rhcloud.com/piwik/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+</footer>
+</div>
+</div>
+
+</section>
+
+<script src="http://www.projectatomic.io/javascripts/application.js" type="text/javascript"></script>
+
+
+</body>
+</html>

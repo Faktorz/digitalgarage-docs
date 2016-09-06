@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Origin Latest | Installation and Configuration | Master and Node Configuration</title>
+  <link href="../_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="../../latest/_stylesheets/docs.css" rel="stylesheet" />
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="../../latest/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="../../latest/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="../../latest/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script async src="//www.google-analytics.com/analytics.js" type="text/javascript"></script>
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-40375612-1', 'openshift.org');
+  ga('set', 'forceSSL', true);
+  ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift navbar-origin" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand origin" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../welcome/index.html">OpenShift Origin Latest</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../install_config/index.html">Installation and Configuration</a>
+      </li>
+      
+      <li class="hidden-xs active">
+        Master and Node Configuration
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:vdyz7waqya4';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>What's New?
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../whats_new/index.html">Overview</a></li>
+            <li><a class="" href="../whats_new/applications.html">Applications</a></li>
+            <li><a class="" href="../whats_new/carts_vs_images.html">Cartridges vs Images</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../getting_started/administrators.html">Setting Up a Cluster</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Installation and Configuration
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../install_config/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+              </a>
+              <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+
+                  <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/advanced_install.html">Advanced Installation</a></li>
+
+                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
+
+                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+              </a>
+              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+
+                  <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
+              </ul>
+            </li>
+            <li><a class=" active" href="../install_config/master_node_configuration.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+            <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+            <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-9">
+                <span id="sgSpan-4-9" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-4-9" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</a></li>
+
+                  <li><a class="" href="../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/configuring_sdn.html">Configuring the SDN</a></li>
+            <li><a class="" href="../install_config/configuring_aws.html">Configuring for AWS</a></li>
+            <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
+            <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-14">
+                <span id="sgSpan-4-14" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              </a>
+              <ul id="topicSubGroup-4-14" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_nfs.html">Using NFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_glusterfs.html">Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_cinder.html">Using OpenStack Cinder</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_ceph_rbd.html">Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_aws.html">Using AWS Elastic Block Store</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_gce.html">Using GCE Persistent Disk</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_iscsi.html">Using iSCSI</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/persistent_storage_fibre_channel.html">Using Fibre Channel</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/dynamically_provisioning_pvs.html">Dynamic Provisioning</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/pod_security_context.html">Volume Security</a></li>
+
+                  <li><a class="" href="../install_config/persistent_storage/selector_label_binding.html">Selector-Label Volume Binding</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
+                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              </a>
+              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/shared_storage.html">Sharing an NFS PV Across Two Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/ceph_example.html">Complete Example Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_example.html">Complete Example Using GlusterFS</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/privileged_pod_storage.html">Mounting Volumes To Privileged Pods</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/gluster_backed_registry.html">Backing Docker Registry with GlusterFS Storage</a></li>
+
+                  <li><a class="" href="../install_config/storage_examples/binding_pv_by_label.html">Binding Persistent Volumes by Label</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../install_config/http_proxies.html">Working with HTTP Proxies</a></li>
+            <li><a class="" href="../install_config/build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../install_config/configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
+            <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
+            <li><a class="" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
+            <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
+            <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
+            <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../admin_guide/monitoring_images.html">Monitoring Images</a></li>
+            <li><a class="" href="../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class="" href="../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+            <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
+            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
+            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
+            <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
+            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
+            <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
+            <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
+            <li><a class="" href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../admin_guide/sdn_troubleshooting.html">Troubleshooting Networking</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-7-5">
+                <span id="sgSpan-7-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-7-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-7-6">
+                <span id="sgSpan-7-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-7-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li><a class="" href="../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-0">
+                <span id="sgSpan-9-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-9-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-1">
+                <span id="sgSpan-9-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-9-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-2">
+                <span id="sgSpan-9-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-9-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-3">
+                <span id="sgSpan-9-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-9-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup10">
+        <span id="tgSpan10" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup10" class="collapse  list-unstyled">
+            <li><a class="" href="../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Master and Node Configuration</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#creating-new-configuration-files">Creating New Configuration Files</a></li>
+<li><a href="#launching-servers-using-configuration-files">Launching Servers Using Configuration Files</a></li>
+<li><a href="#master-configuration-files">Master Configuration Files</a></li>
+<li><a href="#node-configuration-files">Node Configuration Files</a>
+<ul class="sectlevel2">
+<li><a href="#master-node-configuration-parallel-image-pulls-with-docker">Parallel Image Pulls with Docker 1.9+</a></li>
+</ul>
+</li>
+<li><a href="#master-node-configuration-passwords-and-other-data">Passwords and Other Sensitive Data</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>openshift start</code> command is used to launch OpenShift Origin servers. The command
+and its subcommands (<code>master</code> to launch a
+<a href="../architecture/infrastructure_components/kubernetes_infrastructure.html#master">master
+server</a> and <code>node</code> to launch a
+<a href="../architecture/infrastructure_components/kubernetes_infrastructure.html#node">node
+server</a>) all take a limited set of arguments that are sufficient for launching
+servers in a development or experimental environment.</p>
+</div>
+<div class="paragraph">
+<p>However, these arguments are insufficient to describe and control the full set
+of configuration and security options that are necessary in a production
+environment. To provide those options, it is necessary to use the dedicated
+master and node configuration files.</p>
+</div>
+<div class="paragraph">
+<p><a href="#master-configuration-files">Master configuration files</a> and
+<a href="#node-configuration-files">node configuration files</a> are fully specified
+with no default values. Therefore, any empty value indicates that you want to
+start up with an empty value for that parameter. This makes it easy to reason
+about exactly what your configuration is, but it also makes it difficult to
+remember all of the options to specify. To make this easier, the configuration
+files can be created with the <code>--write-config</code> option and then used with the
+<code>--config</code> option.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-new-configuration-files"><a class="anchor" href="#creating-new-configuration-files"></a>Creating New Configuration Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For masters, the <code>openshift start</code> command accepts options that indicate that it
+should simply write the configuration files that it would have used, then
+terminate. For nodes, a configuration file can be written using the <code>oadm
+create-node-config</code> command. Creating new configuration files is useful to get a
+starting point for defining your configuration.</p>
+</div>
+<div class="paragraph">
+<p>The following commands write the relevant launch configuration file(s),
+certificate files, and any other necessary files to the specified
+<code>--write-config</code> or <code>--node-dir</code> directory.</p>
+</div>
+<div class="paragraph">
+<p>To create configuration files for an all-in-one server (a master and a node on
+the same host) in the specified directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ openshift start --write-config=/openshift.local.config</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To create a <a href="#master-configuration-files">master configuration file</a> and
+other required files in the specified directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ openshift start master --write-config=/openshift.local.config/master</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To create a <a href="#node-configuration-files">node configuration file</a> and other
+related files in the specified directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm create-node-config --node-dir=/openshift.local.config/node-&lt;node_hostname&gt; --node=&lt;node_hostname&gt; --hostnames=&lt;hostname&gt;,&lt;ip_address&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For the <code>--hostnames</code> option in the above command, use a comma-delimited list of
+every host name or IP address you want server certificates to be valid for. The
+above command also assumes that certificate files are located in an
+<strong><em>openshift.local.config/master/</em></strong> directory. If they are not, you can include
+options to specify their location. Run the command with the <code>-h</code> option to see
+details.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="launching-servers-using-configuration-files"><a class="anchor" href="#launching-servers-using-configuration-files"></a>Launching Servers Using Configuration Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you have modified the master and/or node configuration files to your
+specifications, you can use them when launching servers by specifying them as an
+argument. Keep in mind that if you specify a configuration file, none of the
+other command line options you pass are respected.</p>
+</div>
+<div class="paragraph">
+<p>To launch an all-in-one server using a master configuration and a node
+configuration file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ openshift start --master-config=/openshift.local.config/master/master-config.yaml --node-config=/openshift.local.config/node-&lt;node_hostname&gt;/node-config.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To launch a master server using a master configuration file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ openshift start master --config=/openshift.local.config/master/master-config.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To launch a node server using a node configuration file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ openshift start node --config=/openshift.local.config/node-&lt;node_hostname&gt;/node-config.yaml</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="master-configuration-files"><a class="anchor" href="#master-configuration-files"></a>Master Configuration Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following <strong><em>master-config.yaml</em></strong> file is a sample master configuration
+file that was generated with the default values as of writing. You can
+<a href="#creating-new-configuration-files">create a new master configuration file</a>
+to see the valid options for your installed version of OpenShift Origin.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Sample Master Configuration File</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">admissionConfig</span>:
+  <span style="color:#606">pluginConfig</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+<span style="color:#606">apiLevels</span>:
+- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">apiServerArguments</span>:
+  <span style="color:#606">event-ttl</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">15m</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">assetConfig</span>:
+  <span style="color:#606">extensionDevelopment</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span>
+  <span style="color:#606">extensionScripts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">extensionStylesheets</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">extensions</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">loggingPublicURL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">logoutURL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">masterPublicURL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://10.0.2.15:8443</span></span>
+  <span style="color:#606">metricsPublicURL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">publicURL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://10.0.2.15:8443/console/</span></span>
+  <span style="color:#606">servingInfo</span>:
+    <span style="color:#606">bindAddress</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0.0.0.0:8443</span></span>
+    <span style="color:#606">bindNetwork</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">tcp4</span></span>
+    <span style="color:#606">certFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master.server.crt</span></span>
+    <span style="color:#606">clientCA</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">keyFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master.server.key</span></span>
+    <span style="color:#606">maxRequestsInFlight</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0</span></span>
+    <span style="color:#606">namedCertificates</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+    <span style="color:#606">requestTimeoutSeconds</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0</span></span>
+<span style="color:#606">controllerLeaseTTL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0</span></span>
+<span style="color:#606">controllers</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">'*'</span></span>
+<span style="color:#606">corsAllowedOrigins</span>:
+- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10.0.2.15:8443</span></span>
+- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">127.0.0.1</span></span>
+- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">localhost</span></span>
+<span style="color:#606">disabledFeatures</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+<span style="color:#606">dnsConfig</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">allowRecursiveQueries: false</span><span style="color:#D20">
+  bindAddress: 0.0.0.0:8053
+  bindNetwork: tcp4</span></span>
+<span style="color:#606">etcdClientInfo</span>:
+  <span style="color:#606">ca</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ca.crt</span></span>
+  <span style="color:#606">certFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master.etcd-client.crt</span></span>
+  <span style="color:#606">keyFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master.etcd-client.key</span></span>
+  <span style="color:#606">urls</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://10.0.2.15:4001</span></span>
+<span style="color:#606">etcdConfig</span>:
+  <span style="color:#606">address</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10.0.2.15:4001</span></span>
+  <span style="color:#606">peerAddress</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10.0.2.15:7001</span></span>
+  <span style="color:#606">peerServingInfo</span>:
+    <span style="color:#606">bindAddress</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0.0.0.0:7001</span></span>
+    <span style="color:#606">bindNetwork</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">tcp4</span></span>
+    <span style="color:#606">certFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">etcd.server.crt</span></span>
+    <span style="color:#606">clientCA</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ca.crt</span></span>
+    <span style="color:#606">keyFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">etcd.server.key</span></span>
+    <span style="color:#606">namedCertificates</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">servingInfo</span>:
+    <span style="color:#606">bindAddress</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0.0.0.0:4001</span></span>
+    <span style="color:#606">bindNetwork</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">tcp4</span></span>
+    <span style="color:#606">certFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">etcd.server.crt</span></span>
+    <span style="color:#606">clientCA</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ca.crt</span></span>
+    <span style="color:#606">keyFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">etcd.server.key</span></span>
+    <span style="color:#606">namedCertificates</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">storageDirectory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/root/openshift.local.etcd</span></span>
+<span style="color:#606">etcdStorageConfig</span>:
+  <span style="color:#606">kubernetesStoragePrefix</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">kubernetes.io</span></span>
+  <span style="color:#606">kubernetesStorageVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+  <span style="color:#606">openShiftStoragePrefix</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift.io</span></span>
+  <span style="color:#606">openShiftStorageVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">imageConfig</span>:
+  <span style="color:#606">format</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift/origin-${component}:${version}</span></span>
+  <span style="color:#606">latest</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span>
+<span style="color:#606">imagePolicyConfig</span>:
+  <span style="color:#606">disableScheduledImport</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span>
+  <span style="color:#606">maxImagesBulkImportedPerRepository</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5</span></span>
+  <span style="color:#606">maxScheduledImageImportsPerMinute</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">60</span></span>
+  <span style="color:#606">scheduledImageImportMinimumIntervalSeconds</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">900</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">MasterConfig</span></span>
+<span style="color:#606">kubeletClientInfo</span>:
+  <span style="color:#606">ca</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ca.crt</span></span>
+  <span style="color:#606">certFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master.kubelet-client.crt</span></span>
+  <span style="color:#606">keyFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master.kubelet-client.key</span></span>
+  <span style="color:#606">port</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10250</span></span>
+<span style="color:#606">kubernetesMasterConfig</span>:
+  <span style="color:#606">admissionConfig</span>:
+    <span style="color:#606">pluginConfig</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">apiServerArguments</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">controllerArguments</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">disabledAPIGroupVersions</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span>
+  <span style="color:#606">masterCount</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1</span></span>
+  <span style="color:#606">masterIP</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10.0.2.15</span></span>
+  <span style="color:#606">podEvictionTimeout</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5m</span></span>
+  <span style="color:#606">proxyClientInfo</span>:
+    <span style="color:#606">certFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master.proxy-client.crt</span></span>
+    <span style="color:#606">keyFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master.proxy-client.key</span></span>
+  <span style="color:#606">schedulerConfigFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">servicesNodePortRange</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">30000-32767</span></span>
+  <span style="color:#606">servicesSubnet</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.30.0.0/16</span></span>
+<span style="color:#606">masterClients</span>:
+  <span style="color:#606">externalKubernetesKubeConfig</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">openshiftLoopbackKubeConfig</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift-master.kubeconfig</span></span>
+<span style="color:#606">masterPublicURL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://10.0.2.15:8443</span></span>
+<span style="color:#606">networkConfig</span>:
+  <span style="color:#606">clusterNetworkCIDR</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10.128.0.0/14</span></span>
+  <span style="color:#606">hostSubnetLength</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">9</span></span>
+  <span style="color:#606">networkPluginName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">redhat/openshift-ovs-subnet</span></span>
+  <span style="color:#606">serviceNetworkCIDR</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.30.0.0/16</span></span>
+<span style="color:#606">oauthConfig</span>:
+  <span style="color:#606">alwaysShowProviderSelection</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span>
+  <span style="color:#606">assetPublicURL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://10.0.2.15:8443/console/</span></span>
+  <span style="color:#606">grantConfig</span>:
+    <span style="color:#606">method</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">auto</span></span>
+  <span style="color:#606">identityProviders</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">challenge: true</span></span>
+    <span style="color:#606">login</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+    <span style="color:#606">mappingMethod</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">claim</span></span>
+    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">anypassword</span></span>
+    <span style="color:#606">provider</span>:
+      <span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">AllowAllPasswordIdentityProvider</span></span>
+  <span style="color:#606">masterCA</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ca.crt</span></span>
+  <span style="color:#606">masterPublicURL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://10.0.2.15:8443</span></span>
+  <span style="color:#606">masterURL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://10.0.2.15:8443</span></span>
+  <span style="color:#606">sessionConfig</span>:
+    <span style="color:#606">sessionMaxAgeSeconds</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">300</span></span>
+    <span style="color:#606">sessionName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ssn</span></span>
+    <span style="color:#606">sessionSecretsFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">templates</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">tokenConfig</span>:
+    <span style="color:#606">accessTokenMaxAgeSeconds</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">86400</span></span>
+    <span style="color:#606">authorizeTokenMaxAgeSeconds</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">300</span></span>
+<span style="color:#606">pauseControllers</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span>
+<span style="color:#606">policyConfig</span>:
+  <span style="color:#606">bootstrapPolicyFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">policy.json</span></span>
+  <span style="color:#606">openshiftInfrastructureNamespace</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift-infra</span></span>
+  <span style="color:#606">openshiftSharedResourcesNamespace</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift</span></span>
+<span style="color:#606">projectConfig</span>:
+  <span style="color:#606">defaultNodeSelector</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">projectRequestMessage</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">projectRequestTemplate</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">securityAllocator</span>:
+    <span style="color:#606">mcsAllocatorRange</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">s0:/2</span></span>
+    <span style="color:#606">mcsLabelsPerProject</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5</span></span>
+    <span style="color:#606">uidAllocatorRange</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1000000000-1999999999/10000</span></span>
+<span style="color:#606">routingConfig</span>:
+  <span style="color:#606">subdomain</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">router.default.svc.cluster.local</span></span>
+<span style="color:#606">serviceAccountConfig</span>:
+  <span style="color:#606">limitSecretReferences</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span>
+  <span style="color:#606">managedNames</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">default</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">builder</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">deployer</span></span>
+  <span style="color:#606">masterCA</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ca.crt</span></span>
+  <span style="color:#606">privateKeyFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">serviceaccounts.private.key</span></span>
+  <span style="color:#606">publicKeyFiles</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">serviceaccounts.public.key</span></span>
+<span style="color:#606">servingInfo</span>:
+  <span style="color:#606">bindAddress</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0.0.0.0:8443</span></span>
+  <span style="color:#606">bindNetwork</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">tcp4</span></span>
+  <span style="color:#606">certFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master.server.crt</span></span>
+  <span style="color:#606">clientCA</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ca.crt</span></span>
+  <span style="color:#606">keyFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master.server.key</span></span>
+  <span style="color:#606">maxRequestsInFlight</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">500</span></span>
+  <span style="color:#606">namedCertificates</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">requestTimeoutSeconds</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">3600</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Prevents memory overload by defining a lower limit (for example, 15m) for
+stored events. This prevents excessive memory growth that can be the result of
+etcd storing too many events. By default, this is set to two hours.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="node-configuration-files"><a class="anchor" href="#node-configuration-files"></a>Node Configuration Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following <strong><em>node-config.yaml</em></strong> file is a sample node configuration file that
+was generated with the default values as of writing. You can
+<a href="#creating-new-configuration-files">create a new node configuration file</a> to
+see the valid options for your installed version of OpenShift Origin.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Sample Node Configuration File</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">allowDisabledDocker</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">authConfig</span>:
+  <span style="color:#606">authenticationCacheSize</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1000</span></span>
+  <span style="color:#606">authenticationCacheTTL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5m</span></span>
+  <span style="color:#606">authorizationCacheSize</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1000</span></span>
+  <span style="color:#606">authorizationCacheTTL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5m</span></span>
+<span style="color:#606">dnsDomain</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">cluster.local</span></span>
+<span style="color:#606">dnsIP</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10.0.2.15 </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+<span style="color:#606">dockerConfig</span>:
+  <span style="color:#606">execHandlerName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">native</span></span>
+<span style="color:#606">imageConfig</span>:
+  <span style="color:#606">format</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift/origin-${component}:${version}</span></span>
+  <span style="color:#606">latest</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span>
+<span style="color:#606">iptablesSyncPeriod</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5s</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">NodeConfig</span></span>
+<span style="color:#606">masterKubeConfig</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node.kubeconfig</span></span>
+<span style="color:#606">networkConfig</span>:
+  <span style="color:#606">mtu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1450</span></span>
+  <span style="color:#606">networkPluginName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">nodeIP</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">nodeName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node1.example.com</span></span>
+<span style="color:#606">podManifestConfig</span>: <i class="conum" data-value="2"></i><b>(2)</b>
+  <span style="color:#606">path</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/path/to/pod-manifest-file</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+  <span style="color:#606">fileCheckIntervalSeconds</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">30 </span></span><i class="conum" data-value="4"></i><b>(4)</b>
+<span style="color:#606">proxyArguments</span>:
+  <span style="color:#606">proxy-mode</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">iptables </span></span><i class="conum" data-value="5"></i><b>(5)</b>
+<span style="color:#606">volumeConfig</span>:
+  <span style="color:#606">localQuota</span>:
+   <span style="color:#606">perFSGroup</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span><i class="conum" data-value="6"></i><b>(6)</b>
+<span style="color:#606">servingInfo</span>:
+  <span style="color:#606">bindAddress</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0.0.0.0:10250</span></span>
+  <span style="color:#606">bindNetwork</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">tcp4</span></span>
+  <span style="color:#606">certFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">server.crt</span></span>
+  <span style="color:#606">clientCA</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node-client-ca.crt</span></span>
+  <span style="color:#606">keyFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">server.key</span></span>
+  <span style="color:#606">namedCertificates</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+<span style="color:#606">volumeDirectory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/root/openshift.local.volumes</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Configures an IP address to be prepended to a pod&#8217;s <strong><em>/etc/resolv.conf</em></strong> by adding the address here.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Allows pods to be placed directly on certain set of nodes, or on all nodes
+without going through the scheduler. You can then use pods to perform the same
+administrative tasks and support the same services on each node.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Specifies the path for the
+<a href="../architecture/core_concepts/pods_and_services.html#pods">pod manifest file</a>
+or directory. If it is a directory, then it is expected to contain one or more
+manifest files. This is used by the Kubelet to create pods on the node.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>This is the interval (in seconds) for checking the manifest file for new
+data. The interval must be a positive value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The <a href="../architecture/core_concepts/pods_and_services.html#service-proxy-mode">service
+proxy implementation</a> to use.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Preliminary support for local emptyDir volume quotas, set this value to a resource
+quantity representing the desired quota per FSGroup, per node. (i.e. 1Gi, 512Mi, etc)
+Currently requires that the <strong><em>volumeDirectory</em></strong> be on an XFS filesystem mounted
+with the 'gquota' option, and the matching security context contraint&#8217;s fsGroup
+type set to 'MustRunAs'.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="master-node-configuration-parallel-image-pulls-with-docker"><a class="anchor" href="#master-node-configuration-parallel-image-pulls-with-docker"></a>Parallel Image Pulls with Docker 1.9+</h3>
+<div class="paragraph">
+<p>If you are using Docker 1.9+, you may want to consider enabling parallel image
+pulling, as the default is to pull images one at a time.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>There is a potential issue with data corruption prior to Docker 1.9. However,
+starting with 1.9, the corruption issue is resolved and it is safe to switch to
+parallel pulls.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">kubeletArguments</span>:
+  <span style="color:#606">serialize-image-pulls</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">false</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Change to true to disable parallel pulls. (This is the default config)</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="master-node-configuration-passwords-and-other-data"><a class="anchor" href="#master-node-configuration-passwords-and-other-data"></a>Passwords and Other Sensitive Data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For some <a href="configuring_authentication.html#install-config-configuring-authentication">authentication configurations</a>,
+an LDAP <code>bindPassword</code> or OAuth <code>clientSecret</code> value is required.
+Instead of specifying these values directly in the master configuration file,
+these values may be provided as environment variables, external files,
+or in encrypted files.</p>
+</div>
+<div class="listingblock">
+<div class="title">Environment Variable Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml">  <span style="color:#F00;background-color:#FAA">...</span>
+  <span style="color:#606">bindPassword</span>:
+    <span style="color:#606">env</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">BIND_PASSWORD_ENV_VAR_NAME</span></span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">External File Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml">  <span style="color:#F00;background-color:#FAA">...</span>
+  <span style="color:#606">bindPassword</span>:
+    <span style="color:#606">file</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bindPassword.txt</span></span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Encrypted External File Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml">  <span style="color:#F00;background-color:#FAA">...</span>
+  <span style="color:#606">bindPassword</span>:
+    <span style="color:#606">file</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bindPassword.encrypted</span></span>
+    <span style="color:#606">keyFile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bindPassword.key</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To create the encrypted file and key file for the above example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm ca encrypt --genkey=bindPassword.key --out=bindPassword.encrypted
+&gt; Data to encrypt: B1ndPass0rd!</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Encrypted data is only as secure as the decrypting key. Care should be taken
+to limit filesystem permissions and access to the key file.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-origin-docs">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="footer_social">
+          <a href="https://twitter.com/openshift" class="first">
+            <span>
+              <i class="fa fa-twitter-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://github.com/openshift/origin">
+            <span>
+              <i class="fa fa-github fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://plus.google.com/communities/114361859072744017486">
+            <span>
+              <i class="fa fa-google-plus-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://www.facebook.com/openshift">
+            <span>
+              <i class="fa fa-facebook-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <a id="footer_logo" href="https://www.redhat.com/">
+          <img alt="Red Hat" src="https://assets.openshift.net/app/assets/redhat.svg">
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-center">
+        <a id="powered_by_openshift" title="Powered by OpenShift Online with the DIY Cartridge" href="https://hub.openshift.com/quickstarts/92-do-it-yourself-0-1">
+          <img src="https://www.openshift.com/sites/default/files/images/powered-transparent-white.png" alt="Powered by OpenShift Online">
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-right">
+        <a id="built_with_asciibinder" title="Built with AsciiBinder docs management system" href="http://asciibinder.org/">
+          <img src="../../latest/_images/asciibinder_web_logo.svg" alt="AsciiBinder">
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="attribution">
+          <button type="button" class="btn btn-link" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-content="
+            '<a target='_blank' href='https://www.flickr.com/photos/eflon/3655695161/'>Spin</a>' by <a target='_blank' href='https://www.flickr.com/photos/eflon/'>eflon</a>,</br> used under <a target='_blank' href='https://creativecommons.org/licenses/by/2.0/'>CC BY 2.0</a> </br>Color tint added to original">
+            Image attribution
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+    </script>
+  </div>
+</footer>
+</body>
+</html>
