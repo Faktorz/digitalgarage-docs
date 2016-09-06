@@ -15,6 +15,7 @@ var path  = require("path");
 app.use(express.static(path.join(__dirname, '_images')));
 app.use(express.static(path.join(__dirname, '_javascripts')));
 app.use(express.static(path.join(__dirname, '_stylesheets')));
+app.use(express.static(path.join(__dirname, 'dev_guide')));
 
 app.get('/',function(req,res){
   res.sendFile(__dirname + '/welcome/index.html');
