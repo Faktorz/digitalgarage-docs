@@ -9697,7 +9697,7 @@ body {
 }
 
 .navbar.navbar-default.navbar-openshift .navbar-brand {
-    background: transparent url(../DigitalGarage_logo.svg) no-repeat 50% 21px;
+    background: transparent url(../_images/DigitalGarage_logo.svg) no-repeat 50% 21px;
     background-size: contain;
     margin-left: 119px;
     margin-right: 15px;

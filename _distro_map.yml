@@ -27,7 +27,7 @@ digital-garage:
   author: the Digital Garage <dev@thedigitalgarage.io>
   site: commercial
   site_name: Documentation
-  site_url: https://docs.thedigitalgarage.io/
+  site_url: https://www.thedigitalgarage.io/developer_guide
   branches:
     online:
       name: 'Developer Preview'
