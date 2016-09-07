@@ -89,7 +89,7 @@ Topics:
     Distros: openshift-online,digital-garage
   - Name: Web Console Walkthrough
     File: developers_console
-    Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage
+    Distros: openshift-enterprise,openshift-dedicated,openshift-origin
   - Name: Command-Line Walkthrough
     File: developers_cli
     Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage
@@ -101,7 +101,7 @@ Topics:
     Distros: openshift-dedicated
   - Name: Developer Preview FAQ
     File: devpreview_faq
-    Distros: openshift-online,digital-garage
+    Distros: openshift-online
   - Name: Comparing OpenShift 2 and 3
     File: online_v2_vs_v3
     Distros: openshift-online
@@ -133,8 +133,10 @@ Dir: architecture
 Topics:
   - Name: Overview
     File: index
+    Distros: openshift-*,digital-garage
   - Name: Infrastructure Components
     Dir: infrastructure_components
+    Distros: openshift-*
     Topics:
       - Name: Kubernetes Infrastructure
         File: kubernetes_infrastructure
@@ -182,14 +184,16 @@ Topics:
         Distros: openshift-*,digital-garage
       - Name: OpenShift SDN
         File: sdn
-        Distros: openshift-*,digital-garage
+        Distros: openshift-*
       - Name: Authentication
         File: authentication
+        Distros: openshift-*
       - Name: Authorization
         File: authorization
+        Distros: openshift-*
       - Name: Persistent Storage
         File: storage
-        Distros: openshift-*,digital-garage
+        Distros: openshift-*
       - Name: Remote Commands
         File: remote_commands
         Distros: openshift-*,digital-garage
@@ -207,6 +211,7 @@ Topics:
         Distros: openshift-enterprise,openshift-origin,openshift-dedicated
       - Name: Other API Objects
         File: other_api_objects
+        Distros: openshift-*
   - Name: Revision History
     File: revhistory_architecture
     Distros: openshift-enterprise,openshift-dedicated
