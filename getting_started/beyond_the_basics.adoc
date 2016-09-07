@@ -40,7 +40,7 @@ and edit the application.
 [NOTE]
 ====
 You can skip this step if you already forked the
-https://github.com/openshift/nodejs-ex[*openshift/nodejs-ex*] repository when
+https://github.com/thedigitalgarage/nodejs-ex[*thedigitalgarage/nodejs-ex*] repository when
 following the xref:../getting_started/basic_walkthrough.adoc#getting-started-basic-walkthrough[Basic Walkthrough]
 topic.
 ====
@@ -62,7 +62,7 @@ $ cd nodejs-ex
 That's it! Now, you have a fork of the original *thedigitalgarage/nodejs-ex* example
 application Git repository and a copy on your local machine.
 
-[[btb-installing-the-openshift-cli]]
+[[btb-installing-the-digital-garage-cli]]
 == Installing the Digital Garage CLI
 
 In this section, you will install the {product-title} CLI. The {product-title}
@@ -308,7 +308,7 @@ $ oc describe buildConfig nodejs-mongodb-example
 in the following format:
 +
 ----
-http://<openshift_api_host:port>/osapi/v1/namespaces/<namespace>/buildconfigs/frontend/webhooks/<your_secret_key>/github
+http://<digital_garage_api_host:port>/osapi/v1/namespaces/<namespace>/buildconfigs/frontend/webhooks/<your_secret_key>/github
 ----
 
 . Next, navigate to your forked repository on GitHub, then:
