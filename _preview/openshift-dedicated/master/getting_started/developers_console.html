@@ -14,9 +14,9 @@
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
   <!--
   <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
-  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
-  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
   -->
+  <link href="/_images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="/_images/favicon.png" rel="shortcut icon" type="text/css">
   <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
   <!-- or, set /favicon.ico for IE10 win -->
   <meta content="the Digital Garage" name="application-name">
@@ -411,6 +411,17 @@
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a></li>
+<li><a href="#developers-cli-before-you-begin">Before You Begin</a></li>
+<li><a href="#developers-cli-forking-the-sample-repository">Forking the Sample Repository</a></li>
+<li><a href="#developers-cli-creating-a-project">Creating a Project</a></li>
+<li><a href="#developers-cli-creating-an-application">Creating an Application</a></li>
+<li><a href="#developers-cli-create-route">Create a Route</a></li>
+<li><a href="#developers-cli-view-running-app">View the Running Application</a>
+<ul class="sectlevel2">
+<li><a href="#developers-cli-manually-rebuilding-images">Manually Rebuilding Images</a></li>
+</ul>
+</li>
+<li><a href="#developers-cli-troubleshooting">Troubleshooting</a></li>
 <li><a href="#developers-console-before-you-begin">Before You Begin</a></li>
 <li><a href="#developers-console-browser-reqs">Browser Requirements</a></li>
 <li><a href="#developers-console-video">Tutorial Video</a></li>
@@ -439,19 +450,460 @@ easiest method.</p>
 </div>
 <div class="paragraph">
 <p>If this is the first part of the documentation you have read, and you are
-unfamiliar with the core concepts of OpenShift Dedicated version 3 (v3), you might want to
-start by reading about
-<a href="../release_notes/index.html#release-notes-index">what&#8217;s new</a>.
-This version of OpenShift Dedicated is significantly different from version 2 (v2).</p>
-</div>
-<div class="paragraph">
-<p>OpenShift Dedicated 3 provides out of the box a set of
+unfamiliar with the core concepts of OpenShift Dedicated, you might want to
+start by reading about the concepts behind OpenShift Dedicated. OpenShift Dedicated provides
+out of the box a set of
 <a href="../using_images/s2i_images/index.html#using-images-s2i-images-index">languages</a> and
 <a href="../using_images/db_images/index.html#using-images-db-images-index">databases</a> for developers with
 corresponding implementations and tutorials that allow you to kickstart your
 application development. Language support centers around the
 <a href="../dev_guide/app_tutorials/quickstarts.html#dev-guide-app-tutorials-quickstarts">Quickstart templates</a>, which in
 turn leverage <a href="../using_images/s2i_images/index.html#using-images-s2i-images-index">builder images</a>.</p>
+</div>
+<table id="getting-started-developers-cli-languages" class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Language</th>
+<th class="tableblock halign-left valign-top">Implementations and Tutorials</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Ruby</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/rails-ex">Rails</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Python</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/django-ex">Django</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Node.js</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/nodejs-ex">Node.js</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">PHP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/cakephp-ex">CakePHP</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Perl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/dancer-ex">Dancer</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Java</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Other images provided by OpenShift Dedicated include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/openshift/mysql">MySQL</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/mongodb">MongoDB</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/postgresql">PostgreSQL</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/jenkins">Jenkins</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, JBoss Middleware has put together a broad range of
+<a href="https://github.com/jboss-openshift/application-templates">OpenShift Dedicated
+templates</a> as well as <a href="../using_images/xpaas_images/index.html#using-images-xpaas-images-index">images</a> as
+part of their xPaaS services.</p>
+</div>
+<div class="paragraph">
+<p>The technologies available with the xPaaS services in particular include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java EE 6 Application Server provided by JBoss EAP 6</p>
+</li>
+<li>
+<p>Integration and Messaging Services provided by JBoss Fuse and JBoss A-MQ</p>
+</li>
+<li>
+<p>Data Grid Service provided by JBoss Data Grid</p>
+</li>
+<li>
+<p>Real Time Decision Service provided by JBoss BRMS</p>
+</li>
+<li>
+<p>Java Web Server 3.0 provided by Tomcat 7 and Tomcat 8</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With each of these offerings, a series of combinations are provided:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP only vs. HTTP and HTTPS</p>
+</li>
+<li>
+<p>No database required, or the use of either MongoDB, PostgreSQL, or MySQL</p>
+</li>
+<li>
+<p>If desired, integration with A-MQ</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To help illustrate constructing such applications, the following sections guide
+you through creating a project that contains a sample Node.js application that
+will serve a welcome page and the current hit count (stored in a database).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This topic discusses both
+<a href="../dev_guide/app_tutorials/quickstarts.html#dev-guide-app-tutorials-quickstarts">Quickstart</a> and
+<a href="../dev_guide/templates.html#using-the-instantapp-templates">Instant App</a>
+templates and applications. Quickstarts provide a starting point for application
+development, but they rely on your development to create a useful application.
+In contrast, Instant Apps like Jenkins are instantly usable.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developers-cli-before-you-begin"><a class="anchor" href="#developers-cli-before-you-begin"></a>Before You Begin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before you can get started:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You must be able to access a running instance of OpenShift Dedicated. If you do
+not have access, contact your cluster administrator.</p>
+</li>
+<li>
+<p>Your instance must be pre-configured by a cluster administrator with the
+<a href="../dev_guide/templates.html#using-the-instantapp-templates">Instant App templates</a>
+and <a href="../using_images/s2i_images/index.html#using-images-s2i-images-index">builder images</a>. If they
+are not available,
+contact your cluster administrator.</p>
+</li>
+<li>
+<p>You must have an account on <a href="http://www.github.com">GitHub</a>, have <a href="https://help.github.com/articles/set-up-git/">Git set up</a>, and
+<a href="https://help.github.com/articles/set-up-git/#next-steps-authenticating-with-github-from-git">set up authentication to GitHub from Git</a>.</p>
+</li>
+<li>
+<p>You must have the OpenShift Dedicated CLI
+<a href="../cli_reference/get_started_cli.html#cli-reference-get-started-cli">downloaded and installed</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developers-cli-forking-the-sample-repository"><a class="anchor" href="#developers-cli-forking-the-sample-repository"></a>Forking the Sample Repository</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Visit the <a href="https://github.com/thedigitalgarage/ruby-ex">Ruby example</a> page while you are logged in to GitHub.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This topic follows the Ruby example, but you can follow along using any of the language examples
+<a href="../../getting_started/developers_cli.html#getting-started-developers-cli-languages">provided in the OpenShift Dedicated GitHub project</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><a href="https://help.github.com/articles/fork-a-repo/">Fork the repository</a>.</p>
+<div class="paragraph">
+<p>You are redirected to your new fork.</p>
+</div>
+</li>
+<li>
+<p>Copy the clone URL for your fork.</p>
+</li>
+<li>
+<p>Clone the repository to your local machine.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developers-cli-creating-a-project"><a class="anchor" href="#developers-cli-creating-a-project"></a>Creating a Project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create an application, you must create a new project and specify the location
+of the source. From there, OpenShift Dedicated begins the build process and creates
+a new deployment.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log into OpenShift Dedicated from the CLI:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>With oauth token:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc login https://apps.thedigitalgarage.io:8443 --token=&lt;tokenID&gt;</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>To create a new project:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-project &lt;projectname&gt; --description="&lt;description&gt;" --display-name="&lt;display_name&gt;"</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After creating the new project, you will be automatically switched to the new
+project namespace.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developers-cli-creating-an-application"><a class="anchor" href="#developers-cli-creating-an-application"></a>Creating an Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create a new application from the code in your forked repository:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create the application by specifying the source of the code:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-app openshift/ruby-20-centos7~https://github.com/&lt;your_github_username&gt;/ruby-ex</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>OpenShift Dedicated finds the matching builder image (which in this case is <strong>ruby-20-centos7</strong>) and then creates resources for the application (image stream, build configuration, deployment configuration, service). It also schedules the build.</p>
+</div>
+</li>
+<li>
+<p>Track the progress of the build:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc logs -f bc/ruby-ex</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Once the build is complete and the resulting image has successfully pushed to your registry, check the status of your application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc status</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or you can view the build from the web console.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Creating your application might take some time. You can follow along on the Overview page of the web console to see the new
+resources being created, and watch the progress of the build and deployment.
+You can also use the <code>oc get pods</code> command to check when the pod is up and
+running, or the <code>oc get builds</code> command to see build statistics.</p>
+</div>
+<div class="paragraph">
+<p>While the Ruby pod is being created, its status is shown as pending. The
+Ruby pod then starts up and displays its newly-assigned IP address. When the Ruby pod is running, the build is complete.</p>
+</div>
+<div class="paragraph">
+<p>The <code>oc status</code> command tells you what IP address the service is running; the
+default port it deploys to is 8080.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developers-cli-create-route"><a class="anchor" href="#developers-cli-create-route"></a>Create a Route</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An OpenShift Dedicated route exposes a service at a host name, so that external clients can reach it by name. To create a route to your new application:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Expose a service for <code>ruby-ex</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc expose service ruby-ex</pre>
+</div>
+</div>
+</li>
+<li>
+<p>View your new route:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get route</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Copy the route location, which will be something like <code>ruby-ex-my-test.apps.thedigitalgarage.io</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developers-cli-view-running-app"><a class="anchor" href="#developers-cli-view-running-app"></a>View the Running Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To view your new application, paste the route location that you copied (in the previous section) into the address bar of your web browser and hit enter.</p>
+</div>
+<div class="paragraph">
+<p>The example <code>ruby-ex</code> application is a simple welcome screen, and contains details on how to deploy code changes, manage your application, and other development resources.</p>
+</div>
+<div class="paragraph">
+<p>Next, configure automated builds via a GitHub webhook trigger, so that code changes in your forked repository cause your application to rebuild.</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in getting_started/developers_cli.adoc - include::getting_started/developers_console.adoc[tag=deploycode1]
+. View the triggers section of the <code><strong>BuildConfig</strong></code> to verify that a GitHub webhook trigger exists:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit bc/ruby-ex</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+You should see something similar to this:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">triggers
+- github:
+    secret: Q1tGY0i9f1ZFihQbX07S
+    type: GitHub</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The secret ensures that only you and your repository can trigger the build.
+. Run the following command to display the webhook URLs associated with your
+<code><strong>BuildConfig</strong></code>:</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe bc ruby-ex</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+. Copy the GitHub webhook payload URL output by the above command.
+Unresolved directive in getting_started/developers_cli.adoc - include::getting_started/developers_console.adoc[tag=deploycode2]</p>
+</div>
+<div id="developers-cli-writing-a-code-change" class="paragraph">
+<p>Unresolved directive in getting_started/developers_cli.adoc - include::getting_started/developers_console.adoc[tag=deploycode3]</p>
+</div>
+<div class="sect2">
+<h3 id="developers-cli-manually-rebuilding-images"><a class="anchor" href="#developers-cli-manually-rebuilding-images"></a>Manually Rebuilding Images</h3>
+<div class="paragraph">
+<p>You may find it useful to manually rebuild an image if your webhook is not
+working, or if a build fails and you do not want to change the code before
+restarting the build. To manually rebuild the image based on your latest
+committed change to your forked repository:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc start-build ruby-ex</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developers-cli-troubleshooting"><a class="anchor" href="#developers-cli-troubleshooting"></a>Troubleshooting</h2>
+<div class="sectionbody">
+<div id="developers-cli-troubleshooting-change-projects" class="paragraph">
+<p><strong>Changing Projects</strong></p>
+</div>
+<div class="paragraph">
+<p>Although the <code>oc new-project</code> command automatically sets your current project to
+the one you&#8217;ve just created, you can always change projects by running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc project &lt;project-name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To view a list of projects:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get projects</pre>
+</div>
+</div>
+<div id="developers-cli-troubleshooting-manually-triggering-builds" class="paragraph">
+<p><strong>Manually Triggering Builds</strong></p>
+</div>
+<div class="paragraph">
+<p>If the build does not start automatically, start a build and stream the logs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc start-build ruby-ex --follow</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, do not include <code>--follow</code> in the above command, and instead issue
+the following command after triggering the build, where <code>n</code> is the number of the
+build to track:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc logs -f build/ruby-ex-n</pre>
+</div>
 </div>
 </div>
 </div>
@@ -516,7 +968,7 @@ and operating systems</a> that can be used to access the web console.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Visit the <a href="https://github.com/openshift/ruby-ex">Ruby example</a> page while you are logged in to GitHub.</p>
+<p>Visit the <a href="https://github.com/thedigitalgarage/ruby-ex">Ruby example</a> page while you are logged in to GitHub.</p>
 <div class="admonitionblock note">
 <table>
 <tr>

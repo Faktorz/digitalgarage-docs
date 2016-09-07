@@ -14,9 +14,9 @@
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
   <!--
   <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
-  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
-  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
   -->
+  <link href="/_images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="/_images/favicon.png" rel="shortcut icon" type="text/css">
   <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
   <!-- or, set /favicon.ico for IE10 win -->
   <meta content="the Digital Garage" name="application-name">
@@ -368,7 +368,7 @@
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a></li>
 <li><a href="#btb_setup">Setup</a></li>
-<li><a href="#btb-installing-the-openshift-cli">Installing the Digital Garage CLI</a></li>
+<li><a href="#btb-installing-the-digital-garage-cli">Installing the Digital Garage CLI</a></li>
 <li><a href="#btb-creating-a-new-application-from-source-code">Creating a New Application from Source Code</a></li>
 <li><a href="#btb-configuring-routes">Configuring Routes</a></li>
 <li><a href="#btb-provisioning-a-database">Provisioning a Database</a></li>
@@ -448,7 +448,7 @@ and edit the application.</p>
 <td class="content">
 <div class="paragraph">
 <p>You can skip this step if you already forked the
-<a href="https://github.com/openshift/nodejs-ex"><strong>openshift/nodejs-ex</strong></a> repository when
+<a href="https://github.com/thedigitalgarage/nodejs-ex"><strong>thedigitalgarage/nodejs-ex</strong></a> repository when
 following the <a href="../getting_started/basic_walkthrough.html#getting-started-basic-walkthrough">Basic Walkthrough</a>
 topic.</p>
 </div>
@@ -487,7 +487,7 @@ application Git repository and a copy on your local machine.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="btb-installing-the-openshift-cli"><a class="anchor" href="#btb-installing-the-openshift-cli"></a>Installing the Digital Garage CLI</h2>
+<h2 id="btb-installing-the-digital-garage-cli"><a class="anchor" href="#btb-installing-the-digital-garage-cli"></a>Installing the Digital Garage CLI</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In this section, you will install the the Digital Garage CLI. The the Digital Garage
@@ -879,7 +879,7 @@ your build configuration:</p>
 in the following format:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">http://&lt;openshift_api_host:port&gt;/osapi/v1/namespaces/&lt;namespace&gt;/buildconfigs/frontend/webhooks/&lt;your_secret_key&gt;/github</pre>
+<pre class="nowrap">http://&lt;digital_garage_api_host:port&gt;/osapi/v1/namespaces/&lt;namespace&gt;/buildconfigs/frontend/webhooks/&lt;your_secret_key&gt;/github</pre>
 </div>
 </div>
 </li>
