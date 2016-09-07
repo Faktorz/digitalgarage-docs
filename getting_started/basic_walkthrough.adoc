@@ -12,11 +12,11 @@ toc::[]
 == Overview
 
 This guide demonstrates how to get a simple project up and running on
-{product-title} (Next Gen) Developer Preview.
+{product-title} Developer Preview.
 
 The following sections guide you through creating a project that contains a
 sample Node.js application that will serve a welcome page and the current hit
-count (stored in a database) using the {product-title}  web console. This 
+count (stored in a database) using the {product-title}  web console. This
 involves creating two xref:../architecture/core_concepts/pods_and_services.adoc#pods[pods]:
 
 - one to host the Node.js application
@@ -24,7 +24,7 @@ involves creating two xref:../architecture/core_concepts/pods_and_services.adoc#
 
 The tutorial assumes that you have:
 
-- a free {product-title} (Next Gen) Developer Preview account.
+- a free {product-title} account.
 - a free https://github.com/[GitHub] account.
 - https://help.github.com/articles/set-up-git/[Git] installed locally.
 
@@ -36,7 +36,7 @@ on GitHub and clone the repository to your local machine so that you can deploy
 and edit the application.
 
 . On GitHub, navigate to the
-https://github.com/openshift/nodejs-ex[*openshift/nodejs-ex*] repository. In the
+https://github.com/thedigitalgarage/nodejs-ex[*thedigitalgarage/nodejs-ex*] repository. In the
 top-right corner of the page, click *Fork*:
 +
 image::gs-fork.png[Fork the project]
@@ -49,7 +49,7 @@ $ git clone https://github.com/<your_github_username>/nodejs-ex
 $ cd nodejs-ex
 ----
 
-That's it! Now, you have a fork of the original *openshift/nodejs-ex* example
+That's it! Now, you have a fork of the original *thedigitalgarage/nodejs-ex* example
 application Git repository and a copy on your local machine.
 
 [[bw-creating-a-new-application]]
@@ -58,38 +58,27 @@ application Git repository and a copy on your local machine.
 In this section, you will deploy your first application to {product-title} using
 the web console.
 
-. Navigate to the https://console.preview.openshift.com/console/[welcome
-page] of the {product-title} web console and click *[ New Project ]* to create
+. Navigate to the https://apps.thedigitalgarage.io/console/[welcome
+page] of the {product-title} web console and click the New Project icon to create
 your first project:
 +
-[NOTE]
-====
-If you already have a project, you must delete it in order to continue. The
-{product-title} (Next Gen) Developer Preview only allows you to create a single project
-at this time.
-
-To delete your existing project, click the trash can icon next to the project
-name on the welcome page:
-
-image::gs-delete-projects.png[Delete projects]
-====
 
 . Replace `my-project` with a unique name for your project, such as
 `<your_github_username>-example`. You can leave the display name and description
 blank.
 +
-image::gs-new-project.png[New projects]
+image::dg-new-project.png[New projects]
 
 . Next, scroll to the *NodeJS* section and select the *nodejs-mongodb-example*
 Quickstart template:
 +
-image::gs-select-quickstart.png[Select Quickstart templates]
+image::dg-select-quickstart.png[Select Quickstart templates]
 
 . On the next screen, replace the user name in the *Git Repository URL* parameter
 with your GitHub user name. Use the default values provided for all other
 parameters:
 +
-image::gs-change-git-url.png[Change Git URL]
+image::dg-change-git-url.png[Change Git URL]
 
 . Finally, scroll to the bottom of the page and click *[ Create ]* to deploy your
 application.
@@ -115,7 +104,7 @@ section titled *Making code changes*. Copy the payload URL from the bottom of
 the page and follow the link to the GitHub project webhook settings page
 provided:
 +
-image::gs-copy-webhook.png[Copy webhook]
+image::dg-copy-webhook.png[Copy webhook]
 
 - In the {product-title}  web console:
 .. Navigate to the project containing your application.
@@ -152,7 +141,7 @@ the *Overview* page for your project to determine the web address for your
 application. Click the web address displayed underneath the
 *NODEJS-MONGODB-EXAMPLE* service to open your application in a new browser tab:
 
-image::gs-running-nodejs-app.png[Running Node.js app]
+image::dg-running-nodejs-app.png[Running Node.js app]
 
 [NOTE]
 ====
@@ -203,22 +192,8 @@ that your application can handle additional traffic volume.
 arrow ]* under the *NODEJS-MONGODB-EXAMPLE* service to add an additional replica
 of your Node.js application:
 +
-image::gs-scaling-app.png[Scaling an app]
+image::dg-scaling-app.png[Scaling an app]
 +
-[NOTE]
-====
-The *nodejs-mongodb-example* Quickstart is configured to use 512 MiB of memory
-per pod. Your quota will allow up to 3 replicas of the *nodejs-mongodb-example*
-pod in addition to the MongoDB database (for a total of 2 GiB).
-
-You can check your quota usage at any time in the web console:
-
-. From the web console, navigate to the project containing your application.
-. Click the *[ Settings ]* tab and scroll to the section titled *Quota
-compute-resources* to view usage:
-
-image::gs-quota.png[Quota]
-====
 
 [[bw-next-up]]
 == Next Up: Beyond the Basics
