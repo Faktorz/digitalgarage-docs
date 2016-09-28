@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Architecture | Core Concepts | Pods and Services</title>
+  <title>OpenShift Container Platform | Architecture | Core Concepts | Pods and Services</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../architecture/index.html">Architecture</a>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
 
-                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -581,7 +620,7 @@
 <h2 id="pods"><a class="anchor" href="#pods"></a>Pods</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>OpenShift Enterprise leverages the Kubernetes concept of a <code><strong>pod</strong></code>, which is one or
+<p>OpenShift Container Platform leverages the Kubernetes concept of a <code><strong>pod</strong></code>, which is one or
 more <a href="containers_and_images.html#containers">containers</a> deployed
 together on one host, and the smallest compute unit that can be defined,
 deployed, and managed.</p>
@@ -599,8 +638,8 @@ removed after exiting, or may be retained in order to enable access to
 the logs of their containers.</p>
 </div>
 <div class="paragraph">
-<p>OpenShift Enterprise treats pods as largely immutable; changes cannot be made to
-a pod definition while it is running. OpenShift Enterprise implements changes by
+<p>OpenShift Container Platform treats pods as largely immutable; changes cannot be made to
+a pod definition while it is running. OpenShift Container Platform implements changes by
 terminating an existing pod and recreating it with modified configuration,
 base image(s), or both. Pods are also treated as expendable, and do not
 maintain state when recreated. Therefore pods should usually be managed by
@@ -615,7 +654,7 @@ rather than directly by users.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The recommended maximum number of pods per OpenShift Enterprise node host is 110.</p>
+<p>The recommended maximum number of pods per OpenShift Container Platform node host is 110.</p>
 </div>
 </td>
 </tr>
@@ -623,7 +662,7 @@ rather than directly by users.</p>
 </div>
 <div class="paragraph">
 <p>Below is an example definition of a pod that provides a long-running
-service, which is actually a part of the OpenShift Enterprise infrastructure: the
+service, which is actually a part of the OpenShift Container Platform infrastructure: the
 private Docker registry. It demonstrates many features of pods, most of
 which are discussed in other topics and thus only briefly mentioned here:</p>
 </div>
@@ -721,7 +760,7 @@ IP.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>OpenShift Enterprise defines a
+<td>OpenShift Container Platform defines a
 <a href="../additional_concepts/authorization.html#security-context-constraints">security
 context</a> for containers which specifies whether they are allowed to run as
 privileged containers, run as a user of their choice, and more. The default
@@ -732,11 +771,11 @@ context is very restrictive but administrators can modify this as needed.</td>
 <td>The container specifies where external storage volumes should be mounted
 within the container. In this case, there is a volume for storing the registry&#8217;s
 data, and one for access to credentials the registry needs for making requests
-against the OpenShift Enterprise API.</td>
+against the OpenShift Container Platform API.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="9"></i><b>9</b></td>
-<td>Pods making requests against the OpenShift Enterprise API is a common enough pattern
+<td>Pods making requests against the OpenShift Container Platform API is a common enough pattern
 that there is a <code><strong>serviceAccount</strong></code> field for specifying which
 <a href="../../dev_guide/service_accounts.html#dev-guide-service-accounts">service account</a> user the pod should
 authenticate as when making the requests. This enables fine-grained access
@@ -759,7 +798,7 @@ a <code><strong>secret</strong></code> volume containing the service account cre
 <td class="content">
 <div class="paragraph">
 <p>This pod definition does not include attributes that
-are filled by OpenShift Enterprise automatically after the pod is created and
+are filled by OpenShift Container Platform automatically after the pod is created and
 its lifecycle begins. The
 <a href="../../rest_api/kubernetes_v1.html#rest-api-kubernetes-v1">Kubernetes API documentation</a>
 has complete details of the pod REST API object attributes, and the
@@ -850,7 +889,7 @@ documentation</a> has more information on services.</p>
 <div class="sect2">
 <h3 id="service-proxy-mode"><a class="anchor" href="#service-proxy-mode"></a>Service Proxy Mode</h3>
 <div class="paragraph">
-<p>OpenShift Enterprise has two different implementations of the service-routing
+<p>OpenShift Container Platform has two different implementations of the service-routing
 infrastructure. The default implementation is entirely <strong>iptables</strong>-based, and
 uses probabilistic <strong>iptables</strong> rewriting rules to distribute incoming service
 connections between the endpoint pods. The older implementation uses a user
@@ -942,19 +981,19 @@ documentation</a> has more information on labels.</p>
 specified by an object of type <strong>Endpoints</strong> with the same name as the
 service. When a service is backed by pods, those pods are normally
 specified by a label selector in the service specification, and
-OpenShift Enterprise automatically creates the Endpoints object pointing to
+OpenShift Container Platform automatically creates the Endpoints object pointing to
 those pods.</p>
 </div>
 <div class="paragraph">
 <p>In some cases, you may want to create a service but have it be backed
-by external hosts rather than by pods in the OpenShift Enterprise cluster.
+by external hosts rather than by pods in the OpenShift Container Platform cluster.
 In this case, you can leave out the <code><strong>selector</strong></code> field in the service,
 and
 <a href="../../dev_guide/integrating_external_services.html#dev-guide-integrating-external-services">create
 the Endpoints object manually</a>.</p>
 </div>
 <div class="paragraph">
-<p>Note that OpenShift Enterprise will not let most users manually create an
+<p>Note that OpenShift Container Platform will not let most users manually create an
 Endpoints object that points to an IP address in
 <a href="../../install_config/configuring_sdn.html#configuring-the-pod-network-on-masters">the
 network blocks reserved for pod and service IPs</a>. Only

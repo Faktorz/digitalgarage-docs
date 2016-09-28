@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Getting Started | Beyond the Basics</title>
+  <title>OpenShift Online | Getting Started | Beyond the Basics</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../getting_started/index.html">Getting Started</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -396,7 +398,7 @@
 <p>This getting started experience walks you through the “long way” of getting the
 same sample project from the
 <a href="../getting_started/basic_walkthrough.html#getting-started-basic-walkthrough">Basic Walkthrough</a> topic up and
-running on the Digital Garage Developer Preview.</p>
+running on OpenShift Online Developer Preview.</p>
 </div>
 <div class="paragraph">
 <p>The following sections guide you through creating a project that contains a
@@ -420,7 +422,7 @@ involves creating two <a href="../architecture/core_concepts/pods_and_services.h
 <div class="ulist">
 <ul>
 <li>
-<p>a free the Digital Garage account.</p>
+<p>a free OpenShift Online account.</p>
 </li>
 <li>
 <p>a free <a href="https://github.com/">GitHub</a> account.</p>
@@ -436,7 +438,7 @@ involves creating two <a href="../architecture/core_concepts/pods_and_services.h
 <h2 id="btb_setup"><a class="anchor" href="#btb_setup"></a>Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section, you will <em>fork</em> the the Digital Garage Node.js sample application
+<p>In this section, you will <em>fork</em> the OpenShift Online Node.js sample application
 on GitHub and clone the repository to your local machine so that you can deploy
 and edit the application.</p>
 </div>
@@ -491,15 +493,15 @@ application Git repository and a copy on your local machine.</p>
 <h2 id="btb-installing-the-digital-garage-cli"><a class="anchor" href="#btb-installing-the-digital-garage-cli"></a>Installing the Digital Garage CLI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section, you will install the the Digital Garage CLI. The the Digital Garage
+<p>In this section, you will install the OpenShift Online CLI. The OpenShift Online
 CLI exposes commands for managing your applications, as well as lower level
 tools to interact with each component of your system.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First, download the the Digital Garage CLI from the <strong>About</strong> page in the
-the Digital Garage web console. The CLI is available for Linux (32- or 64-bit), Mac
+<p>First, download the OpenShift Online CLI from the <strong>About</strong> page in the
+OpenShift Online web console. The CLI is available for Linux (32- or 64-bit), Mac
 OS X, and Windows. After you have downloaded the CLI, return to these steps.</p>
 </li>
 <li>
@@ -538,15 +540,15 @@ your <code><strong>PATH</strong></code>.</p>
 </li>
 <li>
 <p>Then, visit <a href="https://apps.thedigitalgarage.io/console/about">the
-<strong>About</strong> page</a> in the the Digital Garage web console and copy the <code>oc login</code> command
-shown with your current session token to log in to the Digital Garage from the CLI:</p>
+<strong>About</strong> page</a> in the OpenShift Online web console and copy the <code>oc login</code> command
+shown with your current session token to log in to OpenShift Online from the CLI:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">$ oc login https://apps.thedigitalgarage.io:8443 --token=&lt;your_session_token&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>oc login</code> command is the best way to initially set up the the Digital Garage
+<p>The <code>oc login</code> command is the best way to initially set up the OpenShift Online
 CLI. The information is automatically saved in a CLI configuration file that is
 then used for subsequent commands.</p>
 </div>
@@ -559,7 +561,7 @@ then used for subsequent commands.</p>
 <h2 id="btb-creating-a-new-application-from-source-code"><a class="anchor" href="#btb-creating-a-new-application-from-source-code"></a>Creating a New Application from Source Code</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section, you will deploy your first application to the Digital Garage using
+<p>In this section, you will deploy your first application to OpenShift Online using
 the web console.</p>
 </div>
 <div class="olist arabic">
@@ -768,7 +770,7 @@ MongoDB service.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add the the Digital Garage-provided MongoDB database to your project with:</p>
+<p>Add the OpenShift Online-provided MongoDB database to your project with:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">$ oc new-app mongodb-persistent \
@@ -953,7 +955,7 @@ once the deployment is completed.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Now all you need to do is push code updates, and the Digital Garage handles the
+<p>Now all you need to do is push code updates, and OpenShift Online handles the
 rest.</p>
 </div>
 </div>
@@ -963,12 +965,12 @@ rest.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following sections provide some next steps now that you have finished your
-initial walkthrough of the Digital Garage Developer Preview.</p>
+initial walkthrough of OpenShift Online Developer Preview.</p>
 </div>
 <div class="sect2">
 <h3 id="btb-other-quickstarts"><a class="anchor" href="#btb-other-quickstarts"></a>Other Quickstarts</h3>
 <div class="paragraph">
-<p>the Digital Garage Developer Preview provides out of the box a set of
+<p>OpenShift Online Developer Preview provides out of the box a set of
 <a href="../using_images/s2i_images/index.html#using-images-s2i-images-index">languages</a> and
 <a href="../using_images/db_images/index.html#using-images-db-images-index">databases</a> for developers with
 corresponding implementations and tutorials that allow you to kickstart your
@@ -1019,7 +1021,7 @@ and try out Quickstart templates for the following languages:</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Other images provided by the Digital Garage include:</p>
+<p>Other images provided by OpenShift Online include:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1040,7 +1042,7 @@ and try out Quickstart templates for the following languages:</p>
 <div class="paragraph">
 <p>In addition, JBoss Middleware has put together a broad range of
 <a href="https://github.com/jboss-openshift/application-templates">OpenShift
-templates</a> as part of their xPaaS services that can be used on the Digital Garage
+templates</a> as part of their xPaaS services that can be used on OpenShift Online
 as <a href="../using_images/xpaas_images/index.html#using-images-xpaas-images-index">images</a>.</p>
 </div>
 <div class="paragraph">

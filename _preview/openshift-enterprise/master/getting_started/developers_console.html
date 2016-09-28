@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Getting Started | Web Console Walkthrough</title>
+  <title>OpenShift Container Platform | Getting Started | Web Console Walkthrough</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../getting_started/index.html">Getting Started</a>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
 
-                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -599,14 +638,14 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>This getting started experience walks you through the simplest way to get a
-sample project up and running on OpenShift Enterprise. There are a few different ways
+sample project up and running on OpenShift Container Platform. There are a few different ways
 to launch images within a project, but this topic focuses on the quickest and
 easiest method.</p>
 </div>
 <div class="paragraph">
 <p>If this is the first part of the documentation you have read, and you are
-unfamiliar with the core concepts of OpenShift Enterprise, you might want to
-start by reading about the concepts behind OpenShift Enterprise. OpenShift Enterprise provides
+unfamiliar with the core concepts of OpenShift Container Platform, you might want to
+start by reading about the concepts behind OpenShift Container Platform. OpenShift Container Platform provides
 out of the box a set of
 <a href="../using_images/s2i_images/index.html#using-images-s2i-images-index">languages</a> and
 <a href="../using_images/db_images/index.html#using-images-db-images-index">databases</a> for developers with
@@ -654,7 +693,7 @@ turn leverage <a href="../using_images/s2i_images/index.html#using-images-s2i-im
 </tbody>
 </table>
 <div class="paragraph">
-<p>Other images provided by OpenShift Enterprise include:</p>
+<p>Other images provided by OpenShift Container Platform include:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -674,7 +713,7 @@ turn leverage <a href="../using_images/s2i_images/index.html#using-images-s2i-im
 </div>
 <div class="paragraph">
 <p>In addition, JBoss Middleware has put together a broad range of
-<a href="https://github.com/jboss-openshift/application-templates">OpenShift Enterprise
+<a href="https://github.com/jboss-openshift/application-templates">OpenShift Container Platform
 templates</a> as well as <a href="../using_images/xpaas_images/index.html#using-images-xpaas-images-index">images</a> as
 part of their xPaaS services.</p>
 </div>
@@ -751,7 +790,7 @@ In contrast, Instant Apps like Jenkins are instantly usable.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You must be able to access a running instance of OpenShift Enterprise. If you do
+<p>You must be able to access a running instance of OpenShift Container Platform. If you do
 not have access, contact your cluster administrator.</p>
 </li>
 <li>
@@ -767,7 +806,7 @@ direct your cluster administrator to the
 <a href="https://help.github.com/articles/set-up-git/#next-steps-authenticating-with-github-from-git">set up authentication to GitHub from Git</a>.</p>
 </li>
 <li>
-<p>You must have the OpenShift Enterprise CLI
+<p>You must have the OpenShift Container Platform CLI
 <a href="../cli_reference/get_started_cli.html#cli-reference-get-started-cli">downloaded and installed</a>.</p>
 </li>
 </ul>
@@ -790,7 +829,7 @@ direct your cluster administrator to the
 <td class="content">
 <div class="paragraph">
 <p>This topic follows the Ruby example, but you can follow along using any of the language examples
-<a href="../../getting_started/developers_cli.html#getting-started-developers-cli-languages">provided in the OpenShift Enterprise GitHub project</a>.</p>
+<a href="#getting-started-developers-cli-languages">provided in the OpenShift Container Platform GitHub project</a>.</p>
 </div>
 </td>
 </tr>
@@ -818,13 +857,13 @@ direct your cluster administrator to the
 <div class="sectionbody">
 <div class="paragraph">
 <p>To create an application, you must create a new project and specify the location
-of the source. From there, OpenShift Enterprise begins the build process and creates
+of the source. From there, OpenShift Container Platform begins the build process and creates
 a new deployment.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Log into OpenShift Enterprise from the CLI:</p>
+<p>Log into OpenShift Container Platform from the CLI:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -870,7 +909,7 @@ project namespace.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>OpenShift Enterprise finds the matching builder image (which in this case is <strong>ruby-20-centos7</strong>) and then creates resources for the application (image stream, build configuration, deployment configuration, service). It also schedules the build.</p>
+<p>OpenShift Container Platform finds the matching builder image (which in this case is <strong>ruby-20-centos7</strong>) and then creates resources for the application (image stream, build configuration, deployment configuration, service). It also schedules the build.</p>
 </div>
 </li>
 <li>
@@ -914,7 +953,7 @@ default port it deploys to is 8080.</p>
 <h2 id="developers-cli-create-route"><a class="anchor" href="#developers-cli-create-route"></a>Create a Route</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>An OpenShift Enterprise route exposes a service at a host name, so that external clients can reach it by name. To create a route to your new application:</p>
+<p>An OpenShift Container Platform route exposes a service at a host name, so that external clients can reach it by name. To create a route to your new application:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1061,6 +1100,131 @@ build to track:</p>
 <pre class="nowrap">$ oc logs -f build/ruby-ex-n</pre>
 </div>
 </div>
+<table id="getting-started-developers-console-languages" class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Language</th>
+<th class="tableblock halign-left valign-top">Implementations and Tutorials</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Ruby</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/rails-ex">Rails</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Python</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/django-ex">Django</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Node.js</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/nodejs-ex">Node.js</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">PHP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/cakephp-ex">CakePHP</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Perl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/dancer-ex">Dancer</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Java</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Other images provided by OpenShift Container Platform include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/openshift/mysql">MySQL</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/mongodb">MongoDB</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/postgresql">PostgreSQL</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/jenkins">Jenkins</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, JBoss Middleware has put together a broad range of
+<a href="https://github.com/jboss-openshift/application-templates">OpenShift Container Platform
+templates</a> as well as <a href="../using_images/xpaas_images/index.html#using-images-xpaas-images-index">images</a> as
+part of their xPaaS services.</p>
+</div>
+<div class="paragraph">
+<p>The technologies available with the xPaaS services in particular include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java EE 6 Application Server provided by JBoss EAP 6</p>
+</li>
+<li>
+<p>Integration and Messaging Services provided by JBoss Fuse and JBoss A-MQ</p>
+</li>
+<li>
+<p>Data Grid Service provided by JBoss Data Grid</p>
+</li>
+<li>
+<p>Real Time Decision Service provided by JBoss BRMS</p>
+</li>
+<li>
+<p>Java Web Server 3.0 provided by Tomcat 7 and Tomcat 8</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With each of these offerings, a series of combinations are provided:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP only vs. HTTP and HTTPS</p>
+</li>
+<li>
+<p>No database required, or the use of either MongoDB, PostgreSQL, or MySQL</p>
+</li>
+<li>
+<p>If desired, integration with A-MQ</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To help illustrate constructing such applications, the following sections guide
+you through creating a project that contains a sample Node.js application that
+will serve a welcome page and the current hit count (stored in a database).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This topic discusses both
+<a href="../dev_guide/app_tutorials/quickstarts.html#dev-guide-app-tutorials-quickstarts">Quickstart</a> and
+<a href="../dev_guide/templates.html#using-the-instantapp-templates">Instant App</a>
+templates and applications. Quickstarts provide a starting point for application
+development, but they rely on your development to create a useful application.
+In contrast, Instant Apps like Jenkins are instantly usable.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1072,7 +1236,7 @@ build to track:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You must be able to access a running instance of OpenShift Enterprise. If you do
+<p>You must be able to access a running instance of OpenShift Container Platform. If you do
 not have access, contact your cluster administrator.</p>
 </li>
 <li>
@@ -1088,7 +1252,7 @@ direct your cluster administrator to the
 <a href="https://help.github.com/articles/set-up-git/#next-steps-authenticating-with-github-from-git">set up authentication to GitHub from Git</a>.</p>
 </li>
 <li>
-<p>You must have the OpenShift Enterprise CLI
+<p>You must have the OpenShift Container Platform CLI
 <a href="../cli_reference/get_started_cli.html#cli-reference-get-started-cli">downloaded and installed</a>.</p>
 </li>
 </ul>
@@ -1135,7 +1299,7 @@ and operating systems</a> that can be used to access the web console.</p>
 <td class="content">
 <div class="paragraph">
 <p>This topic follows the Ruby example, but you can follow along using any of the language examples
-<a href="../../getting_started/developers_cli.html#getting-started-developers-cli-languages">provided in the OpenShift Enterprise GitHub project</a>.</p>
+<a href="#getting-started-developers-cli-languages">provided in the OpenShift Container Platform GitHub project</a>.</p>
 </div>
 </td>
 </tr>
@@ -1163,13 +1327,13 @@ and operating systems</a> that can be used to access the web console.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To create an application, you must first create a new project, then select an
-InstantApp template. From there, OpenShift Enterprise begins the build process and
+InstantApp template. From there, OpenShift Container Platform begins the build process and
 creates a new deployment.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Visit the OpenShift Enterprise web console in your browser. The web console uses a self-signed certificate, so if prompted, continue past a browser warning.</p>
+<p>Visit the OpenShift Container Platform web console in your browser. The web console uses a self-signed certificate, so if prompted, continue past a browser warning.</p>
 </li>
 <li>
 <p>Log in using the username and password recommended to you by your administrator.</p>
@@ -1271,7 +1435,7 @@ is running, the build is complete.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You forked the source code for this application from the
-<a href="https://github.com/openshift/ruby-ex">OpenShift Enterprise GitHub repository</a>. Therefore,
+<a href="https://github.com/openshift/ruby-ex">OpenShift Container Platform GitHub repository</a>. Therefore,
 you can use a webhook to automatically trigger a rebuild of your application
 whenever you push code changes to your forked repository.</p>
 </div>
@@ -1310,7 +1474,7 @@ whenever you push code changes to your forked repository.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>GitHub now attempts to send a ping payload to your OpenShift Enterprise server to ensure that communication is successful. If you see see a green check mark appear next to your webhook URL, then it is correctly configured. Hover your mouse over the check mark to see the status of the last delivery.</p>
+<p>GitHub now attempts to send a ping payload to your OpenShift Container Platform server to ensure that communication is successful. If you see see a green check mark appear next to your webhook URL, then it is correctly configured. Hover your mouse over the check mark to see the status of the last delivery.</p>
 </div>
 <div class="paragraph">
 <p>The next time you push a code change to your forked repository, your application will automatically rebuild.</p>
@@ -1342,7 +1506,7 @@ updated application using the route that was created earlier.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Now going forward, all you need to do is push code updates and OpenShift Enterprise
+<p>Now going forward, all you need to do is push code updates and OpenShift Container Platform
 handles the rest.</p>
 </div>
 <div class="sect2">

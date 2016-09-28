@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Installation and Configuration | Installing | Disconnected Installation</title>
+  <title>OpenShift Container Platform | Installation and Configuration | Installing a Cluster | Disconnected Installation</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,12 +53,12 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../install_config/index.html">Installation and Configuration</a>
       </li>
-      <li class="hidden-xs active"><a href="../../install_config/install/index.html">Installing</a></li>
+      <li class="hidden-xs active"><a href="../../install_config/install/planning.html">Installing a Cluster</a></li>
       <li class="hidden-xs active">
         Disconnected Installation
       </li>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-down"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-down"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse in">
 
-                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class=" active" href="../../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -579,17 +618,17 @@
 <li><a href="#disconnected-placing-the-software">Placing the Software</a></li>
 </ul>
 </li>
-<li><a href="#disconnected-openshift-systems">OpenShift Enterprise Systems</a>
+<li><a href="#disconnected-openshift-systems">OpenShift Container Platform Systems</a>
 <ul class="sectlevel2">
 <li><a href="#disconnected-building-your-hosts">Building Your Hosts</a></li>
 <li><a href="#disconnected-connecting-repos">Connecting the Repositories</a></li>
 <li><a href="#disconnected-host-preparations">Host Preparation</a></li>
 </ul>
 </li>
-<li><a href="#disconnected-installing-openshift">Installing OpenShift Enterprise</a>
+<li><a href="#disconnected-installing-openshift">Installing OpenShift Container Platform</a>
 <ul class="sectlevel2">
-<li><a href="#disconnected-importing-containerized-components">Importing OpenShift Enterprise Containerized Components</a></li>
-<li><a href="#disconnected-running-the-openshift-installer">Running the OpenShift Enterprise Installer</a></li>
+<li><a href="#disconnected-importing-containerized-components">Importing OpenShift Container Platform Containerized Components</a></li>
+<li><a href="#disconnected-running-the-openshift-installer">Running the OpenShift Container Platform Installer</a></li>
 <li><a href="#disconnected-creating-the-internal-docker-registry">Creating the Internal Docker Registry</a></li>
 </ul>
 </li>
@@ -612,50 +651,50 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Frequently, portions of a datacenter may not have access to the Internet, even
-via proxy servers. Installing OpenShift Enterprise in these environments is
+via proxy servers. Installing OpenShift Container Platform in these environments is
 considered a disconnected installation.</p>
 </div>
 <div class="paragraph">
-<p>An OpenShift Enterprise disconnected installation differs from a regular
+<p>An OpenShift Container Platform disconnected installation differs from a regular
 installation in two primary ways:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The OpenShift Enterprise software channels and repositories are not available via Red Hat’s
+<p>The OpenShift Container Platform software channels and repositories are not available via Red Hat’s
 content distribution network.</p>
 </li>
 <li>
-<p>OpenShift Enterprise uses several containerized components. Normally, these images
+<p>OpenShift Container Platform uses several containerized components. Normally, these images
 are pulled directly from Red Hat’s Docker registry. In a disconnected
 environment, this is not possible.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>A disconnected installation ensures the OpenShift Enterprise software is made
+<p>A disconnected installation ensures the OpenShift Container Platform software is made
 available to the relevant servers, then follows the same installation process as
 a standard connected installation. This topic additionally details how to
 manually download the Docker images and transport them onto the relevant
 servers.</p>
 </div>
 <div class="paragraph">
-<p>Once installed, in order to use OpenShift Enterprise, you will need source code in a
+<p>Once installed, in order to use OpenShift Container Platform, you will need source code in a
 source control repository (for example, Git). This topic assumes that an
 internal Git repository is available that can host source code and this
-repository is accessible from the OpenShift Enterprise nodes. Installing the source
+repository is accessible from the OpenShift Container Platform nodes. Installing the source
 control repository is outside the scope of this document.</p>
 </div>
 <div class="paragraph">
-<p>Also, when building applications in OpenShift Enterprise, your build may have some
+<p>Also, when building applications in OpenShift Container Platform, your build may have some
 external dependencies, such as a Maven Repository or Gem files for Ruby
 applications. For this reason, and because they might require certain tags, many
-of the Quickstart templates offered by OpenShift Enterprise may not work on a
+of the Quickstart templates offered by OpenShift Container Platform may not work on a
 disconnected environment. However, while Red Hat Docker images try to reach out
-to external repositories by default, you can configure OpenShift Enterprise to use
+to external repositories by default, you can configure OpenShift Container Platform to use
 your own internal repositories. For the purposes of this document, we assume
 that such internal repositories already exist and are accessible from the
-OpenShift Enterprise nodes hosts. Installing such repositories is outside the scope
+OpenShift Container Platform nodes hosts. Installing such repositories is outside the scope
 of this document.</p>
 </div>
 <div class="admonitionblock note">
@@ -669,13 +708,13 @@ of this document.</p>
 <p>You can also have a
 <a href="http://www.redhat.com/en/technologies/linux-platforms/satellite">Red Hat
 Satellite</a> server that provides access to Red Hat content via an intranet or
-LAN. For environments with Satellite, you can synchronize the OpenShift Enterprise
-software onto the Satellite for use with the OpenShift Enterprise servers.</p>
+LAN. For environments with Satellite, you can synchronize the OpenShift Container Platform
+software onto the Satellite for use with the OpenShift Container Platform servers.</p>
 </div>
 <div class="paragraph">
 <p><a href="https://access.redhat.com/documentation/en/red-hat-satellite/">Red Hat Satellite
 6.1</a> also introduces the ability to act as a Docker registry, and it can be used
-to host the OpenShift Enterprise containerized components. Doing so is outside of the
+to host the OpenShift Container Platform containerized components. Doing so is outside of the
 scope of this document.</p>
 </div>
 </td>
@@ -689,7 +728,7 @@ scope of this document.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This document assumes that you understand
-<a href="../../architecture/index.html#architecture-index">OpenShift Enterprise&#8217;s overall architecture</a> and that
+<a href="../../architecture/index.html#architecture-index">OpenShift Container Platform&#8217;s overall architecture</a> and that
 you have already planned out what the topology of your environment will look
 like.</p>
 </div>
@@ -725,7 +764,7 @@ appropriate GPG key:</p>
 <ol class="arabic">
 <li>
 <p>Register the server with the Red Hat Customer Portal. You must use the login
-and password associated with the account that has access to the OpenShift Enterprise
+and password associated with the account that has access to the OpenShift Container Platform
 subscriptions:</p>
 <div class="listingblock">
 <div class="content">
@@ -734,7 +773,7 @@ subscriptions:</p>
 </div>
 </li>
 <li>
-<p>Attach to a subscription that provides OpenShift Enterprise channels. You can find
+<p>Attach to a subscription that provides OpenShift Container Platform channels. You can find
 the list of available subscriptions using:</p>
 <div class="listingblock">
 <div class="content">
@@ -742,7 +781,7 @@ the list of available subscriptions using:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Then, find the pool ID for the subscription that provides OpenShift Enterprise, and
+<p>Then, find the pool ID for the subscription that provides OpenShift Container Platform, and
 attach it:</p>
 </div>
 <div class="listingblock">
@@ -752,7 +791,7 @@ attach it:</p>
 # subscription-manager repos \
     --enable="rhel-7-server-rpms" \
     --enable="rhel-7-server-extras-rpms" \
-    --enable="rhel-7-server-ose-3.2-rpms"</pre>
+    --enable="rhel-7-server-ose-3.3-rpms"</pre>
 </div>
 </div>
 </li>
@@ -789,7 +828,7 @@ modify the command for the appropriate path you created above:</p>
 <div class="content">
 <pre class="nowrap"># for repo in \
 rhel-7-server-rpms rhel-7-server-extras-rpms \
-rhel-7-server-ose-3.2-rpms
+rhel-7-server-ose-3.3-rpms
 do
   reposync --gpgcheck -lm --repoid=${repo} --download_path=/path/to/repos
   createrepo -v &lt;/path/to/repos/&gt;${repo} -o &lt;/path/to/repos/&gt;${repo}
@@ -816,20 +855,20 @@ done</pre>
 </div>
 </li>
 <li>
-<p>Pull all of the required OpenShift Enterprise containerized components:</p>
+<p>Pull all of the required OpenShift Container Platform containerized components:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># docker pull registry.access.redhat.com/openshift3/ose-haproxy-router:v3.2.1.13
-# docker pull registry.access.redhat.com/openshift3/ose-deployer:v3.2.1.13
-# docker pull registry.access.redhat.com/openshift3/ose-sti-builder:v3.2.1.13
-# docker pull registry.access.redhat.com/openshift3/ose-docker-builder:v3.2.1.13
-# docker pull registry.access.redhat.com/openshift3/ose-pod:v3.2.1.13
-# docker pull registry.access.redhat.com/openshift3/ose-docker-registry:v3.2.1.13</pre>
+<pre class="nowrap"># docker pull registry.access.redhat.com/openshift3/ose-haproxy-router:v3.3.0.31
+# docker pull registry.access.redhat.com/openshift3/ose-deployer:v3.3.0.31
+# docker pull registry.access.redhat.com/openshift3/ose-sti-builder:v3.3.0.31
+# docker pull registry.access.redhat.com/openshift3/ose-docker-builder:v3.3.0.31
+# docker pull registry.access.redhat.com/openshift3/ose-pod:v3.3.0.31
+# docker pull registry.access.redhat.com/openshift3/ose-docker-registry:v3.3.0.31</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Pull all of the required OpenShift Enterprise containerized components for the
+<p>Pull all of the required OpenShift Container Platform containerized components for the
 additional centralized log aggregation and metrics aggregation components:</p>
 <div class="listingblock">
 <div class="content">
@@ -939,7 +978,7 @@ and then transporting them:</p>
 </div>
 </li>
 <li>
-<p>Export the OpenShift Enterprise containerized components:</p>
+<p>Export the OpenShift Container Platform containerized components:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap"># docker save -o ose3-images.tar \
@@ -976,7 +1015,7 @@ example, if you synced only the Tomcat image:</p>
 <div class="content">
 <pre class="nowrap"># docker save -o ose3-builder-images.tar \
     registry.access.redhat.com/jboss-webserver-3/webserver30-tomcat7-openshift:latest \
-    registry.access.redhat.com/jboss-webserver-3/webserver30-tomcat7-openshift:1.1 \</pre>
+    registry.access.redhat.com/jboss-webserver-3/webserver30-tomcat7-openshift:1.1</pre>
 </div>
 </div>
 </li>
@@ -1057,16 +1096,16 @@ sync:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="disconnected-openshift-systems"><a class="anchor" href="#disconnected-openshift-systems"></a>OpenShift Enterprise Systems</h2>
+<h2 id="disconnected-openshift-systems"><a class="anchor" href="#disconnected-openshift-systems"></a>OpenShift Container Platform Systems</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="disconnected-building-your-hosts"><a class="anchor" href="#disconnected-building-your-hosts"></a>Building Your Hosts</h3>
 <div class="paragraph">
 <p>At this point you can perform the initial creation of the hosts that will be
-part of the OpenShift Enterprise environment. It is recommended to use the latest version
+part of the OpenShift Container Platform environment. It is recommended to use the latest version
 of RHEL 7 and to perform a minimal installation. You will also
 want to pay attention to the other
-<a href="../../install_config/install/prerequisites.html#install-config-install-prerequisites">OpenShift Enterprise-specific
+<a href="../../install_config/install/prerequisites.html#install-config-install-prerequisites">OpenShift Container Platform-specific
 prerequisites</a>.</p>
 </div>
 <div class="paragraph">
@@ -1076,7 +1115,7 @@ prerequisites</a>.</p>
 <div class="sect2">
 <h3 id="disconnected-connecting-repos"><a class="anchor" href="#disconnected-connecting-repos"></a>Connecting the Repositories</h3>
 <div class="paragraph">
-<p>On all of the relevant systems that will need OpenShift Enterprise software
+<p>On all of the relevant systems that will need OpenShift Container Platform software
 components, create the required repository definitions. Place the following text
 in the <strong><em>/etc/yum.repos.d/ose.repo</em></strong> file, replacing <code>&lt;server_IP&gt;</code> with the IP
 or host name of the Apache server hosting the software repositories:</p>
@@ -1095,9 +1134,9 @@ name=rhel-7-server-extras-rpms
 baseurl=http://&lt;server_IP&gt;/repos/rhel-7-server-extras-rpms
 enabled=1
 gpgcheck=0
-[rhel-7-server-ose-3.2-rpms]
-name=rhel-7-server-ose-3.2-rpms
-baseurl=http://&lt;server_IP&gt;/repos/rhel-7-server-ose-3.2-rpms
+[rhel-7-server-ose-3.3-rpms]
+name=rhel-7-server-ose-3.3-rpms
+baseurl=http://&lt;server_IP&gt;/repos/rhel-7-server-ose-3.3-rpms
 enabled=1
 gpgcheck=0</pre>
 </div>
@@ -1109,24 +1148,23 @@ gpgcheck=0</pre>
 <h3 id="disconnected-host-preparations"><a class="anchor" href="#disconnected-host-preparations"></a>Host Preparation</h3>
 <div class="paragraph">
 <p>At this point, the systems are ready to continue to be prepared
-<a href="../../install_config/install/prerequisites.html#host-preparation">following
-the OpenShift Enterprise documentation</a>.</p>
+<a href="../../install_config/install/host_preparation.html#install-config-install-host-preparation">following
+the OpenShift Container Platform documentation</a>.</p>
 </div>
 <div class="paragraph">
-<p>Skip the section titled <strong>Registering the Hosts</strong> and start with <strong>Managing
-Packages</strong>.</p>
+<p>Skip the section titled <strong>Host Registration</strong> and start with <strong>Installing Base Packages</strong>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="disconnected-installing-openshift"><a class="anchor" href="#disconnected-installing-openshift"></a>Installing OpenShift Enterprise</h2>
+<h2 id="disconnected-installing-openshift"><a class="anchor" href="#disconnected-installing-openshift"></a>Installing OpenShift Container Platform</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="disconnected-importing-containerized-components"><a class="anchor" href="#disconnected-importing-containerized-components"></a>Importing OpenShift Enterprise Containerized Components</h3>
+<h3 id="disconnected-importing-containerized-components"><a class="anchor" href="#disconnected-importing-containerized-components"></a>Importing OpenShift Container Platform Containerized Components</h3>
 <div class="paragraph">
 <p>To import the relevant components, securely copy the images from the connected
-host to the individual OpenShift Enterprise hosts:</p>
+host to the individual OpenShift Container Platform hosts:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1135,12 +1173,12 @@ host to the individual OpenShift Enterprise hosts:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you prefer, you could use <code>wget</code> on each OpenShift Enterprise host to fetch the
+<p>If you prefer, you could use <code>wget</code> on each OpenShift Container Platform host to fetch the
 tar file, and then perform the Docker import command locally. Perform the same
 steps for the metrics and logging images, if you synchronized them.</p>
 </div>
 <div class="paragraph">
-<p>On the host that will act as an OpenShift Enterprise master, copy and import the
+<p>On the host that will act as an OpenShift Container Platform master, copy and import the
 builder images:</p>
 </div>
 <div class="listingblock">
@@ -1151,18 +1189,18 @@ builder images:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="disconnected-running-the-openshift-installer"><a class="anchor" href="#disconnected-running-the-openshift-installer"></a>Running the OpenShift Enterprise Installer</h3>
+<h3 id="disconnected-running-the-openshift-installer"><a class="anchor" href="#disconnected-running-the-openshift-installer"></a>Running the OpenShift Container Platform Installer</h3>
 <div class="paragraph">
 <p>You can now choose to follow the
 <a href="../../install_config/install/quick_install.html#install-config-install-quick-install">quick</a> or
 <a href="../../install_config/install/advanced_install.html#install-config-install-advanced-install">advanced</a>
-OpenShift Enterprise installation instructions in the documentation.</p>
+OpenShift Container Platform installation instructions in the documentation.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="disconnected-creating-the-internal-docker-registry"><a class="anchor" href="#disconnected-creating-the-internal-docker-registry"></a>Creating the Internal Docker Registry</h3>
 <div class="paragraph">
-<p>You now need to <a href="../../install_config/install/docker_registry.html#install-config-install-docker-registry">create
+<p>You now need to <a href="../../install_config/registry/index.html#install-config-registry-overview">create
 the internal Docker registry</a>.</p>
 </div>
 </div>
@@ -1173,13 +1211,13 @@ the internal Docker registry</a>.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In one of the previous steps, the S2I images were imported into the Docker
-daemon running on one of the OpenShift Enterprise master hosts. In a connected
+daemon running on one of the OpenShift Container Platform master hosts. In a connected
 installation, these images would be pulled from Red Hat’s registry on demand.
 Since the Internet is not available to do this, the images must be made
 available in another Docker registry.</p>
 </div>
 <div class="paragraph">
-<p>OpenShift Enterprise provides an internal registry for storing the images that are
+<p>OpenShift Container Platform provides an internal registry for storing the images that are
 built as a result of the S2I process, but it can also be used to hold the S2I
 builder images. The following steps assume you did not customize the service IP
 subnet (172.30.0.0/16) or the Docker registry port (5000).</p>
@@ -1199,7 +1237,7 @@ service address of your Docker registry that you installed on the master:</p>
 </li>
 <li>
 <p>Next, tag all of the builder images that you synced and exported before
-pushing them into the OpenShift Enterprise Docker registry. For example, if you
+pushing them into the OpenShift Container Platform Docker registry. For example, if you
 synced and exported only the Tomcat image:</p>
 <div class="listingblock">
 <div class="content">
@@ -1221,8 +1259,8 @@ $REGISTRY:5000/openshift/webserver30-tomcat7-openshift:latest</pre>
 <div class="sect2">
 <h3 id="disconnected-creating-an-admin-user"><a class="anchor" href="#disconnected-creating-an-admin-user"></a>Creating an Administrative User</h3>
 <div class="paragraph">
-<p>Pushing the Docker images into OpenShift Enterprise&#8217;s Docker registry requires a user
-with <strong>cluster-admin</strong> privileges. Because the default OpenShift Enterprise system
+<p>Pushing the Docker images into OpenShift Container Platform&#8217;s Docker registry requires a user
+with <strong>cluster-admin</strong> privileges. Because the default OpenShift Container Platform system
 administrator does not have a standard authorization token, they cannot be used
 to log in to the Docker registry.</p>
 </div>
@@ -1233,7 +1271,7 @@ to log in to the Docker registry.</p>
 <ol class="arabic">
 <li>
 <p>Create a new user account in the authentication system you are using with
-OpenShift Enterprise. For example, if you are using local <code>htpasswd</code>-based
+OpenShift Container Platform. For example, if you are using local <code>htpasswd</code>-based
 authentication:</p>
 <div class="listingblock">
 <div class="content">
@@ -1243,9 +1281,9 @@ authentication:</p>
 </li>
 <li>
 <p>The external authentication system now has a user account, but a user must log
-in to OpenShift Enterprise before an account is created in the internal database. Log
-in to OpenShift Enterprise for this account to be created. This assumes you are using
-the self-signed certificates generated by OpenShift Enterprise during the
+in to OpenShift Container Platform before an account is created in the internal database. Log
+in to OpenShift Container Platform for this account to be created. This assumes you are using
+the self-signed certificates generated by OpenShift Container Platform during the
 installation:</p>
 <div class="listingblock">
 <div class="content">
@@ -1272,7 +1310,7 @@ iwo7hc4XilD2KOLL4V1O55ExH2VlPmLD-W2-JOd6Fko</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Using <code>oc login</code> switches to the new user. Switch back to the OpenShift Enterprise
+<p>Using <code>oc login</code> switches to the new user. Switch back to the OpenShift Container Platform
 system administrator in order to make policy changes:</p>
 <div class="listingblock">
 <div class="content">
@@ -1281,8 +1319,8 @@ system administrator in order to make policy changes:</p>
 </div>
 </li>
 <li>
-<p>In order to push images into the OpenShift Enterprise Docker registry, an account
-must have the <code>image-builder</code> security role. Add this to your OpenShift Enterprise
+<p>In order to push images into the OpenShift Container Platform Docker registry, an account
+must have the <code>image-builder</code> security role. Add this to your OpenShift Container Platform
 administrative user:</p>
 <div class="listingblock">
 <div class="content">
@@ -1309,7 +1347,7 @@ case, push the Docker images:</p>
 <p>The <strong>openshift</strong> project is where all of the image streams for builder images are
 created by the installer. They are loaded by the installer from the
 <strong><em>/usr/share/openshift/examples</em></strong> directory. Change all of the definitions by
-deleting the image streams which had been loaded into OpenShift Enterprise&#8217;s
+deleting the image streams which had been loaded into OpenShift Container Platform&#8217;s
 database, then re-create them:</p>
 </div>
 <div class="olist arabic">
@@ -1435,9 +1473,9 @@ jboss-webserver30-tomcat7-openshift  $REGISTRY/jboss-webserver-3/webserver30-jbo
 <h2 id="disconnected-installing-a-router"><a class="anchor" href="#disconnected-installing-a-router"></a>Installing a Router</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>At this point, the OpenShift Enterprise environment is almost ready for use. It is
+<p>At this point, the OpenShift Container Platform environment is almost ready for use. It is
 likely that you will want to
-<a href="../../install_config/install/deploy_router.html#install-config-install-deploy-router">install and configure a
+<a href="../../install_config/router/index.html#install-config-router-overview">install and configure a
 router</a>.</p>
 </div>
 </div>

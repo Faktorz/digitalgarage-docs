@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Developer Guide | Application Life Cycle Examples</title>
+  <title>OpenShift Online | Developer Guide | Application Life Cycle Examples</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../dev_guide/index.html">Developer Guide</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -368,8 +370,8 @@
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a></li>
-<li><a href="#lifecycle-developing-on-digital-garage">Developing on the Digital Garage</a></li>
-<li><a href="#lifecycle-developing-then-deploying-on-digital-garage">Developing Then Deploying on the Digital Garage</a></li>
+<li><a href="#lifecycle-developing-on-digital-garage">Developing on OpenShift Online</a></li>
+<li><a href="#lifecycle-developing-then-deploying-on-digital-garage">Developing Then Deploying on OpenShift Online</a></li>
 </ul>
 </div>
 </div>
@@ -378,20 +380,20 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As a PaaS, the Digital Garage is designed for building and deploying applications.
-Depending on how much you want to involve the Digital Garage in the development
-process, you can choose to develop on the Digital Garage and use it to continuously
+<p>As a PaaS, OpenShift Online is designed for building and deploying applications.
+Depending on how much you want to involve OpenShift Online in the development
+process, you can choose to develop on OpenShift Online and use it to continuously
 develop an application, or you can deploy a fully developed application onto an
-the Digital Garage instance.</p>
+OpenShift Online instance.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="lifecycle-developing-on-digital-garage"><a class="anchor" href="#lifecycle-developing-on-digital-garage"></a>Developing on the Digital Garage</h2>
+<h2 id="lifecycle-developing-on-digital-garage"><a class="anchor" href="#lifecycle-developing-on-digital-garage"></a>Developing on OpenShift Online</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can develop your application on the Digital Garage directly. Use the following
-process if you plan to use the Digital Garage as a method to build and deploy your
+<p>You can develop your application on OpenShift Online directly. Use the following
+process if you plan to use OpenShift Online as a method to build and deploy your
 application:</p>
 </div>
 <div class="dlist">
@@ -409,12 +411,12 @@ application:</p>
 </ul>
 </div>
 </dd>
-<dt class="hdlist1">Access to the Digital Garage</dt>
+<dt class="hdlist1">Access to OpenShift Online</dt>
 <dd>
 <div class="ulist">
 <ul>
 <li>
-<p>the Digital Garage should be installed by this point, either by yourself or an
+<p>OpenShift Online should be installed by this point, either by yourself or an
 administrator within your organization.</p>
 </li>
 </ul>
@@ -426,7 +428,7 @@ administrator within your organization.</p>
 <ul>
 <li>
 <p>Using your editor/IDE of choice, create a basic skeleton of an application. It
-should be developed enough to tell the Digital Garage
+should be developed enough to tell OpenShift Online
 <a href="../dev_guide/new_app.html#language-detection">what kind of application it
 is</a>.</p>
 </li>
@@ -442,7 +444,7 @@ is</a>.</p>
 <ul>
 <li>
 <p><a href="../dev_guide/new_app.html#dev-guide-new-app">Create a basic application</a> using the <code>new-app</code>
-command. the Digital Garage generates build and deployment configurations.</p>
+command. OpenShift Online generates build and deployment configurations.</p>
 </li>
 </ul>
 </div>
@@ -476,7 +478,7 @@ command. the Digital Garage generates build and deployment configurations.</p>
 <ul>
 <li>
 <p>You can verify your application in a number of ways. You can push your changes
-to your application&#8217;s Git repository, and use the Digital Garage to rebuild and redeploy
+to your application&#8217;s Git repository, and use OpenShift Online to rebuild and redeploy
 your application. Alternatively, you can hot deploy using <code>rsync</code> to synchronize
 your code changes into a running pod.</p>
 </li>
@@ -488,13 +490,13 @@ your code changes into a running pod.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="lifecycle-developing-then-deploying-on-digital-garage"><a class="anchor" href="#lifecycle-developing-then-deploying-on-digital-garage"></a>Developing Then Deploying on the Digital Garage</h2>
+<h2 id="lifecycle-developing-then-deploying-on-digital-garage"><a class="anchor" href="#lifecycle-developing-then-deploying-on-digital-garage"></a>Developing Then Deploying on OpenShift Online</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Another possible application life cycle is to develop locally, then use
-the Digital Garage to deploy your fully developed application. Use the
+OpenShift Online to deploy your fully developed application. Use the
 following process if you plan to have application code already, then want to
-build and deploy onto an the Digital Garage installation when completed:</p>
+build and deploy onto an OpenShift Online installation when completed:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -527,12 +529,12 @@ build and deploy onto an the Digital Garage installation when completed:</p>
 </ul>
 </div>
 </dd>
-<dt class="hdlist1">Access to the Digital Garage</dt>
+<dt class="hdlist1">Access to OpenShift Online</dt>
 <dd>
 <div class="ulist">
 <ul>
 <li>
-<p>the Digital Garage should be installed by this point, either by yourself or an
+<p>OpenShift Online should be installed by this point, either by yourself or an
 administrator within your organization.</p>
 </li>
 </ul>
@@ -544,7 +546,7 @@ administrator within your organization.</p>
 <ul>
 <li>
 <p><a href="../dev_guide/new_app.html#dev-guide-new-app">Create a basic application</a> using the <code>new-app</code>
-command. the Digital Garage generates build and deployment configurations.</p>
+command. OpenShift Online generates build and deployment configurations.</p>
 </li>
 </ul>
 </div>
@@ -555,7 +557,7 @@ command. the Digital Garage generates build and deployment configurations.</p>
 <ul>
 <li>
 <p>Ensure that the application that you have built and deployed in the above
-Generate step is successfully running on the Digital Garage.</p>
+Generate step is successfully running on OpenShift Online.</p>
 </li>
 </ul>
 </div>
@@ -568,7 +570,7 @@ Generate step is successfully running on the Digital Garage.</p>
 <p>Continue to develop your application code until you are happy with the results.</p>
 </li>
 <li>
-<p>Rebuild your application in the Digital Garage to accept any newly pushed code.</p>
+<p>Rebuild your application in OpenShift Online to accept any newly pushed code.</p>
 </li>
 <li>
 <p>Is any extra configuration needed? Explore the

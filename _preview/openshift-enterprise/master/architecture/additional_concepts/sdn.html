@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Architecture | Additional Concepts | OpenShift SDN</title>
+  <title>OpenShift Container Platform | Architecture | Additional Concepts | OpenShift SDN</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../architecture/index.html">Architecture</a>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
 
-                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -578,14 +617,14 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>OpenShift Enterprise uses a software-defined networking (SDN) approach to provide a unified
-cluster network that enables communication between pods across the OpenShift Enterprise
+<p>OpenShift Container Platform uses a software-defined networking (SDN) approach to provide a unified
+cluster network that enables communication between pods across the OpenShift Container Platform
 cluster. This pod network is established and maintained by the
-OpenShift Enterprise SDN,
+OpenShift Container Platform SDN,
 which configures an overlay network using Open vSwitch (OVS).</p>
 </div>
 <div class="paragraph">
-<p>OpenShift Enterprise SDN provides two SDN plug-ins for configuring the pod network:</p>
+<p>OpenShift Container Platform SDN provides two SDN plug-ins for configuring the pod network:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -594,7 +633,7 @@ which configures an overlay network using Open vSwitch (OVS).</p>
 network where every pod can communicate with every other pod and service.</p>
 </li>
 <li>
-<p>The <strong>ovs-multitenant</strong> plug-in provides OpenShift Enterprise project level isolation for
+<p>The <strong>ovs-multitenant</strong> plug-in provides OpenShift Container Platform project level isolation for
 pods and services. Each project receives a unique Virtual Network ID (VNID)
 that identifies traffic from pods assigned to the project. Pods from different
 projects cannot send packets to or receive packets from pods and services of a
@@ -602,7 +641,7 @@ different project.</p>
 <div class="paragraph">
 <p>However, projects which receive VNID 0 are more privileged in that they are
 allowed to communicate with all other pods, and all other pods can communicate
-with them. In OpenShift Enterprise clusters, the <strong>default</strong> project has VNID 0. This
+with them. In OpenShift Container Platform clusters, the <strong>default</strong> project has VNID 0. This
 facilitates certain services like the load balancer, etc. to communicate with
 all other pods in the cluster and vice versa.</p>
 </div>
@@ -611,7 +650,7 @@ all other pods in the cluster and vice versa.</p>
 </div>
 <div class="paragraph">
 <p>Following is a detailed discussion of the design and operation of
-OpenShift Enterprise SDN, which may be useful for troubleshooting.</p>
+OpenShift Container Platform SDN, which may be useful for troubleshooting.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -634,10 +673,10 @@ OpenShift Enterprise SDN, which may be useful for troubleshooting.</p>
 <h2 id="sdn-design-on-masters"><a class="anchor" href="#sdn-design-on-masters"></a>Design on Masters</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>On an OpenShift Enterprise master, OpenShift Enterprise SDN maintains a registry of nodes,
+<p>On an OpenShift Container Platform master, OpenShift Container Platform SDN maintains a registry of nodes,
 stored in <strong>etcd</strong>. When the system administrator registers a node,
-OpenShift Enterprise SDN allocates an unused subnet from the cluster network and
-stores this subnet in the registry. When a node is deleted, OpenShift Enterprise SDN
+OpenShift Container Platform SDN allocates an unused subnet from the cluster network and
+stores this subnet in the registry. When a node is deleted, OpenShift Container Platform SDN
 deletes the subnet from the registry and considers the subnet available to be
 allocated again.</p>
 </div>
@@ -651,13 +690,13 @@ running on it. The size and address range of the cluster network are
 configurable, as is the host subnet size.</p>
 </div>
 <div class="paragraph">
-<p>Note that OpenShift Enterprise SDN on a master does not configure the local (master)
+<p>Note that OpenShift Container Platform SDN on a master does not configure the local (master)
 host to have access to any cluster network. Consequently, a master host does not
 have access to pods via the cluster network, unless it is also running as a
 node.</p>
 </div>
 <div class="paragraph">
-<p>When using the <strong>ovs-multitenant</strong> plug-in, the OpenShift Enterprise SDN master also
+<p>When using the <strong>ovs-multitenant</strong> plug-in, the OpenShift Container Platform SDN master also
 watches for the creation and deletion of projects, and assigns VXLAN VNIDs to
 them, which will be used later by the nodes to isolate traffic correctly.</p>
 </div>
@@ -667,18 +706,18 @@ them, which will be used later by the nodes to isolate traffic correctly.</p>
 <h2 id="sdn-design-on-nodes"><a class="anchor" href="#sdn-design-on-nodes"></a>Design on Nodes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>On a node, OpenShift Enterprise SDN first registers the local host with the SDN
+<p>On a node, OpenShift Container Platform SDN first registers the local host with the SDN
 master in the aforementioned registry so that the master allocates a subnet to
 the node.</p>
 </div>
 <div class="paragraph">
-<p>Next, OpenShift Enterprise SDN creates and configures six network devices:</p>
+<p>Next, OpenShift Container Platform SDN creates and configures six network devices:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><strong>br0</strong>, the OVS bridge device that pod containers will be attached to.
-OpenShift Enterprise SDN also configures a set of non-subnet-specific flow rules on this
+OpenShift Container Platform SDN also configures a set of non-subnet-specific flow rules on this
 bridge. The <strong>ovs-multitenant</strong> plug-in does this immediately.</p>
 </li>
 <li>
@@ -688,14 +727,14 @@ given the cluster subnet gateway address (eg, 10.128.x.1/23).</p>
 <li>
 <p><strong>tun0</strong>, an OVS internal port (port 2 on <strong>br0</strong>). This <em>also</em> gets assigned the
 cluster subnet gateway address, and is used for external network
-access. OpenShift Enterprise SDN configures <strong>netfilter</strong> and routing rules to enable access
+access. OpenShift Container Platform SDN configures <strong>netfilter</strong> and routing rules to enable access
 from the cluster subnet to the external network via NAT.</p>
 </li>
 <li>
 <p><strong>vlinuxbr</strong> and <strong>vovsbr</strong>, two Linux peer virtual Ethernet interfaces.
 <strong>vlinuxbr</strong> is added to <strong>lbr0</strong> and <strong>vovsbr</strong> is added to <strong>br0</strong> (port 9 with the
 <strong>ovs-subnet</strong> plug-in and port 3 with the <strong>ovs-multitenant</strong> plug-in) to provide
-connectivity for containers created directly with Docker outside of OpenShift Enterprise.</p>
+connectivity for containers created directly with Docker outside of OpenShift Container Platform.</p>
 </li>
 <li>
 <p><strong>vxlan0</strong>, the OVS VXLAN device (port 1 on <strong>br0</strong>), which provides access to
@@ -704,7 +743,7 @@ containers on remote nodes.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Each time a pod is started on the host, OpenShift Enterprise SDN:</p>
+<p>Each time a pod is started on the host, OpenShift Container Platform SDN:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -726,15 +765,15 @@ Non-matching traffic is filtered out by a generic rule.</p>
 </div>
 <div class="paragraph">
 <p>The pod is allocated an IP address in the cluster subnet by Docker itself
-because Docker is told to use the <strong>lbr0</strong> bridge, which OpenShift Enterprise SDN has
+because Docker is told to use the <strong>lbr0</strong> bridge, which OpenShift Container Platform SDN has
 assigned the cluster gateway address (eg. 10.128.x.1/23). Note that the <strong>tun0</strong>
 is also assigned the cluster gateway IP address because it is the default
 gateway for all traffic destined for external networks, but these two interfaces
 do not conflict because the <strong>lbr0</strong> interface is only used for IPAM and no
-OpenShift Enterprise SDN pods are connected to it.</p>
+OpenShift Container Platform SDN pods are connected to it.</p>
 </div>
 <div class="paragraph">
-<p>OpenShift Enterprise SDN nodes also watch for subnet updates from the SDN master. When a
+<p>OpenShift Container Platform SDN nodes also watch for subnet updates from the SDN master. When a
 new subnet is added, the node adds OpenFlow rules on <strong>br0</strong> so that packets with
 a destination IP address the remote subnet go to <strong>vxlan0</strong> (port 1 on <strong>br0</strong>) and
 thus out onto the network. The <strong>ovs-subnet</strong> plug-in sends all packets across the
@@ -821,10 +860,10 @@ owning the cluster subnet.</p>
 <div class="paragraph">
 <p>As described before, VNID 0 is privileged in that traffic with any VNID is
 allowed to enter any pod assigned VNID 0, and traffic with VNID 0 is allowed to
-enter any pod. Only the <strong>default</strong> OpenShift Enterprise project is assigned VNID 0;
+enter any pod. Only the <strong>default</strong> OpenShift Container Platform project is assigned VNID 0;
 all other projects are assigned unique, isolation-enabled VNIDs. Cluster
 administrators can optionally
-<a href="../../admin_guide/pod_network.html#admin-guide-pod-network">control
+<a href="../../admin_guide/managing_pods.html#admin-guide-pod-network">control
 the pod network</a>
 for the project using the administrator CLI.</p>
 </div>

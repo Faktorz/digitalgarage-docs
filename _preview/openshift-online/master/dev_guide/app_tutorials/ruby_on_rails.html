@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Developer Guide | Application Tutorials | Ruby on Rails</title>
+  <title>OpenShift Online | Developer Guide | Application Tutorials | Ruby on Rails</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../dev_guide/index.html">Developer Guide</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -376,11 +378,11 @@
 <li><a href="#writing-your-application">Writing Your Application</a>
 <ul class="sectlevel2">
 <li><a href="#creating-a-welcome-page">Creating a Welcome Page</a></li>
-<li><a href="#configuring-the-application-for-the-digital-garage">Configuring the Application for the Digital Garage</a></li>
+<li><a href="#configuring-the-application-for-openshift-online">Configuring the Application for OpenShift Online</a></li>
 <li><a href="#storing-your-application-in-git">Storing Your Application in Git</a></li>
 </ul>
 </li>
-<li><a href="#deploying-your-application-to-the-digital-garage">Deploying Your Application to the Digital Garage</a>
+<li><a href="#deploying-your-application-to-openshift-online">Deploying Your Application to OpenShift Online</a>
 <ul class="sectlevel2">
 <li><a href="#creating-the-database-service">Creating the Database Service</a></li>
 <li><a href="#creating-the-frontend-service">Creating the Frontend Service</a></li>
@@ -396,7 +398,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Ruby on Rails is a popular web framework written in <a href="https://github.com/openshift/mysql/tree/master/5.5">Ruby</a>.
-This guide covers using Rails 4 on the Digital Garage.</p>
+This guide covers using Rails 4 on OpenShift Online.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -407,7 +409,7 @@ This guide covers using Rails 4 on the Digital Garage.</p>
 <td class="content">
 <div class="paragraph">
 <p>We strongly advise going through the whole tutorial to have an overview of all
-the steps necessary to run your application on the the Digital Garage. If you
+the steps necessary to run your application on the OpenShift Online. If you
 experience a problem try reading through the entire tutorial and then going back
 to your issue. It can also be useful to review your previous steps to ensure
 that all the steps were executed correctly.</p>
@@ -431,7 +433,7 @@ that all the steps were executed correctly.</p>
 <p>Basic Git knowledge</p>
 </li>
 <li>
-<p>Running instance of the Digital Garage v3</p>
+<p>Running instance of OpenShift Online v3</p>
 </li>
 </ul>
 </div>
@@ -441,7 +443,7 @@ that all the steps were executed correctly.</p>
 <h2 id="local-workstation-setup"><a class="anchor" href="#local-workstation-setup"></a>Local Workstation Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>First make sure that an instance of the Digital Garage is running and is available.
+<p>First make sure that an instance of OpenShift Online is running and is available.
 Also make sure that your <a href="../../cli_reference/get_started_cli.html#cli-reference-get-started-cli"><code>oc</code> CLI
 client is installed</a> and the command is accessible from your command shell, so
 you can use it to
@@ -618,9 +620,9 @@ If you don&#8217;t see the page, check the logs that are output to your server t
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuring-the-application-for-the-digital-garage"><a class="anchor" href="#configuring-the-application-for-the-digital-garage"></a>Configuring the Application for the Digital Garage</h3>
+<h3 id="configuring-the-application-for-openshift-online"><a class="anchor" href="#configuring-the-application-for-openshift-online"></a>Configuring the Application for OpenShift Online</h3>
 <div class="paragraph">
-<p>In order to have your application communicating with the PostgreSQL database service that will be running in the Digital Garage, you will need to edit the <code>default</code> section in your <code>config/database.yml</code> to use <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a>, which you will define later, upon the database service creation.</p>
+<p>In order to have your application communicating with the PostgreSQL database service that will be running in OpenShift Online, you will need to edit the <code>default</code> section in your <code>config/database.yml</code> to use <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a>, which you will define later, upon the database service creation.</p>
 </div>
 <div class="paragraph">
 <p>The <code>default</code> section in your edited <code>config/database.yml</code> together with pre-defined variables should look like:</p>
@@ -651,10 +653,10 @@ default: &amp;default
 <div class="sect2">
 <h3 id="storing-your-application-in-git"><a class="anchor" href="#storing-your-application-in-git"></a>Storing Your Application in Git</h3>
 <div class="paragraph">
-<p>the Digital Garage requires <a href="http://git-scm.com/">git</a>, if you don&#8217;t have it installed you will need to install it.</p>
+<p>OpenShift Online requires <a href="http://git-scm.com/">git</a>, if you don&#8217;t have it installed you will need to install it.</p>
 </div>
 <div class="paragraph">
-<p>Building an application in the Digital Garage usually requires that the source code be stored in a <a href="http://git-scm.com/">git</a> repository, so you will need to install <code>git</code> if you do not already have it.</p>
+<p>Building an application in OpenShift Online usually requires that the source code be stored in a <a href="http://git-scm.com/">git</a> repository, so you will need to install <code>git</code> if you do not already have it.</p>
 </div>
 <div class="paragraph">
 <p>Make sure you are in your Rails application directory by running the <code>ls -1</code> command. The output of the command should look like:</p>
@@ -712,7 +714,7 @@ $ git commit -m "initial commit"</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="deploying-your-application-to-the-digital-garage"><a class="anchor" href="#deploying-your-application-to-the-digital-garage"></a>Deploying Your Application to the Digital Garage</h2>
+<h2 id="deploying-your-application-to-openshift-online"><a class="anchor" href="#deploying-your-application-to-openshift-online"></a>Deploying Your Application to OpenShift Online</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To deploy your Ruby on Rails application, create a new <a href="../projects.html#dev-guide-projects">Project</a> for the application:</p>
@@ -726,15 +728,15 @@ $ git commit -m "initial commit"</pre>
 <p>After creating the the <code>rails-app</code> <a href="../projects.html#dev-guide-projects">project</a>, you will be automatically switched to the new project namespace.</p>
 </div>
 <div class="paragraph">
-<p>Deploying your application in the Digital Garage involves three steps:</p>
+<p>Deploying your application in OpenShift Online involves three steps:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Creating a database <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a> from the Digital Garage&#8217;s <a href="../../using_images/db_images/postgresql.html#using-images-db-images-postgresql">PostgreSQL image</a></p>
+<p>Creating a database <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a> from OpenShift Online&#8217;s <a href="../../using_images/db_images/postgresql.html#using-images-db-images-postgresql">PostgreSQL image</a></p>
 </li>
 <li>
-<p>Creating a frontend <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a> from the Digital Garage&#8217;s <a href="../../using_images/s2i_images/ruby.html#using-images-s2i-images-ruby">Ruby 2.0 builder image</a> and your Ruby on Rails source code, which we wire with the database service</p>
+<p>Creating a frontend <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a> from OpenShift Online&#8217;s <a href="../../using_images/s2i_images/ruby.html#using-images-s2i-images-ruby">Ruby 2.0 builder image</a> and your Ruby on Rails source code, which we wire with the database service</p>
 </li>
 <li>
 <p>Creating a route for your application.</p>
@@ -806,7 +808,7 @@ $ git commit -m "initial commit"</pre>
 <div class="sect2">
 <h3 id="creating-the-frontend-service"><a class="anchor" href="#creating-the-frontend-service"></a>Creating the Frontend Service</h3>
 <div class="paragraph">
-<p>To bring your application to the Digital Garage, you need to specify a repository in which your application lives, using once again the <a href="../new_app.html#dev-guide-new-app">oc new-app</a> command, in which you will need to specify database related <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a> we setup in the <a href="./ruby_on_rails.html#creating-the-database-service">Creating the Database Service</a>:</p>
+<p>To bring your application to OpenShift Online, you need to specify a repository in which your application lives, using once again the <a href="../new_app.html#dev-guide-new-app">oc new-app</a> command, in which you will need to specify database related <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a> we setup in the <a href="./ruby_on_rails.html#creating-the-database-service">Creating the Database Service</a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -814,7 +816,7 @@ $ git commit -m "initial commit"</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With this command, the Digital Garage fetches the source code, sets up the Builder image, <a href="../builds.html#dev-guide-builds">builds</a> your application image, and deploys the newly created image together with the specified <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a>. The application is named <code>rails-app</code>.</p>
+<p>With this command, OpenShift Online fetches the source code, sets up the Builder image, <a href="../builds.html#dev-guide-builds">builds</a> your application image, and deploys the newly created image together with the specified <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a>. The application is named <code>rails-app</code>.</p>
 </div>
 <div class="paragraph">
 <p>You can verify the environment variables have been added by viewing the JSON document of the <code>rails-app</code> <a href="../deployments.html#dev-guide-deployments">DeploymentConfig</a>:</p>
@@ -854,7 +856,7 @@ $ git commit -m "initial commit"</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Once the <a href="../builds.html#dev-guide-builds">build</a> is complete, you can look at the running <a href="../../architecture/core_concepts/pods_and_services.html#pods">pods</a> in the Digital Garage</p>
+<p>Once the <a href="../builds.html#dev-guide-builds">build</a> is complete, you can look at the running <a href="../../architecture/core_concepts/pods_and_services.html#pods">pods</a> in OpenShift Online</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -862,7 +864,7 @@ $ git commit -m "initial commit"</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You should see a line starting with myapp-(#number)-(some hash) and that is your application running in the Digital Garage.</p>
+<p>You should see a line starting with myapp-(#number)-(some hash) and that is your application running in OpenShift Online.</p>
 </div>
 <div class="paragraph">
 <p>Before your application will be functional, you need to initialize the database by running the database migration script. There are two ways you can do this:</p>
@@ -904,7 +906,7 @@ $ git commit -m "initial commit"</pre>
 <div class="sect2">
 <h3 id="creating-a-route-for-your-application"><a class="anchor" href="#creating-a-route-for-your-application"></a>Creating a Route for Your Application</h3>
 <div class="paragraph">
-<p>To expose a service by giving it an externally-reachable hostname like <code>www.example.com</code> use the Digital Garage <a href="../routes.html#dev-guide-routes">route</a>. In your case you need to expose the frontend service by typing:</p>
+<p>To expose a service by giving it an externally-reachable hostname like <code>www.example.com</code> use OpenShift Online <a href="../routes.html#dev-guide-routes">route</a>. In your case you need to expose the frontend service by typing:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -919,7 +921,7 @@ $ git commit -m "initial commit"</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>It&#8217;s the user&#8217;s responsibility to ensure the hostname they specify resolves into the IP address of the router. For more information, check the the Digital Garage documentation on:</p>
+<p>It&#8217;s the user&#8217;s responsibility to ensure the hostname they specify resolves into the IP address of the router. For more information, check the OpenShift Online documentation on:</p>
 </div>
 </td>
 </tr>

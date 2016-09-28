@@ -98,8 +98,8 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../../release_notes/osd_3_2_release_notes.html">OpenShift Dedicated 3.2 Release Notes</a></li>
-            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/osd_3_3_release_notes.html">OpenShift Dedicated Release Notes</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -196,6 +196,7 @@
       <ul id="topicGroup4" class="collapse  list-unstyled">
             <li><a class="" href="../../admin_guide/index.html">Overview</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -209,8 +210,7 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/osd_build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
             <li><a class="" href="../../admin_guide/osd_configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/backup_restore.html">Backup and Restore</a></li>
             <li><a class="" href="../../admin_guide/revhistory_admin_guide.html">Revision History</a></li>
       </ul>
@@ -283,10 +283,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -419,9 +421,11 @@
 <ul class="sectlevel2">
 <li><a href="#authorization-SCC-strategies">SCC Strategies</a></li>
 <li><a href="#authorization-controlling-volumes">Controlling Volumes</a></li>
+<li><a href="#authorization-seccomp">Seccomp</a></li>
 <li><a href="#admission">Admission</a></li>
 </ul>
 </li>
+<li><a href="#authorization-determining-what-you-can-do-as-an-authenticated-user">Determining What You Can Do as an Authenticated User</a></li>
 </ul>
 </div>
 </div>
@@ -801,6 +805,9 @@ following:</p>
 </li>
 <li>
 <p>Controlling the usage of volume types</p>
+</li>
+<li>
+<p>Configuring allowable seccomp profiles</p>
 </li>
 </ol>
 </div>
@@ -1207,6 +1214,22 @@ value will be removed from <code><strong>volumes</strong></code>.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="authorization-seccomp"><a class="anchor" href="#authorization-seccomp"></a>Seccomp</h3>
+<div class="paragraph">
+<p><strong>SeccompProfiles</strong> lists the allowed profiles that can be set for the pod or
+container&#8217;s seccomp annotations. An unset (nil) or empty value means that no
+profiles are specified by the pod or container. Use the wildcard <code>*</code> to allow
+all profiles. When used to generate a value for a pod, the first non-wildcard
+profile is used as the default.</p>
+</div>
+<div class="paragraph">
+<p>Refer to the <a href="http://kubernetes.io/docs/admin/kubelet/">Kubelet
+configuration</a> and
+<a href="https://github.com/kubernetes/kubernetes/blob/release-1.4/docs/design/seccomp.md">Kubernetes
+seccomp design</a> documentation for more information on configuring seccomp.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="admission"><a class="anchor" href="#admission"></a>Admission</h3>
 <div class="paragraph">
 <p><em>Admission control</em> with SCCs allows for control over the creation of resources
@@ -1429,6 +1452,53 @@ The <strong>openshift.io/sa.scc.uid-range</strong> annotation accepts only a sin
 </tr>
 </table>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authorization-determining-what-you-can-do-as-an-authenticated-user"><a class="anchor" href="#authorization-determining-what-you-can-do-as-an-authenticated-user"></a>Determining What You Can Do as an Authenticated User</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>From within your OpenShift Dedicated project, you can determine what verbs you
+can perform against all namespace-scoped resources (including third-party
+resources). Run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc policy can-i --list --loglevel=8</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output will help you to determine what API request to make to gather the
+information.</p>
+</div>
+<div class="paragraph">
+<p>To receive information back in a user-readable format, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc policy can-i --list</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output will provide a full list.</p>
+</div>
+<div class="paragraph">
+<p>To determine if you can perform specific <a href="#action">verbs</a>, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc policy can-i &lt;verb&gt; &lt;resource&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="../../admin_guide/scoped_tokens.html#admin-guide-scoped-tokens-user-scopes">User
+scopes</a> can provide more information about a given scope. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc policy can-i &lt;verb&gt; &lt;resource&gt; --scopes=user:info</pre>
 </div>
 </div>
 </div>

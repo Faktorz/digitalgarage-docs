@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Installation and Configuration | Configuring Authentication and User Agent</title>
+  <title>OpenShift Container Platform | Installation and Configuration | Configuring Authentication and User Agent</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../install_config/index.html">Installation and Configuration</a>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
 
-                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class=" active" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -586,7 +625,7 @@
 <li><a href="#token-options">Token Options</a></li>
 <li><a href="#grant-options">Grant Options</a></li>
 <li><a href="#session-options">Session Options</a></li>
-<li><a href="#configuring-user-agent">User Agent</a></li>
+<li><a href="#configuring-user-agent">Preventing CLI Version Mismatch With User Agent</a></li>
 </ul>
 </div>
 </div>
@@ -595,7 +634,7 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The OpenShift Enterprise
+<p>The OpenShift Container Platform
 <a href="../architecture/infrastructure_components/kubernetes_infrastructure.html#master">master</a>
 includes a built-in
 <a href="../architecture/additional_concepts/authentication.html#oauth">OAuth
@@ -611,7 +650,7 @@ This can be done during an
 <a href="../install_config/install/advanced_install.html#configuring-cluster-variables">advanced installation</a> or configured after installation.</p>
 </div>
 <div class="paragraph">
-<p>If you installed OpenShift Enterprise using
+<p>If you installed OpenShift Container Platform using
 the
 <a href="../install_config/install/quick_install.html#install-config-install-quick-install">Quick Installation</a> or
 <a href="../install_config/install/advanced_install.html#install-config-install-advanced-install">Advanced Installation</a>
@@ -700,7 +739,7 @@ openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 
 provider by modifying the
 <a href="../install_config/master_node_configuration.html#install-config-master-node-configuration">master configuration
 file</a>. The following sections detail the identity providers supported by
-OpenShift Enterprise.</p>
+OpenShift Container Platform.</p>
 </div>
 <div class="paragraph">
 <p>There are four parameters common to all identity providers:</p>
@@ -841,7 +880,7 @@ process.</p></td>
 user with the preferred user name is already mapped to an existing identity, a
 unique user name is generated. For example, <strong>myuser2</strong>. This method should not be
 used in combination with external processes that require exact matches between
-OpenShift Enterprise user names and identity provider user names, such as LDAP group
+OpenShift Container Platform user names and identity provider user names, such as LDAP group
 sync.</p></td>
 </tr>
 <tr>
@@ -860,7 +899,7 @@ the same user names.</p></td>
 <div class="paragraph">
 <p>Set <strong>AllowAllPasswordIdentityProvider</strong> in the <code><strong>identityProviders</strong></code> stanza to
 allow any non-empty user name and password to log in. This is the default
-identity provider when running OpenShift Enterprise without a
+identity provider when running OpenShift Container Platform without a
 <a href="../install_config/master_node_configuration.html#install-config-master-node-configuration">master configuration file</a>.</p>
 </div>
 <div class="exampleblock">
@@ -984,7 +1023,7 @@ validate user names and passwords against a flat file generated using
 </table>
 </div>
 <div class="paragraph">
-<p>OpenShift Enterprise supports the Bcrypt, SHA-1, and MD5 cryptographic hash
+<p>OpenShift Container Platform supports the Bcrypt, SHA-1, and MD5 cryptographic hash
 functions, and MD5 is the default for <code>htpasswd</code>. Plaintext, encrypted text, and
 other hash functions are not currently supported.</p>
 </div>
@@ -1463,7 +1502,7 @@ be modified.</td>
 <p>A preferred user name using the <code>preferred_username</code> key. This is useful when
 the unique, unchangeable subject is a database key or UID, and a more
 human-readable name exists. This is used as a hint when provisioning the
-OpenShift Enterprise user for the authenticated identity. For example:</p>
+OpenShift Container Platform user for the authenticated identity. For example:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">{"sub":"014fbff9a07c", "preferred_username":"bob", ...}</pre>
@@ -1734,7 +1773,7 @@ a value is used as the preferred user name when provisioning. Optional, case-ins
 <p>This example configures an authentication proxy on the same host as the master.
 Having the proxy and master on the same host is merely a convenience and may not
 be suitable for your environment. For example, if you were already
-<a href="../install_config/install/deploy_router.html#install-config-install-deploy-router">running a router</a> on the
+<a href="../install_config/router/index.html#install-config-router-overview">running a router</a> on the
 master, port 443 would not be available.</p>
 </div>
 <div class="paragraph">
@@ -2212,39 +2251,34 @@ grant flow to obtain an access token from GitLab.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td><strong>GitLabIdentityProvider</strong> cannot be used to send <code>WWW-Authenticate</code>
-challenges.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
 console) are redirected to GitLab to log in.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>Controls how mappings are established between this provider&#8217;s identities and user objects,
 <a href="#mapping-identities-to-users">as described above</a>.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
 <td>The host URL of a GitLab OAuth provider. This could either be <code>https://gitlab.com/</code>
 or any other self hosted instance of GitLab.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
 <td>The client ID of a
 <a href="https://gitlab.com/oauth/applications/new">registered GitLab OAuth
 application</a>. The application must be configured with a callback URL of
 <code>&lt;master&gt;/oauth2callback/&lt;identityProviderName&gt;</code>.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
 <td>The client secret issued by GitLab. This value may also be provided in an
 <a href="../install_config/master_node_configuration.html#master-node-configuration-passwords-and-other-data">environment
 variable, external file, or encrypted file</a>.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
 <td>CA is an optional trusted certificate authority bundle to use when making
 requests to the GitLab instance. If empty, the default system roots are used.</td>
 </tr>
@@ -2495,42 +2529,37 @@ This requires the OpenID provider to support the
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td><strong>OpenIDIdentityProvider</strong> cannot be used to send <code>WWW-Authenticate</code>
-challenges.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>When <strong>true</strong>, unauthenticated token requests from web clients (like the web
 console) are redirected to the authorize URL to log in.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>Controls how mappings are established between this provider&#8217;s identities and user objects,
 <a href="#mapping-identities-to-users">as described above</a>.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
 <td>The client ID of a client registered with the OpenID provider. The client
 must be allowed to redirect to <code>&lt;master&gt;/oauth2callback/&lt;identityProviderName&gt;</code>.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
 <td>The client secret. This value may also be provided in an
 <a href="../install_config/master_node_configuration.html#master-node-configuration-passwords-and-other-data">environment
 variable, external file, or encrypted file</a>.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
 <td>Use the value of the <code>sub</code> claim in the returned <code>id_token</code> as the user&#8217;s
 identity.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
 <td><a href="http://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint">Authorization Endpoint</a>
 described in the OpenID spec. Must use <code>https</code>.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
 <td><a href="http://openid.net/specs/openid-connect-core-1_0.html#TokenEndpoint">Token Endpoint</a>
 described in the OpenID spec. Must use <code>https</code>.</td>
 </tr>
@@ -2852,16 +2881,63 @@ characters long, to select AES-128, AES-192, or AES-256.</td>
 </div>
 </div>
 <div class="sect1">
-<h2 id="configuring-user-agent"><a class="anchor" href="#configuring-user-agent"></a>User Agent</h2>
+<h2 id="configuring-user-agent"><a class="anchor" href="#configuring-user-agent"></a>Preventing CLI Version Mismatch With User Agent</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Administrators can prevent clients from accessing the API by their <code>User-Agent</code>
-header in the new <code><strong>userAgentMatching</strong></code> configuration setting.</p>
+<p>OpenShift Container Platform implements a user agent that can be used to prevent an
+application developer&#8217;s CLI accessing the OpenShift Container Platform API.</p>
 </div>
 <div class="paragraph">
-<p>For example, you can deny clients using particular libraries or binaries. This
-example denies the Kubernetes 1.2 client binary, OpenShift Origin 1.1.3
-binary, and the POST and PUT <strong>httpVerbs</strong>:</p>
+<p>User agents for the OpenShift Container Platform CLI are constructed from a set of values
+within OpenShift Container Platform:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">&lt;command&gt;/&lt;version&gt; (&lt;platform&gt;/&lt;architecture&gt;) &lt;client&gt;/&lt;git_commit&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, for example, when:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&lt;command&gt; = <code>oc</code></p>
+</li>
+<li>
+<p>&lt;version&gt; = <code>v1.3.0</code></p>
+</li>
+<li>
+<p>&lt;platform&gt; = <code>linux</code></p>
+</li>
+<li>
+<p>&lt;architecture&gt; = <code>amd64</code></p>
+</li>
+<li>
+<p>&lt;client&gt; = <code>openshift</code> (or <code>kubernetes</code> depending on if you accessed the Kubernetes API in <code>/api</code> instead of the OpenShift Container Platform API in <code>/oapi</code>)</p>
+</li>
+<li>
+<p>&lt;git_commit&gt; = The Git commit of the client version (for example, <code>f034127</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>the user agent will be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">oc/v1.3.0 (linux/amd64) openshift/f034127</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As an OpenShift Container Platform administrator, you can prevent clients from accessing the
+API with the <code><strong>userAgentMatching</strong></code> configuration setting of a master
+configuration. So, if a client is using a particular library or
+binary, they will be prevented from accessing the API.</p>
+</div>
+<div class="paragraph">
+<p>The following user agent example denies the Kubernetes 1.2 client binary,
+OpenShift Origin 1.1.3 binary, and the POST and PUT <strong>httpVerbs</strong>:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2886,7 +2962,7 @@ binary, and the POST and PUT <strong>httpVerbs</strong>:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Administrators can also deny clients that do not exactly match the expect
+<p>Administrators can also deny clients that do not exactly match the expected
 clients:</p>
 </div>
 <div class="exampleblock">

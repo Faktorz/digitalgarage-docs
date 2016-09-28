@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Using Images | Source-to-Image (S2I) | Java</title>
+  <title>OpenShift Online | Using Images | Source-to-Image (S2I) | Java</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../using_images/index.html">Using Images</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -383,12 +385,12 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>the Digital Garage provides
+<p>OpenShift Online provides
 <a href="../../architecture/core_concepts/builds_and_image_streams.html#source-build">S2I</a>
 enabled Java images for building and running Java applications.
 assembles your application source with any required dependencies to create a new
 image containing your Java application. This resulting image can be run either
-by the Digital Garage or by Docker. This image is intended for use with
+by OpenShift Online or by Docker. This image is intended for use with
 <a href="https://maven.apache.org">Maven</a>-based Java standalone projects (that are run via
 main class).</p>
 </div>
@@ -409,14 +411,14 @@ main class).</p>
 <p>To use this image, you can either access it directly from those
 <a href="../../architecture/infrastructure_components/image_registry.html#architecture-infrastructure-components-image-registry">image
 registries</a>, or push it into your
-<a href="../../install_config/install/docker_registry.html#install-config-install-docker-registry">the Digital Garage Docker registry</a>.
+<a href="../../install_config/registry/index.html#install-config-registry-overview">OpenShift Online Docker registry</a>.
 Additionally, you can create an
 <a href="../../architecture/core_concepts/builds_and_image_streams.html#image-streams">image
 stream</a> that points to the image, either in your Docker registry or at the
-external location. Your the Digital Garage resources can then reference the ImageStream.
+external location. Your OpenShift Online resources can then reference the ImageStream.
 You can find
 <a href="https://github.com/openshift/origin/tree/master/examples/image-streams">example</a>
-ImageStream definitions for all the provided the Digital Garage images.</p>
+ImageStream definitions for all the provided OpenShift Online images.</p>
 </div>
 </div>
 </div>

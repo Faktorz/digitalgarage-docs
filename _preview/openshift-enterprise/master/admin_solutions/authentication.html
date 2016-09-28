@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Administrator Solutions | Authentication</title>
+  <title>OpenShift Container Platform | Administrator Solutions | Authentication</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../admin_solutions/index.html">Administrator Solutions</a>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
 
-                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -570,28 +609,28 @@
 <ul class="sectlevel2">
 <li><a href="#configuring-basic-auth-on-master">Configuring Authentication on the Master</a></li>
 <li><a href="#basic-troubleshooting">Troubleshooting</a></li>
-<li><a href="#view-users-basic-auth">Viewing Users</a></li>
+<li><a href="#view-users-basic-auth">Verifying Users</a></li>
 </ul>
 </li>
 <li><a href="#request-header-auth">Request Header Authentication</a>
 <ul class="sectlevel2">
 <li><a href="#configuring-request-header-auth-on-master">Configuring Authentication on the Master</a></li>
 <li><a href="#create-users-request-header-auth">Creating Users with Request Header Authentication</a></li>
-<li><a href="#view-users-request-header-auth">Viewing Users</a></li>
+<li><a href="#view-users-request-header-auth">Verifying Users</a></li>
 </ul>
 </li>
 <li><a href="#keystone-auth">Keystone Authentication</a>
 <ul class="sectlevel2">
 <li><a href="#config-keystone-auth-on-master">Configuring Authentication on the Master</a></li>
 <li><a href="#create-users-keystone-auth">Creating Users with Keystone Authentication</a></li>
-<li><a href="#view-users-keystone-auth">Viewing Users</a></li>
+<li><a href="#view-users-keystone-auth">Verifying Users</a></li>
 </ul>
 </li>
 <li><a href="#ldap-auth">LDAP Authentication</a>
 <ul class="sectlevel2">
 <li><a href="#config-ldap-auth-on-master">Configuring Authentication on the Master</a></li>
 <li><a href="#create-users-ldap-auth">Creating Users with LDAP Authentication</a></li>
-<li><a href="#view-users-ldap-auth">Viewing Users</a></li>
+<li><a href="#view-users-ldap-auth">Verifying Users</a></li>
 </ul>
 </li>
 <li><a href="#github-auth">GitHub Authentication</a>
@@ -599,7 +638,7 @@
 <li><a href="#register-app-on-github">Registering the Application on GitHub</a></li>
 <li><a href="#config-github-auth-on-master">Configuring Authentication on the Master</a></li>
 <li><a href="#create-users-github-auth">Creating Users with GitHub Authentication</a></li>
-<li><a href="#view-users-github-auth">Viewing Users</a></li>
+<li><a href="#view-users-github-auth">Verifying Users</a></li>
 </ul>
 </li>
 </ul>
@@ -610,7 +649,7 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>OpenShift Enterprise supports many different authentication methods, as defined in
+<p>OpenShift Container Platform supports many different authentication methods, as defined in
 <a href="../install_config/configuring_authentication.html#install-config-configuring-authentication">Configuring Authentication</a>:</p>
 </div>
 <div class="ulist">
@@ -639,7 +678,7 @@
 <div class="sectionbody">
 <div id="BasicAuthPasswordIdentityProvider" class="paragraph">
 <p>Basic Authentication is a generic backend integration mechanism that allows
-users to log in to OpenShift Enterprise with credentials validated against a remote
+users to log in to OpenShift Container Platform with credentials validated against a remote
 identity provider.</p>
 </div>
 <div class="admonitionblock caution">
@@ -660,10 +699,10 @@ man-in-the-middle attacks.</p>
 </div>
 <div class="paragraph">
 <p>With <code><strong>BasicAuthPasswordIdentityProvider</strong></code> configured, users send their username
-and password to OpenShift Enterprise, which then validates those credentials against
+and password to OpenShift Container Platform, which then validates those credentials against
 a remote server by making a server-to-server request, passing the credentials as
 a Basic Auth header. This requires users to send their credentials to
-OpenShift Enterprise during login.</p>
+OpenShift Container Platform during login.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -673,7 +712,7 @@ OpenShift Enterprise during login.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>This only works for username/password login mechanisms, and OpenShift Enterprise must
+<p>This only works for username/password login mechanisms, and OpenShift Container Platform must
 be able to make network requests to the remote authentication server.</p>
 </div>
 </td>
@@ -698,8 +737,8 @@ be able to make network requests to the remote authentication server.</p>
 </div>
 </li>
 <li>
-<p>Not yet installed OpenShift Enterprise, then start the OpenShift Enterprise API server,
-specifying the hostname of the (future) OpenShift Enterprise master and a directory
+<p>Not yet installed OpenShift Container Platform, then start the OpenShift Container Platform API server,
+specifying the hostname of the (future) OpenShift Container Platform master and a directory
 to store the configuration file created by the start command:</p>
 <div class="listingblock">
 <div class="content">
@@ -774,7 +813,7 @@ provider&#8217;s identities and user objects.</p>
 <p>Save your changes and close the file.</p>
 </li>
 <li>
-<p>Start the OpenShift Enterprise API server, specifying the configuration file you just
+<p>Start the OpenShift Container Platform API server, specifying the configuration file you just
 modified:</p>
 <div class="listingblock">
 <div class="content">
@@ -785,7 +824,7 @@ modified:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Once configured, any user logging in to the OpenShift Enterprise web console will be
+<p>Once configured, any user logging in to the OpenShift Container Platform web console will be
 prompted to log in using their Basic authentication credentials.</p>
 </div>
 </div>
@@ -850,7 +889,7 @@ be modified.</p>
 <p>The <code>preferred_username</code> key is useful when
 the unique, unchangeable subject is a database key or UID, and a more
 human-readable name exists. This is used as a hint when provisioning the
-OpenShift Enterprise user for the authenticated identity.</p>
+OpenShift Container Platform user for the authenticated identity.</p>
 </div>
 </li>
 </ul>
@@ -871,7 +910,7 @@ error: <code>{"error":"Error message"}</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-users-basic-auth"><a class="anchor" href="#view-users-basic-auth"></a>Viewing Users</h3>
+<h3 id="view-users-basic-auth"><a class="anchor" href="#view-users-basic-auth"></a>Verifying Users</h3>
 <div class="paragraph">
 <p>Once one or more users have logged in, you can run <code>oc get users</code> to view a
 list of users and verify that users were created successfully.</p>
@@ -888,9 +927,9 @@ list of users and verify that users were created successfully.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Configuring Request Header authentication allows users to log in to
-OpenShift Enterprise using request header values, such as <code>X-Remote-User</code>. It is
+OpenShift Container Platform using request header values, such as <code>X-Remote-User</code>. It is
 typically used in combination with an authenticating proxy, which authenticates
-the user and then provides OpenShift Enterprise with the user&#8217;s identity via a
+the user and then provides OpenShift Container Platform with the user&#8217;s identity via a
 request header value. This is similar to how
 <a href="https://access.redhat.com/documentation/en-US/OpenShift_Enterprise/2/html/Deployment_Guide/Configuring_OpenShift_Enterprise_Authentication.html">the remote user plug-in in OpenShift Enterprise 2</a>
 allowed administrators to provide Kerberos, LDAP, and many other forms of
@@ -898,7 +937,7 @@ enterprise authentication. The benefit of this configuration is that user
 credentials can be handled by the proxy and never seen by OpenShift.</p>
 </div>
 <div class="paragraph">
-<p>The proxy must be able to make network requests to the OpenShift Enterprise server.
+<p>The proxy must be able to make network requests to the OpenShift Container Platform server.
 Unauthenticated login attempts are redirected to a configured proxy URL. The
 proxy can authenticate browser clients regardless of how it is configured, but
 it must (currently) use either Basic Auth or Kerberos in order to work with the
@@ -927,8 +966,8 @@ the OAuth server to redirect unauthenticated requests to the proxy.</p>
 </div>
 </li>
 <li>
-<p>Not yet installed OpenShift Enterprise, then start the OpenShift Enterprise API server,
-specifying the hostname of the (future) OpenShift Enterprise master and a directory
+<p>Not yet installed OpenShift Container Platform, then start the OpenShift Container Platform API server,
+specifying the hostname of the (future) OpenShift Container Platform master and a directory
 to store the configuration file created by the start command:</p>
 <div class="listingblock">
 <div class="content">
@@ -1066,7 +1105,7 @@ provisioning. This parameter is case-insensitive.</p>
 <p>Save your changes and close the file.</p>
 </li>
 <li>
-<p>Start the OpenShift Enterprise API server, specifying the configuration file you just modified:</p>
+<p>Start the OpenShift Container Platform API server, specifying the configuration file you just modified:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ openshift start master --config=&lt;path/to/modified/config&gt;/master-config.yaml</pre>
@@ -1076,27 +1115,27 @@ provisioning. This parameter is case-insensitive.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Once configured, any user logging in to the OpenShift Enterprise web console will be
+<p>Once configured, any user logging in to the OpenShift Container Platform web console will be
 redirected to the authenticating proxy, which will authenticate the user.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="create-users-request-header-auth"><a class="anchor" href="#create-users-request-header-auth"></a>Creating Users with Request Header Authentication</h3>
 <div class="paragraph">
-<p>You do not create users in OpenShift Enterprise when integrating with an external
+<p>You do not create users in OpenShift Container Platform when integrating with an external
 authentication provider, such as the system that the proxy server is using as an
 authentication server. That server is the system of record, meaning that users
 are defined there, and any user with a valid user name for the configured
 authentication server can log in.</p>
 </div>
 <div class="paragraph">
-<p>To add a user to OpenShift Enterprise, the user must exist on the system the proxy is
+<p>To add a user to OpenShift Container Platform, the user must exist on the system the proxy is
 using as an authentication server, and if required you must add the users to
 that system.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-users-request-header-auth"><a class="anchor" href="#view-users-request-header-auth"></a>Viewing Users</h3>
+<h3 id="view-users-request-header-auth"><a class="anchor" href="#view-users-request-header-auth"></a>Verifying Users</h3>
 <div class="paragraph">
 <p>Once one or more users have logged in, you can run <code>oc get users</code> to view a
 list of users and verify that users were created successfully.</p>
@@ -1117,10 +1156,10 @@ learn how to
 <div class="paragraph">
 <p><a href="http://docs.openstack.org/developer/keystone/">Keystone</a> is an OpenStack project
 that provides identity, token, catalog, and policy services. You can integrate
-your OpenShift Enterprise cluster with Keystone to enable shared authentication with
+your OpenShift Container Platform cluster with Keystone to enable shared authentication with
 an OpenStack Keystone v3 server configured to store users in an internal
 database. Once configured, this configuration allows users to log in to
-OpenShift Enterprise with their Keystone credentials.</p>
+OpenShift Container Platform with their Keystone credentials.</p>
 </div>
 <div class="sect2">
 <h3 id="config-keystone-auth-on-master"><a class="anchor" href="#config-keystone-auth-on-master"></a>Configuring Authentication on the Master</h3>
@@ -1128,8 +1167,8 @@ OpenShift Enterprise with their Keystone credentials.</p>
 <ol class="arabic">
 <li>
 <p>If you have:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+<div class="ulist">
+<ul>
 <li>
 <p>Already completed the installation of Openshift, then copy the
 <strong><em>/etc/origin/master/master-config.yaml</em></strong> file into a new directory; for example:</p>
@@ -1141,8 +1180,8 @@ $ mkdir keystoneconfig; cp master-config.yaml keystoneconfig</pre>
 </div>
 </li>
 <li>
-<p>Not yet installed OpenShift Enterprise, then start the OpenShift Enterprise API server,
-specifying the hostname of the (future) OpenShift Enterprise master and a directory
+<p>Not yet installed OpenShift Container Platform, then start the OpenShift Container Platform API server,
+specifying the hostname of the (future) OpenShift Container Platform master and a directory
 to store the configuration file created by the start command:</p>
 <div class="listingblock">
 <div class="content">
@@ -1174,7 +1213,7 @@ If you use the following steps to modify your configuration manually after insta
 </table>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </li>
 <li>
@@ -1220,7 +1259,7 @@ provider&#8217;s identities and user objects.</p>
 <p>Save your changes and close the file.</p>
 </li>
 <li>
-<p>Start the OpenShift Enterprise API server, specifying the configuration file you just
+<p>Start the OpenShift Container Platform API server, specifying the configuration file you just
 modified:</p>
 <div class="listingblock">
 <div class="content">
@@ -1231,22 +1270,22 @@ modified:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Once configured, any user logging in to the OpenShift Enterprise web console will be
+<p>Once configured, any user logging in to the OpenShift Container Platform web console will be
 prompted to log in using their Keystone credentials.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="create-users-keystone-auth"><a class="anchor" href="#create-users-keystone-auth"></a>Creating Users with Keystone Authentication</h3>
 <div class="paragraph">
-<p>You do not create users in OpenShift Enterprise when integrating with an external
+<p>You do not create users in OpenShift Container Platform when integrating with an external
 authentication provider, such as, in this case, Keystone. Keystone is the system of record, meaning that users are defined in a Keystone database, and any user with a valid Keystone user name for the configured authentication server can log in.</p>
 </div>
 <div class="paragraph">
-<p>To add a user to OpenShift Enterprise, the user must exist in the Keystone database, and if required you must create a new Keystone account for the user.</p>
+<p>To add a user to OpenShift Container Platform, the user must exist in the Keystone database, and if required you must create a new Keystone account for the user.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-users-keystone-auth"><a class="anchor" href="#view-users-keystone-auth"></a>Viewing Users</h3>
+<h3 id="view-users-keystone-auth"><a class="anchor" href="#view-users-keystone-auth"></a>Verifying Users</h3>
 <div class="paragraph">
 <p>Once one or more users have logged in, you can run <code>oc get users</code> to view a
 list of users and verify that users were created successfully:</p>
@@ -1265,7 +1304,7 @@ bobsmith     a0c1d95c-1cb5-11e6-a04a-002186a28631   Bob Smith   keystone:bobsmit
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Identities in OpenShift Enterprise are comprised of the identity provider name prefixed to the Keystone username.</td>
+<td>Identities in OpenShift Container Platform are comprised of the identity provider name prefixed to the Keystone username.</td>
 </tr>
 </table>
 </div>
@@ -1282,8 +1321,8 @@ bobsmith     a0c1d95c-1cb5-11e6-a04a-002186a28631   Bob Smith   keystone:bobsmit
 <h2 id="ldap-auth"><a class="anchor" href="#ldap-auth"></a>LDAP Authentication</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>LDAP uses bind operations to authenticate applications, and you can integrate your OpenShift Enterprise cluster to use LDAPv3 authentication.
-Configuring LDAP authentication allows users to log in to OpenShift Enterprise with their LDAP credentials.</p>
+<p>LDAP uses bind operations to authenticate applications, and you can integrate your OpenShift Container Platform cluster to use LDAPv3 authentication.
+Configuring LDAP authentication allows users to log in to OpenShift Container Platform with their LDAP credentials.</p>
 </div>
 <div class="paragraph">
 <p>During authentication, the LDAP directory is searched for an entry that matches
@@ -1300,20 +1339,20 @@ password.</p>
 <td class="content">
 <div class="paragraph">
 <p>The basic authentication configuration covered by this topic is not enough to
-create a secure LDAP authentication solution for OpenShift Enterprise. It has a
+create a secure LDAP authentication solution for OpenShift Container Platform. It has a
 single point of failure, meaning that if the single LDAP authentication server
-became unavailable then all OpenShift Enterprise operations requiring authentication
+became unavailable then all OpenShift Container Platform operations requiring authentication
 would also be unavailable.</p>
 </div>
 <div class="paragraph">
 <p>Additionally, this basic configuration has no access control of its own; all
-LDAP users matching the configured filter are able to log into OpenShift Enterprise.</p>
+LDAP users matching the configured filter are able to log into OpenShift Container Platform.</p>
 </div>
 <div class="paragraph">
 <p>With the
 <a href="../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html#setting-up-for-ldap-failover">SSSD failover setup</a>,
 FreeIPA and Active Directory can also set rules to specifically restrict which
-users can and cannot access OpenShift Enterprise.</p>
+users can and cannot access OpenShift Container Platform.</p>
 </div>
 <div class="paragraph">
 <p>The following three advanced topics begin where this basic LDAP authentication
@@ -1342,8 +1381,8 @@ topic ends, and describe the setup for a fault-tolerant authentication system:</
 <ol class="arabic">
 <li>
 <p>If you have:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+<div class="ulist">
+<ul>
 <li>
 <p>Already completed the installation of Openshift, then copy the
 <strong><em>/etc/origin/master/master-config.yaml</em></strong> file into a new directory; for example:</p>
@@ -1355,8 +1394,8 @@ $ mkdir ldapconfig; cp master-config.yaml ldapconfig</pre>
 </div>
 </li>
 <li>
-<p>Not yet installed OpenShift Enterprise, then start the OpenShift Enterprise API server,
-specifying the hostname of the (future) OpenShift Enterprise master and a directory
+<p>Not yet installed OpenShift Container Platform, then start the OpenShift Container Platform API server,
+specifying the hostname of the (future) OpenShift Container Platform master and a directory
 to store the configuration file created by the start command:</p>
 <div class="listingblock">
 <div class="content">
@@ -1388,7 +1427,7 @@ If you use the following steps to modify your configuration manually after insta
 </table>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </li>
 <li>
@@ -1432,7 +1471,7 @@ in order and the first non-empty attribute will be used.</p>
 </li>
 <li>
 <p>Optionally, change <code><strong>preferredUsername</strong></code> to the attribute to use as the
-preferred OpenShift Enterprise username when provisioning a user for this identity.
+preferred OpenShift Container Platform username when provisioning a user for this identity.
 If unspecified, the <code><strong>id</strong></code> attribute is used as the preferred username. This
 option can accept multiple attributes. If more than one is specified, they will
 be checked in order and the first non-empty attribute will be used.</p>
@@ -1440,7 +1479,7 @@ be checked in order and the first non-empty attribute will be used.</p>
 <p>The attribute you select as the <code><strong>preferredUsername</strong></code> should still be unique,
 even within the identity provider.  The <code><strong>preferredUsername</strong></code> attribute is only
 used when provisioning the user for the initial login. Afterward, the existing
-OpenShift Enterprise user is looked up by their identity provider ID, in case the
+OpenShift Container Platform user is looked up by their identity provider ID, in case the
 <code><strong>preferredUsername</strong></code> attribute changes.</p>
 </div>
 <div class="paragraph">
@@ -1472,7 +1511,7 @@ filesystem path of that certificate or certificate bundle.</p>
 <p>Save your changes and close the file.</p>
 </li>
 <li>
-<p>Start the OpenShift Enterprise API server, specifying the configuration file you just
+<p>Start the OpenShift Container Platform API server, specifying the configuration file you just
 modified:</p>
 <div class="listingblock">
 <div class="content">
@@ -1483,23 +1522,23 @@ modified:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Once configured, any user logging in to the OpenShift Enterprise web console will be
+<p>Once configured, any user logging in to the OpenShift Container Platform web console will be
 prompted to log in using their LDAP credentials.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="create-users-ldap-auth"><a class="anchor" href="#create-users-ldap-auth"></a>Creating Users with LDAP Authentication</h3>
 <div class="paragraph">
-<p>You do not create users in OpenShift Enterprise when integrating with an external
+<p>You do not create users in OpenShift Container Platform when integrating with an external
 authentication provider, such as, in this case, LDAP. LDAP is the system of
 record, meaning that users are defined in LDAP, and any user with a valid LDAP ID for the configured authentication server can log in.</p>
 </div>
 <div class="paragraph">
-<p>To add a user to OpenShift Enterprise, the user must exist in the LDAP system, and if required you must create a new LDAP account for the user.</p>
+<p>To add a user to OpenShift Container Platform, the user must exist in the LDAP system, and if required you must create a new LDAP account for the user.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-users-ldap-auth"><a class="anchor" href="#view-users-ldap-auth"></a>Viewing Users</h3>
+<h3 id="view-users-ldap-auth"><a class="anchor" href="#view-users-ldap-auth"></a>Verifying Users</h3>
 <div class="paragraph">
 <p>Once one or more users have logged in, you can run <code>oc get users</code> to view a
 list of users and verify that users were created successfully:</p>
@@ -1511,14 +1550,14 @@ list of users and verify that users were created successfully:</p>
 <div class="content">
 <pre>$ oc get users
 NAME       UID                                    FULL NAME   IDENTITIES
-bobsmith   166a2367-33fc-11e6-bb22-4ccc6a0ad630   Bob Smith   ldap_provider:uid=bsmith,ou=users,dc=example,dc=com</pre>
+bobsmith   166a2367-33fc-11e6-bb22-4ccc6a0ad630   Bob Smith   ldap_provider:uid=bsmith,ou=users,dc=example,dc=com <i class="conum" data-value="1"></i><b>(1)</b></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Identities in OpenShift Enterprise are comprised of the identity provider name prefixed to the LDAP distinguished name (DN).</td>
+<td>Identities in OpenShift Container Platform are comprised of the identity provider name prefixed to the LDAP distinguished name (DN).</td>
 </tr>
 </table>
 </div>
@@ -1535,13 +1574,13 @@ bobsmith   166a2367-33fc-11e6-bb22-4ccc6a0ad630   Bob Smith   ldap_provider:uid=
 <h2 id="github-auth"><a class="anchor" href="#github-auth"></a>GitHub Authentication</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>GitHub uses OAuth, and you can integrate your OpenShift Enterprise cluster to use
+<p>GitHub uses OAuth, and you can integrate your OpenShift Container Platform cluster to use
 that OAuth authentication. OAuth basically facilitates a token exchange flow.</p>
 </div>
 <div class="paragraph">
-<p>Configuring GitHub authentication allows users to log in to OpenShift Enterprise with
+<p>Configuring GitHub authentication allows users to log in to OpenShift Container Platform with
 their GitHub credentials. To prevent anyone with any GitHub user ID from logging
-in to your OpenShift Enterprise cluster, you can restrict access to only those in
+in to your OpenShift Container Platform cluster, you can restrict access to only those in
 specific GitHub organizations.</p>
 </div>
 <div class="sect2">
@@ -1596,8 +1635,8 @@ master configuration file.</p>
 <ol class="arabic">
 <li>
 <p>If you have:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+<div class="ulist">
+<ul>
 <li>
 <p>Already completed the installation of Openshift, then copy the
 <strong><em>/etc/origin/master/master-config.yaml</em></strong> file into a new directory; for example:</p>
@@ -1609,8 +1648,8 @@ $ mkdir githubconfig; cp master-config.yaml githubconfig</pre>
 </div>
 </li>
 <li>
-<p>Not yet installed OpenShift Enterprise, then start the OpenShift Enterprise API server,
-specifying the hostname of the (future) OpenShift Enterprise master and a directory
+<p>Not yet installed OpenShift Container Platform, then start the OpenShift Container Platform API server,
+specifying the hostname of the (future) OpenShift Container Platform master and a directory
 to store the configuration file created by the start command:</p>
 <div class="listingblock">
 <div class="content">
@@ -1653,14 +1692,14 @@ If you use the following steps to modify your configuration manually after insta
 GitHub must be able to redirect to the exact host name that you specified when
 registering the application. For this reason, you cannot auto-detect the ID
 because it might redirect to the wrong address. Instead, you must specify the
-hostname that web browsers use to interact with your OpenShift Enterprise cluster.</p>
+hostname that web browsers use to interact with your OpenShift Container Platform cluster.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </li>
 <li>
@@ -1706,7 +1745,7 @@ person with a valid GitHub account can log in.</p>
 <p>Save your changes and close the file.</p>
 </li>
 <li>
-<p>Start the OpenShift Enterprise API server, specifying the configuration file you just
+<p>Start the OpenShift Container Platform API server, specifying the configuration file you just
 modified:</p>
 <div class="listingblock">
 <div class="content">
@@ -1717,29 +1756,29 @@ modified:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Once configured, any user logging in to the OpenShift Enterprise web console will be
+<p>Once configured, any user logging in to the OpenShift Container Platform web console will be
 prompted to log in using their GitHub credentials. On their first login, the
 user must click <strong>authorize application</strong> to permit GitHub to use their username,
-password, and organization membership with OpenShift Enterprise. The user is then
+password, and organization membership with OpenShift Container Platform. The user is then
 redirected back to the web console.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="create-users-github-auth"><a class="anchor" href="#create-users-github-auth"></a>Creating Users with GitHub Authentication</h3>
 <div class="paragraph">
-<p>You do not create users in OpenShift Enterprise when integrating with an external
+<p>You do not create users in OpenShift Container Platform when integrating with an external
 authentication provider, such as, in this case, GitHub. GitHub is the system of
 record, meaning that users are defined by GitHub, and any user belonging to a
 specified organization can log in.</p>
 </div>
 <div class="paragraph">
-<p>To add a user to OpenShift Enterprise, you must add that user to an approved
+<p>To add a user to OpenShift Container Platform, you must add that user to an approved
 organization on GitHub, and if required create a new GitHub account for the
 user.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-users-github-auth"><a class="anchor" href="#view-users-github-auth"></a>Viewing Users</h3>
+<h3 id="view-users-github-auth"><a class="anchor" href="#view-users-github-auth"></a>Verifying Users</h3>
 <div class="paragraph">
 <p>Once one or more users have logged in, you can run <code>oc get users</code> to view a
 list of users and verify that users were created successfully:</p>
@@ -1758,7 +1797,7 @@ bobsmith     433b5641-066f-11e6-a6d8-acfc32c1ca87   Bob Smith   github:873654 <i
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Identities in OpenShift Enterprise are comprised of the identity provider name and GitHub&#8217;s internal numeric user ID. This way, if a user changes their GitHub username or e-mail they can still log in to OpenShift Enterprise instead of relying on the credentials attached to the GitHub account. This creates a stable login.</td>
+<td>Identities in OpenShift Container Platform are comprised of the identity provider name and GitHub&#8217;s internal numeric user ID. This way, if a user changes their GitHub username or e-mail they can still log in to OpenShift Container Platform instead of relying on the credentials attached to the GitHub account. This creates a stable login.</td>
 </tr>
 </table>
 </div>

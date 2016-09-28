@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Installation and Configuration | Enabling Cluster Metrics</title>
+  <title>OpenShift Container Platform | Installation and Configuration | Enabling Cluster Metrics</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../install_config/index.html">Installation and Configuration</a>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
 
-                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class=" active" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -576,6 +615,7 @@
 <li><a href="#metrics-data-storage">Metrics Data Storage</a>
 <ul class="sectlevel2">
 <li><a href="#metrics-persistent-storage">Persistent Storage</a></li>
+<li><a href="#capacity-planning-for-openshift-metrics">Capacity Planning for Cluster Metrics</a></li>
 <li><a href="#metrics-non-persistent-storage">Non-Persistent Storage</a></li>
 </ul>
 </li>
@@ -590,13 +630,20 @@
 <li><a href="#metrics-deployer-validations">Metrics Deployer Validations</a></li>
 </ul>
 </li>
-<li><a href="#configuring-openshift-metrics">Configuring OpenShift Enterprise</a></li>
+<li><a href="#configuring-openshift-metrics">Configuring OpenShift Container Platform</a></li>
 <li><a href="#cluster-metrics-accessing-hawkular-metrics-directly">Accessing Hawkular Metrics Directly</a>
 <ul class="sectlevel2">
-<li><a href="#cluster-metrics-openshift-projects-and-hawkular-tenants">OpenShift Enterprise Projects and Hawkular Tenants</a></li>
-<li><a href="#authorization">Authorization</a></li>
+<li><a href="#cluster-metrics-openshift-projects-and-hawkular-tenants">OpenShift Container Platform Projects and Hawkular Tenants</a></li>
+<li><a href="#cluster-metrics-authorization">Authorization</a></li>
 </ul>
 </li>
+<li><a href="#cluster-metrics-scaling-openshift-metrics-pods">Scaling OpenShift Container Platform Metrics Pods</a>
+<ul class="sectlevel2">
+<li><a href="#cluster-metrics-scaling-pods-prereqs">Prerequisites</a></li>
+<li><a href="#cluster-metrics-scaling-pods-cassandra">Scaling the Cassandra Components</a></li>
+</ul>
+</li>
+<li><a href="#cluster-metrics-horizontal-pod-autoscaling">Horizontal Pod Autoscaling</a></li>
 <li><a href="#metrics-cleanup">Cleanup</a></li>
 </ul>
 </div>
@@ -612,7 +659,7 @@ exposes metrics that can be collected and stored in back-ends by
 <a href="https://github.com/GoogleCloudPlatform/heapster">Heapster</a>.</p>
 </div>
 <div class="paragraph">
-<p>As an OpenShift Enterprise administrator, you can view a cluster&#8217;s metrics from all
+<p>As an OpenShift Container Platform administrator, you can view a cluster&#8217;s metrics from all
 containers and components in one user interface.  These metrics are also
 used by <a href="../dev_guide/pod_autoscaling.html#dev-guide-pod-autoscaling">horizontal pod autoscalers</a>
 in order to determine when and how to scale.</p>
@@ -622,7 +669,7 @@ in order to determine when and how to scale.</p>
 <a href="https://github.com/hawkular/hawkular-metrics">Hawkular Metrics</a> as a metrics
 engine which stores the data persistently in a
 <a href="http://cassandra.apache.org/">Cassandra</a> database. When this is configured,
-CPU, memory and network-based metrics are viewable from the OpenShift Enterprise web console
+CPU, memory and network-based metrics are viewable from the OpenShift Container Platform web console
 and are available for use by <a href="../dev_guide/pod_autoscaling.html#dev-guide-pod-autoscaling">horizontal
 pod autoscalers</a>.</p>
 </div>
@@ -778,11 +825,11 @@ a temporary <a href="../dev_guide/volumes.html#dev-guide-volumes">pod volume</a>
 <div class="sect2">
 <h3 id="metrics-persistent-storage"><a class="anchor" href="#metrics-persistent-storage"></a>Persistent Storage</h3>
 <div class="paragraph">
-<p>Running OpenShift Enterprise cluster metrics with persistent storage means that
+<p>Running OpenShift Container Platform cluster metrics with persistent storage means that
 your metrics will be stored to a
 <a href="../architecture/additional_concepts/storage.html#persistent-volumes">persistent
 volume</a> and be able to survive a pod being restarted or recreated. This is
-ideal if you require your metrics data to be guarded from data loss.</p>
+ideal if you require your metrics data to be guarded from data loss.  For production environments it is highly recommended to configure persistent storage for your metrics pods.</p>
 </div>
 <div class="paragraph">
 <p>The size of the persisted volume can be specified with the <code>CASSANDRA_PV_SIZE</code>
@@ -799,10 +846,126 @@ instance 100 GB, you could specify it with something like this:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The size requirement of the Cassandra storage is dependent on the cluster size.
-It is the administrator&#8217;s responsibility to ensure that the size requirements
-are sufficient for their setup and to monitor usage to ensure that the disk does
-not become full.</p>
+<p>The size requirement of the Cassandra storage is dependent on the number of
+pods. It is the administrator&#8217;s responsibility to ensure that the size
+requirements are sufficient for their setup and to monitor usage to ensure that
+the disk does not become full.</p>
+</div>
+<div class="paragraph">
+<p>If you would like to use <a href="../install_config/persistent_storage/dynamically_provisioning_pvs.html#install-config-persistent-storage-dynamically-provisioning-pvs">dynamically provisioned persistent volumes</a>
+you must set the <code><strong>DYNAMICALLY_PROVISION_STORAGE</strong></code>
+<a href="../install_config/cluster_metrics.html#modifying-the-deployer-template">template option</a>
+to <code>true</code> for the Metrics Deployer.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="capacity-planning-for-openshift-metrics"><a class="anchor" href="#capacity-planning-for-openshift-metrics"></a>Capacity Planning for Cluster Metrics</h3>
+<div class="paragraph">
+<p>After the metrics deployer runs, the output of <code>oc get pods</code> should resemble the following:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"> # oc get pods -n openshift-infra
+ NAME                                READY             STATUS      RESTARTS          AGE
+ hawkular-cassandra-1-l5y4g          1/1               Running     0                 17h
+ hawkular-metrics-1t9so              1/1               Running     0                 17h
+ heapster-febru                      1/1               Running     0                 17h</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>OpenShift Container Platform metrics are stored using the Cassandra database, which is
+deployed with settings of <code><strong>MAX_HEAP_SIZE=512M</strong></code> and <code><strong>NEW_HEAP_SIZE=100M</strong></code>.
+These values should cover most  OpenShift Container Platform metrics installations, but you
+can modify them in the
+Cassandra Dockerfile
+prior to deploying cluster metrics.</p>
+</div>
+<div class="paragraph">
+<p>By default, metrics data is stored for 7 days. You can configure this with the <code><strong>METRIC_DURATION</strong></code> parameter in the
+<strong><em>metrics.yaml</em></strong> configuration file.
+After 7 days, Cassandra begins to purge the oldest metrics data.
+Metrics data for deleted pods and projects is not automatically
+purged; it is only removed once the data is 7 days old.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Data Accumulated by 10 Nodes and 1000 Pods</div>
+<div class="content">
+<div class="paragraph">
+<p>In a test scenario including 10 nodes and 1000 pods, a 24 hour period
+accumulated 2.5GB of metrics data. Therefore, the capacity planning formula for
+metrics data in this scenario is:</p>
+</div>
+<div class="paragraph">
+<p>(((2.5 × 10<sup>9</sup>) ÷ 1000) ÷ 24) ÷ 10<sup>6</sup> = ~0.125 MB/hour per pod.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Data Accumulated by 120 Nodes and 10000 Pods</div>
+<div class="content">
+<div class="paragraph">
+<p>In a test scenario including 120 nodes and 10000 pods, a 24 hour period
+accumulated 25GB of metrics data. Therefore, the capacity planning formula for
+metrics data in this scenario is:</p>
+</div>
+<div class="paragraph">
+<p>(((11.410 × 10<sup>9</sup>) ÷ 1000) ÷ 24) ÷ 10<sup>6</sup> = 0.475 MB/hour</p>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">1000 pods</th>
+<th class="tableblock halign-left valign-top">10000 pods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cassandra storage data accumulated over 24 hours (default metrics parameters)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5GB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.4GB</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If the default value of 7 days for <code><strong>METRIC_DURATION</strong></code> and 10 seconds for
+<code><strong>METRIC_RESOLUTION</strong></code> are preserved, then weekly storage requirements for the Cassandra pod would be:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">1000 pods</th>
+<th class="tableblock halign-left valign-top">10000 pods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cassandra storage data accumulated over 7 days (default metrics parameters)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20GB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90GB</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In the previous table, an additional 10% was added to the expected storage space
+as a buffer for unexpected monitored pod usage.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -812,7 +975,8 @@ not become full.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Data loss will result if the Cassandra persisted volume runs out of sufficient space.</p>
+<p>If the Cassandra persisted volume runs out of sufficient space, then data loss
+will occur.</p>
 </div>
 </td>
 </tr>
@@ -820,29 +984,27 @@ not become full.</p>
 </div>
 <div class="paragraph">
 <p>For cluster metrics to work with persistent storage, ensure that the persistent
-volume has the <strong>ReadWriteOnce</strong> access mode. If not, the persistent volume claim
-will not be able to find the persistent volume, and Cassandra will fail to
-start.</p>
+volume has the <strong>ReadWriteOnce</strong> access mode. If this mode is not active, then the persistent volume claim cannot locate the persistent volume, and Cassandra fails to start.</p>
 </div>
 <div class="paragraph">
 <p>To use persistent storage with the metric components, ensure that a
-<a href="../architecture/additional_concepts/storage.html#persistent-volumes">persistent
-volume</a> of sufficient size is available. The creation of
-<a href="../architecture/additional_concepts/storage.html#persistent-volume-claims">persistent
-volume claims</a> is handled by the
+<a href="../architecture/additional_concepts/storage.html#persistent-volumes">persistent volume</a> of sufficient size is available. The creation of
+<a href="../architecture/additional_concepts/storage.html#persistent-volume-claims">persistent volume claims</a> is handled by the
 <a href="../install_config/cluster_metrics.html#metrics-deployer">Metrics Deployer</a>.</p>
 </div>
 <div class="paragraph">
-<p>If you would like to use <a href="../install_config/persistent_storage/dynamically_provisioning_pvs.html#install-config-persistent-storage-dynamically-provisioning-pvs">dynamically provisioned
-persistent volumes</a> you will need to set the <code><strong>DYNAMICALLY_PROVISION_STORAGE</strong></code>
-<a href="../install_config/cluster_metrics.html#modifying-the-deployer-template">template
-option</a> to <code>true</code> for the Metrics Deployer.</p>
+<p>OpenShift Container Platform metrics also supports
+dynamically-provisioned persistent volumes.
+To use this feature with OpenShift Container Platform metrics, it is necessary to add an
+additional flag to the metrics-deployer: <code>DYNAMICALLY_PROVISION_STORAGE=true</code>.
+You can use EBS, GCE, and Cinder storage back-ends to
+<a href="../install_config/persistent_storage/dynamically_provisioning_pvs.html#install-config-persistent-storage-dynamically-provisioning-pvs">dynamically provision persistent volumes</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="metrics-non-persistent-storage"><a class="anchor" href="#metrics-non-persistent-storage"></a>Non-Persistent Storage</h3>
 <div class="paragraph">
-<p>Running OpenShift Enterprise cluster metrics with non-persistent storage means that
+<p>Running OpenShift Container Platform cluster metrics with non-persistent storage means that
 any stored metrics will be deleted when the pod is deleted. While it is much
 easier to run cluster metrics with non-persistent data, running with
 non-persistent data does come with the risk of permanent data loss. However,
@@ -853,6 +1015,23 @@ metrics can still survive a container being restarted.</p>
 <code><strong>USE_PERSISTENT_STORAGE</strong></code>
 <a href="../install_config/cluster_metrics.html#modifying-the-deployer-template">template
 option</a> to <code>false</code> for the Metrics Deployer.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When using non-persistent storage, metrics data will be written to
+<strong><em>/var/lib/origin/openshift.local.volumes/pods</em></strong> on the node where the Cassandra
+pod is running. Ensure <strong><em>/var</em></strong> has enough free space to accommodate metrics
+storage.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -961,9 +1140,10 @@ the secrets which can be used by the deployer:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>hawkular-metrics.pem</em></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <strong><em>pem</em></strong> file to use for the Hawkular Metrics certificate used for the re-encrypting route. This
-certificate <strong>must</strong> contain the hostname used by the route (eg HAWKULAR_METRICS_HOSTNAME). The default
-router&#8217;s certificate will be used for the route if this option is unspecified.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <strong><em>pem</em></strong> file to use for the Hawkular Metrics certificate used for the
+re-encrypting route. This certificate <strong>must</strong> contain the host name used by the
+route (e.g., <code><strong>HAWKULAR_METRICS_HOSTNAME</strong></code>). The default router&#8217;s certificate is
+used for the route if this option is unspecified.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>hawkular-metrics-ca.cert</em></strong></p></td>
@@ -982,7 +1162,7 @@ does not contain the CA certificate directly.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>heapster_client_ca.cert</em></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The certificate that generates <strong><em>heapster.cert</em></strong>. This is required if
-<strong><em>heapster.cert</em></strong> is specified.  Otherwise, the main CA for the OpenShift Enterprise
+<strong><em>heapster.cert</em></strong> is specified.  Otherwise, the main CA for the OpenShift Container Platform
 installation is used. In order for
 <a href="../dev_guide/pod_autoscaling.html#dev-guide-pod-autoscaling">horizontal pod autoscaling</a> to function
 properly, this should not be overridden.</p></td>
@@ -991,7 +1171,7 @@ properly, this should not be overridden.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><em>heapster_allowed_users</em></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A file containing a comma-separated list of CN to accept from certificates
 signed with the specified CA. By default, this is set to allow the
-OpenShift Enterprise service proxy to connect.  If you override this, make sure to
+OpenShift Container Platform service proxy to connect.  If you override this, make sure to
 add <code>system:master-proxy</code> to the list in order to allow
 <a href="../dev_guide/pod_autoscaling.html#dev-guide-pod-autoscaling">horizontal pod autoscaling</a> to function
 properly.</p></td>
@@ -1003,7 +1183,7 @@ properly.</p></td>
 <div class="sect2">
 <h3 id="modifying-the-deployer-template"><a class="anchor" href="#modifying-the-deployer-template"></a>Modifying the Deployer Template</h3>
 <div class="paragraph">
-<p>The OpenShift Enterprise  installer uses a
+<p>The OpenShift Container Platform  installer uses a
 <a href="../architecture/core_concepts/templates.html#architecture-core-concepts-templates">template</a> to deploy the
 metrics components. The default template can be found at the following path:</p>
 </div>
@@ -1051,7 +1231,7 @@ values when creating the Metrics Deployer.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>CASSANDRA_NODES</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The number of initial Cassandra nodes to deploy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of initial Cassandra nodes to deploy.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>USE_PERSISTENT_STORAGE</strong></code></p></td>
@@ -1063,11 +1243,13 @@ values when creating the Metrics Deployer.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>REDEPLOY</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set to <strong>true</strong>, the deployer will try to delete all the existing components before trying to redeploy.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set to <strong>true</strong>, the deployer will try to delete all the existing components
+before trying to redeploy.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>HAWKULAR_METRICS_HOSTNAME</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">External host name where clients can reach Hawkular Metrics.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">External host name where clients can reach Hawkular Metrics.  This is the FQDN
+of the machine running the router pod.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>MASTER_URL</strong></code></p></td>
@@ -1075,34 +1257,61 @@ values when creating the Metrics Deployer.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>IMAGE_VERSION</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specify version for metrics components. For example, for <strong>openshift/origin-metrics-deployer:latest</strong>, set version to <strong>latest</strong>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify version for metrics components. For example, for
+<strong>openshift/origin-metrics-deployer:latest</strong>, set version to <strong>latest</strong>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>IMAGE_PREFIX</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specify prefix for metrics components. For example, for <strong>openshift/origin-metrics-deployer:latest</strong>, set prefix to <strong>openshift/origin-</strong>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify prefix for metrics components. For example, for
+<strong>openshift/origin-metrics-deployer:latest</strong>, set prefix to <strong>openshift/origin-</strong>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>MODE</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Can be set to: <strong>preflight</strong> to perform validation before a deployment; <strong>deploy</strong> to perform an initial deployment; <strong>refresh</strong> to delete and redeploy all components but to keep persisted data and routes; <strong>redeploy</strong> to delete and redeploy everything (losing all data in the process); <strong>validate</strong> to re-run validations after a deployment.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Can be set to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>preflight</strong> to perform validation before a deployment.</p>
+</li>
+<li>
+<p><strong>deploy</strong> to perform an initial deployment.</p>
+</li>
+<li>
+<p><strong>refresh</strong> to delete and redeploy all components but to keep persisted data and routes.</p>
+</li>
+<li>
+<p><strong>redeploy</strong> to delete and redeploy everything (losing all data in the process).</p>
+</li>
+<li>
+<p><strong>validate</strong> to re-run validations after a deployment.</p>
+</li>
+</ul>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>IGNORE_PREFLIGHT</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Can be set to <strong>true</strong> to disable the preflight checks. This will allow the deployer to continue even if the preflight check has failed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can be set to <strong>true</strong> to disable the preflight checks. This allows the deployer
+to continue even if the preflight check has failed.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>USER_WRITE_ACCESS</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If user accounts should be able to write metrics. Defaults to 'false' so that only Heapster can write metrics and not individual users. It is recommended to disable user write access, if enabled any user will be able to write metrics to the system which can affect performance and can cause Cassandra disk usage to unpredictably increase.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets whether user accounts should be able to write metrics. Defaults to <code>false</code>
+so that only Heapster can write metrics and not individual users. It is
+recommended to disable user write access; if enabled, any user will be able to
+write metrics to the system which can affect performance and can cause Cassandra
+disk usage to unpredictably increase.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
 <p>The only required parameter is <code><strong>HAWKULAR_METRICS_HOSTNAME</strong></code>. This value is
-required when creating the deployer because it specifies the hostname for the
+required when creating the deployer because it specifies the host name for the
 Hawkular Metrics <a href="../architecture/core_concepts/routes.html#architecture-core-concepts-routes">route</a>. This
-value should correspond to a fully qualified domain name. You will need to know
+value should correspond to a fully qualified domain name. You must know
 the value of <code><strong>HAWKULAR_METRICS_HOSTNAME</strong></code> when
-<a href="../install_config/cluster_metrics.html#configuring-openshift-metrics">configuring
-the console</a> for metrics access.</p>
+<a href="../install_config/cluster_metrics.html#configuring-openshift-metrics">configuring the console</a> for metrics access.</p>
 </div>
 <div class="paragraph">
 <p>If you are using
@@ -1143,7 +1352,7 @@ of the metrics components, use the <code><strong>IMAGE_VERSION</strong></code> p
 <div class="paragraph">
 <p>It is highly recommended to not use <strong>latest</strong> for the <strong>IMAGE_VERSION</strong>. The <strong>latest</strong>
 version corresponds to the very latest version available and can cause issues if it brings in a
-newer version not meant to function on the version of OpenShift Enterprise you are currently running.</p>
+newer version not meant to function on the version of OpenShift Container Platform you are currently running.</p>
 </div>
 </td>
 </tr>
@@ -1168,7 +1377,7 @@ specify any of the
 parameters</a> when calling these commands.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 1. Deploying with Persistent Storage</div>
+<div class="title">Example 3. Deploying with Persistent Storage</div>
 <div class="content">
 <div class="paragraph">
 <p>The following command sets the Hawkular Metrics route to use
@@ -1186,7 +1395,7 @@ parameters</a> when calling these commands.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2. Deploying without Persistent Storage</div>
+<div class="title">Example 4. Deploying without Persistent Storage</div>
 <div class="content">
 <div class="paragraph">
 <p>The following command sets the Hawkular Metrics route to use
@@ -1258,10 +1467,10 @@ added, for example:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="configuring-openshift-metrics"><a class="anchor" href="#configuring-openshift-metrics"></a>Configuring OpenShift Enterprise</h2>
+<h2 id="configuring-openshift-metrics"><a class="anchor" href="#configuring-openshift-metrics"></a>Configuring OpenShift Container Platform</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The OpenShift Enterprise web console uses the data coming from the Hawkular Metrics
+<p>The OpenShift Container Platform web console uses the data coming from the Hawkular Metrics
 service to display its graphs. The URL for accessing the Hawkular Metrics
 service must be configured via the <code><strong>metricsPublicURL</strong></code> option in the
 <a href="../install_config/master_node_configuration.html#master-configuration-files">master
@@ -1304,10 +1513,10 @@ accessing the console.</p>
 </div>
 <div class="paragraph">
 <p>Once you have updated and saved the <strong><em>master-config.yaml</em></strong> file, you must
-restart your OpenShift Enterprise instance.</p>
+restart your OpenShift Container Platform instance.</p>
 </div>
 <div class="paragraph">
-<p>When your OpenShift Enterprise server is back up and running, metrics will be
+<p>When your OpenShift Container Platform server is back up and running, metrics will be
 displayed on the pod overview pages.</p>
 </div>
 <div class="admonitionblock caution">
@@ -1349,7 +1558,7 @@ your browser.</p>
 <div class="paragraph">
 <p>When accessing Hawkular Metrics via the API, you will only be able to perform
 reads. Writing metrics has been disabled by default. If you want for individual
-users to also be able to write metrics, you will need to set the
+users to also be able to write metrics, you must set the
 <code><strong>USER_WRITE_ACCESS</strong></code>
 <a href="../install_config/cluster_metrics.html#deployer-template-parameters">deployer template parameter</a>
 to <strong>true</strong>.</p>
@@ -1365,46 +1574,124 @@ cause Cassandra disk usage to unpredictably increase.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>The <a href="http://www.hawkular.org/docs/rest/rest-metrics.html">Hawkular Metrics
-documentation</a> covers how to use the API, but there are a few differences when
-dealing with the version of Hawkular Metrics configured for use on
-OpenShift Enterprise:</p>
+<p>The <a href="http://www.hawkular.org/docs/rest/rest-metrics.html">Hawkular Metrics documentation</a>
+covers how to use the API, but there are a few differences when dealing with the
+version of Hawkular Metrics configured for use on OpenShift Container Platform:</p>
 </div>
 <div class="sect2">
-<h3 id="cluster-metrics-openshift-projects-and-hawkular-tenants"><a class="anchor" href="#cluster-metrics-openshift-projects-and-hawkular-tenants"></a>OpenShift Enterprise Projects and Hawkular Tenants</h3>
+<h3 id="cluster-metrics-openshift-projects-and-hawkular-tenants"><a class="anchor" href="#cluster-metrics-openshift-projects-and-hawkular-tenants"></a>OpenShift Container Platform Projects and Hawkular Tenants</h3>
 <div class="paragraph">
 <p>Hawkular Metrics is a multi-tenanted application. It is configured so that a
-project in OpenShift Enterprise corresponds to a tenant in Hawkular Metrics.</p>
+project in OpenShift Container Platform corresponds to a tenant in Hawkular Metrics.</p>
 </div>
 <div class="paragraph">
-<p>As such, when accessing metrics for a project named <strong>MyProject</strong> you will need
-to set the
+<p>As such, when accessing metrics for a project named <strong>MyProject</strong> you must set the
 <a href="http://www.hawkular.org/docs/rest/rest-metrics.html#_tenant_header"><strong>Hawkular-Tenant</strong></a>
 header to <strong>MyProject</strong>.</p>
 </div>
 <div class="paragraph">
 <p>There is also a special tenant named <strong>_system</strong> which contains system level
-metrics. This will require either a <strong>cluster-reader</strong> or <strong>cluster-admin</strong> level
+metrics. This requires either a <strong>cluster-reader</strong> or <strong>cluster-admin</strong> level
 privileges to access.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="authorization"><a class="anchor" href="#authorization"></a>Authorization</h3>
+<h3 id="cluster-metrics-authorization"><a class="anchor" href="#cluster-metrics-authorization"></a>Authorization</h3>
 <div class="paragraph">
-<p>The Hawkular Metrics service will authenticate the user against OpenShift Enterprise
+<p>The Hawkular Metrics service will authenticate the user against OpenShift Container Platform
 to determine if the user has access to the project it is trying to access.</p>
 </div>
 <div class="paragraph">
 <p>Hawkular Metrics accepts a bearer token from the client and verifies that token
-with the OpenShift Enterprise server using a <strong>SubjectAccessReview</strong>. If the user has
+with the OpenShift Container Platform server using a <strong>SubjectAccessReview</strong>. If the user has
 proper read privileges for the project, they are allowed to read the metrics
 for that project. For the <strong>_system</strong> tenant, the user requesting to read from
 this tenant must have <strong>cluster-reader</strong> permission.</p>
 </div>
 <div class="paragraph">
-<p>When accessing the Hawkular Metrics API, you will need to pass a bearer token in
-the <strong>Authorization</strong> header.</p>
+<p>When accessing the Hawkular Metrics API, you must pass a bearer token in the
+<strong>Authorization</strong> header.</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cluster-metrics-scaling-openshift-metrics-pods"><a class="anchor" href="#cluster-metrics-scaling-openshift-metrics-pods"></a>Scaling OpenShift Container Platform Metrics Pods</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>One set of metrics pods (Cassandra/Hawkular/Heapster) is able to monitor at
+least 10,000 pods.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pay attention to system load on nodes where OpenShift Container Platform metrics pods run.
+Use that information to determine if it is necessary to scale out a number of
+OpenShift Container Platform metrics pods and spread the load across multiple OpenShift Container Platform
+nodes. Scaling OpenShift Container Platform metrics heapster pods is not recommended.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="cluster-metrics-scaling-pods-prereqs"><a class="anchor" href="#cluster-metrics-scaling-pods-prereqs"></a>Prerequisites</h3>
+<div class="paragraph">
+<p>If persistent storage was used to deploy OpenShift Container Platform metrics, then you must
+<a href="../dev_guide/persistent_volumes.html#dev-guide-persistent-volumes">create a persistent volume (PV)</a>
+for the new Cassandra pod to use before you can scale out the number of
+OpenShift Container Platform metrics Cassandra pods. However, if Cassandra was deployed with
+dynamically provisioned PVs, then this step is not necessary.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cluster-metrics-scaling-pods-cassandra"><a class="anchor" href="#cluster-metrics-scaling-pods-cassandra"></a>Scaling the Cassandra Components</h3>
+<div class="paragraph">
+<p>The Cassandra nodes use persistent storage, therefore scaling up or down is not possible with replication controllers.</p>
+</div>
+<div class="paragraph">
+<p>Scaling a Cassandra cluster requires you to use the <code>hawkular-cassandra-node</code> template. By default, the Cassandra cluster is a single-node cluster.</p>
+</div>
+<div class="paragraph">
+<p>To scale out the number of OpenShift Container Platform metrics hawkular pods to two
+replicas, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># oc scale -n openshift-infra --replicas=2 rc hawkular-metrics</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you add a new node to a Cassandra cluster, the data stored in the cluster
+rebalances across the cluster. The same thing happens If you remove a node from
+the Cluster.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cluster-metrics-horizontal-pod-autoscaling"><a class="anchor" href="#cluster-metrics-horizontal-pod-autoscaling"></a>Horizontal Pod Autoscaling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OpenShift Container Platform version 3.3 does not provide
+<a href="../dev_guide/pod_autoscaling.html#dev-guide-pod-autoscaling">Horizontal
+Pod Autoscaling (HPA)</a> support for metrics pods and scaling metrics pods.</p>
 </div>
 </div>
 </div>

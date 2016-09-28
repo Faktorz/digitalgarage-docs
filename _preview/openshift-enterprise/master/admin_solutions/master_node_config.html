@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Administrator Solutions | Master and Node Configuration</title>
+  <title>OpenShift Container Platform | Administrator Solutions | Master and Node Configuration</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../admin_solutions/index.html">Administrator Solutions</a>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
 
-                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -566,17 +605,17 @@
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a></li>
-<li><a href="#how-many-masters-do-i-need">How Many Masters Do I Need?</a></li>
-<li><a href="#configuring-masters-and-nodes">Configuring Masters and Nodes</a>
+<li><a href="#master-node-config-prereq">Prerequisites</a></li>
+<li><a href="#master-node-config-masters-nodes">Configuring Masters and Nodes</a>
 <ul class="sectlevel2">
 <li><a href="#master-node-config-ansible">Making Configuration Changes Using Ansible</a></li>
 <li><a href="#master-node-config-manual">Making Manual Configuration Changes</a></li>
 </ul>
 </li>
-<li><a href="#configuration-options">Configuration Options</a>
+<li><a href="#master-node-config-options">Configuration Options</a>
 <ul class="sectlevel2">
-<li><a href="#master-configuration-file-options">Master Configuration File Options</a></li>
-<li><a href="#node-configuration-file-options">Node Configuration File Options</a></li>
+<li><a href="#master-node-config-options-master">Master Configuration File Options</a></li>
+<li><a href="#master-node-config-options-node">Node Configuration File Options</a></li>
 </ul>
 </li>
 </ul>
@@ -588,28 +627,28 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>The master and node configuration files determine the make-up of your
-OpenShift Enterprise cluster, and define a range of options. These include overriding
+OpenShift Container Platform cluster, and define a range of options. These include overriding
 the default plug-ins, connecting to etcd, automatically creating service
 accounts, building image names, customizing project requests, configuring volume
 plug-ins, and much more.</p>
 </div>
 <div class="paragraph">
 <p>This topic covers the many options available for customizing your
-OpenShift Enterprise masters and nodes, and shows you how to make changes to the
+OpenShift Container Platform masters and nodes, and shows you how to make changes to the
 configuration after installation.</p>
 </div>
 <div class="paragraph">
 <p>The
 <a href="../install_config/master_node_configuration.html#master-configuration-files"><strong><em>/etc/origin/master/master-config.yaml</em></strong></a> and
 <a href="../install_config/master_node_configuration.html#node-configuration-files"><strong><em>/etc/origin/node/node-config.yaml</em></strong></a>
-files define a wide range of options that can be configured on the OpenShift Enterprise
+files define a wide range of options that can be configured on the OpenShift Container Platform
 <a href="../architecture/infrastructure_components/kubernetes_infrastructure.html#master">master</a> and
 <a href="../architecture/infrastructure_components/kubernetes_infrastructure.html#node">nodes</a>. These options include overriding the default plug-ins, connecting to etcd, automatically creating service accounts, building image names, customizing project requests, configuring volume plug-ins, and much more.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="how-many-masters-do-i-need"><a class="anchor" href="#how-many-masters-do-i-need"></a>How Many Masters Do I Need?</h2>
+<h2 id="master-node-config-prereq"><a class="anchor" href="#master-node-config-prereq"></a>Prerequisites</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>For testing environments deployed via the
@@ -642,10 +681,10 @@ The only way to successfully run only two masters is if you install etcd on host
 </div>
 </div>
 <div class="sect1">
-<h2 id="configuring-masters-and-nodes"><a class="anchor" href="#configuring-masters-and-nodes"></a>Configuring Masters and Nodes</h2>
+<h2 id="master-node-config-masters-nodes"><a class="anchor" href="#master-node-config-masters-nodes"></a>Configuring Masters and Nodes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The method you use to configure your master and node configuration files must match the method that was used to install your OpenShift Enterprise cluster. If you followed the:</p>
+<p>The method you use to configure your master and node configuration files must match the method that was used to install your OpenShift Container Platform cluster. If you followed the:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -669,11 +708,11 @@ method, then make your changes
 <div class="paragraph">
 <p>Only a portion of the available host configuration options are
 <a href="https://github.com/openshift/openshift-ansible/blob/master/inventory/byo/hosts.ose.example">exposed to Ansible</a>.
-After an OpenShift Enterprise install, Ansible creates an
-inventory file with some substituted values. Modifying this inventory file and re-running the Ansible installer playbook is how you customize your OpenShift Enterprise cluster.</p>
+After an OpenShift Container Platform install, Ansible creates an
+inventory file with some substituted values. Modifying this inventory file and re-running the Ansible installer playbook is how you customize your OpenShift Container Platform cluster.</p>
 </div>
 <div class="paragraph">
-<p>While OpenShift Enterprise supports using Ansible as the advanced install method, using an Ansible playbook and inventory file, you can also use other management tools, such as
+<p>While OpenShift Container Platform supports using Ansible as the advanced install method, using an Ansible playbook and inventory file, you can also use other management tools, such as
 <a href="https://puppet.com/">Puppet</a>, <a href="https://www.chef.io/">Chef</a>,
 <a href="http://saltstack.com/">Salt</a>).</p>
 </div>
@@ -689,7 +728,7 @@ inventory file with some substituted values. Modifying this inventory file and r
 <td class="content">
 <div class="paragraph">
 <p>This use case assumes you have already set up
-<a href="../install_config/install/prerequisites.html#ensuring-host-access">SSH keys</a> to all the nodes referenced in the playbook.</p>
+<a href="../install_config/install/host_preparation.html#ensuring-host-access">SSH keys</a> to all the nodes referenced in the playbook.</p>
 </div>
 </td>
 </tr>
@@ -750,7 +789,7 @@ openshift_master_htpasswd_users={'jsmith': '$apr1$wIwXkFLI$bAygtISk2eKGmPOqaJftB
 </div>
 </div>
 <div class="paragraph">
-<p>The playbook updates the configuration, and restarts the OpenShift Enterprise master service to apply the changes.</p>
+<p>The playbook updates the configuration, and restarts the OpenShift Container Platform master service to apply the changes.</p>
 </div>
 </li>
 </ol>
@@ -766,7 +805,7 @@ but this is just a simple use case. From here you can see which
 <div class="sect2">
 <h3 id="master-node-config-manual"><a class="anchor" href="#master-node-config-manual"></a>Making Manual Configuration Changes</h3>
 <div class="paragraph">
-<p>After installing OpenShift Enterprise using the
+<p>After installing OpenShift Container Platform using the
 <a href="../install_config/install/quick_install.html#install-config-install-quick-install">quick install</a>,
 you can make modifications to the master and node configuration files to customize your cluster.</p>
 </div>
@@ -823,13 +862,13 @@ From here you can see all the
 </div>
 </div>
 <div class="sect1">
-<h2 id="configuration-options"><a class="anchor" href="#configuration-options"></a>Configuration Options</h2>
+<h2 id="master-node-config-options"><a class="anchor" href="#master-node-config-options"></a>Configuration Options</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="master-configuration-file-options"><a class="anchor" href="#master-configuration-file-options"></a>Master Configuration File Options</h3>
+<h3 id="master-node-config-options-master"><a class="anchor" href="#master-node-config-options-master"></a>Master Configuration File Options</h3>
 <div class="paragraph">
 <p>The table below contains the options available for configuring your
-OpenShift Enterprise <strong><em>master-config.yaml</em></strong> file. Use this table as a reference, and
+OpenShift Container Platform <strong><em>master-config.yaml</em></strong> file. Use this table as a reference, and
 then follow the section on
 <a href="../admin_solutions/master_node_config.html#master-node-config-manual">making manual configuration changes</a>
 and substitute in whatever values you want to change.</p>
@@ -849,7 +888,7 @@ and substitute in whatever values you want to change.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>admissionConfig</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the <a href="../architecture/additional_concepts/admission_controllers.html#architecture-additional-concepts-admission-controllers">admission control plug-in</a> configuration. OpenShift Enterprise has a configurable list of admission controller plug-ins that are triggered whenever API objects are created or modified. This option allows you to override the default list of plug-ins; for example, disabling some plug-ins, adding others, changing the ordering, and specifying configuration. Both the list of plug-ins and their configuration can be controlled from Ansible.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the <a href="../architecture/additional_concepts/admission_controllers.html#architecture-additional-concepts-admission-controllers">admission control plug-in</a> configuration. OpenShift Container Platform has a configurable list of admission controller plug-ins that are triggered whenever API objects are created or modified. This option allows you to override the default list of plug-ins; for example, disabling some plug-ins, adding others, changing the ordering, and specifying configuration. Both the list of plug-ins and their configuration can be controlled from Ansible.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>apiLevels</strong></code></p></td>
@@ -1026,7 +1065,7 @@ and substitute in whatever values you want to change.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>masterPublicURL</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The URL that clients use to access the OpenShift Enterprise API server.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The URL that clients use to access the OpenShift Container Platform API server.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>networkConfig</strong></code></p></td>
@@ -1114,10 +1153,10 @@ and substitute in whatever values you want to change.</p>
 <p><code><strong>BootstrapPolicyFile</strong></code> (string): Points to a template that contains roles and rolebindings that will be created if no policy object exists in the master namespace.</p>
 </li>
 <li>
-<p><code><strong>OpenShiftSharedResourcesNamespace</strong></code> (string): The namespace where shared OpenShift Enterprise resources are located, such as shared templates.</p>
+<p><code><strong>OpenShiftSharedResourcesNamespace</strong></code> (string): The namespace where shared OpenShift Container Platform resources are located, such as shared templates.</p>
 </li>
 <li>
-<p><code><strong>OpenShiftInfrastructureNamespace</strong></code> (string): The namespace where OpenShift Enterprise infrastructure resources are located, such as controller service accounts.</p>
+<p><code><strong>OpenShiftInfrastructureNamespace</strong></code> (string): The namespace where OpenShift Container Platform infrastructure resources are located, such as controller service accounts.</p>
 </li>
 </ul>
 </div></div></td>
@@ -1198,7 +1237,7 @@ and substitute in whatever values you want to change.</p>
 <p><code><strong>PrivateKeyFile</strong></code> (string): Contains a PEM-encoded private RSA key, used to sign service account tokens. If no private key is specified, then the service account <code><strong>TokensController</strong></code> will not be started.</p>
 </li>
 <li>
-<p><code><strong>PublicKeyFiles</strong></code> (string): A list of files, each containing a PEM-encoded public RSA key. If any file contains a private key, then OpenShift Enterprise uses the public portion of the key. The list of public keys is used to verify service account tokens; each key is tried in order until either the list is exhausted or verification succeeds. If no keys are specified, then service account authentication will not be available.</p>
+<p><code><strong>PublicKeyFiles</strong></code> (string): A list of files, each containing a PEM-encoded public RSA key. If any file contains a private key, then OpenShift Container Platform uses the public portion of the key. The list of public keys is used to verify service account tokens; each key is tried in order until either the list is exhausted or verification succeeds. If no keys are specified, then service account authentication will not be available.</p>
 </li>
 </ul>
 </div></div></td>
@@ -1238,10 +1277,10 @@ and substitute in whatever values you want to change.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="node-configuration-file-options"><a class="anchor" href="#node-configuration-file-options"></a>Node Configuration File Options</h3>
+<h3 id="master-node-config-options-node"><a class="anchor" href="#master-node-config-options-node"></a>Node Configuration File Options</h3>
 <div class="paragraph">
 <p>The table below contains the options available for configuring your
-OpenShift Enterprise <strong><em>node-config.yaml</em></strong> file. Use this table as a reference, and
+OpenShift Container Platform <strong><em>node-config.yaml</em></strong> file. Use this table as a reference, and
 then follow the section on
 <a href="../admin_solutions/master_node_config.html#master-node-config-manual">making manual configuration changes</a>
 and substitute in whatever values you want to change.</p>

@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Installation and Configuration | Installing | Quick Installation</title>
+  <title>OpenShift Container Platform | Installation and Configuration | Installing a Cluster | Quick Installation</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,12 +53,12 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../install_config/index.html">Installation and Configuration</a>
       </li>
-      <li class="hidden-xs active"><a href="../../install_config/install/index.html">Installing</a></li>
+      <li class="hidden-xs active"><a href="../../install_config/install/planning.html">Installing a Cluster</a></li>
       <li class="hidden-xs active">
         Quick Installation
       </li>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-down"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-down"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse in">
 
-                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class=" active" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -571,7 +610,7 @@
 <li><a href="#defining-an-installation-configuration-file">Defining an Installation Configuration File</a></li>
 <li><a href="#running-an-unattended-installation">Running an Unattended Installation</a></li>
 <li><a href="#quick-verifying-the-installation">Verifying the Installation</a></li>
-<li><a href="#uninstalling-quick">Uninstalling OpenShift Enterprise</a></li>
+<li><a href="#uninstalling-quick">Uninstalling OpenShift Container Platform</a></li>
 <li><a href="#quick-install-whats-next">What&#8217;s Next?</a></li>
 </ul>
 </div>
@@ -582,8 +621,8 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <em>quick installation</em> method allows you to use an interactive CLI utility,
-the <code>atomic-openshift-installer</code> command, to install OpenShift Enterprise across a
-set of hosts. This installer can deploy OpenShift Enterprise components on targeted
+the <code>atomic-openshift-installer</code> command, to install OpenShift Container Platform across a
+set of hosts. This installer can deploy OpenShift Container Platform components on targeted
 hosts by either installing RPMs or running containerized services.</p>
 </div>
 <div class="paragraph">
@@ -591,11 +630,11 @@ hosts by either installing RPMs or running containerized services.</p>
 by <a href="#running-an-interactive-installation">interactively gathering the data</a>
 needed to run on each host. The installer is a self-contained wrapper intended
 for usage on a Red Hat Enterprise Linux (RHEL) 7 system. While RHEL Atomic Host
-is supported for running containerized OpenShift Enterprise services, the installer is
-<a href="../../install_config/install/prerequisites.html#software-prerequisites">provided
+is supported for running containerized OpenShift Container Platform services, the installer is
+<a href="../../install_config/install/host_preparation.html#software-prerequisites">provided
 by an RPM</a> not available by default in RHEL Atomic Host, and must therefore be
 run from a RHEL 7 system. The host initiating the installation does not need to
-be intended for inclusion in the OpenShift Enterprise cluster, but it can be.</p>
+be intended for inclusion in the OpenShift Container Platform cluster, but it can be.</p>
 </div>
 <div class="paragraph">
 <p>In addition to running <a href="#running-an-interactive-installation">interactive
@@ -615,7 +654,7 @@ can be used with the installer to:</p>
 <p><a href="../../install_config/upgrading/index.html#install-config-upgrading-index">upgrade your cluster</a>, or</p>
 </li>
 <li>
-<p><a href="../../install_config/adding_hosts_to_existing_cluster.html#adding-nodes-or-reinstalling-quick">reinstall</a> the OpenShift Enterprise cluster
+<p><a href="../../install_config/adding_hosts_to_existing_cluster.html#adding-nodes-or-reinstalling-quick">reinstall</a> the OpenShift Container Platform cluster
 completely.</p>
 </li>
 </ul>
@@ -624,13 +663,28 @@ completely.</p>
 <p>Alternatively, you can use the <a href="advanced_install.html#install-config-install-advanced-install">advanced installation</a>
 method for more complex environments.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To install OpenShift Container Platform as a stand-alone registry, see
+<a href="../../install_config/install/stand_alone_registry.html#install-config-installing-stand-alone-registry">Installing a Stand-alone Registry</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="quick-before-you-begin"><a class="anchor" href="#quick-before-you-begin"></a>Before You Begin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The installer allows you to install OpenShift Enterprise
+<p>The installer allows you to install OpenShift Container Platform
 <a href="../../architecture/infrastructure_components/kubernetes_infrastructure.html#master">master</a>
 and
 <a href="../../architecture/infrastructure_components/kubernetes_infrastructure.html#node">node</a>
@@ -647,9 +701,9 @@ components on a defined set of hosts.</p>
 <p>By default, any hosts you designate as masters during the installation process
 are automatically also configured as nodes so that the masters are configured as
 part of the
-<a href="../../architecture/additional_concepts/networking.html#openshift-sdn">OpenShift Enterprise
-SDN</a>. The node component on the masters, however, are marked unscheduable, which
-blocks pods from being scheduled on it. After the installation, you can
+<a href="../../architecture/additional_concepts/networking.html#openshift-sdn">OpenShift Container Platform
+SDN</a>. The node component on the masters, however, are marked unschedulable,
+which blocks pods from being scheduled on it. After the installation, you can
 <a href="../../admin_guide/manage_nodes.html#marking-nodes-as-unschedulable-or-schedulable">mark
 them schedulable</a> if you want.</p>
 </div>
@@ -658,7 +712,7 @@ them schedulable</a> if you want.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>Before installing OpenShift Enterprise, you must first
+<p>Before installing OpenShift Container Platform, you must first
 <a href="../../install_config/install/prerequisites.html#install-config-install-prerequisites">satisfy the prerequisites</a>
 on your hosts, which includes verifying system and environment requirements and
 properly installing and configuring Docker. You must also be prepared to provide
@@ -686,7 +740,7 @@ course of the installation:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If you are interested in installing OpenShift Enterprise using the containerized method
+<p>If you are interested in installing OpenShift Container Platform using the containerized method
 (optional for RHEL but required for RHEL Atomic Host), see
 <a href="../../install_config/install/rpm_vs_containerized.html#install-config-install-rpm-vs-containerized">RPM vs
 Containerized</a> to ensure that you understand the differences between these
@@ -727,7 +781,7 @@ an <a href="#running-an-interactive-installation">interactive</a> or
 </div>
 </div>
 <div class="paragraph">
-<p>Then follow the on-screen instructions to install a new OpenShift Enterprise cluster.</p>
+<p>Then follow the on-screen instructions to install a new OpenShift Container Platform cluster.</p>
 </div>
 <div class="paragraph">
 <p>After it has finished, ensure that you back up the
@@ -761,7 +815,7 @@ configuration file manually from scratch to perform an
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">version</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v2 </span></span><i class="conum" data-value="1"></i><b>(1)</b>
 <span style="color:#606">variant</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift-enterprise </span></span><i class="conum" data-value="2"></i><b>(2)</b>
-<span style="color:#606">variant_version</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">3.2 </span></span><i class="conum" data-value="3"></i><b>(3)</b>
+<span style="color:#606">variant_version</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">3.3 </span></span><i class="conum" data-value="3"></i><b>(3)</b>
 <span style="color:#606">ansible_log_path</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/tmp/ansible.log </span></span><i class="conum" data-value="4"></i><b>(4)</b>
 <span style="color:#606">deployment</span>:
   <span style="color:#606">ansible_ssh_user</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">root </span></span><i class="conum" data-value="5"></i><b>(5)</b>
@@ -802,18 +856,18 @@ configuration file manually from scratch to perform an
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The version of this installation configuration file. As of OpenShift Enterprise 3.3,
+<td>The version of this installation configuration file. As of OpenShift Container Platform 3.3,
 the only valid version here is <code>v2</code>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The OpenShift Enterprise variant to install. For OSE, set this to
+<td>The OpenShift Container Platform variant to install. For OpenShift Container Platform, set this to
 <code>openshift-enterprise</code>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>A valid version your selected variant: <code>3.2</code>, <code>3.1</code>, or <code>3.0</code>. If not specified,
-this defaults to the newest version for the specified variant.</td>
+<td>A valid version of your selected variant: <code>3.3</code>, <code>3.2</code>, or <code>3.1</code>. If not
+specified, this defaults to the latest version for the specified variant.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
@@ -828,7 +882,7 @@ set it to any user that has <strong>sudo</strong> privileges.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>Defines a list of the hosts onto which you want to install the OpenShift Enterprise
+<td>Defines a list of the hosts onto which you want to install the OpenShift Container Platform
 master and node components.</td>
 </tr>
 <tr>
@@ -849,13 +903,12 @@ installation, the installation fails.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="10"></i><b>10</b></td>
-<td>If set to <strong>true</strong>, containerized OpenShift Enterprise services are run on target master
+<td>If set to <strong>true</strong>, containerized OpenShift Container Platform services are run on target master
 and node hosts instead of installed using RPM packages. If set to <strong>false</strong> or
 unset, the default RPM method is used. RHEL Atomic Host requires the
 containerized method, and is automatically selected for you based on the
 detection of the <strong><em>/run/ostree-booted</em></strong> file. See
-<a href="../../install_config/install/rpm_vs_containerized.html#install-config-install-rpm-vs-containerized">RPM vs
-Containerized</a> for more details.</td>
+<a href="../../install_config/install/rpm_vs_containerized.html#install-config-install-rpm-vs-containerized">RPM vs Containerized</a> for more details.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="11"></i><b>11</b></td>
@@ -959,25 +1012,25 @@ following as root:</p>
 <div class="content">
 <pre class="nowrap"># oc get nodes
 
-NAME                      LABELS                                                                     STATUS
-master.example.com        kubernetes.io/hostname=master.example.com,region=infra,zone=default        Ready,SchedulingDisabled
-node1.example.com         kubernetes.io/hostname=node1.example.com,region=primary,zone=east          Ready
-node2.example.com         kubernetes.io/hostname=node2.example.com,region=primary,zone=west          Ready</pre>
+NAME                        STATUS                     AGE
+master.example.com          Ready,SchedulingDisabled   165d
+node1.example.com           Ready                      165d
+node2.example.com           Ready                      165d</pre>
 </div>
 </div>
 </div>
 </div>
 <div class="paragraph">
 <p>Then, see <a href="#quick-install-whats-next">What&#8217;s Next</a> for the next steps on
-configuring your OpenShift Enterprise cluster.</p>
+configuring your OpenShift Container Platform cluster.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="uninstalling-quick"><a class="anchor" href="#uninstalling-quick"></a>Uninstalling OpenShift Enterprise</h2>
+<h2 id="uninstalling-quick"><a class="anchor" href="#uninstalling-quick"></a>Uninstalling OpenShift Container Platform</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can uninstall OpenShift Enterprise on all hosts in your cluster using the
+<p>You can uninstall OpenShift Container Platform on all hosts in your cluster using the
 installer by running:</p>
 </div>
 <div class="listingblock">
@@ -996,7 +1049,7 @@ installation method</a> for more options.</p>
 <h2 id="quick-install-whats-next"><a class="anchor" href="#quick-install-whats-next"></a>What&#8217;s Next?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that you have a working OpenShift Enterprise instance, you can:</p>
+<p>Now that you have a working OpenShift Container Platform instance, you can:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1007,10 +1060,10 @@ authentication</a>; by default, authentication is set to
 All</a>.</p>
 </li>
 <li>
-<p>Configure the automatically-deployed <a href="docker_registry.html#install-config-install-docker-registry">integrated Docker registry</a>.</p>
+<p>Configure the automatically-deployed <a href="../registry/index.html#install-config-registry-overview">integrated Docker registry</a>.</p>
 </li>
 <li>
-<p>Configure the automatically-deployed <a href="deploy_router.html#install-config-install-deploy-router">router</a>.</p>
+<p>Configure the automatically-deployed <a href="../router/index.html#install-config-router-overview">router</a>.</p>
 </li>
 </ul>
 </div>

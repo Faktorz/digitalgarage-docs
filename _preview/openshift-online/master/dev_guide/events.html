@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Developer Guide | Events</title>
+  <title>OpenShift Online | Developer Guide | Events</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../dev_guide/index.html">Developer Guide</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -370,6 +372,7 @@
 <li><a href="#overview">Overview</a></li>
 <li><a href="#viewing-events-with-the-cli">Viewing Events with the CLI</a></li>
 <li><a href="#viewing-events-in-the-web-console">Viewing Events in the Console</a></li>
+<li><a href="#events-reference">Comprehensive List of Events</a></li>
 </ul>
 </div>
 </div>
@@ -378,8 +381,8 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Events in the Digital Garage are modeled based on events that happen to API objects
-in an the Digital Garage cluster. Events allow the Digital Garage to record
+<p>Events in OpenShift Online are modeled based on events that happen to API objects
+in an OpenShift Online cluster. Events allow OpenShift Online to record
 information about real-world events in a resource-agnostic manner. They also
 allow developers and administrators to consume information about system
 components in a unified way.</p>
@@ -407,6 +410,262 @@ components in a unified way.</p>
 <strong>Events</strong> page. Many other objects, such as pods and deployments, have their own
 <strong>Events</strong> tab as well, which shows events related to that object.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="events-reference"><a class="anchor" href="#events-reference"></a>Comprehensive List of Events</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes the events of OpenShift Online.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Configuration Events</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>FailedValidation</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Failed pod configuration validation.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Container Events</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>BackOff</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Back-off restarting failed the container.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>Created</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Container created.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>Failed</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pull/Create/Start failed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>Killing</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Killing the container.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>Started</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Container started.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. Health Events</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>Unhealthy</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Container is unhealthy.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. Image Events</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>BackOff</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Back off Ctr Start, image pull.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ErrImageNeverPull</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The image&#8217;s <strong>NeverPull Policy</strong> is violated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>Failed</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Failed to pull the image.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>InspectFailed</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Failed to inspect the image.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>Pulled</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Successfully pulled the image or the container image is already present on the machine.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>Pulling</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pulling the image.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 5. Image Manager Events</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>FreeDiskSpaceFailed</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Free disk space failed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>InvalidDiskCapacity</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid disk capacity.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 6. Node Events</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>FailedMount</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volume mount failed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>HostNetworkNotSupported</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Host network not supported.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>HostPortConflict</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Host/port conflict.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>InsufficientFreeCPU</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insufficient free CPU.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>InsufficientFreeMemory</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insufficient free memory.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>KubeletSetupFailed</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kubelet setup failed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>NilShaper</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undefined shaper.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>NodeNotReady</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node is not ready.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>NodeNotSchedulable</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node is not schedulable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>NodeReady</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node is ready.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>NodeSchedulable</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node is schedulable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>NodeSelectorMismatching</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node selector mismatch.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>OutOfDisk</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Out of disk.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>Rebooted</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node rebooted.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>Starting</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Starting kubelet.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 7. Pod Worker Events</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>FailedSync</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pod sync failed.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 8. System Events</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>SystemOOM</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There is an OOM (out of memory) situation on the cluster.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
       </div>

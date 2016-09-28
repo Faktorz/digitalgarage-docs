@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Architecture | Core Concepts | Projects and Users</title>
+  <title>OpenShift Online | Architecture | Core Concepts | Projects and Users</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../architecture/index.html">Architecture</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -378,7 +380,7 @@
 <h2 id="users"><a class="anchor" href="#users"></a>Users</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Interaction with the Digital Garage is associated with a user. An the Digital Garage
+<p>Interaction with OpenShift Online is associated with a user. An OpenShift Online
 user object represents an actor which may be granted permissions in the system
 by</p>
 </div>
@@ -393,7 +395,7 @@ by</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regular users</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the way most interactive the Digital Garage users will be
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the way most interactive OpenShift Online users will be
 represented. Regular users are created automatically in the system upon
 first login, or can be created via the API. Regular users are represented
 with the <code><strong>User</strong></code> object. Examples: <code>joe</code> <code>alice</code></p></td>
@@ -420,7 +422,7 @@ Service accounts are represented with the <code><strong>ServiceAccount</strong><
 </table>
 <div class="paragraph">
 <p>Every user must <a href="../additional_concepts/authentication.html#architecture-additional-concepts-authentication">authenticate</a> in
-some way in order to access the Digital Garage. API requests with no authentication
+some way in order to access OpenShift Online. API requests with no authentication
 or invalid authentication are authenticated as requests by the <code><strong>anonymous</strong></code>
 system user. Once authenticated, policy determines what the user is
 <a href="../additional_concepts/authorization.html#architecture-additional-concepts-authorization">authorized</a> to do.</p>
@@ -432,7 +434,7 @@ system user. Once authenticated, policy determines what the user is
 <div class="sectionbody">
 <div class="paragraph">
 <p>A Kubernetes namespace provides a mechanism to scope resources in a cluster.
-In the Digital Garage, a <a href="#projects">project</a> is a Kubernetes namespace with
+In OpenShift Online, a <a href="#projects">project</a> is a Kubernetes namespace with
 additional annotations.</p>
 </div>
 <div class="paragraph">

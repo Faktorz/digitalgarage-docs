@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | CLI Reference | Managing CLI Profiles</title>
+  <title>OpenShift Online | CLI Reference | Managing CLI Profiles</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../cli_reference/index.html">CLI Reference</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -380,9 +382,9 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>A CLI configuration file allows you to configure different profiles, or
-<em>contexts</em>, for use with the <a href="index.html#cli-reference-index">the Digital Garage CLI</a>. A context
+<em>contexts</em>, for use with the <a href="index.html#cli-reference-index">OpenShift Online CLI</a>. A context
 consists of <a href="../architecture/additional_concepts/authentication.html#architecture-additional-concepts-authentication">user
-authentication</a> andthe Digital Garage server information associated with a
+authentication</a> andOpenShift Online server information associated with a
 <em>nickname</em>.</p>
 </div>
 </div>
@@ -392,13 +394,13 @@ authentication</a> andthe Digital Garage server information associated with a
 <div class="sectionbody">
 <div class="paragraph">
 <p>Contexts allow you to easily switch between multiple users across multiple
-the Digital Garage servers, or <em>clusters</em>, when using issuing CLI operations. Nicknames
+OpenShift Online servers, or <em>clusters</em>, when using issuing CLI operations. Nicknames
 make managing CLI configuration easier by providing short-hand references to
 contexts, user credentials, and cluster details.</p>
 </div>
 <div class="paragraph">
 <p>After <a href="get_started_cli.html#cli-reference-get-started-cli">logging in with the CLI</a> for the first time,
-the Digital Garage creates a <strong><em>~/.kube/config</em></strong> file if one does not
+OpenShift Online creates a <strong><em>~/.kube/config</em></strong> file if one does not
 already exist. As more authentication and connection details are provided to the
 CLI, either automatically during an <code>oc login</code> operation or by
 <a href="#manually-configuring-cli-profiles">setting them explicitly</a>, the updated
@@ -443,7 +445,7 @@ information is stored in the configuration file:</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code><strong>clusters</strong></code> section defines connection details for the Digital Garage clusters,
+<td>The <code><strong>clusters</strong></code> section defines connection details for OpenShift Online clusters,
 including the address for their master server. In this example, one cluster is
 nicknamed <strong>openshift1.example.com:8443</strong> and another is nicknamed
 <strong>openshift2.example.com:8443</strong>.</td>

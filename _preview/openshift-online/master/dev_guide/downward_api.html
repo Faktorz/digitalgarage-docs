@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Developer Guide | Downward API</title>
+  <title>OpenShift Online | Developer Guide | Downward API</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../dev_guide/index.html">Developer Guide</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -390,7 +392,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>The downward API is a mechanism that allows containers to consume information
-about API objects without coupling to the Digital Garage. Such information includes
+about API objects without coupling to OpenShift Online. Such information includes
 the pod&#8217;s name, namespace, and resource values. Containers can consume
 information from the downward API using environment variables or a volume
 plug-in.</p>
@@ -711,8 +713,8 @@ computing resource requests and limits so that image and application authors can
 correctly create an image for specific environments.</p>
 </div>
 <div class="paragraph">
-<p>You can do this using both the <a href="#dapi-using-environment-variables">environment
-variable</a> and <a href="#dapi-using-volume-plugin">volume plug-in</a> methods.</p>
+<p>You can do this using both the <a href="#dapi-resources-environment-variables">environment
+variable</a> and <a href="#dapi-values-using-volume-plugin">volume plug-in</a> methods.</p>
 </div>
 <div class="sect2">
 <h3 id="dapi-resources-environment-variables"><a class="anchor" href="#dapi-resources-environment-variables"></a>Using Environment Variables</h3>

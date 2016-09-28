@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Using Images | Other Images | Jenkins</title>
+  <title>OpenShift Online | Using Images | Other Images | Jenkins</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../using_images/index.html">Using Images</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -389,10 +391,10 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>the Digital Garage provides a Docker image for running Jenkins.  This image provides a Jenkins server instance which can be used to set up a basic flow for continuous testing, integration, and delivery.</p>
+<p>OpenShift Online provides a Docker image for running Jenkins.  This image provides a Jenkins server instance which can be used to set up a basic flow for continuous testing, integration, and delivery.</p>
 </div>
 <div class="paragraph">
-<p>This image also includes a sample Jenkins job which triggers a new build of a <code><strong>BuildConfig</strong></code> defined in the Digital Garage, tests the output of that build, and then on successful build, retags the output to indicate the build is ready for production.</p>
+<p>This image also includes a sample Jenkins job which triggers a new build of a <code><strong>BuildConfig</strong></code> defined in OpenShift Online, tests the output of that build, and then on successful build, retags the output to indicate the build is ready for production.</p>
 </div>
 </div>
 </div>
@@ -400,7 +402,7 @@
 <h2 id="versions"><a class="anchor" href="#versions"></a>Versions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>the Digital Garage follows the <a href="https://jenkins.io/changelog-stable/">LTS</a> releases of Jenkins.</p>
+<p>OpenShift Online follows the <a href="https://jenkins.io/changelog-stable/">LTS</a> releases of Jenkins.</p>
 </div>
 </div>
 </div>
@@ -443,10 +445,10 @@
 </div>
 </div>
 <div class="paragraph">
-<p>To use these images, you can either access them directly from these registries or push them into your the Digital Garage Docker registry.
+<p>To use these images, you can either access them directly from these registries or push them into your OpenShift Online Docker registry.
 Additionally, you can create an ImageStream that points to the image, either in your Docker registry or at the external location.
-Your the Digital Garage resources can then reference the ImageStream.
-You can find <a href="https://github.com/openshift/origin/tree/master/examples/image-streams">example</a> ImageStream definitions for all the provided the Digital Garage images.</p>
+Your OpenShift Online resources can then reference the ImageStream.
+You can find <a href="https://github.com/openshift/origin/tree/master/examples/image-streams">example</a> ImageStream definitions for all the provided OpenShift Online images.</p>
 </div>
 </div>
 </div>
@@ -521,7 +523,7 @@ The default password can be configured by setting the <code><strong>JENKINS_PASS
 <div class="paragraph">
 <p><a href="../../dev_guide/templates.html#dev-guide-templates">Templates</a> provide parameter fields to
 define all the environment variables (password) with predefined defaults.
-the Digital Garage provides templates to make creating a new Jenkins service easy. The
+OpenShift Online provides templates to make creating a new Jenkins service easy. The
 Jenkins templates should have been registered in the default <strong>openshift</strong> project
 by your cluster administrator during the initial cluster setup.</p>
 </div>
@@ -556,7 +558,7 @@ This template is useful for development or testing only.</p>
 <li>
 <p><code>jenkins-persistent</code> uses a persistent volume store. Data survives a pod
 restart. To use a persistent volume store, the cluster administrator must
-define a persistent volume pool in the the Digital Garage deployment.</p>
+define a persistent volume pool in the OpenShift Online deployment.</p>
 </li>
 </ul>
 </div>
@@ -569,7 +571,7 @@ define a persistent volume pool in the the Digital Garage deployment.</p>
 <h2 id="jenkins-as-s2i-builder"><a class="anchor" href="#jenkins-as-s2i-builder"></a>Using Jenkins as a Source-To-Image builder</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To customize the official the Digital Garage Jenkins image, you have two options:</p>
+<p>To customize the official OpenShift Online Jenkins image, you have two options:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -617,7 +619,7 @@ additional files, such as <strong><em>credentials.xml</em></strong>, there.</p>
 </div>
 <div class="paragraph">
 <p>The following is an example build configuration that customizes the Jenkins
-image in the Digital Garage:</p>
+image in OpenShift Online:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -668,10 +670,10 @@ you can use in deployment configuration instead of the official Jenkins image.</
 <h2 id="using-the-jenkins-kubernetes-plug-in-to-run-jobs"><a class="anchor" href="#using-the-jenkins-kubernetes-plug-in-to-run-jobs"></a>Using the Jenkins Kubernetes Plug-in to Run Jobs</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The official the Digital Garage Jenkins image includes the pre-installed
+<p>The official OpenShift Online Jenkins image includes the pre-installed
 <a href="https://wiki.jenkins-ci.org/display/JENKINS/Kubernetes+Plugin">Kubernetes
 plug-in</a> that allows Jenkins slaves to be dynamically provisioned on multiple
-Docker hosts using Kubernetes and the Digital Garage.</p>
+Docker hosts using Kubernetes and OpenShift Online.</p>
 </div>
 <div class="paragraph">
 <p>The Jenkins image entrypoint also provides auto-discovery and auto-configuration
@@ -691,8 +693,8 @@ documentation</a>.</p>
 </div>
 <div class="paragraph">
 <p>Alternatively, you can use
-<a href="https://github.com/openshift/origin/blob/master/examples/jenkins-master/jenkins-slave-template.json">a
-provided the Digital Garage template</a> to convert an existing image stream to a Jenkins
+<a href="https://github.com/openshift/origin/blob/master/examples/jenkins/master-slave/jenkins-slave-template.json">a
+provided OpenShift Online template</a> to convert an existing image stream to a Jenkins
 slave.</p>
 </div>
 </div>

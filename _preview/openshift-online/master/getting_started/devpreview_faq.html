@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Getting Started | Developer Preview FAQ</title>
+  <title>OpenShift Online | Getting Started | Developer Preview FAQ</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../getting_started/index.html">Getting Started</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -381,7 +383,7 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>During the the Digital Garage Developer Preview, consult the following sections
+<p>During the OpenShift Online Developer Preview, consult the following sections
 for frequently asked questions and
 <a href="#devpreview-current-usage-considerations">current usage considerations</a>
 during the preview period.</p>
@@ -401,25 +403,25 @@ project&#8217;s Overview page in the web console.</p>
 </dd>
 <dt class="hdlist1">HOW LONG WILL I HAVE ACCESS TO THE ENVIRONMENT?</dt>
 <dd>
-<p>You will have access to the the Digital Garage Developer Preview environment for
+<p>You will have access to the OpenShift Online Developer Preview environment for
 30 days, at which point your account will expire.</p>
 </dd>
 <dt class="hdlist1">WHAT HAPPENS WHEN MY ACCOUNT EXPIRES?</dt>
 <dd>
 <p>Your account, applications, and data will be permanently deleted to free up
 resources for other users when your account expires. This means that you will no
-longer be able to log in to the web console, authenticate using the the Digital Garage
+longer be able to log in to the web console, authenticate using the OpenShift Online
 CLI tools, or access your applications and related data.</p>
 </dd>
 <dt class="hdlist1">CAN I CREATE A NEW ACCOUNT AFTER MY ACCOUNT EXPIRES?</dt>
 <dd>
-<p>If you are interested in trying the the Digital Garage (Next Gen) Developer Preview again,
+<p>If you are interested in trying the OpenShift Online (Next Gen) Developer Preview again,
 just complete the registration form after your account expires and we will
 provision a fresh set of resources for you as soon as they become available.</p>
 </dd>
 <dt class="hdlist1">WHAT LANGUAGES ARE SUPPORTED?</dt>
 <dd>
-<p>The the Digital Garage (Next Gen) Developer Preview currently supports:</p>
+<p>The OpenShift Online (Next Gen) Developer Preview currently supports:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -446,7 +448,7 @@ EAP and JBoss Web Server)</p>
 </dd>
 <dt class="hdlist1">WHAT DATABASE SERVICES ARE SUPPORTED?</dt>
 <dd>
-<p>The the Digital Garage (Next Gen) Developer Preview currently supports:</p>
+<p>The OpenShift Online (Next Gen) Developer Preview currently supports:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -463,7 +465,7 @@ EAP and JBoss Web Server)</p>
 </dd>
 <dt class="hdlist1">WHAT JBOSS MIDDLEWARE SERVICES ARE AVAILABLE IN THE DEVELOPER PREVIEW?</dt>
 <dd>
-<p>JBoss EAP and JBoss Web Server are available to try during the the Digital Garage
+<p>JBoss EAP and JBoss Web Server are available to try during the OpenShift Online
 (Next Gen) Developer Preview.</p>
 </dd>
 <dt class="hdlist1">CAN USERS RUN IMAGES FROM DOCKER HUB OR PUSH THEIR OWN IMAGES TO THE REGISTRY?</dt>
@@ -493,11 +495,11 @@ to see how it performs in the environment.</p>
 <dl>
 <dt class="hdlist1">HOW AM I BILLED?</dt>
 <dd>
-<p>During our Developer Preview period, the Digital Garage (Next Gen) is FREE!</p>
+<p>During our Developer Preview period, OpenShift Online (Next Gen) is FREE!</p>
 </dd>
 <dt class="hdlist1">ARE PAID PLANS AVAILABLE FOR OPENSHIFT (NEXT GEN)?</dt>
 <dd>
-<p>Not at this time. the Digital Garage (Next Gen) will offer paid tiers when the
+<p>Not at this time. OpenShift Online (Next Gen) will offer paid tiers when the
 offering becomes generally available.</p>
 </dd>
 </dl>
@@ -532,7 +534,7 @@ offering becomes generally available.</p>
 <dd>
 <p>During the Developer Preview there are no paid or official support channels,
 however, you can contact the Community Enablement team, create a bug report in
-Bugzilla, or create a post in the the Digital Garage Forums.</p>
+Bugzilla, or create a post in the OpenShift Online Forums.</p>
 </dd>
 <dt class="hdlist1">HOW SHOULD I REACH THE COMMUNITY ENABLEMENT TEAM OR USER FORUMS?</dt>
 <dd>
@@ -545,9 +547,9 @@ down.</p>
 </div>
 <div class="paragraph">
 <p>If you would like to ask a larger group of people for help, including
-the Digital Garage users, engineers, and operations team members, you can ask a
+OpenShift Online users, engineers, and operations team members, you can ask a
 question using the
-<a href="https://groups.google.com/forum/#!forum/openshift">the Digital Garage Forums</a>.
+<a href="https://groups.google.com/forum/#!forum/openshift">OpenShift Online Forums</a>.
 Please make sure to use the "dev-preview" tag when creating a new post.</p>
 </div>
 <div class="dlist">
@@ -576,10 +578,10 @@ selected with the provided link).</p>
 <h2 id="devpreview-current-usage-considerations"><a class="anchor" href="#devpreview-current-usage-considerations"></a>Current Usage Considerations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The the Digital Garage (Next Gen) Developer Preview offering scopes the inventory of images
+<p>The OpenShift Online (Next Gen) Developer Preview offering scopes the inventory of images
 it provides out of the box with a few considerations in mind, which also apply
 to any images you choose to import into your project. These conditions are
-enforced via the the Digital Garage <a href="../dev_guide/compute_resources.html#dev-guide-compute-resources">quotas,
+enforced via the OpenShift Online <a href="../dev_guide/compute_resources.html#dev-guide-compute-resources">quotas,
 limit ranges, and compute resources</a> systems.</p>
 </div>
 <div class="ulist">

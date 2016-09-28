@@ -98,8 +98,8 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../../release_notes/osd_3_2_release_notes.html">OpenShift Dedicated 3.2 Release Notes</a></li>
-            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/osd_3_3_release_notes.html">OpenShift Dedicated Release Notes</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -196,6 +196,7 @@
       <ul id="topicGroup4" class="collapse  list-unstyled">
             <li><a class="" href="../../admin_guide/index.html">Overview</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -209,8 +210,7 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/osd_build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
             <li><a class="" href="../../admin_guide/osd_configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/backup_restore.html">Backup and Restore</a></li>
             <li><a class="" href="../../admin_guide/revhistory_admin_guide.html">Revision History</a></li>
       </ul>
@@ -283,10 +283,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -1052,7 +1054,7 @@ File</a></p>
     <span style="color:#606">spec</span>:
       <span style="color:#606">containers</span>:
         - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: member</span></span>
-          <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">centos/mongodb-26-centos7</span></span>
+          <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift/mongodb-24-centos7</span></span>
           <span style="color:#606">env</span>:
             - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: MONGODB_USER</span></span>
               <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_USER}</span><span style="color:#710">&quot;</span></span>
@@ -1088,46 +1090,66 @@ of the <strong>rs0</strong> replication set, as the value of <code><strong>MONGO
 <h3 id="creating-the-service-pod"><a class="anchor" href="#creating-the-service-pod"></a>Creating the Service Pod</h3>
 <div class="paragraph">
 <p>To initialize members created by <a href="#creating-the-deploymentconfig">the
-deployment configuration</a>, a <em>service pod</em> is defined in the template. This pod
-starts MongoDB with the <code>initiate</code> argument, which instructs the container
-entrypoint to behave <a href="#mongo-creating-headless-service">slightly differently</a>
+deployment configuration</a>, the pods are started with the <code>initiate</code> argument,
+which instructs the startup script to behave <a href="#mongo-creating-headless-service">slightly differently</a>
 than a regular, stand-alone MongoDB database.</p>
 </div>
-<div id="example-service-pod" class="exampleblock">
-<div class="title">Example 2. Service Pod Object Definition in the Example Template</div>
+<div id="example-deployment-config" class="exampleblock">
+<div class="title">Example 2. Deployment Configuration Object Definition in the Example Template</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Pod</span><span style="color:#710">&quot;</span></span>
-<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
-<span style="color:#606">metadata</span>:
-  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">mongodb-service</span><span style="color:#710">&quot;</span></span>
-  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
-  <span style="color:#606">labels</span>:
-    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">mongodb-service</span><span style="color:#710">&quot;</span></span>
-<span style="color:#606">spec</span>:
-  <span style="color:#606">restartPolicy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Never</span><span style="color:#710">&quot;</span></span>
-  <span style="color:#606">dnsPolicy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ClusterFirst</span><span style="color:#710">&quot;</span></span>
-  <span style="color:#606">containers</span>:
-    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;initiate&quot;</span></span>
-      <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">centos/mongodb-26-centos7</span><span style="color:#710">&quot;</span></span>
-      <span style="color:#606">args</span>:
-        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">initiate</span><span style="color:#710">&quot;</span></span>
-      <span style="color:#606">env</span>:
-        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;MONGODB_USER&quot;</span></span>
-          <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_USER}</span><span style="color:#710">&quot;</span></span>
-        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;MONGODB_PASSWORD&quot;</span></span>
-          <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_PASSWORD}</span><span style="color:#710">&quot;</span></span>
-        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;MONGODB_DATABASE&quot;</span></span>
-          <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_DATABASE}</span><span style="color:#710">&quot;</span></span>
-        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;MONGODB_ADMIN_PASSWORD&quot;</span></span>
-          <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_ADMIN_PASSWORD}</span><span style="color:#710">&quot;</span></span>
-        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;MONGODB_REPLICA_NAME&quot;</span></span>
-          <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_REPLICA_NAME}</span><span style="color:#710">&quot;</span></span>
-        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;MONGODB_SERVICE_NAME&quot;</span></span>
-          <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_SERVICE_NAME}</span><span style="color:#710">&quot;</span></span>
-        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;MONGODB_KEYFILE_VALUE&quot;</span></span>
-          <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_KEYFILE_VALUE}</span><span style="color:#710">&quot;</span></span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml">- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">kind: DeploymentConfig</span></span>
+  <span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+  <span style="color:#606">metadata</span>:
+    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_SERVICE_NAME}</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">spec</span>:
+    <span style="color:#606">strategy</span>:
+      <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Recreate</span></span>
+      <span style="color:#606">recreateParams</span>:
+        <span style="color:#606">post</span>:
+          <span style="color:#606">failurePolicy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Retry</span></span>
+          <span style="color:#606">execNewPod</span>:
+            <span style="color:#606">command</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[&quot;run-mongod&quot;,&quot;initiate&quot;]</span></span>
+            <span style="color:#606">containerName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">mongodb</span></span>
+            <span style="color:#606">env</span>:
+            - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: MONGODB_INITIAL_REPLICA_COUNT</span></span>
+              <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">'3'</span></span>
+    <span style="color:#606">triggers</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: ConfigChange</span></span>
+    <span style="color:#606">replicas</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">3</span></span>
+    <span style="color:#606">selector</span>:
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">mongodb-replica</span></span>
+    <span style="color:#606">template</span>:
+      <span style="color:#606">metadata</span>:
+        <span style="color:#606">labels</span>:
+          <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">mongodb-replica</span></span>
+      <span style="color:#606">spec</span>:
+        <span style="color:#606">containers</span>:
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: mongodb</span></span>
+          <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift/mongodb-24-centos7</span></span>
+          <span style="color:#606">readinessProbe</span>:
+            <span style="color:#606">tcpSocket</span>:
+              <span style="color:#606">port</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">27017</span></span>
+            <span style="color:#606">initialDelaySeconds</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">15</span></span>
+            <span style="color:#606">timeoutSeconds</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1</span></span>
+          <span style="color:#606">env</span>:
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: MONGODB_USER</span></span>
+            <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_USER}</span><span style="color:#710">&quot;</span></span>
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: MONGODB_PASSWORD</span></span>
+            <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_PASSWORD}</span><span style="color:#710">&quot;</span></span>
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: MONGODB_DATABASE</span></span>
+            <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_DATABASE}</span><span style="color:#710">&quot;</span></span>
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: MONGODB_ADMIN_PASSWORD</span></span>
+            <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_ADMIN_PASSWORD}</span><span style="color:#710">&quot;</span></span>
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: MONGODB_REPLICA_NAME</span></span>
+            <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_REPLICA_NAME}</span><span style="color:#710">&quot;</span></span>
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: MONGODB_SERVICE_NAME</span></span>
+            <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_SERVICE_NAME}</span><span style="color:#710">&quot;</span></span>
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: MONGODB_KEYFILE_VALUE</span></span>
+            <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${MONGODB_KEYFILE_VALUE}</span><span style="color:#710">&quot;</span></span>
+          <span style="color:#606">ports</span>:
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">containerPort: 27017</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -1136,7 +1158,7 @@ than a regular, stand-alone MongoDB database.</p>
 <div class="sect2">
 <h3 id="mongo-creating-headless-service"><a class="anchor" href="#mongo-creating-headless-service"></a>Creating a Headless Service</h3>
 <div class="paragraph">
-<p>The <code>initiate</code> argument in the <a href="#example-service-pod">container specification
+<p>The <code>initiate</code> argument in the <a href="#example-deployment-config">container specification
 above</a> instructs the container to first discover all running member pods within
 the MongoDB cluster. To achieve this, a <em>headless service</em> is defined named
 <strong>mongodb</strong> in the example template.</p>
@@ -1186,33 +1208,7 @@ member of the cluster.</p>
 </div>
 <div class="paragraph">
 <p>Once the <strong>PRIMARY</strong> member has been elected, the entrypoint script starts
-creating MongoDB users and databases. <a href="#creating-the-service-pod">The service
-pod</a> runs MongoDB without the <code>--auth</code> argument, so it can bootstrap the
-<strong>PRIMARY</strong> member without providing any authentication.</p>
-</div>
-<div class="paragraph">
-<p>When the user accounts and databases are created and the data are replicated to
-other members, the service pod then gives up its <strong>PRIMARY</strong> role and
-shuts down.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>It is important that the <code><strong>restartPolicy</strong></code> field in the service pod is set to
-<strong>Never</strong> to prevent the service pod from restarting when the container exits.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>As soon as the service pod shuts down, other members start a new election and
-the new <strong>PRIMARY</strong> member is elected from the running members.</p>
+creating MongoDB users and databases.</p>
 </div>
 <div class="paragraph">
 <p>Clients can then start using the MongoDB instance by sending the queries to the

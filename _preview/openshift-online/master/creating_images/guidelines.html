@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Creating Images | Guidelines</title>
+  <title>OpenShift Online | Creating Images | Guidelines</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../creating_images/index.html">Creating Images</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -369,7 +371,7 @@
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a></li>
 <li><a href="#general-docker-guidelines">General Docker Guidelines</a></li>
-<li><a href="#the-digital-garage-specific-guidelines">the Digital Garage-Specific Guidelines</a></li>
+<li><a href="#openshift-online-specific-guidelines">OpenShift Online-Specific Guidelines</a></li>
 <li><a href="#external-references">External References</a></li>
 </ul>
 </div>
@@ -379,11 +381,11 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When creating Docker images to run on the Digital Garage there are a number of best
+<p>When creating Docker images to run on OpenShift Online there are a number of best
 practices to consider as an image author to ensure a good experience for
 consumers of those images. Because images are intended to be immutable and used
 as-is, the following guidelines help ensure that your images are highly
-consumable and easy to use on the Digital Garage.</p>
+consumable and easy to use on OpenShift Online.</p>
 </div>
 </div>
 </div>
@@ -392,7 +394,7 @@ consumable and easy to use on the Digital Garage.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following guidelines apply when creating a Docker image in general, and are
-independent of whether the images are used on the Digital Garage.</p>
+independent of whether the images are used on OpenShift Online.</p>
 </div>
 <div class="paragraph">
 <p><strong>Reuse Images</strong></p>
@@ -435,7 +437,7 @@ incompatible changes being introduced.</p>
 <p>We recommend that you do not start multiple services, such as a database and
 <strong>SSHD</strong>, inside one container. This is not necessary because containers
 are lightweight and can be easily linked together for orchestrating multiple
-processes. the Digital Garage allows you to easily colocate and co-manage related images
+processes. OpenShift Online allows you to easily colocate and co-manage related images
 by grouping them into a single pod.</p>
 </div>
 <div class="paragraph">
@@ -613,7 +615,7 @@ as what environment variable to set.</p>
 <div class="paragraph">
 <p>It is best to avoid running <strong>SSHD</strong> in your image. For accessing running
 containers, You can use the <code>docker exec</code> command locally to access containers
-that are running. Alternatively, you can use the the Digital Garage tooling since
+that are running. Alternatively, you can use the OpenShift Online tooling since
 it allows you to execute arbitrary commands in images that are running.
 Installing and running <strong>SSHD</strong> in your image opens up additional vectors for
 attack and requirements for security patching.</p>
@@ -623,7 +625,7 @@ attack and requirements for security patching.</p>
 </div>
 <div class="paragraph">
 <p>Images should use a <a href="https://docs.docker.com/reference/builder/#volume">Docker
-volume</a> for persistent data. This way the Digital Garage mounts the network storage
+volume</a> for persistent data. This way OpenShift Online mounts the network storage
 to the node running the container, and if the container moves to a new node the
 storage is reattached to that node. By using the volume for all persistent
 storage needs, the content is preserved even if the container is restarted or
@@ -645,7 +647,7 @@ running your image.</p>
 <div class="paragraph">
 <p>See the
 <a href="https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/user-guide/volumes.md">Kubernetes
-documentation</a> for more information on how volumes are used in the Digital Garage.</p>
+documentation</a> for more information on how volumes are used in OpenShift Online.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -680,11 +682,11 @@ volume cannot be used to share state in a cluster.
 </div>
 </div>
 <div class="sect1">
-<h2 id="the-digital-garage-specific-guidelines"><a class="anchor" href="#the-digital-garage-specific-guidelines"></a>the Digital Garage-Specific Guidelines</h2>
+<h2 id="openshift-online-specific-guidelines"><a class="anchor" href="#openshift-online-specific-guidelines"></a>OpenShift Online-Specific Guidelines</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following are guidelines that apply when creating Docker images specifically
-for use on the Digital Garage.</p>
+for use on OpenShift Online.</p>
 </div>
 <div class="paragraph">
 <p><strong>Enable Images for Source-To-Image (S2I)</strong></p>
@@ -710,7 +712,7 @@ defines S2I scripts for building various versions of Python applications.</p>
 <p><strong>Support Arbitrary User IDs</strong></p>
 </div>
 <div class="paragraph">
-<p>By default, the Digital Garage runs containers using an arbitrarily assigned user
+<p>By default, OpenShift Online runs containers using an arbitrarily assigned user
 ID. This provides additional security against processes escaping the container
 due to a container engine vulnerability and thereby achieves escalated
 permissions on the host node.</p>
@@ -795,7 +797,7 @@ example you can add this line to your <strong><em>Dockerfile</em></strong> for y
 </div>
 <div class="paragraph">
 <p>Lastly, the final <strong>USER</strong> declaration in the <code>Dockerfile</code> should specify the user
-ID (numeric value) and not the user name. This allows the Digital Garage to
+ID (numeric value) and not the user name. This allows OpenShift Online to
 validate the authority the image is attempting to run with and prevent running
 images that are trying to run as root, because running containers as a
 privileged user exposes
@@ -808,7 +810,7 @@ from the parent image.</p>
 <div class="paragraph">
 <p>For cases where your image needs to communicate with a service provided by
 another image, such as a web front end image that needs to access a database
-image to store and retrieve data, your image should consume an the Digital Garage
+image to store and retrieve data, your image should consume an OpenShift Online
 <a href="../architecture/core_concepts/pods_and_services.html#services">service</a>.
 Services provide a static endpoint for access which does not change as
 containers are stopped, started, or moved. In addition, services provide load
@@ -865,7 +867,7 @@ messages on startup when the necessary volume or configuration is not present.</
 Communication</a> topic in that configuration like datasources should be defined in
 terms of environment variables that provide the service endpoint information.
 This allows an application to dynamically consume a datasource service that is
-defined in the the Digital Garage environment without modifying the application
+defined in the OpenShift Online environment without modifying the application
 image.</p>
 </div>
 <div class="paragraph">
@@ -896,8 +898,8 @@ in Docker containers:</p>
 <p><strong>Set Image Metadata</strong></p>
 </div>
 <div class="paragraph">
-<p>Defining image metadata helps the Digital Garage better consume your Docker images,
-allowing the Digital Garage to create a better experience for developers using your
+<p>Defining image metadata helps OpenShift Online better consume your Docker images,
+allowing OpenShift Online to create a better experience for developers using your
 image. For example, you can add metadata to provide helpful descriptions of your
 image, or offer suggestions on other images that may also be needed.</p>
 </div>
@@ -917,7 +919,7 @@ in session replication.</p>
 </div>
 <div class="paragraph">
 <p>Consider how your instances accomplish this communication when running in
-the Digital Garage. Although pods can communicate directly with each other, their
+OpenShift Online. Although pods can communicate directly with each other, their
 IP addresses change anytime the pod starts, stops, or is moved. Therefore, it is
 important for your clustering scheme to be dynamic.</p>
 </div>
@@ -925,7 +927,7 @@ important for your clustering scheme to be dynamic.</p>
 <p><strong>Logging</strong></p>
 </div>
 <div class="paragraph">
-<p>It is best to send all logging to standard out. the Digital Garage collects
+<p>It is best to send all logging to standard out. OpenShift Online collects
 standard out from containers and sends it to the centralized logging service
 where it can be viewed. If you need to separate log content, prefix the output
 with an appropriate keyword, which makes it possible to filter the messages.</p>

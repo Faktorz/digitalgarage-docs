@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | CLI Reference | Get Started with the CLI</title>
+  <title>OpenShift Online | CLI Reference | Get Started with the CLI</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../cli_reference/index.html">CLI Reference</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -386,7 +388,7 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The the Digital Garage CLI exposes commands for managing your applications, as well as
+<p>The OpenShift Online CLI exposes commands for managing your applications, as well as
 lower level tools to interact with each component of your system. This topic
 guides you through getting started with the CLI, including installation and
 logging in to create your first project.</p>
@@ -465,7 +467,7 @@ To check your path, run:</p>
 <div class="paragraph">
 <p>The <code>oc login</code> command is the best way to initially set up the CLI,
 and it serves as the entry point for most users. The interactive flow helps you
-establish a session to an the Digital Garage server with the provided credentials. The
+establish a session to an OpenShift Online server with the provided credentials. The
 information is automatically saved in a <a href="#cli-configuration-files">CLI
 configuration file</a> that is then used for subsequent commands.</p>
 </div>
@@ -497,7 +499,7 @@ Welcome to {product-title}! See 'oc help' to get started.</pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The command prompts for the the Digital Garage server URL.</td>
+<td>The command prompts for the OpenShift Online server URL.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -589,7 +591,7 @@ project:</p>
 <div class="paragraph">
 <p>A CLI configuration file permanently stores <code>oc</code> options and contains a series
 of <a href="../architecture/additional_concepts/authentication.html#architecture-additional-concepts-authentication">authentication</a>
-mechanisms and the Digital Garage server connection information associated with
+mechanisms and OpenShift Online server connection information associated with
 nicknames.</p>
 </div>
 <div class="paragraph">
@@ -628,7 +630,7 @@ users:
 </div>
 <div class="paragraph">
 <p>CLI configuration files can be used to <a href="manage_cli_profiles.html#cli-reference-manage-cli-profiles">setup
-multiple CLI profiles</a> using various the Digital Garage servers, namespaces, and users so
+multiple CLI profiles</a> using various OpenShift Online servers, namespaces, and users so
 that you can switch easily between them. The CLI can support multiple
 configuration files; they are loaded at runtime and merged together along with
 any override options specified from the command line.</p>

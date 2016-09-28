@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Creating Images | Testing S2I Images</title>
+  <title>OpenShift Online | Creating Images | Testing S2I Images</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../creating_images/index.html">Creating Images</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -372,7 +374,7 @@
 <li><a href="#generating-scripts-and-tools">Generating Scripts and Tools</a></li>
 <li><a href="#testing-locally">Testing Locally</a></li>
 <li><a href="#basic-testing-workflow">Basic Testing Workflow</a></li>
-<li><a href="#using-openshift-build-for-automated-testing">Using the Digital Garage Build for Automated Testing</a></li>
+<li><a href="#using-openshift-build-for-automated-testing">Using OpenShift Online Build for Automated Testing</a></li>
 </ul>
 </div>
 </div>
@@ -382,7 +384,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>As an Source-to-Image (S2I) builder image author, you can test your S2I image
-locally and use the the Digital Garage build system for automated testing and
+locally and use the OpenShift Online build system for automated testing and
 continuous integration.</p>
 </div>
 <div class="admonitionblock note">
@@ -419,7 +421,7 @@ used by the commands was updated.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The standard location for the <strong><em>test</em></strong> script is <strong><em>test/run</em></strong>. This script is
-invoked by the the Digital Garage S2I image builder and it could be a simple Bash
+invoked by the OpenShift Online S2I image builder and it could be a simple Bash
 script or a static Go binary.</p>
 </div>
 <div class="paragraph">
@@ -578,11 +580,11 @@ working as expected.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="using-openshift-build-for-automated-testing"><a class="anchor" href="#using-openshift-build-for-automated-testing"></a>Using the Digital Garage Build for Automated Testing</h2>
+<h2 id="using-openshift-build-for-automated-testing"><a class="anchor" href="#using-openshift-build-for-automated-testing"></a>Using OpenShift Online Build for Automated Testing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Another way you can execute the S2I image tests is to use the the Digital Garage
-platform itself as a continuous integration system. The the Digital Garage platform
+<p>Another way you can execute the S2I image tests is to use the OpenShift Online
+platform itself as a continuous integration system. The OpenShift Online platform
 is capable of building Docker images and is highly customizable.</p>
 </div>
 <div class="paragraph">
@@ -645,7 +647,7 @@ spec:
 </div>
 </div>
 <div class="paragraph">
-<p>If your the Digital Garage instance is hosted on a public IP address, the build can
+<p>If your OpenShift Online instance is hosted on a public IP address, the build can
 be triggered each time you push into your S2I builder image GitHub repository.
 See <a href="../dev_guide/builds.html#webhook-triggers">webhook triggers</a> for more
 information.</p>

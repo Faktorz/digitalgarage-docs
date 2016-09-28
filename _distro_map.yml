@@ -20,7 +20,7 @@ openshift-online:
       name: 'Developer Preview'
       dir: online
 digital-garage:
-  name: the Digital Garage
+  name: Digital Garage
   author: the Digital Garage <dev@thedigitalgarage.io>
   site: commercial
   site_name: Documentation

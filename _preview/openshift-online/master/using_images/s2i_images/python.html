@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Using Images | Source-to-Image (S2I) | Python</title>
+  <title>OpenShift Online | Using Images | Source-to-Image (S2I) | Python</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../using_images/index.html">Using Images</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -380,12 +382,12 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>the Digital Garage provides
+<p>OpenShift Online provides
 <a href="../../architecture/core_concepts/builds_and_image_streams.html#source-build">S2I</a>
 enabled Python images for building and running Python applications.
 assembles your application source with any required dependencies to create a
 new image containing your Python application. This resulting image can be run
-either by the Digital Garage or by Docker.</p>
+either by OpenShift Online or by Docker.</p>
 </div>
 </div>
 </div>
@@ -393,7 +395,7 @@ either by the Digital Garage or by Docker.</p>
 <h2 id="versions"><a class="anchor" href="#versions"></a>Versions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Currently, the Digital Garage provides versions
+<p>Currently, OpenShift Online provides versions
 <a href="https://github.com/openshift/sti-python/tree/master/2.7">2.7</a>,
 <a href="https://github.com/openshift/sti-python/tree/master/3.3">3.3</a>,
 <a href="https://github.com/openshift/sti-python/tree/master/3.4">3.4</a>, and
@@ -445,14 +447,14 @@ $ docker pull centos/python-35-centos7</pre>
 <p>To use these images, you can either access them directly from these
 <a href="../../architecture/infrastructure_components/image_registry.html#architecture-infrastructure-components-image-registry">image
 registries</a>, or push them into your
-<a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">the Digital Garage
+<a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">OpenShift Online
 Docker registry</a>. Additionally, you can create an
 <a href="../../architecture/core_concepts/builds_and_image_streams.html#image-streams">image
 stream</a> that points to the image, either in your Docker registry or at the
-external location. Your the Digital Garage resources can then reference the
+external location. Your OpenShift Online resources can then reference the
 ImageStream. You can find
 <a href="https://github.com/openshift/origin/tree/master/examples/image-streams">example
-image stream definitions</a> for all the provided the Digital Garage images.</p>
+image stream definitions</a> for all the provided OpenShift Online images.</p>
 </div>
 </div>
 </div>

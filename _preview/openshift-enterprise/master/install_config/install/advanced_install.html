@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Installation and Configuration | Installing | Advanced Installation</title>
+  <title>OpenShift Container Platform | Installation and Configuration | Installing a Cluster | Advanced Installation</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,12 +53,12 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../install_config/index.html">Installation and Configuration</a>
       </li>
-      <li class="hidden-xs active"><a href="../../install_config/install/index.html">Installing</a></li>
+      <li class="hidden-xs active"><a href="../../install_config/install/planning.html">Installing a Cluster</a></li>
       <li class="hidden-xs active">
         Advanced Installation
       </li>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-down"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-down"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse in">
 
-                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -587,7 +626,7 @@
 <li><a href="#multiple-masters">Multiple Masters Examples</a></li>
 <li><a href="#running-the-advanced-installation">Running the Advanced Installation</a></li>
 <li><a href="#advanced-verifying-the-installation">Verifying the Installation</a></li>
-<li><a href="#uninstalling-advanced">Uninstalling OpenShift Enterprise</a>
+<li><a href="#uninstalling-advanced">Uninstalling OpenShift Container Platform</a>
 <ul class="sectlevel2">
 <li><a href="#uninstalling-nodes-advanced">Uninstalling Nodes</a></li>
 </ul>
@@ -602,23 +641,38 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For production environments, a reference configuration implemented using
+<p>A reference configuration implemented using
 <a href="http://www.ansible.com">Ansible</a> playbooks is available as the <em>advanced
-installation</em> method for installing OpenShift Enterprise hosts. Familiarity with Ansible is
+installation</em> method for installing a OpenShift Container Platform cluster. Familiarity with Ansible is
 assumed, however you can use this configuration as a reference to create your
 own implementation using the configuration management tool of your choosing.</p>
 </div>
 <div class="paragraph">
-<p>While RHEL Atomic Host is supported for running containerized OpenShift Enterprise
+<p>While RHEL Atomic Host is supported for running containerized OpenShift Container Platform
 services, the advanced installation method utilizes Ansible, which is not
 available in RHEL Atomic Host, and must therefore be run from
 a RHEL 7 system.
 The host initiating the installation does not need to be intended for inclusion
-in the OpenShift Enterprise cluster, but it can be.</p>
+in the OpenShift Container Platform cluster, but it can be.</p>
 </div>
 <div class="paragraph">
 <p>Alternatively, you can use the <a href="quick_install.html#install-config-install-quick-install">quick installation</a>
 method if you prefer an interactive installation experience.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To install OpenShift Container Platform as a stand-alone registry, see
+<a href="../../install_config/install/stand_alone_registry.html#install-config-installing-stand-alone-registry">Installing a Stand-alone Registry</a>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -626,7 +680,7 @@ method if you prefer an interactive installation experience.</p>
 <h2 id="advanced-before-you-begin"><a class="anchor" href="#advanced-before-you-begin"></a>Before You Begin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Before installing OpenShift Enterprise, you must first see the <a href="../../install_config/install/prerequisites.html#install-config-install-prerequisites">Prerequisites</a> topic to
+<p>Before installing OpenShift Container Platform, you must first see the <a href="../../install_config/install/prerequisites.html#install-config-install-prerequisites">Prerequisites</a> topic to
 prepare your hosts, which includes verifying system and environment requirements
 per component type and properly installing and configuring Docker. It also
 includes installing Ansible version 1.8.4 or later, as the advanced installation
@@ -634,7 +688,7 @@ method is based on Ansible playbooks and as such requires directly invoking
 Ansible.</p>
 </div>
 <div class="paragraph">
-<p>If you are interested in installing OpenShift Enterprise using the containerized method
+<p>If you are interested in installing OpenShift Container Platform using the containerized method
 (optional for RHEL but required for RHEL Atomic Host), see
 <a href="../../install_config/install/rpm_vs_containerized.html#install-config-install-rpm-vs-containerized">RPM vs
 Containerized</a> to ensure that you understand the differences between these
@@ -654,7 +708,7 @@ topic to <a href="#configuring-ansible">Configuring Ansible</a>.</p>
 <div class="paragraph">
 <p>The <strong><em>/etc/ansible/hosts</em></strong> file is Ansible&#8217;s inventory file for the playbook to
 use during the installation. The inventory file describes the configuration for
-your OpenShift Enterprise cluster. You must replace the default contents of the file
+your OpenShift Container Platform cluster. You must replace the default contents of the file
 with your desired configuration.</p>
 </div>
 <div class="paragraph">
@@ -725,14 +779,14 @@ installations, or for hosts on networks using a network address translation
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>containerized</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set to <strong>true</strong>, containerized OpenShift Enterprise services are run on target master and
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set to <strong>true</strong>, containerized OpenShift Container Platform services are run on target master and
 node hosts instead of installed using RPM packages. If set to <strong>false</strong> or unset,
 the default RPM method is used. RHEL Atomic Host requires the containerized
 method, and is automatically selected for you based on the detection of the
 <strong><em>/run/ostree-booted</em></strong> file. See
 <a href="../../install_config/install/rpm_vs_containerized.html#install-config-install-rpm-vs-containerized">RPM vs
 Containerized</a> for more details.
-Containerized installations are supported starting in OSE 3.1.1.</p></td>
+Containerized installations are supported starting in OpenShift Container Platform 3.1.1.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>openshift_node_labels</strong></code></p></td>
@@ -767,7 +821,7 @@ which may cause invalid configurations. Example usage:
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>openshift_docker_options</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This variable configures additional Docker options within <strong><em>/etc/sysconfig/docker</em></strong>, such as
-options used in <a href="../../install_config/install/prerequisites.html#managing-docker-container-logs">Managing Docker Container Logs</a>.
+options used in <a href="../../install_config/install/host_preparation.html#managing-docker-container-logs">Managing Docker Container Logs</a>.
 Example usage: <strong>"--log-driver json-file --log-opt max-size=1M --log-opt max-file=3"</strong>.</p></td>
 </tr>
 </tbody>
@@ -777,7 +831,7 @@ Example usage: <strong>"--log-driver json-file --log-opt max-size=1M --log-opt m
 <h3 id="configuring-cluster-variables"><a class="anchor" href="#configuring-cluster-variables"></a>Configuring Cluster Variables</h3>
 <div class="paragraph">
 <p>To assign environment variables during the Ansible install that apply more
-globally to your OpenShift Enterprise cluster overall, indicate the desired variables in
+globally to your OpenShift Container Platform cluster overall, indicate the desired variables in
 the <strong><em>/etc/ansible/hosts</em></strong> file on separate, single lines within the <strong>[OSEv3:vars]</strong>
 section. For example:</p>
 </div>
@@ -815,25 +869,25 @@ can be assigned cluster-wide:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ansible_ssh_user</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This variable sets the SSH user for the installer to use and defaults to
 <strong>root</strong>. This user should allow SSH-based authentication
-<a href="prerequisites.html#ensuring-host-access">without requiring a password</a>. If
+<a href="host_preparation.html#ensuring-host-access">without requiring a password</a>. If
 using SSH key-based authentication, then the key should be managed by an SSH
 agent.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ansible_sudo</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ansible_become</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If <code><strong>ansible_ssh_user</strong></code> is not <strong>root</strong>, this variable must be set to <strong>true</strong> and
 the user must be configured for passwordless <strong>sudo</strong>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>containerized</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set to <strong>true</strong>, containerized OpenShift Enterprise services are run on all target master
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set to <strong>true</strong>, containerized OpenShift Container Platform services are run on all target master
 and node hosts in the cluster instead of installed using RPM packages. If set to
 <strong>false</strong> or unset, the default RPM method is used. RHEL Atomic Host requires the
 containerized method, and is automatically selected for you based on the
 detection of the <strong><em>/run/ostree-booted</em></strong> file. See
 <a href="../../install_config/install/rpm_vs_containerized.html#install-config-install-rpm-vs-containerized">RPM vs
 Containerized</a> for more details.
-Containerized installations are supported starting in OSE 3.1.1.</p></td>
+Containerized installations are supported starting in OpenShift Container Platform 3.1.1.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>openshift_master_cluster_hostname</strong></code></p></td>
@@ -863,7 +917,7 @@ enables rolling, full system restarts and also works for single master clusters.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>os_sdn_network_plugin_name</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This variable configures which
-<a href="../../architecture/additional_concepts/sdn.html#architecture-additional-concepts-sdn">OpenShift Enterprise SDN plug-in</a> to
+<a href="../../architecture/additional_concepts/sdn.html#architecture-additional-concepts-sdn">OpenShift Container Platform SDN plug-in</a> to
 use for the pod network, which defaults to <strong>redhat/openshift-ovs-subnet</strong> for the
 standard SDN plug-in. Set the variable to <strong>redhat/openshift-ovs-multitenant</strong> to
 use the multitenant plug-in.</p></td>
@@ -903,7 +957,7 @@ options</a> in the OAuth configuration. See <a href="#advanced-install-session-o
 <td class="tableblock halign-left valign-top"><p class="tableblock">This variable configures the subnet in which
 <a href="../../architecture/core_concepts/pods_and_services.html#services">services</a>
 will be created within the
-<a href="../../architecture/additional_concepts/sdn.html#architecture-additional-concepts-sdn">OpenShift Enterprise SDN</a>. This
+<a href="../../architecture/additional_concepts/sdn.html#architecture-additional-concepts-sdn">OpenShift Container Platform SDN</a>. This
 network block should be a private block and must not conflict with any existing
 network blocks in your infrastructure to which pods, nodes, or the master may
 require access. Defaults to <strong>172.30.0.0/16</strong> and <strong>cannot</strong> be re-configured after
@@ -942,7 +996,7 @@ master configuration</a>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>osm_host_subnet_length</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This variable specifies the size of the per host subnet allocated for pod IPs
 by
-<a href="../../architecture/additional_concepts/sdn.html#sdn-design-on-masters">OpenShift Enterprise
+<a href="../../architecture/additional_concepts/sdn.html#sdn-design-on-masters">OpenShift Container Platform
 SDN</a>. Defaults to <strong>9</strong> which means that a subnet of size /23 is allocated to each
 host; for example, given the default 10.128.0.0/14 cluster network, this will
 allocate 10.128.0.0/23, 10.128.2.0/23, 10.128.4.0/23, and so on. This <strong>cannot</strong> be
@@ -950,17 +1004,17 @@ re-configured after deployment.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>openshift_docker_additional_registries</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OpenShift Enterprise adds the specified additional registry or registries to the
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenShift Container Platform adds the specified additional registry or registries to the
 Docker configuration.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>openshift_docker_insecure_registries</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OpenShift Enterprise adds the specified additional insecure registry or registries
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenShift Container Platform adds the specified additional insecure registry or registries
 to the Docker configuration.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>openshift_docker_blocked_registries</strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OpenShift Enterprise adds the specified blocked registry or registries to the Docker
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenShift Container Platform adds the specified blocked registry or registries to the Docker
 configuration.</p></td>
 </tr>
 <tr>
@@ -1031,7 +1085,7 @@ and the Docker daemon.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This variable is used to set the <code><strong>NO_PROXY</strong></code> environment variable for masters
 and the Docker daemon. This value should be set to a comma separated list of
 host names or wildcard host names that should not use the defined proxy. This
-list will be augmented with the list of all defined OpenShift Enterprise host names
+list will be augmented with the list of all defined OpenShift Container Platform host names
 by default.</p></td>
 </tr>
 <tr>
@@ -1145,7 +1199,7 @@ node1.example.com openshift_node_labels="{'region':'infra','zone':'default'}"</p
 <p>Any hosts you designate as masters during the installation process should also
 be configured as nodes by adding them to the <strong>[nodes]</strong> section so that the
 masters are configured as part of the
-<a href="../../architecture/additional_concepts/networking.html#openshift-sdn">OpenShift Enterprise
+<a href="../../architecture/additional_concepts/networking.html#openshift-sdn">OpenShift Container Platform
 SDN</a>.</p>
 </div>
 <div class="paragraph">
@@ -1226,7 +1280,7 @@ must be 16, 24, or 32 characters long, to select AES-128, AES-192, or AES-256:</
 <h3 id="advanced-install-custom-certificates"><a class="anchor" href="#advanced-install-custom-certificates"></a>Configuring Custom Certificates</h3>
 <div class="paragraph">
 <p><a href="../../install_config/certificate_customization.html#install-config-certificate-customization">Custom serving
-certificates</a> for the public host names of the OpenShift Enterprise API and
+certificates</a> for the public host names of the OpenShift Container Platform API and
 <a href="../../architecture/infrastructure_components/web_console.html#architecture-infrastructure-components-web-console">web console</a>
 can be deployed during an advanced installation and are configurable in the
 inventory file.</p>
@@ -1421,7 +1475,7 @@ openshift_hosted_metrics_storage_volume_size=10Gi</pre>
 <p><strong>Option C - Dynamic</strong></p>
 </div>
 <div class="paragraph">
-<p>Use the following variable if your OpenShift Enterprise environment supports dynamic
+<p>Use the following variable if your OpenShift Container Platform environment supports dynamic
 volume provisioning for your cloud platform:</p>
 </div>
 <div class="exampleblock">
@@ -1460,7 +1514,7 @@ not supported.</p>
 </tr>
 </table>
 </div>
-<div id="single-master-multi-node" class="paragraph">
+<div id="single-master-multi-node-ai" class="paragraph">
 <p><strong>Single Master and Multiple Nodes</strong></p>
 </div>
 <div class="paragraph">
@@ -1513,8 +1567,8 @@ nodes
 # SSH user, this user should allow ssh based auth without requiring a password
 ansible_ssh_user=root
 
-# If ansible_ssh_user is not root, ansible_sudo must be set to true
-#ansible_sudo=true
+# If ansible_ssh_user is not root, ansible_become must be set to true
+#ansible_become=true
 
 deployment_type=openshift-enterprise
 
@@ -1538,7 +1592,7 @@ node2.example.com openshift_node_labels="{'region': 'primary', 'zone': 'west'}"<
 <p>To use this example, modify the file to match your environment and
 specifications, and save it as <strong><em>/etc/ansible/hosts</em></strong>.</p>
 </div>
-<div id="single-master-multi-etcd-multi-node" class="paragraph">
+<div id="single-master-multi-etcd-multi-node-ai" class="paragraph">
 <p><strong>Single Master, Multiple etcd, and Multiple Nodes</strong></p>
 </div>
 <div class="paragraph">
@@ -1593,7 +1647,7 @@ hosts, and two
 <td class="content">
 <div class="paragraph">
 <p>When specifying multiple <strong>etcd</strong> hosts, external <strong>etcd</strong> is installed and
-configured. Clustering of OpenShift Enterprise&#8217;s embedded <strong>etcd</strong> is not supported.</p>
+configured. Clustering of OpenShift Container Platform&#8217;s embedded <strong>etcd</strong> is not supported.</p>
 </div>
 </td>
 </tr>
@@ -1684,7 +1738,7 @@ availability (HA) method:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>native</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Leverages the native HA master capabilities built into OpenShift Enterprise and can be
+<td class="tableblock halign-left valign-top"><p class="tableblock">Leverages the native HA master capabilities built into OpenShift Container Platform and can be
 combined with any load balancing solution. If a host is defined in the <strong>[lb]</strong>
 section of the inventory file, Ansible installs and configures HAProxy
 automatically as the load balancing solution. If no host is defined, it is
@@ -1710,10 +1764,31 @@ Infrastructure</a>.</p>
 </table>
 </div>
 <div class="paragraph">
+<p>Note the following when using the <code>native</code> HA method:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The advanced installation method does not currently support multiple HAProxy
+load balancers in an active-passive setup. See the
+<a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Load_Balancer_Administration/ch-lvs-overview-VSA.html">Load
+Balancer Administration documentation</a> for post-installation amendments.</p>
+</li>
+<li>
+<p>In a HAProxy setup, controller manager servers run as standalone processes.
+They elect their active leader with a lease stored in <strong>etcd</strong>. The lease
+expires after 30 seconds by default. If a failure happens on an active
+controller server, it will take up to this number of seconds to elect another
+leader. The interval can be configured with the <code><strong>osm_controller_lease_ttl</strong></code>
+variable.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p>To configure multiple masters, refer to the following section.</p>
 </div>
-<div id="multi-masters-using-native-ha" class="paragraph">
-<p><strong>Multiple Masters Using Native HA</strong></p>
+<div id="multi-masters-using-native-ha-ai" class="paragraph">
+<p><strong>Multiple Masters with Multiple etcd, and Using Native HA</strong></p>
 </div>
 <div class="paragraph">
 <p>The following describes an example environment for three
@@ -1778,7 +1853,7 @@ using the <code>native</code> HA method:</p>
 <td class="content">
 <div class="paragraph">
 <p>When specifying multiple <strong>etcd</strong> hosts, external <strong>etcd</strong> is installed and
-configured. Clustering of OpenShift Enterprise&#8217;s embedded <strong>etcd</strong> is not supported.</p>
+configured. Clustering of OpenShift Container Platform&#8217;s embedded <strong>etcd</strong> is not supported.</p>
 </div>
 </td>
 </tr>
@@ -1821,8 +1896,14 @@ openshift_master_cluster_method=native
 openshift_master_cluster_hostname=openshift-cluster.example.com
 openshift_master_cluster_public_hostname=openshift-cluster.example.com
 
+# apply updated node defaults
+openshift_node_kubelet_args={'pods-per-core': ['10'], 'max-pods': ['250'], 'image-gc-high-threshold': ['90'], 'image-gc-low-threshold': ['80']}
+
 # override the default controller lease ttl
 #osm_controller_lease_ttl=30
+
+# enable ntp on masters to ensure proper failover
+openshift_clock_enabled=true
 
 # host group for masters
 [masters]
@@ -1853,26 +1934,118 @@ node2.example.com openshift_node_labels="{'region': 'primary', 'zone': 'west'}"<
 <p>To use this example, modify the file to match your environment and
 specifications, and save it as <strong><em>/etc/ansible/hosts</em></strong>.</p>
 </div>
-<div class="paragraph">
-<p>Note the following when using the <code>native</code> HA method:</p>
+<div id="multi-masters-singel-etcd-using-native-ha" class="paragraph">
+<p><strong>Multiple Masters with Master and etcd on the Same Host, and Using Native HA</strong></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>The advanced installation method does not currently support multiple HAProxy
-load balancers in an active-passive setup. See the
-<a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Load_Balancer_Administration/ch-lvs-overview-VSA.html">Load
-Balancer Administration documentation</a> for post-installation amendments.</p>
-</li>
-<li>
-<p>In a HAProxy setup, controller manager servers run as standalone processes.
-They elect their active leader with a lease stored in <strong>etcd</strong>. The lease
-expires after 30 seconds by default. If a failure happens on an active
-controller server, it will take up to this number of seconds to elect another
-leader. The interval can be configured with the <code><strong>osm_controller_lease_ttl</strong></code>
-variable.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The following describes an example environment for three
+<a href="../../architecture/infrastructure_components/kubernetes_infrastructure.html#master">masters</a> with <a href="../../architecture/infrastructure_components/kubernetes_infrastructure.html#master"><strong>etcd</strong></a> on each host,
+one HAProxy load balancer, and two
+<a href="../../architecture/infrastructure_components/kubernetes_infrastructure.html#node">nodes</a>
+using the <code>native</code> HA method:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Host Name</th>
+<th class="tableblock halign-left valign-top">Infrastructure Component to Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>master1.example.com</strong></p></td>
+<td class="tableblock halign-left valign-middle" rowspan="3"><p class="tableblock">Master (clustered using native HA) and node with etcd on each host</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>master2.example.com</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>master3.example.com</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lb.example.com</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HAProxy to load balance API master endpoints</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>node1.example.com</strong></p></td>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">Node</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>node2.example.com</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You can see these example hosts present in the <strong>[masters]</strong>, <strong>[etcd]</strong>, <strong>[lb]</strong>,
+and <strong>[nodes]</strong> sections of the following example inventory file:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># Create an OSEv3 group that contains the master, nodes, etcd, and lb groups.
+# The lb group lets Ansible configure HAProxy as the load balancing solution.
+# Comment lb out if your load balancer is pre-configured.
+[OSEv3:children]
+masters
+nodes
+etcd
+lb
+
+# Set variables common for all OSEv3 hosts
+[OSEv3:vars]
+ansible_ssh_user=root
+deployment_type=openshift-enterprise
+
+# Uncomment the following to enable htpasswd authentication; defaults to
+# DenyAllPasswordIdentityProvider.
+#openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
+
+# Native high availbility cluster method with optional load balancer.
+# If no lb group is defined installer assumes that a load balancer has
+# been preconfigured. For installation the value of
+# openshift_master_cluster_hostname must resolve to the load balancer
+# or to one or all of the masters defined in the inventory if no load
+# balancer is present.
+openshift_master_cluster_method=native
+openshift_master_cluster_hostname=openshift-cluster.example.com
+openshift_master_cluster_public_hostname=openshift-cluster.example.com
+
+# override the default controller lease ttl
+#osm_controller_lease_ttl=30
+
+# host group for masters
+[masters]
+master1.example.com
+master2.example.com
+master3.example.com
+
+# host group for etcd
+[etcd]
+master1.example.com
+master2.example.com
+master3.example.com
+
+# Specify load balancer host
+[lb]
+lb.example.com
+
+# host group for nodes, includes region info
+[nodes]
+master[1:3].example.com openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+node1.example.com openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
+node2.example.com openshift_node_labels="{'region': 'primary', 'zone': 'west'}"</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To use this example, modify the file to match your environment and
+specifications, and save it as <strong><em>/etc/ansible/hosts</em></strong>.</p>
 </div>
 </div>
 </div>
@@ -1910,10 +2083,10 @@ following as root:</p>
 <div class="content">
 <pre class="nowrap"># oc get nodes
 
-NAME                      LABELS                                                                     STATUS
-master.example.com        kubernetes.io/hostname=master.example.com,region=infra,zone=default        Ready,SchedulingDisabled
-node1.example.com         kubernetes.io/hostname=node1.example.com,region=primary,zone=east          Ready
-node2.example.com         kubernetes.io/hostname=node2.example.com,region=primary,zone=west          Ready</pre>
+NAME                        STATUS                     AGE
+master.example.com          Ready,SchedulingDisabled   165d
+node1.example.com           Ready                      165d
+node2.example.com           Ready                      165d</pre>
 </div>
 </div>
 </div>
@@ -1982,11 +2155,11 @@ Configuration documentation</a>.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="uninstalling-advanced"><a class="anchor" href="#uninstalling-advanced"></a>Uninstalling OpenShift Enterprise</h2>
+<h2 id="uninstalling-advanced"><a class="anchor" href="#uninstalling-advanced"></a>Uninstalling OpenShift Container Platform</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can uninstall OpenShift Enterprise hosts in your cluster by running the
-<strong><em>uninstall.yml</em></strong> playbook. This playbook deletes OpenShift Enterprise content
+<p>You can uninstall OpenShift Container Platform hosts in your cluster by running the
+<strong><em>uninstall.yml</em></strong> playbook. This playbook deletes OpenShift Container Platform content
 installed by Ansible, including:</p>
 </div>
 <div class="ulist">
@@ -2011,8 +2184,8 @@ installed by Ansible, including:</p>
 <div class="paragraph">
 <p>The playbook will delete content for any hosts defined in the inventory file
 that you specify when running the playbook. If you want to uninstall
-OpenShift Enterprise across all hosts in your cluster, run the playbook using the
-inventory file you used when installing OpenShift Enterprise initially or ran most
+OpenShift Container Platform across all hosts in your cluster, run the playbook using the
+inventory file you used when installing OpenShift Container Platform initially or ran most
 recently:</p>
 </div>
 <div class="listingblock">
@@ -2098,7 +2271,7 @@ uninstalling.</td>
 </ol>
 </div>
 <div class="paragraph">
-<p>When the playbook completes, all OpenShift Enterprise content should be removed from
+<p>When the playbook completes, all OpenShift Container Platform content should be removed from
 any specified hosts.</p>
 </div>
 </div>
@@ -2143,7 +2316,7 @@ image. If you are using bare metal machines, run the following on all hosts:</p>
 <h2 id="what-s-next"><a class="anchor" href="#what-s-next"></a>What&#8217;s Next?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that you have a working OpenShift Enterprise instance, you can:</p>
+<p>Now that you have a working OpenShift Container Platform instance, you can:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2154,10 +2327,10 @@ authentication</a>; by default, authentication is set to
 All</a>.</p>
 </li>
 <li>
-<p>Deploy an <a href="docker_registry.html#install-config-install-docker-registry">integrated Docker registry</a>.</p>
+<p>Deploy an <a href="../registry/index.html#install-config-registry-overview">integrated Docker registry</a>.</p>
 </li>
 <li>
-<p>Deploy a <a href="deploy_router.html#install-config-install-deploy-router">router</a>.</p>
+<p>Deploy a <a href="../router/index.html#install-config-router-overview">router</a>.</p>
 </li>
 </ul>
 </div>

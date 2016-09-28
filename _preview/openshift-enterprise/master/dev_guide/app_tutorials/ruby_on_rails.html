@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Developer Guide | Application Tutorials | Ruby on Rails</title>
+  <title>OpenShift Container Platform | Developer Guide | Application Tutorials | Ruby on Rails</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../dev_guide/index.html">Developer Guide</a>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
 
-                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -574,11 +613,11 @@
 <li><a href="#writing-your-application">Writing Your Application</a>
 <ul class="sectlevel2">
 <li><a href="#creating-a-welcome-page">Creating a Welcome Page</a></li>
-<li><a href="#configuring-the-application-for-openshift-enterprise">Configuring the Application for OpenShift Enterprise</a></li>
+<li><a href="#configuring-the-application-for-openshift-container-platform">Configuring the Application for OpenShift Container Platform</a></li>
 <li><a href="#storing-your-application-in-git">Storing Your Application in Git</a></li>
 </ul>
 </li>
-<li><a href="#deploying-your-application-to-openshift-enterprise">Deploying Your Application to OpenShift Enterprise</a>
+<li><a href="#deploying-your-application-to-openshift-container-platform">Deploying Your Application to OpenShift Container Platform</a>
 <ul class="sectlevel2">
 <li><a href="#creating-the-database-service">Creating the Database Service</a></li>
 <li><a href="#creating-the-frontend-service">Creating the Frontend Service</a></li>
@@ -594,7 +633,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Ruby on Rails is a popular web framework written in <a href="https://github.com/openshift/mysql/tree/master/5.5">Ruby</a>.
-This guide covers using Rails 4 on OpenShift Enterprise.</p>
+This guide covers using Rails 4 on OpenShift Container Platform.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -605,7 +644,7 @@ This guide covers using Rails 4 on OpenShift Enterprise.</p>
 <td class="content">
 <div class="paragraph">
 <p>We strongly advise going through the whole tutorial to have an overview of all
-the steps necessary to run your application on the OpenShift Enterprise. If you
+the steps necessary to run your application on the OpenShift Container Platform. If you
 experience a problem try reading through the entire tutorial and then going back
 to your issue. It can also be useful to review your previous steps to ensure
 that all the steps were executed correctly.</p>
@@ -629,7 +668,7 @@ that all the steps were executed correctly.</p>
 <p>Basic Git knowledge</p>
 </li>
 <li>
-<p>Running instance of OpenShift Enterprise v3</p>
+<p>Running instance of OpenShift Container Platform v3</p>
 </li>
 </ul>
 </div>
@@ -639,10 +678,10 @@ that all the steps were executed correctly.</p>
 <h2 id="local-workstation-setup"><a class="anchor" href="#local-workstation-setup"></a>Local Workstation Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>First make sure that an instance of OpenShift Enterprise is running and is available.
+<p>First make sure that an instance of OpenShift Container Platform is running and is available.
 For
-more info on how to get OpenShift Enterprise up and running check the
-<a href="../../install_config/install/index.html#install-config-install-index">installation methods</a>.
+more info on how to get OpenShift Container Platform up and running check the
+<a href="../../install_config/index.html#install-config-index">installation methods</a>.
 Also make sure that your <a href="../../cli_reference/get_started_cli.html#cli-reference-get-started-cli"><code>oc</code> CLI
 client is installed</a> and the command is accessible from your command shell, so
 you can use it to
@@ -819,9 +858,9 @@ If you don&#8217;t see the page, check the logs that are output to your server t
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuring-the-application-for-openshift-enterprise"><a class="anchor" href="#configuring-the-application-for-openshift-enterprise"></a>Configuring the Application for OpenShift Enterprise</h3>
+<h3 id="configuring-the-application-for-openshift-container-platform"><a class="anchor" href="#configuring-the-application-for-openshift-container-platform"></a>Configuring the Application for OpenShift Container Platform</h3>
 <div class="paragraph">
-<p>In order to have your application communicating with the PostgreSQL database service that will be running in OpenShift Enterprise, you will need to edit the <code>default</code> section in your <code>config/database.yml</code> to use <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a>, which you will define later, upon the database service creation.</p>
+<p>In order to have your application communicating with the PostgreSQL database service that will be running in OpenShift Container Platform, you will need to edit the <code>default</code> section in your <code>config/database.yml</code> to use <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a>, which you will define later, upon the database service creation.</p>
 </div>
 <div class="paragraph">
 <p>The <code>default</code> section in your edited <code>config/database.yml</code> together with pre-defined variables should look like:</p>
@@ -852,10 +891,10 @@ default: &amp;default
 <div class="sect2">
 <h3 id="storing-your-application-in-git"><a class="anchor" href="#storing-your-application-in-git"></a>Storing Your Application in Git</h3>
 <div class="paragraph">
-<p>OpenShift Enterprise requires <a href="http://git-scm.com/">git</a>, if you don&#8217;t have it installed you will need to install it.</p>
+<p>OpenShift Container Platform requires <a href="http://git-scm.com/">git</a>, if you don&#8217;t have it installed you will need to install it.</p>
 </div>
 <div class="paragraph">
-<p>Building an application in OpenShift Enterprise usually requires that the source code be stored in a <a href="http://git-scm.com/">git</a> repository, so you will need to install <code>git</code> if you do not already have it.</p>
+<p>Building an application in OpenShift Container Platform usually requires that the source code be stored in a <a href="http://git-scm.com/">git</a> repository, so you will need to install <code>git</code> if you do not already have it.</p>
 </div>
 <div class="paragraph">
 <p>Make sure you are in your Rails application directory by running the <code>ls -1</code> command. The output of the command should look like:</p>
@@ -913,7 +952,7 @@ $ git commit -m "initial commit"</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="deploying-your-application-to-openshift-enterprise"><a class="anchor" href="#deploying-your-application-to-openshift-enterprise"></a>Deploying Your Application to OpenShift Enterprise</h2>
+<h2 id="deploying-your-application-to-openshift-container-platform"><a class="anchor" href="#deploying-your-application-to-openshift-container-platform"></a>Deploying Your Application to OpenShift Container Platform</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To deploy your Ruby on Rails application, create a new <a href="../projects.html#dev-guide-projects">Project</a> for the application:</p>
@@ -927,15 +966,15 @@ $ git commit -m "initial commit"</pre>
 <p>After creating the the <code>rails-app</code> <a href="../projects.html#dev-guide-projects">project</a>, you will be automatically switched to the new project namespace.</p>
 </div>
 <div class="paragraph">
-<p>Deploying your application in OpenShift Enterprise involves three steps:</p>
+<p>Deploying your application in OpenShift Container Platform involves three steps:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Creating a database <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a> from OpenShift Enterprise&#8217;s <a href="../../using_images/db_images/postgresql.html#using-images-db-images-postgresql">PostgreSQL image</a></p>
+<p>Creating a database <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a> from OpenShift Container Platform&#8217;s <a href="../../using_images/db_images/postgresql.html#using-images-db-images-postgresql">PostgreSQL image</a></p>
 </li>
 <li>
-<p>Creating a frontend <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a> from OpenShift Enterprise&#8217;s <a href="../../using_images/s2i_images/ruby.html#using-images-s2i-images-ruby">Ruby 2.0 builder image</a> and your Ruby on Rails source code, which we wire with the database service</p>
+<p>Creating a frontend <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a> from OpenShift Container Platform&#8217;s <a href="../../using_images/s2i_images/ruby.html#using-images-s2i-images-ruby">Ruby 2.0 builder image</a> and your Ruby on Rails source code, which we wire with the database service</p>
 </li>
 <li>
 <p>Creating a route for your application.</p>
@@ -1007,7 +1046,7 @@ $ git commit -m "initial commit"</pre>
 <div class="sect2">
 <h3 id="creating-the-frontend-service"><a class="anchor" href="#creating-the-frontend-service"></a>Creating the Frontend Service</h3>
 <div class="paragraph">
-<p>To bring your application to OpenShift Enterprise, you need to specify a repository in which your application lives, using once again the <a href="../new_app.html#dev-guide-new-app">oc new-app</a> command, in which you will need to specify database related <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a> we setup in the <a href="./ruby_on_rails.html#creating-the-database-service">Creating the Database Service</a>:</p>
+<p>To bring your application to OpenShift Container Platform, you need to specify a repository in which your application lives, using once again the <a href="../new_app.html#dev-guide-new-app">oc new-app</a> command, in which you will need to specify database related <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a> we setup in the <a href="./ruby_on_rails.html#creating-the-database-service">Creating the Database Service</a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1015,7 +1054,7 @@ $ git commit -m "initial commit"</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With this command, OpenShift Enterprise fetches the source code, sets up the Builder image, <a href="../builds.html#dev-guide-builds">builds</a> your application image, and deploys the newly created image together with the specified <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a>. The application is named <code>rails-app</code>.</p>
+<p>With this command, OpenShift Container Platform fetches the source code, sets up the Builder image, <a href="../builds.html#dev-guide-builds">builds</a> your application image, and deploys the newly created image together with the specified <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a>. The application is named <code>rails-app</code>.</p>
 </div>
 <div class="paragraph">
 <p>You can verify the environment variables have been added by viewing the JSON document of the <code>rails-app</code> <a href="../deployments.html#dev-guide-deployments">DeploymentConfig</a>:</p>
@@ -1055,7 +1094,7 @@ $ git commit -m "initial commit"</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Once the <a href="../builds.html#dev-guide-builds">build</a> is complete, you can look at the running <a href="../../architecture/core_concepts/pods_and_services.html#pods">pods</a> in OpenShift Enterprise</p>
+<p>Once the <a href="../builds.html#dev-guide-builds">build</a> is complete, you can look at the running <a href="../../architecture/core_concepts/pods_and_services.html#pods">pods</a> in OpenShift Container Platform</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1063,7 +1102,7 @@ $ git commit -m "initial commit"</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You should see a line starting with myapp-(#number)-(some hash) and that is your application running in OpenShift Enterprise.</p>
+<p>You should see a line starting with myapp-(#number)-(some hash) and that is your application running in OpenShift Container Platform.</p>
 </div>
 <div class="paragraph">
 <p>Before your application will be functional, you need to initialize the database by running the database migration script. There are two ways you can do this:</p>
@@ -1105,7 +1144,7 @@ $ git commit -m "initial commit"</pre>
 <div class="sect2">
 <h3 id="creating-a-route-for-your-application"><a class="anchor" href="#creating-a-route-for-your-application"></a>Creating a Route for Your Application</h3>
 <div class="paragraph">
-<p>To expose a service by giving it an externally-reachable hostname like <code>www.example.com</code> use OpenShift Enterprise <a href="../routes.html#dev-guide-routes">route</a>. In your case you need to expose the frontend service by typing:</p>
+<p>To expose a service by giving it an externally-reachable hostname like <code>www.example.com</code> use OpenShift Container Platform <a href="../routes.html#dev-guide-routes">route</a>. In your case you need to expose the frontend service by typing:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1120,7 +1159,7 @@ $ git commit -m "initial commit"</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>It&#8217;s the user&#8217;s responsibility to ensure the hostname they specify resolves into the IP address of the router. For more information, check the OpenShift Enterprise documentation on:</p>
+<p>It&#8217;s the user&#8217;s responsibility to ensure the hostname they specify resolves into the IP address of the router. For more information, check the OpenShift Container Platform documentation on:</p>
 </div>
 </td>
 </tr>

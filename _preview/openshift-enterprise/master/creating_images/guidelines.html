@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Creating Images | Guidelines</title>
+  <title>OpenShift Container Platform | Creating Images | Guidelines</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../creating_images/index.html">Creating Images</a>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
 
-                  <li><a class="" href="../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -567,7 +606,7 @@
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a></li>
 <li><a href="#general-docker-guidelines">General Docker Guidelines</a></li>
-<li><a href="#openshift-enterprise-specific-guidelines">OpenShift Enterprise-Specific Guidelines</a></li>
+<li><a href="#openshift-container-platform-specific-guidelines">OpenShift Container Platform-Specific Guidelines</a></li>
 <li><a href="#external-references">External References</a></li>
 </ul>
 </div>
@@ -577,11 +616,11 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When creating Docker images to run on OpenShift Enterprise there are a number of best
+<p>When creating Docker images to run on OpenShift Container Platform there are a number of best
 practices to consider as an image author to ensure a good experience for
 consumers of those images. Because images are intended to be immutable and used
 as-is, the following guidelines help ensure that your images are highly
-consumable and easy to use on OpenShift Enterprise.</p>
+consumable and easy to use on OpenShift Container Platform.</p>
 </div>
 </div>
 </div>
@@ -590,7 +629,7 @@ consumable and easy to use on OpenShift Enterprise.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following guidelines apply when creating a Docker image in general, and are
-independent of whether the images are used on OpenShift Enterprise.</p>
+independent of whether the images are used on OpenShift Container Platform.</p>
 </div>
 <div class="paragraph">
 <p><strong>Reuse Images</strong></p>
@@ -633,7 +672,7 @@ incompatible changes being introduced.</p>
 <p>We recommend that you do not start multiple services, such as a database and
 <strong>SSHD</strong>, inside one container. This is not necessary because containers
 are lightweight and can be easily linked together for orchestrating multiple
-processes. OpenShift Enterprise allows you to easily colocate and co-manage related images
+processes. OpenShift Container Platform allows you to easily colocate and co-manage related images
 by grouping them into a single pod.</p>
 </div>
 <div class="paragraph">
@@ -811,7 +850,7 @@ as what environment variable to set.</p>
 <div class="paragraph">
 <p>It is best to avoid running <strong>SSHD</strong> in your image. For accessing running
 containers, You can use the <code>docker exec</code> command locally to access containers
-that are running. Alternatively, you can use the OpenShift Enterprise tooling since
+that are running. Alternatively, you can use the OpenShift Container Platform tooling since
 it allows you to execute arbitrary commands in images that are running.
 Installing and running <strong>SSHD</strong> in your image opens up additional vectors for
 attack and requirements for security patching.</p>
@@ -821,7 +860,7 @@ attack and requirements for security patching.</p>
 </div>
 <div class="paragraph">
 <p>Images should use a <a href="https://docs.docker.com/reference/builder/#volume">Docker
-volume</a> for persistent data. This way OpenShift Enterprise mounts the network storage
+volume</a> for persistent data. This way OpenShift Container Platform mounts the network storage
 to the node running the container, and if the container moves to a new node the
 storage is reattached to that node. By using the volume for all persistent
 storage needs, the content is preserved even if the container is restarted or
@@ -843,7 +882,7 @@ running your image.</p>
 <div class="paragraph">
 <p>See the
 <a href="https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/user-guide/volumes.md">Kubernetes
-documentation</a> for more information on how volumes are used in OpenShift Enterprise.</p>
+documentation</a> for more information on how volumes are used in OpenShift Container Platform.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -878,11 +917,11 @@ volume cannot be used to share state in a cluster.
 </div>
 </div>
 <div class="sect1">
-<h2 id="openshift-enterprise-specific-guidelines"><a class="anchor" href="#openshift-enterprise-specific-guidelines"></a>OpenShift Enterprise-Specific Guidelines</h2>
+<h2 id="openshift-container-platform-specific-guidelines"><a class="anchor" href="#openshift-container-platform-specific-guidelines"></a>OpenShift Container Platform-Specific Guidelines</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following are guidelines that apply when creating Docker images specifically
-for use on OpenShift Enterprise.</p>
+for use on OpenShift Container Platform.</p>
 </div>
 <div class="paragraph">
 <p><strong>Enable Images for Source-To-Image (S2I)</strong></p>
@@ -908,7 +947,7 @@ defines S2I scripts for building various versions of Python applications.</p>
 <p><strong>Support Arbitrary User IDs</strong></p>
 </div>
 <div class="paragraph">
-<p>By default, OpenShift Enterprise runs containers using an arbitrarily assigned user
+<p>By default, OpenShift Container Platform runs containers using an arbitrarily assigned user
 ID. This provides additional security against processes escaping the container
 due to a container engine vulnerability and thereby achieves escalated
 permissions on the host node.</p>
@@ -993,7 +1032,7 @@ example you can add this line to your <strong><em>Dockerfile</em></strong> for y
 </div>
 <div class="paragraph">
 <p>Lastly, the final <strong>USER</strong> declaration in the <code>Dockerfile</code> should specify the user
-ID (numeric value) and not the user name. This allows OpenShift Enterprise to
+ID (numeric value) and not the user name. This allows OpenShift Container Platform to
 validate the authority the image is attempting to run with and prevent running
 images that are trying to run as root, because running containers as a
 privileged user exposes
@@ -1012,7 +1051,7 @@ from the parent image.</p>
 <div class="paragraph">
 <p>If your S2I image does not include a <strong>USER</strong> declaration with a numeric user,
 your builds will fail by default. In order to allow images that use either named
-users or the root (<strong>0</strong>) user to build in OpenShift Enterprise, you can
+users or the root (<strong>0</strong>) user to build in OpenShift Container Platform, you can
 <a href="../admin_guide/manage_scc.html#grant-access-to-the-privileged-scc">add the
 project&#8217;s builder service account</a>
 (<strong>system:serviceaccount:&lt;your-project&gt;:builder</strong>) to the <strong>privileged</strong> security
@@ -1030,7 +1069,7 @@ as any user</a>.</p>
 <div class="paragraph">
 <p>For cases where your image needs to communicate with a service provided by
 another image, such as a web front end image that needs to access a database
-image to store and retrieve data, your image should consume an OpenShift Enterprise
+image to store and retrieve data, your image should consume an OpenShift Container Platform
 <a href="../architecture/core_concepts/pods_and_services.html#services">service</a>.
 Services provide a static endpoint for access which does not change as
 containers are stopped, started, or moved. In addition, services provide load
@@ -1087,7 +1126,7 @@ messages on startup when the necessary volume or configuration is not present.</
 Communication</a> topic in that configuration like datasources should be defined in
 terms of environment variables that provide the service endpoint information.
 This allows an application to dynamically consume a datasource service that is
-defined in the OpenShift Enterprise environment without modifying the application
+defined in the OpenShift Container Platform environment without modifying the application
 image.</p>
 </div>
 <div class="paragraph">
@@ -1118,8 +1157,8 @@ in Docker containers:</p>
 <p><strong>Set Image Metadata</strong></p>
 </div>
 <div class="paragraph">
-<p>Defining image metadata helps OpenShift Enterprise better consume your Docker images,
-allowing OpenShift Enterprise to create a better experience for developers using your
+<p>Defining image metadata helps OpenShift Container Platform better consume your Docker images,
+allowing OpenShift Container Platform to create a better experience for developers using your
 image. For example, you can add metadata to provide helpful descriptions of your
 image, or offer suggestions on other images that may also be needed.</p>
 </div>
@@ -1139,7 +1178,7 @@ in session replication.</p>
 </div>
 <div class="paragraph">
 <p>Consider how your instances accomplish this communication when running in
-OpenShift Enterprise. Although pods can communicate directly with each other, their
+OpenShift Container Platform. Although pods can communicate directly with each other, their
 IP addresses change anytime the pod starts, stops, or is moved. Therefore, it is
 important for your clustering scheme to be dynamic.</p>
 </div>
@@ -1147,7 +1186,7 @@ important for your clustering scheme to be dynamic.</p>
 <p><strong>Logging</strong></p>
 </div>
 <div class="paragraph">
-<p>It is best to send all logging to standard out. OpenShift Enterprise collects
+<p>It is best to send all logging to standard out. OpenShift Container Platform collects
 standard out from containers and sends it to the centralized logging service
 where it can be viewed. If you need to separate log content, prefix the output
 with an appropriate keyword, which makes it possible to filter the messages.</p>

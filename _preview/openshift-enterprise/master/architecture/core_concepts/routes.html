@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Enterprise | Architecture | Core Concepts | Routes</title>
+  <title>OpenShift Container Platform | Architecture | Core Concepts | Routes</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">OpenShift Enterprise Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Container Platform Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../architecture/index.html">Architecture</a>
@@ -78,7 +78,9 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+
 <gcse:search defaultToRefinement="Enterprise Branch Build"></gcse:search>
+
 
         </div>
         <ul class="nav nav-sidebar">
@@ -97,9 +99,9 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../../release_notes/ose_3_2_release_notes.html">OpenShift Enterprise 3.2 Release Notes</a></li>
+            <li><a class="" href="../../release_notes/ocp_3_3_release_notes.html">OpenShift Container Platform 3.3 Release Notes</a></li>
             <li><a class="" href="../../release_notes/xpaas_release_notes.html">xPaaS Release Notes</a></li>
-            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -197,15 +199,17 @@
             <li><a class="" href="../../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
 
-                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
 
@@ -213,22 +217,54 @@
 
                   <li><a class="" href="../../install_config/install/disconnected_install.html">Disconnected Installation</a></li>
 
-                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -238,13 +274,14 @@
             <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-10">
-                <span id="sgSpan-4-10" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-13">
+                <span id="sgSpan-4-13" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-10" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-13" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -260,10 +297,10 @@
             <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -291,10 +328,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-16">
-                <span id="sgSpan-4-16" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-19">
+                <span id="sgSpan-4-19" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-16" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-19" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -317,6 +354,7 @@
             <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
             <li><a class="" href="../../install_config/revhistory_install_config.html">Revision History</a></li>
@@ -342,6 +380,7 @@
             <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -356,11 +395,9 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -437,10 +474,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -582,6 +621,7 @@
 <li><a href="#path-based-routes">Path Based Routes</a></li>
 <li><a href="#secured-routes">Secured Routes</a></li>
 <li><a href="#router-sharding">Router Sharding</a></li>
+<li><a href="#route-specific-timeouts">Route-specific Timeouts</a></li>
 </ul>
 </div>
 </div>
@@ -590,7 +630,7 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>An OpenShift Enterprise route exposes a
+<p>An OpenShift Container Platform route exposes a
 <a href="pods_and_services.html#services">service</a> at a
 host name, like <em>www.example.com</em>, so that external clients can reach it by
 name.</p>
@@ -599,8 +639,8 @@ name.</p>
 <p>DNS resolution for a host name is handled separately from routing.
 Your administrator may have configured a
 <a href="../../install_config/install/prerequisites.html#prereq-dns">DNS wildcard entry</a>
-that will resolve to the OpenShift Enterprise node that is running the
-OpenShift Enterprise router. If you are using a different host name you may
+that will resolve to the OpenShift Container Platform node that is running the
+OpenShift Container Platform router. If you are using a different host name you may
 need to modify its DNS records independently to resolve to the node that
 is running the router.</p>
 </div>
@@ -614,10 +654,10 @@ and an optional security configuration.</p>
 <h2 id="routers"><a class="anchor" href="#routers"></a>Routers</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>An OpenShift Enterprise administrator can deploy <em>routers</em> to nodes in an
-OpenShift Enterprise cluster, which enable routes
+<p>An OpenShift Container Platform administrator can deploy <em>routers</em> to nodes in an
+OpenShift Container Platform cluster, which enable routes
 <a href="../../dev_guide/routes.html#creating-routes">created by developers</a> to be
-used by external clients. The routing layer in OpenShift Enterprise is pluggable, and
+used by external clients. The routing layer in OpenShift Container Platform is pluggable, and
 two available <a href="#available-router-plug-ins">router plug-ins</a> are provided and
 supported by default.</p>
 </div>
@@ -629,7 +669,7 @@ supported by default.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>See the <a href="../../install_config/install/deploy_router.html#install-config-install-deploy-router">Installation and
+<p>See the <a href="../../install_config/router/index.html#install-config-router-overview">Installation and
 Configuration</a> guide for information on deploying a router.</p>
 </div>
 </td>
@@ -641,7 +681,7 @@ Configuration</a> guide for information on deploying a router.</p>
 <a href="pods_and_services.html#services">service</a> and the endpoints backing
 the service.
 When both router and service provide load balancing,
-OpenShift Enterprise uses the router load balancing.
+OpenShift Container Platform uses the router load balancing.
 A routers detects relevant changes in the IP addresses of its services,
 and adapts its configuration accordingly.
 This is useful for custom routers to communicate modifications
@@ -676,7 +716,7 @@ Sharding allows the operator to define multiple router groups.
 Each router in the group serves only a subset of traffic.</p>
 </div>
 <div class="paragraph">
-<p>OpenShift Enterprise routers provide external host name mapping and load balancing
+<p>OpenShift Container Platform routers provide external host name mapping and load balancing
 of <a href="pods_and_services.html#services">service</a> end points over protocols that
 pass distinguishing information directly to the router; the host name
 must be present in the protocol in order for the router to determine
@@ -762,9 +802,9 @@ template.</p>
 <h2 id="available-router-plug-ins"><a class="anchor" href="#available-router-plug-ins"></a>Available Router Plug-ins</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following router plug-ins are provided and supported in OpenShift Enterprise.
+<p>The following router plug-ins are provided and supported in OpenShift Container Platform.
 Instructions on deploying these routers are available in
-<a href="../../install_config/install/deploy_router.html#install-config-install-deploy-router">Deploying a Router</a>.</p>
+<a href="../../install_config/router/index.html#install-config-router-overview">Deploying a Router</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="haproxy-template-router"><a class="anchor" href="#haproxy-template-router"></a>HAProxy Template Router</h3>
@@ -821,8 +861,8 @@ addresses; because of the NAT configuration, the originating IP address
 <p><strong>Configuration Parameters</strong></p>
 </div>
 <div class="paragraph">
-<p>With all the items outlined in this section, you should be able to set enviroment
-variables on the 'deployment config' for the router to alter its configuration.</p>
+<p>With all the items outlined in this section, you should be able to set environment
+variables on the <strong>deployment config</strong> for the router to alter its configuration.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Router Configuration Parameters</caption>
@@ -838,35 +878,35 @@ variables on the 'deployment config' for the router to alter its configuration.<
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_SYSLOG_ADDRESS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_SYSLOG_ADDRESS</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">""</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_LOG_LEVEL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_LOG_LEVEL</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">warning</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_BACKEND_CHECK_INTERVAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_BACKEND_CHECK_INTERVAL</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5000ms</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_DEFAULT_CONNECT_TIMEOUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_DEFAULT_CONNECT_TIMEOUT</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5s</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XROUTER_DEFAULT_CLIENT_TIMEOUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>XROUTER_DEFAULT_CLIENT_TIMEOUT</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">30s</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_DEFAULT_SERVER_TIMEOUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_DEFAULT_SERVER_TIMEOUT</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">30s</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_DEFAULT_TUNNEL_TIMEOUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_DEFAULT_TUNNEL_TIMEOUT</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1h</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_SLOWLORIS_TIMEOUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_SLOWLORIS_TIMEOUT</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10s</p></td>
 </tr>
 </tbody>
@@ -940,7 +980,7 @@ the servername lookup).</p>
 impossible with passthrough routes because <strong>F5 BIG-IP®</strong> itself does not see the
 HTTP request, so it cannot examine the path. The same restriction applies to the
 template router; it is a technical limitation of passthrough encryption, not a
-technical limitation of OpenShift Enterprise.</p>
+technical limitation of OpenShift Container Platform.</p>
 </div>
 </td>
 </tr>
@@ -951,9 +991,9 @@ technical limitation of OpenShift Enterprise.</p>
 </div>
 <div class="paragraph">
 <p>Because <strong>F5 BIG-IP®</strong> is external to the
-<a href="../additional_concepts/sdn.html#architecture-additional-concepts-sdn">OpenShift Enterprise SDN</a>, a
+<a href="../additional_concepts/sdn.html#architecture-additional-concepts-sdn">OpenShift Container Platform SDN</a>, a
 cluster administrator must create a peer-to-peer tunnel between <strong>F5 BIG-IP®</strong> and
-a host that is on the SDN, typically an OpenShift Enterprise node host.
+a host that is on the SDN, typically an OpenShift Container Platform node host.
 This
 <a href="../../install_config/routing_from_edge_lb.html#establishing-a-tunnel-using-a-ramp-node"><em>ramp
 node</em></a> can be configured as
@@ -961,7 +1001,7 @@ node</em></a> can be configured as
 for pods so that it will not be doing anything except act as a gateway for the
 <strong>F5 BIG-IP®</strong> host.
 It is also possible to configure multiple such hosts and use
-the OpenShift Enterprise <strong>ipfailover</strong> feature for redundancy; the <strong>F5 BIG-IP®</strong> host would
+the OpenShift Container Platform <strong>ipfailover</strong> feature for redundancy; the <strong>F5 BIG-IP®</strong> host would
 then need to be configured to use the <strong>ipfailover</strong> VIP for its tunnel&#8217;s remote
 endpoint.</p>
 </div>
@@ -969,7 +1009,7 @@ endpoint.</p>
 <p><strong>F5 Integration Details</strong></p>
 </div>
 <div class="paragraph">
-<p>The operation of the F5 router is similar to that of the OpenShift Enterprise
+<p>The operation of the F5 router is similar to that of the OpenShift Container Platform
 <strong>routing-daemon</strong> used in earlier versions. Both use REST API calls to:</p>
 </div>
 <div class="ulist">
@@ -995,7 +1035,7 @@ endpoint.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>When a user creates or deletes a route on OpenShift Enterprise, the router creates a
+<p>When a user creates or deletes a route on OpenShift Container Platform, the router creates a
 pool to <strong>F5 BIG-IP®</strong> for the route (if no pool already exists) and adds a rule to, or
 deletes a rule from, the policy of the appropriate vserver: the HTTP vserver for
 non-TLS routes, or the HTTPS vserver for edge or re-encrypt routes. In the case
@@ -1022,7 +1062,7 @@ work the same way as other routes.</p>
 </div>
 </li>
 <li>
-<p>When a user creates a service on OpenShift Enterprise, the router adds a pool to <strong>F5
+<p>When a user creates a service on OpenShift Container Platform, the router adds a pool to <strong>F5
 BIG-IP®</strong> (if no pool already exists). As endpoints on that service are created
 and deleted, the router adds and removes corresponding pool members.</p>
 </li>
@@ -1039,7 +1079,7 @@ pool, the router deletes that pool.</p>
 <h2 id="route-hostnames"><a class="anchor" href="#route-hostnames"></a>Route Host Names</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In order for services to be exposed externally, an OpenShift Enterprise route allows
+<p>In order for services to be exposed externally, an OpenShift Container Platform route allows
 you to associate a service with an externally-reachable host name. This edge
 host name is then used to route traffic to the service.</p>
 </div>
@@ -1093,7 +1133,7 @@ added. If multiple routes with the same path are used, the oldest takes priority
 </div>
 <div class="paragraph">
 <p>If a host name is not provided as part of the route definition, then
-OpenShift Enterprise automatically generates one for you. The generated host name
+OpenShift Container Platform automatically generates one for you. The generated host name
 is of the form:</p>
 </div>
 <div class="listingblock">
@@ -1102,7 +1142,7 @@ is of the form:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The following example shows the OpenShift Enterprise-generated host name for the
+<p>The following example shows the OpenShift Container Platform-generated host name for the
 above configuration of a route without a host added to a namespace
 <strong>mynamespace</strong>:</p>
 </div>
@@ -1127,7 +1167,7 @@ above configuration of a route without a host added to a namespace
 </div>
 <div class="paragraph">
 <p>A cluster administrator can also
-<a href="../../install_config/install/deploy_router.html#customizing-the-default-routing-subdomain">customize
+<a href="../../install_config/router/default_haproxy_router.html#customizing-the-default-routing-subdomain">customize
 the suffix used as the default routing subdomain</a>
 for their environment.</p>
 </div>
@@ -1288,7 +1328,7 @@ provide a key and certificate(s).</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>TLS termination in OpenShift Enterprise relies on
+<p>TLS termination in OpenShift Container Platform relies on
 <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a> for serving
 custom certificates. Any non-SNI traffic received on port 443 is handled with
 TLS termination and a default certificate (which may not match the requested
@@ -1309,7 +1349,7 @@ termination.</p>
 <p>With edge termination, TLS termination occurs at the router, prior to proxying
 traffic to its destination. TLS certificates are served by the front end of the
 router, so they must be configured into the route, otherwise the
-<a href="../../install_config/install/deploy_router.html#using-wildcard-certificates">router&#8217;s
+<a href="../../install_config/router/default_haproxy_router.html#using-wildcard-certificates">router&#8217;s
 default certificate</a>
 will be used for TLS termination.</p>
 </div>
@@ -1567,7 +1607,7 @@ the destination. This field is required, but only for re-encryption.</td>
 <h2 id="router-sharding"><a class="anchor" href="#router-sharding"></a>Router Sharding</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In OpenShift Enterprise, each route can have any number of
+<p>In OpenShift Container Platform, each route can have any number of
 <a href="pods_and_services.html#labels">labels</a>
 in its <code>metadata</code> field.
 A router uses <em>selectors</em> (also known as a <em>selection expression</em>)
@@ -1576,9 +1616,9 @@ A selection expression can also involve
 labels on the route&#8217;s namespace.
 The selected routes form a <em>router shard</em>.
 You can
-<a href="../../install_config/install/deploy_router.html#creating-router-shards">create</a>
+<a href="../../install_config/router/default_haproxy_router.html#creating-router-shards">create</a>
 and
-<a href="../../install_config/install/deploy_router.html#modifying-router-shards">modify</a>
+<a href="../../install_config/router/default_haproxy_router.html#modifying-router-shards">modify</a>
 router shards independently from the routes, themselves.</p>
 </div>
 <div class="paragraph">
@@ -1649,7 +1689,7 @@ reserves the right to exist there indefinitely, even across restarts.</p>
 </div>
 <div class="paragraph">
 <p>During a green/blue deployment a route may be be selected in multiple routers.
-An OpenShift Enterprise application administrator may wish to bleed traffic from one
+An OpenShift Container Platform application administrator may wish to bleed traffic from one
 version of the application to another and then turn off the old version.</p>
 </div>
 <div class="paragraph">
@@ -1676,6 +1716,54 @@ determine when labels are added to a route. So if an older route claiming
 an existing host name is "re-labelled" to match the router&#8217;s selection
 criteria, it will replace the existing route based on the above mentioned
 resolution order (oldest route wins).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="route-specific-timeouts"><a class="anchor" href="#route-specific-timeouts"></a>Route-specific Timeouts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, a server-side timeout is set across all routes. It is possible to
+change that timeout using an annotation in the route configuration.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 11. A Route Setting Custom Timeout</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Route</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">annotations</span>:
+    <span style="color:#606">haproxy.router.openshift.io/timeout</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5500ms </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+[<span style="color:#F00;background-color:#FAA">...]</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Specifies the new timeout with HAProxy supported units (us, ms, s, m, h, d).
+If unit not provided, ms is the default.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Setting a server-side timeout value for passthrough routes too low can cause
+WebSocket connections to timeout frequently on that route.</p>
 </div>
 </td>
 </tr>

@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Origin | Installation and Configuration | Installing | Prerequisites</title>
+  <title>OpenShift Origin | Installation and Configuration | Installing a Cluster | Prerequisites</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -43,9 +43,11 @@
 </script>
 </head>
 <body>
-  <div class="navbar navbar-default navbar-openshift navbar-origin" role="navigation">
+  <div class="navbar navbar-default navbar-openshift" role="navigation">
   <div class="navbar-header">
-    <a class="navbar-brand origin" href="/"></a>
+    <a class="navbar-brand" href="/"></a>
+  </div>
+  <div class="navbar-collapse collapse">
   </div>
 </div>
   <div class="container">
@@ -62,7 +64,7 @@
       <li class="hidden-xs active">
         <a href="../../install_config/index.html">Installation and Configuration</a>
       </li>
-      <li class="hidden-xs active"><a href="../../install_config/install/index.html">Installing</a></li>
+      <li class="hidden-xs active"><a href="../../install_config/install/planning.html">Installing a Cluster</a></li>
       <li class="hidden-xs active">
         Prerequisites
       </li>
@@ -196,36 +198,70 @@
             <li><a class="" href="../../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-down"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-down"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse in">
 
-                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class=" active" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
 
                   <li><a class="" href="../../install_config/install/advanced_install.html">Advanced Installation</a></li>
 
-                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
               <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
 
+                  <li><a class="" href="../../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
                   <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -234,13 +270,14 @@
             <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-9">
-                <span id="sgSpan-4-9" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-12">
+                <span id="sgSpan-4-12" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-9" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-12" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -256,10 +293,10 @@
             <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-14">
-                <span id="sgSpan-4-14" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-17">
+                <span id="sgSpan-4-17" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-14" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-17" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -287,10 +324,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -313,6 +350,7 @@
             <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
       </ul>
@@ -326,6 +364,7 @@
             <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -339,11 +378,9 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -418,10 +455,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -535,12 +574,12 @@
 <div id="toc" class="toc">
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
-<li><a href="#overview">Overview</a></li>
-<li><a href="#prerequisites-planning">Planning</a></li>
 <li><a href="#system-requirements">System Requirements</a>
 <ul class="sectlevel2">
-<li><a href="#host-recommendations">Host Recommendations</a></li>
+<li><a href="#hardware">Minimum Hardware Requirements</a></li>
+<li><a href="#production-level-hardware-requirements">Production Level Hardware Requirements</a></li>
 <li><a href="#configuring-core-usage">Configuring Core Usage</a></li>
+<li><a href="#prereq-selinux">SELinux</a></li>
 <li><a href="#security-warning">Security Warning</a></li>
 </ul>
 </li>
@@ -550,56 +589,8 @@
 <li><a href="#prereq-network-access">Network Access</a></li>
 <li><a href="#prereq-git">Git Access</a></li>
 <li><a href="#prereq-persistent-storage">Persistent Storage</a></li>
-<li><a href="#prereq-selinux">SELinux</a></li>
 <li><a href="#prereq-cloud-provider-considerations">Cloud Provider Considerations</a></li>
 </ul>
-</li>
-<li><a href="#host-preparation">Host Preparation</a>
-<ul class="sectlevel2">
-<li><a href="#configuring-docker-storage">Configuring Docker Storage</a></li>
-<li><a href="#ensuring-host-access">Ensuring Host Access</a></li>
-</ul>
-</li>
-<li><a href="#what-s-next">What&#8217;s Next?</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>OpenShift Origin
-<a href="../../architecture/infrastructure_components/kubernetes_infrastructure.html#architecture-infrastructure-components-kubernetes-infrastructure">infrastructure
-components</a> can be installed across multiple hosts. The following sections
-outline the system requirements and instructions for preparing your environment
-and hosts before installing OpenShift Origin.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="prerequisites-planning"><a class="anchor" href="#prerequisites-planning"></a>Planning</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>For production environments, several factors that can influence installation
-must be considered prior to deployment:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>What is the number of required hosts required to run the cluster?</p>
-</li>
-<li>
-<p>How many pods are required in your cluster?</p>
-</li>
-<li>
-<p>Is <a href="../../admin_guide/high_availability.html#admin-guide-high-availability">high availability</a> required?
-High availability is recommended for fault tolerance.</p>
-</li>
-<li>
-<p>Which installation type do you want to use:
-<a href="../../install_config/install/rpm_vs_containerized.html#install-config-install-rpm-vs-containerized">RPM or
-containerized</a>?</p>
 </li>
 </ul>
 </div>
@@ -608,6 +599,12 @@ containerized</a>?</p>
 <div class="sect1">
 <h2 id="system-requirements"><a class="anchor" href="#system-requirements"></a>System Requirements</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The following sections identify the hardware specifications and system-level
+requirements of all hosts within your OpenShift Origin environment.</p>
+</div>
+<div class="sect2">
+<h3 id="hardware"><a class="anchor" href="#hardware"></a>Minimum Hardware Requirements</h3>
 <div class="paragraph">
 <p>The system requirements vary per host type:</p>
 </div>
@@ -626,16 +623,16 @@ containerized</a>?</p>
 </li>
 <li>
 <p>Base OS: Fedora 21, CentOS 7.1, or RHEL 7.1 or later with "Minimal"
-installation option, or RHEL Atomic Host 7.2.4 or later.</p>
+installation option, or RHEL Atomic Host 7.2.6 or later.</p>
 </li>
 <li>
 <p>2 vCPU.</p>
 </li>
 <li>
-<p>Minimum 8 GB RAM.</p>
+<p>Minimum 16 GB RAM.</p>
 </li>
 <li>
-<p>Minimum 30 GB hard disk space for the file system containing <strong><em>/var/</em></strong>.</p>
+<p>Minimum 40 GB hard disk space for the file system containing <strong><em>/var/</em></strong>.</p>
 </li>
 </ul>
 </div></div></td>
@@ -649,7 +646,7 @@ installation option, or RHEL Atomic Host 7.2.4 or later.</p>
 </li>
 <li>
 <p>Base OS: Fedora 21, CentOS 7.1, or RHEL 7.1 or later with "Minimal"
-installation option, or RHEL Atomic Host 7.2.4 or later.</p>
+installation option, or RHEL Atomic Host 7.2.6 or later.</p>
 </li>
 <li>
 <p>NetworkManager 1.0 or later</p>
@@ -670,6 +667,10 @@ below.</p>
 </li>
 </ul>
 </div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">External etcd Nodes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum 20 GB hard disk space for etcd data.</p></td>
 </tr>
 </tbody>
 </table>
@@ -705,22 +706,23 @@ this during or after installation.</p>
 </tr>
 </table>
 </div>
+</div>
 <div class="sect2">
-<h3 id="host-recommendations"><a class="anchor" href="#host-recommendations"></a>Host Recommendations</h3>
+<h3 id="production-level-hardware-requirements"><a class="anchor" href="#production-level-hardware-requirements"></a>Production Level Hardware Requirements</h3>
 <div class="paragraph">
-<p>The following apply to production environments. Test or sample environments will
-function with the minimum requirements.</p>
+<p>Test or sample environments function with the minimum requirements. For
+production environments, the following recommendations apply:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Master Hosts</dt>
 <dd>
-<p>In a highly-available OpenShift Origin cluster with external etcd, a master host
-should have 1 CPU core and 2.5 GB of memory, on top of the defaults in the table
+<p>In a highly available OpenShift Origin cluster with external etcd, a master host
+should have 1 CPU core and 1.5 GB of memory, on top of the defaults in the table
 above, for each 1000 pods. Therefore, the recommended size of master host in an
-OpenShift Origin cluster of 2000 pods would be 2 CPU cores and 5 GB of RAM, as
-well as the minimum requirements for a master host of 2 CPU cores and 8 GB of
-RAM.</p>
+OpenShift Origin cluster of 2000 pods would be 2 CPU cores and 3 GB of RAM, in
+addition to the minimum requirements for a master host of 2 CPU cores and 16 GB
+of RAM.</p>
 </dd>
 </dl>
 </div>
@@ -728,44 +730,34 @@ RAM.</p>
 <p>When planning an environment with multiple masters, a minimum of three etcd
 hosts as well as a load-balancer between the master hosts, is required.</p>
 </div>
+<div class="paragraph">
+<p>The OpenShift Origin master caches deserialized versions of resources
+aggressively to ease CPU load. However, in smaller clusters of less than 1000
+pods, this cache can waste a lot of memory for negligible CPU load reduction.
+The default cache size is 50000 entries, which, depending on the size of your
+resources, can grow to occupy 1 to 2 GB of memory.  This cache size can be
+reduced using the following setting the in <strong><em>master-config.yaml</em></strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">kubernetesMasterConfig:
+  apiServerArguments:
+    deserialization-cache-size:
+    - "1000"</pre>
+</div>
+</div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Node Hosts</dt>
 <dd>
 <p>The size of a node host depends on the expected size of its workload. As an
 OpenShift Origin cluster administrator, you will need to calculate the expected
-workload, then add about 10% for overhead. For production environments, allocate
-enough resources so that node host failure does not affect your maximum
+workload, then add about 10 per cent for overhead. For production environments,
+allocate enough resources so that node host failure does not affect your maximum
 capacity.</p>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>Use the above with the following table to plan the maximum loads for nodes and
-pods:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 66.6666%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Host</th>
-<th class="tableblock halign-left valign-top">Sizing Recommendation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum nodes per cluster</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">300</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum pods per nodes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">110</p></td>
-</tr>
-</tbody>
-</table>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -812,6 +804,29 @@ command when launching the server.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="prereq-selinux"><a class="anchor" href="#prereq-selinux"></a>SELinux</h3>
+<div class="paragraph">
+<p>Security-Enhanced Linux (SELinux) must be enabled on all of the servers before
+installing OpenShift Origin or the installer will fail. Also, configure
+<code><strong>SELINUXTYPE=targeted</strong></code> in the <strong><em>/etc/selinux/config</em></strong> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=enforcing
+# SELINUXTYPE= can take one of these three values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="security-warning"><a class="anchor" href="#security-warning"></a>Security Warning</h3>
 <div class="paragraph">
 <p>OpenShift Origin runs
@@ -849,39 +864,54 @@ has the ability to access.</p>
 <h2 id="envirornment-requirements"><a class="anchor" href="#envirornment-requirements"></a>Environment Requirements</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following must be set up in your environment before OpenShift Origin can be
-installed.</p>
+<p>The following section defines the requirements of the environment containing
+your OpenShift Origin configuration. This includes networking considerations
+and access to external services, such as a Git repository access, storage, and
+cloud infrastructure providers.</p>
 </div>
 <div class="sect2">
 <h3 id="prereq-dns"><a class="anchor" href="#prereq-dns"></a>DNS</h3>
 <div class="paragraph">
-<p>A fully functional DNS environment is a requirement for OpenShift Origin to work
-correctly. Adding entries into the <strong><em>/etc/hosts</em></strong> file is not enough, because
-that file is not copied into containers running on the platform.</p>
+<p>OpenShift Origin requires a fully functional DNS server in the environment. This
+is ideally a separate host running DNS software and can provide name resolution
+to hosts and containers running on the platform.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Adding entries into the <strong><em>/etc/hosts</em></strong> file on each host is not enough. This
+file is not copied into containers running on the platform.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>To configure the OpenShift Origin DNS environment:</p>
+<p>Key components of OpenShift Origin run themselves inside of containers and use
+the following process for name resolution:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><a href="../../install_config/install/prerequisites.html#dns-config-prereq">Complete DNS configuration</a></p>
+<p>By default, containers receive their DNS configuration
+file (<strong><em>/etc/resolv.conf</em></strong>) from their host.</p>
 </li>
 <li>
-<p>(Optionally) <a href="../../install_config/install/prerequisites.html#wildcard-dns-prereq">configure a wildcard for the router</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Key components of OpenShift Origin run themselves inside of containers. By
-default, these containers receive their <strong><em>/etc/resolv.conf</em></strong> DNS configuration
-file from their host. OpenShift Origin then inserts one DNS value into the pods
+<p>OpenShift Origin then inserts one DNS value into the pods
 (above the node&#8217;s nameserver values). That value is defined in the
 <strong><em>/etc/origin/node/node-config.yaml</em></strong> file by the <code><strong>dnsIP</strong></code> parameter, which by
 default is set to the address of the host node because the host is using
-<strong>dnsmasq</strong>. If the <code><strong>dnsIP</strong></code> parameter is omitted from the <strong><em>node-config.yaml</em></strong>
+<strong>dnsmasq</strong>.</p>
+</li>
+<li>
+<p>If the <code><strong>dnsIP</strong></code> parameter is omitted from the <strong><em>node-config.yaml</em></strong>
 file, then the value defaults to the kubernetes service IP, which is the first
 nameserver in the pod&#8217;s <strong><em>/etc/resolv.conf</em></strong> file.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>As of OpenShift Origin
@@ -931,7 +961,18 @@ the DNS IP addresses.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>If you do not have a properly functioning DNS environment, you could experience failure with:</p>
+<p>The following is an example set of DNS records for the <a href="planning.html#single-master-multi-node">Single Master and Multiple Nodes</a> scenario:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">master    A   10.64.33.100
+node1     A   10.64.33.101
+node2     A   10.64.33.102</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you do not have a properly functioning DNS environment, you could experience
+failure with:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -942,58 +983,30 @@ the DNS IP addresses.</p>
 <p>Deployment of the infrastructure containers (registry, routers)</p>
 </li>
 <li>
-<p>Access to the OpenShift Origin web console, because it is not accessible via IP address alone</p>
+<p>Access to the OpenShift Origin web console, because it is not accessible via
+IP address alone</p>
 </li>
 </ul>
 </div>
-<div id="dns-config-prereq" class="paragraph">
-<p><strong>Configuring a DNS Environment</strong></p>
-</div>
+<div class="sect3">
+<h4 id="dns-config-prereq"><a class="anchor" href="#dns-config-prereq"></a>Configuring Hosts to Use DNS</h4>
 <div class="paragraph">
-<p>To properly configure your DNS environment for OpenShift Origin:</p>
+<p>Make sure each host in your environment is configured to resolve hostnames from
+your DNS server. The configuration for hosts' DNS resolution depend on whether
+DHCP is enabled. If DHCP is:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Check the contents of <strong><em>/etc/resolv.conf</em></strong>:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ cat /etc/resolv.conf
-# Generated by NetworkManager
-search ose3.example.com
-nameserver 10.64.33.1
-# nameserver updated by /etc/NetworkManager/dispatcher.d/99-origin-dns.sh</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Ensure that the DNS servers listed in <strong><em>/etc/resolv.conf</em></strong> are able to resolve to the addresses of all the masters and nodes in your OpenShift Origin environment:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ dig &lt;node_hostname&gt; @&lt;IP_address&gt; +short</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ dig node1.ose3.example.com @10.64.33.1 +short
-10.64.33.156
-$ dig master.ose3.example.com @10.64.33.1 +short
-10.64.33.37</pre>
-</div>
-</div>
-</li>
-<li>
-<p>If DHCP is:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Disabled, then configure your network interface to be static, and add DNS nameservers to NetworkManager.</p>
+<p>Disabled, then configure your network interface to be static, and add DNS
+nameservers to NetworkManager.</p>
 </li>
 <li>
-<p>Enabled, then the NetworkManager dispatch script automatically configures DNS based on the DHCP configuration. Optionally, you can add a value to <code><strong>dnsIP</strong></code> in the <strong><em>node-config.yaml</em></strong> file to prepend the pod&#8217;s <strong><em>resolv.conf</em></strong> file. The second nameserver is then defined by the host&#8217;s first nameserver. By default, this will be the IP address of the node host.</p>
+<p>Enabled, then the NetworkManager dispatch script automatically configures DNS
+based on the DHCP configuration. Optionally, you can add a value to <code><strong>dnsIP</strong></code>
+in the <strong><em>node-config.yaml</em></strong> file to prepend the pod&#8217;s <strong><em>resolv.conf</em></strong> file. The
+second nameserver is then defined by the host&#8217;s first nameserver. By default,
+this will be the IP address of the node host.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1020,12 +1033,64 @@ service IP).</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>To properly check that hosts are correctly configured to resolved to your DNS
+server:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check the contents of <strong><em>/etc/resolv.conf</em></strong>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ cat /etc/resolv.conf
+# Generated by NetworkManager
+search example.com
+nameserver 10.64.33.1
+# nameserver updated by /etc/NetworkManager/dispatcher.d/99-origin-dns.sh</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, 10.64.33.1 is the address of our DNS server.</p>
+</div>
+</li>
+<li>
+<p>Test the DNS servers listed in <strong><em>/etc/resolv.conf</em></strong> are able to resolve to the addresses of all the masters and nodes in your OpenShift Origin environment:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ dig &lt;node_hostname&gt; @&lt;IP_address&gt; +short</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ dig master.example.com @10.64.33.1 +short
+10.64.33.100
+$ dig node1.example.com @10.64.33.1 +short
+10.64.33.101</pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
-<div id="wildcard-dns-prereq" class="paragraph">
-<p><strong>Configuring Wildcard DNS</strong></p>
 </div>
+<div class="sect3">
+<h4 id="dns-config-prereq-disabling-dnsmasq"><a class="anchor" href="#dns-config-prereq-disabling-dnsmasq"></a>Disabling dnsmasq</h4>
+<div class="paragraph">
+<p>If you want to disable <strong>dnsmasq</strong> (for example, if your <strong><em>/etc/resolv.conf</em></strong> is
+managed by a configuration tool other than NetworkManager), then set
+<code>openshift_use_dnsmasq</code> to <strong>false</strong> in the Ansible playbook.</p>
+</div>
+<div class="paragraph">
+<p>However, certain containers do not properly move to the next nameserver when the
+first issues <strong>SERVFAIL</strong>. Red Hat Enterprise Linux (RHEL)-based containers do not
+suffer from this, but certain versions of <strong>uclibc</strong> and <strong>musl</strong> do.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="wildcard-dns-prereq"><a class="anchor" href="#wildcard-dns-prereq"></a>Configuring a DNS Wildcard</h4>
 <div class="paragraph">
 <p>Optionally, configure a wildcard for the router to use, so that you do not need
 to update your DNS configuration when new routes are added.</p>
@@ -1066,20 +1131,6 @@ OpenShift Origin may fail to resolve host names properly.</p>
 </tr>
 </table>
 </div>
-<div id="run-dns-diagnostics" class="paragraph">
-<p><strong>Running Diagnostics</strong></p>
-</div>
-<div class="paragraph">
-<p>To explore your DNS setup and run specific DNS queries, you can use the <code>host</code> and <code>dig</code> commands (part of the <code>bind-utils</code> package). For example, you can query a specific DNS server, or check if recursion is involved.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ host `hostname`
-ose3-master.example.com has address 172.16.25.41
-
-$ dig ose3-node1.example.com  +short
-172.16.25.45</pre>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -1095,22 +1146,27 @@ IP</a> (VIP) during the installation process. The IP that you select must be
 routable between all of your nodes, and if you configure using a FQDN it should
 resolve on all nodes.</p>
 </div>
-<div id="prereq-networkmanager" class="paragraph">
-<p><strong>NetworkManager</strong></p>
-</div>
+<div class="sect3">
+<h4 id="prereq-networkmanager"><a class="anchor" href="#prereq-networkmanager"></a>NetworkManager</h4>
 <div class="paragraph">
 <p>NetworkManager, a program for providing detection and configuration for systems
 to automatically connect to the network, is required.</p>
 </div>
-<div id="required-ports" class="paragraph">
-<p><strong>Required Ports</strong></p>
+</div>
+<div class="sect3">
+<h4 id="required-ports"><a class="anchor" href="#required-ports"></a>Required Ports</h4>
+<div class="paragraph">
+<p>The OpenShift Origin installation automatically creates a set of internal
+firewall rules on each host using <code>iptables</code>. However, if your network
+configuration uses an external firewall, such as a hardware-based firewall, you
+must ensure infrastructure components can communicate with each other through
+specific ports that act as communication endpoints for certain processes or
+services.</p>
 </div>
 <div class="paragraph">
-<p>OpenShift Origin infrastructure components communicate with each other using
-ports, which are communication endpoints that are identifiable for specific
-processes or services. Ensure the following ports required by OpenShift Origin
-are open between hosts, for example if you have a firewall in your environment.
-Some ports are optional depending on your configuration and usage.</p>
+<p>Ensure the following ports required by OpenShift Origin are open on your network
+and configured to allow access between hosts. Some ports are optional depending
+on your configuration and usage.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Node to Node</caption>
@@ -1364,6 +1420,7 @@ connections, and is only required if you have clustered etcd.</p></td>
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="prereq-git"><a class="anchor" href="#prereq-git"></a>Git Access</h3>
 <div class="paragraph">
@@ -1399,33 +1456,13 @@ Persistent Disks</a>, and
 </div>
 </div>
 <div class="sect2">
-<h3 id="prereq-selinux"><a class="anchor" href="#prereq-selinux"></a>SELinux</h3>
-<div class="paragraph">
-<p>Security-Enhanced Linux (SELinux) must be enabled on all of the servers before
-installing OpenShift Origin or the installer will fail. Also, configure
-<code><strong>SELINUXTYPE=targeted</strong></code> in the <strong><em>/etc/selinux/config</em></strong> file:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># This file controls the state of SELinux on the system.
-# SELINUX= can take one of these three values:
-#     enforcing - SELinux security policy is enforced.
-#     permissive - SELinux prints warnings instead of enforcing.
-#     disabled - No SELinux policy is loaded.
-SELINUX=enforcing
-# SELINUXTYPE= can take one of these three values:
-#     targeted - Targeted processes are protected,
-#     minimum - Modification of targeted policy. Only selected processes are protected.
-#     mls - Multi Level Security protection.
-SELINUXTYPE=targeted</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
 <h3 id="prereq-cloud-provider-considerations"><a class="anchor" href="#prereq-cloud-provider-considerations"></a>Cloud Provider Considerations</h3>
 <div class="paragraph">
-<p><strong>Set up the Security Group</strong></p>
+<p>There are certain aspects to take into consideration if installing OpenShift Origin
+on a cloud provider.</p>
 </div>
+<div class="sect3">
+<h4 id="configuring-a-security-group"><a class="anchor" href="#configuring-a-security-group"></a>Configuring a Security Group</h4>
 <div class="paragraph">
 <p>When installing on AWS or OpenStack, ensure that you set up the appropriate
 security groups. These are some ports that you should have in your security
@@ -1518,9 +1555,9 @@ for more information.</p>
 <p>If configuring ELBs for load balancing the masters and/or routers, you also need
 to configure Ingress and Egress security groups for the ELBs appropriately.</p>
 </div>
-<div class="paragraph">
-<p><strong>Override Detected IP Addresses and Host Names</strong></p>
 </div>
+<div class="sect3">
+<h4 id="overriding-detected-ip-addresses-and-host-names"><a class="anchor" href="#overriding-detected-ip-addresses-and-host-names"></a>Overriding Detected IP Addresses and Host Names</h4>
 <div class="paragraph">
 <p>Some deployments require that the user override the detected host names and IP
 addresses for the hosts. To see the default values, run the <code><strong>openshift_facts</strong></code>
@@ -1716,9 +1753,9 @@ will no longer work.</p>
 <code><strong>DNS host names</strong></code> and <code><strong>DNS resolution</strong></code> enabled, and <code><strong>openshift_hostname</strong></code>
 should not be overridden.</p>
 </div>
-<div class="paragraph">
-<p><strong>Post-Installation Configuration for Cloud Providers</strong></p>
 </div>
+<div class="sect3">
+<h4 id="post-installation-configuration-for-cloud-providers"><a class="anchor" href="#post-installation-configuration-for-cloud-providers"></a>Post-Installation Configuration for Cloud Providers</h4>
 <div class="paragraph">
 <p>Following the installation process, you can configure OpenShift Origin for
 <a href="../../install_config/configuring_aws.html#install-config-configuring-aws">AWS</a>,
@@ -1726,700 +1763,6 @@ should not be overridden.</p>
 <a href="../../install_config/configuring_gce.html#install-config-configuring-gce">GCE</a>.</p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="host-preparation"><a class="anchor" href="#host-preparation"></a>Host Preparation</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Before installing OpenShift Origin, you must first prepare each host per the following.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If you are using <a href="https://www.vagrantup.com">Vagrant</a> to run OpenShift Origin, you
-do not need to go through the following sections. These changes are only
-necessary when you are setting up the host yourself. If you are using Vagrant,
-see the
-<a href="https://github.com/openshift/origin/blob/master/CONTRIBUTING.html#develop-on-virtual-machine-using-vagrant">Contributing
-Guide</a>, then you can skip directly to trying out the
-<a href="../../getting_started/administrators.html#try-it-out">sample applications</a>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Managing Packages</strong></p>
-</div>
-<div class="paragraph">
-<p>For RHEL 7 systems:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Install the following base packages:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># yum install wget git net-tools bind-utils iptables-services bridge-utils bash-completion</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Update the system to the latest packages:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># yum update</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>For RHEL Atomic Host 7 systems:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Ensure the host is up to date by upgrading to the latest Atomic tree if one is
-available:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># atomic host upgrade</pre>
-</div>
-</div>
-</li>
-<li>
-<p>After the upgrade is completed and prepared for the next boot, reboot the
-host:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># systemctl reboot</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div id="preparing-for-advanced-installations-origin" class="paragraph">
-<p><strong>Preparing for Advanced Installations</strong></p>
-</div>
-<div class="paragraph">
-<p>If you plan to use the
-<a href="../../install_config/install/advanced_install.html#install-config-install-advanced-install">advanced installation</a>
-method, you must install Ansible and clone the <strong>openshift-ansible</strong> repository from
-GitHub, which provides the required playbooks and configuration files.</p>
-</div>
-<div class="paragraph">
-<p>For convenience, the following steps are provided if you want to use EPEL as a
-package source for Ansible:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Install the EPEL repository:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># yum -y install \
-    https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Disable the EPEL repository globally so that it is not accidentally used during
-later steps of the installation:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># sed -i -e "s/^enabled=1/enabled=0/" /etc/yum.repos.d/epel.repo</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Install the packages for Ansible:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># yum -y --enablerepo=epel install ansible pyOpenSSL</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>To clone the <strong>openshift-ansible</strong> repository:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># cd ~
-# git clone https://github.com/openshift/openshift-ansible
-# cd openshift-ansible</pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Be sure to stay on the <strong>master</strong> branch of the <strong>openshift-ansible</strong> repository
-when running an advanced installation.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div id="installing-docker" class="paragraph">
-<p><strong>Installing Docker</strong></p>
-</div>
-<div class="paragraph">
-<p>At this point, you should install Docker on all master and node hosts. This
-allows you to configure your <a href="#configuring-docker-storage">Docker storage
-options</a> before installing OpenShift Origin.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>For RHEL 7 systems, install Docker 1.10:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># yum install docker</pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>On RHEL Atomic Host 7 systems, Docker should already be installed, configured,
-and running by default.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Edit the <strong><em>/etc/sysconfig/docker</em></strong> file and add <code>--insecure-registry
-172.30.0.0/16</code> to the <code><strong>OPTIONS</strong></code> parameter. For example:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16'</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If using the
-<a href="../../install_config/install/quick_install.html#install-config-install-quick-install">Quick
-Installation</a> method, you can easily script a complete installation from a
-kickstart or cloud-init setup, change the default configuration file:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' \
-/etc/sysconfig/docker</pre>
-</div>
-</div>
-<div id="NOTE" class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>The
-<a href="../../install_config/install/advanced_install.html#install-config-install-advanced-install">Advanced
-Installation</a> method automatically changes <strong><em>/etc/sysconfig/docker</em></strong>.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>--insecure-registry</code> option instructs the Docker daemon to trust any Docker
-registry on the indicated subnet, rather than
-<a href="docker_registry.html#securing-the-registry">requiring a certificate</a>.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>172.30.0.0/16 is the default value of the <code><strong>servicesSubnet</strong></code> variable in the
-<strong><em>master-config.yaml</em></strong> file. If this has changed, then the <code>--insecure-registry</code>
-value in the above step should be adjusted to match, as it is indicating the
-subnet for the registry to use. Note that the <code><strong>openshift_master_portal_net</strong></code>
-variable can be set in the Ansible inventory file and used during the
-<a href="advanced_install.html#configuring-ansible">advanced installation</a>
-method to modify the <code><strong>servicesSubnet</strong></code> variable.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>After the initial OpenShift Origin installation is complete, you can choose to
-<a href="docker_registry.html#securing-the-registry">secure the integrated Docker
-registry</a>, which involves adjusting the <code>--insecure-registry</code> option
-accordingly.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</li>
-</ol>
-</div>
-<div class="sect2">
-<h3 id="configuring-docker-storage"><a class="anchor" href="#configuring-docker-storage"></a>Configuring Docker Storage</h3>
-<div class="paragraph">
-<p>Docker containers and the images they are created from are stored in Docker&#8217;s
-storage back end. This storage is ephemeral and separate from any
-<a href="../../dev_guide/persistent_volumes.html#dev-guide-persistent-volumes">persistent storage</a> allocated to
-meet the needs of your applications.</p>
-</div>
-<div class="paragraph">
-<p><strong>For RHEL Atomic Host</strong></p>
-</div>
-<div class="paragraph">
-<p>The default storage back end for Docker on RHEL Atomic Host is a thin pool
-logical volume, which is supported for production environments. You must ensure
-that enough space is allocated for this volume per the Docker storage
-requirements mentioned in
-<a href="../../install_config/install/prerequisites.html#system-requirements">System
-Requirements</a>.</p>
-</div>
-<div class="paragraph">
-<p>If you do not have enough allocated, see
-<a href="https://access.redhat.com/documentation/en/red-hat-enterprise-linux-atomic-host/version-7/getting-started-with-containers/#managing_storage_with_docker_formatted_containers">Managing
-Storage with Docker Formatted Containers</a> for details on using
-<strong>docker-storage-setup</strong> and basic instructions on storage management in RHEL
-Atomic Host.</p>
-</div>
-<div class="paragraph">
-<p><strong>For RHEL</strong></p>
-</div>
-<div class="paragraph">
-<p>The default storage back end for Docker on RHEL 7 is a thin pool on loopback
-devices, which is not supported for production use and only appropriate for
-proof of concept environments. For production environments, you must create a
-thin pool logical volume and re-configure Docker to use that volume.</p>
-</div>
-<div class="paragraph">
-<p>You can use the <strong>docker-storage-setup</strong> script included with Docker to create a
-thin pool device and configure Docker&#8217;s storage driver. This can be done after
-installing Docker and should be done before creating images or containers. The
-script reads configuration options from the
-<strong><em>/etc/sysconfig/docker-storage-setup</em></strong> file and supports three options for
-creating the logical volume:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Option A)</strong> Use an additional block device.</p>
-</li>
-<li>
-<p><strong>Option B)</strong> Use an existing, specified volume group.</p>
-</li>
-<li>
-<p><strong>Option C)</strong> Use the remaining free space from the volume group where your root
-file system is located.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Option A is the most robust option, however it requires adding an additional
-block device to your host before configuring Docker storage. Options B and C
-both require leaving free space available when provisioning your host.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Create the <strong>docker-pool</strong> volume using one of the following three options:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a id="docker-storage-a"></a><strong>Option A) Use an additional block device.</strong></p>
-<div class="paragraph">
-<p>In <strong><em>/etc/sysconfig/docker-storage-setup</em></strong>, set <strong>DEVS</strong> to the path of the block
-device you wish to use. Set <strong>VG</strong> to the volume group name you wish to create;
-<strong>docker-vg</strong> is a reasonable choice. For example:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># cat &lt;&lt;EOF &gt; /etc/sysconfig/docker-storage-setup
-DEVS=/dev/vdc
-VG=docker-vg
-EOF</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Then run <strong>docker-storage-setup</strong> and review the output to ensure the
-<strong>docker-pool</strong> volume was created:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># docker-storage-setup                                                                                                                                                                                                                                [5/1868]
-0
-Checking that no-one is using this disk right now ...
-OK
-
-Disk /dev/vdc: 31207 cylinders, 16 heads, 63 sectors/track
-sfdisk:  /dev/vdc: unrecognized partition table type
-
-Old situation:
-sfdisk: No partitions found
-
-New situation:
-Units: sectors of 512 bytes, counting from 0
-
-   Device Boot    Start       End   #sectors  Id  System
-/dev/vdc1          2048  31457279   31455232  8e  Linux LVM
-/dev/vdc2             0         -          0   0  Empty
-/dev/vdc3             0         -          0   0  Empty
-/dev/vdc4             0         -          0   0  Empty
-Warning: partition 1 does not start at a cylinder boundary
-Warning: partition 1 does not end at a cylinder boundary
-Warning: no primary partition is marked bootable (active)
-This does not matter for LILO, but the DOS MBR will not boot this disk.
-Successfully wrote the new partition table
-
-Re-reading the partition table ...
-
-If you created or changed a DOS partition, /dev/foo7, say, then use dd(1)
-to zero the first 512 bytes:  dd if=/dev/zero of=/dev/foo7 bs=512 count=1
-(See fdisk(8).)
-  Physical volume "/dev/vdc1" successfully created
-  Volume group "docker-vg" successfully created
-  Rounding up size to full physical extent 16.00 MiB
-  Logical volume "docker-poolmeta" created.
-  Logical volume "docker-pool" created.
-  WARNING: Converting logical volume docker-vg/docker-pool and docker-vg/docker-poolmeta to pool's data and metadata volumes.
-  THIS WILL DESTROY CONTENT OF LOGICAL VOLUME (filesystem etc.)
-  Converted docker-vg/docker-pool to thin pool.
-  Logical volume "docker-pool" changed.</pre>
-</div>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p><a id="docker-storage-b"></a><strong>Option B) Use an existing, specified volume group.</strong></p>
-<div class="paragraph">
-<p>In <strong><em>/etc/sysconfig/docker-storage-setup</em></strong>, set <strong>VG</strong> to the desired volume
-group. For example:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># cat &lt;&lt;EOF &gt; /etc/sysconfig/docker-storage-setup
-VG=docker-vg
-EOF</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Then run <strong>docker-storage-setup</strong> and review the output to ensure the
-<strong>docker-pool</strong> volume was created:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># docker-storage-setup
-  Rounding up size to full physical extent 16.00 MiB
-  Logical volume "docker-poolmeta" created.
-  Logical volume "docker-pool" created.
-  WARNING: Converting logical volume docker-vg/docker-pool and docker-vg/docker-poolmeta to pool's data and metadata volumes.
-  THIS WILL DESTROY CONTENT OF LOGICAL VOLUME (filesystem etc.)
-  Converted docker-vg/docker-pool to thin pool.
-  Logical volume "docker-pool" changed.</pre>
-</div>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p><a id="docker-storage-c"></a><strong>Option C) Use the remaining free space from the volume
-group where your root file system is located.</strong></p>
-<div class="paragraph">
-<p>Verify that the volume group where your root file system resides has the desired
-free space, then run <strong>docker-storage-setup</strong> and review the output to ensure the
-<strong>docker-pool</strong> volume was created:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># docker-storage-setup
-  Rounding up size to full physical extent 32.00 MiB
-  Logical volume "docker-poolmeta" created.
-  Logical volume "docker-pool" created.
-  WARNING: Converting logical volume rhel/docker-pool and rhel/docker-poolmeta to pool's data and metadata volumes.
-  THIS WILL DESTROY CONTENT OF LOGICAL VOLUME (filesystem etc.)
-  Converted rhel/docker-pool to thin pool.
-  Logical volume "docker-pool" changed.</pre>
-</div>
-</div>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Verify your configuration. You should have a <strong>dm.thinpooldev</strong> value in the
-<strong><em>/etc/sysconfig/docker-storage</em></strong> file and a <strong>docker-pool</strong> logical volume:</p>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># cat /etc/sysconfig/docker-storage
-DOCKER_STORAGE_OPTIONS=--storage-opt dm.fs=xfs --storage-opt
-dm.thinpooldev=/dev/mapper/docker--vg-docker--pool
-
-# lvs
-  LV          VG   Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
-  docker-pool rhel twi-a-t---  9.29g             0.00   0.12</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Before using Docker or OpenShift Origin, verify that the <strong>docker-pool</strong> logical volume
-is large enough to meet your needs. The <strong>docker-pool</strong> volume should be 60% of
-the available volume group and will grow to fill the volume group via LVM
-monitoring.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Check if Docker is running:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># systemctl is-active docker</pre>
-</div>
-</div>
-</li>
-<li>
-<p>If Docker has not yet been started on the host, enable and start the service:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># systemctl enable docker
-# systemctl start docker</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If Docker is already running, re-initialize Docker:</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This will destroy any Docker containers or images currently on the host.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># systemctl stop docker
-# rm -rf /var/lib/docker/*
-# systemctl restart docker</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If there is any content in <strong><em>/var/lib/docker/</em></strong>, it must be deleted. Files
-will be present if Docker has been used prior to the installation of OpenShift Origin.</p>
-</div>
-</li>
-</ol>
-</div>
-<div id="reconfiguring-docker-storage" class="paragraph">
-<p><strong>Reconfiguring Docker Storage</strong></p>
-</div>
-<div class="paragraph">
-<p>Should you need to reconfigure Docker storage after having created the
-<strong>docker-pool</strong>, you should first remove the <strong>docker-pool</strong> logical volume. If you
-are using a dedicated volume group, you should also remove the volume group and
-any associated physical volumes before reconfiguring <strong>docker-storage-setup</strong>
-according to the instructions above.</p>
-</div>
-<div class="paragraph">
-<p>See
-<a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Logical_Volume_Manager_Administration/index.html">Logical
-Volume Manager Administration</a> for more detailed information on LVM management.</p>
-</div>
-<div id="managing-docker-container-logs" class="paragraph">
-<p><strong>Managing Docker Container Logs</strong></p>
-</div>
-<div class="paragraph">
-<p>Sometimes a container&#8217;s log file (the
-<strong><em>/var/lib/docker/containers/&lt;hash&gt;/&lt;hash&gt;-json.log</em></strong> file on the node where the
-container is running) can increase to a problematic size. You can manage this by
-configuring Docker&#8217;s <code>json-file</code> logging driver to restrict the size and number
-of log files.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Option</th>
-<th class="tableblock halign-left valign-top">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--log-opt max-size</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the size at which a new log file is created.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--log-opt max-file</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the file on each host to configure the options.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>For example, to set the maximum file size to 1MB and always keep the last three
-log files, edit the <strong><em>/etc/sysconfig/docker</em></strong> file to configure <code>max-size=1M</code>
-and <code>max-file=3</code>:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">OPTIONS='--insecure-registry=172.30.0.0/16 --selinux-enabled --log-opt max-size=1M --log-opt max-file=3'</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Next, restart the Docker service:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># systemctl restart docker</pre>
-</div>
-</div>
-<div id="viewing-available-container-logs" class="paragraph">
-<p><strong>Viewing Available Container Logs</strong></p>
-</div>
-<div class="paragraph">
-<p>Container logs are stored in the <strong><em>/var/lib/docker/containers/&lt;hash&gt;/</em></strong>
-directory on the node where the container is running. For example:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># ls -lh /var/lib/docker/containers/f088349cceac173305d3e2c2e4790051799efe363842fdab5732f51f5b001fd8/
-total 2.6M
--rw-r--r--. 1 root root 5.6K Nov 24 00:12 config.json
--rw-r--r--. 1 root root 649K Nov 24 00:15 f088349cceac173305d3e2c2e4790051799efe363842fdab5732f51f5b001fd8-json.log
--rw-r--r--. 1 root root 977K Nov 24 00:15 f088349cceac173305d3e2c2e4790051799efe363842fdab5732f51f5b001fd8-json.log.1
--rw-r--r--. 1 root root 977K Nov 24 00:15 f088349cceac173305d3e2c2e4790051799efe363842fdab5732f51f5b001fd8-json.log.2
--rw-r--r--. 1 root root 1.3K Nov 24 00:12 hostconfig.json
-drwx------. 2 root root    6 Nov 24 00:12 secrets</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>See Docker&#8217;s documentation for additional information on how to
-<a href="http://docs.docker.com/engine/reference/logging/overview/#the-json-file-options">Configure
-Logging Drivers</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="ensuring-host-access"><a class="anchor" href="#ensuring-host-access"></a>Ensuring Host Access</h3>
-<div class="paragraph">
-<p>The <a href="advanced_install.html#install-config-install-advanced-install">advanced installation</a> method requires
-a user that has access to all hosts. If you want to run the installer as a
-non-root user, passwordless <strong>sudo</strong> rights must be configured on each destination
-host.</p>
-</div>
-<div class="paragraph">
-<p>For example, you can generate an SSH key on the host where you will invoke the
-installation process:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># ssh-keygen</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Do <strong>not</strong> use a password.</p>
-</div>
-<div class="paragraph">
-<p>An easy way to distribute your SSH keys is by using a <code>bash</code> loop:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"># for host in master.example.com \
-    node1.example.com \
-    node2.example.com; \
-    do ssh-copy-id -i ~/.ssh/id_rsa.pub $host; \
-    done</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Modify the host names in the above command according to your configuration.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="what-s-next"><a class="anchor" href="#what-s-next"></a>What&#8217;s Next?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>If you are interested in installing OpenShift Origin using the containerized method
-(optional for Fedora, CentOS, or RHEL but required for RHEL Atomic Host), see
-<a href="../../install_config/install/rpm_vs_containerized.html#install-config-install-rpm-vs-containerized">RPM vs
-Containerized</a> to ensure that you understand the differences between the
-installation methods. Then continue with your chosen installation method.</p>
-</div>
-<div class="paragraph">
-<p>If you came here from <a href="../../getting_started/administrators.html#getting-started-administrators">Getting
-Started for Administrators</a>, you can now continue there by choosing an
-<a href="../../getting_started/administrators.html#installation-methods">installation
-method</a>. Alternatively, you can install OpenShift Origin using the
-<a href="advanced_install.html#install-config-install-advanced-install">advanced installation</a> method.</p>
 </div>
 </div>
 </div>

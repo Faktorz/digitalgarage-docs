@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Architecture | Additional Concepts | Authentication</title>
+  <title>OpenShift Online | Architecture | Additional Concepts | Authentication</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../architecture/index.html">Architecture</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -384,7 +386,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>The authentication layer identifies the user associated with requests to the
-the Digital Garage API. The authorization layer then uses information about the
+OpenShift Online API. The authorization layer then uses information about the
 requesting user to determine if the request should be allowed.</p>
 </div>
 </div>
@@ -393,9 +395,9 @@ requesting user to determine if the request should be allowed.</p>
 <h2 id="users-and-groups"><a class="anchor" href="#users-and-groups"></a>Users and Groups</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A <em>user</em> in the Digital Garage is an entity that can make requests to the
-the Digital Garage API. Typically, this represents the account of a developer or
-administrator that is interacting with the Digital Garage.</p>
+<p>A <em>user</em> in OpenShift Online is an entity that can make requests to the
+OpenShift Online API. Typically, this represents the account of a developer or
+administrator that is interacting with OpenShift Online.</p>
 </div>
 <div class="paragraph">
 <p>A user can be assigned to one or more <em>groups</em>, each of which represent a
@@ -446,7 +448,7 @@ particular:</p>
 <h2 id="api-authentication"><a class="anchor" href="#api-authentication"></a>API Authentication</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Requests to the the Digital Garage API are authenticated using the following
+<p>Requests to the OpenShift Online API are authenticated using the following
 methods:</p>
 </div>
 <div class="dlist">
@@ -456,7 +458,7 @@ methods:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Obtained from the the Digital Garage OAuth server using the <code><em>&lt;master&gt;</em>/oauth/authorize</code> and <code><em>&lt;master&gt;</em>/oauth/token</code> endpoints.</p>
+<p>Obtained from the OpenShift Online OAuth server using the <code><em>&lt;master&gt;</em>/oauth/authorize</code> and <code><em>&lt;master&gt;</em>/oauth/token</code> endpoints.</p>
 </li>
 <li>
 <p>Sent as an <code>Authorization: Bearer&#8230;&#8203;</code> header or an <code>access_token=&#8230;&#8203;</code> query parameter</p>
@@ -499,7 +501,7 @@ and examples.</p>
 <div class="sect2">
 <h3 id="authentication-impersonation"><a class="anchor" href="#authentication-impersonation"></a>Impersonation</h3>
 <div class="paragraph">
-<p>A request to the the Digital Garage API may include an <strong>Impersonate-User</strong> header,
+<p>A request to the OpenShift Online API may include an <strong>Impersonate-User</strong> header,
 which indicates that the requester wants to have the request handled as though
 it came from the specified user. This can be done on the command line by passing
 the <code><strong>--as=username</strong></code> flag.</p>
@@ -508,7 +510,7 @@ the <code><strong>--as=username</strong></code> flag.</p>
 <p>Before User A is allowed to impersonate User B, User A is first authenticated.
 Then, an authorization check occurs to ensure that User A is allowed to
 impersonate the user named User B. If User A is requesting to impersonate a
-service account (<strong>system:serviceaccount:namespace:name</strong>), the Digital Garage checks
+service account (<strong>system:serviceaccount:namespace:name</strong>), OpenShift Online checks
 to ensure that User A can impersonate the <strong>serviceaccount</strong> named <strong>name</strong> in
 <strong>namespace</strong>. If the check fails, the request fails with a 403 (Forbidden) error
 code.</p>
@@ -530,7 +532,7 @@ can add a user to that group using <code>oadm policy add-cluster-role-to-user su
 <h2 id="oauth"><a class="anchor" href="#oauth"></a>OAuth</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The the Digital Garage master includes a built-in OAuth server. Users obtain OAuth
+<p>The OpenShift Online master includes a built-in OAuth server. Users obtain OAuth
 access tokens to authenticate themselves to the API.</p>
 </div>
 <div class="paragraph">
@@ -541,13 +543,13 @@ to determine the identity of the person making the request.</p>
 <p>It then determines what user that identity maps to, creates an access token for
 that user, and returns the token for use.</p>
 </div>
-<div class="paragraph">
-<p><strong>OAuth Clients</strong> <a id="oauth-clients"></a></p>
+<div id="oauth-clients" class="paragraph">
+<p><strong>OAuth Clients</strong></p>
 </div>
 <div class="paragraph">
 <p>Every request for an OAuth token must specify the OAuth client that will
 receive and use the token. The following OAuth clients are automatically created
-when starting the the Digital Garage API:</p>
+when starting the OpenShift Online API:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -616,41 +618,71 @@ grantMethod: prompt <i class="conum" data-value="4"></i><b>(4)</b>
 </div>
 </div>
 </div>
-<div class="paragraph">
+<div id="service-accounts-as-oauth-clients" class="paragraph">
 <p><strong>Service Accounts as OAuth Clients</strong></p>
 </div>
 <div class="paragraph">
-<p>A <a href="../../admin_guide/service_accounts.html">service account</a> can be used as a
-constrained form of OAuth client. Service accounts can only request a subset of
-scopes that allow access to some basic user information and role-based power
-inside of the service account&#8217;s own namespace. Specifically, <code>user:info</code>,
-<code>user:check-access</code>, and <code>role:&lt;anyrole&gt;:&lt;serviceaccount.namespace only&gt;[:!]</code>.</p>
+<p>A
+<a href="../../admin_guide/service_accounts.html#admin-guide-service-accounts">service
+account</a> can be used as a constrained form of OAuth client. Service accounts can
+only request a subset of
+<a href="../../admin_guide/scoped_tokens.html#admin-guide-scoped-tokens">scopes</a> that
+allow access to some basic user information and role-based power inside of the
+service account&#8217;s own namespace:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>client_id</code> value is <code>system:serviceaccount:&lt;namespace&gt;:&lt;serviceaccount.name&gt;</code>.</p>
+<p><code>user:info</code></p>
 </li>
 <li>
-<p><code>client_secret</code> can be any of the API tokens for that service account. For example, <code>oc sa get-token serviceaccount.name</code>.</p>
+<p><code>user:check-access</code></p>
 </li>
 <li>
-<p><code>redirect_uris</code> come from any annotation on the service account that has the prefix <code>serviceaccounts.openshift.io/oauth-redirecturi.</code>. For example, <code>serviceaccounts.openshift.io/oauth-redirecturi.one</code>.</p>
+<p><code>role:&lt;any role&gt;:&lt;serviceaccount namespace&gt;</code></p>
 </li>
 <li>
-<p>To get <code>WWW-Authenticate</code> challenges, set the <code>serviceaccounts.openshift.io/oauth-want-challenges</code> to <code>true</code>.</p>
+<p><code>role:&lt;any role&gt;:&lt;serviceaccount namespace&gt;:!</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Integrations</strong> <a id="integrations"></a></p>
+<p>When using a service account as an OAuth client:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>client_id</code> is <code>system:serviceaccount:&lt;serviceaccount namespace&gt;:&lt;serviceaccount name&gt;</code>.</p>
+</li>
+<li>
+<p><code>client_secret</code> can be any of the API tokens for that service account. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc sa get-token &lt;serviceaccount name&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>redirect_uri</code> must match an annotation on the service account that has the
+prefix <code>serviceaccounts.openshift.io/oauth-redirecturi</code>. For example,
+<code>serviceaccounts.openshift.io/oauth-redirecturi.one</code>.</p>
+</li>
+<li>
+<p>To get <code>WWW-Authenticate</code> challenges, set an
+<code>serviceaccounts.openshift.io/oauth-want-challenges</code> annotation on the service
+account to <strong>true</strong>.</p>
+</li>
+</ul>
+</div>
+<div id="integrations" class="paragraph">
+<p><strong>Integrations</strong></p>
 </div>
 <div class="paragraph">
 <p>All requests for OAuth tokens involve a request to <code><em>&lt;master&gt;</em>/oauth/authorize</code>.
 Most authentication integrations place an authenticating proxy in front of this
-endpoint, or configure the Digital Garage to validate credentials against a backing
+endpoint, or configure OpenShift Online to validate credentials against a backing
 Requests to <code><em>&lt;master&gt;</em>/oauth/authorize</code> can come from user-agents that cannot
-display interactive login pages, such as the CLI. Therefore, the Digital Garage
+display interactive login pages, such as the CLI. Therefore, OpenShift Online
 supports authenticating using a <code>WWW-Authenticate</code> challenge in addition to
 interactive login flows.</p>
 </div>
@@ -674,7 +706,7 @@ to receive Basic <code>WWW-Authenticate</code> challenges should set this header
 </div>
 <div class="paragraph">
 <p>If the authenticating proxy cannot support <code>WWW-Authenticate</code> challenges, or if
-the Digital Garage is configured to use an identity provider that does not support
+OpenShift Online is configured to use an identity provider that does not support
 WWW-Authenticate challenges, users can visit <code><em>&lt;master&gt;</em>/oauth/token/request</code>
 using a browser to obtain an access token manually.</p>
 </div>
@@ -682,14 +714,20 @@ using a browser to obtain an access token manually.</p>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p><strong>Obtaining OAuth Tokens</strong> <a id="obtaining-oauth-tokens"></a></p>
+<div id="obtaining-oauth-tokens" class="paragraph">
+<p><strong>Obtaining OAuth Tokens</strong></p>
 </div>
 <div class="paragraph">
-<p>The OAuth server supports standard <a href="https://tools.ietf.org/html/rfc6749#section-4.1">authorization code grant</a> and the <a href="https://tools.ietf.org/html/rfc6749#section-4.2">implicit grant</a> OAuth authorization flows.</p>
+<p>The OAuth server supports standard
+<a href="https://tools.ietf.org/html/rfc6749#section-4.1">authorization code grant</a>
+and the <a href="https://tools.ietf.org/html/rfc6749#section-4.2">implicit grant</a>
+OAuth authorization flows.</p>
 </div>
 <div class="paragraph">
-<p>When requesting an OAuth token using the implicit grant flow (<code>response_type=token</code>) with a client_id configured to request WWW-Authenticate challenges (like <code>openshift-challenging-client</code>), these are the possible server responses from <code>/oauth/authorize</code>, and how they should be handled:</p>
+<p>When requesting an OAuth token using the implicit grant flow
+(<code>response_type=token</code>) with a client_id configured to request <code>WWW-Authenticate
+challenges</code> (like <code>openshift-challenging-client</code>), these are the possible server
+responses from <code>/oauth/authorize</code>, and how they should be handled:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>

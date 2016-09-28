@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Architecture | Additional Concepts | Networking</title>
+  <title>OpenShift Online | Architecture | Additional Concepts | Networking</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../architecture/index.html">Architecture</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -367,8 +369,8 @@
 <div id="toc" class="toc">
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
-<li><a href="#the-digital-garage-dns">the Digital Garage DNS</a></li>
-<li><a href="#openshift-sdn">the Digital Garage SDN</a></li>
+<li><a href="#openshift-online-dns">OpenShift Online DNS</a></li>
+<li><a href="#openshift-sdn">OpenShift Online SDN</a></li>
 </ul>
 </div>
 <div class="paragraph">
@@ -389,7 +391,7 @@ with the service.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="the-digital-garage-dns"><a class="anchor" href="#the-digital-garage-dns"></a>the Digital Garage DNS</h2>
+<h2 id="openshift-online-dns"><a class="anchor" href="#openshift-online-dns"></a>OpenShift Online DNS</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If you are running multiple
@@ -405,8 +407,8 @@ generated properly and that it can be provided to the frontend pods as an
 environment variable.</p>
 </div>
 <div class="paragraph">
-<p>For this reason, the Digital Garage has a built-in DNS so that the services can be
-reached by the service DNS as well as the service IP/port. the Digital Garage
+<p>For this reason, OpenShift Online has a built-in DNS so that the services can be
+reached by the service DNS as well as the service IP/port. OpenShift Online
 supports split DNS by running
 <a href="https://github.com/skynetservices/skydns">SkyDNS</a> on the master that answers
 DNS queries for services. The master listens to port 53 by default.</p>
@@ -480,18 +482,18 @@ round-robin between each pod.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="openshift-sdn"><a class="anchor" href="#openshift-sdn"></a>the Digital Garage SDN</h2>
+<h2 id="openshift-sdn"><a class="anchor" href="#openshift-sdn"></a>OpenShift Online SDN</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>the Digital Garage deploys a software-defined networking (SDN) approach for connecting
-pods in an the Digital Garage cluster. The the Digital Garage SDN connects all
+<p>OpenShift Online deploys a software-defined networking (SDN) approach for connecting
+pods in an OpenShift Online cluster. The OpenShift Online SDN connects all
 pods across all node hosts, providing a unified cluster network.</p>
 </div>
 <div class="paragraph">
-<p>the Digital Garage SDN is automatically installed and configured as part of the
+<p>OpenShift Online SDN is automatically installed and configured as part of the
 Ansible-based installation procedure.  Further administration should not
 be required; however, <a href="sdn.html#architecture-additional-concepts-sdn">further details on the design and
-operation of the Digital Garage SDN</a> are provided for those who are curious or
+operation of OpenShift Online SDN</a> are provided for those who are curious or
 need to troubleshoot problems.</p>
 </div>
 </div>

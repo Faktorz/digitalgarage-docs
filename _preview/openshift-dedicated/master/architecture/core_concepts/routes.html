@@ -98,8 +98,8 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../../release_notes/osd_3_2_release_notes.html">OpenShift Dedicated 3.2 Release Notes</a></li>
-            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../../release_notes/osd_3_3_release_notes.html">OpenShift Dedicated Release Notes</a></li>
+            <li><a class="" href="../../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -196,6 +196,7 @@
       <ul id="topicGroup4" class="collapse  list-unstyled">
             <li><a class="" href="../../admin_guide/index.html">Overview</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -209,8 +210,7 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/osd_build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
             <li><a class="" href="../../admin_guide/osd_configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/backup_restore.html">Backup and Restore</a></li>
             <li><a class="" href="../../admin_guide/revhistory_admin_guide.html">Revision History</a></li>
       </ul>
@@ -283,10 +283,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -428,6 +430,7 @@
 <li><a href="#path-based-routes">Path Based Routes</a></li>
 <li><a href="#secured-routes">Secured Routes</a></li>
 <li><a href="#router-sharding">Router Sharding</a></li>
+<li><a href="#route-specific-timeouts">Route-specific Timeouts</a></li>
 </ul>
 </div>
 </div>
@@ -650,8 +653,8 @@ addresses; because of the NAT configuration, the originating IP address
 <p><strong>Configuration Parameters</strong></p>
 </div>
 <div class="paragraph">
-<p>With all the items outlined in this section, you should be able to set enviroment
-variables on the 'deployment config' for the router to alter its configuration.</p>
+<p>With all the items outlined in this section, you should be able to set environment
+variables on the <strong>deployment config</strong> for the router to alter its configuration.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Router Configuration Parameters</caption>
@@ -667,35 +670,35 @@ variables on the 'deployment config' for the router to alter its configuration.<
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_SYSLOG_ADDRESS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_SYSLOG_ADDRESS</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">""</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_LOG_LEVEL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_LOG_LEVEL</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">warning</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_BACKEND_CHECK_INTERVAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_BACKEND_CHECK_INTERVAL</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5000ms</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_DEFAULT_CONNECT_TIMEOUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_DEFAULT_CONNECT_TIMEOUT</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5s</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XROUTER_DEFAULT_CLIENT_TIMEOUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>XROUTER_DEFAULT_CLIENT_TIMEOUT</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">30s</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_DEFAULT_SERVER_TIMEOUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_DEFAULT_SERVER_TIMEOUT</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">30s</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_DEFAULT_TUNNEL_TIMEOUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_DEFAULT_TUNNEL_TIMEOUT</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1h</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ROUTER_SLOWLORIS_TIMEOUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>ROUTER_SLOWLORIS_TIMEOUT</strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10s</p></td>
 </tr>
 </tbody>
@@ -1479,6 +1482,54 @@ determine when labels are added to a route. So if an older route claiming
 an existing host name is "re-labelled" to match the router&#8217;s selection
 criteria, it will replace the existing route based on the above mentioned
 resolution order (oldest route wins).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="route-specific-timeouts"><a class="anchor" href="#route-specific-timeouts"></a>Route-specific Timeouts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, a server-side timeout is set across all routes. It is possible to
+change that timeout using an annotation in the route configuration.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 11. A Route Setting Custom Timeout</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Route</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">annotations</span>:
+    <span style="color:#606">haproxy.router.openshift.io/timeout</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5500ms </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+[<span style="color:#F00;background-color:#FAA">...]</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Specifies the new timeout with HAProxy supported units (us, ms, s, m, h, d).
+If unit not provided, ms is the default.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Setting a server-side timeout value for passthrough routes too low can cause
+WebSocket connections to timeout frequently on that route.</p>
 </div>
 </td>
 </tr>

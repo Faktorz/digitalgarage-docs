@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Getting Started | Basic Walkthrough</title>
+  <title>OpenShift Online | Getting Started | Basic Walkthrough</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../getting_started/index.html">Getting Started</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -383,12 +385,12 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>This guide demonstrates how to get a simple project up and running on
-the Digital Garage Developer Preview.</p>
+OpenShift Online Developer Preview.</p>
 </div>
 <div class="paragraph">
 <p>The following sections guide you through creating a project that contains a
 sample Node.js application that will serve a welcome page and the current hit
-count (stored in a database) using the the Digital Garage  web console. This
+count (stored in a database) using the OpenShift Online  web console. This
 involves creating two <a href="../architecture/core_concepts/pods_and_services.html#pods">pods</a>:</p>
 </div>
 <div class="ulist">
@@ -407,7 +409,7 @@ involves creating two <a href="../architecture/core_concepts/pods_and_services.h
 <div class="ulist">
 <ul>
 <li>
-<p>a free the Digital Garage account.</p>
+<p>a free OpenShift Online account.</p>
 </li>
 <li>
 <p>a free <a href="https://github.com/">GitHub</a> account.</p>
@@ -423,7 +425,7 @@ involves creating two <a href="../architecture/core_concepts/pods_and_services.h
 <h2 id="bw-setup"><a class="anchor" href="#bw-setup"></a>Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section, you will <em>fork</em> the the Digital Garage Node.js sample application
+<p>In this section, you will <em>fork</em> the OpenShift Online Node.js sample application
 on GitHub and clone the repository to your local machine so that you can deploy
 and edit the application.</p>
 </div>
@@ -461,14 +463,14 @@ application Git repository and a copy on your local machine.</p>
 <h2 id="bw-creating-a-new-application"><a class="anchor" href="#bw-creating-a-new-application"></a>Creating a New Application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section, you will deploy your first application to the Digital Garage using
+<p>In this section, you will deploy your first application to OpenShift Online using
 the web console.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
 <p>Navigate to the <a href="https://apps.thedigitalgarage.io/console/">welcome
-page</a> of the the Digital Garage web console and click the New Project icon to create
+page</a> of the OpenShift Online web console and click the New Project icon to create
 your first project:</p>
 </li>
 <li>
@@ -548,7 +550,7 @@ provided:</p>
 </div>
 </li>
 <li>
-<p>In the the Digital Garage  web console:</p>
+<p>In the OpenShift Online  web console:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -583,7 +585,7 @@ webhook ]</strong> to finish adding the webhook to your project:</p>
 </div>
 </li>
 <li>
-<p>GitHub now attempts to ping the the Digital Garage server to ensure that
+<p>GitHub now attempts to ping the OpenShift Online server to ensure that
 communication is successful. If it is correctly configured, you will see a green
 check mark next to your new webhook URL in GitHub. Hover your mouse over the
 check mark to see the status of the last delivery:</p>
@@ -688,7 +690,7 @@ to see your changes.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Now going forward, all you need to do is push code updates and the Digital Garage
+<p>Now going forward, all you need to do is push code updates and OpenShift Online
 handles the rest.</p>
 </div>
 </div>
@@ -719,7 +721,7 @@ of your Node.js application:</p>
 </div>
 <div class="paragraph">
 <p>Next, we’ll go <a href="../getting_started/beyond_the_basics.html#getting-started-beyond-the-basics">beyond the basics</a>
-using the the Digital Garage CLI to compose this same application using individual
+using the OpenShift Online CLI to compose this same application using individual
 images.</p>
 </div>
 </div>

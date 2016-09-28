@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>OpenShift Origin | Installation and Configuration | Upgrading | Manual Upgrades</title>
+  <title>OpenShift Origin | Installation and Configuration | Upgrading a Cluster | Manual In-place Upgrades</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -43,9 +43,11 @@
 </script>
 </head>
 <body>
-  <div class="navbar navbar-default navbar-openshift navbar-origin" role="navigation">
+  <div class="navbar navbar-default navbar-openshift" role="navigation">
   <div class="navbar-header">
-    <a class="navbar-brand origin" href="/"></a>
+    <a class="navbar-brand" href="/"></a>
+  </div>
+  <div class="navbar-collapse collapse">
   </div>
 </div>
   <div class="container">
@@ -62,9 +64,9 @@
       <li class="hidden-xs active">
         <a href="../../install_config/index.html">Installation and Configuration</a>
       </li>
-      <li class="hidden-xs active"><a href="../../install_config/upgrading/index.html">Upgrading</a></li>
+      <li class="hidden-xs active"><a href="../../install_config/upgrading/index.html">Upgrading a Cluster</a></li>
       <li class="hidden-xs active">
-        Manual Upgrades
+        Manual In-place Upgrades
       </li>
     </ol>
     <div class="row row-offcanvas row-offcanvas-left">
@@ -196,36 +198,70 @@
             <li><a class="" href="../../install_config/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
-                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
               </a>
               <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
 
-                  <li><a class="" href="../../install_config/install/index.html">Overview</a></li>
+                  <li><a class="" href="../../install_config/install/planning.html">Planning</a></li>
 
                   <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
 
-                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">RPM vs Containerized</a></li>
+                  <li><a class="" href="../../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
 
                   <li><a class="" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
 
                   <li><a class="" href="../../install_config/install/advanced_install.html">Advanced Installation</a></li>
 
-                  <li><a class="" href="../../install_config/install/docker_registry.html">Configure or Deploy a Docker Registry</a></li>
-
-                  <li><a class="" href="../../install_config/install/deploy_router.html">Configure or Deploy a Router</a></li>
+                  <li><a class="" href="../../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
               </ul>
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
-                <span id="sgSpan-4-2" class="fa fa-caret-down"></span>&nbsp;Upgrading
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
               </a>
-              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse in">
+              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-right"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class="" href="../../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-down"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse in">
 
                   <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
 
-                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated Upgrades</a></li>
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
 
-                  <li><a class=" active" href="../../install_config/upgrading/manual_upgrades.html">Manual Upgrades</a></li>
+                  <li><a class=" active" href="../../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
 
                   <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
               </ul>
@@ -234,13 +270,14 @@
             <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
             <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
             <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
             <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
             <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-9">
-                <span id="sgSpan-4-9" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-12">
+                <span id="sgSpan-4-12" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
               </a>
-              <ul id="topicSubGroup-4-9" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-12" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
 
@@ -256,10 +293,10 @@
             <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
             <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-14">
-                <span id="sgSpan-4-14" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-17">
+                <span id="sgSpan-4-17" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
               </a>
-              <ul id="topicSubGroup-4-14" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-17" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
 
@@ -287,10 +324,10 @@
               </ul>
             </li>
             <li class="nav-header">
-              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-15">
-                <span id="sgSpan-4-15" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
               </a>
-              <ul id="topicSubGroup-4-15" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
 
@@ -313,6 +350,7 @@
             <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
             <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
             <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
             <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
             <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
       </ul>
@@ -326,6 +364,7 @@
             <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
             <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
             <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
@@ -339,11 +378,9 @@
             <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
             <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
-            <li><a class="" href="../../admin_guide/limit_runonce_pod_duration.html">Limit Run-once Pod Duration</a></li>
-            <li><a class="" href="../../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
             <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
-            <li><a class="" href="../../admin_guide/pod_network.html">Managing Pod Networks</a></li>
             <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
             <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
             <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
@@ -418,10 +455,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -528,7 +567,7 @@
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 main">
         <div class="page-header">
-          <h2>Performing Manual Cluster Upgrades</h2>
+          <h2>Performing Manual In-place Cluster Upgrades</h2>
         </div>
         <div id="preamble">
 <div class="sectionbody">
@@ -543,6 +582,7 @@
 <li><a href="#upgrading-the-router">Upgrading the Router</a></li>
 <li><a href="#upgrading-the-registry">Upgrading the Registry</a>
 <ul class="sectlevel2">
+<li><a href="#updating-the-registry-configuration-file">Updating Custom Registry Configuration Files</a></li>
 <li><a href="#enforcing-quota-in-the-registry">Enforcing Quota in the Registry</a></li>
 </ul>
 </li>
@@ -614,12 +654,11 @@ upgrade.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you are on OpenShift Enterprise 3.0, you must first upgrade to 3.1 before
-upgrading to 3.2. Further, if you are currently using the Pacemaker HA method,
-you must first upgrade to the native HA method before upgrading to 3.2, as the
-Pacemaker method is no longer supported starting with 3.2. See the
-<a href="https://docs.openshift.com/enterprise/3.1/install_config/upgrading/index.html">OpenShift
-Enterprise 3.1 upgrade documentation</a> for instructions.</p>
+<p>Before upgrading your cluster to OpenShift Origin 3.3, the cluster must be
+already upgraded to the
+<a href="https://docs.openshift.com/enterprise/3.2/release_notes/ose_3_2_release_notes.html#ose-32-asynchronous-errata-updates">latest asynchronous release of version 3.2</a>. Cluster upgrades cannot span more than one
+minor version at a time, so if your cluster is at version 3.0 or 3.1, you must
+first upgrade incrementally (e.g., 3.0 to 3.1, then 3.1 or 3.2).</p>
 </div>
 </td>
 </tr>
@@ -639,31 +678,6 @@ that will be used in later sections:</p>
 <pre class="nowrap"># yum install atomic-openshift-utils</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Because RHEL Atomic Host 7 systems cannot use <strong>yum</strong>, you must download the
-<strong>atomic-openshift-utils</strong> package on a subscribed RHEL 7 system and copy the
-following file to any RHEL Atomic Host 7 systems to be used later:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">/usr/share/ansible/openshift-ansible/playbooks/common/openshift-cluster/upgrades/files/nuke_images.sh</pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This file was previously located at
-<strong><em>/usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/upgrades/docker/files/nuke_images.sh</em></strong>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 </li>
 <li>
 <p>Create an <strong>etcd</strong> backup on each master. The <strong>etcd</strong> package is required, even if
@@ -682,7 +696,7 @@ a RHEL 7 system, ensure the package is installed:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># ETCD_DATA_DIR=/var/lib/origin <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="nowrap"># ETCD_DATA_DIR=/var/lib/origin/openshift.local.etcd <i class="conum" data-value="1"></i><b>(1)</b>
 # etcdctl backup \
     --data-dir $ETCD_DATA_DIR \
     --backup-dir $ETCD_DATA_DIR.bak.&lt;date&gt; <i class="conum" data-value="2"></i><b>(2)</b></pre>
@@ -854,8 +868,7 @@ successfully:</p>
 </div>
 <div class="paragraph">
 <p>If you are performing a cluster upgrade that requires updating Docker to version
-1.10,
-you must also perform the following steps if you are not already on Docker 1.10:</p>
+1.10, you must also perform the following steps if you are not already on Docker 1.10:</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -926,8 +939,8 @@ available:</p>
 <div class="paragraph">
 <p>If upgrading to RHEL Atomic Host 7.2.5, this upgrades Docker to version 1.10.
 See the
-<a href="../../release_notes/ose_3_2_release_notes.html#ose-3-2-1-1-enhancements">OpenShift Origin
-3.2.1.1 release notes</a> for details and known issues.</p>
+<a href="https://docs.openshift.com/enterprise/3.2/release_notes/ose_3_2_release_notes.html#ose-3-2-1-1-enhancements">OpenShift
+Enterprise 3.2.1.1 release notes</a> for details and known issues.</p>
 </div>
 </td>
 </tr>
@@ -1182,8 +1195,7 @@ ensure they restart successfully:</p>
 </li>
 <li>
 <p>If you are performing a cluster upgrade that requires updating Docker to version
-1.10,
-you must also perform the following steps if you are not already on Docker 1.10:</p>
+1.10, you must also perform the following steps if you are not already on Docker 1.10:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -1243,8 +1255,8 @@ available:</p>
 <div class="paragraph">
 <p>If upgrading to RHEL Atomic Host 7.2.5, this upgrades Docker to version 1.10.
 See the
-<a href="../../release_notes/ose_3_2_release_notes.html#ose-3-2-1-1-enhancements">OpenShift Origin
-3.2.1.1 release notes</a> for details and known issues.</p>
+<a href="https://docs.openshift.com/enterprise/3.2/release_notes/ose_3_2_release_notes.html#ose-3-2-1-1-enhancements">OpenShift
+Enterprise 3.2.1.1 release notes</a> for details and known issues.</p>
 </div>
 </td>
 </tr>
@@ -1295,10 +1307,10 @@ verify that all nodes are showing as <strong>Ready</strong>:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap"># oc get nodes
-NAME                    LABELS                                        STATUS
-master.example.com      kubernetes.io/hostname=master.example.com     Ready,SchedulingDisabled
-node1.example.com       kubernetes.io/hostname=node1.example.com      Ready
-node2.example.com       kubernetes.io/hostname=node2.example.com      Ready</pre>
+NAME                        STATUS                     AGE
+master.example.com          Ready,SchedulingDisabled   165d
+node1.example.com           Ready                      165d
+node2.example.com           Ready                      165d</pre>
 </div>
 </div>
 </div>
@@ -1310,7 +1322,7 @@ node2.example.com       kubernetes.io/hostname=node2.example.com      Ready</pre
 <div class="sectionbody">
 <div class="paragraph">
 <p>If you have previously
-<a href="../../install_config/install/deploy_router.html#install-config-install-deploy-router">deployed a router</a>, the
+<a href="../../install_config/router/index.html#install-config-router-overview">deployed a router</a>, the
 router deployment configuration must be upgraded to apply updates contained in
 the router image. To upgrade your router without disrupting services, you must
 have previously deployed a
@@ -1388,8 +1400,7 @@ spec:
 <p>The registry must also be upgraded for changes to take effect in the registry
 image. If you have used a <code><strong>PersistentVolumeClaim</strong></code> or a host mount point, you
 may restart the registry without losing the contents of your registry.
-<a href="../../install_config/install/docker_registry.html#storage-for-the-registry">Deploying
-a Docker Registry</a> details how to configure persistent storage for the registry.</p>
+<a href="../../install_config/registry/deploy_registry_existing_clusters.html#storage-for-the-registry">Storage for the Registry</a> details how to configure persistent storage for the registry.</p>
 </div>
 <div class="paragraph">
 <p>Edit your registry&#8217;s deployment configuration:</p>
@@ -1445,12 +1456,69 @@ pods that are already running.</p>
 </table>
 </div>
 <div class="sect2">
+<h3 id="updating-the-registry-configuration-file"><a class="anchor" href="#updating-the-registry-configuration-file"></a>Updating Custom Registry Configuration Files</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You may safely skip this part if you do not use a custom registry configuration
+file.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The internal Docker registry
+version 1.3.0
+and higher requires following entries in the
+<a href="../registry/extended_registry_configuration.html#docker-registry-configuration-reference-middleware">middleware
+section</a> of the configuration file:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">middleware</span>:
+  <span style="color:#606">registry</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: openshift</span></span>
+  <span style="color:#606">repository</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: openshift</span></span>
+  <span style="color:#606">storage</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: openshift</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit your custom configuration file, adding the missing entries.</p>
+</li>
+<li>
+<p><a href="../registry/extended_registry_configuration.html#advanced-overriding-the-registry-configuration">Deploy
+your updated configuration</a>.</p>
+</li>
+<li>
+<p>Append the <code>--overwrite</code> flag to <code>oc volume
+dc/docker-registry --add</code> to replace a volume mount of your previous secret.</p>
+</li>
+<li>
+<p>You can safely remove the old secret.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
 <h3 id="enforcing-quota-in-the-registry"><a class="anchor" href="#enforcing-quota-in-the-registry"></a>Enforcing Quota in the Registry</h3>
 <div class="paragraph">
 <p>Quota must be enforced to prevent layer blobs that exceed the size limit from
 being written to the registry&#8217;s storage. This can be achieved via a
-<a href="../install/docker_registry.html#registry-configuration-reference">configuration
-file</a>:</p>
+<a href="../registry/extended_registry_configuration.html#registry-configuration-reference">configuration file</a>:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2100,7 +2168,7 @@ deployed. For example, if the project is named <strong>logging</strong>:</p>
 </div>
 </li>
 <li>
-<p>Ensure that the cluster role <code>oauth-editor</code> is assigned to the logging-deployer
+<p>Ensure that the cluster role <code>oauth-editor</code> is assigned to the <strong>logging-deployer</strong>
 service account:</p>
 <div class="listingblock">
 <div class="content">
@@ -2111,7 +2179,7 @@ service account:</p>
 </li>
 <li>
 <p>In preparation for running the deployer, ensure that you have the configurations
-for your current deployment in the <a href="../aggregate_logging.html#specifying-deployer-parameters">logging-deployer configmap</a>.</p>
+for your current deployment in the <a href="../aggregate_logging.html#aggregate-logging-specifying-deployer-parameters"><strong>logging-deployer</strong> ConfigMap</a>.</p>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -2136,9 +2204,9 @@ version.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Running the deployer in this mode handles scaling down the components to minimize
-loss of logs, patching configs, generating missing secrets and keys, and scaling
-the components back up to their previous replica count.</p>
+<p>Running the deployer in this mode handles scaling down the components to
+minimize loss of logs, patching configurations, generating missing secrets and
+keys, and scaling the components back up to their previous replica count.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -2149,8 +2217,8 @@ the components back up to their previous replica count.</p>
 <td class="content">
 <div class="paragraph">
 <p>Due to the privileges needed to label and unlabel a node for controlling the deployment
-of Fluentd pods, the deployer does delete the logging-fluentd Daemonset and recreates
-it from the <code>logging-fluentd-template</code> template.</p>
+of Fluentd pods, the deployer does delete the <strong>logging-fluentd</strong> Daemonset and recreates
+it from the <strong>logging-fluentd-template</strong> template.</p>
 </div>
 </td>
 </tr>
@@ -2249,9 +2317,11 @@ and a gap normally appears in the graphs.</p>
 <h2 id="additional-instructions-per-release"><a class="anchor" href="#additional-instructions-per-release"></a>Additional Manual Steps Per Release</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Some OpenShift releases may have additional instructions specific to that
-release that must be performed to fully apply the updates across the cluster.
-Read through the following sections carefully depending on your upgrade path, as
+<p>Some OpenShift Origin releases may have additional instructions specific to that
+release that must be performed to fully apply the updates across the cluster.</p>
+</div>
+<div class="paragraph">
+<p>Read through the following sections carefully depending on your upgrade path, as
 you may be required to perform certain steps at key points during the standard
 upgrade process described earlier in this topic.</p>
 </div>
@@ -2438,7 +2508,7 @@ release</a>.</p>
 <div class="paragraph">
 <p>The default HAProxy router was updated to use the host networking stack by
 default instead of the former behavior of
-<a href="../../install_config/install/deploy_router.html#using-the-container-network-stack">using
+<a href="../../install_config/router/default_haproxy_router.html#using-the-container-network-stack">using
 the container network stack</a>, which proxied traffic to the router, which in turn
 proxied the traffic to the target service and container. This new default
 behavior benefits performance because network traffic from remote clients no
@@ -2597,9 +2667,10 @@ exist.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap"># oc get nodes
-NAME                 LABELS                                                                STATUS
-master.example.com   kubernetes.io/hostname=master.example.com,region=infra,zone=default   Ready
-node1.example.com    kubernetes.io/hostname=node1.example.com,region=primary,zone=east     Ready</pre>
+NAME                        STATUS                     AGE
+master.example.com          Ready,SchedulingDisabled   165d
+node1.example.com           Ready                      165d
+node2.example.com           Ready                      165d</pre>
 </div>
 </div>
 </div>

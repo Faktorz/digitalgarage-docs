@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Developer Guide | Builds</title>
+  <title>OpenShift Online | Developer Guide | Builds</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../dev_guide/index.html">Developer Guide</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -414,6 +416,7 @@
 <li><a href="#source-code">Git Repository Source Options</a>
 <ul class="sectlevel3">
 <li><a href="#using-a-proxy-for-git-cloning">Using a Proxy for Git Cloning</a></li>
+<li><a href="#trusted-certificate-authorities">Trusted Certificate Authorities</a></li>
 <li><a href="#using-private-repositories-for-builds">Using Private Repositories for Builds</a></li>
 </ul>
 </li>
@@ -444,7 +447,7 @@
 </ul>
 </li>
 <li><a href="#build-hooks">Build Hooks</a>
-<ul class="sectlevel3">
+<ul class="sectlevel2">
 <li><a href="#build-hooks-using-the-command-line">Using the Command Line</a></li>
 </ul>
 </li>
@@ -993,6 +996,10 @@ them also available to the <strong><em>run</em></strong> script and application 
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>You can also manage environment variables defined in the <code><strong>BuildConfig</strong></code> with the
+<a href="../dev_guide/environment_variables.html#overview"><code>oc set env</code></a> command.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1137,6 +1144,10 @@ they will be present in any container that runs that image as well.</p>
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>You can also manage environment variables defined in the <code><strong>BuildConfig</strong></code> with the
+<a href="../dev_guide/environment_variables.html#overview"><code>oc set env</code></a> command.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1273,6 +1284,10 @@ custom build.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>You can also manage environment variables defined in the <code><strong>BuildConfig</strong></code> with the
+<a href="../dev_guide/environment_variables.html#overview"><code>oc set env</code></a> command.</p>
 </div>
 </div>
 </div>
@@ -1481,7 +1496,7 @@ source repository.</td>
 </div>
 <div class="paragraph">
 <p>When using the Git repository as a source without specifying the <code><strong>ref</strong></code>
-field, {product_title} performs a shallow clone (<code>--depth=1</code> clone). That means
+field, OpenShift Online performs a shallow clone (<code>--depth=1</code> clone). That means
 only the <code>HEAD</code> (usually the <code>master</code> branch) is downloaded. This results
 in repositories downloading faster, including the commit history.</p>
 </div>
@@ -1530,6 +1545,19 @@ both a HTTP and HTTPS proxy to use. Both fields are optional.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="trusted-certificate-authorities"><a class="anchor" href="#trusted-certificate-authorities"></a>Trusted Certificate Authorities</h4>
+<div class="paragraph">
+<p>The set of TLS certificate authorities that are trusted during a <code>git clone</code>
+operation are built into the OpenShift Online infrastructure images.  If your Git
+server uses a self-signed certificate or one signed by an authority not trusted
+by the image, you can disable TLS  verification by setting the
+<code><strong>GIT_SSL_NO_VERIFY</strong></code> environment variable to <strong>true</strong> in the appropriate strategy
+section of your build configuration. You can use the
+<a href="../dev_guide/environment_variables.html#overview"><code>oc set env</code></a> command to
+manage <code><strong>BuildConfig</strong></code> environment variables.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1694,7 +1722,7 @@ Generate SSH key credentials with the following command:</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Creating a passphrase for the SSH key prevents the Digital Garagefrom building.
+<p>Creating a passphrase for the SSH key prevents OpenShift Online from building.
 When prompted for a passphrase, leave it blank.</p>
 </div>
 </td>
@@ -2199,7 +2227,7 @@ encoded content of the <strong><em>~/.npmrc</em></strong> file.</p>
 </div>
 <div class="paragraph">
 <p>During the build, the <strong><em>.npmrc</em></strong> file is copied into the directory where the
-source code is located. In case of the the Digital Garage S2I builder images, this
+source code is located. In case of the OpenShift Online S2I builder images, this
 is the image working directory, which is set using the <code><strong>WORKDIR</strong></code> instruction
 in the Dockerfile. If you want to specify another directory, add a
 <code><strong>destinationDir</strong></code> to the secret definition:</p>
@@ -2596,7 +2624,7 @@ as part of the <code><strong>sourceStrategy</strong></code> or <code><strong>doc
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-A platform administrator can set verbosity for the entire the Digital Garage
+A platform administrator can set verbosity for the entire OpenShift Online
 instance by passing the <code>--loglevel</code> option to the <code>openshift start</code> command.
 If both <code>--loglevel</code> and <code>BUILD_LOGLEVEL</code> are specified, <code>BUILD_LOGLEVEL</code> takes precedence.
 </td>
@@ -2672,7 +2700,7 @@ set by default. When not set, there is no maximum duration enforced.</p>
 <p>The maximum duration is counted from the time when a build pod gets scheduled in
 the system, and defines how long it can be active, including the time needed to
 pull the builder image. After reaching the specified timeout, the build is
-terminated by the Digital Garage.</p>
+terminated by OpenShift Online.</p>
 </div>
 <div class="paragraph">
 <p>The following example shows the part of a <code><strong>BuildConfig</strong></code> specifying
@@ -2715,7 +2743,7 @@ triggers are available:</p>
 <h3 id="webhook-triggers"><a class="anchor" href="#webhook-triggers"></a>Webhook Triggers</h3>
 <div class="paragraph">
 <p>Webhook triggers allow you to trigger a new build by sending a request to the
-the Digital Garage API endpoint. You can define these triggers using
+OpenShift Online API endpoint. You can define these triggers using
 <a href="https://developer.github.com/webhooks/">GitHub webhooks</a> or Generic webhooks.</p>
 </div>
 <div class="paragraph">
@@ -2979,7 +3007,7 @@ trigger on:</p>
 <p>This defines the image stream that is tied to a Docker image repository
 located at <code><em>&lt;system-registry&gt;</em>/<em>&lt;namespace&gt;</em>/ruby-20-centos7</code>. The
 <code><em>&lt;system-registry&gt;</em></code> is defined as a service with the name <code>docker-registry</code>
-running in the Digital Garage.</p>
+running in OpenShift Online.</p>
 </div>
 </li>
 <li>
@@ -3287,8 +3315,8 @@ build hook.</p>
 </tr>
 </table>
 </div>
-<div class="sect3">
-<h4 id="build-hooks-using-the-command-line"><a class="anchor" href="#build-hooks-using-the-command-line"></a>Using the Command Line</h4>
+<div class="sect2">
+<h3 id="build-hooks-using-the-command-line"><a class="anchor" href="#build-hooks-using-the-command-line"></a>Using the Command Line</h3>
 <div class="paragraph">
 <p>The <code>oc set build-hook</code> command can be used to set the build hook for a build configuration.</p>
 </div>
@@ -3326,8 +3354,8 @@ build hook.</p>
 <p>Supply the <strong><em>.docker/config.json</em></strong> file with valid Docker Registry credentials
 in order to push the output image into a private Docker Registry or pull the
 builder image from the private Docker Registry that requires authentication. For
-the the Digital Garage Docker Registry, you don&#8217;t have to do this because
-<code><strong>secrets</strong></code> are generated automatically for you by the Digital Garage.</p>
+the OpenShift Online Docker Registry, you don&#8217;t have to do this because
+<code><strong>secrets</strong></code> are generated automatically for you by OpenShift Online.</p>
 </div>
 <div class="paragraph">
 <p>The <strong><em>.docker/config.json</em></strong> file is found in your home directory by default and has
@@ -3628,7 +3656,7 @@ is then pushed to the registry specified in the <code><strong>output</strong></c
 </div>
 <div class="paragraph">
 <p>If the output kind is <code><strong>ImageStreamTag</strong></code>, then the image will be pushed to the
-integrated the Digital Garage registry and tagged in the specified image stream. If
+integrated OpenShift Online registry and tagged in the specified image stream. If
 the output is of type <code><strong>DockerImage</strong></code>, then the name of the output reference
 will be used as a Docker push specification. The specification may contain a
 registry or will default to DockerHub if no registry is specified. If the output

@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Architecture | Core Concepts | Builds and Image Streams</title>
+  <title>OpenShift Online | Architecture | Core Concepts | Builds and Image Streams</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../architecture/index.html">Architecture</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -395,7 +397,7 @@ input parameters or source code into a runnable image. A
 the definition of the entire build process.</p>
 </div>
 <div class="paragraph">
-<p>the Digital Garage leverages Kubernetes by creating Docker containers from build
+<p>OpenShift Online leverages Kubernetes by creating Docker containers from build
 images and pushing them to a
 <a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">Docker
 registry</a>.</p>
@@ -408,7 +410,7 @@ advantage of resource restrictions, specifying limitations on resources such as
 CPU usage, memory usage, and build or pod execution time.</p>
 </div>
 <div class="paragraph">
-<p>The the Digital Garage build system provides extensible support for <em>build
+<p>The OpenShift Online build system provides extensible support for <em>build
 strategies</em> that are based on selectable types specified in the build API. There
 are three primary build strategies available:</p>
 </div>
@@ -454,7 +456,7 @@ strategy can be used to implement sophisticated workflows:</p>
 <a href="../../dev_guide/builds.html#dev-guide-builds">Developer&#8217;s Guide</a>.</p>
 </div>
 <div class="paragraph">
-<p>For more information on how the Digital Garage leverages Docker for builds, see the
+<p>For more information on how OpenShift Online leverages Docker for builds, see the
 <a href="https://github.com/openshift/origin/blob/master/docs/builds.md#how-it-works">upstream
 documentation</a>.</p>
 </div>
@@ -591,7 +593,7 @@ Hub</a> as an example implementation of a Custom builder image.</p>
 <p>The Pipeline build strategy allows developers to define a <em>Jenkins pipeline</em>
 for execution by the Jenkins pipeline plugin.
 The build can be started, monitored, and managed by
-the Digital Garage in the same way as any other build type.</p>
+OpenShift Online in the same way as any other build type.</p>
 </div>
 <div class="paragraph">
 <p>Pipeline workflows are defined in a Jenkinsfile,
@@ -600,7 +602,7 @@ or supplied in a Git repository and referenced by the build configuration.</p>
 </div>
 <div class="paragraph">
 <p>The first time a project defines a build configuration using a Pipeline strategy,
-the Digital Garage instantiates a Jenkins server to execute the pipeline.
+OpenShift Online instantiates a Jenkins server to execute the pipeline.
 Subsequent Pipeline build configurations
 in the project share this Jenkins server.</p>
 </div>
@@ -639,7 +641,7 @@ repository, and may contain images from any of the following:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Its own image repository in the Digital Garage&#8217;s
+<p>Its own image repository in OpenShift Online&#8217;s
 <a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">integrated
 registry</a></p>
 </li>
@@ -716,14 +718,14 @@ on managing images and image streams.</p>
 <p>When the
 <a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">integrated
 registry</a> receives a new image, it creates and sends an <code><strong>ImageStreamMapping</strong></code>
-to the Digital Garage, providing the image&#8217;s namespace (i.e., its project), name,
+to OpenShift Online, providing the image&#8217;s namespace (i.e., its project), name,
 tag, and Docker metadata.</p>
 </div>
 <div class="paragraph">
 <p>This information is used to create a new image (if it does not already exist)
-and to tag the image into the image stream. the Digital Garage stores complete
+and to tag the image into the image stream. OpenShift Online stores complete
 metadata about each image, such as commands, entrypoint, and environment
-variables. Images in the Digital Garage are immutable and the maximum name length
+variables. Images in OpenShift Online are immutable and the maximum name length
 is 63 characters.</p>
 </div>
 <div class="admonitionblock note">

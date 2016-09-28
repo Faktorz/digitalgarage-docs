@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Architecture | Core Concepts | Containers and Images</title>
+  <title>OpenShift Online | Architecture | Core Concepts | Containers and Images</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../architecture/index.html">Architecture</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -378,7 +380,7 @@
 <h2 id="containers"><a class="anchor" href="#containers"></a>Containers</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The basic units of the Digital Garage applications are called containers.
+<p>The basic units of OpenShift Online applications are called containers.
 <a href="https://access.redhat.com/articles/1353593">Linux container technologies</a>
 are lightweight mechanisms for isolating running processes so that they are
 limited to interacting with only their designated resources. Many application
@@ -392,16 +394,16 @@ or a database, though containers can be used for arbitrary workloads.</p>
 for years. More recently the
 <a href="https://www.docker.com/whatisdocker/">Docker project</a> has developed a
 convenient management interface for Linux containers on
-a host. the Digital Garage and Kubernetes add the ability to orchestrate Docker
+a host. OpenShift Online and Kubernetes add the ability to orchestrate Docker
 containers across multi-host installations.</p>
 </div>
 <div class="paragraph">
 <p>Though you do not directly interact with Docker tools when using
-the Digital Garage, understanding Docker&#8217;s capabilities and terminology is
-important for understanding its role in the Digital Garage and how your
+OpenShift Online, understanding Docker&#8217;s capabilities and terminology is
+important for understanding its role in OpenShift Online and how your
 applications function inside of containers. Docker is available
 as part of RHEL 7, as well as CentOS and Fedora, so you can
-experiment with it separately from the Digital Garage. Refer to the article
+experiment with it separately from OpenShift Online. Refer to the article
 <a href="https://access.redhat.com/articles/881893">Get Started with Docker
 Formatted Container Images on Red Hat Systems</a> for a guided introduction.</p>
 </div>
@@ -418,11 +420,11 @@ can think of it as a packaging technology. Docker containers only
 have access to resources defined in the image unless you give the
 container additional access when creating it. By deploying the same
 image in multiple containers across multiple hosts and load balancing
-between them, the Digital Garage can provide redundancy and horizontal scaling
+between them, OpenShift Online can provide redundancy and horizontal scaling
 for a service packaged into an image.</p>
 </div>
 <div class="paragraph">
-<p>You can use Docker directly to build images, but the Digital Garage also supplies
+<p>You can use Docker directly to build images, but OpenShift Online also supplies
 builders that assist with creating an image by adding your code or
 configuration to existing images.</p>
 </div>
@@ -448,7 +450,7 @@ registry contains a collection of one or more Docker image repositories. Each
 image repository contains one or more tagged images. Docker provides its own
 registry, the <a href="https://registry.hub.docker.com/">Docker Hub</a>, but you may
 also use private or third-party registries. Red Hat provides a Docker registry
-at <code>registry.access.redhat.com</code> for subscribers. the Digital Garage can also supply
+at <code>registry.access.redhat.com</code> for subscribers. OpenShift Online can also supply
 its own internal registry for managing custom Docker images.</p>
 </div>
 <div class="paragraph">

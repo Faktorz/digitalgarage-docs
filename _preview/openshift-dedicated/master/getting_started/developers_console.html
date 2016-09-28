@@ -98,8 +98,8 @@
       </a>
       <ul id="topicGroup1" class="collapse  list-unstyled">
             <li><a class="" href="../release_notes/index.html">Overview</a></li>
-            <li><a class="" href="../release_notes/osd_3_2_release_notes.html">OpenShift Dedicated 3.2 Release Notes</a></li>
-            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing OpenShift Enterprise 2 and OpenShift Enterprise 3</a></li>
+            <li><a class="" href="../release_notes/osd_3_3_release_notes.html">OpenShift Dedicated Release Notes</a></li>
+            <li><a class="" href="../release_notes/v2_vs_v3.html">Comparing with OpenShift Enterprise 2</a></li>
             <li><a class="" href="../release_notes/revhistory_release_notes.html">Revision History</a></li>
       </ul>
     </li>
@@ -196,6 +196,7 @@
       <ul id="topicGroup4" class="collapse  list-unstyled">
             <li><a class="" href="../admin_guide/index.html">Overview</a></li>
             <li><a class="" href="../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../admin_guide/managing_pods.html">Managing Pods</a></li>
             <li><a class="" href="../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
             <li><a class="" href="../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
             <li><a class="" href="../admin_guide/image_policy.html">Image Policy</a></li>
@@ -209,8 +210,7 @@
             <li><a class="" href="../admin_guide/scheduler.html">Scheduler</a></li>
             <li><a class="" href="../admin_guide/osd_build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
             <li><a class="" href="../admin_guide/osd_configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
-            <li><a class="" href="../admin_guide/limit_pod_access_egress.html">Limit Pod Access with Egress Firewall</a></li>
-            <li><a class="" href="../admin_guide/pod_network.html">Managing Pod Networks</a></li>
+            <li><a class="" href="../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
             <li><a class="" href="../admin_guide/backup_restore.html">Backup and Restore</a></li>
             <li><a class="" href="../admin_guide/revhistory_admin_guide.html">Revision History</a></li>
       </ul>
@@ -283,10 +283,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -635,7 +637,7 @@ contact your cluster administrator.</p>
 <td class="content">
 <div class="paragraph">
 <p>This topic follows the Ruby example, but you can follow along using any of the language examples
-<a href="../../getting_started/developers_cli.html#getting-started-developers-cli-languages">provided in the OpenShift Dedicated GitHub project</a>.</p>
+<a href="#getting-started-developers-cli-languages">provided in the OpenShift Dedicated GitHub project</a>.</p>
 </div>
 </td>
 </tr>
@@ -906,6 +908,131 @@ build to track:</p>
 <pre class="nowrap">$ oc logs -f build/ruby-ex-n</pre>
 </div>
 </div>
+<table id="getting-started-developers-console-languages" class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Language</th>
+<th class="tableblock halign-left valign-top">Implementations and Tutorials</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Ruby</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/rails-ex">Rails</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Python</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/django-ex">Django</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Node.js</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/nodejs-ex">Node.js</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">PHP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/cakephp-ex">CakePHP</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Perl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openshift/dancer-ex">Dancer</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Java</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Other images provided by OpenShift Dedicated include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/openshift/mysql">MySQL</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/mongodb">MongoDB</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/postgresql">PostgreSQL</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/jenkins">Jenkins</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, JBoss Middleware has put together a broad range of
+<a href="https://github.com/jboss-openshift/application-templates">OpenShift Dedicated
+templates</a> as well as <a href="../using_images/xpaas_images/index.html#using-images-xpaas-images-index">images</a> as
+part of their xPaaS services.</p>
+</div>
+<div class="paragraph">
+<p>The technologies available with the xPaaS services in particular include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java EE 6 Application Server provided by JBoss EAP 6</p>
+</li>
+<li>
+<p>Integration and Messaging Services provided by JBoss Fuse and JBoss A-MQ</p>
+</li>
+<li>
+<p>Data Grid Service provided by JBoss Data Grid</p>
+</li>
+<li>
+<p>Real Time Decision Service provided by JBoss BRMS</p>
+</li>
+<li>
+<p>Java Web Server 3.0 provided by Tomcat 7 and Tomcat 8</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With each of these offerings, a series of combinations are provided:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP only vs. HTTP and HTTPS</p>
+</li>
+<li>
+<p>No database required, or the use of either MongoDB, PostgreSQL, or MySQL</p>
+</li>
+<li>
+<p>If desired, integration with A-MQ</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To help illustrate constructing such applications, the following sections guide
+you through creating a project that contains a sample Node.js application that
+will serve a welcome page and the current hit count (stored in a database).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This topic discusses both
+<a href="../dev_guide/app_tutorials/quickstarts.html#dev-guide-app-tutorials-quickstarts">Quickstart</a> and
+<a href="../dev_guide/templates.html#using-the-instantapp-templates">Instant App</a>
+templates and applications. Quickstarts provide a starting point for application
+development, but they rely on your development to create a useful application.
+In contrast, Instant Apps like Jenkins are instantly usable.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -979,7 +1106,7 @@ and operating systems</a> that can be used to access the web console.</p>
 <td class="content">
 <div class="paragraph">
 <p>This topic follows the Ruby example, but you can follow along using any of the language examples
-<a href="../../getting_started/developers_cli.html#getting-started-developers-cli-languages">provided in the OpenShift Dedicated GitHub project</a>.</p>
+<a href="#getting-started-developers-cli-languages">provided in the OpenShift Dedicated GitHub project</a>.</p>
 </div>
 </td>
 </tr>

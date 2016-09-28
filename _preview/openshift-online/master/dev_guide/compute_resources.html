@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Developer Guide | Quotas and Limit Ranges</title>
+  <title>OpenShift Online | Developer Guide | Quotas and Limit Ranges</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../dev_guide/index.html">Developer Guide</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class=" active" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -1222,48 +1224,6 @@ specified.</td>
 </div>
 </div>
 </div>
-<div class="exampleblock">
-<div class="title">Example 8. the Digital Garage Limit Range Object Definition</div>
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
-<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">LimitRange</span><span style="color:#710">&quot;</span></span>
-<span style="color:#606">metadata</span>:
-  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">openshift-resource-limits</span><span style="color:#710">&quot;</span></span>
-<span style="color:#606">spec</span>:
-  <span style="color:#606">limits</span>:
-    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: openshift.io/Image</span></span>
-      <span style="color:#606">max</span>:
-        <span style="color:#606">storage</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1Gi </span></span><i class="conum" data-value="1"></i><b>(1)</b>
-    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: openshift.io/ImageStream</span></span>
-      <span style="color:#606">max</span>:
-        <span style="color:#606">openshift.io/image-tags</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">20 </span></span><i class="conum" data-value="2"></i><b>(2)</b>
-        <span style="color:#606">openshift.io/images</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">30 </span></span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The maximum size of an image that can be pushed to an internal registry.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The maximum number of unique image tags per image stream&#8217;s spec.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The maximum number of unique image references per image stream&#8217;s status.</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Both core and the Digital Garage resources can be specified in just one limit range
-object. They are separated here into two examples for clarity.</p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="dev-container-limits"><a class="anchor" href="#dev-container-limits"></a>Container Limits</h3>
@@ -1339,7 +1299,7 @@ CPU constraint.</p>
 <div class="paragraph">
 <p>If a configuration defines a <code>maxLimitRequestRatio</code> value, then any new
 containers must have both a request and limit value. Additionally,
-the Digital Garage calculates a limit to request ratio by dividing the limit by the
+OpenShift Online calculates a limit to request ratio by dividing the limit by the
 request.</p>
 </div>
 <div class="paragraph">

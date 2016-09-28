@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Developer Guide | Deployments</title>
+  <title>OpenShift Online | Developer Guide | Deployments</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../dev_guide/index.html">Developer Guide</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class=" active" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -406,7 +408,7 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>the Digital Garage deployments provide fine-grained management over applications
+<p>OpenShift Online deployments provide fine-grained management over applications
 based on a user-defined template called a deployment configuration. The
 deployment system in response to a deployment configuration will create a
 replication controller to run an application. Replication controllers are
@@ -485,7 +487,7 @@ to the deployment configuration.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Deployment configurations are <code><strong>deploymentConfig</strong></code> the Digital Garage API resources
+<p>Deployment configurations are <code><strong>deploymentConfig</strong></code> OpenShift Online API resources
 which can be managed with the <code>oc</code> command like any other resource. The
 following is an example of a <code><strong>deploymentConfig</strong></code> resource:</p>
 </div>
@@ -859,7 +861,7 @@ deployment exists and has not been pruned or deleted manually:</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A deployment configuration can contain triggers, which drive the creation of
-new deployments in response to events, only inside the Digital Garage at the moment.</p>
+new deployments in response to events, only inside OpenShift Online at the moment.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -978,7 +980,7 @@ build to the <code><strong>ImageStreamTag</strong></code>.</p>
 <div class="paragraph">
 <p>A deployment strategy determines the deployment process, and is defined by the
 deployment configuration. Each application has different requirements for
-availability (and other considerations) during deployments. the Digital Garage
+availability (and other considerations) during deployments. OpenShift Online
 provides strategies to support a variety of deployment scenarios.</p>
 </div>
 <div class="paragraph">
@@ -1236,7 +1238,7 @@ variables provided are added to the execution environment of the strategy
 process.</p>
 </div>
 <div class="paragraph">
-<p>Additionally, the Digital Garage provides the following environment variables to the
+<p>Additionally, OpenShift Online provides the following environment variables to the
 strategy process:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
@@ -1555,7 +1557,7 @@ placement.</p>
 <p>Cluster administrators
 can set the default node selector
 for your project in order to restrict pod placement to
-specific nodes. As an the Digital Garage developer, you can set a node selector on a pod
+specific nodes. As an OpenShift Online developer, you can set a node selector on a pod
 configuration to restrict nodes even further.</p>
 </div>
 <div class="paragraph">

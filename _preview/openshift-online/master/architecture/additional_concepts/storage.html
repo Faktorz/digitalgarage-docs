@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>the Digital Garage | Architecture | Additional Concepts | Persistent Storage</title>
+  <title>OpenShift Online | Architecture | Additional Concepts | Persistent Storage</title>
   <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -53,7 +53,7 @@
         <a href="../../../index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../welcome/index.html">the Digital Garage Branch Build</a>
+        <a href="../../welcome/index.html">OpenShift Online Branch Build</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../architecture/index.html">Architecture</a>
@@ -240,10 +240,12 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
@@ -402,7 +404,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Managing storage is a distinct problem from managing compute resources.
-the Digital Garage leverages the Kubernetes persistent volume (PV) framework to allow
+OpenShift Online leverages the Kubernetes persistent volume (PV) framework to allow
 administrators to provision persistent storage for a cluster. Using persistent
 volume claims (PVCs), developers can request PV resources without having
 specific knowledge of the underlying storage infrastructure.</p>
@@ -412,7 +414,7 @@ specific knowledge of the underlying storage infrastructure.</p>
 <a href="../../architecture/core_concepts/projects_and_users.html#projects">project</a>
 and are created and used by developers as a means to use a PV. PV resources on
 their own are not scoped to any single project; they can be shared across the
-entire the Digital Garage cluster and claimed from any project. After a PV has been
+entire OpenShift Online cluster and claimed from any project. After a PV has been
 <a href="#binding"><em>bound</em></a> to a PVC, however, that PV cannot then be bound to
 additional PVCs. This has the effect of scoping a bound PV to a single
 <a href="../../architecture/core_concepts/projects_and_users.html#namespaces">namespace</a>
@@ -476,7 +478,7 @@ API and are available for consumption.</p>
 requested and with certain access modes. A control loop in the master watches
 for new PVCs, finds a matching PV (if possible), and binds them together. The
 user will always get at least what they asked for, but the volume may be in
-excess of what was requested. To minimize the excess, the Digital Garage binds to
+excess of what was requested. To minimize the excess, OpenShift Online binds to
 the smallest PV that matches all other criteria.</p>
 </div>
 <div class="paragraph">
@@ -558,7 +560,7 @@ status of the volume.</p>
 <div class="sect2">
 <h3 id="types-of-persistent-volumes"><a class="anchor" href="#types-of-persistent-volumes"></a>Types of Persistent Volumes</h3>
 <div class="paragraph">
-<p>the Digital Garage supports the following <code><strong>PersistentVolume</strong></code> plug-ins:</p>
+<p>OpenShift Online supports the following <code><strong>PersistentVolume</strong></code> plug-ins:</p>
 </div>
 </div>
 <div class="sect2">
