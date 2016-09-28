@@ -10,11 +10,11 @@ openshift-origin:
       name: Latest
       dir: latest
 openshift-online:
-  name: the Digital Garage
-  author: the Digital Garage <dev@thedigitalgarage.io>
+  name: OpenShift Online
+  author: OpenShift Documentation Project <dev@lists.openshift.redhat.com>
   site: commercial
   site_name: Documentation
-  site_url: https://docs.thedigitalgarage.io/
+  site_url: https://docs.openshift.com/
   branches:
     online:
       name: 'Developer Preview'
@@ -24,11 +24,11 @@ digital-garage:
   author: the Digital Garage <dev@thedigitalgarage.io>
   site: commercial
   site_name: Documentation
-  site_url: https://www.thedigitalgarage.io/developer_guide
+  site_url: http://docs.thedigitalgarage.io
   branches:
-    online:
-      name: 'Developer Preview'
-      dir: digitalgarage
+    master:
+      name: Latest
+      dir: latest
 openshift-enterprise:
   name: OpenShift Container Platform
   author: OpenShift Documentation Project <dev@lists.openshift.redhat.com>
