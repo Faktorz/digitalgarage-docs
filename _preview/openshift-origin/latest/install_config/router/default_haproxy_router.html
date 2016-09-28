@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>OpenShift Origin | Installation and Configuration | Setting up a Router | Using the Default HAProxy Router</title>
+  <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
+  <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <!--
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  -->
+  <link href="/_images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="/_images/favicon.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift Origin" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/app/assets/site/tracking.js" type="text/javascript"></script>
+  <script type="text/javascript" src="https://assets.openshift.net/app/assets/site/tracking.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-openshift navbar-origin" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand origin" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../welcome/index.html">OpenShift Origin Latest</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../install_config/index.html">Installation and Configuration</a>
+      </li>
+      <li class="hidden-xs active"><a href="../../install_config/router/index.html">Setting up a Router</a></li>
+      <li class="hidden-xs active">
+        Using the Default HAProxy Router
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:vdyz7waqya4';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>What's New?
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../../whats_new/index.html">Overview</a></li>
+            <li><a class="" href="../../whats_new/applications.html">Applications</a></li>
+            <li><a class="" href="../../whats_new/carts_vs_images.html">Cartridges vs Images</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/administrators.html">Setting Up a Cluster</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-1">
+                <span id="sgSpan-3-1" class="fa fa-caret-right"></span>&nbsp;Infrastructure Components
+              </a>
+              <ul id="topicSubGroup-3-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/infrastructure_components/kubernetes_infrastructure.html">Kubernetes Infrastructure</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/image_registry.html">Image Registry</a></li>
+
+                  <li><a class="" href="../../architecture/infrastructure_components/web_console.html">Web Console</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-2">
+                <span id="sgSpan-3-2" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-3-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-3-3">
+                <span id="sgSpan-3-3" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-3-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/sdn.html">OpenShift SDN</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authentication.html">Authentication</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/authorization.html">Authorization</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/storage.html">Persistent Storage</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/throttling.html">Throttling</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/admission_controllers.html">Admission Controllers</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/other_api_objects.html">Other API Objects</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Installation and Configuration
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../../install_config/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-1">
+                <span id="sgSpan-4-1" class="fa fa-caret-right"></span>&nbsp;Installing a Cluster
+              </a>
+              <ul id="topicSubGroup-4-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/install/planning.html">Planning</a></li>
+
+                  <li><a class="" href="../../install_config/install/prerequisites.html">Prerequisites</a></li>
+
+                  <li><a class="" href="../../install_config/install/host_preparation.html">Host Preparation</a></li>
+
+                  <li><a class="" href="../../install_config/install/rpm_vs_containerized.html">Containerized Components</a></li>
+
+                  <li><a class="" href="../../install_config/install/quick_install.html">Quick Installation</a></li>
+
+                  <li><a class="" href="../../install_config/install/advanced_install.html">Advanced Installation</a></li>
+
+                  <li><a class="" href="../../install_config/install/stand_alone_registry.html">Installing a Stand-alone Registry</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-2">
+                <span id="sgSpan-4-2" class="fa fa-caret-right"></span>&nbsp;Setting up the Registry
+              </a>
+              <ul id="topicSubGroup-4-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/registry/index.html">Registry Overview</a></li>
+
+                  <li><a class="" href="../../install_config/registry/deploy_registry_existing_clusters.html">Deploying a Registry on Existing Clusters</a></li>
+
+                  <li><a class="" href="../../install_config/registry/accessing_registry.html">Accessing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/securing_and_exposing_registry.html">Securing and Exposing the Registry</a></li>
+
+                  <li><a class="" href="../../install_config/registry/extended_registry_configuration.html">Extended Registry Configuration</a></li>
+
+                  <li><a class="" href="../../install_config/registry/registry_known_issues.html">Known Issues</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-3">
+                <span id="sgSpan-4-3" class="fa fa-caret-down"></span>&nbsp;Setting up a Router
+              </a>
+              <ul id="topicSubGroup-4-3" class="nav-tertiary list-unstyled collapse in">
+
+                  <li><a class="" href="../../install_config/router/index.html">Router Overview</a></li>
+
+                  <li><a class=" active" href="../../install_config/router/default_haproxy_router.html">Using the Default HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/customized_haproxy_router.html">Deploying a Customized HAProxy Router</a></li>
+
+                  <li><a class="" href="../../install_config/router/f5_router.html">Using the F5 Router Plug-in</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-4">
+                <span id="sgSpan-4-4" class="fa fa-caret-right"></span>&nbsp;Upgrading a Cluster
+              </a>
+              <ul id="topicSubGroup-4-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/upgrading/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/automated_upgrades.html">Automated In-place Upgrades</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/manual_upgrades.html">Manual In-place Upgrades</a></li>
+
+                  <li><a class="" href="../../install_config/upgrading/blue_green_deployments.html">Blue-Green Deployments</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/master_node_configuration.html">Master and Node Configuration</a></li>
+            <li><a class="" href="../../install_config/adding_hosts_to_existing_cluster.html">Adding Hosts to an Existing Cluster</a></li>
+            <li><a class="" href="../../install_config/imagestreams_templates.html">Loading the Default Image Streams and Templates</a></li>
+            <li><a class="" href="../../install_config/certificate_customization.html">Configuring Custom Certificates</a></li>
+            <li><a class="" href="../../install_config/redeploying_certificates.html">Redeploying Certificates</a></li>
+            <li><a class="" href="../../install_config/configuring_authentication.html">Configuring Authentication and User Agent</a></li>
+            <li><a class="" href="../../install_config/syncing_groups_with_ldap.html">Syncing Groups With LDAP</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-12">
+                <span id="sgSpan-4-12" class="fa fa-caret-right"></span>&nbsp;Advanced LDAP Configuration
+              </a>
+              <ul id="topicSubGroup-4-12" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/sssd_for_ldap_failover.html">Setting up SSSD for LDAP Failover</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/configuring_form_based_authentication.html">Configuring Form-Based Authentication</a></li>
+
+                  <li><a class="" href="../../install_config/advanced_ldap_configuration/configuring_extended_ldap_attributes.html">Configuring Extended LDAP Attributes</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/configuring_sdn.html">Configuring the SDN</a></li>
+            <li><a class="" href="../../install_config/configuring_aws.html">Configuring for AWS</a></li>
+            <li><a class="" href="../../install_config/configuring_openstack.html">Configuring for OpenStack</a></li>
+            <li><a class="" href="../../install_config/configuring_gce.html">Configuring for GCE</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-17">
+                <span id="sgSpan-4-17" class="fa fa-caret-right"></span>&nbsp;Configuring Persistent Storage
+              </a>
+              <ul id="topicSubGroup-4-17" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/persistent_storage/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_nfs.html">Using NFS</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_glusterfs.html">Using GlusterFS</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_cinder.html">Using OpenStack Cinder</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_ceph_rbd.html">Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_aws.html">Using AWS Elastic Block Store</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_gce.html">Using GCE Persistent Disk</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_iscsi.html">Using iSCSI</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/persistent_storage_fibre_channel.html">Using Fibre Channel</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/dynamically_provisioning_pvs.html">Dynamic Provisioning</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/pod_security_context.html">Volume Security</a></li>
+
+                  <li><a class="" href="../../install_config/persistent_storage/selector_label_binding.html">Selector-Label Volume Binding</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-18">
+                <span id="sgSpan-4-18" class="fa fa-caret-right"></span>&nbsp;Persistent Storage Examples
+              </a>
+              <ul id="topicSubGroup-4-18" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../install_config/storage_examples/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/shared_storage.html">Sharing an NFS PV Across Two Pods</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/ceph_example.html">Complete Example Using Ceph RBD</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/gluster_example.html">Complete Example Using GlusterFS</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/privileged_pod_storage.html">Mounting Volumes To Privileged Pods</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/gluster_backed_registry.html">Backing Docker Registry with GlusterFS Storage</a></li>
+
+                  <li><a class="" href="../../install_config/storage_examples/binding_pv_by_label.html">Binding Persistent Volumes by Label</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../install_config/http_proxies.html">Working with HTTP Proxies</a></li>
+            <li><a class="" href="../../install_config/build_defaults_overrides.html">Configuring Global Build Defaults and Overrides</a></li>
+            <li><a class="" href="../../install_config/configuring_pipeline_execution.html">Configuring Build Pipeline Execution</a></li>
+            <li><a class="" href="../../install_config/configuring_routing.html">Configuring Routing</a></li>
+            <li><a class="" href="../../install_config/routing_from_edge_lb.html">Routing from Edge Load Balancers</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging.html">Aggregating Container Logs</a></li>
+            <li><a class="" href="../../install_config/aggregate_logging_sizing.html">Aggregate Logging Sizing Guidelines</a></li>
+            <li><a class="" href="../../install_config/cluster_metrics.html">Enabling Cluster Metrics</a></li>
+            <li><a class="" href="../../install_config/web_console_customization.html">Customizing the Web Console</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Cluster Administration
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../../admin_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../admin_guide/manage_nodes.html">Managing Nodes</a></li>
+            <li><a class="" href="../../admin_guide/manage_users.html">Managing Users</a></li>
+            <li><a class="" href="../../admin_guide/managing_projects.html">Managing Projects</a></li>
+            <li><a class="" href="../../admin_guide/managing_pods.html">Managing Pods</a></li>
+            <li><a class="" href="../../admin_guide/service_accounts.html">Configuring Service Accounts</a></li>
+            <li><a class="" href="../../admin_guide/manage_authorization_policy.html">Managing Authorization Policies</a></li>
+            <li><a class="" href="../../admin_guide/image_policy.html">Image Policy</a></li>
+            <li><a class="" href="../../admin_guide/monitoring_images.html">Monitoring Images</a></li>
+            <li><a class="" href="../../admin_guide/manage_scc.html">Managing Security Context Constraints</a></li>
+            <li><a class="" href="../../admin_guide/quota.html">Setting Quotas</a></li>
+            <li><a class="" href="../../admin_guide/multiproject_quota.html">Setting Multi-Project Quotas</a></li>
+            <li><a class="" href="../../admin_guide/limits.html">Setting Limit Ranges</a></li>
+            <li><a class="" href="../../admin_guide/pruning_resources.html">Pruning Objects</a></li>
+            <li><a class="" href="../../admin_guide/garbage_collection.html">Garbage Collection</a></li>
+            <li><a class="" href="../../admin_guide/scheduler.html">Scheduler</a></li>
+            <li><a class="" href="../../admin_guide/allocating_node_resources.html">Allocating Node Resources</a></li>
+            <li><a class="" href="../../admin_guide/overcommit.html">Overcommitting</a></li>
+            <li><a class="" href="../../admin_guide/tcp_ingress_external_ports.html">Assigning Unique External IPs for Ingress Traffic</a></li>
+            <li><a class="" href="../../admin_guide/router.html">Monitoring Routers</a></li>
+            <li><a class="" href="../../admin_guide/high_availability.html">High Availability</a></li>
+            <li><a class="" href="../../admin_guide/iptables.html">IPtables</a></li>
+            <li><a class="" href="../../admin_guide/securing_builds.html">Securing Builds by Strategy</a></li>
+            <li><a class="" href="../../admin_guide/building_dependency_trees.html">Building Dependency Trees</a></li>
+            <li><a class="" href="../../admin_guide/backup_restore.html">Backup and Restore</a></li>
+            <li><a class="" href="../../admin_guide/sdn_troubleshooting.html">Troubleshooting Networking</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
+            <li><a class="" href="../../cli_reference/admin_cli_operations.html">Administrator CLI Operations</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-7-5">
+                <span id="sgSpan-7-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-7-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-7-6">
+                <span id="sgSpan-7-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-7-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
+            <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
+            <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup8">
+        <span id="tgSpan8" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup8" class="collapse  list-unstyled">
+            <li><a class="" href="../../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup9">
+        <span id="tgSpan9" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup9" class="collapse  list-unstyled">
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-0">
+                <span id="sgSpan-9-0" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-9-0" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-1">
+                <span id="sgSpan-9-1" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-9-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-2">
+                <span id="sgSpan-9-2" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-9-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-9-3">
+                <span id="sgSpan-9-3" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-9-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup10">
+        <span id="tgSpan10" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup10" class="collapse  list-unstyled">
+            <li><a class="" href="../../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Using the Default HAProxy Router</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#basic-router-commands">Basic Router Commands</a></li>
+<li><a href="#highly-available-routers">Highly-Available Routers</a></li>
+<li><a href="#customizing-the-router-service-ports">Customizing the Router Service Ports</a></li>
+<li><a href="#working-with-multiple-routers">Working With Multiple Routers</a></li>
+<li><a href="#adding-nodeselector-to-a-deployment">Adding a Node Selector to a Deployment Configuration</a></li>
+<li><a href="#using-router-shards">Using Router Shards</a>
+<ul class="sectlevel2">
+<li><a href="#creating-router-shards">Creating Router Shards</a></li>
+<li><a href="#modifying-router-shards">Modifying Router Shards</a></li>
+<li><a href="#using-namespace-router-shards">Using Namespace Router Shards</a></li>
+</ul>
+</li>
+<li><a href="#customizing-the-default-routing-subdomain">Customizing the Default Routing Subdomain</a></li>
+<li><a href="#forcing-route-hostnames-to-a-custom-routing-subdomain">Forcing Route Host Names to a Custom Routing Subdomain</a></li>
+<li><a href="#using-wildcard-certificates">Using Wildcard Certificates</a></li>
+<li><a href="#using-secured-routes">Using Secured Routes</a></li>
+<li><a href="#using-the-container-network-stack">Using the Container Network Stack</a></li>
+<li><a href="#exposing-the-router-metrics">Exposing Router Metrics</a></li>
+<li><a href="#preventing-connection-failures-during-restarts">Preventing Connection Failures During Restarts</a></li>
+<li><a href="#deploy-router-protecting-against-ddos-attacks">Protecting Against DDoS Attacks</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>oadm router</code> command is provided with the administrator CLI to simplify the
+tasks of setting up routers in a new installation. If you followed the
+<a href="../../install_config/install/quick_install.html#install-config-install-quick-install">quick installation</a>, then
+a default router was automatically created for you. The <code>oadm router</code> command
+creates the service and deployment configuration objects. Just about every form
+of communication between OpenShift Origin components is secured by TLS and uses
+various certificates and authentication methods. Use the <code>--service-account</code> option
+to specify the service account the router will use to contact the master.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Routers directly attach to port 80 and 443 on all interfaces on a host. Restrict
+routers to hosts where port 80/443 is available and not being consumed by
+another service, and set this using node selectors and the
+<a href="../../admin_guide/scheduler.html#admin-guide-scheduler">scheduler configuration</a>. As an example, you can
+achieve this by dedicating infrastructure nodes to run services such as routers.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is recommended to use separate distinct <strong>openshift-router</strong> service account
+with your router. This can be provided using the <code>--service-account</code> flag to the
+<code>oadm router</code> command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router --dry-run --service-account=router <i class="conum" data-value="1"></i><b>(1)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>--service-account</code> is the name of a <a href="../../admin_guide/service_accounts.html#admin-guide-service-accounts">service account</a>
+for the <strong>openshift-router</strong>.
+It is recommended using an <strong>openshift-router</strong> specific service account with
+appropriate permissions.</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Router pods created using <code>oadm router</code> have default resource requests
+that a node must satisfy for the router pod to be deployed. In an
+effort to increase the reliability of infrastructure components, the default
+resource requests are used to increase the QoS tier of the router pods above
+pods without resource requests. The default values represent the observed minimum
+resources required for a basic router to be deployed and can be edited in the
+routers deployment configuration and you may want to increase them based on the
+load of the router.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="basic-router-commands"><a class="anchor" href="#basic-router-commands"></a>Basic Router Commands</h2>
+<div class="sectionbody">
+<div id="deploy-router-check-default" class="dlist">
+<dl>
+<dt class="hdlist1">Checking the Default Router</dt>
+<dd>
+<p>First, ensure you have <a href="../install_config/router/index.html#creating-the-router-service-account">created the
+router service account</a> before deploying a router.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>To check if a default router, named <strong>router</strong>, already exists:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router --dry-run --service-account=router</pre>
+</div>
+</div>
+<div id="deploy-router-viewing-default" class="dlist">
+<dl>
+<dt class="hdlist1">Viewing the Default Router</dt>
+<dd>
+<p>To see what the default router would look like if created:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router -o yaml --service-account=router</pre>
+</div>
+</div>
+<div id="deploy-router-create-router" class="dlist">
+<dl>
+<dt class="hdlist1">Creating a Router</dt>
+<dd>
+<p>The
+<a href="../../install_config/install/quick_install.html#install-config-install-quick-install">quick installation</a>
+process automatically creates a default router. To create a router if it does not exist:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router &lt;router_name&gt; --replicas=&lt;number&gt; --service-account=router</pre>
+</div>
+</div>
+<div id="deploy-router-to-labeled-nodes" class="dlist">
+<dl>
+<dt class="hdlist1">Deploying the Router to a Labeled Node</dt>
+<dd>
+<p>To deploy the router to any node(s) that match a specified
+<a href="../../admin_guide/manage_nodes.html#updating-labels-on-nodes">node label</a>:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router &lt;router_name&gt; --replicas=&lt;number&gt; --selector=&lt;label&gt; \
+    --service-account=router</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, if you want to create a router named <code>router</code> and have it placed on a node labeled with <code>region=infra</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router router --replicas=1 --selector='region=infra' \
+  --service-account=router</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>During
+<a href="../../install_config/install/advanced_install.html#install-config-install-advanced-install">advanced installation</a>,
+the <code><strong>openshift_hosted_router_selector</strong></code> and <code><strong>openshift_registry_selector</strong></code>
+Ansible settings are set to <strong>region=infra</strong> by default. The default router and
+registry will only be automatically deployed if a node exists that matches the
+<strong>region=infra</strong> label.</p>
+</div>
+<div class="paragraph">
+<p>Multiple instances are created on different hosts according to the
+<a href="../../admin_guide/scheduler.html#admin-guide-scheduler">scheduler policy</a>.</p>
+</div>
+<div id="deploy-router-different-image" class="dlist">
+<dl>
+<dt class="hdlist1">Using a Different Router Image</dt>
+<dd>
+<p>To use a different router image and view the router configuration that would be used:</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router &lt;router_name&gt; -o &lt;format&gt; --images=&lt;image&gt; \
+    --service-account=router</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router region-west -o yaml --images=myrepo/somerouter:mytag \
+    --service-account=router</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="highly-available-routers"><a class="anchor" href="#highly-available-routers"></a>Highly-Available Routers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can <a href="../../admin_guide/high_availability.html#admin-guide-high-availability">set up a highly-available
+router</a> on your OpenShift Origin cluster using IP failover.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="customizing-the-router-service-ports"><a class="anchor" href="#customizing-the-router-service-ports"></a>Customizing the Router Service Ports</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can customize the service ports that a template router binds to by setting
+the environment variables <code><strong>ROUTER_SERVICE_HTTP_PORT</strong></code> and
+<code><strong>ROUTER_SERVICE_HTTPS_PORT</strong></code>. This can be done by creating a template router,
+then editing its deployment configuration.</p>
+</div>
+<div class="paragraph">
+<p>The following example creates a router deployment with <code>0</code> replicas and
+customizes the router service HTTP and HTTPS ports, then scales it
+appropriately (to <code>1</code> replica).</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router --replicas=0 --ports='10080:10080,10443:10443' <i class="conum" data-value="1"></i><b>(1)</b>
+$ oc env dc/router ROUTER_SERVICE_HTTP_PORT=10080  \
+                   ROUTER_SERVICE_HTTPS_PORT=10443
+$ oc scale dc/router --replicas=1</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Ensures exposed ports are appropriately set for routers that use the
+container networking mode <code>--host-network=false</code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you do customize the template router service ports, you will also need to
+ensure that the nodes where the router pods run have those custom ports opened
+in the firewall (either via Ansible or <code>iptables</code>, or any other custom method
+that you use via <code>firewall-cmd</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following is an example using <code>iptables</code> to open the custom router service
+ports.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ iptables -A INPUT -p tcp --dport 10080 -j ACCEPT
+$ iptables -A INPUT -p tcp --dport 10443 -j ACCEPT</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="working-with-multiple-routers"><a class="anchor" href="#working-with-multiple-routers"></a>Working With Multiple Routers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An administrator can create multiple routers with the same definition
+to serve the same set of routes.
+By having different groups of routers with different namespace or
+route selectors, they can vary the routes that the router serves.</p>
+</div>
+<div class="paragraph">
+<p>Multiple routers can be grouped to distribute routing load in the cluster
+and separate tenants to different routers or
+<a href="../../architecture/core_concepts/routes.html#router-sharding">shards</a>.
+Each router or shard in the group handles routes
+based on the selectors in the router.
+An administrator can create shards over the whole cluster using <code>ROUTE_LABELS</code>.
+A user can create shards over a namespace (project) by using <code>NAMESPACE_LABELS</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adding-nodeselector-to-a-deployment"><a class="anchor" href="#adding-nodeselector-to-a-deployment"></a>Adding a Node Selector to a Deployment Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Making specific routers deploy on specific nodes requires two steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a
+<a href="../../admin_guide/manage_nodes.html#updating-labels-on-nodes">label</a>
+to the desired node:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc label node 10.254.254.28 "router=first"</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add a node selector to the router deployment configuration:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc edit dc &lt;deploymentConfigName&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add the <code>template.spec.nodeSelector</code> field with a key and value
+corresponding to the label:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">...
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        router: router1
+    spec:
+      nodeSelector:      <i class="conum" data-value="1"></i><b>(1)</b>
+        router: "first"
+...</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The key and value are <code>router</code> and <code>first</code>, respectively,
+corresponding to the <code>router=first</code> label.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-router-shards"><a class="anchor" href="#using-router-shards"></a>Using Router Shards</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The access controls are based on the service account that the
+router is run with.</p>
+</div>
+<div class="paragraph">
+<p>Using <code>NAMESPACE_LABELS</code> and/or <code>ROUTE_LABELS</code>, a router can filter out the
+namespaces and/or routes that it should service.
+This enables you to partition routes amongst multiple router deployments
+effectively distributing the set of routes.</p>
+</div>
+<div class="paragraph">
+<p>Example:
+A router deployment <code>finops-router</code> is run with route selector
+<code>NAMESPACE_LABELS="name in (finance, ops)"</code>
+and a router deployment <code>dev-router</code> is run with route selector
+<code>NAMESPACE_LABELS="name=dev"</code>.</p>
+</div>
+<div class="paragraph">
+<p>If all routes are in the 3 namespaces <code>finance</code>, <code>ops</code> or <code>dev</code>,
+then this could effectively distribute our routes across two
+router deployments.</p>
+</div>
+<div class="paragraph">
+<p>In the above scenario, sharding becomes a special case of partitioning
+with no overlapping sets.
+Routes are divided amongst multiple router shards.</p>
+</div>
+<div class="paragraph">
+<p>The criteria for route selection governs how the routes are distributed.
+It is possible to have routes that overlap accross multiple router deployments.</p>
+</div>
+<div class="paragraph">
+<p>Example:
+In addition to the <code>finops-router</code> and <code>dev-router</code> in the example
+above, we also have an <code>devops-router</code> which is run with a route
+selector <code>NAMESPACE_LABELS="name in (dev, ops)"</code>.</p>
+</div>
+<div class="paragraph">
+<p>The routes in namespaces <code>dev</code> or <code>ops</code> now are serviced by two different
+router deployments.
+This becomes a case where we have partitioned the
+routes with an overlapping set.</p>
+</div>
+<div class="paragraph">
+<p>In addition, this enables us to create more complex routing rules ala
+divert high priority traffic to the dedicated <code>finops-router</code> but send
+the lower priority ones to the <code>devops-router</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>NAMESPACE_LABELS</code> allows filtering the projects to service and selecting
+all the routes from those projects.
+But we may want to partition routes
+based on other criteria in the routes themselves.
+The <code>ROUTE_LABELS</code>
+selector allows you to slice-and-dice the routes themselves.</p>
+</div>
+<div class="paragraph">
+<p>Example:
+A router deployment <code>prod-router</code> is run with route selector
+<code>ROUTE_LABELS="mydeployment=prod"</code>
+and a router deployment <code>devtest-router</code> is run with route selector
+<code>ROUTE_LABELS="mydeployment in (dev, test)"</code></p>
+</div>
+<div class="paragraph">
+<p>Example assumes you have all the routes you wish to serviced tagged with a
+label <code>"mydeployment=&lt;tag&gt;"</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="creating-router-shards"><a class="anchor" href="#creating-router-shards"></a>Creating Router Shards</h3>
+<div class="paragraph">
+<p>Router sharding lets you select how routes are distributed among a set of
+routers.</p>
+</div>
+<div class="paragraph">
+<p>Router sharding is
+<a href="../../architecture/core_concepts/routes.html#router-sharding">based on labels</a>;
+you set labels on the routes in the pool,
+and express the desired subset of those routes for the router to serve
+with a selection expression via the <code>oc env</code> command.</p>
+</div>
+<div class="paragraph">
+<p>First, ensure that service account associated with the router has the
+<a href="#creating-the-router-service-account"><code>cluster reader</code></a> permission.</p>
+</div>
+<div class="paragraph">
+<p>The rest of this section describes an extended example.
+Suppose there are 26 routes, named <code>a</code>&#8201;&#8212;&#8201;<code>z</code>,
+in the pool, with various labels:</p>
+</div>
+<div class="listingblock">
+<div class="title">Possible labels on routes in the pool</div>
+<div class="content">
+<pre class="nowrap">sla=high       geo=east     hw=modest     dept=finance
+sla=medium     geo=west     hw=strong     dept=dev
+sla=low                                   dept=ops</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These labels express the concepts:
+service level agreement, geographical location,
+hardware requirements, and department.
+The routes in the pool can have at most one label from each column.
+Some routes may have other labels, entirely, or none at all.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 37.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name(s)</th>
+<th class="tableblock halign-left valign-top">SLA</th>
+<th class="tableblock halign-left valign-top">Geo</th>
+<th class="tableblock halign-left valign-top">HW</th>
+<th class="tableblock halign-left valign-top">Dept</th>
+<th class="tableblock halign-left valign-top">Other Labels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>a</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>high</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>east</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modest</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>finance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>type=static</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>b</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>west</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>strong</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>type=dynamic</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>c</code>, <code>d</code>, <code>e</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>low</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modest</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>type=static</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>g</code>&#8201;&#8212;&#8201;<code>k</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>medium</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>strong</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>l</code>&#8201;&#8212;&#8201;<code>s</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>high</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modest</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ops</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>t</code>&#8201;&#8212;&#8201;<code>z</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>west</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>type=dynamic</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Here is a convenience script <strong><em>mkshard</em></strong>  that
+ilustrates how <code>oadm router</code>, <code>oc env</code>, and <code>oc scale</code>
+work together to make a router shard.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">#!/bin/bash
+# Usage: mkshard ID SELECTION-EXPRESSION
+id=$1
+sel=&quot;$2&quot;
+router=router-shard-$id           <i class="conum" data-value="1"></i><b>(1)</b>
+oadm router $router --replicas=0  <i class="conum" data-value="2"></i><b>(2)</b>
+dc=dc/router-shard-$id            <i class="conum" data-value="3"></i><b>(3)</b>
+oc env   $dc ROUTE_LABELS=&quot;$sel&quot;  <i class="conum" data-value="4"></i><b>(4)</b>
+oc scale $dc --replicas=3         <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The created router has name <code>router-shard-&lt;id&gt;</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Specify no scaling for now.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The deployment configuration for the router.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Set the selection expression using <code>oc env</code>.
+The selection expression is the value of
+the <code>ROUTE_LABELS</code> environment variable.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Scale it up.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Running <strong><em>mkshard</em></strong> several times creates several routers:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 42.8571%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Router</th>
+<th class="tableblock halign-left valign-top">Selection Expression</th>
+<th class="tableblock halign-left valign-top">Routes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>router-shard-1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sla=high</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>a</code>, <code>l</code>&#8201;&#8212;&#8201;<code>s</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>router-shard-2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>geo=west</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>b</code>, <code>t</code>&#8201;&#8212;&#8201;<code>z</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>router-shard-3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dept=dev</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>g</code>&#8201;&#8212;&#8201;<code>k</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="modifying-router-shards"><a class="anchor" href="#modifying-router-shards"></a>Modifying Router Shards</h3>
+<div class="paragraph">
+<p>Because a router shard is a construct
+<a href="../../architecture/core_concepts/routes.html#router-sharding">based on labels</a>,
+you can modify either the labels (via
+<a href="../../cli_reference/basic_cli_operations.html#application-modification-cli-operations"><code>oc label</code></a>)
+or the selection expression.</p>
+</div>
+<div class="paragraph">
+<p>This section extends the example started in the
+<a href="#creating-router-shards">Creating Router Shards</a> section,
+demonstrating how to change the selection expression.</p>
+</div>
+<div class="paragraph">
+<p>Here is a convenience script <strong><em>modshard</em></strong> that modifies
+an existing router to use a new selection expression:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">#!/bin/bash
+# Usage: modshard ID SELECTION-EXPRESSION...
+id=$1
+shift
+router=router-shard-$id       <i class="conum" data-value="1"></i><b>(1)</b>
+dc=dc/$router                 <i class="conum" data-value="2"></i><b>(2)</b>
+oc scale $dc --replicas=0     <i class="conum" data-value="3"></i><b>(3)</b>
+oc env   $dc &quot;$@&quot;             <i class="conum" data-value="4"></i><b>(4)</b>
+oc scale $dc --replicas=3     <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The modified router has name <code>router-shard-&lt;id&gt;</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The deployment configuration where the modifications occur.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Scale it down.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Set the new selection expression using <code>oc env</code>.
+Unlike <code>mkshard</code> from the
+<a href="#creating-router-shards">Creating Router Shards</a>
+section, the selection expression specified as the
+non-<code>ID</code> arguments to <code>modshard</code> must include the
+environment variable name as well as its value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Scale it back up.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In <code>modshard</code>, the <code>oc scale</code> commands are not necessary if the
+<a href="../../dev_guide/deployments.html#strategies">deployment strategy</a>
+for <code>router-dhsard-&lt;id&gt;</code> is <code>Rolling</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example, to expand the department for <code>router-shard-3</code>
+to include <code>ops</code> as well as <code>dev</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ modshard 3 ROUTE_LABELS='dept in (dev, ops)'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result is that <code>router-shard-3</code> now selects routes <code>g</code>&#8201;&#8212;&#8201;<code>s</code>
+(the combined sets of <code>g</code>&#8201;&#8212;&#8201;<code>k</code> and <code>l</code>&#8201;&#8212;&#8201;<code>s</code>).</p>
+</div>
+<div class="paragraph">
+<p>This example takes into account that
+there are only three departments in this example scenario,
+and specifies a department to leave out of the shard,
+thus achieving the same result as the preceding example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ modshard 3 ROUTE_LABELS='dept != finanace'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This example specifies shows three comma-separated qualities,
+and results in only route <code>b</code> being selected:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ modshard 3 ROUTE_LABELS='hw=strong,type=dynamic,geo=west'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similarly to <code>ROUTE_LABELS</code>, which involve a route&#8217;s labels,
+you can select routes based on the labels of the route&#8217;s namespace labels,
+with the <code>NAMESPACE_LABELS</code> environment variable.
+This example modifies <code>router-shard-3</code> to serve
+routes whose namespace has the label <code>frequency=weekly</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ modshard 3 NAMESPACE_LABELS='frequency=weekly'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The last example combines <code>ROUTE_LABELS</code> and <code>NAMESPACE_LABELS</code>
+to select routes with label <code>sla=low</code> and
+whose namespace has the label <code>frequency=weekly</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ modshard 3 \
+    NAMESPACE_LABELS='frequency=weekly' \
+    ROUTE_LABELS='sla=low'</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-namespace-router-shards"><a class="anchor" href="#using-namespace-router-shards"></a>Using Namespace Router Shards</h3>
+<div class="paragraph">
+<p>The routes for a project can be handled by a selected router by using
+<code>NAMESPACE_LABELS</code>.
+The router is given a selector for a <code>NAMESPACE_LABELS</code>
+label and the project that wants to use the router applies the <code>NAMESPACE_LABELS</code>
+label to its namespace.</p>
+</div>
+<div class="paragraph">
+<p>First, ensure that service account associated with the router has the
+<a href="#creating-the-router-service-account"><code>cluster reader</code></a> permission.
+This permits the router to read the labels that are applied to the namespaces.</p>
+</div>
+<div class="paragraph">
+<p>Now create and label the router:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router ...  --service-account=router
+$ oc env dc/router NAMESPACE_LABELS="router=r1"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Because the router has a selector for a namespace, the router will handle
+routes for that namespace.  So, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc label namespace default "router=r1"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now create routes in the default namespace, and the route is
+available in the default router:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create -f route1.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now create a new project (namespace) and create a route, route2.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-project p1
+$ oc create -f route2.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And notice the route is not available in your router.
+Now label namespace p1 with "router=r1"</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc label namespace p1 "router=r1"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Which makes the route available to the router.</p>
+</div>
+<div class="paragraph">
+<p>Note that removing the label from the namespace won&#8217;t have immediate effect
+(as we don&#8217;t see the updates in the router), so if you redeploy/start a new
+router pod, you should see the unlabelled effects.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc scale dc/router --replicas=0 &amp;&amp; oc scale dc/router --replicas=1</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="customizing-the-default-routing-subdomain"><a class="anchor" href="#customizing-the-default-routing-subdomain"></a>Customizing the Default Routing Subdomain</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can customize the suffix used as the default routing subdomain for your
+environment by modifying the
+<a href="../../install_config/master_node_configuration.html#master-configuration-files">master
+configuration file</a> (the <strong><em>/etc/origin/master/master-config.yaml</em></strong> file by
+default). Routes that do not specify a host name would have one generated using
+this default routing subdomain.</p>
+</div>
+<div class="paragraph">
+<p>The following example shows how you can set the configured suffix
+to <strong>v3.openshift.test</strong>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">routingConfig:
+  subdomain: v3.openshift.test</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This change requires a restart of the master if it is running.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>With the OpenShift Origin master(s) running the above configuration, the
+<a href="../../architecture/core_concepts/routes.html#route-hostnames">generated host
+name</a> for the example of a route named <strong>no-route-hostname</strong> without a
+host name added to a namespace <strong>mynamespace</strong> would be:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">no-route-hostname-mynamespace.v3.openshift.test</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="forcing-route-hostnames-to-a-custom-routing-subdomain"><a class="anchor" href="#forcing-route-hostnames-to-a-custom-routing-subdomain"></a>Forcing Route Host Names to a Custom Routing Subdomain</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If an administrator wants to restrict all routes to a specific routing
+subdomain, they can pass the <code>--force-subdomain</code> option to the <code>oadm
+router</code> command. This forces the router to override any host names specified in
+a route and generate one based on the template provided to the
+<code>--force-subdomain</code> option.</p>
+</div>
+<div class="paragraph">
+<p>The following example runs a router, which overrides the route host names using
+a custom subdomain template <code>${name}-${namespace}.apps.example.com</code>.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router --force-subdomain='${name}-${namespace}.apps.example.com'</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-wildcard-certificates"><a class="anchor" href="#using-wildcard-certificates"></a>Using Wildcard Certificates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A TLS-enabled route that does not include a certificate uses the router&#8217;s
+default certificate instead. In most cases, this certificate should be provided
+by a trusted certificate authority, but for convenience you can use the
+OpenShift Origin CA to create the certificate. For example:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ CA=/etc/origin/master
+$ oadm ca create-server-cert --signer-cert=$CA/ca.crt \
+      --signer-key=$CA/ca.key --signer-serial=$CA/ca.serial.txt \
+      --hostnames='*.cloudapps.example.com' \
+      --cert=cloudapps.crt --key=cloudapps.key</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The router expects the certificate and key to be in PEM format in a single
+file:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ cat cloudapps.crt cloudapps.key $CA/ca.crt &gt; cloudapps.router.pem</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>From there you can use the <code>--default-cert</code> flag:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router --default-cert=cloudapps.router.pem --service-account=router</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Browsers only consider wildcards valid for subdomains one
+level deep. So in this example, the certificate would be valid for
+<em>a.cloudapps.example.com</em> but not for <em>a.b.cloudapps.example.com</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-secured-routes"><a class="anchor" href="#using-secured-routes"></a>Using Secured Routes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Currently, password protected key files are not supported. HAProxy prompts
+for a password upon starting and does not have a way to automate this process.
+To remove a passphrase from a keyfile, you can run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># openssl rsa -in &lt;passwordProtectedKey.key&gt; -out &lt;new.key&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is an example of how to use a secure edge terminated route with TLS
+termination occurring on the router before traffic is proxied to the
+destination. The secure edge terminated route specifies the TLS certificate
+and key information. The TLS certificate is served by the router front end.</p>
+</div>
+<div class="paragraph">
+<p>First, start up a router instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># oadm router --replicas=1 --service-account=router</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, create a private key, csr and certificate for our edge secured route.
+The instructions on how to do that would be specific to your certificate
+authority and provider. For a simple self-signed certificate for a domain
+named <code>www.example.test</code>, see the example shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># sudo openssl genrsa -out example-test.key 2048
+#
+# sudo openssl req -new -key example-test.key -out example-test.csr  \
+  -subj "/C=US/ST=CA/L=Mountain View/O=OS3/OU=Eng/CN=www.example.test"
+#
+# sudo openssl x509 -req -days 366 -in example-test.csr  \
+      -signkey example-test.key -out example-test.crt</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Generate a route using the above certificate and key.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc create route edge --service=my-service \
+    --hostname=www.example.test \
+    --key=example-test.key --cert=example-test.crt
+route "my-service" created</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Look at its definition.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get route/my-service -o yaml
+apiVersion: v1
+kind: Route
+metadata:
+  name:  my-service
+spec:
+  host: www.example.test
+  to:
+    kind: Service
+    name: my-service
+  tls:
+    termination: edge
+    key: |
+      -----BEGIN PRIVATE KEY-----
+      [...]
+      -----END PRIVATE KEY-----
+    certificate: |
+      -----BEGIN CERTIFICATE-----
+      [...]
+      -----END CERTIFICATE-----</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Make sure your DNS entry for <code>www.example.test</code> points to your router
+instance(s) and the route to your domain should be available.
+The example below uses curl along with a local resolver to simulate the
+DNS lookup:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># routerip="4.1.1.1"  #  replace with IP address of one of your router instances.
+# curl -k --resolve www.example.test:443:$routerip https://www.example.test/</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-the-container-network-stack"><a class="anchor" href="#using-the-container-network-stack"></a>Using the Container Network Stack</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The OpenShift Origin router runs inside a Docker container and the default behavior is
+to use the network stack of the host (i.e., the node where the router container
+runs). This default behavior benefits performance because network traffic from
+remote clients does not need to take multiple hops through user space to reach
+the target service and container.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, this default behavior enables the router to get the actual source
+IP address of the remote connection rather than getting the node&#8217;s IP address.
+This is useful for defining ingress rules based on the originating IP,
+supporting sticky sessions, and monitoring traffic, among other uses.</p>
+</div>
+<div class="paragraph">
+<p>This host network behavior is controlled by the <code>--host-network</code> router command
+line option, and the default behaviour is the equivalent of using
+<code>--host-network=true</code>. If you wish to run the router with the container network
+stack, use the <code>--host-network=false</code> option when creating the router. For
+example:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router --service-account=router --host-network=false</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Internally, this means the router container must publish the 80 and 443
+ports in order for the external network to communicate with the router.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Running with the container network stack means that the router sees the source
+IP address of a connection to be the NATed IP address of the node, rather than
+the actual remote IP address.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>On OpenShift Origin clusters using
+<a href="../../architecture/additional_concepts/sdn.html#network-isolation-multitenant">multi-tenant
+network isolation</a>, routers on a non-default namespace with the
+<code>--host-network=false</code> option will load all routes in the cluster, but routes
+across the namespaces will not be reachable due to network isolation. With the
+<code>--host-network=true</code> option, routes bypass the container network and it can
+access any pod in the cluster. If isolation is needed in this case, then do not
+add routes across the namespaces.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exposing-the-router-metrics"><a class="anchor" href="#exposing-the-router-metrics"></a>Exposing Router Metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using the <code>--metrics-image</code> and <code>--expose-metrics</code> options, you can configure
+the OpenShift Origin router to run a sidecar container that exposes or publishes
+router metrics for consumption by external metrics collection and aggregation
+systems (e.g. Prometheus, statsd).</p>
+</div>
+<div class="paragraph">
+<p>Depending on your router implementation, the image is appropriately set up and
+the metrics sidecar container is started when the router is deployed. For
+example, the HAProxy-based router implementation defaults to using the
+<code>prom/haproxy-exporter</code> image to run as a sidecar container, which can then be
+used as a metrics datasource by the Prometheus server.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>--metrics-image</code> option overrides the defaults for HAProxy-based router
+implementations and, in the case of custom implementations, enables the image to
+use for a custom metrics exporter or publisher.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Grab the HAProxy Prometheus exporter image from the Docker registry:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ sudo docker pull prom/haproxy-exporter</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Create the OpenShift Origin router:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router --service-account=router --expose-metrics</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Or, optionally, use the <code>--metrics-image</code> option to override the HAProxy
+defaults:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm router --service-account=router --expose-metrics \
+    --metrics-image=prom/haproxy-exporter</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Once the haproxy-exporter containers (and your HAProxy router) have started,
+point Prometheus to the sidecar container on port 9101 on the node where the
+haproxy-exporter container is running:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ haproxy_exporter_ip="&lt;enter-ip-address-or-hostname&gt;"
+$ cat &gt; haproxy-scraper.yml  &lt;&lt;CFGEOF
+---
+global:
+  scrape_interval: "60s"
+  scrape_timeout:  "10s"
+  # external_labels:
+    # source: openshift-router
+
+scrape_configs:
+  - job_name:  "haproxy"
+    target_groups:
+      - targets:
+        - "${haproxy_exporter_ip}:9101"
+CFGEOF
+
+$ #  And start prometheus as you would normally using the above config file.
+$ echo "  - Example:  prometheus -config.file=haproxy-scraper.yml "
+$ echo "              or you can start it as a container on {product-title}!!
+
+$ echo "  - Once the prometheus server is up, view the {product-title} HAProxy "
+$ echo "    router metrics at: http://&lt;ip&gt;:9090/consoles/haproxy.html "</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="preventing-connection-failures-during-restarts"><a class="anchor" href="#preventing-connection-failures-during-restarts"></a>Preventing Connection Failures During Restarts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you connect to the router while the proxy is reloading, there is a small
+chance that your connection will end up in the wrong network queue and be
+dropped. The issue is being addressed. In the meantime, it is possible to work
+around the problem by installing <code>iptables</code> rules to prevent connections during
+the reload window. However, doing so means that the router needs to run with
+elevated privilege so that it can manipulate <code>iptables</code> on the host. It also
+means that connections that happen during the reload are temporarily ignored and
+must retransmit their connection start, lengthening the time it takes to
+connect, but preventing connection failure.</p>
+</div>
+<div class="paragraph">
+<p>To prevent this, configure the router to use <code>iptables</code> by changing the service
+account, and setting an environment variable on the router.</p>
+</div>
+<div class="paragraph">
+<p><strong>Use a Privileged SCC</strong></p>
+</div>
+<div class="paragraph">
+<p>When creating the router, allow it to use the privileged SCC. This gives the
+router user the ability to create containers with root privileges on the nodes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oadm policy add-scc-to-user privileged -z router</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Patch the Router Deployment Configuration to Create a Privileged Container</strong></p>
+</div>
+<div class="paragraph">
+<p>You can now create privileged containers. Next, configure the router deployment
+configuration to use the privilege so that the router can set the iptables rules
+it needs. This patch changes the router deployment configuration so that the
+container that is created runs as privileged (and therefore gets correct
+capabilities) and run as root:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc patch dc router -p '{"spec":{"template":{"spec":{"containers":[{"name":"router","securityContext":{"privileged":true}}],"securityContext":{"runAsUser": 0}}}}}'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Configure the Router to Use iptables</strong></p>
+</div>
+<div class="paragraph">
+<p>Set the option on the router deployment configuration:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc set env dc/router -c router DROP_SYN_DURING_RESTART=true</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If you used a non-default name for the router, you must change <strong><em>dc/router</em></strong>
+accordingly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deploy-router-protecting-against-ddos-attacks"><a class="anchor" href="#deploy-router-protecting-against-ddos-attacks"></a>Protecting Against DDoS Attacks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Add <strong>timeout http-request</strong> to the default HAProxy router image to
+protect the deployment against distributed denial-of-service (DDoS) attacks (for
+example, slowloris):</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"># and the haproxy stats socket is available at /var/run/haproxy.stats
+global
+  stats socket ./haproxy.stats level admin
+
+defaults
+  option http-server-close
+  mode http
+  timeout http-request 5s
+  timeout connect 5s <i class="conum" data-value="1"></i><b>(1)</b>
+  timeout server 10s
+  timeout client 30s</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><strong>timeout http-request</strong> is set up to 5 seconds. HAProxy gives a client 5 seconds
+*to send its whole HTTP request. Otherwise, HAProxy shuts the connection with
+*an error.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Also, when the environment variable <code><strong>ROUTER_SLOWLORIS_TIMEOUT</strong></code> is set, it
+limits the amount of time a client has to send the whole HTTP request.
+Otherwise, HAProxy will shut down the connection.</p>
+</div>
+<div class="paragraph">
+<p>Setting the environment variable allows information to be captured as part
+of the router&#8217;s deployment configuration and does not require manual
+modification of the template, whereas manually adding the HAProxy setting
+requires you to rebuild the router pod and maintain your router template file.</p>
+</div>
+<div class="paragraph">
+<p>Using annotations implements basic DDoS protections in the HAProxy template
+router, including the ability to limit the:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>number of concurrent TCP connections</p>
+</li>
+<li>
+<p>rate at which a client can request TCP connections</p>
+</li>
+<li>
+<p>rate at which HTTP requests can be made</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These are enabled on a per route basis because applications can have extremely
+different traffic patterns.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. HAProxy Template Router Settings</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Setting</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>haproxy.router.openshift.io/rate-limit-connections</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables the settings be configured (when set to <strong>true</strong>, for example).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>haproxy.router.openshift.io/rate-limit-connections.concurrent-tcp</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of concurrent TCP connections that can be made by the same IP
+address on this route.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>haproxy.router.openshift.io/rate-limit-connections.rate-tcp</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of TCP connections that can be opened by a client IP.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>haproxy.router.openshift.io/rate-limit-connections.rate-http</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of HTTP requests that a client IP can make in a 3-second
+period.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+    <footer class="footer-origin-docs">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="footer_social">
+          <a href="https://twitter.com/openshift" class="first">
+            <span>
+              <i class="fa fa-twitter-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://github.com/openshift/origin">
+            <span>
+              <i class="fa fa-github fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://plus.google.com/communities/114361859072744017486">
+            <span>
+              <i class="fa fa-google-plus-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+          <a href="https://www.facebook.com/openshift">
+            <span>
+              <i class="fa fa-facebook-square fa-2x fa-inverse"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <a id="footer_logo" href="https://www.redhat.com/">
+          <img alt="Red Hat" src="https://assets.openshift.net/app/assets/redhat.svg">
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-center">
+        <a id="powered_by_openshift" title="Powered by OpenShift Online with the DIY Cartridge" href="https://hub.openshift.com/quickstarts/92-do-it-yourself-0-1">
+          <img src="https://www.openshift.com/sites/default/files/images/powered-transparent-white.png" alt="Powered by OpenShift Online">
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-4 text-right">
+        <a id="built_with_asciibinder" title="Built with AsciiBinder docs management system" href="http://asciibinder.org/">
+          <img src="../../../latest/_images/asciibinder_web_logo.svg" alt="AsciiBinder">
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="attribution">
+          <button type="button" class="btn btn-link" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-content="
+            '<a target='_blank' href='https://www.flickr.com/photos/eflon/3655695161/'>Spin</a>' by <a target='_blank' href='https://www.flickr.com/photos/eflon/'>eflon</a>,</br> used under <a target='_blank' href='https://creativecommons.org/licenses/by/2.0/'>CC BY 2.0</a> </br>Color tint added to original">
+            Image attribution
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+    </script>
+  </div>
+</footer>
+</body>
+</html>
