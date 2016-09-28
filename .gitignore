@@ -3,3 +3,4 @@ Gemfile.lock
 _package
 architecture/core_concepts/images/docker-diagram.png
 architecture/core_concepts/images/docker-diagram.png.cache
+.DS_Store
