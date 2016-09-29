@@ -550,7 +550,7 @@ Dir: dev_guide
 Distros: openshift-*,digital-garage
 Topics:
   - Name: Overview
-    File:
+    File: index
   - Name: Application Life Cycle Examples
     File: application_lifecycle
   - Name: Authentication
