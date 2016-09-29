@@ -476,7 +476,7 @@ ifdef::openshift-enterprise,openshift-origin[]
 See xref:../install_config/cluster_metrics.adoc#install-config-cluster-metrics[Enabling Cluster Metrics] for
 cluster administrator instructions, if needed.
 endif::[]
-ifdef::openshift-online,openshift-dedicated[]
+ifdef::digital-garage,openshift-dedicated[]
 Check with your cluster administrator to confirm whether metrics are enabled in
 your environment.
 endif::[]

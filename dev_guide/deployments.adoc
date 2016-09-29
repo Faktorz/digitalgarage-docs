@@ -718,7 +718,7 @@ ifdef::openshift-enterprise,openshift-dedicated,openshift-origin[]
 defaults from the `*LimitRange*` object apply to pods created during the
 deployment process.
 endif::[]
-ifdef::openshift-online[]
+ifdef::digital-garage[]
 - A limit range defined in your project, where the
 defaults from the `*LimitRange*` object apply to pods created during the
 deployment process.
@@ -765,7 +765,7 @@ ifdef::openshift-enterprise,openshift-origin[]
 xref:../admin_guide/managing_projects.adoc#using-node-selectors[can set the
 default node selector]
 endif::[]
-ifdef::openshift-dedicated,openshift-online[]
+ifdef::openshift-dedicated,digital-garage[]
 can set the default node selector
 endif::[]
 for your project in order to restrict pod placement to
@@ -795,7 +795,7 @@ ifdef::openshift-enterprise,openshift-origin[]
 xref:../admin_guide/managing_projects.adoc#using-node-selectors[added by a
 cluster administrator].
 endif::[]
-ifdef::openshift-dedicated,openshift-online[]
+ifdef::openshift-dedicated,digital-garage[]
 added by a cluster administrator.
 endif::[]
 For example, if a project has the `type=user-node` and

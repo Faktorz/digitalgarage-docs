@@ -90,7 +90,7 @@ from an existing {product-title} API object.  Cluster administrators can
 ifdef::openshift-origin,openshift-enterprise[]
 xref:../../install_config/imagestreams_templates.adoc#creating-instantapp-templates[define standard templates in the API]
 endif::[]
-ifdef::openshift-dedicated,openshift-online[]
+ifdef::openshift-dedicated,digital-garage[]
 define standard templates in the API
 endif::[]
 that are available for all users to process, while users can

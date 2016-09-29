@@ -16,7 +16,7 @@ to set up and manage your {product-title} environment
 ifdef::openshift-origin,openshift-enterprise[]
 as a **cluster administrator** or an **application developer**.
 endif::[]
-ifdef::openshift-dedicated,openshift-online[]
+ifdef::openshift-dedicated,digital-garage[]
 as an **application developer**.
 endif::[]
 
@@ -38,9 +38,9 @@ ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 * xref:../getting_started/developers_console.adoc#getting-started-developers-console[As an application developer]
 endif::openshift-enterprise,openshift-origin,openshift-dedicated[]
 
-ifdef::openshift-online[]
+ifdef::digital-garage[]
 * xref:../getting_started/index.adoc#getting-started-index[Check out a walkthrough on creating your first app]
-endif::openshift-online[]
+endif::digital-garage[]
 
 ifdef::openshift-origin[]
 * xref:../getting_started/administrators.adoc#getting-started-administrators[As a cluster administrator]
@@ -119,7 +119,7 @@ a|[none]
 
 * xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[Web frameworks powered by Source-to-Image (S2I)]
 * xref:../using_images/db_images/index.adoc#using-images-db-images-index[Databases to back your application]
-ifdef::openshift-enterprise,openshift-dedicated,openshift-online[]
+ifdef::openshift-enterprise,openshift-dedicated,digital-garage[]
 * xref:../using_images/xpaas_images/index.adoc#using-images-xpaas-images-index[Services provided by xPaaS Middleware Images]
 endif::[]
 * xref:../using_images/docker_images/index.adoc#using-images-docker-images-index[Or, bring and run any Docker image]

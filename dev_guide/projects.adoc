@@ -24,7 +24,7 @@ communities.
 ifdef::openshift-enterprise,openshift-origin[]
 xref:../admin_guide/managing_projects.adoc#selfprovisioning-projects[If allowed]
 endif::[]
-ifdef::openshift-dedicated,openshift-online[]
+ifdef::openshift-dedicated,digital-garage[]
 If allowed
 endif::[]
 by your cluster
@@ -54,7 +54,7 @@ The number of projects you are allowed to create
 ifdef::openshift-enterprise,openshift-origin[]
 xref:../admin_guide/managing_projects.adoc#limit-projects-per-user[may be limited by the system administrator].
 endif::[]
-ifdef::openshift-dedicated,openshift-online[]
+ifdef::openshift-dedicated,digital-garage[]
 may be limited by the system administrator.
 endif::[]
 Once your limit is reached, you may need to delete an existing project in order to create a new one.

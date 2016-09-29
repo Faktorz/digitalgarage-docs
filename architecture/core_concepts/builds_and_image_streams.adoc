@@ -11,7 +11,7 @@
 
 toc::[]
 
-ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated,digital-garage[]
 [[builds]]
 == Builds
 
@@ -175,7 +175,7 @@ registry]
 . Other image streams
 . Docker image repositories from external registries
 
-ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated,digital-garage[]
 Image streams can be used to automatically perform an action when new images are
 created. Builds and deployments can watch an image stream to receive
 notifications when new images are added and react by performing a build or
@@ -238,13 +238,13 @@ metadata about each image, such as commands, entrypoint, and environment
 variables. Images in {product-title} are immutable and the maximum name length
 is 63 characters.
 
-ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated,digital-garage[]
 [NOTE]
 ====
 See the xref:../../dev_guide/managing_images.adoc#dev-guide-managing-images[Developer Guide] for details
 on manually tagging images.
 ====
-endif::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+endif::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated,digital-garage[]
 
 The following `*ImageStreamMapping*` example results in an image being tagged as
 *test/origin-ruby-sample:latest*:

@@ -89,7 +89,7 @@ The CLI for Windows is provided as a *_zip_* archive; contact your Dedicated
 administrator for download instructions.
 endif::[]
 
-ifdef::openshift-online[]
+ifdef::digital-garage[]
 The CLI for Windows is provided as a *_zip_* archive; you can download it from
 the *About* page on the web console.
 endif::[]
@@ -141,7 +141,7 @@ The CLI for Mac OS X is provided as a *_tar.gz_* archive; contact your Dedicated
 administrator for download instructions.
 endif::[]
 
-ifdef::openshift-online[]
+ifdef::digital-garage[]
 The CLI for Mac OS X is provided as a *_tar.gz_* archive; you can download it
 from the *About* page on the web console.
 endif::[]
@@ -160,7 +160,7 @@ unpack the CLI from the *About* page on the web console.
 endif::[]
 
 Then,
-ifdef::openshift-enterprise,openshift-online,openshift-dedicated[]
+ifdef::openshift-enterprise,digital-garage,openshift-dedicated[]
 unpack the archive
 endif::[]
 ifdef::openshift-origin,atomic-registry[]
@@ -223,7 +223,7 @@ The CLI for Linux is provided as a *_tar.gz_* archive; contact your Dedicated
 administrator for download instructions.
 endif::[]
 
-ifdef::openshift-online[]
+ifdef::digital-garage[]
 The CLI for Linux is provided as a *_tar.gz_* archive; you can download it from
 the *About* page on the web console.
 endif::[]

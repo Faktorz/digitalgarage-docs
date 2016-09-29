@@ -2455,7 +2455,7 @@ ifdef::openshift-enterprise,openshift-dedicated,openshift-origin[]
 defaults from the `*LimitRange*` object apply to pods created during the
 build process.
 endif::[]
-ifdef::openshift-online[]
+ifdef::digital-garage[]
 - A limit range defined in your project, where the
 defaults from the `*LimitRange*` object apply to pods created during the
 build process.

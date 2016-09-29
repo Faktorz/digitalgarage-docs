@@ -9,7 +9,7 @@
 :toc-title:
 :linkattrs:
 
-ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
 toc::[]
 
 == Overview

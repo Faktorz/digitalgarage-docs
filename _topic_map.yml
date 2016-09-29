@@ -89,7 +89,7 @@ Topics:
     Distros: openshift-online,digital-garage
   - Name: Web Console Walkthrough
     File: developers_console
-    Distros: openshift-enterprise,openshift-dedicated,openshift-origin
+    Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage
   - Name: Command-Line Walkthrough
     File: developers_cli
     Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage
@@ -101,7 +101,7 @@ Topics:
     Distros: openshift-dedicated
   - Name: Developer Preview FAQ
     File: devpreview_faq
-    Distros: openshift-online
+    Distros: openshift-online,digital-garage
   - Name: Comparing OpenShift 2 and 3
     File: online_v2_vs_v3
     Distros: openshift-online
@@ -155,7 +155,7 @@ Topics:
         Distros: openshift-*,digital-garage
       - Name: Images
         File: containers_and_images
-        Distros: atomic-*
+        Distros: atomic-*,digital-garage
       - Name: Pods and Services
         File: pods_and_services
         Distros: openshift-*,digital-garage
@@ -481,7 +481,7 @@ Topics:
   - Name: Overcommitting
     File: overcommit
     Distros: openshift-origin,openshift-enterprise
-  - Name: Assigning Unique External IPs for Ingress Traffic  
+  - Name: Assigning Unique External IPs for Ingress Traffic
     File: tcp_ingress_external_ports
   - Name: Monitoring Routers
     File: router

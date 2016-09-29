@@ -6,7 +6,7 @@
 :icons:
 :experimental:
 
-ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
 This guide helps developers set up and configure a workstation to develop and
 deploy applications in an {product-title} cloud environment with a command-line
 interface (CLI). This guide provides detailed instructions and examples to help
@@ -18,7 +18,7 @@ developers:
 . Manage builds, images and webhooks
 . Define and trigger deployments
 . Integrate external services (databases, SaaS endpoints)
-endif::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+endif::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
 
 ifdef::atomic-registry[]
 This guide helps image developers set up and configure a workstation to

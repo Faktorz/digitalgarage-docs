@@ -124,7 +124,7 @@ ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 - You must be able to access a running instance of {product-title}. If you do
 not have access, contact your cluster administrator.
 endif::[]
-ifdef::openshift-online[]
+ifdef::digital-garage[]
 - You must register for an account with the https://openshift.com[{product-title} (Next Gen) Developer Preview.]
 - Your project must be populated with the
 xref:../dev_guide/templates.adoc#using-the-instantapp-templates[Instant App
