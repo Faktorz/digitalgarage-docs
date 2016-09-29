@@ -528,6 +528,8 @@ Distros: openshift-*,atomic-*,digital-garage
 Topics:
   - Name: Overview
     File: index
+  - Name: CLI by example
+    File: cli_by_example_content
   - Name: Get Started with the CLI
     File: get_started_cli
   - Name: Managing CLI Profiles
@@ -669,7 +671,7 @@ Distros: openshift-*,digital-garage
 Topics:
   - Name: Overview
     File: index
-    Distros: openshift-online
+    Distros: openshift-online,digital-garage
   - Name: Source-to-Image (S2I)
     Dir: s2i_images
     Topics:
@@ -715,7 +717,7 @@ Topics:
         File: jenkins
   - Name: xPaaS Middleware Images
     Dir: xpaas_images
-    Distros: openshift-online,openshift-enterprise,openshift-dedicated,digital-garage
+    Distros: openshift-online,openshift-enterprise,openshift-dedicated
     Topics:
       - Name: Overview
         File: index
