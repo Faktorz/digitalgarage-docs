@@ -21,13 +21,13 @@ openshift-online:
       dir: online
 digital-garage:
   name: Digital Garage
-  author: the Digital Garage <dev@thedigitalgarage.io>
+  author: Digital Garage <dev@thedigitalgarage.io>
   site: commercial
   site_name: Documentation
   site_url: http://docs.thedigitalgarage.io
   branches:
     master:
-      name: Latest
+      name: Discovery
       dir: latest
 openshift-enterprise:
   name: OpenShift Container Platform

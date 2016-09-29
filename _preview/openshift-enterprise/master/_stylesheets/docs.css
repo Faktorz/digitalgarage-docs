@@ -16,6 +16,24 @@
   margin-left: 20px;
 }
 
+.navbar.navbar-default.navbar-docs.navbar-digital-garage {
+  background:
+    linear-gradient(
+      rgba(0, 61, 110, 0.34),
+      rgba(0, 61, 110, 0.34)
+    ),
+    url("../_images/DigitalGarage_logo_2048_1152-01-01.png") 20% 25% repeat-x;
+  background-size: 150rem;
+  border: 0;
+  height: 90px;
+}
+
+.navbar.navbar-default.navbar-docs .navbar-brand.digital-garage {
+  background: url("../_images/DigitalGarage_logo_2048_1152-01-01.png") no-repeat scroll 0% 95%;
+  background-size: 140px;
+  margin-left: 20px;
+}
+
 /* Tweaks for the Google-generated search widget */
 .cse .gsc-control-cse, .gsc-control-cse, table.gsc-search-box td.gsc-input {
   padding: 0;
