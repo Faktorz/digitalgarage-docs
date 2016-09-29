@@ -22,7 +22,7 @@ openshift-online:
 digital-garage:
   name: Digital Garage
   author: Digital Garage <dev@thedigitalgarage.io>
-  site: commercial
+  site: thedigitalgarage
   site_name: Documentation
   site_url: http://docs.thedigitalgarage.io
   branches:
