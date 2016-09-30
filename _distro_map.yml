@@ -1,4 +1,14 @@
 ---
+digital-garage:
+  name: Digital Garage
+  author: Digital Garage <dev@thedigitalgarage.io>
+  site: thedigitalgarage
+  site_name: Documentation
+  site_url: http://docs.thedigitalgarage.io
+  branches:
+    master:
+      name: Discovery
+      dir: latest
 openshift-origin:
   name: OpenShift Origin
   author: OpenShift Documentation Project <dev@lists.openshift.redhat.com>
@@ -19,16 +29,6 @@ openshift-online:
     online:
       name: 'Developer Preview'
       dir: online
-digital-garage:
-  name: Digital Garage
-  author: Digital Garage <dev@thedigitalgarage.io>
-  site: thedigitalgarage
-  site_name: Documentation
-  site_url: http://docs.thedigitalgarage.io
-  branches:
-    master:
-      name: Discovery
-      dir: latest
 openshift-enterprise:
   name: OpenShift Container Platform
   author: OpenShift Documentation Project <dev@lists.openshift.redhat.com>
