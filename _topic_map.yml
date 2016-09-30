@@ -179,6 +179,9 @@ Topics:
   - Name: Additional Concepts
     Dir: additional_concepts
     Topics:
+      - Name: Overview
+        File: overview
+        Distros: openshift-*,digital-garage
       - Name: Networking
         File: networking
         Distros: openshift-*,digital-garage
