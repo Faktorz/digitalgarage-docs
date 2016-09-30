@@ -11,7 +11,6 @@
 toc::[]
 
 include::getting_started/developers_cli.adoc[tag=overview]
-include::getting_started/developers_cli.adoc[tag=overview-online]
 
 [[getting-started-developers-console-languages]]
 
@@ -66,7 +65,7 @@ accessible git repository, or from a template:
 . Click *Browse*, then select *ruby* from the drop-down list.
 . Click the *ruby:latest* builder image.
 . Type a *name* for your application, and specify the *Git Repository URL*, which is `https://github.com/<your_github_username>/ruby-ex.git`.
-. Optionally, click *Show advanced routing, build, and deployment options*, though by default this example application automatically creates a route, webhook trigger, and build change triggers. 
+. Optionally, click *Show advanced routing, build, and deployment options*, though by default this example application automatically creates a route, webhook trigger, and build change triggers.
 . Click *Create*.
 +
 [NOTE]
@@ -108,7 +107,7 @@ To set up a webhook for your application:
 
 . From the Web Console, navigate to the project containing your application.
 . Click the *Browse* tab, then click *Builds*.
-. Click your build name, then click the *Configuration* tab. 
+. Click your build name, then click the *Configuration* tab.
 . Click image:copy.jpg["Copy"] next to *GitHub webhook URL* to copy your webhook payload URL.
 +
 // tag::deploycode2[]

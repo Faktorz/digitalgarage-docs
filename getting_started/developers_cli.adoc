@@ -33,7 +33,7 @@ application development. Language support centers around the
 xref:../dev_guide/app_tutorials/quickstarts.adoc#dev-guide-app-tutorials-quickstarts[Quickstart templates], which in
 turn leverage xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[builder images].
 
-// end::overview-online[]
+// end::overview[]
 
 [[getting-started-developers-cli-languages]]
 
