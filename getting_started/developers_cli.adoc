@@ -281,7 +281,7 @@ $ oc describe bc ruby-ex
 ----
 +
 . Copy the GitHub webhook payload URL output by the above command.
-include::developers_console.adoc[tag=deploycode2]
+include::getting_started/developers_console.adoc[tag=deploycode2]
 
 [[developers-cli-writing-a-code-change]]
 include::developers_console.adoc[tag=deploycode3]
