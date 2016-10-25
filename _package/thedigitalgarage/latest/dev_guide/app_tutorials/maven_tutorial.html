@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Digital Garage | Developer Guide | Application Tutorials | Setting Up a Nexus Mirror</title>
+  <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
+  <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <!--
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  -->
+  <link href="/_images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="/_images/favicon.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="Digital Garage Documentation" name="application-name">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-84210257-3', 'auto');
+    ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-docs navbar-digital-garage" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand digital-garage" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../welcome/index.html">Digital Garage Discovery</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../dev_guide/index.html">Developer Guide</a>
+      </li>
+      <li class="hidden-xs active"><a href="../../dev_guide/app_tutorials/index.html">Application Tutorials</a></li>
+      <li class="hidden-xs active">
+        Setting Up a Nexus Mirror
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../../getting_started/basic_walkthrough.html">Basic Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/beyond_the_basics.html">Beyond the Basics</a></li>
+            <li><a class="" href="../../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/devpreview_faq.html">Developer Preview FAQ</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
+                <span id="sgSpan-2-1" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-2-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/additional_concepts/overview.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../../cli_reference/cli_by_example_content.html">CLI by example</a></li>
+            <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Developer Guide
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-5">
+                <span id="sgSpan-4-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-4-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-6">
+                <span id="sgSpan-4-6" class="fa fa-caret-down"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-4-6" class="nav-tertiary list-unstyled collapse in">
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class=" active" href="../../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
+            <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
+            <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../../using_images/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
+                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-2">
+                <span id="sgSpan-6-2" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-6-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-3">
+                <span id="sgSpan-6-3" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-6-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-4">
+                <span id="sgSpan-6-4" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Setting Up a Nexus Mirror for Maven</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#nexus-introduction">Introduction</a></li>
+<li><a href="#nexus-setting-up-nexus">Setting up Nexus</a>
+<ul class="sectlevel2">
+<li><a href="#nexus-using-probes-to-check-for-success">Using Probes to Check for Success</a></li>
+<li><a href="#nexus-adding-persistence-to-nexus">Adding Persistence to Nexus</a></li>
+</ul>
+</li>
+<li><a href="#nexus-connecting-to-nexus">Connecting to Nexus</a></li>
+<li><a href="#nexus-confirming-success">Confirming Success</a></li>
+<li><a href="#nexus-additional-resources">Additional Resources</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nexus-introduction"><a class="anchor" href="#nexus-introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While developing your application with Java and Maven, you will most likely be
+building many times. In order to shorten the build times of your pods, Maven
+dependencies can be cached in a local Nexus repository. This tutorial will
+guide you through creating a Nexus repository on your cluster.</p>
+</div>
+<div class="paragraph">
+<p>This tutorial assumes that you are working with a project that is already set
+up for use with Maven. If you are interested in using Maven with your Java
+project, it is highly recommended that you look at
+<a href="https://maven.apache.org/guides/getting-started/index.html">their guide</a>.</p>
+</div>
+<div class="paragraph">
+<p>In addition, be sure to check your application&#8217;s image for Maven mirror
+capabilities. Many images that use Maven have a <code><strong>MAVEN_MIRROR_URL</strong></code> environment
+variable that you can use to simplify this process. If it does not have this
+capability, read
+<a href="https://books.sonatype.com/nexus-book/reference/config.html">the Nexus documentation</a>
+to configure your build properly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nexus-setting-up-nexus"><a class="anchor" href="#nexus-setting-up-nexus"></a>Setting up Nexus</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use <code>new-app</code> to download and deploy the official Nexus Docker image.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>oc new-app sonatype/nexus</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a route by exposing the newly created Nexus service:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>oc expose svc/nexus</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use <strong>oc get routes</strong> to find the pod&#8217;s new external address.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>oc get routes</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output should resemble:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NAME      HOST/PORT                              PATH      SERVICES   PORT       TERMINATION
+nexus     nexus-myproject.192.168.1.173.xip.io             nexus      8081-tcp</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Confirm that Nexus is running by navigating your browser to the URL under
+<strong>HOST/PORT</strong>. To sign in to Nexus, the default administrator username is <strong>admin</strong>,
+and the password is <strong>admin123</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Nexus comes pre-configured for the Central Repository, but you may need others
+for your application.  For many Red Hat images, it is recommended to add the
+<strong>jboss-ga</strong> repository at <strong><em><a href="https://maven.repository.redhat.com/ga/" class="bare">https://maven.repository.redhat.com/ga/</a></em></strong>.
+<a href="https://books.sonatype.com/nexus-book/reference/config-maven.html">Learn how to add repositories</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="nexus-using-probes-to-check-for-success"><a class="anchor" href="#nexus-using-probes-to-check-for-success"></a>Using Probes to Check for Success</h3>
+<div class="paragraph">
+<p>This is a good time to set up readiness and liveness probes. These will
+periodically check to see that Nexus is running properly.
+<a href="../application_health.html#dev-guide-application-health">Learn more about probes</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc set probe dc/nexus \
+	--liveness \
+	--failure-threshold 3 \
+	--initial-delay-seconds 30 \
+	-- echo ok</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="nexus-adding-persistence-to-nexus"><a class="anchor" href="#nexus-adding-persistence-to-nexus"></a>Adding Persistence to Nexus</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you do not want persistent storage, continue to
+<a href="#nexus-connecting-to-nexus">Connecting to Nexus</a>. However, your cached
+dependencies and any configuration customization will be lost if the pod is
+restarted for any reason.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Create a persistent volume claim (PVC) for Nexus, so that the cached
+dependencies are not lost when the pod running the server terminates. PVCs
+require available persistent volumes (PV) in the cluster. If there are no PVs
+available and you do not have administrator access on your cluster, ask your
+system administrator to create a Read/Write Persistent Volume for you.
+Otherwise, see
+<a href="../../install_config/persistent_storage/index.html#install-config-persistent-storage-index">Persistent Storage in Digital Garage</a> for
+instructions on creating a persistent volume.</p>
+</div>
+<div class="paragraph">
+<p>Add a PVC to the Nexus deployment configuration.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc volumes dc/nexus --add \
+	--name 'nexus-volume-1' \
+	--type 'pvc' \
+	--mount-path '/sonatype-work/' \
+	--claim-name 'nexus-pv' \
+	--claim-size '1G' \
+	--overwrite</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This removes the previous <strong>emptyDir</strong> volume for the deployment config and adds a
+claim for 1 gigabyte of persistent storage mounted at <code>/sonatype-work</code>, which
+is where our dependencies will be stored. Due to the change in configuration,
+the Nexus pod will be redeployed automatically.</p>
+</div>
+<div class="paragraph">
+<p>Verify that Nexus is running by refreshing the Nexus page in your browser. You
+can monitor the deployment&#8217;s progress using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc get pods -w</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nexus-connecting-to-nexus"><a class="anchor" href="#nexus-connecting-to-nexus"></a>Connecting to Nexus</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The next steps demonstrate defining a build that will use the new Nexus
+repository.  The rest of the tutorial will be using
+<a href="https://github.com/openshift/jee-ex.git">this example repository</a>
+with <strong>wildfly-100-centos7</strong> as a builder, but these changes should work for any
+project.</p>
+</div>
+<div class="paragraph">
+<p>The example builder image, <strong>wildfly-100-centos7</strong> supports <code><strong>MAVEN_MIRROR_URL</strong></code> as
+part of its environment, so we can use this to point our builder image to our
+Nexus repository. If your image does not support consuming an environment
+variable to configure a Maven mirror, you may need to modify the builder image
+to provide the correct Maven settings to point to the Nexus mirror.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc new-build openshift/wildfly-100-centos7:latest~https://github.com/openshift/jee-ex.git \
+	-e MAVEN_MIRROR_URL='http://nexus.&lt;Nexus_Project&gt;:8081/content/groups/public/'
+$ oc logs build/jee-ex-1 --follow</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replace <code>&lt;Nexus_Project&gt;</code> with the project name of the Nexus repository.  If it
+is in the same project as the application that is using it, you can remove the
+<code>&lt;Nexus_Project&gt;.</code>.
+<a href="../../architecture/additional_concepts/networking.html#architecture-additional-concepts-networking">Learn more about DNS resolution in Digital Garage</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nexus-confirming-success"><a class="anchor" href="#nexus-confirming-success"></a>Confirming Success</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In your web browser, navigate to
+<strong><em><a href="http://&lt;Nexus" class="bare">http://&lt;Nexus</a> IP&gt;:8081/content/groups/public</em></strong> to confirm that it has stored
+your application&#8217;s dependencies. You can also check the build logs to see if
+Maven is using the Nexus mirror. If successful, you should see output
+referencing the URL <strong><em><a href="http://nexus:8081" class="bare">http://nexus:8081</a></em></strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nexus-additional-resources"><a class="anchor" href="#nexus-additional-resources"></a>Additional Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../architecture/additional_concepts/networking.html#architecture-additional-concepts-networking">Networking Concepts in Digital Garage</a></p>
+</li>
+<li>
+<p><a href="../volumes.html#dev-guide-volumes">Managing Volumes in Digital Garage</a></p>
+</li>
+<li>
+<p><a href="../../install_config/persistent_storage/index.html#install-config-persistent-storage-index">Persistent Storage in Digital Garage</a> for</p>
+</li>
+<li>
+<p><a href="https://blog.openshift.com/improving-build-time-java-builds-openshift/">Improving Build Time of Java Builds on Digital Garage</a></p>
+</li>
+<li>
+<p><a href="../application_health.html#dev-guide-application-health">Application Health</a></p>
+</li>
+<li>
+<p><a href="https://maven.apache.org/guides/getting-started/index.html">Maven "Getting Started"</a></p>
+</li>
+<li>
+<p><a href="https://books.sonatype.com/nexus-book/reference/index.html">Nexus Repository Documentation</a></p>
+</li>
+<li>
+<p><a href="https://books.sonatype.com/nexus-book/reference/config-maven.html">Adding Repositories to Nexus</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+  <footer class="footer-digital-garage">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3 logo">
+        <a href="https://www.thedigitalgarage.io/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <a href="http://www.thedigitalgarage.io/community/digital-garage-privacy-policy/">
+              Privacy Policy
+            </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/terms-of-service/">
+            Terms of Use
+          </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/">
+            Our Community
+          </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="http://docs.thedigitalgarage.io/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Digital Garage | Architecture | Core Concepts | Images</title>
+  <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
+  <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <!--
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  -->
+  <link href="/_images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="/_images/favicon.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="Digital Garage Documentation" name="application-name">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-84210257-3', 'auto');
+    ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-docs navbar-digital-garage" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand digital-garage" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../welcome/index.html">Digital Garage Discovery</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../architecture/index.html">Architecture</a>
+      </li>
+      <li class="hidden-xs active"><a href="../../architecture/core_concepts/index.html">Core Concepts</a></li>
+      <li class="hidden-xs active">
+        Images
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../../getting_started/basic_walkthrough.html">Basic Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/beyond_the_basics.html">Beyond the Basics</a></li>
+            <li><a class="" href="../../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/devpreview_faq.html">Developer Preview FAQ</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-down"></span>Architecture
+      </a>
+      <ul id="topicGroup2" class="collapse in list-unstyled">
+            <li><a class="" href="../../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
+                <span id="sgSpan-2-1" class="fa fa-caret-down"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-2-1" class="nav-tertiary list-unstyled collapse in">
+
+                  <li><a class="" href="../../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class=" active" href="../../architecture/core_concepts/containers_and_images.html">Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/additional_concepts/overview.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../../cli_reference/cli_by_example_content.html">CLI by example</a></li>
+            <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup4" class="collapse  list-unstyled">
+            <li><a class="" href="../../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-5">
+                <span id="sgSpan-4-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-4-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-6">
+                <span id="sgSpan-4-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-4-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
+            <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
+            <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../../using_images/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
+                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-2">
+                <span id="sgSpan-6-2" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-6-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-3">
+                <span id="sgSpan-6-3" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-6-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-4">
+                <span id="sgSpan-6-4" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Containers and Images</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#containers">Containers</a></li>
+<li><a href="#docker-images">Docker Images</a></li>
+<li><a href="#docker-registries">Docker Registries</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="containers"><a class="anchor" href="#containers"></a>Containers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The basic units of Digital Garage applications are called containers.
+<a href="https://access.redhat.com/articles/1353593">Linux container technologies</a>
+are lightweight mechanisms for isolating running processes so that they are
+limited to interacting with only their designated resources. Many application
+instances can be running in containers on a single host without visibility into
+each others' processes, files, network, and so on. Typically, each container
+provides a single service (often called a "micro-service"), such as a web server
+or a database, though containers can be used for arbitrary workloads.</p>
+</div>
+<div class="paragraph">
+<p>The Linux kernel has been incorporating capabilities for container technologies
+for years. More recently the
+<a href="https://www.docker.com/whatisdocker/">Docker project</a> has developed a
+convenient management interface for Linux containers on
+a host. Digital Garage and Kubernetes add the ability to orchestrate Docker
+containers across multi-host installations.</p>
+</div>
+<div class="paragraph">
+<p>Though you do not directly interact with Docker tools when using
+Digital Garage, understanding Docker&#8217;s capabilities and terminology is
+important for understanding its role in Digital Garage and how your
+applications function inside of containers. Docker is available
+as part of RHEL 7, as well as CentOS and Fedora, so you can
+experiment with it separately from Digital Garage. Refer to the article
+<a href="https://access.redhat.com/articles/881893">Get Started with Docker
+Formatted Container Images on Red Hat Systems</a> for a guided introduction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="docker-images"><a class="anchor" href="#docker-images"></a>Docker Images</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Docker containers are based on Docker images. A Docker image is a
+binary that includes all of the requirements for running a single Docker
+container, as well as metadata describing its needs and capabilities. You
+can think of it as a packaging technology. Docker containers only
+have access to resources defined in the image unless you give the
+container additional access when creating it. By deploying the same
+image in multiple containers across multiple hosts and load balancing
+between them, Digital Garage can provide redundancy and horizontal scaling
+for a service packaged into an image.</p>
+</div>
+<div class="paragraph">
+<p>You can use Docker directly to build images, but Digital Garage also supplies
+builders that assist with creating an image by adding your code or
+configuration to existing images.</p>
+</div>
+<div class="paragraph">
+<p>Since applications develop over time, a single image name can actually
+refer to many different versions of the "same" image. Each different
+image is referred to uniquely by its hash (a long hexadecimal number
+e.g. <code>fd44297e2ddb050ec4f&#8230;&#8203;</code>) which is usually shortened to 12
+characters (e.g. <code>fd44297e2ddb</code>). Rather than version numbers, Docker
+allows applying tags (such as <code>v1</code>, <code>v2.1</code>, <code>GA</code>, or the default <code>latest</code>)
+in addition to the image name to further specify the image desired, so
+you may see the same image referred to as <code>centos</code> (implying the <code>latest</code>
+tag), <code>centos:centos7</code>, or <code>fd44297e2ddb</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="docker-registries"><a class="anchor" href="#docker-registries"></a>Docker Registries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Docker registry is a service for storing and retrieving Docker images. A
+registry contains a collection of one or more Docker image repositories. Each
+image repository contains one or more tagged images. Docker provides its own
+registry, the <a href="https://registry.hub.docker.com/">Docker Hub</a>, but you may
+also use private or third-party registries. Red Hat provides a Docker registry
+at <code>registry.access.redhat.com</code> for subscribers. Digital Garage can also supply
+its own internal registry for managing custom Docker images.</p>
+</div>
+<div class="paragraph">
+<p>The relationship between Docker containers, images, and registries is
+depicted in the following diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAz4AAAJoCAIAAAAoCaPRAABTeElEQVR42uzdeVBUd77+cYFWREUQBWRCRBANCkYZMQElYiK4VMh1wfWOmKTAJeU6hSUao46WuMRSSiiIMTPqJGRBUVRcYqwILjEmV40jOkYmKoiGJYotCIrA5Pf5+Z2c25el0yoqDe/XH1afc7pPN+35PP30QtPsVwAAAJiJZtwFAAAAVDcAAAA8ser2bwAAADRIVDcAAACqGwAAAKhuAAAAVDeqGwAAANUNAAAAVDcAAACqG9UNAACA6gYAAACqGwAAANUNAAAAVDcAAABQ3QAAAKhuAAAAoLoBAACA6gYAAEB1AwAAANUNAAAAVDcAAACqGwAAAKhuAAAAoLoBAABQ3QAAAEB1AwAAANUNAACA6gYAAACqGwAAAKhuAAAAVDcAAABQ3QAAAKhuVDcAAACqGwAAAKhuAAAAVDeqGwAAANUNAAAAVDcAAACqG3cKAAAA1Q0AAABUNwAAAKobAAAAqG4AAACgugEAAFDdAAAAQHUDAAAA1Q0AAIDqBgAAgKZV3ZrhYXCMNmIc3gB4xIF5VLdfYRq5r/R6fUlJSVlZWXl5eWVlJYdsI6tuHOQAeMQB1a1RDVJOTk5eXt7NmzdlnGSWOGSpbgDAIw7VjerWcAcpMzPzX//617Vr12SW5JkQhyzVDQB4xKG6Ud0a7iAdO3bszJkzMkvyTEieBnHIUt0AgEccqhvVreEO0r59+2SW5JlQTk6OXq/nkKW6AQCPOFQ3qlvDHaTPP//8yy+//P777+Vp0M2bNzlkqW4AwCMO1a1JVLfs7OyzZ8/KscgggeoGADziUN2e1MPVtm3bYh5YsWLF9u3bf/nlFxMvOGPGjB49eiQnJ6vF4cOHy1Vv2LCBQUITrG7aHIkPP/zw0qVLj7/PaiPWODTKHwrgEYfq9lQfrlTlatGihfrCQAsLC8lWUy44adIkR0fHLVu21FrdioqK5Oi8ePEig4SmUN20ObK0tFSjNGzYsMfcZ7URq4tZzNrD/lAA1Q1Ut995yPnkk0/kAeAvf/mLnLaysrp79+6jPXRp1W3atGmyuHjxYgYJTae6yRwVFxcnJyer9paZmfkUrtosZg0AjzhUt/qvbnL64MGDcvqFF15Qm6ZMmRIQEJCRkaEWR44cKYvnz59Xi9HR0bKYmppas7olJSU5OzvLoqurq5zn8uXLDBKaSHVTi25ubrK4e/dubepjY2P9/PxcXFwGDRp0+vRptb6iomLBggXdunWToVu9evXcuXNlXo4ePVrriN2+fXvFihXBwcEyXL17946Li6tr1rQLyvm7d++enp6+dOlSWSOL2g3evHlz//79CwsLq/0gtV6LkR+h5nWtWbNG1ixfvlzbpwRLzdumbf3ss8+CgoJkt127dg0NDTV+dQDVDVS3/zzkSEru3LlTgtLe3n779u1qkySsbNIWO3XqJIvfffddrS+zGS5K25PQl8V+/frNmzcvPz+fQULTqW5paWlyunXr1qWlpWrr7NmzZU1gYOCiRYvatm1ra2ur1+tl/TvvvCPr7ezsZP3rr7+uXqvbtWtXrSP29ttvy+KQIUMSExNnzZolM1vXrKkL9unTx9LS0tPT89ChQ7JPWdOhQ4f79+/LGaqqqjw8PN54442aP0it12LkR6h5XdLeZE27du20F+9HjBjh4+NT6w/13nvvqVf6x48fL1c3YMAA41cHUN1AdftPkiryPNvwEzOPXN14wxRNs7r17NnzueeeU6P0zTffqE05OTlWD9y4cUMWJ0+eLGfYuHGj1CydTienDx48qM7p7e1tpLpJOZPF999//3ffMFUX7Nat27Vr19QaaWyOjo6yUr3ctWPHDjl9+PDhmj9IrddS149Q63XJPS+9UFZ++umnsqh+zHXr1tX8oeQi6h7YunWriVcHUN1AdftPkkZFRf3lL3954YUX2rRpIyeobqC6PcIcvfjii7169ZITo0aN0jbt3r1b1tja2k54QL1INm/ePPXqVPPmzbUX5/r06WOkun300UfqKZavr+/mzZsrKyuNV7cPPvjA8BbOmjVLVo4YMUJODxgwoG/fvrX+ILVeS10/Ql3XtWzZMln52muvyek1a9a0aNFC+9V1wx9q7969crply5baPWD8HuOxH1Q3UN2qv9GTnZ2tftX0woULVDdQ3R5hjm7fvu3i4iKn//73v6tN6iUuGxub6Ojo+b9JSUnZs2ePKi7qTczfrW7iyJEjUrlUtdLaYV3Vrdo39Zw6dUo1xQMHDtR8octQzWup60eo67quXr1qaWlpYWFx6dIlLy+vsLCwWm+b7EG9X6zdA8bvMR77QXUD1a16dbt37576yLM8UZbFV155RU7Ls/BfH3ykRkLf9OqmPqoy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" alt="docker diagram" width="830" height="616">
+</div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+  <footer class="footer-digital-garage">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3 logo">
+        <a href="https://www.thedigitalgarage.io/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <a href="http://www.thedigitalgarage.io/community/digital-garage-privacy-policy/">
+              Privacy Policy
+            </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/terms-of-service/">
+            Terms of Use
+          </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/">
+            Our Community
+          </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="http://docs.thedigitalgarage.io/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

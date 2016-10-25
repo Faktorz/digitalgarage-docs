@@ -22,35 +22,20 @@ https://github.com/openshift/postgresql/tree/master/9.2[9.2], https://github.com
 
 == Images
 
-These images come in two flavors, depending on your needs:
-
-* RHEL 7
-* CentOS 7
-
-*RHEL 7 Based Image*
-
-The RHEL 7 images are available through Red Hat's subscription registry via:
-
-----
-$ docker pull registry.access.redhat.com/openshift3/postgresql-92-rhel7
-$ docker pull registry.access.redhat.com/rhscl/postgresql-94-rhel7
-$ docker pull registry.access.redhat.com/rhscl/postgresql-95-rhel7
-----
-
-*CentOS 7 Based Image*
+The Digital Garage uses the base CentOS 7 image for the postgresql DB images.
 
 These images are available on DockerHub. To download them:
 
 ----
-$ docker pull openshift/postgresql-92-centos7
-$ docker pull centos/postgresql-94-centos7
-$ docker pull centos/postgresql-95-centos7
+$ docker pull thedigitalgarage/postgresql-92-centos7
+$ docker pull thedigitalgarage/postgresql-94-centos7
+$ docker pull thedigitalgarage/postgresql-95-centos7
 ----
 
 or
 
 ----
-$ docker pull centos/postgresql-94-centos7
+$ docker pull thedigitalgarage/postgresql-94-centos7
 ----
 
 To use these images, you can either access them directly from these
@@ -83,7 +68,7 @@ ifdef::openshift-enterprise[]
     registry.access.redhat.com/rhscl/postgresql-94-rhel7
 endif::[]
 ifdef::openshift-origin[]
-    centos/postgresql-94-centos7
+    thedigitalgarage/postgresql-94-centos7
 endif::[]
 ----
 

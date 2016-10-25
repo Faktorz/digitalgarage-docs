@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Digital Garage | Developer Guide | Application Tutorials | Ruby on Rails</title>
+  <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
+  <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <!--
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  -->
+  <link href="/_images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="/_images/favicon.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="Digital Garage Documentation" name="application-name">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-84210257-3', 'auto');
+    ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-docs navbar-digital-garage" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand digital-garage" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../welcome/index.html">Digital Garage Discovery</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../dev_guide/index.html">Developer Guide</a>
+      </li>
+      <li class="hidden-xs active"><a href="../../dev_guide/app_tutorials/index.html">Application Tutorials</a></li>
+      <li class="hidden-xs active">
+        Ruby on Rails
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../../getting_started/basic_walkthrough.html">Basic Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/beyond_the_basics.html">Beyond the Basics</a></li>
+            <li><a class="" href="../../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/devpreview_faq.html">Developer Preview FAQ</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
+                <span id="sgSpan-2-1" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-2-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/additional_concepts/overview.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../../cli_reference/cli_by_example_content.html">CLI by example</a></li>
+            <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Developer Guide
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-5">
+                <span id="sgSpan-4-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-4-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-6">
+                <span id="sgSpan-4-6" class="fa fa-caret-down"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-4-6" class="nav-tertiary list-unstyled collapse in">
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class=" active" href="../../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
+            <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
+            <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../../using_images/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
+                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-2">
+                <span id="sgSpan-6-2" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-6-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-3">
+                <span id="sgSpan-6-3" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-6-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-4">
+                <span id="sgSpan-6-4" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Ruby on Rails</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#local-workstation-setup">Local Workstation Setup</a>
+<ul class="sectlevel2">
+<li><a href="#setting-up-the-database">Setting Up the Database</a></li>
+</ul>
+</li>
+<li><a href="#writing-your-application">Writing Your Application</a>
+<ul class="sectlevel2">
+<li><a href="#creating-a-welcome-page">Creating a Welcome Page</a></li>
+<li><a href="#configuring-the-application-for-digital-garage">Configuring the Application for Digital Garage</a></li>
+<li><a href="#storing-your-application-in-git">Storing Your Application in Git</a></li>
+</ul>
+</li>
+<li><a href="#deploying-your-application-to-digital-garage">Deploying Your Application to Digital Garage</a>
+<ul class="sectlevel2">
+<li><a href="#creating-the-database-service">Creating the Database Service</a></li>
+<li><a href="#creating-the-frontend-service">Creating the Frontend Service</a></li>
+<li><a href="#creating-a-route-for-your-application">Creating a Route for Your Application</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ruby on Rails is a popular web framework written in <a href="https://github.com/openshift/mysql/tree/master/5.5">Ruby</a>.
+This guide covers using Rails 4 on Digital Garage.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>We strongly advise going through the whole tutorial to have an overview of all
+the steps necessary to run your application on the Digital Garage. If you
+experience a problem try reading through the entire tutorial and then going back
+to your issue. It can also be useful to review your previous steps to ensure
+that all the steps were executed correctly.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For this guide you will need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Basic Ruby/Rails knowledge</p>
+</li>
+<li>
+<p>Locally installed version of Ruby 2.0.0+, Rubygems, Bundler</p>
+</li>
+<li>
+<p>Basic Git knowledge</p>
+</li>
+<li>
+<p>Running instance of Digital Garage v3</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="local-workstation-setup"><a class="anchor" href="#local-workstation-setup"></a>Local Workstation Setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First make sure that an instance of Digital Garage is running and is available.
+Also make sure that your <a href="../../cli_reference/get_started_cli.html#cli-reference-get-started-cli"><code>oc</code> CLI
+client is installed</a> and the command is accessible from your command shell, so
+you can use it to
+<a href="../../cli_reference/get_started_cli.html#basic-setup-and-login">log in</a>
+using your email address and password.</p>
+</div>
+<div class="sect2">
+<h3 id="setting-up-the-database"><a class="anchor" href="#setting-up-the-database"></a>Setting Up the Database</h3>
+<div class="paragraph">
+<p>Rails applications are almost always used with a database. For the local development we chose the PostgreSQL database. To install it type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ sudo yum install -y postgresql postgresql-server postgresql-devel</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next you need to initialize the database with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ sudo postgresql-setup initdb</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command will create the <code>/var/lib/pgsql/data</code> directory, in which the data will be stored.</p>
+</div>
+<div class="paragraph">
+<p>Start the database by typing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ sudo systemctl start postgresql.service</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the database is running, create your <code>rails</code> user:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ sudo -u postgres createuser -s rails</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the user we created has no password.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="writing-your-application"><a class="anchor" href="#writing-your-application"></a>Writing Your Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are starting your Rails application from scratch, you need to install the Rails gem first.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ gem install rails
+Successfully installed rails-4.2.0
+1 gem installed</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After you install the Rails gem create a new application, with PostgreSQL as your database:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ rails new rails-app --database=postgresql</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then change into your new application directory.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ cd rails-app</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you already have an application, make sure the <code>pg</code> (postgresql) gem is present in your <code>Gemfile</code>. If not
+edit your <code>Gemfile</code> by adding the gem:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>gem 'pg'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To generate a new <code>Gemfile.lock</code> with all your dependencies run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ bundle install</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to using the <code>postgresql</code> database with the <code>pg</code> gem, you&#8217;ll also need to ensure the <code>config/database.yml</code> is using the <code>postgresql</code> adapter.</p>
+</div>
+<div class="paragraph">
+<p>Make sure you updated <code>default</code> section in the <code>config/database.yml</code> file, so it looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>default: &amp;default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username: rails
+  password:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create your application&#8217;s development and test databases by using this <code>rake</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ rake db:create</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will create <code>development</code> and <code>test</code> database in your PostgreSQL server.</p>
+</div>
+<div class="sect2">
+<h3 id="creating-a-welcome-page"><a class="anchor" href="#creating-a-welcome-page"></a>Creating a Welcome Page</h3>
+<div class="paragraph">
+<p>Since Rails 4 no longer serves a static <code>public/index.html</code> page in production, we need to create a
+new root page.</p>
+</div>
+<div class="paragraph">
+<p>In order to have a custom welcome page we need to do following steps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a <strong>controller</strong> with an index action</p>
+</li>
+<li>
+<p>Create a <strong>view</strong> page for the <code>welcome</code> controller <code>index</code> action</p>
+</li>
+<li>
+<p>Create a <strong>route</strong> that will serve applications root page with the created <strong>controller</strong> and <strong>view</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Rails offers a generator that will do all this necessary steps for you.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ rails generate controller welcome index</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All the necessary files have been created, now we just need to edit line 2 in <code>config/routes.rb</code>
+file to look like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>root 'welcome#index'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run the rails server to verify the page is available.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ rails server</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see your page by visiting <a href="http://localhost:3000">http://localhost:3000</a> in your browser.
+If you don&#8217;t see the page, check the logs that are output to your server to debug.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-the-application-for-digital-garage"><a class="anchor" href="#configuring-the-application-for-digital-garage"></a>Configuring the Application for Digital Garage</h3>
+<div class="paragraph">
+<p>In order to have your application communicating with the PostgreSQL database service that will be running in Digital Garage, you will need to edit the <code>default</code> section in your <code>config/database.yml</code> to use <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a>, which you will define later, upon the database service creation.</p>
+</div>
+<div class="paragraph">
+<p>The <code>default</code> section in your edited <code>config/database.yml</code> together with pre-defined variables should look like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;% user = ENV.key?("POSTGRESQL_ADMIN_PASSWORD") ? "root" : ENV["POSTGRESQL_USER"] %&gt;
+&lt;% password = ENV.key?("POSTGRESQL_ADMIN_PASSWORD") ? ENV["POSTGRESQL_ADMIN_PASSWORD"] : ENV["POSTGRESQL_PASSWORD"] %&gt;
+&lt;% db_service = ENV.fetch("DATABASE_SERVICE_NAME","").upcase %&gt;
+
+default: &amp;default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: &lt;%= ENV["POSTGRESQL_MAX_CONNECTIONS"] || 5 %&gt;
+  username: &lt;%= user %&gt;
+  password: &lt;%= password %&gt;
+  host: &lt;%= ENV["#{db_service}_SERVICE_HOST"] %&gt;
+  port: &lt;%= ENV["#{db_service}_SERVICE_PORT"] %&gt;
+  database: &lt;%= ENV["POSTGRESQL_DATABASE"] %&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For an example of how the final file should look, see <a href="https://github.com/openshift/rails-ex">Ruby on Rails example application</a> <a href="https://github.com/openshift/rails-ex/blob/master/config/database.yml">config/database.yml</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="storing-your-application-in-git"><a class="anchor" href="#storing-your-application-in-git"></a>Storing Your Application in Git</h3>
+<div class="paragraph">
+<p>Digital Garage requires <a href="http://git-scm.com/">git</a>, if you don&#8217;t have it installed you will need to install it.</p>
+</div>
+<div class="paragraph">
+<p>Building an application in Digital Garage usually requires that the source code be stored in a <a href="http://git-scm.com/">git</a> repository, so you will need to install <code>git</code> if you do not already have it.</p>
+</div>
+<div class="paragraph">
+<p>Make sure you are in your Rails application directory by running the <code>ls -1</code> command. The output of the command should look like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ ls -1
+app
+bin
+config
+config.ru
+db
+Gemfile
+Gemfile.lock
+lib
+log
+public
+Rakefile
+README.rdoc
+test
+tmp
+vendor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now run these commands in your Rails app directory to initialize and commit your code to git:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ git init
+$ git add .
+$ git commit -m "initial commit"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once your application is committed you need to push it to a remote repository. For this you would need a <a href="https://github.com/join">GitHub account</a>, in which you <a href="https://help.github.com/articles/creating-a-new-repository/">create a new repository</a>.</p>
+</div>
+<div class="paragraph">
+<p>Set the remote that points to your <code>git</code> repository:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ git remote add origin git@github.com:&lt;namespace/repository-name&gt;.git</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After that, push your application to your remote git repository.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ git push</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deploying-your-application-to-digital-garage"><a class="anchor" href="#deploying-your-application-to-digital-garage"></a>Deploying Your Application to Digital Garage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To deploy your Ruby on Rails application, create a new <a href="../projects.html#dev-guide-projects">Project</a> for the application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc new-project rails-app --description="My Rails application" --display-name="Rails Application"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After creating the the <code>rails-app</code> <a href="../projects.html#dev-guide-projects">project</a>, you will be automatically switched to the new project namespace.</p>
+</div>
+<div class="paragraph">
+<p>Deploying your application in Digital Garage involves three steps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Creating a database <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a> from Digital Garage&#8217;s <a href="../../using_images/db_images/postgresql.html#using-images-db-images-postgresql">PostgreSQL image</a></p>
+</li>
+<li>
+<p>Creating a frontend <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a> from Digital Garage&#8217;s <a href="../../using_images/s2i_images/ruby.html#using-images-s2i-images-ruby">Ruby 2.0 builder image</a> and your Ruby on Rails source code, which we wire with the database service</p>
+</li>
+<li>
+<p>Creating a route for your application.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="creating-the-database-service"><a class="anchor" href="#creating-the-database-service"></a>Creating the Database Service</h3>
+<div class="paragraph">
+<p>Your Rails application expects a running database <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a>. For this service use <a href="http://www.postgresql.org/">PostgeSQL</a> database <a href="../../using_images/db_images/postgresql.html#using-images-db-images-postgresql">image</a>.</p>
+</div>
+<div class="paragraph">
+<p>To create the database <a href="../../architecture/core_concepts/pods_and_services.html#services">service</a> you will use the <a href="../new_app.html#dev-guide-new-app">oc new-app</a> command. To this command you will need to pass some necessary <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a> which will be used inside the database container. These <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a> are required to set the username, password, and name of the database. You can change the values of these <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a> to anything you would like. The variables we are going to be setting are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>POSTGRESQL_DATABASE</p>
+</li>
+<li>
+<p>POSTGRESQL_USER</p>
+</li>
+<li>
+<p>POSTGRESQL_PASSWORD</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Setting these variables ensures:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A database exists with the specified name</p>
+</li>
+<li>
+<p>A user exists with the specified name</p>
+</li>
+<li>
+<p>The user can access the specified database with the specified password</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc new-app postgresql -e POSTGRESQL_DATABASE=db_name -e POSTGRESQL_USER=username -e POSTGRESQL_PASSWORD=password</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To also set the password for the database administrator, append to the previous command with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>-e POSTGRESQL_ADMIN_PASSWORD=admin_pw</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To watch the progress of this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc get pods --watch</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-the-frontend-service"><a class="anchor" href="#creating-the-frontend-service"></a>Creating the Frontend Service</h3>
+<div class="paragraph">
+<p>To bring your application to Digital Garage, you need to specify a repository in which your application lives, using once again the <a href="../new_app.html#dev-guide-new-app">oc new-app</a> command, in which you will need to specify database related <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a> we setup in the <a href="./ruby_on_rails.html#creating-the-database-service">Creating the Database Service</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc new-app path/to/source/code --name=rails-app -e POSTGRESQL_USER=username -e POSTGRESQL_PASSWORD=password -e POSTGRESQL_DATABASE=db_name</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With this command, Digital Garage fetches the source code, sets up the Builder image, <a href="../builds.html#dev-guide-builds">builds</a> your application image, and deploys the newly created image together with the specified <a href="../../using_images/db_images/postgresql.html#postgresql-environment-variables">environment variables</a>. The application is named <code>rails-app</code>.</p>
+</div>
+<div class="paragraph">
+<p>You can verify the environment variables have been added by viewing the JSON document of the <code>rails-app</code> <a href="../deployments.html#dev-guide-deployments">DeploymentConfig</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc get dc rails-app -o json</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see the following section:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>env": [
+    {
+        "name": "POSTGRESQL_USER",
+        "value": "username"
+    },
+    {
+        "name": "POSTGRESQL_PASSWORD",
+        "value": "password"
+    },
+    {
+        "name": "POSTGRESQL_DATABASE",
+        "value": "db_name"
+    }
+],</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To check the <a href="../builds.html#dev-guide-builds">build</a> process, use the <a href="../builds.html#accessing-build-logs">build-logs</a> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc logs -f build rails-app-1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the <a href="../builds.html#dev-guide-builds">build</a> is complete, you can look at the running <a href="../../architecture/core_concepts/pods_and_services.html#pods">pods</a> in Digital Garage</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc get pods</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see a line starting with myapp-(#number)-(some hash) and that is your application running in Digital Garage.</p>
+</div>
+<div class="paragraph">
+<p>Before your application will be functional, you need to initialize the database by running the database migration script. There are two ways you can do this:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Manually from the running frontend container:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>First you need to exec into frontend container with <a href="../../cli_reference/basic_cli_operations.html#troubleshooting-and-debugging-cli-operations">rsh</a> command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ oc rsh &lt;FRONTEND_POD_ID&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run the migration from inside the container:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ RAILS_ENV=production bundle exec rake db:migrate</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are running your Rails application in a <code>development</code> or <code>test</code> environment you don&#8217;t have to specify the <code>RAILS_ENV</code> environment variable.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>By adding pre-deployment <a href="../../dev_guide/deployments.html#lifecycle-hooks">lifecycle hooks</a> in your template. For example check the <a href="https://github.com/openshift/rails-ex/blob/master/openshift/templates/rails-postgresql.json#L122-L130">hooks example</a> in our <a href="https://github.com/openshift/rails-ex">Rails example</a> application.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-a-route-for-your-application"><a class="anchor" href="#creating-a-route-for-your-application"></a>Creating a Route for Your Application</h3>
+<div class="paragraph">
+<p>To expose a service by giving it an externally-reachable hostname like <code>www.example.com</code> use Digital Garage <a href="../routes.html#dev-guide-routes">route</a>. In your case you need to expose the frontend service by typing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc expose service rails-app --hostname=www.example.com</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It&#8217;s the user&#8217;s responsibility to ensure the hostname they specify resolves into the IP address of the router. For more information, check the Digital Garage documentation on:</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../architecture/core_concepts/routes.html#routers">Routes</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+  <footer class="footer-digital-garage">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3 logo">
+        <a href="https://www.thedigitalgarage.io/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <a href="http://www.thedigitalgarage.io/community/digital-garage-privacy-policy/">
+              Privacy Policy
+            </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/terms-of-service/">
+            Terms of Use
+          </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/">
+            Our Community
+          </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="http://docs.thedigitalgarage.io/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

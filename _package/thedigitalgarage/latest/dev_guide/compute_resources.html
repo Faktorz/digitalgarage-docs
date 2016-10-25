@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Digital Garage | Developer Guide | Quotas and Limit Ranges</title>
+  <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
+  <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <!--
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  -->
+  <link href="/_images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="/_images/favicon.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="Digital Garage Documentation" name="application-name">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-84210257-3', 'auto');
+    ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-docs navbar-digital-garage" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand digital-garage" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../welcome/index.html">Digital Garage Discovery</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../dev_guide/index.html">Developer Guide</a>
+      </li>
+      
+      <li class="hidden-xs active">
+        Quotas and Limit Ranges
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../getting_started/basic_walkthrough.html">Basic Walkthrough</a></li>
+            <li><a class="" href="../getting_started/beyond_the_basics.html">Beyond the Basics</a></li>
+            <li><a class="" href="../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../getting_started/devpreview_faq.html">Developer Preview FAQ</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
+                <span id="sgSpan-2-1" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-2-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/additional_concepts/overview.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../cli_reference/cli_by_example_content.html">CLI by example</a></li>
+            <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Developer Guide
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-5">
+                <span id="sgSpan-4-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-4-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-6">
+                <span id="sgSpan-4-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-4-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class=" active" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
+            <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
+            <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../using_images/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
+                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-2">
+                <span id="sgSpan-6-2" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-6-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-3">
+                <span id="sgSpan-6-3" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-6-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-4">
+                <span id="sgSpan-6-4" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Quotas and Limit Ranges</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#dev-quotas">Quotas</a>
+<ul class="sectlevel2">
+<li><a href="#dev-viewing-quotas">Viewing Quotas</a></li>
+<li><a href="#dev-managed-by-quota">Resources Managed by Quota</a></li>
+<li><a href="#dev-quota-scopes">Quota Scopes</a></li>
+<li><a href="#dev-quota-enforcement">Quota Enforcement</a></li>
+<li><a href="#dev-requests-vs-limits">Requests vs Limits</a></li>
+</ul>
+</li>
+<li><a href="#dev-limit-ranges">Limit Ranges</a>
+<ul class="sectlevel2">
+<li><a href="#dev-viewing-limit-ranges">Viewing Limit Ranges</a></li>
+<li><a href="#dev-container-limits">Container Limits</a></li>
+<li><a href="#dev-pod-limits">Pod Limits</a></li>
+</ul>
+</li>
+<li><a href="#dev-compute-resources">Compute Resources</a>
+<ul class="sectlevel2">
+<li><a href="#dev-cpu-requests">CPU Requests</a></li>
+<li><a href="#viewing-compute-resources">Viewing Compute Resources</a></li>
+<li><a href="#dev-cpu-limits">CPU Limits</a></li>
+<li><a href="#dev-memory-requests">Memory Requests</a></li>
+<li><a href="#dev-memory-limits">Memory Limits</a></li>
+<li><a href="#quality-of-service-tiers">Quality of Service Tiers</a></li>
+<li><a href="#specifying-compute-resources-via-cli">Specifying Compute Resources via CLI</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using <a href="#dev-quotas">quotas</a> and <a href="#dev-limit-ranges">limit ranges</a>, cluster
+administrators can set constraints to limit the number of objects or amount of
+compute resources that are used in your project. This helps cluster
+administrators better manage and allocate resources across all projects, and
+ensure that no projects are using more than is appropriate for the cluster size.</p>
+</div>
+<div class="paragraph">
+<p>As a developer, you can also
+set <a href="#dev-compute-resources">requests and limits on compute resources</a> at the
+pod and container level.</p>
+</div>
+<div class="paragraph">
+<p>The following sections help you understand how to check on your quota and limit
+range settings, what sorts of things they can constrain, and how you can request
+or limit compute resources in your own pods and containers.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dev-quotas"><a class="anchor" href="#dev-quotas"></a>Quotas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A resource quota, defined by a <code><strong>ResourceQuota</strong></code> object, provides constraints
+that limit aggregate resource consumption per project. It can limit the quantity
+of objects that can be created in a project by type, as well as the total amount
+of compute resources that may be consumed by resources in that project.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Quotas are set by cluster administrators and are scoped to a given project.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="dev-viewing-quotas"><a class="anchor" href="#dev-viewing-quotas"></a>Viewing Quotas</h3>
+<div class="paragraph">
+<p>You can view usage statistics related to any hard limits defined in a project&#8217;s
+quota by navigating in the web console to the project&#8217;s <strong>Settings</strong> tab.</p>
+</div>
+<div class="paragraph">
+<p>You can also use the CLI to view quota details:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, get the list of quotas defined in the project. For example, for a project
+called <strong>demoproject</strong>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get quota -n demoproject
+NAME                AGE
+besteffort          11m
+compute-resources   2m
+core-object-counts  29m</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Then, describe the quota you are interested in, for example the
+<strong>core-object-counts</strong> quota:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe quota core-object-counts -n demoproject
+Name:			core-object-counts
+Namespace:		demoproject
+Resource		Used	Hard
+--------		----	----
+configmaps		3	10
+persistentvolumeclaims	0	4
+replicationcontrollers	3	20
+secrets			9	10
+services		2	10</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Full quota definitions can be viewed by running <code>oc export</code> on the object. The
+following show some sample quota definitions:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. <strong><em>core-object-counts.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ResourceQuota</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">core-object-counts</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">hard</span>:
+    <span style="color:#606">configmaps</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">persistentvolumeclaims</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#606">replicationcontrollers</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">20</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span style="color:#606">secrets</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+    <span style="color:#606">services</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of <code><strong>ConfigMap</strong></code> objects that can exist in the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The total number of persistent volume claims (PVCs) that can exist in the
+project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The total number of replication controllers that can exist in the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The total number of secrets that can exist in the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The total number of services that can exist in the project.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. <strong><em>openshift-object-counts.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ResourceQuota</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift-object-counts</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">hard</span>:
+    <span style="color:#606">openshift.io/imagestreams</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of image streams that can exist in the project.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. <strong><em>compute-resources.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ResourceQuota</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">compute-resources</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">hard</span>:
+    <span style="color:#606">pods</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">requests.cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#606">requests.memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1Gi </span></span><i class="conum" data-value="3"></i><b>(3)</b>
+    <span style="color:#606">limits.cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+    <span style="color:#606">limits.memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">2Gi </span></span> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of pods in a non-terminal state that can exist in the
+project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Across all pods in a non-terminal state, the sum of CPU requests cannot
+exceed 1 core.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Across all pods in a non-terminal state, the sum of memory requests cannot
+exceed 1Gi.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Across all pods in a non-terminal state, the sum of CPU limits cannot exceed
+2 cores.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Across all pods in a non-terminal state, the sum of memory limits cannot
+exceed 2Gi.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. <strong><em>besteffort.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ResourceQuota</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">besteffort</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">hard</span>:
+    <span style="color:#606">pods</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">scopes</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">BestEffort </span></span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of pods in a non-terminal state with <strong>BestEffort</strong> quality
+of service that can exist in the project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Restricts the quota to only matching pods that have <strong>BestEffort</strong> quality of
+service for either memory or CPU.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. <strong><em>compute-resources-long-running.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-resources-long-running
+spec:
+  hard:
+    pods: "4" <i class="conum" data-value="1"></i><b>(1)</b>
+    limits.cpu: "4" <i class="conum" data-value="2"></i><b>(2)</b>
+    limits.memory: "2Gi" <i class="conum" data-value="3"></i><b>(3)</b>
+  scopes:
+  - NotTerminating <i class="conum" data-value="4"></i><b>(4)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of pods in a non-terminal state.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Across all pods in a non-terminal state, the sum of CPU limits cannot exceed this value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Across all pods in a non-terminal state, the sum of memory limits cannot exceed this value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Restricts the quota to only matching pods where <code>spec.activeDeadlineSeconds is nil</code>.  For example,
+this quota would not charge for build or deployer pods.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 6. <strong><em>compute-resources-time-bound.yaml</em></strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-resources-time-bound
+spec:
+  hard:
+    pods: "2" <i class="conum" data-value="1"></i><b>(1)</b>
+    limits.cpu: "1" <i class="conum" data-value="2"></i><b>(2)</b>
+    limits.memory: "1Gi" <i class="conum" data-value="3"></i><b>(3)</b>
+  scopes:
+  - Terminating <i class="conum" data-value="4"></i><b>(4)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of pods in a non-terminal state.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Across all pods in a non-terminal state, the sum of CPU limits cannot exceed this value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Across all pods in a non-terminal state, the sum of memory limits cannot exceed this value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Restricts the quota to only matching pods where <code>spec.activeDeadlineSeconds &gt;=0</code>.  For example,
+this quota would charge for build or deployer pods, but not long running pods like a web server or database.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dev-managed-by-quota"><a class="anchor" href="#dev-managed-by-quota"></a>Resources Managed by Quota</h3>
+<div class="paragraph">
+<p>The following describes the set of compute resources and object types that may be
+managed by a quota.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Compute Resources Managed by Quota</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Resource Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>cpu</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of CPU requests cannot exceed
+this value. <code><strong>cpu</strong></code> and `<strong>requests.cpu</strong>`are the same value and can be used
+interchangeably.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>memory</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of memory requests cannot
+exceed this value. <code><strong>memory</strong></code> and <code><strong>requests.memory</strong></code> are the same value and can
+be used interchangeably.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>requests.cpu</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of CPU requests cannot exceed
+this value. <code><strong>cpu</strong></code> and `<strong>requests.cpu</strong>`are the same value and can be used
+interchangeably.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>requests.memory</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of memory requests cannot
+exceed this value. <code><strong>memory</strong></code> and <code><strong>requests.memory</strong></code> are the same value and can
+be used interchangeably.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>limits.cpu</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of CPU limits cannot exceed
+this value.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>limits.memory</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all pods in a non-terminal state, the sum of memory limits cannot exceed
+this value.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Object Counts Managed by Quota</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Resource Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>pods</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of pods in a non-terminal state that can exist in the project.
+A pod is in a terminal state if <code>status.phase in (Failed, Succeeded)</code> is true.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>replicationcontrollers</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of replication controllers that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>resourcequotas</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of resource quotas that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>services</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of services that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>secrets</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of secrets that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>configmaps</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of <code><strong>ConfigMap</strong></code> objects that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>persistentvolumeclaims</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of persistent volume claims that can exist in the project.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>openshift.io/imagestreams</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The total number of image streams that can exist in the project.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="dev-quota-scopes"><a class="anchor" href="#dev-quota-scopes"></a>Quota Scopes</h3>
+<div class="paragraph">
+<p>Each quota can have an associated set of <em>scopes</em>. A quota will only
+measure usage for a resource if it matches the intersection of enumerated
+scopes.</p>
+</div>
+<div class="paragraph">
+<p>When a scope is added to a quota, it limits the number of resources it supports
+to those that pertain to the scope. Resources specified on the quota outside of
+the allowed set results in a validation error.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Scope</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>Terminating</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Match pods where <code>spec.activeDeadlineSeconds &gt;= 0</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>NotTerminating</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Match pods where <code>spec.activeDeadlineSeconds is nil</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>BestEffort</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Match pods that have best effort quality of service for either <code><strong>cpu</strong></code> or
+<code><strong>memory</strong></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>NotBestEffort</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Match pods that do not have best effort quality of service for <code><strong>cpu</strong></code> and
+<code><strong>memory</strong></code>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A <strong>BestEffort</strong> scope restricts a quota to limit the following resources:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>pods</strong></code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A <strong>Terminating</strong>, <strong>NotTerminating</strong>, and <strong>NotBestEffort</strong> scope restricts a quota
+to tracking the following resources:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>pods</strong></code></p>
+</li>
+<li>
+<p><code><strong>memory</strong></code></p>
+</li>
+<li>
+<p><code><strong>requests.memory</strong></code></p>
+</li>
+<li>
+<p><code><strong>limits.memory</strong></code></p>
+</li>
+<li>
+<p><code><strong>cpu</strong></code></p>
+</li>
+<li>
+<p><code><strong>requests.cpu</strong></code></p>
+</li>
+<li>
+<p><code><strong>limits.cpu</strong></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dev-quota-enforcement"><a class="anchor" href="#dev-quota-enforcement"></a>Quota Enforcement</h3>
+<div class="paragraph">
+<p>After a resource quota for a project is first created, the project restricts the
+ability to create any new resources that may violate a quota constraint until it
+has calculated updated usage statistics.</p>
+</div>
+<div class="paragraph">
+<p>After a quota is created and usage statistics are updated, the project accepts
+the creation of new content. When you create or modify resources, your quota
+usage is incremented immediately upon the request to create or modify the
+resource.</p>
+</div>
+<div class="paragraph">
+<p>When you delete a resource, your quota use is decremented during the next full
+recalculation of quota statistics for the project.
+If project modifications exceed a quota usage limit, the server denies the
+action. An appropriate error message is returned explaining the quota constraint
+violated, and what your currently observed usage stats are in the system.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dev-requests-vs-limits"><a class="anchor" href="#dev-requests-vs-limits"></a>Requests vs Limits</h3>
+<div class="paragraph">
+<p>When allocating
+<a href="../dev_guide/compute_resources.html#dev-compute-resources">compute
+resources</a>, each container may specify a request and a limit value for either
+CPU or memory. The quota can be configured to quota either value.</p>
+</div>
+<div class="paragraph">
+<p>If the quota has a value specified for <code><strong>requests.cpu</strong></code> or <code><strong>requests.memory</strong></code>,
+then it requires that every incoming container makes an explicit request for
+those resources. If the quota has a value specified for <code><strong>limits.cpu</strong></code> or
+<code><strong>limits.memory</strong></code>, then it requires that every incoming container specifies an
+explicit limit for those resources.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="#dev-compute-resources">Compute Resources</a> for more on setting requests
+and limits in pods and containers.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dev-limit-ranges"><a class="anchor" href="#dev-limit-ranges"></a>Limit Ranges</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A limit range, defined by a <code><strong>LimitRange</strong></code> object, enumerates
+<a href="../dev_guide/compute_resources.html#dev-compute-resources">compute resource
+constraints</a> in a <a href="../dev_guide/projects.html#dev-guide-projects">project</a> at the pod,
+container, image and image stream level, and specifies the amount of resources
+that a pod, container, image or image stream can consume.</p>
+</div>
+<div class="paragraph">
+<p>All resource create and modification requests are evaluated against each
+<code><strong>LimitRange</strong></code> object in the project. If the resource violates any of the
+enumerated constraints, then the resource is rejected. If the resource does not
+set an explicit value, and if the constraint supports a default value, then the
+default value is applied to the resource.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Limit ranges are set by cluster administrators and are scoped to a given
+project.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="dev-viewing-limit-ranges"><a class="anchor" href="#dev-viewing-limit-ranges"></a>Viewing Limit Ranges</h3>
+<div class="paragraph">
+<p>You can view any limit ranges defined in a project by navigating in the web
+console to the project&#8217;s <strong>Settings</strong> tab.</p>
+</div>
+<div class="paragraph">
+<p>You can also use the CLI to view limit range details:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, get the list of limit ranges defined in the project. For example, for a
+project called <strong>demoproject</strong>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc get limits -n demoproject
+NAME              AGE
+resource-limits   6d</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Then, describe the limit range you are interested in, for example the
+<strong>resource-limits</strong> limit range:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe limits resource-limits
+Name:                     limits
+Namespace:                default
+Type                      Resource                 Min  Max Request Limit Limit/Request
+----                      --------                 ---  --- ------- ----- -------------
+Pod                       memory                   6Mi  1Gi -       -     -
+Pod                       cpu                      200m  2  -       -     -
+Container                 cpu                      100m  2  200m    300m  10
+Container                 memory                   4Mi  1Gi 100Mi   200Mi -
+openshift.io/Image        storage                  -    1Gi -       -     -
+openshift.io/ImageStream  openshift.io/image-tags  -    10  -       -     -
+openshift.io/ImageStream  openshift.io/images      -    12  -       -     -</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Full limit range definitions can be viewed by running <code>oc export</code> on the object.
+The following shows an example limit range definition:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7. Core Limit Range Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">LimitRange</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">core-resource-limits</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">limits</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: &quot;Pod&quot;</span></span>
+      <span style="color:#606">max</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1Gi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+      <span style="color:#606">min</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">200m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">6Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: &quot;Container&quot;</span></span>
+      <span style="color:#606">max</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="6"></i><b>(6)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1Gi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="7"></i><b>(7)</b>
+      <span style="color:#606">min</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">100m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="8"></i><b>(8)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="9"></i><b>(9)</b>
+      <span style="color:#606">default</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">300m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="10"></i><b>(10)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">200Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="11"></i><b>(11)</b>
+      <span style="color:#606">defaultRequest</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">200m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="12"></i><b>(12)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">100Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="13"></i><b>(13)</b>
+      <span style="color:#606">maxLimitRequestRatio</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="14"></i><b>(14)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The name of the limit range document.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The maximum amount of CPU that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The maximum amount of memory that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The minimum amount of CPU that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The minimum amount of memory that a pod can request on a node across all
+containers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The maximum amount of CPU that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>The maximum amount of memory that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>The minimum amount of CPU that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>The minimum amount of memory that a single container in a pod can request.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>The default amount of CPU that a container will be limited to use if not
+specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="11"></i><b>11</b></td>
+<td>The default amount of memory that a container will be limited to use if not specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="12"></i><b>12</b></td>
+<td>The default amount of CPU that a container will request to use if not specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="13"></i><b>13</b></td>
+<td>The default amount of memory that a container will request to use if not specified.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="14"></i><b>14</b></td>
+<td>The maximum amount of CPU burst that a container can make as a ratio of its limit over request.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dev-container-limits"><a class="anchor" href="#dev-container-limits"></a>Container Limits</h3>
+<div class="paragraph">
+<p><strong>Supported Resources:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CPU</p>
+</li>
+<li>
+<p>Memory</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Supported Constraints:</strong></p>
+</div>
+<div class="paragraph">
+<p>Per container, the following must hold true if specified:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. Container</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Min</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>Min[resource]</code> less than or equal to <code>container.resources.requests[resource]</code>
+(required) less than or equal to <code>container/resources.limits[resource]</code>
+(optional)</p>
+</div>
+<div class="paragraph">
+<p>If the configuration defines a <code>min</code> CPU, then the request value must be greater
+than the CPU value. A limit value does not need to be specified.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Max</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>container.resources.limits[resource]</code> (required) less than or equal to
+<code>Max[resource]</code></p>
+</div>
+<div class="paragraph">
+<p>If the configuration defines a <code>max</code> CPU, then you do not need to define a
+request value, but a limit value does need to be set that satisfies the maximum
+CPU constraint.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>MaxLimitRequestRatio</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>MaxLimitRequestRatio[resource]</code> less than or equal to (
+<code>container.resources.limits[resource]</code> /
+<code>container.resources.requests[resource]</code>)</p>
+</div>
+<div class="paragraph">
+<p>If a configuration defines a <code>maxLimitRequestRatio</code> value, then any new
+containers must have both a request and limit value. Additionally,
+Digital Garage calculates a limit to request ratio by dividing the limit by the
+request.</p>
+</div>
+<div class="paragraph">
+<p>For example, if a container has <code>cpu: 500</code> in the <code>limit</code> value, and
+<code>cpu: 100</code> in the <code>request</code> value, then its limit to request ratio for <code>cpu</code> is
+<code>5</code>. This ratio must be less than or equal to the <code>maxLimitRequestRatio</code>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Supported Defaults:</strong></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>Default[resource]</code></dt>
+<dd>
+<p>Defaults <code>container.resources.limit[resource]</code> to specified value if none.</p>
+</dd>
+<dt class="hdlist1"><code>Default Requests[resource]</code></dt>
+<dd>
+<p>Defaults <code>container.resources.requests[resource]</code> to specified value if none.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dev-pod-limits"><a class="anchor" href="#dev-pod-limits"></a>Pod Limits</h3>
+<div class="paragraph">
+<p><strong>Supported Resources:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CPU</p>
+</li>
+<li>
+<p>Memory</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Supported Constraints:</strong></p>
+</div>
+<div class="paragraph">
+<p>Across all containers in a pod, the following must hold true:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. Pod</caption>
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Constraint</th>
+<th class="tableblock halign-left valign-top">Enforced Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Min</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>Min[resource]</code> less than or equal to <code>container.resources.requests[resource]</code>
+(required) less than or equal to <code>container.resources.limits[resource]</code>
+(optional)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Max</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>container.resources.limits[resource]</code> (required) less than or equal to
+<code>Max[resource]</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>MaxLimitRequestRatio</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>MaxLimitRequestRatio[resource]</code> less than or equal to (
+<code>container.resources.limits[resource]</code> /
+<code>container.resources.requests[resource]</code>)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dev-compute-resources"><a class="anchor" href="#dev-compute-resources"></a>Compute Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each container running on a node consumes compute resources, which are
+measurable quantities that can be requested, allocated, and consumed.</p>
+</div>
+<div class="paragraph">
+<p>When authoring a pod configuration file, you can optionally specify how much CPU
+and memory (RAM) each container needs in order to better schedule pods in the
+cluster and ensure satisfactory performance.</p>
+</div>
+<div class="paragraph">
+<p>CPU is measured in units called millicores. Each node in a cluster inspects the
+operating system to determine the amount of CPU cores on the node, then
+multiplies that value by 1000 to express its total capacity. For example, if a
+node has 2 cores, the node&#8217;s CPU capacity would be represented as 2000m. If you
+wanted to use 1/10 of a single core, it would be represented as 100m.</p>
+</div>
+<div class="paragraph">
+<p>Memory is measured in bytes. In addition, it may be used with SI suffices (E, P,
+T, G, M, K, m) or their power-of-two-equivalents (Ei, Pi, Ti, Gi, Mi, Ki).</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Pod</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">containers</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">image: nginx</span></span>
+    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">nginx</span></span>
+    <span style="color:#606">resources</span>:
+      <span style="color:#606">requests</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">100m </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">200Mi </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+      <span style="color:#606">limits</span>:
+        <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">200m </span></span><i class="conum" data-value="3"></i><b>(3)</b>
+        <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">400Mi </span></span> <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The container requests 100m cpu.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The container requests 200Mi memory.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The container limits 200m cpu.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The container limits 400Mi memory.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dev-cpu-requests"><a class="anchor" href="#dev-cpu-requests"></a>CPU Requests</h3>
+<div class="paragraph">
+<p>Each container in a pod can specify the amount of CPU it requests on a node. The
+scheduler uses CPU requests to find a node with an appropriate fit for a
+container.</p>
+</div>
+<div class="paragraph">
+<p>The CPU request represents a minimum amount of CPU that your container may
+consume, but if there is no contention for CPU, it can use all available CPU on
+the node. If there is CPU contention on the node, CPU requests provide a
+relative weight across all containers on the system for how much CPU time the
+container may use.</p>
+</div>
+<div class="paragraph">
+<p>On the node, CPU requests map to Kernel CFS shares to enforce this behavior.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-compute-resources"><a class="anchor" href="#viewing-compute-resources"></a>Viewing Compute Resources</h3>
+<div class="paragraph">
+<p>To view compute resources for a pod:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe pod nginx-tfjxt
+Name:       nginx-tfjxt
+Namespace:      default
+Image(s):     nginx
+Node:       /
+Labels:       run=nginx
+Status:       Pending
+Reason:
+Message:
+IP:
+Replication Controllers:  nginx (1/1 replicas created)
+Containers:
+  nginx:
+    Container ID:
+    Image:    nginx
+    Image ID:
+    QoS Tier:
+      cpu:  Burstable
+      memory: Burstable
+    Limits:
+      cpu:  200m
+      memory: 400Mi
+    Requests:
+      cpu:    100m
+      memory:   200Mi
+    State:    Waiting
+    Ready:    False
+    Restart Count:  0
+    Environment Variables:</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dev-cpu-limits"><a class="anchor" href="#dev-cpu-limits"></a>CPU Limits</h3>
+<div class="paragraph">
+<p>Each container in a pod can specify the amount of CPU it is limited to use on a node. CPU limits control the maximum amount of CPU that your container may use independent of contention on the node. If a container attempts to exceed the specified limit, the system will throttle the container. This allows the container to have a consistent level of service independent of the number of pods scheduled to the node.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dev-memory-requests"><a class="anchor" href="#dev-memory-requests"></a>Memory Requests</h3>
+<div class="paragraph">
+<p>By default, a container is able to consume as much memory on the node as possible. In order to improve placement of pods in the cluster, specify the amount of memory required for a container to run. The scheduler will then take available node memory capacity into account prior to binding your pod to a node. A container is still able to consume as much memory on the node as possible even when specifying a request.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dev-memory-limits"><a class="anchor" href="#dev-memory-limits"></a>Memory Limits</h3>
+<div class="paragraph">
+<p>If you specify a memory limit, you can constrain the amount of memory the container can use. For example, if you specify a limit of 200Mi, a container will be limited to using that amount of memory on the node. If the container exceeds the specified memory limit, it will be terminated and potentially restarted dependent upon the container restart policy.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="quality-of-service-tiers"><a class="anchor" href="#quality-of-service-tiers"></a>Quality of Service Tiers</h3>
+<div class="paragraph">
+<p>A compute resource is classified with a <em>quality of service</em> (QoS) based on the
+specified request and limit value.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 72.7273%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Quality of Service</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BestEffort</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provided when a request and limit are not specified.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Burstable</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provided when a request is specified that is less than an optionally specified
+limit.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Guaranteed</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provided when a limit is specified that is equal to an optionally specified
+request.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A container may have a different quality of service for each compute resource.
+For example, a container can have <strong>Burstable</strong> CPU and <strong>Guaranteed</strong> memory
+qualities of service.</p>
+</div>
+<div class="paragraph">
+<p>The quality of service has an impact on what happens if the resource is
+compressible or not. CPU is a compressible resource, whereas memory is an
+incompressible resource.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">With CPU Resources: </dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>A <strong>BestEffort</strong> CPU container is able to consume as much CPU as is available on a
+node with the lowest priority.</p>
+</li>
+<li>
+<p>A <strong>Burstable</strong> CPU container is guaranteed to get the minimum amount of CPU
+requested, but it may or may not get additional CPU time. Excess CPU resources
+are distributed based on the amount requested across all containers on the node.</p>
+</li>
+<li>
+<p>A <strong>Guaranteed</strong> CPU container is guaranteed to get the amount requested and no
+more, even if there are additional CPU cycles available. This provides a
+consistent level of performance independent of other activity on the node.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">With Memory Resources: </dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>A <strong>BestEffort</strong> memory container is able to consume as much memory as is
+available on the node, but the scheduler is subject to placing that container on
+a node with too few memory to meet a need. In addition, a <strong>BestEffort</strong> memory
+container has the greatest chance of being killed if there is an out of memory
+event on the node.</p>
+</li>
+<li>
+<p>A <strong>Burstable</strong> memory container is scheduled on the node to get the amount of
+memory requested, but it may consume more. If there is an out of memory event on
+the node, <strong>Burstable</strong> containers are killed after <strong>BestEffort</strong> containers when
+attempting to recover memory.</p>
+</li>
+<li>
+<p>A <strong>Guaranteed</strong> memory container gets the amount of memory requested, but no
+more. In the event of an out of memory event, it will only be killed if there
+are no more <strong>BestEffort</strong> or <strong>Burstable</strong> memory containers on the system.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="specifying-compute-resources-via-cli"><a class="anchor" href="#specifying-compute-resources-via-cli"></a>Specifying Compute Resources via CLI</h3>
+<div class="paragraph">
+<p>To specify compute resources via the CLI:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc run nginx --image=nginx --limits=cpu=200m,memory=400Mi --requests=cpu=100m,memory=200Mi</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+  <footer class="footer-digital-garage">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3 logo">
+        <a href="https://www.thedigitalgarage.io/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <a href="http://www.thedigitalgarage.io/community/digital-garage-privacy-policy/">
+              Privacy Policy
+            </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/terms-of-service/">
+            Terms of Use
+          </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/">
+            Our Community
+          </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="http://docs.thedigitalgarage.io/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

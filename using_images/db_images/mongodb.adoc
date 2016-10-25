@@ -18,33 +18,18 @@ settings provided via configuration.
 
 == Versions
 Currently, {product-title} provides versions
-https://github.com/openshift/mongodb/tree/master/2.4[2.4], https://github.com/openshift/mongodb/tree/master/2.6[2.6], and https://github.com/openshift/mongodb/tree/master/3.2[3.2] of MongoDB.
+https://github.com/ç/mongodb-container/tree/master/2.4[2.4], https://github.com/thedigitalgarage/mongodb-container/tree/master/2.6[2.6], and https://github.com/thedigitalgarage/mongodb-container/tree/master/3.2[3.2] of MongoDB.
 
 == Images
 
-These images come in two flavors, depending on your needs:
-
-* RHEL 7
-* CentOS 7
-
-*RHEL 7 Based Image*
-
-The RHEL 7 images are available through Red Hat's subscription registry via:
-
-----
-$ docker pull registry.access.redhat.com/openshift3/mongodb-24-rhel7
-$ docker pull registry.access.redhat.com/rhscl/mongodb-26-rhel7
-$ docker pull registry.access.redhat.com/rhscl/mongodb-32-rhel7
-----
-
-*CentOS 7 Based Image*
+The Digital Garage uses the base CentOS 7 image for the Mongo DB images.
 
 These images are available on DockerHub. To download them:
 
 ----
-$ docker pull openshift/mongodb-24-centos7
-$ docker pull centos/mongodb-26-centos7
-$ docker pull centos/mongodb-32-centos7
+$ docker pull thedigitalgarage/mongodb-24-centos7
+$ docker pull thedigitalgarage/mongodb-26-centos7
+$ docker pull thedigitalgarage/mongodb-32-centos7
 ----
 
 To use these images, you can either access them directly from these
@@ -75,7 +60,7 @@ ifdef::openshift-enterprise[]
     registry.access.redhat.com/rhscl/mongodb-26-rhel7
 endif::[]
 ifdef::openshift-origin[]
-    centos/mongodb-26-centos7
+    thedigitalgarage/mongodb-26-centos7
 endif::[]
 ----
 
@@ -456,7 +441,7 @@ of the *rs0* replication set, as the value of `*MONGODB_REPLICA_NAME*` is set to
 === Creating the Service Pod
 
 To initialize members created by xref:creating-the-deploymentconfig[the
-deployment configuration], the pods are started with the `initiate` argument, 
+deployment configuration], the pods are started with the `initiate` argument,
 which instructs the startup script to behave xref:mongo-creating-headless-service[slightly differently]
 than a regular, stand-alone MongoDB database.
 

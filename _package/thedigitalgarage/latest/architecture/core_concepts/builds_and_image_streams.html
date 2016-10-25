@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Digital Garage | Architecture | Core Concepts | Builds and Image Streams</title>
+  <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
+  <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <!--
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  -->
+  <link href="/_images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="/_images/favicon.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="Digital Garage Documentation" name="application-name">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-84210257-3', 'auto');
+    ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-docs navbar-digital-garage" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand digital-garage" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../welcome/index.html">Digital Garage Discovery</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../../architecture/index.html">Architecture</a>
+      </li>
+      <li class="hidden-xs active"><a href="../../architecture/core_concepts/index.html">Core Concepts</a></li>
+      <li class="hidden-xs active">
+        Builds and Image Streams
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../../getting_started/basic_walkthrough.html">Basic Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/beyond_the_basics.html">Beyond the Basics</a></li>
+            <li><a class="" href="../../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../../getting_started/devpreview_faq.html">Developer Preview FAQ</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-down"></span>Architecture
+      </a>
+      <ul id="topicGroup2" class="collapse in list-unstyled">
+            <li><a class="" href="../../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
+                <span id="sgSpan-2-1" class="fa fa-caret-down"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-2-1" class="nav-tertiary list-unstyled collapse in">
+
+                  <li><a class="" href="../../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/containers_and_images.html">Images</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class=" active" href="../../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../architecture/additional_concepts/overview.html">Overview</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../../cli_reference/cli_by_example_content.html">CLI by example</a></li>
+            <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup4" class="collapse  list-unstyled">
+            <li><a class="" href="../../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-5">
+                <span id="sgSpan-4-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-4-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-6">
+                <span id="sgSpan-4-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-4-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
+            <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
+            <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../../using_images/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
+                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-2">
+                <span id="sgSpan-6-2" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-6-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-3">
+                <span id="sgSpan-6-3" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-6-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-4">
+                <span id="sgSpan-6-4" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Builds and Image Streams</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#builds">Builds</a>
+<ul class="sectlevel2">
+<li><a href="#docker-build">Docker Build</a></li>
+<li><a href="#source-build">Source-to-Image (S2I) Build</a></li>
+<li><a href="#custom-build">Custom Build</a></li>
+<li><a href="#pipeline-build">Pipeline Build</a></li>
+</ul>
+</li>
+<li><a href="#image-streams">Image Streams</a>
+<ul class="sectlevel2">
+<li><a href="#image-stream-mappings">Image Stream Mappings</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="builds"><a class="anchor" href="#builds"></a>Builds</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <a href="../../dev_guide/builds.html#dev-guide-builds">build</a> is the process of transforming input
+parameters into a resulting object. Most often, the process is used to transform
+input parameters or source code into a runnable image. A
+<a href="../../dev_guide/builds.html#defining-a-buildconfig">BuildConfig</a> object is
+the definition of the entire build process.</p>
+</div>
+<div class="paragraph">
+<p>Digital Garage leverages Kubernetes by creating Docker containers from build
+images and pushing them to a
+<a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">Docker
+registry</a>.</p>
+</div>
+<div class="paragraph">
+<p>Build objects share common characteristics: inputs for a build, the need to
+complete a build process, logging the build process, publishing resources from
+successful builds, and publishing the final status of the build. Builds take
+advantage of resource restrictions, specifying limitations on resources such as
+CPU usage, memory usage, and build or pod execution time.</p>
+</div>
+<div class="paragraph">
+<p>The Digital Garage build system provides extensible support for <em>build
+strategies</em> that are based on selectable types specified in the build API. There
+are three primary build strategies available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#docker-build">Docker build</a></p>
+</li>
+<li>
+<p><a href="#source-build">Source-to-Image (S2I) build</a></p>
+</li>
+<li>
+<p><a href="#custom-build">Custom build</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By default, Docker builds and S2I builds are supported.</p>
+</div>
+<div class="paragraph">
+<p>The resulting object of a build depends on the builder used to create it. For
+Docker and S2I builds, the resulting objects are runnable images. For Custom
+builds, the resulting objects are whatever the builder image author has
+specified.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the
+<a href="#pipeline-build">Pipeline build</a>
+strategy can be used to implement sophisticated workflows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>continuous integration</p>
+</li>
+<li>
+<p>continuous deployment</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For a list of build commands, see the
+<a href="../../dev_guide/builds.html#dev-guide-builds">Developer&#8217;s Guide</a>.</p>
+</div>
+<div class="paragraph">
+<p>For more information on how Digital Garage leverages Docker for builds, see the
+<a href="https://github.com/openshift/origin/blob/master/docs/builds.md#how-it-works">upstream
+documentation</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="docker-build"><a class="anchor" href="#docker-build"></a>Docker Build</h3>
+<div class="paragraph">
+<p>The Docker build strategy invokes the plain
+<a href="https://docs.docker.com/engine/reference/commandline/build/">docker build</a> command,
+and it therefore expects a repository with a <strong><em>Dockerfile</em></strong> and all required
+artifacts in it to produce a runnable image.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="source-build"><a class="anchor" href="#source-build"></a>Source-to-Image (S2I) Build</h3>
+<div class="paragraph">
+<p><a href="../../creating_images/s2i.html#creating-images-s2i">Source-to-Image (S2I)</a> is a tool for
+building reproducible Docker images. It produces ready-to-run images by
+injecting application source into a Docker image and assembling a new Docker
+image.  The new image incorporates the base image (the builder) and built source
+and is ready to use with the <code>docker run</code> command. S2I supports incremental
+builds, which re-use previously downloaded dependencies, previously built
+artifacts, etc.</p>
+</div>
+<div class="paragraph">
+<p>The advantages of S2I include the following:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Image flexibility
+</td>
+<td class="hdlist2">
+<p>S2I scripts can be written to inject application code into
+almost any existing Docker image, taking advantage of the existing ecosystem.
+Note that, currently, S2I relies on <code>tar</code> to inject application
+source, so the image needs to be able to process tarred content.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Speed
+</td>
+<td class="hdlist2">
+<p>With S2I, the assemble process can perform a large number of complex
+operations without creating a new layer at each step, resulting in a fast
+process. In addition, S2I scripts can be written to re-use artifacts stored in a
+previous version of the application image, rather than having to download or
+build them each time the build is run.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Patchability
+</td>
+<td class="hdlist2">
+<p>S2I allows you to rebuild the application consistently if an
+underlying image needs a patch due to a security issue.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Operational efficiency
+</td>
+<td class="hdlist2">
+<p>By restricting build operations instead of allowing
+arbitrary actions, as a <strong><em>Dockerfile</em></strong> would allow, the PaaS operator can avoid
+accidental or intentional abuses of the build system.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Operational security
+</td>
+<td class="hdlist2">
+<p>Building an arbitrary <strong><em>Dockerfile</em></strong> exposes the host
+system to root privilege escalation. This can be exploited by a malicious user
+because the entire Docker build process is run as a user with Docker privileges.
+S2I restricts the operations performed as a root user and can run the scripts
+as a non-root user.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+User efficiency
+</td>
+<td class="hdlist2">
+<p>S2I prevents developers from performing arbitrary <code>yum
+install</code> type operations, which could slow down development iteration, during
+their application build.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Ecosystem
+</td>
+<td class="hdlist2">
+<p>S2I encourages a shared ecosystem of images where you can leverage
+best practices for your applications.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Reproducibility
+</td>
+<td class="hdlist2">
+<p>Produced images can include all inputs including specific versions
+of build tools and dependencies. This ensures that the image can be reproduced
+precisely.</p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="custom-build"><a class="anchor" href="#custom-build"></a>Custom Build</h3>
+<div class="paragraph">
+<p>The Custom build strategy allows developers to define a specific builder image
+responsible for the entire build process. Using your own builder image allows
+you to customize your build process.</p>
+</div>
+<div class="paragraph">
+<p>A <a href="../../creating_images/custom.html#creating-images-custom">Custom builder image</a> is a plain Docker
+image embedded with build process logic, for example for building RPMs or base
+Docker images. The <code>openshift/origin-custom-docker-builder</code> image is available
+on the
+<a href="https://registry.hub.docker.com/u/openshift/origin-custom-docker-builder">Docker
+Hub</a> as an example implementation of a Custom builder image.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pipeline-build"><a class="anchor" href="#pipeline-build"></a>Pipeline Build</h3>
+<div class="paragraph">
+<p>The Pipeline build strategy allows developers to define a <em>Jenkins pipeline</em>
+for execution by the Jenkins pipeline plugin.
+The build can be started, monitored, and managed by
+Digital Garage in the same way as any other build type.</p>
+</div>
+<div class="paragraph">
+<p>Pipeline workflows are defined in a Jenkinsfile,
+either embedded directly in the build configuration,
+or supplied in a Git repository and referenced by the build configuration.</p>
+</div>
+<div class="paragraph">
+<p>The first time a project defines a build configuration using a Pipeline strategy,
+Digital Garage instantiates a Jenkins server to execute the pipeline.
+Subsequent Pipeline build configurations
+in the project share this Jenkins server.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The Jenkins server is not automatically removed,
+even if all Pipeline build configurations are deleted,
+and must be deleted by the user.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For more information about Jenkins Pipelines, please see the
+<a href="https://jenkins.io/doc/pipeline/">Jenkins documentation</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="image-streams"><a class="anchor" href="#image-streams"></a>Image Streams</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An <em>image stream</em> comprises any number of
+<a href="containers_and_images.html#docker-images">Docker images</a> identified by tags.
+It presents a single virtual view of related images, similar to a Docker image
+repository, and may contain images from any of the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Its own image repository in Digital Garage&#8217;s
+<a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">integrated
+registry</a></p>
+</li>
+<li>
+<p>Other image streams</p>
+</li>
+<li>
+<p>Docker image repositories from external registries</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Image streams can be used to automatically perform an action when new images are
+created. Builds and deployments can watch an image stream to receive
+notifications when new images are added and react by performing a build or
+deployment, respectively.</p>
+</div>
+<div class="paragraph">
+<p>For example, if a deployment is using a certain image and a new version of that
+image is created, a deployment could be automatically performed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>See the <a href="../../dev_guide/managing_images.html#dev-guide-managing-images">Developer Guide</a> for details
+on managing images and image streams.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Image Stream Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ImageStream</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">annotations</span>:
+    <span style="color:#606">openshift.io/generated-by</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OpenShiftNewApp</span></span>
+  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">2016-01-29T13:33:49Z</span></span>
+  <span style="color:#606">generation</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1</span></span>
+  <span style="color:#606">labels</span>:
+    <span style="color:#606">app</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ruby-sample-build</span></span>
+    <span style="color:#606">template</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">application-template-stibuild</span></span>
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">origin-ruby-sample</span></span>
+  <span style="color:#606">namespace</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">test</span></span>
+  <span style="color:#606">resourceVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">633</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">selflink</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/oapi/v1/namespaces/test/imagestreams/origin-ruby-sample</span></span>
+  <span style="color:#606">uid</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ee2b9405-c68c-11e5-8a99-525400f25e34</span></span>
+<span style="color:#606">spec</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span>
+<span style="color:#606">status</span>:
+  <span style="color:#606">dockerImageRepository</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.30.56.218:5000/test/origin-ruby-sample</span></span>
+  <span style="color:#606">tags</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">items:</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">created: 2016-01-29T13:40:11Z</span></span>
+      <span style="color:#606">dockerImageReference</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.30.56.218:5000/test/origin-ruby-sample@sha256:47463d94eb5c049b2d23b03a9530bf944f8f967a0fe79147dd6b9135bf7dd13d</span></span>
+      <span style="color:#606">generation</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1</span></span>
+      <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sha256:47463d94eb5c049b2d23b03a9530bf944f8f967a0fe79147dd6b9135bf7dd13d</span></span>
+    <span style="color:#606">tag</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">latest</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="image-stream-mappings"><a class="anchor" href="#image-stream-mappings"></a>Image Stream Mappings</h3>
+<div class="paragraph">
+<p>When the
+<a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">integrated
+registry</a> receives a new image, it creates and sends an <code><strong>ImageStreamMapping</strong></code>
+to Digital Garage, providing the image&#8217;s namespace (i.e., its project), name,
+tag, and Docker metadata.</p>
+</div>
+<div class="paragraph">
+<p>This information is used to create a new image (if it does not already exist)
+and to tag the image into the image stream. Digital Garage stores complete
+metadata about each image, such as commands, entrypoint, and environment
+variables. Images in Digital Garage are immutable and the maximum name length
+is 63 characters.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>See the <a href="../../dev_guide/managing_images.html#dev-guide-managing-images">Developer Guide</a> for details
+on manually tagging images.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following <code><strong>ImageStreamMapping</strong></code> example results in an image being tagged as
+<strong>test/origin-ruby-sample:latest</strong>:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Image Stream Mapping Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ImageStreamMapping</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">creationTimestamp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">null</span></span>
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">origin-ruby-sample</span></span>
+  <span style="color:#606">namespace</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">test</span></span>
+<span style="color:#606">tag</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">latest</span></span>
+<span style="color:#606">image</span>:
+  <span style="color:#606">dockerImageLayers</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:ee1dd2cb6df21971f4af6de0f1d7782b81fb63156801cfde2bb47b4247c23c29</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">196634330</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:ca062656bff07f18bff46be00f40cfbb069687ec124ac0aa038fd676cfaea092</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">177723024</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:63d529c59c92843c395befd065de516ee9ed4995549f8218eac6ff088bfa6b6e</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">55679776</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: sha256:92114219a04977b5563d7dff71ec4caa3a37a15b266ce42ee8f43dba9798c966</span></span>
+    <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">11939149</span></span>
+  <span style="color:#606">dockerImageMetadata</span>:
+    <span style="color:#606">Architecture</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">amd64</span></span>
+    <span style="color:#606">Config</span>:
+      <span style="color:#606">Cmd</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/usr/libexec/s2i/run</span></span>
+      <span style="color:#606">Entrypoint</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">container-entrypoint</span></span>
+      <span style="color:#606">Env</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">RACK_ENV=production</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_NAMESPACE=test</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_SOURCE=https://github.com/openshift/ruby-hello-world.git</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">EXAMPLE=sample-app</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_NAME=ruby-sample-build-1</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">STI_SCRIPTS_URL=image:///usr/libexec/s2i</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">STI_SCRIPTS_PATH=/usr/libexec/s2i</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">HOME=/opt/app-root/src</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">BASH_ENV=/opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ENV=/opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">PROMPT_COMMAND=. /opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">RUBY_VERSION=2.2</span></span>
+      <span style="color:#606">ExposedPorts</span>:
+        <span style="color:#606">8080/tcp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span>
+      <span style="color:#606">Labels</span>:
+        <span style="color:#606">build-date</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">2015-12-23</span></span>
+        <span style="color:#606">io.k8s.description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Platform for building and running Ruby 2.2 applications</span></span>
+        <span style="color:#606">io.k8s.display-name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.30.56.218:5000/test/origin-ruby-sample:latest</span></span>
+        <span style="color:#606">io.openshift.build.commit.author</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Ben Parees &lt;bparees@users.noreply.github.com&gt;</span></span>
+        <span style="color:#606">io.openshift.build.commit.date</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Wed Jan 20 10:14:27 2016 -0500</span></span>
+        <span style="color:#606">io.openshift.build.commit.id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">00cadc392d39d5ef9117cbc8a31db0889eedd442</span></span>
+        <span style="color:#606">io.openshift.build.commit.message</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">'Merge pull request</span></span> <span style="color:#777">#51 from php-coder/fix_url_and_sti'</span>
+        <span style="color:#606">io.openshift.build.commit.ref</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">master</span></span>
+        <span style="color:#606">io.openshift.build.image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">centos/ruby-22-centos7@sha256:3a335d7d8a452970c5b4054ad7118ff134b3a6b50a2bb6d0c07c746e8986b28e</span></span>
+        <span style="color:#606">io.openshift.build.source-location</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://github.com/openshift/ruby-hello-world.git</span></span>
+        <span style="color:#606">io.openshift.builder-base-version</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">8d95148</span></span>
+        <span style="color:#606">io.openshift.builder-version</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">8847438ba06307f86ac877465eadc835201241df</span></span>
+        <span style="color:#606">io.openshift.expose-services</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">8080:http</span></span>
+        <span style="color:#606">io.openshift.s2i.scripts-url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">image:///usr/libexec/s2i</span></span>
+        <span style="color:#606">io.openshift.tags</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">builder,ruby,ruby22</span></span>
+        <span style="color:#606">io.s2i.scripts-url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">image:///usr/libexec/s2i</span></span>
+        <span style="color:#606">license</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">GPLv2</span></span>
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">CentOS Base Image</span></span>
+        <span style="color:#606">vendor</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">CentOS</span></span>
+      <span style="color:#606">User</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1001</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">WorkingDir</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/opt/app-root/src</span></span>
+    <span style="color:#606">Container</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">86e9a4a3c760271671ab913616c51c9f3cea846ca524bf07c04a6f6c9e103a76</span></span>
+    <span style="color:#606">ContainerConfig</span>:
+      <span style="color:#606">AttachStdout</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+      <span style="color:#606">Cmd</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/bin/sh</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">-c</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">tar -C /tmp -xf - &amp;&amp; /usr/libexec/s2i/assemble</span></span>
+      <span style="color:#606">Entrypoint</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">container-entrypoint</span></span>
+      <span style="color:#606">Env</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">RACK_ENV=production</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_NAME=ruby-sample-build-1</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_NAMESPACE=test</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">OPENSHIFT_BUILD_SOURCE=https://github.com/openshift/ruby-hello-world.git</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">EXAMPLE=sample-app</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">PATH=/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">STI_SCRIPTS_URL=image:///usr/libexec/s2i</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">STI_SCRIPTS_PATH=/usr/libexec/s2i</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">HOME=/opt/app-root/src</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">BASH_ENV=/opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ENV=/opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">PROMPT_COMMAND=. /opt/app-root/etc/scl_enable</span></span>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">RUBY_VERSION=2.2</span></span>
+      <span style="color:#606">ExposedPorts</span>:
+        <span style="color:#606">8080/tcp</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span>
+      <span style="color:#606">Hostname</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ruby-sample-build-1-build</span></span>
+      <span style="color:#606">Image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">centos/ruby-22-centos7@sha256:3a335d7d8a452970c5b4054ad7118ff134b3a6b50a2bb6d0c07c746e8986b28e</span></span>
+      <span style="color:#606">OpenStdin</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+      <span style="color:#606">StdinOnce</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+      <span style="color:#606">User</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1001</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">WorkingDir</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/opt/app-root/src</span></span>
+    <span style="color:#606">Created</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">2016-01-29T13:40:00Z</span></span>
+    <span style="color:#606">DockerVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1.8.2.fc21</span></span>
+    <span style="color:#606">Id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">9d7fd5e2d15495802028c569d544329f4286dcd1c9c085ff5699218dbaa69b43</span></span>
+    <span style="color:#606">Parent</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">57b08d979c86f4500dc8cad639c9518744c8dd39447c055a3517dc9c18d6fccd</span></span>
+    <span style="color:#606">Size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">441976279</span></span>
+    <span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1.0</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">DockerImage</span></span>
+  <span style="color:#606">dockerImageMetadataVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1.0</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">dockerImageReference</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">172.30.56.218:5000/test/origin-ruby-sample@sha256:47463d94eb5c049b2d23b03a9530bf944f8f967a0fe79147dd6b9135bf7dd13d</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+  <footer class="footer-digital-garage">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3 logo">
+        <a href="https://www.thedigitalgarage.io/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <a href="http://www.thedigitalgarage.io/community/digital-garage-privacy-policy/">
+              Privacy Policy
+            </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/terms-of-service/">
+            Terms of Use
+          </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/">
+            Our Community
+          </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="http://docs.thedigitalgarage.io/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

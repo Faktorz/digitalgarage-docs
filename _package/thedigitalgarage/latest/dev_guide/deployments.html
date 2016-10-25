@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Digital Garage | Developer Guide | Deployments</title>
+  <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
+  <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <!--
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  -->
+  <link href="/_images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="/_images/favicon.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="Digital Garage Documentation" name="application-name">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-84210257-3', 'auto');
+    ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-docs navbar-digital-garage" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand digital-garage" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../welcome/index.html">Digital Garage Discovery</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../dev_guide/index.html">Developer Guide</a>
+      </li>
+      
+      <li class="hidden-xs active">
+        Deployments
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../getting_started/basic_walkthrough.html">Basic Walkthrough</a></li>
+            <li><a class="" href="../getting_started/beyond_the_basics.html">Beyond the Basics</a></li>
+            <li><a class="" href="../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../getting_started/devpreview_faq.html">Developer Preview FAQ</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
+                <span id="sgSpan-2-1" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-2-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/additional_concepts/overview.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../cli_reference/cli_by_example_content.html">CLI by example</a></li>
+            <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Developer Guide
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-5">
+                <span id="sgSpan-4-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-4-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-6">
+                <span id="sgSpan-4-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-4-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class=" active" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
+            <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
+            <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../using_images/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
+                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-2">
+                <span id="sgSpan-6-2" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-6-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-3">
+                <span id="sgSpan-6-3" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-6-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-4">
+                <span id="sgSpan-6-4" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Deployments</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#creating-a-deployment-configuration">Creating a Deployment Configuration</a></li>
+<li><a href="#start-deployment">Starting a Deployment</a></li>
+<li><a href="#viewing-a-deployment">Viewing a Deployment</a></li>
+<li><a href="#canceling-a-deployment">Canceling a Deployment</a></li>
+<li><a href="#retrying-a-deployment">Retrying a Deployment</a></li>
+<li><a href="#rolling-back-a-deployment">Rolling Back a Deployment</a></li>
+<li><a href="#executing-commands-inside-a-container-deployments">Executing Commands Inside a Container</a></li>
+<li><a href="#viewing-deployment-logs">Viewing Deployment Logs</a></li>
+<li><a href="#triggers">Triggers</a>
+<ul class="sectlevel2">
+<li><a href="#config-change-trigger">Configuration Change Trigger</a></li>
+<li><a href="#image-change-trigger">ImageChange Trigger</a></li>
+</ul>
+</li>
+<li><a href="#strategies">Strategies</a>
+<ul class="sectlevel2">
+<li><a href="#rolling-strategy">Rolling Strategy</a></li>
+<li><a href="#recreate-strategy">Recreate Strategy</a></li>
+<li><a href="#custom-strategy">Custom Strategy</a></li>
+</ul>
+</li>
+<li><a href="#lifecycle-hooks">Lifecycle Hooks</a>
+<ul class="sectlevel2">
+<li><a href="#pod-based-lifecycle-hook">Pod-based Lifecycle Hook</a></li>
+</ul>
+</li>
+<li><a href="#deployment-resources">Deployment Resources</a></li>
+<li><a href="#scaling">Manual Scaling</a></li>
+<li><a href="#assigning-pods-to-specific-nodes">Assigning Pods to Specific Nodes</a></li>
+<li><a href="#run-pod-with-different-service-account">Running a Pod with a Different Service Account</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Digital Garage deployments provide fine-grained management over applications
+based on a user-defined template called a deployment configuration. The
+deployment system in response to a deployment configuration will create a
+replication controller to run an application. Replication controllers are
+created manually or in response to triggered events.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Users should never manipulate replication controllers owned by
+deployment configurations. The deployment system makes sure changes to
+deployment configurations are propagated appropriately to replication
+controllers.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Features provided by the deployment system:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <a href="#creating-a-deployment-configuration">deployment configuration</a>, which is a template for running applications.</p>
+</li>
+<li>
+<p><a href="#triggers">Triggers</a> that drive automated deployments in response to events.</p>
+</li>
+<li>
+<p>User-customizable <a href="#strategies">strategies</a> to transition from the previous version to the new version.</p>
+</li>
+<li>
+<p><a href="#rolling-back-a-deployment">Rollbacks</a> to a previous version either manually or automatically in case of deployment failure.</p>
+</li>
+<li>
+<p>Manual replication <a href="#scaling">scaling</a> and autoscaling.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The deployment configuration contains a version number that is incremented
+each time a new replication controller is created from that configuration.
+In addition, the cause of the last deployed replication controller is added
+to the deployment configuration.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-deployment-configuration"><a class="anchor" href="#creating-a-deployment-configuration"></a>Creating a Deployment Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A deployment configuration consists of the following key parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A pod template, which describes the application to be deployed.</p>
+</li>
+<li>
+<p>The initial replica count for the replication controller.</p>
+</li>
+<li>
+<p>A deployment <a href="#strategies">strategy</a>, which will be used to deploy the application.</p>
+</li>
+<li>
+<p>A set of <a href="#triggers">triggers</a>, which cause replication controllers to be created automatically.</p>
+</li>
+<li>
+<p>A set of <a href="#lifecycle-hooks">hooks</a> for executing custom behavior in different points during the lifecycle of a deployment.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Deployment configurations are <code><strong>deploymentConfig</strong></code> Digital Garage API resources
+which can be managed with the <code>oc</code> command like any other resource. The
+following is an example of a <code><strong>deploymentConfig</strong></code> resource:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">DeploymentConfig</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">frontend</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">template</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">metadata</span>:
+      <span style="color:#606">labels</span>:
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">frontend</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">spec</span>:
+      <span style="color:#606">containers</span>:
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;helloworld&quot;</span></span>
+          <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">openshift/origin-ruby-sample</span><span style="color:#710">&quot;</span></span>
+          <span style="color:#606">ports</span>:
+            - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">containerPort: 8080</span></span>
+              <span style="color:#606">protocol</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">TCP</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">replicas</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5 </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+  <span style="color:#606">triggers</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: &quot;ConfigChange&quot; </span></span><i class="conum" data-value="3"></i><b>(3)</b>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: &quot;ImageChange&quot; </span></span><i class="conum" data-value="4"></i><b>(4)</b>
+      <span style="color:#606">imageChangeParams</span>:
+        <span style="color:#606">automatic</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span>
+        <span style="color:#606">containerNames</span>:
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">helloworld</span><span style="color:#710">&quot;</span></span>
+        <span style="color:#606">from</span>:
+          <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+          <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">origin-ruby-sample:latest</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">strategy</span>: <i class="conum" data-value="5"></i><b>(5)</b>
+    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Rolling</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">paused</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false </span></span><i class="conum" data-value="6"></i><b>(6)</b>
+  <span style="color:#606">revisionHistoryLimit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">2 </span></span><i class="conum" data-value="7"></i><b>(7)</b>
+  <span style="color:#606">minReadySeconds</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">0 </span></span> <i class="conum" data-value="8"></i><b>(8)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The pod template of the <code>frontend</code> deployment configuration describes a simple Ruby application.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>There will be 5 replicas of <code>frontend</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A <a href="#config-change-trigger">configuration change trigger</a> causes a new replication controller to be created any time the pod template changes.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>An <a href="#image-change-trigger">image change trigger</a> trigger causes a new replication controller to be
+created each time a new version of the <code>origin-ruby-sample:latest</code> image stream tag is available.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The <a href="#rolling-strategy">Rolling strategy</a> is the default way of deploying your pods. May be omitted.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The existing running deployment will not be paused. Pod template or image changes cover the full spectrum of changes on which deployments currently run.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Revision history limit is the limit of old replication controllers you want to keep around for rolling back. May be omitted. If omitted, old replication controllers will not be cleaned.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Minimum seconds to wait (after the readiness checks succeed) for a pod to be considered available. The default value is 0.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="start-deployment"><a class="anchor" href="#start-deployment"></a>Starting a Deployment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can start a new deployment manually using the web console, or from the CLI:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc deploy --latest dc/&lt;name&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If a deployment is already in progress, the command will display a
+message and a new replication controller will not be deployed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="viewing-a-deployment"><a class="anchor" href="#viewing-a-deployment"></a>Viewing a Deployment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To get basic information about recent deployments:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc rollout history dc/&lt;name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will show details about all recently created replication controllers for
+the provided deployment configuration, including any currently running deployment.</p>
+</div>
+<div class="paragraph">
+<p>You can view details specific to a revision by using the <code>--revision</code> flag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc rollout history dc/&lt;name&gt; --revision=1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more detailed information about a deployment configuration and its latest deployment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc describe dc &lt;name&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The
+<a href="../architecture/infrastructure_components/web_console.html#project-overviews">web
+console</a> shows deployments in the <strong>Browse</strong> tab.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="canceling-a-deployment"><a class="anchor" href="#canceling-a-deployment"></a>Canceling a Deployment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To cancel a running or stuck deployment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc deploy --cancel dc/&lt;name&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The cancellation is a best-effort operation, and may take some time to complete.
+The replication controller may partially or totally complete deployment before
+the cancellation is effective. When canceled, the deployment automatically rolls
+back.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="retrying-a-deployment"><a class="anchor" href="#retrying-a-deployment"></a>Retrying a Deployment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To retry the last failed deployment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc deploy --retry dc/&lt;name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the last deployment did not fail, the command will display a message and the
+deployment will not be retried.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Retrying a deployment restarts the deployment and does not create a new
+deployment revision. The restarted deployment will have the same configuration
+it had when it failed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rolling-back-a-deployment"><a class="anchor" href="#rolling-back-a-deployment"></a>Rolling Back a Deployment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rollbacks revert an application back to a previous revision and can be
+performed using the REST API, the CLI, or the web console.</p>
+</div>
+<div class="paragraph">
+<p>To rollback to the last successful deployed revision of your configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc rollout undo dc/&lt;name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The deployment configuration&#8217;s template will be reverted to match the deployment
+revision specified in the undo command, and a new replication controller will be
+started. If no revision is specified with <code>--to-revision</code>, then the last
+successfully deployed revision will be used.</p>
+</div>
+<div class="paragraph">
+<p>Image change triggers on the deployment configuration are disabled as part of
+the rollback to prevent unwanted deployments soon after the rollback is
+complete. To re-enable the image change triggers:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc set triggers dc/&lt;name&gt; --auto</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Deployment configurations also support automatically rolling back to the
+last successful revision of the configuration in case the latest template fails
+to deploy. In that case, the latest template that failed to deploy stays intact
+by the system and it is up to users to fix their configurations.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="executing-commands-inside-a-container-deployments"><a class="anchor" href="#executing-commands-inside-a-container-deployments"></a>Executing Commands Inside a Container</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can add a command to a container, which modifies the container&#8217;s startup
+behavior by overruling the image&#8217;s <code><strong>ENTRYPOINT</strong></code>. This is different from a
+<a href="#pod-based-lifecycle-hook">lifecycle hook</a>,
+which instead can be run once per deployment at a specified time.</p>
+</div>
+<div class="paragraph">
+<p>Add the <code><strong>command</strong></code> parameters to the <code><strong>spec</strong></code> field of the deployment
+configuration. You can also add an <code><strong>args</strong></code> field, which modifies the
+<code><strong>command</strong></code> (or the <code><strong>ENTRYPOINT</strong></code> if <code><strong>command</strong></code> does not exist).</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>...
+spec:
+  containers:
+    -
+    name: &lt;container_name&gt;
+    image: 'image'
+    command:
+      - '&lt;command&gt;'
+    args:
+      - '&lt;argument_1&gt;'
+      - '&lt;argument_2&gt;'
+      - '&lt;argument_3&gt;'
+...</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, to execute the <code>java</code> command with the <code>-jar</code> and
+<strong><em>/opt/app-root/springboots2idemo.jar</em></strong> arguments:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>...
+spec:
+  containers:
+    -
+    name: example-spring-boot
+    image: 'image'
+    command:
+      - java
+    args:
+      - '-jar'
+      - /opt/app-root/springboots2idemo.jar
+...</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="viewing-deployment-logs"><a class="anchor" href="#viewing-deployment-logs"></a>Viewing Deployment Logs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To stream the logs of the latest revision for a given deployment configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc logs -f dc/&lt;name&gt; --follow</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the latest revision is running or failed, <code>oc logs</code> will return the logs of
+the process that is responsible for deploying your pods. If it is successful,
+<code>oc logs</code> will return the logs from a pod of your application.</p>
+</div>
+<div class="paragraph">
+<p>You can also view logs from older failed deployments, if and only if the old
+deployment exists and has not been pruned or deleted manually:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc logs --version=1 dc/&lt;name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more options on retrieving logs see:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc logs --help</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="triggers"><a class="anchor" href="#triggers"></a>Triggers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A deployment configuration can contain triggers, which drive the creation of
+new deployments in response to events, only inside Digital Garage at the moment.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If no triggers are defined on a deployment configuration, a <code><strong>ConfigChange</strong></code>
+trigger is added by default. If triggers are defined as an empty field, deployments
+must be <a href="#start-deployment">started manually</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="config-change-trigger"><a class="anchor" href="#config-change-trigger"></a>Configuration Change Trigger</h3>
+<div class="paragraph">
+<p>The <code><strong>ConfigChange</strong></code> trigger results in a new replication controller whenever
+changes are detected in the pod template of the deployment configuration.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If a <code><strong>ConfigChange</strong></code> trigger is defined on a deployment configuration,
+the first replication controller will be automatically created soon after
+the deployment configuration itself is created and it is not paused.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. A <code><strong>ConfigChange</strong></code> Trigger</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">triggers</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: &quot;ConfigChange&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="image-change-trigger"><a class="anchor" href="#image-change-trigger"></a>ImageChange Trigger</h3>
+<div class="paragraph">
+<p>The <code><strong>ImageChange</strong></code> trigger results in a new replication controller whenever the
+content of an image stream tag changes (when a new version of the image is
+pushed).</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. An <code><strong>ImageChange</strong></code> Trigger</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">triggers</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: &quot;ImageChange&quot;</span></span>
+    <span style="color:#606">imageChangeParams</span>:
+      <span style="color:#606">automatic</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+      <span style="color:#606">from</span>:
+        <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">origin-ruby-sample:latest</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">containerNames</span>:
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">helloworld</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>If the <code>imageChangeParams.automatic</code> field is set to <code>false</code>,
+the trigger is disabled.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>With the above example, when the <code>latest</code> tag value of the <strong>origin-ruby-sample</strong>
+image stream changes and the new image value differs from the current image
+specified in the deployment configuration&#8217;s <strong>helloworld</strong> container, a new
+deployment is created using the new image for the <strong>helloworld</strong> container.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If an <code><strong>ImageChange</strong></code> trigger is defined on a deployment configuration (with a
+<code><strong>ConfigChange</strong></code> trigger or with <code>automatic=true</code>) and the <code><strong>ImageStreamTag</strong></code>
+pointed by the <code><strong>ImageChange</strong></code> trigger does not exist yet, then the first
+deployment automatically starts as soon as an image is imported or pushed by a
+build to the <code><strong>ImageStreamTag</strong></code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="strategies"><a class="anchor" href="#strategies"></a>Strategies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A deployment strategy determines the deployment process, and is defined by the
+deployment configuration. Each application has different requirements for
+availability (and other considerations) during deployments. Digital Garage
+provides strategies to support a variety of deployment scenarios.</p>
+</div>
+<div class="paragraph">
+<p>A deployment strategy uses
+<a href="../dev_guide/application_health.html#dev-guide-application-health">readiness
+checks</a> to determine if a new pod is ready for use. If a readiness check fails,
+the deployment configuration will retry to run the pod until it times out. The
+default timeout is <code>10m</code>, a value set in <code><strong>TimeoutSeconds</strong></code> in
+<code><strong>dc.spec.strategy.*params</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="#rolling-strategy">Rolling strategy</a> is the default strategy used if
+no strategy is specified on a deployment configuration.</p>
+</div>
+<div class="sect2">
+<h3 id="rolling-strategy"><a class="anchor" href="#rolling-strategy"></a>Rolling Strategy</h3>
+<div class="paragraph">
+<p>The rolling strategy performs a rolling update and supports
+<a href="#lifecycle-hooks">lifecycle hooks</a> for injecting code into the deployment
+process.</p>
+</div>
+<div class="paragraph">
+<p>The rolling deployment strategy waits for pods to pass their
+<a href="../dev_guide/application_health.html#dev-guide-application-health">readiness
+check</a> before scaling down old components, and does not allow pods that do not
+pass their readiness check within a configurable timeout.</p>
+</div>
+<div class="paragraph">
+<p>The following is an example of the Rolling strategy:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Rolling</span></span>
+  <span style="color:#606">rollingParams</span>:
+    <span style="color:#606">timeoutSeconds</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">120 </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">maxSurge</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">20%</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#606">maxUnavailable</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10%</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span style="color:#606">pre</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{} </span></span><i class="conum" data-value="4"></i><b>(4)</b>
+    <span style="color:#606">post</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>How long to wait for a scaling event before giving up. Optional; the default is 120.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code><strong>maxSurge</strong></code> is optional and defaults to <code>25%</code>; see below.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code><strong>maxUnavailable</strong></code> is optional and defaults to <code>25%</code>; see below.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td><code><strong>pre</strong></code> and <code><strong>post</strong></code> are both <a href="#lifecycle-hooks">lifecycle hooks</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The Rolling strategy will:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Execute any <code><strong>pre</strong></code> lifecycle hook.</p>
+</li>
+<li>
+<p>Scale up the new replication controller based on the surge count.</p>
+</li>
+<li>
+<p>Scale down the old replication controller based on the max unavailable count.</p>
+</li>
+<li>
+<p>Repeat this scaling until the new replication controller has reached the desired
+replica count and the old replication controller has been scaled to zero.</p>
+</li>
+<li>
+<p>Execute any <code><strong>post</strong></code> lifecycle hook.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When scaling down, the Rolling strategy waits for pods to become ready so it can
+decide whether further scaling would affect availability. If scaled up pods
+never become ready, the deployment will eventually time out and result in a
+deployment failure.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When executing the <code><strong>post</strong></code> lifecycle hook, all failures will be ignored
+regardless of the failure policy specified on the hook.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code><strong>maxUnavailable</strong></code> parameter is the maximum number of pods that can be
+unavailable during the update. The <code><strong>maxSurge</strong></code> parameter is the maximum number
+of pods that can be scheduled above the original number of pods. Both parameters
+can be set to either a percentage (e.g., <code>10%</code>) or an absolute value (e.g.,
+<code>2</code>). The default value for both is <code>25%</code>.</p>
+</div>
+<div class="paragraph">
+<p>These parameters allow the deployment to be tuned for availability and speed. For
+example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>maxUnavailable</strong>=0</code> and <code><strong>maxSurge</strong>=20%</code> ensures full capacity is maintained
+during the update and rapid scale up.</p>
+</li>
+<li>
+<p><code><strong>maxUnavailable</strong>=10%</code> and <code><strong>maxSurge</strong>=0</code> performs an update using no extra
+capacity (an in-place update).</p>
+</li>
+<li>
+<p><code><strong>maxUnavailable</strong>=10%</code> and <code><strong>maxSurge</strong>=10%</code> scales up and down quickly with
+some potential for capacity loss.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="recreate-strategy"><a class="anchor" href="#recreate-strategy"></a>Recreate Strategy</h3>
+<div class="paragraph">
+<p>The Recreate strategy has basic rollout behavior and supports
+<a href="#lifecycle-hooks">lifecycle hooks</a> for injecting code into the deployment
+process.</p>
+</div>
+<div class="paragraph">
+<p>The following is an example of the Recreate strategy:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Recreate</span></span>
+  <span style="color:#606">recreateParams</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">pre</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{} </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#606">mid</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span>
+    <span style="color:#606">post</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code><strong>recreateParams</strong></code> are optional.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code><strong>pre</strong></code>, <code><strong>mid</strong></code>, and <code><strong>post</strong></code> are <a href="#lifecycle-hooks">lifecycle hooks</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The Recreate strategy will:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Execute any "pre" lifecycle hook.</p>
+</li>
+<li>
+<p>Scale down the previous deployment to zero.</p>
+</li>
+<li>
+<p>Execute any "mid" lifecycle hook.</p>
+</li>
+<li>
+<p>Scale up the new deployment.</p>
+</li>
+<li>
+<p>Execute any "post" lifecycle hook.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>During scale up, if the replica count of the deployment is greater than one, the
+first replica of the deployment will be validated for readiness before fully
+scaling up the deployment. If the validation of the first replica fails, the
+deployment will be considered a failure.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="custom-strategy"><a class="anchor" href="#custom-strategy"></a>Custom Strategy</h3>
+<div class="paragraph">
+<p>The Custom strategy allows you to provide your own deployment behavior.</p>
+</div>
+<div class="paragraph">
+<p>The following is an example of the Custom strategy:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Custom</span></span>
+  <span style="color:#606">customParams</span>:
+    <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">organization/strategy</span></span>
+    <span style="color:#606">command</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[ &quot;command&quot;, &quot;arg1&quot; ]</span></span>
+    <span style="color:#606">environment</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: ENV_1</span></span>
+        <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">VALUE_1</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example, the <strong>organization/strategy</strong> Docker image provides the
+deployment behavior. The optional <code><strong>command</strong></code> array overrides any <code>CMD</code>
+directive specified in the image&#8217;s <strong><em>Dockerfile</em></strong>. The optional environment
+variables provided are added to the execution environment of the strategy
+process.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, Digital Garage provides the following environment variables to the
+strategy process:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Environment Variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>OPENSHIFT_DEPLOYMENT_NAME</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the new deployment (a replication controller).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>OPENSHIFT_DEPLOYMENT_NAMESPACE</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The namespace of the new deployment.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The replica count of the new deployment will initially be zero. The
+responsibility of the strategy is to make the new deployment active using the
+logic that best serves the needs of the user.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lifecycle-hooks"><a class="anchor" href="#lifecycle-hooks"></a>Lifecycle Hooks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="#recreate-strategy">Recreate</a> and <a href="#rolling-strategy">Rolling</a>
+strategies support lifecycle hooks, which allow behavior to be injected into
+the deployment process at predefined points within the strategy:</p>
+</div>
+<div class="paragraph">
+<p>The following is an example of a "pre" lifecycle hook:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">pre</span>:
+  <span style="color:#606">failurePolicy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Abort</span></span>
+  <span style="color:#606">execNewPod</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{} </span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code><strong>execNewPod</strong></code> is <a href="#pod-based-lifecycle-hook">a pod-based lifecycle hook</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Every hook has a <code><strong>failurePolicy</strong></code>, which defines the action the strategy should
+take when a hook failure is encountered:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>Abort</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The deployment process will be considered a failure if the hook fails.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>Retry</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The hook execution should be retried until it succeeds.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>Ignore</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any hook failure should be ignored and the deployment should proceed.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Hooks have a type-specific field that describes how to execute the hook.
+Currently, <a href="#pod-based-lifecycle-hook">pod-based hooks</a> are the only
+supported hook type, specified by the <code><strong>execNewPod</strong></code> field.</p>
+</div>
+<div class="sect2">
+<h3 id="pod-based-lifecycle-hook"><a class="anchor" href="#pod-based-lifecycle-hook"></a>Pod-based Lifecycle Hook</h3>
+<div class="paragraph">
+<p>Pod-based lifecycle hooks execute hook code in a new pod derived from the
+template in a deployment configuration.</p>
+</div>
+<div class="paragraph">
+<p>The following simplified example deployment configuration uses the
+<a href="#rolling-strategy">Rolling strategy</a>. Triggers and some other minor details
+are omitted for brevity:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">DeploymentConfig</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">frontend</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">template</span>:
+    <span style="color:#606">metadata</span>:
+      <span style="color:#606">labels</span>:
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">frontend</span></span>
+    <span style="color:#606">spec</span>:
+      <span style="color:#606">containers</span>:
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: helloworld</span></span>
+          <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift/origin-ruby-sample</span></span>
+  <span style="color:#606">replicas</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">5</span></span>
+  <span style="color:#606">selector</span>:
+    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">frontend</span></span>
+  <span style="color:#606">strategy</span>:
+    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Rolling</span></span>
+    <span style="color:#606">rollingParams</span>:
+      <span style="color:#606">pre</span>:
+        <span style="color:#606">failurePolicy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Abort</span></span>
+        <span style="color:#606">execNewPod</span>:
+          <span style="color:#606">containerName</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">helloworld </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+          <span style="color:#606">command</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[ &quot;/usr/bin/command&quot;, &quot;arg1&quot;, &quot;arg2&quot; ] </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+          <span style="color:#606">env</span>: <i class="conum" data-value="3"></i><b>(3)</b>
+            - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: CUSTOM_VAR1</span></span>
+              <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">custom_value1</span></span>
+          <span style="color:#606">volumes</span>:
+            - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">data </span></span> <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>helloworld</code> name refers to <code>spec.template.spec.containers[0].name</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This <code><strong>command</strong></code> overrides any <code><strong>ENTRYPOINT</strong></code> defined by the <code>openshift/origin-ruby-sample</code> image.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code><strong>env</strong></code> is an optional set of environment variables for the hook container.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td><code><strong>volumes</strong></code> is an optional set of volume references for the hook container.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, the "pre" hook will be executed in a new pod using the
+<strong>openshift/origin-ruby-sample</strong> image from the <strong>helloworld</strong> container. The hook
+pod will have the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The hook command will be <code>/usr/bin/command arg1 arg2</code>.</p>
+</li>
+<li>
+<p>The hook container will have the <code>CUSTOM_VAR1=custom_value1</code> environment variable.</p>
+</li>
+<li>
+<p>The hook failure policy is <code>Abort</code>, meaning the deployment process will fail if the hook fails.</p>
+</li>
+<li>
+<p>The hook pod will inherit the <code>data</code> volume from the deployment configuration pod.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="deployment-hooks-using-the-command-line"><a class="anchor" href="#deployment-hooks-using-the-command-line"></a>Using the Command Line</h4>
+<div class="paragraph">
+<p>The <code>oc set deployment-hook</code> command can be used to set the deployment hook for a
+deployment configuration. For the example above, you can set the pre-deployment hook with
+the following command:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>$ oc set deployment-hook dc/frontend --pre -c helloworld -e CUSTOM_VAR1=custom_value1 \
+  -v data --failure-policy=abort -- /usr/bin/command arg1 arg2</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deployment-resources"><a class="anchor" href="#deployment-resources"></a>Deployment Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A deployment is completed by a pod that consumes resources (memory and CPU) on a
+node. By default, pods consume unbounded node resources. However, if a project
+specifies default container limits, then pods consume resources up to those
+limits.</p>
+</div>
+<div class="paragraph">
+<p>You can also limit resource use by specifying resource limits as part of the
+deployment strategy. Deployment resources can be used with the Recreate,
+Rolling, or Custom deployment strategies.</p>
+</div>
+<div class="paragraph">
+<p>In the following example, each of <code><strong>resources</strong></code>, <code><strong>cpu</strong></code>, and <code><strong>memory</strong></code> is
+optional:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Recreate</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">resources</span>:
+  <span style="color:#606">limits</span>:
+    <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">100m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">256Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code><strong>cpu</strong></code> is in CPU units: <code>100m</code> represents 0.1 CPU units (100 * 1e-3).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code><strong>memory</strong></code> is in bytes: <code>256Mi</code> represents 268435456 bytes (256 * 2 ^ 20).</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>However, if a quota has been defined for your project, one of the following two
+items is required:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code><strong>resources</strong></code> section set with an explicit <code><strong>requests</strong></code>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml">  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Recreate</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">resources</span>:
+    <span style="color:#606">requests</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+      <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">100m</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">256Mi</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code><strong>requests</strong></code> object contains the list of resources that correspond to
+the list of resources in the quota.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>A limit range defined in your project, where the
+defaults from the <code><strong>LimitRange</strong></code> object apply to pods created during the
+deployment process.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Otherwise, deploy pod creation will fail, citing a failure to satisfy quota.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scaling"><a class="anchor" href="#scaling"></a>Manual Scaling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition to rollbacks, you can exercise fine-grained control over
+the number of replicas from the web console, or by using the <code>oc scale</code> command.
+For example, the following command sets the replicas in the deployment
+configuration <code>frontend</code> to 3.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc scale dc frontend --replicas=3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The number of replicas eventually propagates to the desired and current
+state of the deployment configured by the deployment configuration <code>frontend</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="assigning-pods-to-specific-nodes"><a class="anchor" href="#assigning-pods-to-specific-nodes"></a>Assigning Pods to Specific Nodes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use node selectors in conjunction with labeled nodes to control pod
+placement.</p>
+</div>
+<div class="paragraph">
+<p>Cluster administrators
+can set the default node selector
+for your project in order to restrict pod placement to
+specific nodes. As an Digital Garage developer, you can set a node selector on a pod
+configuration to restrict nodes even further.</p>
+</div>
+<div class="paragraph">
+<p>To add a node selector when creating a pod, edit the pod configuration, and add
+the <code>nodeSelector</code> value. This can be added to a single pod configuration, or in
+a pod template:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: v1
+kind: Pod
+spec:
+  nodeSelector:
+    disktype: ssd
+...</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Pods created when the node selector is in place are assigned to nodes with the
+specified labels.</p>
+</div>
+<div class="paragraph">
+<p>The labels specified here are used in conjunction with the labels
+added by a cluster administrator.
+For example, if a project has the <code>type=user-node</code> and
+<code>region=east</code> labels added to a project by the cluster administrator, and you
+add the above <code>disktype: ssd</code> label to a pod, the pod will only ever be
+scheduled on nodes that have all three labels.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Labels can only be set to one value, so setting a node selector of <code>region=west</code>
+in a pod configuration that has <code>region=east</code> as the administrator-set default,
+results in a pod that will never be scheduled.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run-pod-with-different-service-account"><a class="anchor" href="#run-pod-with-different-service-account"></a>Running a Pod with a Different Service Account</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can run a pod with a service account other than the default:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit the deployment configuration:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc edit dc/&lt;deployment_config&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the <code><strong>serviceAccount</strong></code> and <code><strong>serviceAccountName</strong></code> parameters to the <code><strong>spec</strong></code>
+field, and specify the service account you want to use:</p>
+<div class="listingblock">
+<div class="content">
+<pre>spec:
+  securityContext: {}
+  serviceAccount: &lt;service_account&gt;
+  serviceAccountName: &lt;service_account&gt;</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+  <footer class="footer-digital-garage">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3 logo">
+        <a href="https://www.thedigitalgarage.io/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <a href="http://www.thedigitalgarage.io/community/digital-garage-privacy-policy/">
+              Privacy Policy
+            </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/terms-of-service/">
+            Terms of Use
+          </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/">
+            Our Community
+          </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="http://docs.thedigitalgarage.io/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

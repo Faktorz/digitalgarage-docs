@@ -1,0 +1,4042 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Digital Garage | Developer Guide | Builds</title>
+  <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
+  <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <!--
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  -->
+  <link href="/_images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="/_images/favicon.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="Digital Garage Documentation" name="application-name">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-84210257-3', 'auto');
+    ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-docs navbar-digital-garage" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand digital-garage" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../welcome/index.html">Digital Garage Discovery</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../dev_guide/index.html">Developer Guide</a>
+      </li>
+      
+      <li class="hidden-xs active">
+        Builds
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../getting_started/basic_walkthrough.html">Basic Walkthrough</a></li>
+            <li><a class="" href="../getting_started/beyond_the_basics.html">Beyond the Basics</a></li>
+            <li><a class="" href="../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../getting_started/devpreview_faq.html">Developer Preview FAQ</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
+                <span id="sgSpan-2-1" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-2-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/additional_concepts/overview.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-right"></span>CLI Reference
+      </a>
+      <ul id="topicGroup3" class="collapse  list-unstyled">
+            <li><a class="" href="../cli_reference/index.html">Overview</a></li>
+            <li><a class="" href="../cli_reference/cli_by_example_content.html">CLI by example</a></li>
+            <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Developer Guide
+      </a>
+      <ul id="topicGroup4" class="collapse in list-unstyled">
+            <li><a class="" href="../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-5">
+                <span id="sgSpan-4-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-4-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-6">
+                <span id="sgSpan-4-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-4-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class=" active" href="../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
+            <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
+            <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../using_images/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
+                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-2">
+                <span id="sgSpan-6-2" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-6-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-3">
+                <span id="sgSpan-6-3" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-6-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-4">
+                <span id="sgSpan-6-4" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>Builds</h2>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#defining-a-buildconfig">Defining a BuildConfig</a></li>
+<li><a href="#source-to-image-strategy-options">Source-to-Image Strategy Options</a>
+<ul class="sectlevel2">
+<li><a href="#s2i-force-pull">Force Pull</a></li>
+<li><a href="#incremental-builds">Incremental Builds</a></li>
+<li><a href="#extended-builds">Extended Builds</a>
+<ul class="sectlevel3">
+<li><a href="#dev-guide-testing-your-application">Testing your Application</a></li>
+</ul>
+</li>
+<li><a href="#override-builder-image-scripts">Overriding Builder Image Scripts</a></li>
+<li><a href="#configuring-the-source-environment">Environment Variables</a>
+<ul class="sectlevel3">
+<li><a href="#environment-files">Environment Files</a></li>
+<li><a href="#buildconfig-environment">BuildConfig Environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#docker-strategy-options">Docker Strategy Options</a>
+<ul class="sectlevel2">
+<li><a href="#docker-strategy-from">FROM Image</a></li>
+<li><a href="#dockerfile-path">Dockerfile Path</a></li>
+<li><a href="#no-cache">No Cache</a></li>
+<li><a href="#docker-force-pull">Force Pull</a></li>
+<li><a href="#docker-strategy-environment">Environment Variables</a></li>
+</ul>
+</li>
+<li><a href="#custom-strategy-options">Custom Strategy Options</a>
+<ul class="sectlevel2">
+<li><a href="#expose-docker-socket">Exposing the Docker Socket</a></li>
+<li><a href="#custom-secrets">Secrets</a></li>
+<li><a href="#custom-force-pull">Force Pull</a></li>
+<li><a href="#custom-strategy-environment">Environment Variables</a></li>
+</ul>
+</li>
+<li><a href="#pipeline-strategy-options">Pipeline Strategy Options</a>
+<ul class="sectlevel2">
+<li><a href="#jenkinsfile">Providing the Jenkinsfile</a></li>
+</ul>
+</li>
+<li><a href="#build-inputs">Build Inputs</a>
+<ul class="sectlevel2">
+<li><a href="#source-code">Git Repository Source Options</a>
+<ul class="sectlevel3">
+<li><a href="#using-a-proxy-for-git-cloning">Using a Proxy for Git Cloning</a></li>
+<li><a href="#trusted-certificate-authorities">Trusted Certificate Authorities</a></li>
+<li><a href="#using-private-repositories-for-builds">Using Private Repositories for Builds</a></li>
+</ul>
+</li>
+<li><a href="#dockerfile-source">Dockerfile Source</a></li>
+<li><a href="#binary-source">Binary Source</a></li>
+<li><a href="#image-source">Image Source</a></li>
+</ul>
+</li>
+<li><a href="#using-secrets">Using Secrets During a Build</a>
+<ul class="sectlevel2">
+<li><a href="#using-secrets-in-the-buildconfig">Defining Secrets in the BuildConfig</a></li>
+<li><a href="#using-secrets-s2i-strategy">Source-to-Image Strategy</a></li>
+<li><a href="#using-secrets-docker-strategy">Docker Strategy</a></li>
+<li><a href="#using-secrets-custom-strategy">Custom Strategy</a></li>
+</ul>
+</li>
+<li><a href="#starting-a-build">Starting a Build</a></li>
+<li><a href="#canceling-a-build">Canceling a Build</a></li>
+<li><a href="#deleting-a-buildconfig">Deleting a BuildConfig</a></li>
+<li><a href="#viewing-build-details">Viewing Build Details</a></li>
+<li><a href="#accessing-build-logs">Accessing Build Logs</a></li>
+<li><a href="#builds-setting-maximum-duration">Setting Maximum Duration</a></li>
+<li><a href="#build-triggers">Build Triggers</a>
+<ul class="sectlevel2">
+<li><a href="#webhook-triggers">Webhook Triggers</a></li>
+<li><a href="#image-change-triggers">Image Change Triggers</a></li>
+<li><a href="#config-change-triggers">Configuration Change Triggers</a></li>
+</ul>
+</li>
+<li><a href="#build-hooks">Build Hooks</a>
+<ul class="sectlevel2">
+<li><a href="#build-hooks-using-the-command-line">Using the Command Line</a></li>
+</ul>
+</li>
+<li><a href="#using-docker-credentials-for-pushing-and-pulling-images">Using Docker Credentials for Pushing and Pulling Images</a></li>
+<li><a href="#build-run-policy">Build Run Policy</a>
+<ul class="sectlevel2">
+<li><a href="#build-serial-run-policy">Serial Run Policy</a></li>
+<li><a href="#build-serial-latest-only-run-policy">SerialLatestOnly Run Policy</a></li>
+<li><a href="#build-parallel-run-policy">Parallel Run Policy</a></li>
+</ul>
+</li>
+<li><a href="#build-output">Build Output</a>
+<ul class="sectlevel2">
+<li><a href="#output-image-environment-variables">Output Image Environment Variables</a></li>
+<li><a href="#output-image-labels">Output Image Labels</a></li>
+</ul>
+</li>
+<li><a href="#using-external-artifacts">Using External Artifacts During a Build</a></li>
+<li><a href="#build-resources">Build Resources</a></li>
+<li><a href="#builds-troubleshooting">Troubleshooting</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <a href="../architecture/core_concepts/builds_and_image_streams.html#builds">build</a>
+is the process of transforming input parameters into a resulting object. Most
+often, the process is used to transform source code into a runnable image.</p>
+</div>
+<div class="paragraph">
+<p>Build configurations are characterized by a strategy and one or more sources.
+The strategy determines the aforementioned process, while the sources provide
+its input.</p>
+</div>
+<div class="paragraph">
+<p>There are four build strategies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Source-To-Image (S2I)
+(<a href="../architecture/core_concepts/builds_and_image_streams.html#source-build">description</a>,
+<a href="#source-to-image-strategy-options">options</a>)</p>
+</li>
+<li>
+<p>Docker
+(<a href="../architecture/core_concepts/builds_and_image_streams.html#docker-build">description</a>,
+<a href="#docker-strategy-options">options</a>)</p>
+</li>
+<li>
+<p>Pipeline
+(<a href="../architecture/core_concepts/builds_and_image_streams.html#pipeline-build">description</a>,
+<a href="#pipeline-strategy-options">options</a>)</p>
+</li>
+<li>
+<p>Custom
+(<a href="../architecture/core_concepts/builds_and_image_streams.html#custom-build">description</a>,
+<a href="#custom-strategy-options">options</a>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>And there are four types of build sources:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#source-code">Git</a></p>
+</li>
+<li>
+<p><a href="#dockerfile-source">Dockerfile</a></p>
+</li>
+<li>
+<p><a href="#image-source">Image</a></p>
+</li>
+<li>
+<p><a href="#binary-source">Binary</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is up to each build strategy to consider or ignore a certain type of source,
+as well as to determine how it is to be used.</p>
+</div>
+<div class="paragraph">
+<p>Binary and Git are mutually exclusive source types. Dockerfile and Image can be
+used by themselves, with each other, or together with either Git or Binary.
+Also, the Binary build source type is unique from the other options in
+<a href="#binary-source">how it is specified to the system</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="defining-a-buildconfig"><a class="anchor" href="#defining-a-buildconfig"></a>Defining a BuildConfig</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A build configuration describes a single build definition and a set of
+<a href="#build-triggers">triggers</a> for when a new build should be created.</p>
+</div>
+<div class="paragraph">
+<p>A build configuration is defined by a <code><strong>BuildConfig</strong></code>, which is a REST object
+that can be used in a POST to the API server to create a new instance. The
+following example <code><strong>BuildConfig</strong></code> results in a new build every time a Docker
+image tag or the source code changes:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. BuildConfig Object Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BuildConfig</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ruby-sample-build</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">runPolicy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Serial</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+  <span style="color:#606">triggers</span>: <i class="conum" data-value="3"></i><b>(3)</b>
+    -
+      <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GitHub</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">github</span>:
+        <span style="color:#606">secret</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">secret101</span><span style="color:#710">&quot;</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">type: &quot;Generic&quot;</span></span>
+      <span style="color:#606">generic</span>:
+        <span style="color:#606">secret</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">secret101</span><span style="color:#710">&quot;</span></span>
+    -
+      <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageChange</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">source</span>: <i class="conum" data-value="4"></i><b>(4)</b>
+    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Git</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">git</span>:
+      <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://github.com/openshift/ruby-hello-world</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">dockerfile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">FROM openshift/ruby-22-centos7\nUSER example</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">strategy</span>: <i class="conum" data-value="5"></i><b>(5)</b>
+    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Source</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">sourceStrategy</span>:
+      <span style="color:#606">from</span>:
+        <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ruby-20-centos7:latest</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">output</span>: <i class="conum" data-value="6"></i><b>(6)</b>
+    <span style="color:#606">to</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">origin-ruby-sample:latest</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">postCommit</span>: <i class="conum" data-value="7"></i><b>(7)</b>
+      <span style="color:#606">script</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bundle exec rake test</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This specification will create a new <code><strong>BuildConfig</strong></code> named
+<strong>ruby-sample-build</strong>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code><strong>runPolicy</strong></code> field controls whether builds created from this build
+configuration can be run simultaneously. The default value is <strong>Serial</strong>, which means new builds
+will run sequentially, not simultaneously.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>You can specify a list of <a href="#build-triggers">triggers</a>, which cause a new
+build to be created.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <code><strong>source</strong></code> section defines the source of the build. The source type
+determines the primary source of input, and can be either <code><strong>Git</strong></code>, to point to
+a code repository location, <code><strong>Dockerfile</strong></code>, to build from an inline Dockerfile,
+or <code><strong>Binary</strong></code>, to accept binary payloads. It is possible to have multiple
+sources at once, refer to the documentation for each source type for details.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The <code><strong>strategy</strong></code> section describes the build strategy used to execute the
+build. You can specify <code><strong>Source</strong></code>, <code><strong>Docker</strong></code> and <code><strong>Custom</strong></code> strategies here.
+This above example uses the <code><strong>ruby-20-centos7</strong></code> Docker image that
+Source-To-Image will use for the application build.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>After the Docker image is successfully built, it will be pushed into the
+repository described in the <code><strong>output</strong></code> section.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>The <code><strong>postCommit</strong></code> section defines an optional <a href="#build-hooks">build
+hook</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="source-to-image-strategy-options"><a class="anchor" href="#source-to-image-strategy-options"></a>Source-to-Image Strategy Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following options are specific to the
+<a href="../architecture/core_concepts/builds_and_image_streams.html#source-build">S2I
+build strategy</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="s2i-force-pull"><a class="anchor" href="#s2i-force-pull"></a>Force Pull</h3>
+<div class="paragraph">
+<p>By default, if the builder image specified in the build configuration is
+available locally on the node, that image will be used. However, to override the
+local image and refresh it from the registry to which the image stream points,
+create a <code><strong>BuildConfig</strong></code> with the <code><strong>forcePull</strong></code> flag set to <strong>true</strong>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Source</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">sourceStrategy</span>:
+    <span style="color:#606">from</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">builder-image:latest</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">forcePull</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true </span></span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The builder image being used, where the local version on the node may not be
+up to date with the version in the registry to which the image stream points.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This flag causes the local builder image to be ignored and a fresh version
+to be pulled from the registry to which the image stream points. Setting
+<code><strong>forcePull</strong></code> to <strong>false</strong> results in the default behavior of honoring the image
+stored locally.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="incremental-builds"><a class="anchor" href="#incremental-builds"></a>Incremental Builds</h3>
+<div class="paragraph">
+<p>S2I can perform incremental builds, which means it reuses artifacts from
+previously-built images. To create an incremental build, create a
+<code><strong>BuildConfig</strong></code> with the following modification to the strategy definition:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Source</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">sourceStrategy</span>:
+    <span style="color:#606">from</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">incremental-image:latest</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">incremental</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true </span></span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Specify an image that supports incremental builds. Consult the
+documentation of the builder image to determine if it supports this behavior.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This flag controls whether an incremental build is attempted. If the builder
+image does not support incremental builds, the build will still succeed, but you
+will get a log message stating the incremental build was not successful because
+of a missing <strong><em>save-artifacts</em></strong> script.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>See the <a href="../creating_images/s2i.html#creating-images-s2i">S2I Requirements</a> topic for information
+on how to create a builder image supporting incremental builds.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="extended-builds"><a class="anchor" href="#extended-builds"></a>Extended Builds</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This feature is in technology preview. This means the API may change without
+notice or the feature may be removed entirely. For a supported mechanism to
+produce application images with runtime-only content, consider using the
+<a href="builds.html#image-source">Image Source</a> feature and defining two builds, one
+which produces an image containing the runtime artifacts and a second build
+which consumes the runtime artifacts from that image and adds them to a
+runtime-only image.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For compiled languages (Go, C, C++, Java, etc.) the dependencies necessary for
+compilation might increase the size of the image or introduce vulnerabilities
+that can be exploited.</p>
+</div>
+<div class="paragraph">
+<p>To avoid these problems, S2I (Source-to-Image) introduces a two-image build process
+that allows an application to be built via the normal flow in a builder image,
+but then injects the resulting application artifacts into a runtime-only image
+for execution.</p>
+</div>
+<div class="paragraph">
+<p>To offer flexibility in this process, S2I executes an <code>assemble-runtime</code>
+script inside the runtime image that allows further customization of the
+resulting runtime image.</p>
+</div>
+<div class="paragraph">
+<p>More information about this can be found in the official
+<a href="https://github.com/openshift/source-to-image/blob/master/docs/runtime_image.md">S2I
+extended builds documents</a>.</p>
+</div>
+<div class="paragraph">
+<p>This feature is available only for the source strategy.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Source</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">sourceStrategy</span>:
+    <span style="color:#606">from</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">builder-image:latest</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">runtimeImage</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">runtime-image:latest</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">runtimeArtifacts</span>: <i class="conum" data-value="2"></i><b>(2)</b>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sourcePath: &quot;/path/to/source&quot;</span></span>
+        <span style="color:#606">destinationDir</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">path/to/destination</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The runtime image that the artifacts should be copied to.
+This is the final image that the application will run on. This image should
+contain the minimum application dependencies to run the injected content from
+the builder image.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The runtime artifacts are a mapping of artifacts produced in the builder
+image that should be injected into the runtime image.
+<code><strong>sourcePath</strong></code> can be the full path to a file or directory inside the builder
+image.
+<code><strong>destinationDir</strong></code> must be a directory inside the runtime image where the
+artifacts will be copied. This directory is relative to the specified
+<strong>WORKDIR</strong> inside that image.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In the current implementation, you cannot have incremental extended builds thus,
+the <strong>incremental</strong> option is not valid with <code><strong>runtimeImage</strong></code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If the runtime image needs authentication to be pulled across OpenShift
+projects or from another private registry, the details can be specified
+<a href="managing_images.html#using-image-pull-secrets">within the image pull
+secret configuration</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="dev-guide-testing-your-application"><a class="anchor" href="#dev-guide-testing-your-application"></a>Testing your Application</h4>
+<div class="paragraph">
+<p>Extended builds offer two ways of running tests against your application.</p>
+</div>
+<div class="paragraph">
+<p>The first option is to install all test dependencies and run the tests inside
+your <strong>builder image</strong> since that image, in the context of extended builds, will
+not be pushed to a registry. This can be done as a part of the <code>assemble</code>
+script for the builder image.</p>
+</div>
+<div class="paragraph">
+<p>The second option is to specify a script via the <a href="#build-hooks">postcommit
+hook</a>. This is executed in an ephemeral container based on the runtime
+image, thus it is not committed to the image.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="override-builder-image-scripts"><a class="anchor" href="#override-builder-image-scripts"></a>Overriding Builder Image Scripts</h3>
+<div class="paragraph">
+<p>You can override the <strong><em>assemble</em></strong>, <strong><em>run</em></strong>, and <strong><em>save-artifacts</em></strong>
+<a href="../creating_images/s2i.html#s2i-scripts">S2I scripts</a> provided by the
+builder image in one of two ways. Either:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Provide an <strong><em>assemble</em></strong>, <strong><em>run</em></strong>, and/or <strong><em>save-artifacts</em></strong> script in the
+<strong><em>.s2i/bin</em></strong> directory of your application source repository, or</p>
+</li>
+<li>
+<p>Provide a URL of a directory containing the scripts as part of the strategy
+definition. For example:</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Source</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">sourceStrategy</span>:
+    <span style="color:#606">from</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">builder-image:latest</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">scripts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://somehost.com/scripts_directory</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This path will have <strong><em>run</em></strong>, <strong><em>assemble</em></strong>, and <strong><em>save-artifacts</em></strong> appended
+to it. If any or all scripts are found they will be used in place of the same
+named script(s) provided in the image.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Files located at the <code><strong>scripts</strong></code> URL take precedence over files located in
+<strong><em>.s2i/bin</em></strong> of the source repository. See the
+<a href="../creating_images/s2i.html#creating-images-s2i">S2I Requirements</a> topic and the
+<a href="https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md#sti-scripts">S2I
+documentation</a> for information on how S2I scripts are used.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-the-source-environment"><a class="anchor" href="#configuring-the-source-environment"></a>Environment Variables</h3>
+<div class="paragraph">
+<p>There are two ways to make environment variables available to the
+<a href="../architecture/core_concepts/builds_and_image_streams.html#source-build">source build</a>
+process and resulting image: <a href="#environment-files">environment files</a> and
+<a href="#buildconfig-environment"><strong>BuildConfig</strong> environment</a> values.</p>
+</div>
+<div class="sect3">
+<h4 id="environment-files"><a class="anchor" href="#environment-files"></a>Environment Files</h4>
+<div class="paragraph">
+<p>Source build enables you to set environment values (one per line) inside your
+application, by specifying them in a <strong><em>.s2i/environment</em></strong> file in the source
+repository. The environment variables specified in this file are present during
+the build process and in the final Docker image. The complete list of supported
+environment variables is available in the
+<a href="../using_images/index.html#using-images-index">documentation</a> for each image.</p>
+</div>
+<div class="paragraph">
+<p>If you provide a <strong><em>.s2i/environment</em></strong> file in your source repository, S2I reads
+this file during the build. This allows customization of the build behavior as
+the <strong><em>assemble</em></strong> script may use these variables.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you want to disable assets compilation for your Rails
+application, you can add <code><strong>DISABLE_ASSET_COMPILATION=true</strong></code> in the
+<strong><em>.s2i/environment</em></strong> file to cause assets compilation to be skipped during the
+build.</p>
+</div>
+<div class="paragraph">
+<p>In addition to builds, the specified environment variables are also available in
+the running application itself. For example, you can add
+<code><strong>RAILS_ENV=development</strong></code> to the <strong><em>.s2i/environment</em></strong> file to cause the Rails
+application to start in <code>development</code> mode instead of <code>production</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="buildconfig-environment"><a class="anchor" href="#buildconfig-environment"></a>BuildConfig Environment</h4>
+<div class="paragraph">
+<p>You can add environment variables to the <code><strong>sourceStrategy</strong></code> definition of the
+<code><strong>BuildConfig</strong></code>. The environment variables defined there are visible during the
+<strong><em>assemble</em></strong> script execution and will be defined in the output image, making
+them also available to the <strong><em>run</em></strong> script and application code.</p>
+</div>
+<div class="paragraph">
+<p>For example disabling assets compilation for your Rails application:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">sourceStrategy</span>:
+<span style="color:#f8f;background:#505"><span style="color:#f4f">...</span></span>
+  <span style="color:#606">env</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;DISABLE_ASSET_COMPILATION&quot;</span></span>
+      <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">true</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also manage environment variables defined in the <code><strong>BuildConfig</strong></code> with the
+<a href="../dev_guide/environment_variables.html#overview"><code>oc set env</code></a> command.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="docker-strategy-options"><a class="anchor" href="#docker-strategy-options"></a>Docker Strategy Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following options are specific to the
+<a href="../architecture/core_concepts/builds_and_image_streams.html#docker-build">Docker
+build strategy</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="docker-strategy-from"><a class="anchor" href="#docker-strategy-from"></a>FROM Image</h3>
+<div class="paragraph">
+<p>The <code>FROM</code> instruction of the <strong><em>Dockerfile</em></strong> will be replaced by the <code><strong>from</strong></code> of the <code><strong>BuildConfig</strong></code>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Docker</span></span>
+  <span style="color:#606">dockerStrategy</span>:
+    <span style="color:#606">from</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">debian:latest</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dockerfile-path"><a class="anchor" href="#dockerfile-path"></a>Dockerfile Path</h3>
+<div class="paragraph">
+<p>By default, Docker builds use a Dockerfile (named <strong><em>Dockerfile</em></strong>) located at the
+root of the context specified in the <code><strong>BuildConfig.spec.source.contextDir</strong></code>
+field.</p>
+</div>
+<div class="paragraph">
+<p>The <code><strong>dockerfilePath</strong></code> field allows the build to use a different path to
+locate your Dockerfile, relative to the <code><strong>BuildConfig.spec.source.contextDir</strong></code>
+field. It can be simply a different file name other than the default
+<strong><em>Dockerfile</em></strong> (for example, <strong><em>MyDockerfile</em></strong>), or a path to a Dockerfile in a
+subdirectory (for example, <strong><em>dockerfiles/app1/</em></strong>):</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Docker</span></span>
+  <span style="color:#606">dockerStrategy</span>:
+    <span style="color:#606">dockerfilePath</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">dockerfiles/app1/</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-cache"><a class="anchor" href="#no-cache"></a>No Cache</h3>
+<div class="paragraph">
+<p>Docker builds normally reuse cached layers found on the host performing the
+build. Setting the <code><strong>noCache</strong></code> option to <strong>true</strong> forces the build to ignore
+cached layers and rerun all steps of the <strong><em>Dockerfile</em></strong>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Docker</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">dockerStrategy</span>:
+    <span style="color:#606">noCache</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker-force-pull"><a class="anchor" href="#docker-force-pull"></a>Force Pull</h3>
+<div class="paragraph">
+<p>By default, if the builder image specified in the build configuration is
+available locally on the node, that image will be used. However, to override the
+local image and refresh it from the registry to which the image stream points,
+create a <code><strong>BuildConfig</strong></code> with the <code><strong>forcePull</strong></code> flag set to <strong>true</strong>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Docker</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">dockerStrategy</span>:
+    <span style="color:#606">forcePull</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true </span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This flag causes the local builder image to be ignored, and a fresh version
+to be pulled from the registry to which the image stream points. Setting
+<code><strong>forcePull</strong></code> to <strong>false</strong> results in the default behavior of honoring the image
+stored locally.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker-strategy-environment"><a class="anchor" href="#docker-strategy-environment"></a>Environment Variables</h3>
+<div class="paragraph">
+<p>To make environment variables available to the
+<a href="../architecture/core_concepts/builds_and_image_streams.html#docker-build">Docker build</a>
+process and resulting image, you can add environment variables to the
+<code><strong>dockerStrategy</strong></code> definition of the <code><strong>BuildConfig</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>The environment variables defined there are inserted as a single <code>ENV</code>
+Dockerfile instruction right after the <code>FROM</code> instruction, so that it can be
+referenced later on within the Dockerfile.</p>
+</div>
+<div class="paragraph">
+<p>The variables are defined during build and stay in the output image, therefore
+they will be present in any container that runs that image as well.</p>
+</div>
+<div class="paragraph">
+<p>For example, defining a custom HTTP proxy to be used during build and runtime:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">dockerStrategy</span>:
+<span style="color:#f8f;background:#505"><span style="color:#f4f">...</span></span>
+  <span style="color:#606">env</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;HTTP_PROXY&quot;</span></span>
+      <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://myproxy.net:5187/</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also manage environment variables defined in the <code><strong>BuildConfig</strong></code> with the
+<a href="../dev_guide/environment_variables.html#overview"><code>oc set env</code></a> command.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="custom-strategy-options"><a class="anchor" href="#custom-strategy-options"></a>Custom Strategy Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following options are specific to the
+<a href="../architecture/core_concepts/builds_and_image_streams.html#custom-build">Custom
+build strategy</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="expose-docker-socket"><a class="anchor" href="#expose-docker-socket"></a>Exposing the Docker Socket</h3>
+<div class="paragraph">
+<p>In order to allow the running of Docker commands and the building of Docker
+images from inside the Docker container, the build container must be bound to an
+accessible socket. To do so, set the <code><strong>exposeDockerSocket</strong></code> option to <strong>true</strong>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Custom</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">customStrategy</span>:
+    <span style="color:#606">exposeDockerSocket</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="custom-secrets"><a class="anchor" href="#custom-secrets"></a>Secrets</h3>
+<div class="paragraph">
+<p>In addition to <a href="../dev_guide/secrets.html#dev-guide-secrets">secrets</a> for
+<a href="#using-private-repositories-for-builds">source</a> and
+<a href="#using-docker-credentials-for-pushing-and-pulling-images">images</a> that can
+be added to all build types, custom strategies allow adding an arbitrary list of
+secrets to the builder pod.</p>
+</div>
+<div class="paragraph">
+<p>Each secret can be mounted at a specific location:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Custom</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">customStrategy</span>:
+    <span style="color:#606">secrets</span>:
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">secretSource: </span><span style="color:#D20"><i class="conum" data-value="1"></i><b>(1)</b>
+          name: &quot;secret1&quot;</span></span>
+        <span style="color:#606">mountPath</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/tmp/secret1</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+      - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">secretSource:</span><span style="color:#D20">
+          name: &quot;secret2&quot;</span></span>
+        <span style="color:#606">mountPath</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/tmp/secret2</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code><strong>secretSource</strong></code> is a reference to a secret in the same namespace as the
+build.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code><strong>mountPath</strong></code> is the path inside the custom builder where the secret should
+be mounted.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="custom-force-pull"><a class="anchor" href="#custom-force-pull"></a>Force Pull</h3>
+<div class="paragraph">
+<p>By default, when setting up the build pod, the build controller checks if the
+image specified in the build configuration is available locally on the node.  If
+so, that image will be used.  However, to override the local image and refresh
+it from the registry to which the image stream points, create a <code><strong>BuildConfig</strong></code>
+with the <code><strong>forcePull</strong></code> flag set to <strong>true</strong>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Custom</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">customStrategy</span>:
+    <span style="color:#606">forcePull</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true </span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This flag causes the local builder image to be ignored, and a fresh version
+to be pulled from the registry to which the image stream points. Setting
+<code><strong>forcePull</strong></code> to <strong>false</strong> results in the default behavior of honoring the image
+stored locally.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="custom-strategy-environment"><a class="anchor" href="#custom-strategy-environment"></a>Environment Variables</h3>
+<div class="paragraph">
+<p>To make environment variables available to the
+<a href="../architecture/core_concepts/builds_and_image_streams.html#custom-build">Custom build</a>
+process, you can add environment variables to the <code><strong>customStrategy</strong></code> definition
+of the <code><strong>BuildConfig</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>The environment variables defined there are passed to the pod that runs the
+custom build.</p>
+</div>
+<div class="paragraph">
+<p>For example, defining a custom HTTP proxy to be used during build:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">customStrategy</span>:
+<span style="color:#f8f;background:#505"><span style="color:#f4f">...</span></span>
+  <span style="color:#606">env</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;HTTP_PROXY&quot;</span></span>
+      <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://myproxy.net:5187/</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also manage environment variables defined in the <code><strong>BuildConfig</strong></code> with the
+<a href="../dev_guide/environment_variables.html#overview"><code>oc set env</code></a> command.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pipeline-strategy-options"><a class="anchor" href="#pipeline-strategy-options"></a>Pipeline Strategy Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following options are specific to the
+<a href="../architecture/core_concepts/builds_and_image_streams.html#pipeline-build">Pipeline build strategy</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="jenkinsfile"><a class="anchor" href="#jenkinsfile"></a>Providing the Jenkinsfile</h3>
+<div class="paragraph">
+<p>You can provide the Jenkinsfile in one of two ways:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Embed the Jenkinsfile in the build configuration.</p>
+</li>
+<li>
+<p>Include in the build configuration a reference to the
+Git repository that contains the Jenkinsfile.</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. Embedded Definition</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BuildConfig</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample-pipeline</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">strategy</span>:
+    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">JenkinsPipeline</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">jenkinsPipelineStrategy</span>:
+      <span style="color:#606">jenkinsfile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">node('agent') {\nstage 'build'\nopenshiftBuild(buildConfig: 'ruby-sample-build', showBuildLogs: 'true')\nstage 'deploy'\nopenshiftDeploy(deploymentConfig: 'frontend')\n}</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. Reference to Git Repository</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BuildConfig</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample-pipeline</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">source</span>:
+    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Git</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">git</span>:
+      <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://github.com/openshift/ruby-hello-world</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">strategy</span>:
+    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">JenkinsPipeline</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">jenkinsPipelineStrategy</span>:
+      <span style="color:#606">jenkinsfilePath</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">some/repo/dir/filename </span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The optional <code><strong>jenkinsfilePath</strong></code> field specifies the name of the
+file to use, relative to the source <code><strong>contextDir</strong></code>.
+If <code><strong>contextDir</strong></code> is omitted, it defaults to the root of the repository.
+If <code><strong>jenkinsfilePath</strong></code> is omitted, it defaults to <strong><em>Jenkinsfile</em></strong>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-inputs"><a class="anchor" href="#build-inputs"></a>Build Inputs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are several ways to provide content for builds to operate on. In order of precedence:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Inline Dockerfile definitions</p>
+</li>
+<li>
+<p>Content extracted from existing images</p>
+</li>
+<li>
+<p>Git repositories</p>
+</li>
+<li>
+<p>Binary inputs</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These can be combined into a single build. As the inline Dockerfile takes precedence, it can overwrite any other file named Dockerfile provided by another input. Binary input and Git repository are mutually exclusive inputs.</p>
+</div>
+<div class="paragraph">
+<p>When the build is run, a working directory is constructed and all input content is placed in the working directory (e.g. the input git repository is cloned into the working directory, files specified from input images are copied into the working directory using the target path).  Next the build process will <code><strong>cd</strong></code> into the <code><strong>contextDir</strong></code> if one is defined.  Then the inline <code><strong>Dockerfile</strong></code> (if any) is written to the current directory.  Last, the content from the current directory will be provided to the build process for reference by the <code><strong>Dockerfile</strong></code>, <code><strong>assemble</strong></code> script, or custom builder logic.  This means any input content that resides outside the <code><strong>contextDir</strong></code> will be ignored by the build.</p>
+</div>
+<div class="paragraph">
+<p>Here is an example of a source definition that includes multiple input types and an explanation of how they are combined.  For more details
+on how each input type is defined, see the specific sections for each input type.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">source</span>:
+  <span style="color:#606">git</span>:
+    <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://github.com/openshift/ruby-hello-world.git </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">images</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">from:</span><span style="color:#D20">
+      kind: ImageStreamTag
+      name: myinputimage:latest
+      namespace: mynamespace</span></span>
+    <span style="color:#606">paths</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">destinationDir: app/dir/injected/dir </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+      <span style="color:#606">sourcePath</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/usr/lib/somefile.jar</span></span>
+  <span style="color:#606">contextDir</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">app/dir</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+  <span style="color:#606">dockerfile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">FROM centos:7\nRUN yum install -y httpd</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The repository to be cloned into the working directory for the build</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code><strong>/usr/lib/somefile.jar</strong></code> from <code><strong>myinputimage</strong></code> will be stored in <code><strong>&lt;workingdir&gt;/app/dir/injected/dir</strong></code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The working dir for the build will become <code><strong>&lt;original_workingdir&gt;/app/dir</strong></code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>A <code><strong>Dockerfile</strong></code> with this content will be created in <code><strong>&lt;original_workingdir&gt;/app/dir</strong></code>, overwriting any existing file with that name</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="source-code"><a class="anchor" href="#source-code"></a>Git Repository Source Options</h3>
+<div class="paragraph">
+<p>When the <code><strong>BuildConfig.spec.source.type</strong></code> is <code><strong>Git</strong></code>, a Git repository is
+required, and an inline Dockerfile is optional.</p>
+</div>
+<div class="paragraph">
+<p>The source code is fetched from the location specified and, if the
+<code><strong>BuildConfig.spec.source.dockerfile</strong></code> field is specified, the inline Dockerfile
+replaces the one in the <code><strong>contextDir</strong></code> of the Git repository.</p>
+</div>
+<div class="paragraph">
+<p>The source definition is part of the <code><strong>spec</strong></code> section in the <code><strong>BuildConfig</strong></code>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">source</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Git</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">git</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://github.com/openshift/ruby-hello-world</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">ref</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">master</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">contextDir</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">app/dir</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+  <span style="color:#606">dockerfile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">FROM openshift/ruby-22-centos7\nUSER example</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code><strong>git</strong></code> field contains the URI to the remote Git repository of the
+source code. Optionally, specify the <code><strong>ref</strong></code> field to check out a specific Git
+reference. A valid <code><strong>ref</strong></code> can be a SHA1 tag or a branch name.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code><strong>contextDir</strong></code> field allows you to override the default location inside
+the source code repository where the build looks for the application source
+code. If your application exists inside a sub-directory, you can override the
+default location (the root folder) using this field.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>If the optional <code><strong>dockerfile</strong></code> field is provided, it should be a string
+containing a Dockerfile that overwrites any Dockerfile that may exist in the
+source repository.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When using the Git repository as a source without specifying the <code><strong>ref</strong></code>
+field, Digital Garage performs a shallow clone (<code>--depth=1</code> clone). That means
+only the <code>HEAD</code> (usually the <code>master</code> branch) is downloaded. This results
+in repositories downloading faster, including the commit history.</p>
+</div>
+<div class="paragraph">
+<p>A shallow clone is also used when the <code><strong>ref</strong></code> field is specified and set to an
+existing remote branch name. However, if you specify the <code><strong>ref</strong></code> field to a
+specific commit, the system will fallback to a regular Git clone operation and
+checkout the commit, because using the <code>--depth=1</code> option only works with named
+branch refs.</p>
+</div>
+<div class="paragraph">
+<p>To perform a full Git clone of the <code>master</code> for the specified repository, set
+the <code><strong>ref</strong></code> to <code>master</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="using-a-proxy-for-git-cloning"><a class="anchor" href="#using-a-proxy-for-git-cloning"></a>Using a Proxy for Git Cloning</h4>
+<div class="paragraph">
+<p>If your Git repository can only be accessed using a proxy, you can define the
+proxy to use in the <code><strong>source</strong></code> section of the <code><strong>BuildConfig</strong></code>. You can configure
+both a HTTP and HTTPS proxy to use. Both fields are optional.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Your source URI must use the HTTP or HTTPS protocol for this to work.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">source</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Git</span></span>
+  <span style="color:#606">git</span>:
+    <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://github.com/openshift/ruby-hello-world</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">httpProxy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">http://proxy.example.com</span></span>
+    <span style="color:#606">httpsProxy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://proxy.example.com</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="trusted-certificate-authorities"><a class="anchor" href="#trusted-certificate-authorities"></a>Trusted Certificate Authorities</h4>
+<div class="paragraph">
+<p>The set of TLS certificate authorities that are trusted during a <code>git clone</code>
+operation are built into the Digital Garage infrastructure images.  If your Git
+server uses a self-signed certificate or one signed by an authority not trusted
+by the image, you can disable TLS  verification by setting the
+<code><strong>GIT_SSL_NO_VERIFY</strong></code> environment variable to <strong>true</strong> in the appropriate strategy
+section of your build configuration. You can use the
+<a href="../dev_guide/environment_variables.html#overview"><code>oc set env</code></a> command to
+manage <code><strong>BuildConfig</strong></code> environment variables.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="using-private-repositories-for-builds"><a class="anchor" href="#using-private-repositories-for-builds"></a>Using Private Repositories for Builds</h4>
+<div class="paragraph">
+<p>Supply valid credentials to build an application from a private repository.</p>
+</div>
+<div class="paragraph">
+<p>Currently two types of authentication are supported: basic username-password
+and SSH key based authentication.</p>
+</div>
+<div class="sect4">
+<h5 id="basic-authentication"><a class="anchor" href="#basic-authentication"></a>Basic Authentication</h5>
+<div class="paragraph">
+<p>Basic authentication requires either a combination of <code>username</code> and <code>password</code>,
+or a <code>token</code> to authenticate against the SCM server. A <code>CA certificate</code> file,
+or a <code>.gitconfig</code> file can be attached.</p>
+</div>
+<div class="paragraph">
+<p>A <a href="../dev_guide/secrets.html#dev-guide-secrets"><code><strong>secret</strong></code></a> is used to store your keys.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create the <code><strong>secret</strong></code> first before using the username and password to access
+the private repository:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets new-basicauth basicsecret --username=USERNAME --password=PASSWORD</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>To create a Basic Authentication Secret with a token:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets new-basicauth basicsecret --password=TOKEN</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>To create a Basic Authentication Secret with a CA certificate file:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets new-basicauth basicsecret --username=USERNAME --password=PASSWORD --ca-cert=FILENAME</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>To create a Basic Authentication Secret with a <code>.gitconfig</code> file:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets new-basicauth basicsecret --username=USERNAME --password=PASSWORD --gitconfig=FILENAME</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Add the <code><strong>secret</strong></code> to the builder service account. Each build is run with
+the <code>builder</code> role, so you need to give it access your secret with the
+following command:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets link builder basicsecret</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Add a <code><strong>sourceSecret</strong></code> field to the <code><strong>source</strong></code> section inside the
+<code><strong>BuildConfig</strong></code> and set it to the name of the <code><strong>secret</strong></code> that you created.
+In this case <code><strong>basicsecret</strong></code>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BuildConfig</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample-build</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">output</span>:
+    <span style="color:#606">to</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample-image:latest</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">source</span>:
+    <span style="color:#606">git</span>:
+      <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://github.com/user/app.git</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">sourceSecret</span>:
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">basicsecret</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Git</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">strategy</span>:
+    <span style="color:#606">sourceStrategy</span>:
+      <span style="color:#606">from</span>:
+        <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">python-33-centos7:latest</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Source</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The URL of private repository, accessed by basic authentication, is usually
+in the <code>http</code> or <code>https</code> form.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="ssh-key-authentication"><a class="anchor" href="#ssh-key-authentication"></a>SSH Key Based Authentication</h5>
+<div class="paragraph">
+<p>SSH Key Based Authentication requires a private SSH key. A <code>.gitconfig</code> file can
+also be attached.</p>
+</div>
+<div class="paragraph">
+<p>The repository keys are usually located in the <code>$HOME/.ssh/</code> directory, and are named
+<code>id_dsa.pub</code>, <code>id_ecdsa.pub</code>, <code>id_ed25519.pub</code>, or <code>id_rsa.pub</code> by default.
+Generate SSH key credentials with the following command:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ ssh-keygen -t rsa -C "your_email@example.com"</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Creating a passphrase for the SSH key prevents Digital Garage from building.
+When prompted for a passphrase, leave it blank.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Two files are created: the public key and a corresponding private key (one of
+<code>id_dsa</code>, <code>id_ecdsa</code>, <code>id_ed25519</code>, or <code>id_rsa</code>). With both of these in place,
+consult your source control management (SCM) system&#8217;s manual on how to upload
+the public key. The private key will be used to access your private repository.</p>
+</div>
+<div class="paragraph">
+<p>A <a href="../dev_guide/secrets.html#dev-guide-secrets"><code><strong>secret</strong></code></a> is used to store your keys.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create the <code><strong>secret</strong></code> first before using the SSH key to access the private
+repository:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets new-sshauth sshsecret --ssh-privatekey=$HOME/.ssh/id_rsa</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>To create a SSH Based Authentication Secret with a <code>.gitconfig</code> file:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets new-sshauth sshsecret --ssh-privatekey=$HOME/.ssh/id_rsa --gitconfig=FILENAME</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Add the <code><strong>secret</strong></code> to the builder service account. Each build is run with
+the <code>builder</code> role, so you need to give it access your secret with the
+following command:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets link builder sshsecret</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Add a <code><strong>sourceSecret</strong></code> field into the <code><strong>source</strong></code> section inside the
+<code><strong>BuildConfig</strong></code> and set it to the name of the <code><strong>secret</strong></code> that you created.
+In this case <code><strong>sshsecret</strong></code>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BuildConfig</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample-build</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">output</span>:
+    <span style="color:#606">to</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample-image:latest</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">source</span>:
+    <span style="color:#606">git</span>:
+      <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">git@repository.com:user/app.git</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">sourceSecret</span>:
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sshsecret</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Git</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">strategy</span>:
+    <span style="color:#606">sourceStrategy</span>:
+      <span style="color:#606">from</span>:
+        <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">python-33-centos7:latest</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Source</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The URL of private repository, accessed by a private SSH key, is usually
+in the form <code>git@example.com:&lt;username&gt;/&lt;repository&gt;.git</code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="other-authentication"><a class="anchor" href="#other-authentication"></a>Other</h5>
+<div class="paragraph">
+<p>If the cloning of your application is dependent on a CA certificate,
+<code>.gitconfig</code> file, or both, then you can create a secret that contains them, add
+it to the builder service account, and then your <code>BuildConfig</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create desired type of <code><strong>secret</strong></code>:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>To create a secret from a <code>.gitconfig</code>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets new mysecret .gitconfig=path/to/.gitconfig</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>To create a secret from a <code>CA certificate</code>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets new mysecret ca.crt=path/to/certificate</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>To create a secret from a <code>CA certificate</code> and <code>.gitconfig</code>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets new mysecret ca.crt=path/to/certificate .gitconfig=path/to/.gitconfig</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>SSL verification can be turned off, if <code>sslVerify=false</code> is set for the <code>http</code>
+section in your <code>.gitconfig</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[http]
+        sslVerify=false</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Add the <code><strong>secret</strong></code> to the builder service account. Each build is run with the
+the <code>builder</code> role, so you need to give it access your secret with the
+following command:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets link builder mysecret</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Add the <code><strong>secret</strong></code> to the <code><strong>BuildConfig</strong></code>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">source:
+  git:
+    uri: "https://github.com/openshift/nodejs-ex.git"
+  sourceSecret:
+    name: "mysecret"</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><a href="builds.html#using-secrets-in-the-buildconfig">Defining Secrets in the
+BuildConfig</a> provides more information on this topic.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dockerfile-source"><a class="anchor" href="#dockerfile-source"></a>Dockerfile Source</h3>
+<div class="paragraph">
+<p>When the <code><strong>BuildConfig.spec.source.type</strong></code> is <code><strong>Dockerfile</strong></code>, an inline
+Dockerfile is used as the build input, and no additional sources can be
+provided.</p>
+</div>
+<div class="paragraph">
+<p>This source type is valid when the build strategy type is <code><strong>Docker</strong></code> or
+<code><strong>Custom</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>The source definition is part of the <code><strong>spec</strong></code> section in the <code><strong>BuildConfig</strong></code>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">source</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Dockerfile</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">dockerfile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">FROM centos:7\nRUN yum install -y httpd</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code><strong>dockerfile</strong></code> field contains an inline Dockerfile that will be built.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="binary-source"><a class="anchor" href="#binary-source"></a>Binary Source</h3>
+<div class="paragraph">
+<p>Streaming content in binary format from a local file system to the builder is
+called a <code><strong>binary type build</strong></code>. The corresponding value of
+<code><strong>BuildConfig.spec.source.type</strong></code> is <code><strong>Binary</strong></code> for such builds.</p>
+</div>
+<div class="paragraph">
+<p>This source type is unique in that it is leveraged solely based on your use of
+the <code>oc start-build</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Binary type builds require content to be streamed from the local file system, so
+automatically triggering a binary type build (e.g. via an image change trigger)
+is not possible, because the binary files cannot be provided. Similarly, you
+cannot launch binary type builds from the web console.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To utilize binary builds, invoke <code>oc start-build</code> with one of these options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>--from-file</code>: The contents of the file you specify are sent as a binary
+stream to the builder. The builder then stores the data in a file with the
+same name at the top of the build context.</p>
+</li>
+<li>
+<p><code>--from-dir</code> and <code>--from-repo</code>: The contents are archived and sent as a binary
+stream to the builder. The builder then extracts the contents of the archive
+within the build context directory.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In each of the above cases:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If your <code><strong>BuildConfig</strong></code> already has a <code><strong>Binary</strong></code> source type defined, it will
+effectively be ignored and replaced by what the client sends.</p>
+</li>
+<li>
+<p>If your <code><strong>BuildConfig</strong></code> has a <code><strong>Git</strong></code> source type defined, it is dynamically
+disabled, since <code><strong>Binary</strong></code> and <code><strong>Git</strong></code> are mutually exclusive, and the data in
+the binary stream provided to the builder takes precedence.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When using <code>oc new-build --binary=true</code>, the command ensures that the
+restrictions associated with binary builds are enforced. The resulting
+<code><strong>BuildConfig</strong></code> will have a source type of <code><strong>Binary</strong></code>, meaning that the only
+valid way to run a build for this <code><strong>BuildConfig</strong></code> is to use <code>oc
+start-build</code> with one of the <code>--from</code> options to provide the requisite binary
+data.</p>
+</div>
+<div class="paragraph">
+<p>The <code><strong>dockerfile</strong></code> and <code><strong>contextDir</strong></code> <a href="#source-code">source options</a> have
+special meaning with binary builds.</p>
+</div>
+<div class="paragraph">
+<p><code><strong>dockerfile</strong></code> can be used with any binary build source. If <code><strong>dockerfile</strong></code> is
+used and the binary stream is an archive, its contents serve as a replacement
+Dockerfile to any Dockerfile in the archive. If <code><strong>dockerfile</strong></code> is used with the
+<code>--from-file</code> argument, and the file argument is named <code><strong>dockerfile</strong></code>, the value
+from <code><strong>dockerfile</strong></code> replaces the value from the binary stream.</p>
+</div>
+<div class="paragraph">
+<p>In the case of the binary stream encapsulating extracted archive content, the
+value of the <code><strong>contextDir</strong></code> field is interpreted as a subdirectory within the
+archive, and, if valid, the builder changes into that subdirectory before
+executing the build.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="image-source"><a class="anchor" href="#image-source"></a>Image Source</h3>
+<div class="paragraph">
+<p>Additional files can be provided to the build process via images. Input images
+are referenced in the same way the <code><strong>From</strong></code> and <code><strong>To</strong></code> image targets are
+defined. This means both Docker images and image stream tags can be referenced.
+In conjunction with the image, you must provide one or more path pairs to
+indicate the path of the files/directories to copy out of the image and the
+destination to place them in the build context.</p>
+</div>
+<div class="paragraph">
+<p>The source path can be any absolute path within the image specified. The
+destination must be a relative directory path. At build time, the image will be
+loaded and the indicated files and directories will be copied into the context
+directory of the build process. This is the same directory into which the source
+repository content (if any) is cloned. If the source path ends in <strong><em>/.</em></strong> then
+the content of the directory will be copied, but the directory itself will not
+be created at the destination.</p>
+</div>
+<div class="paragraph">
+<p>Image inputs are specified in the <code><strong>source</strong></code> definition of the <code><strong>BuildConfig</strong></code>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">source</span>:
+  <span style="color:#606">git</span>:
+    <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://github.com/openshift/ruby-hello-world.git</span></span>
+  <span style="color:#606">images</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">from: </span><span style="color:#D20"><i class="conum" data-value="2"></i><b>(2)</b>
+      kind: ImageStreamTag
+      name: myinputimage:latest
+      namespace: mynamespace</span></span>
+    <span style="color:#606">paths</span>: <i class="conum" data-value="3"></i><b>(3)</b>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">destinationDir: injected/dir </span></span><i class="conum" data-value="4"></i><b>(4)</b>
+      <span style="color:#606">sourcePath</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/usr/lib/somefile.jar </span></span><i class="conum" data-value="5"></i><b>(5)</b>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">from:</span><span style="color:#D20">
+      kind: ImageStreamTag
+      name: myotherinputimage:latest
+      namespace: myothernamespace</span></span>
+    <span style="color:#606">pullSecret</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">mysecret </span></span><i class="conum" data-value="6"></i><b>(6)</b>
+    <span style="color:#606">paths</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">destinationDir: injected/dir</span></span>
+      <span style="color:#606">sourcePath</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/usr/lib/somefile.jar</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>An array of one or more input images and files.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A reference to the image containing the files to be copied.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>An array of source/destination paths.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The directory relative to the build root where the build process can access the file.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The location of the file to be copied out of the referenced image.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>An optional secret provided if credentials are needed to access the input image.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This feature is not supported for builds using the <a href="#using-secrets-custom-strategy">Custom Strategy</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-secrets"><a class="anchor" href="#using-secrets"></a>Using Secrets During a Build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In some scenarios, build operations require credentials to access dependent
+resources, but it is undesirable for those credentials to be available in the
+final application image produced by the build.</p>
+</div>
+<div class="paragraph">
+<p>For example, when building a NodeJS application, you can set up your private
+mirror for NodeJS modules. In order to download modules from that private
+mirror, you have to supply a custom <strong><em>.npmrc</em></strong> file for the build that contains
+a URL, user name, and password. For security reasons, you do not want to expose
+your credentials in the application image.</p>
+</div>
+<div class="paragraph">
+<p>This example describes NodeJS, but you can use the same approach for adding SSL
+certificates into the <strong><em>/etc/ssl/certs</em></strong> directory, API keys or tokens, license
+files, etc.</p>
+</div>
+<div class="sect2">
+<h3 id="using-secrets-in-the-buildconfig"><a class="anchor" href="#using-secrets-in-the-buildconfig"></a>Defining Secrets in the BuildConfig</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create the <code>Secret</code>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets new secret-npmrc .npmrc=~/.npmrc</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This creates a new secret named <strong><em>secret-npmrc</em></strong>, which contains the base64
+encoded content of the <strong><em>~/.npmrc</em></strong> file.</p>
+</div>
+</li>
+<li>
+<p>Add the secret to the <code><strong>source</strong></code> section in the existing build configuration:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">source</span>:
+  <span style="color:#606">git</span>:
+    <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://github.com/openshift/nodejs-ex.git</span></span>
+  <span style="color:#606">secrets</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">secret:</span><span style="color:#D20">
+        name: secret-npmrc</span></span>
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Git</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To include the secrets in a new build configuration, run the following command:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-build openshift/nodejs-010-centos7~https://github.com/openshift/nodejs-ex.git --build-secret secret-npmrc</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>During the build, the <strong><em>.npmrc</em></strong> file is copied into the directory where the
+source code is located. In case of the Digital Garage S2I builder images, this
+is the image working directory, which is set using the <code><strong>WORKDIR</strong></code> instruction
+in the Dockerfile. If you want to specify another directory, add a
+<code><strong>destinationDir</strong></code> to the secret definition:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">source</span>:
+  <span style="color:#606">git</span>:
+    <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://github.com/openshift/nodejs-ex.git</span></span>
+  <span style="color:#606">secrets</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">secret:</span><span style="color:#D20">
+        name: secret-npmrc</span></span>
+      <span style="color:#606">destinationDir</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">/etc</span></span>
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Git</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also specify the destination directory when creating a new build
+configuration:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-build openshift/nodejs-010-centos7~https://github.com/openshift/nodejs-ex.git --build-secret “secret-npmrc:/etc”</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In both cases, the <strong><em>.npmrc</em></strong> file is added to the <strong><em>/etc</em></strong> directory of the
+build environment. Note that for a
+<a href="../architecture/core_concepts/builds_and_image_streams.html#docker-build">Docker
+strategy</a> the destination directory must be a relative path.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-secrets-s2i-strategy"><a class="anchor" href="#using-secrets-s2i-strategy"></a>Source-to-Image Strategy</h3>
+<div class="paragraph">
+<p>When using a <code>Source</code> strategy, all defined source secrets are copied to their
+respective <code>destinationDir</code>. If you left <code>destinationDir</code> empty, then the
+secrets are placed in the working directory of the builder image. The same rule
+is used when a <code>destinationDir</code> is a relative path; the secrets are placed in
+the paths that are relative to the image&#8217;s working directory. The
+<code>destinationDir</code> must exist or an error will occur. No directory paths are
+created during the copy process.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Currently, any files with these secrets are world-writable (have <code>0666</code>
+permissions) and will be truncated to size zero after executing the <strong><em>assemble</em></strong>
+script. This means that the secret files will exist in the resulting image, but
+they will be empty for security reasons.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-secrets-docker-strategy"><a class="anchor" href="#using-secrets-docker-strategy"></a>Docker Strategy</h3>
+<div class="paragraph">
+<p>When using a <code>Docker</code> strategy, you can add all defined source secrets into
+your Docker image using the <a href="https://docs.docker.com/engine/reference/builder/#add">ADD</a>
+and <a href="https://docs.docker.com/engine/reference/builder/#copy">COPY instructions</a>
+in your <strong><em>Dockerfile</em></strong>. If you don’t specify the <code>destinationDir</code> for a secret,
+then the files will be copied into the same directory in which the <strong><em>Dockerfile</em></strong>
+is located. If you specify a relative path as <code>destinationDir</code>, then the secrets
+will be copied into that directory, relative to your <strong><em>Dockerfile</em></strong> location.
+This makes the secret files available to the Docker build operation as part of
+the context directory used during the build.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Users should always remove their secrets from the final application image so
+that the secrets are not present in the container running from that image.
+However, the secrets will still exist in the image itself in the layer where
+they were added. This removal should be part of the <strong><em>Dockerfile</em></strong> itself.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-secrets-custom-strategy"><a class="anchor" href="#using-secrets-custom-strategy"></a>Custom Strategy</h3>
+<div class="paragraph">
+<p>When using a <code>Custom</code> strategy, then all the defined source secrets are
+available inside the builder container in the
+<strong><em>/var/run/secrets/openshift.io/build</em></strong> directory. The custom build image is
+responsible for using these secrets appropriately. The <code>Custom</code> strategy also
+allows secrets to be defined as described in <a href="#custom-secrets">Secrets</a>.
+There is no technical difference between existing strategy secrets and the
+source secrets. However, your builder image might distinguish between them and
+use them differently, based on your build use case. The source secrets are
+always mounted into the <strong><em>/var/run/secrets/openshift.io/build</em></strong> directory or
+your builder can parse the <code>$BUILD</code> environment variable, which includes the
+full build object.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="starting-a-build"><a class="anchor" href="#starting-a-build"></a>Starting a Build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Manually start a new build from an existing build configuration in your current
+project using the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc start-build &lt;buildconfig_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Re-run a build using the <code>--from-build</code> flag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc start-build --from-build=&lt;build_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Specify the <code>--follow</code> flag to stream the build&#8217;s logs in stdout:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc start-build &lt;buildconfig_name&gt; --follow</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Specify the <code>--env</code> flag to set any desired environment variable for the build:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc start-build &lt;buildconfig_name&gt; --env=&lt;key&gt;=&lt;value&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rather than relying on a Git source pull or a Dockerfile for a build, you can
+can also start a build by directly pushing your source, which could be the
+contents of a Git or SVN working directory, a set of prebuilt binary artifacts
+you want to deploy, or a single file. This can be done by specifying one of the
+following options for the <code>start-build</code> command:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--from-dir=&lt;directory&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a directory that will be archived and used as a binary input for the
+build.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--from-file=&lt;file&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a single file that will be the only file in the build source. The
+file is placed in the root of an empty directory with the same file name as the original file provided.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--from-repo=&lt;local_source_repo&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a path to a local repository to use as the binary input for a build.
+Add the <code>--commit</code> option to control which branch, tag, or commit is used for
+the build.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>When passing any of these options directly to the build, the contents are
+streamed to the build and override the current build source settings.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Builds triggered from binary input will not preserve the source on the server,
+so rebuilds triggered by base image changes will use the source specified in the
+build configuration.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example, the following command sends the contents of a local Git repository
+as an archive from the tag <code>v2</code> and starts a build:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc start-build hello-world --from-repo=../hello-world --commit=v2</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="canceling-a-build"><a class="anchor" href="#canceling-a-build"></a>Canceling a Build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Manually cancel a build using the web console, or with the following CLI command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc cancel-build &lt;build_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cancel multiple builds at the same time:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc cancel-build &lt;build1_name&gt; &lt;build2_name&gt; &lt;build3_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cancel all builds created from the build configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc cancel-build bc/&lt;buildconfig_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cancel all builds in a given state (for example, <strong>new</strong> or <strong>pending</strong>), ignoring
+the builds in other states:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc cancel-build bc/&lt;buildconfig_name&gt;  --state=&lt;state&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deleting-a-buildconfig"><a class="anchor" href="#deleting-a-buildconfig"></a>Deleting a BuildConfig</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Delete a <code><strong>BuildConfig</strong></code> using the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc delete bc &lt;BuildConfigName&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will also delete all builds that were instantiated from this <code><strong>BuildConfig</strong></code>.
+Specify the <code>--cascade=false</code> flag if you do not want to delete the builds:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc delete --cascade=false bc &lt;BuildConfigName&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="viewing-build-details"><a class="anchor" href="#viewing-build-details"></a>Viewing Build Details</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can view build details with the web console or by using the <code>oc describe</code>
+CLI command:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe build &lt;build_name&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This displays information such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The build source</p>
+</li>
+<li>
+<p>The strategy</p>
+</li>
+<li>
+<p>The output destination</p>
+</li>
+<li>
+<p>How the build was created</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the build uses the Docker or Source strategy, the <code>oc describe</code> output also
+includes information about the source revision used for the build, including the
+commit ID, author, committer, and message.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="accessing-build-logs"><a class="anchor" href="#accessing-build-logs"></a>Accessing Build Logs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can access build logs using the web console or the CLI.</p>
+</div>
+<div class="paragraph">
+<p>To stream the logs using the build directly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc logs -f build/&lt;build_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To stream the logs of the latest build for a build configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc logs -f bc/&lt;buildconfig_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To return the logs of a given version build for a build configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc logs --version=&lt;number&gt; bc/&lt;buildconfig_name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Log Verbosity</strong></p>
+</div>
+<div class="paragraph">
+<p>To enable more verbose output, pass the <code><strong>BUILD_LOGLEVEL</strong></code> environment variable
+as part of the <code><strong>sourceStrategy</strong></code> or <code><strong>dockerStrategy</strong></code> in a <code><strong>BuildConfig</strong></code>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">sourceStrategy</span>:
+<span style="color:#f8f;background:#505"><span style="color:#f4f">...</span></span>
+  <span style="color:#606">env</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;BUILD_LOGLEVEL&quot;</span></span>
+      <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Adjust this value to the desired log level.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A platform administrator can set verbosity for the entire Digital Garage
+instance by passing the <code>--loglevel</code> option to the <code>openshift start</code> command.
+If both <code>--loglevel</code> and <code>BUILD_LOGLEVEL</code> are specified, <code>BUILD_LOGLEVEL</code> takes precedence.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Available log levels for Source builds are as follows:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Level 0
+</td>
+<td class="hdlist2">
+<p>Produces output from containers running the <strong><em>assemble</em></strong> script and all encountered errors. This is the default.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Level 1
+</td>
+<td class="hdlist2">
+<p>Produces basic information about the executed process.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Level 2
+</td>
+<td class="hdlist2">
+<p>Produces very detailed information about the executed process.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Level 3
+</td>
+<td class="hdlist2">
+<p>Produces very detailed information about the executed process, and a listing of the archive contents.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Level 4
+</td>
+<td class="hdlist2">
+<p>Currently produces the same information as level 3.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Level 5
+</td>
+<td class="hdlist2">
+<p>Produces everything mentioned on previous levels and additionally provides docker push messages.</p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="builds-setting-maximum-duration"><a class="anchor" href="#builds-setting-maximum-duration"></a>Setting Maximum Duration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When defining a <code><strong>BuildConfig</strong></code>, you can define its maximum duration by setting
+the  <code><strong>completionDeadlineSeconds</strong></code> field. It is specified in seconds and is not
+set by default. When not set, there is no maximum duration enforced.</p>
+</div>
+<div class="paragraph">
+<p>The maximum duration is counted from the time when a build pod gets scheduled in
+the system, and defines how long it can be active, including the time needed to
+pull the builder image. After reaching the specified timeout, the build is
+terminated by Digital Garage.</p>
+</div>
+<div class="paragraph">
+<p>The following example shows the part of a <code><strong>BuildConfig</strong></code> specifying
+<code><strong>completionDeadlineSeconds</strong></code> field for 30 minutes:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">spec:
+  completionDeadlineSeconds: 1800</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-triggers"><a class="anchor" href="#build-triggers"></a>Build Triggers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When defining a <code><strong>BuildConfig</strong></code>, you can define triggers to control the
+circumstances in which the <code><strong>BuildConfig</strong></code> should be run. The following build
+triggers are available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#webhook-triggers">Webhook</a></p>
+</li>
+<li>
+<p><a href="#image-change-triggers">Image change</a></p>
+</li>
+<li>
+<p><a href="#config-change-triggers">Configuration change</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="webhook-triggers"><a class="anchor" href="#webhook-triggers"></a>Webhook Triggers</h3>
+<div class="paragraph">
+<p>Webhook triggers allow you to trigger a new build by sending a request to the
+Digital Garage API endpoint. You can define these triggers using
+<a href="https://developer.github.com/webhooks/">GitHub webhooks</a> or Generic webhooks.</p>
+</div>
+<div class="paragraph">
+<p><strong>GitHub Webhooks</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="https://developer.github.com/webhooks/creating/">GitHub webhooks</a> handle the call
+made by GitHub when a repository is updated. When defining the trigger, you must
+specify a <code><strong>secret</strong></code>, which will be part of the URL you supply to GitHub when
+configuring the webhook. The secret ensures the uniqueness of the URL, preventing
+others from triggering the build. The following example is a trigger definition
+YAML within the <code><strong>BuildConfig</strong></code>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GitHub</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">github</span>:
+  <span style="color:#606">secret</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">secret101</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The secret field in webhook trigger configuration is not the same as <code><strong>secret</strong></code>
+field you encounter when configuring webhook in GitHub UI. The former is to make
+the webhook URL unique and hard to predict, the latter is an optional string field
+used to create HMAC hex digest of the body, which is sent as an <code>X-Hub-Signature</code>
+<a href="https://developer.github.com/webhooks/#delivery-headers">header</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The payload URL is returned as the GitHub Webhook URL by the <code>describe</code> command
+(see <a href="#describe-buildconfig">below</a>), and is structured as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">http://&lt;openshift_api_host:port&gt;/oapi/v1/namespaces/&lt;namespace&gt;/buildconfigs/&lt;name&gt;/webhooks/&lt;secret&gt;/github</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To configure a GitHub Webhook:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Describe the build configuration to get the webhook URL:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe bc &lt;name&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Copy the webhook URL.</p>
+</li>
+<li>
+<p>Follow the <a href="https://developer.github.com/webhooks/creating/#setting-up-a-webhook">GitHub setup instructions</a>
+to paste the webhook URL into your GitHub repository settings.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><a href="https://gogs.io">Gogs</a> supports the same webhook payload format as GitHub.
+Therefore, if you are using a Gogs server, you can define a GitHub webhook
+trigger on your <code><strong>BuildConfig</strong></code> and trigger it via your Gogs server also.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Given a file containing a valid JSON payload, you can manually trigger the
+webhook via <code>curl</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ curl -H "X-GitHub-Event: push" -H "Content-Type: application/json" -k -X POST --data-binary @github_payload_file.json https://&lt;openshift_api_host:port&gt;/oapi/v1/namespaces/&lt;namespace&gt;/buildconfigs/&lt;name&gt;/webhooks/&lt;secret&gt;/github</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>-k</code> argument is only necessary if your API server does not have a properly
+signed certificate.</p>
+</div>
+<div class="paragraph">
+<p><strong>Generic Webhooks</strong></p>
+</div>
+<div class="paragraph">
+<p>Generic webhooks are invoked from any system capable of making a web request.
+As with a GitHub webhook, you must specify a <strong>secret</strong>, which will be part of
+the URL that the caller must use to trigger the build. The secret ensures the
+uniqueness of the URL, preventing others from triggering the build. The
+following is an example trigger definition YAML within the <code><strong>BuildConfig</strong></code>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Generic</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">generic</span>:
+  <span style="color:#606">secret</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">secret101</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">allowEnv</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">true </span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Set to <strong>true</strong> to allow a generic webhook to pass in environment variables.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To set up the caller, supply the calling system with the URL of the generic
+webhook endpoint for your build:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">http://&lt;openshift_api_host:port&gt;/oapi/v1/namespaces/&lt;namespace&gt;/buildconfigs/&lt;name&gt;/webhooks/&lt;secret&gt;/generic</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The caller must invoke the webhook as a <code><strong>POST</strong></code> operation.</p>
+</div>
+<div class="paragraph">
+<p>To invoke the webhook manually you can use <code>curl</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ curl -X POST -k https://&lt;openshift_api_host:port&gt;/oapi/v1/namespaces/&lt;namespace&gt;/buildconfigs/&lt;name&gt;/webhooks/&lt;secret&gt;/generic</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The HTTP verb must be set to <code><strong>POST</strong></code>. The insecure <code>-k</code> flag is specified to
+ignore certificate validation. This second flag is not necessary if your cluster
+has properly signed certificates.</p>
+</div>
+<div class="paragraph">
+<p>The endpoint can accept an optional payload with the following format:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">git</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">git</span>:
+  <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;url to git repository&gt;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">ref</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;optional git reference&gt;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">commit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;commit hash identifying a specific git commit&gt;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">author</span>:
+    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;author name&gt;</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">email</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;author e-mail&gt;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">committer</span>:
+    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;committer name&gt;</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">email</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;committer e-mail&gt;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">message</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;commit message&gt;</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">env</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+   - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;&lt;variable name&gt;&quot;</span></span>
+     <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;variable value&gt;</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Similar to the <a href="#buildconfig-environment"><code><strong>BuildConfig</strong></code> environment</a>
+variables, the environment variables defined here are made available to your
+build. If these variables collide with the
+<a href="#buildconfig-environment"><strong>BuildConfig</strong> environment</a> variables, these
+variables take precedence. By default, environment variables passed via webhook
+are ignored. Set the <code><strong>allowEnv</strong></code> field to <strong>true</strong> on the webhook definition to enable
+this behavior.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To pass this payload using <code>curl</code>, define it in a file named
+<strong><em>payload_file.yaml</em></strong> and run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ curl -H "Content-Type: application/yaml" --data-binary @payload_file.yaml -X POST -k https://&lt;openshift_api_host:port&gt;/oapi/v1/namespaces/&lt;namespace&gt;/buildconfigs/&lt;name&gt;/webhooks/&lt;secret&gt;/generic</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The arguments are the same as the previous example with the addition of a header
+and a payload. The <code>-H</code> argument sets the <strong>Content-Type</strong> header to
+<code><strong>application/yaml</strong></code> or <code><strong>application/json</strong></code> depending on your payload format.
+The <code>--data-binary</code> argument is used to send a binary payload with newlines
+intact with the <code><strong>POST</strong></code> request.</p>
+</div>
+<div id="describe-buildconfig" class="paragraph">
+<p><strong>Displaying a BuildConfig&#8217;s Webhook URLs</strong></p>
+</div>
+<div class="paragraph">
+<p>Use the following command to display the webhook URLs associated with a build
+configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe bc &lt;name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the above command does not display any webhook URLs, then no webhook trigger
+is defined for that build configuration.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="image-change-triggers"><a class="anchor" href="#image-change-triggers"></a>Image Change Triggers</h3>
+<div class="paragraph">
+<p>Image change triggers allow your build to be automatically invoked when a new
+version of an upstream image is available. For example, if a build is based on
+top of a RHEL image, then you can trigger that build to run any time the RHEL
+image changes. As a result, the application image is always running on the
+latest RHEL base image.</p>
+</div>
+<div class="paragraph">
+<p>Configuring an image change trigger requires the following actions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Define an <code><strong>ImageStream</strong></code> that points to the upstream image you want to
+trigger on:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStream</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ruby-20-centos7</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This defines the image stream that is tied to a Docker image repository
+located at <code><em>&lt;system-registry&gt;</em>/<em>&lt;namespace&gt;</em>/ruby-20-centos7</code>. The
+<code><em>&lt;system-registry&gt;</em></code> is defined as a service with the name <code>docker-registry</code>
+running in Digital Garage.</p>
+</div>
+</li>
+<li>
+<p>If an image stream is the base image for the build, set the from field in the
+build strategy to point to the image stream:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Source</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">sourceStrategy</span>:
+    <span style="color:#606">from</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ruby-20-centos7:latest</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, the <code><strong>sourceStrategy</strong></code> definition is consuming the <code>latest</code> tag of
+the image stream named <code>ruby-20-centos7</code> located within this namespace.</p>
+</div>
+</li>
+<li>
+<p>Define a build with one or more triggers that point to image streams:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">imageChange</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span style="color:#606">imageChange</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span>
+<span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">imagechange</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+<span style="color:#606">imageChange</span>:
+  <span style="color:#606">from</span>:
+    <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">custom-image:latest</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>An image change trigger that monitors the <code><strong>ImageStream</strong></code> and <code><strong>Tag</strong></code> as
+defined by the build strategy&#8217;s <code><strong>from</strong></code> field. The <code><strong>imageChange</strong></code> object here
+must be empty.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>An image change trigger that monitors an arbitrary image stream. The
+<code><strong>imageChange</strong></code> part in this case must include a <code><strong>from</strong></code> field that references
+the <code><strong>ImageStreamTag</strong></code> to monitor.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When using an image change trigger for the strategy image stream, the generated build
+is supplied with an immutable Docker tag that points to the latest image corresponding
+to that tag. This new image reference will be used by the strategy
+when it executes for the build. For other image change triggers that do not
+reference the strategy image stream, a new build will be started, but the build
+strategy will not be updated with a unique image reference.</p>
+</div>
+<div class="paragraph">
+<p>In the example above that has an image change trigger for the strategy, the resulting build will be:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Source</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">sourceStrategy</span>:
+    <span style="color:#606">from</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">DockerImage</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">172.30.17.3:5001/mynamespace/ruby-20-centos7:immutableid</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This ensures that the triggered build uses the new image that was just pushed to
+the repository, and the build can be re-run any time with the same inputs.</p>
+</div>
+<div class="paragraph">
+<p>In addition to setting the image field for all <code><strong>Strategy</strong></code> types, for custom
+builds, the <code>OPENSHIFT_CUSTOM_BUILD_BASE_IMAGE</code> environment variable is checked.
+If it does not exist, then it is created with the immutable image reference. If
+it does exist then it is updated with the immutable image reference.</p>
+</div>
+<div class="paragraph">
+<p>If a build is triggered due to a webhook trigger or manual request,
+the build that is created uses the <code><strong>immutableid</strong></code> resolved from the
+<code><strong>ImageStream</strong></code> referenced by the <code><strong>Strategy</strong></code>. This ensures that builds
+are performed using consistent image tags for ease of reproduction.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Image streams that point to Docker images in
+<a href="http://docs.docker.com/v1.7/reference/api/hub_registry_spec/#docker-registry-1-0">v1
+Docker registries</a> only trigger a build once when the image stream tag becomes
+available and not on subsequent image updates. This is due to the lack of
+uniquely identifiable images in v1 Docker registries.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="config-change-triggers"><a class="anchor" href="#config-change-triggers"></a>Configuration Change Triggers</h3>
+<div class="paragraph">
+<p>A configuration change trigger allows a build to be automatically invoked as
+soon as a new <code><strong>BuildConfig</strong></code> is created. The following is an example trigger
+definition YAML within the <code><strong>BuildConfig</strong></code>:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml">  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ConfigChange</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Configuration change triggers currently only work when creating a new
+<code><strong>BuildConfig</strong></code>. In a future release, configuration change triggers will also be
+able to launch a build whenever a <code><strong>BuildConfig</strong></code> is updated.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-hooks"><a class="anchor" href="#build-hooks"></a>Build Hooks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Build hooks allow behavior to be injected into the build process.</p>
+</div>
+<div class="paragraph">
+<p>Use the <code><strong>postCommit</strong></code> field to execute commands inside a temporary container
+that is running the build output image. The hook is executed immediately after
+the last layer of the image has been committed and before the image is pushed to
+a registry.</p>
+</div>
+<div class="paragraph">
+<p>The current working directory is set to the image&#8217;s <code><strong>WORKDIR</strong></code>, which is the
+default working directory of the Docker image. For most images, this is where
+the source code is located.</p>
+</div>
+<div class="paragraph">
+<p>The hook fails if the script or command returns a non-zero exit code or if
+starting the temporary container fails. When the hook fails it marks the build
+as failed and the image is not pushed to a registry. The reason for failing can
+be inspected by looking at the build logs.</p>
+</div>
+<div class="paragraph">
+<p>Build hooks can be used to run unit tests to verify the image before the build
+is marked complete and the image is made available in a registry. If all tests
+pass and the test runner returns with exit code 0, the build is marked
+successful. In case of any test failure, the build is marked as failed. In all
+cases, the build log will contain the output of the test runner, which can be
+used to identify failed tests.</p>
+</div>
+<div class="paragraph">
+<p>The <code><strong>postCommit</strong></code> hook is not only limited to running tests, but can be used
+for other commands as well. Since it runs in a temporary container, changes made
+by the hook do not persist, meaning that the hook execution cannot affect the
+final image. This behavior allows for, among other uses, the installation and
+usage of test dependencies that are automatically discarded and will be not
+present in the final image.</p>
+</div>
+<div class="paragraph">
+<p>There are different ways to configure the post build hook. All forms in the
+following examples are equivalent and execute <code>bundle exec rake test
+--verbose</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Shell script:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">postCommit</span>:
+  <span style="color:#606">script</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bundle exec rake test --verbose</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>script</strong></code> value is a shell script to be run with <code><strong>/bin/sh -ic</strong></code>. Use
+this when a shell script is appropriate to execute the build hook. For example,
+for running unit tests as above. To control the image entry point,
+or if the image does not have <code><strong>/bin/sh</strong></code>, use <code><strong>command</strong></code> and/or <code><strong>args</strong></code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The additional <code>-i</code> flag was introduced to improve the experience
+working with CentOS and RHEL images, and may be removed in a future release.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Command as the image entry point:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">postCommit</span>:
+  <span style="color:#606">command</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;bundle exec rake test --verbose&quot;]</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this form, <code><strong>command</strong></code> is the command to run, which overrides the image
+entry point in the exec form, as documented in the
+<a href="https://docs.docker.com/engine/reference/builder/#entrypoint">Dockerfile
+reference</a>. This is needed if the image does not have <code><strong>/bin/sh</strong></code>, or if
+you do not want to use a shell. In all other cases, using <code><strong>script</strong></code> might be
+more convenient.</p>
+</div>
+</li>
+<li>
+<p>Pass arguments to the default entry point:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">postCommit</span>:
+  <span style="color:#606">args</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[&quot;bundle&quot;, &quot;exec&quot;, &quot;rake&quot;, &quot;test&quot;, &quot;--verbose&quot;]</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this form, <code><strong>args</strong></code> is a list of arguments that are provided to the default
+entry point of the image. The image entry point must be able to handle
+arguments.</p>
+</div>
+</li>
+<li>
+<p>Shell script with arguments:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">postCommit</span>:
+  <span style="color:#606">script</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bundle exec rake test $1</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">args</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[&quot;--verbose&quot;]</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use this form if you need to pass arguments that would otherwise be hard
+to quote properly in the shell script. In the <code><strong>script</strong></code>, <code>$0</code> will be "/bin/sh"
+and <code>$1</code>, <code>$2</code>, etc, are the positional arguments from <code><strong>args</strong></code>.</p>
+</div>
+</li>
+<li>
+<p>Command with arguments:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">postCommit</span>:
+  <span style="color:#606">command</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[&quot;bundle&quot;, &quot;exec&quot;, &quot;rake&quot;, &quot;test&quot;]</span></span>
+  <span style="color:#606">args</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[&quot;--verbose&quot;]</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This form is equivalent to appending the arguments to <code><strong>command</strong></code>.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Providing both <code><strong>script</strong></code> and <code><strong>command</strong></code> simultaneously creates an invalid
+build hook.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="build-hooks-using-the-command-line"><a class="anchor" href="#build-hooks-using-the-command-line"></a>Using the Command Line</h3>
+<div class="paragraph">
+<p>The <code>oc set build-hook</code> command can be used to set the build hook for a build configuration.</p>
+</div>
+<div class="paragraph">
+<p>To set a command as the post-commit build hook:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc set build-hook bc/mybc --post-commit --command -- bundle exec rake test --verbose</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To set a script as the post-commit build hook:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc set build-hook bc/mybc --post-commit --script="bundle exec rake test --verbose"</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-docker-credentials-for-pushing-and-pulling-images"><a class="anchor" href="#using-docker-credentials-for-pushing-and-pulling-images"></a>Using Docker Credentials for Pushing and Pulling Images</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Supply the <strong><em>.docker/config.json</em></strong> file with valid Docker Registry credentials
+in order to push the output image into a private Docker Registry or pull the
+builder image from the private Docker Registry that requires authentication. For
+the Digital Garage Docker Registry, you don&#8217;t have to do this because
+<code><strong>secrets</strong></code> are generated automatically for you by Digital Garage.</p>
+</div>
+<div class="paragraph">
+<p>The <strong><em>.docker/config.json</em></strong> file is found in your home directory by default and has
+the following format:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">auths</span>:
+  <span style="color:#F00;background-color:#FAA">https://index.docker.io/v1/</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">auth</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">YWRfbGzhcGU6R2labnRib21ifTE=</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#606">email</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">user@example.com</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>URL of the registry.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Encrypted password.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Email address for the login.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can define multiple Docker registry entries in this file. Alternatively, you
+can also add authentication entries to this file by running the <code>docker login</code>
+command. The file will be created if it does not exist. Kubernetes provides
+<a href="../dev_guide/secrets.html#dev-guide-secrets"><code><strong>secret</strong></code></a> objects, which are used to store your
+configuration and passwords.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create the <code><strong>secret</strong></code> from your local <strong><em>.docker/config.json</em></strong> file:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets new dockerhub ~/.docker/config.json</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This generates a JSON specification of the <code><strong>secret</strong></code> named <strong>dockerhub</strong> and
+creates the object.</p>
+</div>
+</li>
+<li>
+<p>Once the <code><strong>secret</strong></code> is created, add it to the builder service account. Each
+build is run with the <code>builder</code> role, so you need to give it access
+your secret with the following command:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc secrets link builder dockerhub</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Add a <code><strong>pushSecret</strong></code> field into the <code><strong>output</strong></code> section of the <code><strong>BuildConfig</strong></code> and
+set it to the name of the <code><strong>secret</strong></code> that you created, which in the above example
+is <strong>dockerhub</strong>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">spec</span>:
+  <span style="color:#606">output</span>:
+    <span style="color:#606">to</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">DockerImage</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">private.registry.com/org/private-image:latest</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">pushSecret</span>:
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">dockerhub</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Pull the builder Docker image from a private Docker registry by specifying the
+<code><strong>pullSecret</strong></code> field, which is part of the build strategy definition:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">strategy</span>:
+  <span style="color:#606">sourceStrategy</span>:
+    <span style="color:#606">from</span>:
+      <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">DockerImage</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">docker.io/user/private_repository</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">pullSecret</span>:
+      <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">dockerhub</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Source</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This example uses <code><strong>pullSecret</strong></code> in a Source build, but it is also applicable
+in Docker and Custom builds.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-run-policy"><a class="anchor" href="#build-run-policy"></a>Build Run Policy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The build run policy describes the order in which the builds created from the
+build configuration should run. This can be done by changing the value of the
+<strong>runPolicy</strong> field in the <strong>spec</strong> section of the <code><strong>Build</strong></code> specification.</p>
+</div>
+<div class="paragraph">
+<p>It is also possible to change the <strong>runPolicy</strong> value for existing build
+configurations.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Changing <code><strong>Parallel</strong></code> to <code><strong>Serial</strong></code> or <code><strong>SerialLatestOnly</strong></code> and triggering a
+new build from this configuration will cause the new build to wait until all
+parallel builds complete as the serial build can only run alone.</p>
+</li>
+<li>
+<p>Changing <code><strong>Serial</strong></code> to <code><strong>SerialLatestOnly</strong></code> and triggering a new build will
+cause cancellation of all existing builds in queue, except the currently
+running build and the most recently created build. The newest build will
+execute next.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="build-serial-run-policy"><a class="anchor" href="#build-serial-run-policy"></a>Serial Run Policy</h3>
+<div class="paragraph">
+<p>Setting the <strong>runPolicy</strong> field to <code><strong>Serial</strong></code> will cause all new builds created
+from the <code><strong>Build</strong></code> configuration to be run sequentially. That means there
+will be only one build running at a time and every new build will wait until
+the previous build completes. Using this policy will result in consistent and
+predictable build output. This is the default <strong>runPolicy</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Triggering three builds from the <strong>sample-build</strong> configuration, using the
+<code><strong>Serial</strong></code> policy will result in:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">NAME             TYPE      FROM          STATUS    STARTED          DURATION
+sample-build-1   Source    Git@e79d887   Running   13 seconds ago   13s
+sample-build-2   Source    Git           New
+sample-build-3   Source    Git           New</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When the <strong>sample-build-1</strong> build completes, the <strong>sample-build-2</strong> build will run:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">NAME             TYPE      FROM          STATUS    STARTED          DURATION
+sample-build-1   Source    Git@e79d887   Completed 43 seconds ago   34s
+sample-build-2   Source    Git@1aa381b   Running   2 seconds ago    2s
+sample-build-3   Source    Git           New</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="build-serial-latest-only-run-policy"><a class="anchor" href="#build-serial-latest-only-run-policy"></a>SerialLatestOnly Run Policy</h3>
+<div class="paragraph">
+<p>Setting the <strong>runPolicy</strong> field to <code><strong>SerialLatestOnly</strong></code> will cause all new builds
+created from the <code><strong>Build</strong></code> configuration to be run sequentially, same as using
+the <code><strong>Serial</strong></code> run policy. The difference is that when a currently running build
+completes, the next build that will run is the latest build created. In other
+words, you do not wait for the queued builds to run, as they are skipped.
+Skipped builds are marked as <code><strong>Cancelled</strong></code>. This policy can be used for fast,
+iterative development.</p>
+</div>
+<div class="paragraph">
+<p>Triggering three builds from the <strong>sample-build</strong> configuration, using the
+<code><strong>SerialLatestOnly</strong></code> policy will result in:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">NAME             TYPE      FROM          STATUS    STARTED          DURATION
+sample-build-1   Source    Git@e79d887   Running   13 seconds ago   13s
+sample-build-2   Source    Git           Cancelled
+sample-build-3   Source    Git           New</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <strong>sample-build-2</strong> build will be canceled (skipped) and the next build
+run after <strong>sample-build-1</strong> completes will be the <strong>sample-build-3</strong> build:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">NAME             TYPE      FROM          STATUS    STARTED          DURATION
+sample-build-1   Source    Git@e79d887   Completed 43 seconds ago   34s
+sample-build-2   Source    Git           Cancelled
+sample-build-3   Source    Git@1aa381b   Running   2 seconds ago    2s</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="build-parallel-run-policy"><a class="anchor" href="#build-parallel-run-policy"></a>Parallel Run Policy</h3>
+<div class="paragraph">
+<p>Setting the <strong>runPolicy</strong> field to <code><strong>Parallel</strong></code> causes all new builds created from
+the <code><strong>Build</strong></code> configuration to be run in parallel. This can produce
+unpredictable results, as the first created build can complete last, which will
+replace the pushed Docker image produced by the last build which completed
+earlier.</p>
+</div>
+<div class="paragraph">
+<p>Use the parallel run policy in cases where you do not care about the order in
+which the builds will complete.</p>
+</div>
+<div class="paragraph">
+<p>Triggering three builds from the <strong>sample-build</strong> configuration, using the
+<code><strong>Parallel</strong></code> policy will result in three simultaneous builds:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">NAME             TYPE      FROM          STATUS    STARTED          DURATION
+sample-build-1   Source    Git@e79d887   Running   13 seconds ago   13s
+sample-build-2   Source    Git@a76d881   Running   15 seconds ago   3s
+sample-build-3   Source    Git@689d111   Running   17 seconds ago   3s</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The completion order is not guaranteed:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">NAME             TYPE      FROM          STATUS    STARTED          DURATION
+sample-build-1   Source    Git@e79d887   Running   13 seconds ago   13s
+sample-build-2   Source    Git@a76d881   Running   15 seconds ago   3s
+sample-build-3   Source    Git@689d111   Completed 17 seconds ago   5s</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-output"><a class="anchor" href="#build-output"></a>Build Output</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Docker and Source builds result in the creation of a new Docker image. The image
+is then pushed to the registry specified in the <code><strong>output</strong></code> section of the
+<code><strong>Build</strong></code> specification.</p>
+</div>
+<div class="paragraph">
+<p>If the output kind is <code><strong>ImageStreamTag</strong></code>, then the image will be pushed to the
+integrated Digital Garage registry and tagged in the specified image stream. If
+the output is of type <code><strong>DockerImage</strong></code>, then the name of the output reference
+will be used as a Docker push specification. The specification may contain a
+registry or will default to DockerHub if no registry is specified. If the output
+section of the build specification is empty, then the image will not be pushed
+at the end of the build.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. Output to an ImageStreamTag</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">output</span>:
+  <span style="color:#606">to</span>:
+    <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample-image:latest</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. Output to a Docker Push Specification</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">output</span>:
+  <span style="color:#606">to</span>:
+    <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">DockerImage</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">my-registry.mycompany.com:5000/myimages/myimage:tag</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="output-image-environment-variables"><a class="anchor" href="#output-image-environment-variables"></a>Output Image Environment Variables</h3>
+<div class="paragraph">
+<p>Docker and Source builds set the following environment variables on output
+images:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Variable</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>OPENSHIFT_BUILD_NAME</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the build</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>OPENSHIFT_BUILD_NAMESPACE</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace of the build</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>OPENSHIFT_BUILD_SOURCE</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The source URL of the build</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>OPENSHIFT_BUILD_REFERENCE</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Git reference used in the build</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong>OPENSHIFT_BUILD_COMMIT</strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source commit used in the build</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="output-image-labels"><a class="anchor" href="#output-image-labels"></a>Output Image Labels</h3>
+<div class="paragraph">
+<p>Docker and Source builds set the following labels on output images:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Label</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>io.openshift.build.commit.author</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Author of the source commit used in the build</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>io.openshift.build.commit.date</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date of the source commit used in the build</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>io.openshift.build.commit.id</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hash of the source commit used in the build</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>io.openshift.build.commit.message</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Message of the source commit used in the build</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>io.openshift.build.commit.ref</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Branch or reference specified in the source</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>io.openshift.build.source-location</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source URL for the build</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-external-artifacts"><a class="anchor" href="#using-external-artifacts"></a>Using External Artifacts During a Build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is not recommended to store binary files in a source repository. Therefore,
+you may find it necessary to define a build which pulls additional files (such
+as Java <strong><em>.jar</em></strong> dependencies) during the build process. How this is done
+depends on the build strategy you are using.</p>
+</div>
+<div class="paragraph">
+<p>For a <code><strong>Source</strong></code> build strategy, you must put appropriate shell commands into
+the <strong><em>assemble</em></strong> script:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 6. <strong><em>.s2i/bin/assemble</em></strong> File</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">#!/bin/sh
+APP_VERSION=1.0
+wget http://repository.example.com/app/app-$APP_VERSION.jar -O app.jar</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7. <strong><em>.s2i/bin/run</em></strong> File</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">#!/bin/sh
+exec java -jar app.jar</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For more information on how to control which <strong><em>assemble</em></strong> and <strong><em>run</em></strong> script is
+used by a Source build, see <a href="#override-builder-image-scripts">Overriding
+Builder Image Scripts</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For a <code><strong>Docker</strong></code> build strategy, you must modify the <strong><em>Dockerfile</em></strong> and invoke
+shell commands with the
+<a href="https://docs.docker.com/engine/reference/builder/#run"><code>RUN</code> instruction</a>:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 8. Excerpt of <code>Dockerfile</code></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>FROM jboss/base-jdk:8
+
+ENV APP_VERSION 1.0
+RUN wget http://repository.example.com/app/app-$APP_VERSION.jar -O app.jar
+
+EXPOSE 8080
+CMD [ "java", "-jar", "app.jar" ]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In practice, you may want to use an environment variable for the file location
+so that the specific file to be downloaded can be customized using an
+environment variable defined on the <code>BuildConfig</code>, rather than updating the
+<strong><em>assemble</em></strong> script or <strong><em>Dockerfile</em></strong>.</p>
+</div>
+<div class="paragraph">
+<p>You can choose between different methods of defining environment variables:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#environment-files">Using the <strong><em>.s2i/environment</em></strong> file</a> (only for a
+<code><strong>Source</strong></code> build strategy)</p>
+</li>
+<li>
+<p><a href="#buildconfig-environment">Setting in <code><strong>BuildConfig</strong></code></a></p>
+</li>
+<li>
+<p><a href="../cli_reference/basic_cli_operations.html#build-and-deployment-cli-operations">Providing
+explicitly using <code><strong>oc start-build --env</strong></code></a> (only for builds that are triggered
+manually)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-resources"><a class="anchor" href="#build-resources"></a>Build Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, builds are completed by pods using unbound resources, such as memory
+and CPU. These resources can be limited by specifying resource limits in a
+project&#8217;s default container limits.</p>
+</div>
+<div class="paragraph">
+<p>You can also limit resource use by specifying resource limits as part of the
+build configuration. In the following example, each of the <code><strong>resources</strong></code>,
+<code><strong>cpu</strong></code>, and <code><strong>memory</strong></code> parameters are optional:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BuildConfig</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample-build</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">resources</span>:
+    <span style="color:#606">limits</span>:
+      <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">100m</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+      <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">256Mi</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code><strong>cpu</strong></code> is in CPU units: <code>100m</code> represents 0.1 CPU units (100 * 1e-3).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code><strong>memory</strong></code> is in bytes: <code>256Mi</code> represents 268435456 bytes (256 * 2 ^ 20).</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>However, if a <a href="../dev_guide/compute_resources.html#dev-quotas">quota</a> has
+been defined for your project, one of the following two items is required:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code><strong>resources</strong></code> section set with an explicit <code><strong>requests</strong></code>:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">resources</span>:
+  <span style="color:#606">requests</span>: <i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">cpu</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">100m</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">memory</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">256Mi</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code><strong>requests</strong></code> object contains the list of resources that correspond to
+the list of resources in the quota.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>A limit range defined in your project, where the
+defaults from the <code><strong>LimitRange</strong></code> object apply to pods created during the
+build process.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Otherwise, build pod creation will fail, citing a failure to satisfy quota.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="builds-troubleshooting"><a class="anchor" href="#builds-troubleshooting"></a>Troubleshooting</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Troubleshooting Guidance for Builds</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Issue</th>
+<th class="tableblock halign-left valign-top">Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A build fails with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>requested access to the resource is denied</pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>You have exceeded one of the <a href="../dev_guide/compute_resources.html#dev-guide-compute-resources">image
+quotas</a> set on your project. Check your current quota and verify the limits
+applied and storage in use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc describe quota</pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+  <footer class="footer-digital-garage">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3 logo">
+        <a href="https://www.thedigitalgarage.io/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <a href="http://www.thedigitalgarage.io/community/digital-garage-privacy-policy/">
+              Privacy Policy
+            </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/terms-of-service/">
+            Terms of Use
+          </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/">
+            Our Community
+          </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="http://docs.thedigitalgarage.io/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Digital Garage | CLI Reference | CLI by example</title>
+  <link href="/_stylesheets/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="/_stylesheets/docs.css" rel="stylesheet" type="text/css"/>
+  <link href="/_stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <!--
+  <link href="https://raw.githubusercontent.com/thedigitalgarage/origin-web-console/master/extensions/thedigitalgarage/css/main.css" rel="stylesheet" type="text/css">
+  -->
+  <link href="/_images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="/_images/favicon.png" rel="shortcut icon" type="text/css">
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="Digital Garage Documentation" name="application-name">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://assets.openshift.net/content/html5shiv.js" type="text/javascript"></script>
+    <script src="https://assets.openshift.net/content/respond.js" type="text/javascript"></script>
+    <link href="https://assets.openshift.net/content/vendor/respond-js/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="/_images/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="/_javascripts/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-84210257-3', 'auto');
+    ga('send', 'pageview');
+</script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-docs navbar-digital-garage" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand digital-garage" href="/"></a>
+  </div>
+</div>
+  <div class="container">
+    <p class="toggle-nav visible-xs pull-left">
+      <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <ol class="breadcrumb">
+      <li class="sitename">
+        <a href="../../index.html">Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../welcome/index.html">Digital Garage Discovery</a>
+      </li>
+      <li class="hidden-xs active">
+        <a href="../cli_reference/index.html">CLI Reference</a>
+      </li>
+      
+      <li class="hidden-xs active">
+        CLI by example
+      </li>
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <div class="row-fluid">
+          
+<script>
+  (function() {
+    var cx = '013769182564158614814:e-dp46b51vk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+
+        </div>
+        <ul class="nav nav-sidebar">
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>About
+      </a>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../welcome/index.html">Welcome</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>Getting Started
+      </a>
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+            <li><a class="" href="../getting_started/index.html">Overview</a></li>
+            <li><a class="" href="../getting_started/basic_walkthrough.html">Basic Walkthrough</a></li>
+            <li><a class="" href="../getting_started/beyond_the_basics.html">Beyond the Basics</a></li>
+            <li><a class="" href="../getting_started/developers_console.html">Web Console Walkthrough</a></li>
+            <li><a class="" href="../getting_started/developers_cli.html">Command-Line Walkthrough</a></li>
+            <li><a class="" href="../getting_started/devpreview_faq.html">Developer Preview FAQ</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Architecture
+      </a>
+      <ul id="topicGroup2" class="collapse  list-unstyled">
+            <li><a class="" href="../architecture/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
+                <span id="sgSpan-2-1" class="fa fa-caret-right"></span>&nbsp;Core Concepts
+              </a>
+              <ul id="topicSubGroup-2-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/core_concepts/index.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Containers and Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/containers_and_images.html">Images</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/pods_and_services.html">Pods and Services</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/projects_and_users.html">Projects and Users</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/builds_and_image_streams.html">Builds and Image Streams</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/deployments.html">Deployments</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/routes.html">Routes</a></li>
+
+                  <li><a class="" href="../architecture/core_concepts/templates.html">Templates</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
+              </a>
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../architecture/additional_concepts/overview.html">Overview</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/networking.html">Networking</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/remote_commands.html">Remote Commands</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
+
+                  <li><a class="" href="../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
+        <span id="tgSpan3" class="fa fa-angle-down"></span>CLI Reference
+      </a>
+      <ul id="topicGroup3" class="collapse in list-unstyled">
+            <li><a class="" href="../cli_reference/index.html">Overview</a></li>
+            <li><a class=" active" href="../cli_reference/cli_by_example_content.html">CLI by example</a></li>
+            <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
+        <span id="tgSpan4" class="fa fa-angle-right"></span>Developer Guide
+      </a>
+      <ul id="topicGroup4" class="collapse  list-unstyled">
+            <li><a class="" href="../dev_guide/index.html">Overview</a></li>
+            <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
+            <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
+            <li><a class="" href="../dev_guide/projects.html">Projects</a></li>
+            <li><a class="" href="../dev_guide/new_app.html">Creating New Applications</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-5">
+                <span id="sgSpan-4-5" class="fa fa-caret-right"></span>&nbsp;Migrating Applications
+              </a>
+              <ul id="topicSubGroup-4-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/migrating_applications/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/database_applications.html">Database Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_framework_applications.html">Web Framework Applications</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/quickstart_examples.html">QuickStart Examples</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/continuous_integration_and_deployment.html">Continuous Integration and Deployment</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/web_hooks_action_hooks.html">Webhooks and Action Hooks</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/S2I_tool.html">S2I Tool</a></li>
+
+                  <li><a class="" href="../dev_guide/migrating_applications/support_guide.html">Support Guide</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-4-6">
+                <span id="sgSpan-4-6" class="fa fa-caret-right"></span>&nbsp;Application Tutorials
+              </a>
+              <ul id="topicSubGroup-4-6" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../dev_guide/app_tutorials/index.html">Overview</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/quickstarts.html">Quickstart Templates</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/ruby_on_rails.html">Ruby on Rails</a></li>
+
+                  <li><a class="" href="../dev_guide/app_tutorials/maven_tutorial.html">Setting Up a Nexus Mirror</a></li>
+              </ul>
+            </li>
+            <li><a class="" href="../dev_guide/ssh_environment.html">Opening a Remote Shell to Containers</a></li>
+            <li><a class="" href="../dev_guide/templates.html">Templates</a></li>
+            <li><a class="" href="../dev_guide/service_accounts.html">Service Accounts</a></li>
+            <li><a class="" href="../dev_guide/builds.html">Builds</a></li>
+            <li><a class="" href="../dev_guide/managing_images.html">Managing Images</a></li>
+            <li><a class="" href="../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
+            <li><a class="" href="../dev_guide/deployments.html">Deployments</a></li>
+            <li><a class="" href="../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
+            <li><a class="" href="../dev_guide/routes.html">Routes</a></li>
+            <li><a class="" href="../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
+            <li><a class="" href="../dev_guide/secrets.html">Secrets</a></li>
+            <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
+            <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
+            <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
+            <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
+            <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
+            <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
+            <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
+            <li><a class="" href="../dev_guide/events.html">Events</a></li>
+            <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
+            <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
+            <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup5">
+        <span id="tgSpan5" class="fa fa-angle-right"></span>Creating Images
+      </a>
+      <ul id="topicGroup5" class="collapse  list-unstyled">
+            <li><a class="" href="../creating_images/index.html">Overview</a></li>
+            <li><a class="" href="../creating_images/guidelines.html">Guidelines</a></li>
+            <li><a class="" href="../creating_images/metadata.html">Image Metadata</a></li>
+            <li><a class="" href="../creating_images/s2i.html">S2I Requirements</a></li>
+            <li><a class="" href="../creating_images/s2i_testing.html">Testing S2I Images</a></li>
+            <li><a class="" href="../creating_images/custom.html">Custom Builder</a></li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
+        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+      </a>
+      <ul id="topicGroup6" class="collapse  list-unstyled">
+            <li><a class="" href="../using_images/index.html">Overview</a></li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
+                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+              </a>
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/php.html">PHP</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/python.html">Python</a></li>
+
+                  <li><a class="" href="../using_images/s2i_images/java.html">Java</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-2">
+                <span id="sgSpan-6-2" class="fa fa-caret-right"></span>&nbsp;Database Images
+              </a>
+              <ul id="topicSubGroup-6-2" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/db_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mysql.html">MySQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/postgresql.html">PostgreSQL</a></li>
+
+                  <li><a class="" href="../using_images/db_images/mongodb.html">MongoDB</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-3">
+                <span id="sgSpan-6-3" class="fa fa-caret-right"></span>&nbsp;Docker Images
+              </a>
+              <ul id="topicSubGroup-6-3" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/docker_images/index.html">Overview</a></li>
+              </ul>
+            </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-4">
+                <span id="sgSpan-6-4" class="fa fa-caret-right"></span>&nbsp;Other Images
+              </a>
+              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
+
+                  <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+              </ul>
+            </li>
+      </ul>
+    </li>
+    <li class="nav-header">
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup7">
+        <span id="tgSpan7" class="fa fa-angle-right"></span>REST API Reference
+      </a>
+      <ul id="topicGroup7" class="collapse  list-unstyled">
+            <li><a class="" href="../rest_api/index.html">Overview</a></li>
+            <li><a class="" href="../rest_api/openshift_v1.html">OpenShift v1</a></li>
+            <li><a class="" href="../rest_api/kubernetes_v1.html">Kubernetes v1</a></li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h2>An introduction to the concepts and types in OpenShift</h2>
+        </div>
+        <div class="sect1">
+<h2 id="cli-reference-cli-by-example-content"><a class="anchor" href="#cli-reference-cli-by-example-content"></a>An introduction to the concepts and types in OpenShift</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // View all projects you have access to
+  $ oc projects
+
+  // See a list of all services in the current project
+  $ oc get svc
+
+  // Describe a deployment configuration in detail
+  $ oc describe dc mydeploymentconfig
+
+  // Show the images tagged into an image stream
+  $ oc describe is ruby-centos7</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="log-in-to-an-openshift-server"><a class="anchor" href="#log-in-to-an-openshift-server"></a>Log in to an OpenShift server</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Log in interactively
+  $ oc login
+
+  // Log in to the given server with the given certificate authority file
+  $ oc login localhost:8443 --certificate-authority=/path/to/cert.crt
+
+  // Log in to the given server with the given credentials (will not prompt interactively)
+  $ oc login localhost:8443 --username=myuser --password=mypass</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="request-a-new-project"><a class="anchor" href="#request-a-new-project"></a>Request a new project</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Create a new project with minimal information
+  $ oc new-project web-team-dev
+
+  // Create a new project with a display name and description
+  $ oc new-project web-team-dev --display-name="Web Team Development" --description="Development project for the web team."</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-a-new-application"><a class="anchor" href="#create-a-new-application"></a>Create a new application</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Create an application based on the source code in the current git repository (with a public remote) and a Docker image
+  $ oc new-app . --docker-image=repo/langimage
+
+  // Create a Ruby application based on the provided [image]~[source code] combination
+  $ oc new-app openshift/ruby-20-centos7~https://github.com/openshift/ruby-hello-world.git
+
+  // Use the public Docker Hub MySQL image to create an app. Generated artifacts will be labeled with db=mysql
+  $ oc new-app mysql -l db=mysql
+
+  // Use a MySQL image in a private registry to create an app and override application artifacts' names
+  $ oc new-app --docker-image=myregistry.com/mycompany/mysql --name=private
+
+  // Create an application from a remote repository using its beta4 branch
+  $ oc new-app https://github.com/openshift/ruby-hello-world#beta4
+
+  // Create an application based on a stored template, explicitly setting a parameter value
+  $ oc new-app --template=ruby-helloworld-sample --param=MYSQL_USER=admin
+
+  // Create an application from a remote repository and specify a context directory
+  $ oc new-app https://github.com/youruser/yourgitrepo --context-dir=src/build
+
+  // Create an application based on a template file, explicitly setting a parameter value
+  $ oc new-app --file=./example/myapp/template.json --param=MYSQL_USER=admin</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="show-an-overview-of-the-current-project"><a class="anchor" href="#show-an-overview-of-the-current-project"></a>Show an overview of the current project</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Show an overview of the current project
+  $ oc status</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="switch-to-another-project"><a class="anchor" href="#switch-to-another-project"></a>Switch to another project</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Switch to 'myapp' project
+  $ oc project myapp
+
+  // Display the project currently in use
+  $ oc project</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="starts-a-new-build"><a class="anchor" href="#starts-a-new-build"></a>Starts a new build</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Starts build from build config matching the name "golang"
+  $ oc start-build golang
+
+  // Starts build from build matching the name "golang-1"
+  $ oc start-build --from-build=golang-1
+
+  // Starts build from build config matching the name "golang" and watches the logs until the build
+  // completes or fails
+  $ oc start-build golang --follow</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="show-container-logs-from-the-build-container"><a class="anchor" href="#show-container-logs-from-the-build-container"></a>Show container logs from the build container</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Stream logs from the latest build for build config "golang" to stdout
+  $ oc logs -f bc/golang
+  // Stream logs from the first build for build config "golang" to stdout
+  $ oc logs -f --version=1 bc/golang
+  // Stream logs from build "golang-1" to stdout
+  $ oc logs -f build/golang-1</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="view-start-cancel-or-retry-deployments"><a class="anchor" href="#view-start-cancel-or-retry-deployments"></a>View, start, cancel, or retry deployments</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Display the latest deployment for the 'database' DeploymentConfig
+  $ oc deploy database
+
+  // Start a new deployment based on the 'database' DeploymentConfig
+  $ oc deploy database --latest
+
+  // Retry the latest failed deployment based on the 'frontend' DeploymentConfig
+  // The deployer pod and any hook pods are deleted for the latest failed deployment
+  $ oc deploy frontend --retry
+
+  // Cancel the in-progress deployment based on the 'frontend' DeploymentConfig
+  $ oc deploy frontend --cancel</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="show-logs-from-the-deployment-process"><a class="anchor" href="#show-logs-from-the-deployment-process"></a>Show logs from the deployment process</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Stream logs from the latest deployment for deployment config "frontend" to stdout
+  // Note that if the deployment process is successful, there will be no logs to show
+  $ oc logs -f dc/frontend
+  // Return the logs from the first deployment for deployment config "database" to stdout
+  // Note that if the deployment process was successful, there will be no logs to show
+  $ oc logs --version=1 dc/database</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="revert-part-of-an-application-back-to-a-previous-deployment"><a class="anchor" href="#revert-part-of-an-application-back-to-a-previous-deployment"></a>Revert part of an application back to a previous deployment</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Perform a rollback
+  $ oc rollback deployment-1
+
+  // See what the rollback will look like, but don't perform the rollback
+  $ oc rollback deployment-1 --dry-run
+
+  // Perform the rollback manually by piping the JSON of the new config back to oc
+  $ oc rollback deployment-1 --output=json | oc update deploymentConfigs deployment -f -</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-a-new-build-configuration"><a class="anchor" href="#create-a-new-build-configuration"></a>Create a new build configuration</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Create a build config based on the source code in the current git repository (with a public remote) and a Docker image
+  $ oc new-build . --docker-image=repo/langimage
+
+  // Create a NodeJS build config based on the provided [image]~[source code] combination
+  $ oc new-build openshift/nodejs-010-centos7~https://bitbucket.com/user/nodejs-app
+
+  // Create a build config from a remote repository using its beta2 branch
+  $ oc new-build https://github.com/openshift/ruby-hello-world#beta2</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cancel-a-pending-or-running-build"><a class="anchor" href="#cancel-a-pending-or-running-build"></a>Cancel a pending or running build</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Cancel the build with the given name
+  $ oc cancel-build 1da32cvq
+
+  // Cancel the named build and print the build logs
+  $ oc cancel-build 1da32cvq --dump-logs
+
+  // Cancel the named build and create a new one with the same parameters
+  $ oc cancel-build 1da32cvq --restart</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="imports-images-from-a-docker-registry"><a class="anchor" href="#imports-images-from-a-docker-registry"></a>Imports images from a Docker registry</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  $ oc import-image mystream</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="change-the-number-of-pods-in-a-deployment"><a class="anchor" href="#change-the-number-of-pods-in-a-deployment"></a>Change the number of pods in a deployment</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Scale replication controller named 'foo' to 3.
+  $ oc scale --replicas=3 replicationcontrollers foo
+
+  // If the replication controller named foo's current size is 2, scale foo to 3.
+  $ oc scale --current-replicas=2 --replicas=3 replicationcontrollers foo</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tag-existing-images-into-image-streams"><a class="anchor" href="#tag-existing-images-into-image-streams"></a>Tag existing images into image streams</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Tag the current image for the image stream 'openshift/ruby' and tag '2.0' into the image stream 'yourproject/ruby with tag 'tip'.
+  $ oc tag openshift/ruby:2.0 yourproject/ruby:tip
+
+  // Tag a specific image.
+  $ oc tag openshift/ruby@sha256:6b646fa6bf5e5e4c7fa41056c27910e679c03ebe7f93e361e6515a9da7e258cc yourproject/ruby:tip
+
+  // Tag an external Docker image.
+  $ oc tag --source=docker openshift/origin:latest yourproject/ruby:tip
+
+  // Remove the specified spec tag from an image stream.
+  $ openshift cli tag openshift/origin:latest -d</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="display-one-or-many-resources"><a class="anchor" href="#display-one-or-many-resources"></a>Display one or many resources</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // List all pods in ps output format.
+  $ oc get pods
+
+  // List a single replication controller with specified ID in ps output format.
+  $ oc get replicationController 1234-56-7890-234234-456456
+
+  // List a single pod in JSON output format.
+  $ oc get -o json pod 1234-56-7890-234234-456456
+
+  // Return only the status value of the specified pod.
+  $ oc get -o template pod 1234-56-7890-234234-456456 --template={{.currentState.status}}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="show-details-of-a-specific-resource"><a class="anchor" href="#show-details-of-a-specific-resource"></a>Show details of a specific resource</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Provide details about the ruby-20-centos7 image repository
+  $ oc describe imageRepository ruby-20-centos7
+
+  // Provide details about the ruby-sample-build build configuration
+  $ oc describe bc ruby-sample-build</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="edit-a-resource-on-the-server"><a class="anchor" href="#edit-a-resource-on-the-server"></a>Edit a resource on the server</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Edit the service named 'docker-registry':
+  $ oc edit svc/docker-registry
+
+  // Edit the DeploymentConfig named 'my-deployment':
+  $ oc edit dc/my-deployment
+
+  // Use an alternative editor
+  $ OC_EDITOR="nano" oc edit dc/my-deployment
+
+  // Edit the service 'docker-registry' in JSON using the v1beta3 API format:
+  $ oc edit svc/docker-registry --output-version=v1beta3 -o json</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="update-the-environment-on-a-resource-with-a-pod-template"><a class="anchor" href="#update-the-environment-on-a-resource-with-a-pod-template"></a>Update the environment on a resource with a pod template</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Update deployment 'registry' with a new environment variable
+  $ oc env dc/registry STORAGE_DIR=/local
+
+  // List the environment variables defined on a deployment 'registry'
+  $ oc env dc/registry --list
+
+  // List the environment variables defined on all pods
+  $ oc env pods --all --list
+
+  // Output a YAML object with updated environment for deployment 'registry'
+  // Does not alter the object on the server
+  $ oc env dc/registry STORAGE_DIR=/local -o yaml
+
+  // Update all replication controllers in the project to have ENV=prod
+  $ oc env replicationControllers --all ENV=prod
+
+  // Remove the environment variable ENV from all deployment configs
+  $ oc env deploymentConfigs --all ENV-
+
+  // Remove the environment variable ENV from a pod definition on disk and update the pod on the server
+  $ oc env -f pod.json ENV-
+
+  // Set some of the local shell environment into a deployment on the server
+  $ env | grep RAILS_ | oc env -e - dc/registry</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="update-volume-on-a-resource-with-a-pod-template"><a class="anchor" href="#update-volume-on-a-resource-with-a-pod-template"></a>Update volume on a resource with a pod template</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Add new volume of type 'emptyDir' for deployment config 'registry' and mount under /opt inside the containers
+  // The volume name is auto generated
+  $ oc volume dc/registry --add --mount-path=/opt
+
+  // Add new volume 'v1' with secret 'magic' for pod 'p1'
+  $ oc volume pod/p1 --add --name=v1 -m /etc --type=secret --secret-name=magic
+
+  // Add new volume to pod 'p1' based on gitRepo (or other volume sources not supported by --type)
+  $ oc volume pod/p1 --add -m /repo --source=&lt;json-string&gt;
+
+  // Add emptyDir volume 'v1' to a pod definition on disk and update the pod on the server
+  $ oc volume -f pod.json --add --name=v1
+
+  // Create a new persistent volume and overwrite existing volume 'v1' for replication controller 'r1'
+  $ oc volume rc/r1 --add --name=v1 -t persistentVolumeClaim --claim-name=pvc1 --overwrite
+
+  // Change pod 'p1' mount point to /data for volume v1
+  $ oc volume pod p1 --add --name=v1 -m /data --overwrite
+
+  // Remove all volumes for pod 'p1'
+  $ oc volume pod/p1 --remove --confirm
+
+  // Remove volume 'v1' from deployment config 'registry'
+  $ oc volume dc/registry --remove --name=v1
+
+  // Unmount volume v1 from container c1 on pod p1 and remove the volume v1 if it is not referenced by any containers on pod p1
+  $ oc volume pod/p1 --remove --name=v1 --containers=c1
+
+  // List volumes defined on replication controller 'r1'
+  $ oc volume rc r1 --list
+
+  // List volumes defined on all pods
+  $ oc volume pods --all --list
+
+  // Output json object with volume info for pod 'p1' but don't alter the object on server
+  $ oc volume pod/p1 --add --name=v1 --mount=/opt -o json</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="update-the-labels-on-a-resource"><a class="anchor" href="#update-the-labels-on-a-resource"></a>Update the labels on a resource</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Update pod 'foo' with the label 'unhealthy' and the value 'true'.
+  $ oc label pods foo unhealthy=true
+
+  // Update pod 'foo' with the label 'status' and the value 'unhealthy', overwriting any existing value.
+  $ oc label --overwrite pods foo status=unhealthy
+
+  // Update all pods in the namespace
+  $ oc label pods --all status=unhealthy
+
+  // Update pod 'foo' only if the resource is unchanged from version 1.
+  $ oc label pods foo status=unhealthy --resource-version=1
+
+  // Update pod 'foo' by removing a label named 'bar' if it exists.
+  // Does not require the --overwrite flag.
+  $ oc label pods foo bar-</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="expose-a-replicated-application-as-a-service-or-route"><a class="anchor" href="#expose-a-replicated-application-as-a-service-or-route"></a>Expose a replicated application as a service or route</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Create a route based on service nginx. The new route will re-use nginx's labels
+  $ oc expose svc/nginx
+
+  // Create a route and specify your own label and route name
+  $ oc expose svc/nginx -l name=myroute --name=fromdowntown
+
+  // Create a route and specify a hostname
+  $ oc expose svc/nginx --hostname=www.example.com
+
+  // Expose a deployment configuration as a service and use the specified port
+  $ oc expose dc/ruby-hello-world --port=8080</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="autoscale-an-application"><a class="anchor" href="#autoscale-an-application"></a>Autoscale an application</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Auto scale a deployment config "foo", with the number of pods between 2 to 10, target CPU utilization at a default value that server applies
+  $ oc autoscale dc/foo --min=2 --max=10
+
+  // Auto scale a replication controller "foo", with the number of pods between 1 to 5, target CPU utilization at 80%
+  $ oc autoscale rc/foo --max=5 --cpu-percent=80</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="securely-expose-containers-via-a-route"><a class="anchor" href="#securely-expose-containers-via-a-route"></a>Securely expose containers via a route</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Create a secure edge-terminated route using the specified
+  // certificates/keys and hostname.  If the certificates/keys
+  // are not specified, those from the router will be re-used.
+  $ oc create route edge --service=frontend \
+      --cert=${MASTER_CONFIG_DIR}/ca.crt \
+      --key=${MASTER_CONFIG_DIR}/ca.key \
+      --ca-cert=${MASTER_CONFIG_DIR}/ca.crt \
+      --hostname=www.example.com
+
+  // Create a secure passthrough terminated route.
+  $ oc create route passthrough --service=registry
+
+  // Create a secure reencrypt-terminated route in
+  // a similar fashion to edge.  The only additional
+  // requirement is to specify a destination CA certificate.
+  $ oc create route reencrypt --service=backend --dest-ca-cert=ca.crt</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="delete-a-resource-by-filename-stdin-resource-and-id-or-by-resources-and-label-selector"><a class="anchor" href="#delete-a-resource-by-filename-stdin-resource-and-id-or-by-resources-and-label-selector"></a>Delete a resource by filename, stdin, resource and ID, or by resources and label selector.</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Delete a pod using the type and ID specified in pod.json.
+  $ oc delete -f pod.json
+
+  // Delete a pod based on the type and ID in the JSON passed into stdin.
+  $ cat pod.json | oc delete -f -
+
+  // Delete pods and services with label name=myLabel.
+  $ oc delete pods,services -l name=myLabel
+
+  // Delete a pod with ID 1234-56-7890-234234-456456.
+  $ oc delete pod 1234-56-7890-234234-456456
+
+  // Delete all pods
+  $ oc delete pods --all</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="print-the-logs-for-a-container-in-a-pod"><a class="anchor" href="#print-the-logs-for-a-container-in-a-pod"></a>Print the logs for a container in a pod.</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Returns snapshot of ruby-container logs from pod backend.
+  $ oc logs backend -c ruby-container
+
+  // Starts streaming of ruby-container logs from pod backend.
+  // Both NAME and TYPE/NAME syntax are supported for pods.
+  $ oc logs -f pod/backend -c ruby-container</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="execute-a-command-in-a-container"><a class="anchor" href="#execute-a-command-in-a-container"></a>Execute a command in a container.</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Get output from running 'date' in ruby-container from pod 123456-7890
+  $ oc exec -p 123456-7890 -c ruby-container date
+
+  // Switch to raw terminal mode, sends stdin to 'bash' in ruby-container from pod 123456-780 and sends stdout/stderr from 'bash' back to the client
+  $ oc exec -p 123456-7890 -c ruby-container -i -t -- bash -il</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="open-a-remote-shell-session-to-a-container-it-will-default-to-the-first-container-if-none-is-specified"><a class="anchor" href="#open-a-remote-shell-session-to-a-container-it-will-default-to-the-first-container-if-none-is-specified"></a>Open a remote shell session to a container. It will default to the first container if none is specified.</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Open a shell session on the first container in pod 123456-7890
+  $ oc rsh 123456-7890
+
+  // Run the command 'cat /etc/resolv.conf' inside pod 123456-7890
+  $ oc rsh 123456-7890 cat /etc/resolv.conf</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="forward-one-or-more-local-ports-to-a-pod"><a class="anchor" href="#forward-one-or-more-local-ports-to-a-pod"></a>Forward one or more local ports to a pod.</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Listens on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in the pod
+  $ oc port-forward -p mypod 5000 6000
+
+  // Listens on port 8888 locally, forwarding to 5000 in the pod
+  $ oc port-forward -p mypod 8888:5000
+
+  // Listens on a random port locally, forwarding to 5000 in the pod
+  $ oc port-forward -p mypod :5000
+
+  // Listens on a random port locally, forwarding to 5000 in the pod
+  $ oc port-forward -p mypod 0:5000</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run-a-proxy-to-the-kubernetes-api-server"><a class="anchor" href="#run-a-proxy-to-the-kubernetes-api-server"></a>Run a proxy to the Kubernetes API server</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Run a proxy to Kubernetes apiserver on port 8011, serving static content from ./local/www/
+  $ oc proxy --port=8011 --www=./local/www/
+
+  // Run a proxy to Kubernetes apiserver, changing the api prefix to k8s-api
+  // This makes e.g. the pods api available at localhost:8011/k8s-api/v1beta3/pods/
+  $ oc proxy --api-prefix=k8s-api</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-a-resource-by-filename-or-stdin"><a class="anchor" href="#create-a-resource-by-filename-or-stdin"></a>Create a resource by filename or stdin</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Create a pod using the data in pod.json.
+  $ oc create -f pod.json
+
+  // Create a pod based on the JSON passed into stdin.
+  $ cat pod.json | oc create -f -</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="update-a-resource-by-filename-or-stdin"><a class="anchor" href="#update-a-resource-by-filename-or-stdin"></a>Update a resource by filename or stdin.</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Update a pod using the data in pod.json.
+  $ oc update -f pod.json
+
+  // Update a pod based on the JSON passed into stdin.
+  $ cat pod.json | oc update -f -</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="process-a-template-into-list-of-resources"><a class="anchor" href="#process-a-template-into-list-of-resources"></a>Process a template into list of resources</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Convert template.json file into resource list
+  $ oc process -f template.json
+
+  // Process template while passing a user-defined label
+  $ oc process -f template.json -l name=mytemplate
+
+  // Convert stored template into resource list
+  $ oc process foo
+
+  // Convert template.json into resource list
+  $ cat template.json | oc process -f -
+
+  // Combine multiple templates into single resource list
+  $ cat template.json second_template.json | oc process -f -</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="export-resources-so-they-can-be-used-elsewhere"><a class="anchor" href="#export-resources-so-they-can-be-used-elsewhere"></a>Export resources so they can be used elsewhere</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // export the services and deployment configurations labeled name=test
+  oc export svc,dc -l name=test
+
+  // export all services to a template
+  oc export service --as-template=test
+
+  // export to JSON
+  oc export service -o json
+
+  // convert a file on disk to the latest API version (in YAML, the default)
+  oc export -f a_v1beta3_service.json --output-version=v1 --exact</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-a-new-secret-based-on-a-key-file-or-on-files-within-a-directory"><a class="anchor" href="#create-a-new-secret-based-on-a-key-file-or-on-files-within-a-directory"></a>Create a new secret based on a key file or on files within a directory</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Create a new secret named my-secret with a key named ssh-privatekey
+  $ oc secrets new my-secret ~/.ssh/ssh-privatekey
+
+  // Create a new secret named my-secret with keys named ssh-privatekey and ssh-publickey instead of the names of the keys on disk
+  $ oc secrets new my-secret ssh-privatekey=~/.ssh/id_rsa ssh-publickey=~/.ssh/id_rsa.pub
+
+  // Create a new secret named my-secret with keys for each file in the folder "bar"
+  $ oc secrets new my-secret path/to/bar</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="end-the-current-server-session"><a class="anchor" href="#end-the-current-server-session"></a>End the current server session</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Logout
+  $ oc logout</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="display-merged-kubeconfig-settings-or-a-specified-kubeconfig-file"><a class="anchor" href="#display-merged-kubeconfig-settings-or-a-specified-kubeconfig-file"></a>Display merged kubeconfig settings or a specified kubeconfig file.</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Show Merged kubeconfig settings.
+  $ oc config view
+
+  // Show only local kubeconfig settings
+  $ oc config view --local
+
+  // Get the password for the e2e user
+  $ oc config view -o template --template='{{range .users}}{{ if eq .name "e2e" }}{{ index .user.password }}{{end}}{{end}}'</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="set-a-cluster-entry-in-kubeconfig"><a class="anchor" href="#set-a-cluster-entry-in-kubeconfig"></a>Set a cluster entry in kubeconfig</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Set only the server field on the e2e cluster entry without touching other values.
+  $ oc config set-cluster e2e --server=https://1.2.3.4
+
+  // Embed certificate authority data for the e2e cluster entry
+  $ oc config set-cluster e2e --certificate-authority=~/.kube/e2e/kubernetes.ca.crt
+
+  // Disable cert checking for the dev cluster entry
+  $ oc config set-cluster e2e --insecure-skip-tls-verify=true</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="set-a-user-entry-in-kubeconfig"><a class="anchor" href="#set-a-user-entry-in-kubeconfig"></a>Set a user entry in kubeconfig</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Set only the "client-key" field on the "cluster-admin"
+  // entry, without touching other values:
+  $ oc config set-credentials cluster-admin --client-key=~/.kube/admin.key
+
+  // Set basic auth for the "cluster-admin" entry
+  $ oc config set-credentials cluster-admin --username=admin --password=uXFGweU9l35qcif
+
+  // Embed client certificate data in the "cluster-admin" entry
+  $ oc config set-credentials cluster-admin --client-certificate=~/.kube/admin.crt --embed-certs=true</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="set-a-context-entry-in-kubeconfig"><a class="anchor" href="#set-a-context-entry-in-kubeconfig"></a>Set a context entry in kubeconfig</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Set the user field on the gce context entry without touching other values
+  $ oc config set-context gce --user=cluster-admin</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="change-configuration-files-for-the-client"><a class="anchor" href="#change-configuration-files-for-the-client"></a>Change configuration files for the client</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">  // Change the config context to use
+  oc config use-context my-context
+
+  // Set the value of a config preference
+  oc config set preferences.some true</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
+        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+        }
+      });
+      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
+        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+      });
+    });
+    /*]]>*/
+  </script>
+  <footer class="footer-digital-garage">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3 logo">
+        <a href="https://www.thedigitalgarage.io/"></a>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-6 text-center">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <a href="http://www.thedigitalgarage.io/community/digital-garage-privacy-policy/">
+              Privacy Policy
+            </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/terms-of-service/">
+            Terms of Use
+          </a>
+          </div>
+          <div class="col-xs-12 col-md-4">
+          <a href="http://www.thedigitalgarage.io/community/">
+            Our Community
+          </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+        <a id="built_with_asciibinder" href="http://asciibinder.org/">
+          <img src="http://docs.thedigitalgarage.io/_images/asciibinder_web_logo.svg" alt="AsciiBinder" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
