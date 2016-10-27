@@ -16,7 +16,7 @@ xref:../architecture/core_concepts/builds_and_image_streams.adoc#source-build[So
 source code as an input and produce a new image that runs the assembled
 application as output.
 
-The main advantage of using S2I for building reproducible Docker images is the
+The main advantage of using S2I for building reproducible container images is the
 ease of use for developers. As a builder image author, you must understand two
 basic concepts in order for your images to provide the best possible S2I performance:
 xref:build-process[the build process] and xref:s2i-scripts[S2I scripts].
@@ -25,7 +25,7 @@ xref:build-process[the build process] and xref:s2i-scripts[S2I scripts].
 
 == Build Process
 The build process consists of the following three fundamental elements, which
-are combined into a final Docker image:
+are combined into a final container image:
 
 - sources
 - S2I scripts
@@ -43,7 +43,7 @@ For this process to happen, your image must supply the *tar* archiving
 utility (the `tar` command available in `*$PATH*`) and the command line
 interpreter (the `/bin/sh` command); this allows your image to use the fastest
 possible build path. If the `tar` or `/bin/sh` command is not available, the
-`s2i build` process is forced to automatically perform an additional Docker build
+`s2i build` process is forced to automatically perform an additional container build
 to put both the sources and the scripts inside the image, and only then run the
 usual `s2i build` procedure.
 
@@ -52,7 +52,7 @@ See the following diagram for the basic S2I build workflow:
 .Build Workflow
 image::s2i-flow.png[S2I workflow]
 
-* Run build's responsibility is to untar the sources, scripts and artifacts (if such exist) and invoke the `assemble` script. If this is the second run (after catching `tar`/`/bin/sh` not found error) it is responsible only for invoking `assemble` script, since both scripts and sources are already there.
+* Run build's responsibility is to untar the sources, scripts and artifacts (if such exist) and invoke the `assemble` script. If this is the second run (after catching `tar` or `/bin/sh` not found error) it is responsible only for invoking `assemble` script, since both scripts and sources are already there.
 
 
 [[s2i-scripts]]
@@ -70,8 +70,8 @@ each build in the following order:
 Both the `io.openshift.s2i.scripts-url` label specified in the image and the `--scripts-url` flag
 can take one of the following form:
 
-- `image://path_to_scripts_dir` - absolute path inside the image to a directory where the S2I scripts are located
-- `$$file://path_to_scripts_dir$$` - relative or absolute path to a directory on the host where the S2I scripts are located
+- `image:///path_to_scripts_dir` - absolute path inside the image to a directory where the S2I scripts are located
+- `$$file:///path_to_scripts_dir$$` - relative or absolute path to a directory on the host where the S2I scripts are located
 - `http(s)://path_to_scripts_dir` - URL to a directory where the S2I scripts are located
 
 NOTE: In case where the scripts are already placed inside the image (using `--scripts-url`
@@ -219,10 +219,10 @@ for more information on `ONBUILD`.
 
 Upon startup, S2I detects whether the builder image contains `sh` and `tar` binaries
 which are necessary for the S2I process to inject build inputs.  If the builder image
-does not contain these prerequisites, it will attempt to instead perform a Docker build
+does not contain these prerequisites, it will attempt to instead perform a container build
 to layer the inputs.  If the builder image includes `ONBUILD` instructions, S2I
 will instead fail the build because the `ONBUILD` instructions would be executed
-during the layering process, and that equate to performing a generic docker
+during the layering process, and that equate to performing a generic container
 build which is less secure than an S2I build and requires explicit permissions.
 
 Therefore you should ensure that your S2I builder image either does not contain

@@ -232,6 +232,7 @@ Per image, the following must hold true if specified:
 |`image.dockerimagemetadata.size` less than or equal to `Max[resource]`
 |===
 
+ifdef::openshift-enterprise,openshift-origin[]
 [NOTE]
 ====
 To prevent blobs exceeding the limit from being uploaded to the registry, the
@@ -242,6 +243,7 @@ deployment configuration, refer to
 xref:../install_config/upgrading/manual_upgrades.adoc#enforcing-quota-in-the-registry[Enforcing
 quota in the Registry].
 ====
+endif::[]
 
 [WARNING]
 ====
@@ -302,7 +304,7 @@ references]. Possible references are an `*ImageStreamTag*`, an
 xref:../dev_guide/managing_images.adoc#adding-tag[tag tracking]. No distinction
 is made between internal and external references. However, each unique reference
 tagged in the image stream's specification is counted just once. It does not
-restrict pushes to an internal Docker registry in any way, but is useful for tag
+restrict pushes to an internal container registry in any way, but is useful for tag
 restriction.
 
 Resource `openshift.io/images` represents unique image names recorded in image
