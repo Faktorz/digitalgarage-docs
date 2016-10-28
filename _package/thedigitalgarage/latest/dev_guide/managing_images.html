@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -384,7 +385,7 @@
 <p>An
 <a href="../architecture/core_concepts/builds_and_image_streams.html#image-streams">image
 stream</a> comprises any number of
-<a href="../architecture/core_concepts/containers_and_images.html#docker-images">Docker
+<a href="../architecture/core_concepts/containers_and_images.html#docker-images">container
 images</a> identified by tags. It presents a single virtual view of related images,
 similar to a Docker image repository.</p>
 </div>
@@ -409,7 +410,7 @@ deployments to behave. The following sections cover a range of these topics.</p>
 to first understand image tags in the context of Docker generally.</p>
 </div>
 <div class="paragraph">
-<p>Docker images can have names added to them that make it more intuitive what they
+<p>Container images can have names added to them that make it more intuitive what they
 contain, called a <em>tag</em>. Using a tag to specify the version of what is contained
 in the image is a common use case. If you have an image named <strong>ruby</strong>, you could
 have a tag named <strong>2.0</strong> for 2.0 version of Ruby, and another named <strong>latest</strong> to
@@ -457,7 +458,7 @@ using the <code>docker</code> CLI.</p>
 <h3 id="adding-tag"><a class="anchor" href="#adding-tag"></a>Adding Tags to Image Streams</h3>
 <div class="paragraph">
 <p>Keeping in mind that an image stream in Digital Garage comprises zero or more
-Docker images identified by tags, you can add tags to an image stream using the
+container images identified by tags, you can add tags to an image stream using the
 <code>oc tag</code> command:</p>
 </div>
 <div class="listingblock">
@@ -749,7 +750,7 @@ metadata:
 <h2 id="image-pull-policy"><a class="anchor" href="#image-pull-policy"></a>Image Pull Policy</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Each container in a pod has a Docker image. Once you have created an image and
+<p>Each container in a pod has a container image. Once you have created an image and
 pushed it to a registry, you can then refer to it in the pod.</p>
 </div>
 <div class="paragraph">
@@ -922,7 +923,7 @@ clients) is a Docker credentials file that stores your information if you have
 previously logged into a secured or insecure registry.</p>
 </div>
 <div class="paragraph">
-<p>To pull a secured Docker image that is not from Digital Garage&#8217;s internal
+<p>To pull a secured container image that is not from Digital Garage&#8217;s internal
 registry, you must create a <em>pull secret</em> from your Docker credentials and add
 it to your service account.</p>
 </div>
@@ -1434,5 +1435,13 @@ my-image   172.30.48.125:5000/test/my-image   latest    3 seconds ago</pre>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

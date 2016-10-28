@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -363,15 +364,15 @@
 <p>By allowing you to define a specific builder image responsible for the entire
 build process, Digital Garage&#8217;s
 <a href="../dev_guide/builds.html#custom-strategy-options">Custom build strategy</a> was
-designed to fill a gap created with the increased popularity of creating Docker
+designed to fill a gap created with the increased popularity of creating container
 images. When there is a requirement for a build to still produce individual
 artifacts (packages, JARs, WARs, installable ZIPs, and base images, for
 example), a <em>Custom builder image</em> utilizing the Custom build strategy is the
 perfect match to fill that gap.</p>
 </div>
 <div class="paragraph">
-<p>A Custom builder image is a plain Docker image embedded with build process
-logic, for example for building RPMs or base Docker images. The
+<p>A Custom builder image is a plain container image embedded with build process
+logic, for example for building RPMs or base container images. The
 <code>openshift/origin-custom-docker-builder</code> image is available on the
 <a href="https://registry.hub.docker.com/u/openshift/origin-custom-docker-builder">Docker
 Hub</a> as an example implementation of a Custom builder image.</p>
@@ -554,5 +555,13 @@ defined. Other output locations can be passed with environment variables.</p>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

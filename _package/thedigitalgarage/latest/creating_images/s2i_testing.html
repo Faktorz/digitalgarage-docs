@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -387,11 +388,11 @@ architecture before proceeding.</p>
 <strong><em>assemble</em></strong> and <strong><em>run</em></strong> scripts to be present in order to successfully execute
 the S2I build. Providing the <strong><em>save-artifacts</em></strong> script reuses the build
 artifacts, and providing the <strong><em>usage</em></strong> script ensures that usage information is
-printed to console when someone runs the Docker image outside of the S2I.</p>
+printed to console when someone runs the container image outside of the S2I.</p>
 </div>
 <div class="paragraph">
 <p>The goal of testing an S2I image is to make sure that all of these described
-commands work properly, even if the base Docker image has changed or the tooling
+commands work properly, even if the base container image has changed or the tooling
 used by the commands was updated.</p>
 </div>
 </div>
@@ -414,7 +415,7 @@ README</a>.</p>
 <div class="paragraph">
 <p>S2I combines the application source code and builder image, so in order to test
 it you need a sample application source to verify that the source successfully
-transforms into a runnable Docker image. The sample application should be simple,
+transforms into a runnable container image. The sample application should be simple,
 but it should exercise the crucial steps of <code>assemble</code> and <code>run</code> scripts.</p>
 </div>
 </div>
@@ -565,7 +566,7 @@ working as expected.</p>
 <div class="paragraph">
 <p>Another way you can execute the S2I image tests is to use the Digital Garage
 platform itself as a continuous integration system. The Digital Garage platform
-is capable of building Docker images and is highly customizable.</p>
+is capable of building container images and is highly customizable.</p>
 </div>
 <div class="paragraph">
 <p>To set up an S2I image builder continuous integration system, define a
@@ -697,5 +698,13 @@ for more information.</p>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

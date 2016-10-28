@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -447,6 +448,7 @@
 </li>
 <li><a href="#using-external-artifacts">Using External Artifacts During a Build</a></li>
 <li><a href="#build-resources">Build Resources</a></li>
+<li><a href="#dev-guide-assigning-builds-to-nodes">Assigning Builds to Specific Nodes</a></li>
 <li><a href="#builds-troubleshooting">Troubleshooting</a></li>
 </ul>
 </div>
@@ -533,7 +535,7 @@ Also, the Binary build source type is unique from the other options in
 <div class="paragraph">
 <p>A build configuration is defined by a <code><strong>BuildConfig</strong></code>, which is a REST object
 that can be used in a POST to the API server to create a new instance. The
-following example <code><strong>BuildConfig</strong></code> results in a new build every time a Docker
+following example <code><strong>BuildConfig</strong></code> results in a new build every time a container
 image tag or the source code changes:</p>
 </div>
 <div class="exampleblock">
@@ -606,12 +608,12 @@ sources at once, refer to the documentation for each source type for details.</t
 <td><i class="conum" data-value="5"></i><b>5</b></td>
 <td>The <code><strong>strategy</strong></code> section describes the build strategy used to execute the
 build. You can specify <code><strong>Source</strong></code>, <code><strong>Docker</strong></code> and <code><strong>Custom</strong></code> strategies here.
-This above example uses the <code><strong>ruby-20-centos7</strong></code> Docker image that
+This above example uses the <code><strong>ruby-20-centos7</strong></code> container image that
 Source-To-Image will use for the application build.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>After the Docker image is successfully built, it will be pushed into the
+<td>After the container image is successfully built, it will be pushed into the
 repository described in the <code><strong>output</strong></code> section.</td>
 </tr>
 <tr>
@@ -930,7 +932,7 @@ process and resulting image: <a href="#environment-files">environment files</a> 
 <p>Source build enables you to set environment values (one per line) inside your
 application, by specifying them in a <strong><em>.s2i/environment</em></strong> file in the source
 repository. The environment variables specified in this file are present during
-the build process and in the final Docker image. The complete list of supported
+the build process and in the final container image. The complete list of supported
 environment variables is available in the
 <a href="../using_images/index.html#using-images-index">documentation</a> for each image.</p>
 </div>
@@ -1142,8 +1144,8 @@ build strategy</a>.</p>
 <div class="sect2">
 <h3 id="expose-docker-socket"><a class="anchor" href="#expose-docker-socket"></a>Exposing the Docker Socket</h3>
 <div class="paragraph">
-<p>In order to allow the running of Docker commands and the building of Docker
-images from inside the Docker container, the build container must be bound to an
+<p>In order to allow the running of Docker commands and the building of container
+images from inside the container, the build container must be bound to an
 accessible socket. To do so, set the <code><strong>exposeDockerSocket</strong></code> option to <strong>true</strong>:</p>
 </div>
 <div class="exampleblock">
@@ -1496,7 +1498,8 @@ the <code><strong>ref</strong></code> to <code>master</code>.</p>
 <div class="paragraph">
 <p>If your Git repository can only be accessed using a proxy, you can define the
 proxy to use in the <code><strong>source</strong></code> section of the <code><strong>BuildConfig</strong></code>. You can configure
-both a HTTP and HTTPS proxy to use. Both fields are optional.</p>
+both a HTTP and HTTPS proxy to use. Both fields are optional.  Domains for which
+no proxying should be performed can also be specified via the <strong>NoProxy</strong> field.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1521,7 +1524,8 @@ both a HTTP and HTTPS proxy to use. Both fields are optional.</p>
   <span style="color:#606">git</span>:
     <span style="color:#606">uri</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://github.com/openshift/ruby-hello-world</span><span style="color:#710">&quot;</span></span>
     <span style="color:#606">httpProxy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">http://proxy.example.com</span></span>
-    <span style="color:#606">httpsProxy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://proxy.example.com</span></span></code></pre>
+    <span style="color:#606">httpsProxy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">https://proxy.example.com</span></span>
+    <span style="color:#606">noProxy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">somedomain.com, otherdomain.com</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -1670,6 +1674,19 @@ in the <code>http</code> or <code>https</code> form.</td>
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>You can also use the <code><strong>oc set build-secret</strong></code> command to set the secret on the
+existing build configuration:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc set build-secret --source bc/sample-build basicsecret</pre>
+</div>
+</div>
+</div>
+</div>
 </li>
 </ol>
 </div>
@@ -1805,6 +1822,19 @@ in the form <code>git@example.com:&lt;username&gt;/&lt;repository&gt;.git</code>
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>You can also use the <code><strong>oc set build-secret</strong></code> command to set the secret on the
+existing build configuration:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc set build-secret --source bc/sample-build sshsecret</pre>
+</div>
+</div>
+</div>
+</div>
 </li>
 </ol>
 </div>
@@ -1907,6 +1937,19 @@ following command:</p>
     uri: "https://github.com/openshift/nodejs-ex.git"
   sourceSecret:
     name: "mysecret"</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use the <code><strong>oc set build-secret</strong></code> command to set the secret on the
+existing build configuration:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc set build-secret --source bc/sample-build mysecret</pre>
 </div>
 </div>
 </div>
@@ -2047,7 +2090,7 @@ executing the build.</p>
 <div class="paragraph">
 <p>Additional files can be provided to the build process via images. Input images
 are referenced in the same way the <code><strong>From</strong></code> and <code><strong>To</strong></code> image targets are
-defined. This means both Docker images and image stream tags can be referenced.
+defined. This means both container images and image stream tags can be referenced.
 In conjunction with the image, you must provide one or more path pairs to
 indicate the path of the files/directories to copy out of the image and the
 destination to place them in the build context.</p>
@@ -2284,9 +2327,9 @@ they will be empty for security reasons.</p>
 <h3 id="using-secrets-docker-strategy"><a class="anchor" href="#using-secrets-docker-strategy"></a>Docker Strategy</h3>
 <div class="paragraph">
 <p>When using a <code>Docker</code> strategy, you can add all defined source secrets into
-your Docker image using the <a href="https://docs.docker.com/engine/reference/builder/#add">ADD</a>
+your container image using the <a href="https://docs.docker.com/engine/reference/builder/#add">ADD</a>
 and <a href="https://docs.docker.com/engine/reference/builder/#copy">COPY instructions</a>
-in your <strong><em>Dockerfile</em></strong>. If you don’t specify the <code>destinationDir</code> for a secret,
+in your <strong><em>Dockerfile</em></strong>. If you do not specify the <code>destinationDir</code> for a secret,
 then the files will be copied into the same directory in which the <strong><em>Dockerfile</em></strong>
 is located. If you specify a relative path as <code>destinationDir</code>, then the secrets
 will be copied into that directory, relative to your <strong><em>Dockerfile</em></strong> location.
@@ -2984,7 +3027,7 @@ trigger on:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This defines the image stream that is tied to a Docker image repository
+<p>This defines the image stream that is tied to a container image repository
 located at <code><em>&lt;system-registry&gt;</em>/<em>&lt;namespace&gt;</em>/ruby-20-centos7</code>. The
 <code><em>&lt;system-registry&gt;</em></code> is defined as a service with the name <code>docker-registry</code>
 running in Digital Garage.</p>
@@ -3097,7 +3140,7 @@ are performed using consistent image tags for ease of reproduction.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Image streams that point to Docker images in
+<p>Image streams that point to container images in
 <a href="http://docs.docker.com/v1.7/reference/api/hub_registry_spec/#docker-registry-1-0">v1
 Docker registries</a> only trigger a build once when the image stream tag becomes
 available and not on subsequent image updates. This is due to the lack of
@@ -3157,7 +3200,7 @@ a registry.</p>
 </div>
 <div class="paragraph">
 <p>The current working directory is set to the image&#8217;s <code><strong>WORKDIR</strong></code>, which is the
-default working directory of the Docker image. For most images, this is where
+default working directory of the container image. For most images, this is where
 the source code is located.</p>
 </div>
 <div class="paragraph">
@@ -3427,9 +3470,22 @@ is <strong>dockerhub</strong>:</p>
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>You can also use the <code><strong>oc set build-secret</strong></code> command to set the push secret on
+the build configuration:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc set build-secret --push bc/sample-build dockerhub</pre>
+</div>
+</div>
+</div>
+</div>
 </li>
 <li>
-<p>Pull the builder Docker image from a private Docker registry by specifying the
+<p>Pull the builder container image from a private Docker registry by specifying the
 <code><strong>pullSecret</strong></code> field, which is part of the build strategy definition:</p>
 <div class="exampleblock">
 <div class="content">
@@ -3443,6 +3499,19 @@ is <strong>dockerhub</strong>:</p>
     <span style="color:#606">pullSecret</span>:
       <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">dockerhub</span><span style="color:#710">&quot;</span></span>
   <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Source</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use the <code><strong>oc set build-secret</strong></code> command to set the pull secret on
+the build configuration:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc set build-secret --pull bc/sample-build dockerhub</pre>
 </div>
 </div>
 </div>
@@ -3585,7 +3654,7 @@ sample-build-3   Source    Git@1aa381b   Running   2 seconds ago    2s</pre>
 <p>Setting the <strong>runPolicy</strong> field to <code><strong>Parallel</strong></code> causes all new builds created from
 the <code><strong>Build</strong></code> configuration to be run in parallel. This can produce
 unpredictable results, as the first created build can complete last, which will
-replace the pushed Docker image produced by the last build which completed
+replace the pushed container image produced by the last build which completed
 earlier.</p>
 </div>
 <div class="paragraph">
@@ -3630,7 +3699,7 @@ sample-build-3   Source    Git@689d111   Completed 17 seconds ago   5s</pre>
 <h2 id="build-output"><a class="anchor" href="#build-output"></a>Build Output</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Docker and Source builds result in the creation of a new Docker image. The image
+<p>Docker and Source builds result in the creation of a new container image. The image
 is then pushed to the registry specified in the <code><strong>output</strong></code> section of the
 <code><strong>Build</strong></code> specification.</p>
 </div>
@@ -3753,6 +3822,28 @@ images:</p>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>You can also use the <code><strong>BuildConfig.spec.output.imageLabels</strong></code> field to specify a
+list of custom labels that will be applied to each image built from the BuildConfig.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 6. Custom labels to be applied to built images</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">output</span>:
+  <span style="color:#606">to</span>:
+    <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ImageStreamTag</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">my-image:latest</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#606">imageLabels</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;vendor&quot;</span></span>
+    <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">MyCompany</span><span style="color:#710">&quot;</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: &quot;authoritative-source-url&quot;</span></span>
+    <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">registry.mycompany.com</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3770,7 +3861,7 @@ depends on the build strategy you are using.</p>
 the <strong><em>assemble</em></strong> script:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 6. <strong><em>.s2i/bin/assemble</em></strong> File</div>
+<div class="title">Example 7. <strong><em>.s2i/bin/assemble</em></strong> File</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3782,7 +3873,7 @@ wget http://repository.example.com/app/app-$APP_VERSION.jar -O app.jar</code></p
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 7. <strong><em>.s2i/bin/run</em></strong> File</div>
+<div class="title">Example 8. <strong><em>.s2i/bin/run</em></strong> File</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3814,7 +3905,7 @@ shell commands with the
 <a href="https://docs.docker.com/engine/reference/builder/#run"><code>RUN</code> instruction</a>:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8. Excerpt of <code>Dockerfile</code></div>
+<div class="title">Example 9. Excerpt of <code>Dockerfile</code></div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3941,6 +4032,63 @@ build process.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="dev-guide-assigning-builds-to-nodes"><a class="anchor" href="#dev-guide-assigning-builds-to-nodes"></a>Assigning Builds to Specific Nodes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Builds can be targeted to run on specific nodes by specifying labels in the
+<code><strong>nodeSelector</strong></code> field of a build configuration. The <code><strong>nodeSelector</strong></code> value is a
+set of key/value pairs that are matched to <strong>node</strong> labels when scheduling the
+<strong>build pod</strong>.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">v1</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BuildConfig</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample-build</span><span style="color:#710">&quot;</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">nodeSelector</span>:<i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#606">key1</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">value1</span></span>
+    <span style="color:#606">key2</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">value2</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Builds associated with this build configuration will run only on nodes with the <code><strong>key1=value2</strong></code> and <code><strong>key2=value2</strong></code> labels.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>nodeSelector</strong></code> value can also be controlled by cluster-wide default and
+override values. Defaults will only be applied if the build configuration does
+not define any key/value pairs for the <code><strong>nodeSelector</strong></code> and also does not define
+an explicitly empty map value of "nodeSelector:{}". Override values will replace
+values in the build configuration on a key by key basis.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the specified <code><strong>NodeSelector</strong></code> cannot be matched to a node with those labels,
+the build still stay in the <code><strong>pending</strong></code> state indefinitely.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="builds-troubleshooting"><a class="anchor" href="#builds-troubleshooting"></a>Troubleshooting</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
@@ -4038,5 +4186,13 @@ applied and storage in use:</p>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

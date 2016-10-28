@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -368,7 +369,7 @@ source code as an input and produce a new image that runs the assembled
 application as output.</p>
 </div>
 <div class="paragraph">
-<p>The main advantage of using S2I for building reproducible Docker images is the
+<p>The main advantage of using S2I for building reproducible container images is the
 ease of use for developers. As a builder image author, you must understand two
 basic concepts in order for your images to provide the best possible S2I performance:
 <a href="#build-process">the build process</a> and <a href="#s2i-scripts">S2I scripts</a>.</p>
@@ -380,7 +381,7 @@ basic concepts in order for your images to provide the best possible S2I perform
 <div class="sectionbody">
 <div class="paragraph">
 <p>The build process consists of the following three fundamental elements, which
-are combined into a final Docker image:</p>
+are combined into a final container image:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -409,7 +410,7 @@ label from the builder image, with the default location being the
 utility (the <code>tar</code> command available in <code><strong>$PATH</strong></code>) and the command line
 interpreter (the <code>/bin/sh</code> command); this allows your image to use the fastest
 possible build path. If the <code>tar</code> or <code>/bin/sh</code> command is not available, the
-<code>s2i build</code> process is forced to automatically perform an additional Docker build
+<code>s2i build</code> process is forced to automatically perform an additional container build
 to put both the sources and the scripts inside the image, and only then run the
 usual <code>s2i build</code> procedure.</p>
 </div>
@@ -425,7 +426,7 @@ usual <code>s2i build</code> procedure.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Run build&#8217;s responsibility is to untar the sources, scripts and artifacts (if such exist) and invoke the <code>assemble</code> script. If this is the second run (after catching <code>tar</code>/<code>/bin/sh</code> not found error) it is responsible only for invoking <code>assemble</code> script, since both scripts and sources are already there.</p>
+<p>Run build&#8217;s responsibility is to untar the sources, scripts and artifacts (if such exist) and invoke the <code>assemble</code> script. If this is the second run (after catching <code>tar</code> or <code>/bin/sh</code> not found error) it is responsible only for invoking <code>assemble</code> script, since both scripts and sources are already there.</p>
 </li>
 </ul>
 </div>
@@ -460,10 +461,10 @@ can take one of the following form:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>image://path_to_scripts_dir</code> - absolute path inside the image to a directory where the S2I scripts are located</p>
+<p><code>image:///path_to_scripts_dir</code> - absolute path inside the image to a directory where the S2I scripts are located</p>
 </li>
 <li>
-<p><code>file://path_to_scripts_dir</code> - relative or absolute path to a directory on the host where the S2I scripts are located</p>
+<p><code>file:///path_to_scripts_dir</code> - relative or absolute path to a directory on the host where the S2I scripts are located</p>
 </li>
 <li>
 <p><code>http(s)://path_to_scripts_dir</code> - URL to a directory where the S2I scripts are located</p>
@@ -733,10 +734,10 @@ for more information on <code>ONBUILD</code>.</p>
 <div class="paragraph">
 <p>Upon startup, S2I detects whether the builder image contains <code>sh</code> and <code>tar</code> binaries
 which are necessary for the S2I process to inject build inputs.  If the builder image
-does not contain these prerequisites, it will attempt to instead perform a Docker build
+does not contain these prerequisites, it will attempt to instead perform a container build
 to layer the inputs.  If the builder image includes <code>ONBUILD</code> instructions, S2I
 will instead fail the build because the <code>ONBUILD</code> instructions would be executed
-during the layering process, and that equate to performing a generic docker
+during the layering process, and that equate to performing a generic container
 build which is less secure than an S2I build and requires explicit permissions.</p>
 </div>
 <div class="paragraph">
@@ -819,5 +820,13 @@ prerequisites.</p>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

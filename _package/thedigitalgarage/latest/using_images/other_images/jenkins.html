@@ -247,6 +247,7 @@
             <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -350,19 +351,21 @@
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a></li>
-<li><a href="#versions">Versions</a></li>
-<li><a href="#images">Images</a></li>
-<li><a href="#configuration-and-usage">Configuration and Usage</a>
+<li><a href="#jenkins-version">Versions</a></li>
+<li><a href="#jenkins-images">Images</a></li>
+<li><a href="#jenkins-configuration-and-usage">Configuration and Usage</a>
 <ul class="sectlevel2">
-<li><a href="#initializing-jenkins">Initializing Jenkins</a></li>
-<li><a href="#environment-variables">Environment Variables</a></li>
-<li><a href="#volume-mount-points">Volume Mount Points</a></li>
+<li><a href="#jenkins-initializing-jenkins">Initializing Jenkins</a></li>
+<li><a href="#jenkins-environment-variables">Environment Variables</a></li>
+<li><a href="#jenkins-cross-project-access">Cross Project Access</a></li>
+<li><a href="#jenkins-volume-mount-points">Volume Mount Points</a></li>
 </ul>
 </li>
-<li><a href="#creating-a-jenkins-service-from-a-template">Creating a Jenkins Service from a Template</a></li>
+<li><a href="#jenkins-creating-jenkins-service-from-template">Creating a Jenkins Service from a Template</a></li>
 <li><a href="#jenkins-as-s2i-builder">Using Jenkins as a Source-To-Image builder</a></li>
 <li><a href="#using-the-jenkins-kubernetes-plug-in-to-run-jobs">Using the Jenkins Kubernetes Plug-in to Run Jobs</a></li>
 <li><a href="#tutorial">Tutorial</a></li>
+<li><a href="#digital-garage-pipeline-plug-in">Digital Garage Pipeline Plug-in</a></li>
 </ul>
 </div>
 </div>
@@ -371,15 +374,15 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Digital Garage provides a Docker image for running Jenkins.  This image provides a Jenkins server instance which can be used to set up a basic flow for continuous testing, integration, and delivery.</p>
+<p>Digital Garage provides a container image for running Jenkins. This image provides a Jenkins server instance, which can be used to set up a basic flow for continuous testing, integration, and delivery.</p>
 </div>
 <div class="paragraph">
-<p>This image also includes a sample Jenkins job which triggers a new build of a <code><strong>BuildConfig</strong></code> defined in Digital Garage, tests the output of that build, and then on successful build, retags the output to indicate the build is ready for production.</p>
+<p>This image also includes a sample Jenkins job, which triggers a new build of a <code><strong>BuildConfig</strong></code> defined in Digital Garage, tests the output of that build, and then on successful build, retags the output to indicate the build is ready for production.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="versions"><a class="anchor" href="#versions"></a>Versions</h2>
+<h2 id="jenkins-version"><a class="anchor" href="#jenkins-version"></a>Versions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Digital Garage follows the <a href="https://jenkins.io/changelog-stable/">LTS</a> releases of Jenkins.</p>
@@ -387,7 +390,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="images"><a class="anchor" href="#images"></a>Images</h2>
+<h2 id="jenkins-images"><a class="anchor" href="#jenkins-images"></a>Images</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This image comes in two flavors, depending on your needs:</p>
@@ -433,17 +436,245 @@ You can find <a href="https://github.com/openshift/origin/tree/master/examples/i
 </div>
 </div>
 <div class="sect1">
-<h2 id="configuration-and-usage"><a class="anchor" href="#configuration-and-usage"></a>Configuration and Usage</h2>
+<h2 id="jenkins-configuration-and-usage"><a class="anchor" href="#jenkins-configuration-and-usage"></a>Configuration and Usage</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="initializing-jenkins"><a class="anchor" href="#initializing-jenkins"></a>Initializing Jenkins</h3>
+<h3 id="jenkins-initializing-jenkins"><a class="anchor" href="#jenkins-initializing-jenkins"></a>Initializing Jenkins</h3>
 <div class="paragraph">
-<p>The first time you start Jenkins, the configuration is created along with the administrator user and password.
-The default login is <code><strong>admin/password</strong></code>.
-The default password can be configured by setting the <code><strong>JENKINS_PASSWORD</strong></code> environment variable.</p>
+<p>You can manage Jenkins authentication in two ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Digital Garage OAuth authentication provided by the OpenShift Login plug-in.</p>
+</li>
+<li>
+<p>Standard authentication provided by Jenkins</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="jenkins-openshift-oauth-authentication"><a class="anchor" href="#jenkins-openshift-oauth-authentication"></a>Digital Garage OAuth authentication</h4>
+<div class="paragraph">
+<p>OAuth authentication is activated by configuring the <code><strong>Configure Global
+Security</strong></code> panel in the Jenkins UI, or by setting the <code><strong>OPENSHIFT_ENABLE_OAUTH</strong></code>
+environment variable on the Jenkins <code><strong>Deployment Config</strong></code> to anything other than
+<code>false</code>. This activates the OpenShift Login plug-in, which retrieves the
+configuration information from pod data or by interacting with the
+Digital Garage API server.</p>
 </div>
 <div class="paragraph">
-<p>The following command creates a new Jenkins <a href="../../architecture/core_concepts/pods_and_services.html#pods">pod</a> with Jenkins running in a container:</p>
+<p>Valid user and password combinations are controlled by your identity provider.
+For example, if <code>Allow All</code> is the default identity provider, you can provide
+any non-empty string for both the user name and password. If you have
+administrator privileges in the project Jenkins is running in, you will have
+administrative privileges within Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Valid users are automatically added to the Jenkins authorization matrix at log
+in, dictated by the permissions within the Jenkins authorization matrix
+associated with the user. Users authenticated against Digital Garage OAuth are
+added to the Jenkins authorization matrix on their first successful log in.</p>
+</div>
+<div class="paragraph">
+<p>The <code>admin</code> role maps to the set of permissions traditionally associated with
+the <code>admin</code> user in the Digital Garage Jenkins image:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hudson.model.Computer.Configure</p>
+</li>
+<li>
+<p>hudson.model.Computer.Delete</p>
+</li>
+<li>
+<p>hudson.model.Hudson.Administer</p>
+</li>
+<li>
+<p>hudson.model.Hudson.Read</p>
+</li>
+<li>
+<p>hudson.model.Item.Build</p>
+</li>
+<li>
+<p>hudson.model.Item.Configure</p>
+</li>
+<li>
+<p>hudson.model.Item.Create</p>
+</li>
+<li>
+<p>hudson.model.Item.Delete</p>
+</li>
+<li>
+<p>hudson.model.Item.Read</p>
+</li>
+<li>
+<p>hudson.model.Item.Workspace</p>
+</li>
+<li>
+<p>hudson.model.Run.Delete</p>
+</li>
+<li>
+<p>hudson.model.Run.Update</p>
+</li>
+<li>
+<p>hudson.model.View.Configure</p>
+</li>
+<li>
+<p>hudson.model.View.Create</p>
+</li>
+<li>
+<p>hudson.model.View.Delete</p>
+</li>
+<li>
+<p>hudson.scm.SCM.Tag</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Users with the <code>edit</code> or <code>view</code> roles for the Digital Garage project have progressively reduced permissions within Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>For the <code>view</code> role:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hudson.model.Hudson.Read</p>
+</li>
+<li>
+<p>hudson.model.Item.Read</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For the <code>edit</code> role, in addition to the permissions available to <code><strong>view</strong></code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hudson.model.Item.Build</p>
+</li>
+<li>
+<p>hudson.model.Item.Configure</p>
+</li>
+<li>
+<p>hudson.model.Item.Create</p>
+</li>
+<li>
+<p>hudson.model.Item.Delete</p>
+</li>
+<li>
+<p>hudson.model.Item.Workspace</p>
+</li>
+<li>
+<p>hudson.scm.SCM.Tag</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>admin</code> user that is pre-populated in the Digital Garage Jenkins image with
+administrative privileges will not be given those privileges when
+Digital Garage OAuth is used, unless the Digital Garage cluster administrator
+explicitly defines that user in the Digital Garage identity provider and
+assigns the <code>admin</code> role to the user.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Jenkins' users permissions can be changed after the users are initially
+established. The OpenShift Login plug-in polls the Digital Garage API server
+for permissions and updates the permissions stored in Jenkins for each user with
+the permissions retrieved from Digital Garage. If the Jenkins UI is used to
+update permissions for a Jenkins user, the permission changes are overwritten
+the next time the plug-in polls Digital Garage.</p>
+</div>
+<div class="paragraph">
+<p>You can control how often the polling occurs with the
+<code>OPENSHIFT_PERMISSIONS_POLL_INTERVAL</code> environment variable. The default polling
+interval is five minutes.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Creating a new Jenkins pod</div>
+<ol class="arabic">
+<li>
+<p>Ensure you have installed
+<a href="#../../install_config/imagestreams_templates.adoc">the default imagestreams
+and templates</a>.</p>
+</li>
+<li>
+<p>Then create a new Jenkins application using:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Persistent volumes:</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-app jenkins-persistent</pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Or an EmptyDir type volume (where configuration does not persist across pod restarts):</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-app jenkins-ephemeral</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you instantiate the template against releases prior to v3.4 of
+Digital Garage, standard Jenkins authentication is used, and the default
+'admin' account will exist with password 'password'. See
+<a href="../../using_images/other_images/jenkins.html#jenkins-jenkins-standard-authentication">Jenkins
+Standard Authentication</a> for details about changing this password.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jenkins-jenkins-standard-authentication"><a class="anchor" href="#jenkins-jenkins-standard-authentication"></a>Jenkins Standard Authentication</h4>
+<div class="paragraph">
+<p>Jenkins authentication is used by default if the image is run outside of
+Digital Garage.</p>
+</div>
+<div class="paragraph">
+<p>The first time Jenkins starts, the configuration is created along with the
+administrator user and password. The default user credentials are <code><strong>admin</strong></code> and
+<code><strong>password</strong></code>. Configure the default password by setting the <code><strong>JENKINS_PASSWORD</strong></code>
+environment variable when using (and only when using) standard Jenkins
+authentication.</p>
+</div>
+<div class="paragraph">
+<p>To create a new Jenkins application using standard Jenkins authentication:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -453,10 +684,11 @@ The default password can be configured by setting the <code><strong>JENKINS_PASS
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="environment-variables"><a class="anchor" href="#environment-variables"></a>Environment Variables</h3>
+<h3 id="jenkins-environment-variables"><a class="anchor" href="#jenkins-environment-variables"></a>Environment Variables</h3>
 <div class="paragraph">
-<p>The Jenkins password can be configured with the following environment variable:</p>
+<p>The Jenkins server can be configured with the following environment variables:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Jenkins Environment Variables</caption>
@@ -476,14 +708,77 @@ The default password can be configured by setting the <code><strong>JENKINS_PASS
 <p><code><strong>JENKINS_PASSWORD</strong></code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Password for the <code><strong>admin</strong></code> user.</p>
+<p>The password for the <code><strong>admin</strong></code> user when using standard Jenkins authentication.  Not applicable when using Digital Garage OAuth authentication.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>OPENSHIFT_ENABLE_OAUTH</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Determines whether the OpenShift Login plug-in manages authentication when logging into Jenkins. Enabled when set to any non-empty value other than "false".</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>OPENSHIFT_PERMISSIONS_POLL_INTERVAL</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Specifies in seconds how often the OpenShift Login plug-in polls Digital Garage for the permissions associated with each user defined in Jenkins.</p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
-<h3 id="volume-mount-points"><a class="anchor" href="#volume-mount-points"></a>Volume Mount Points</h3>
+<h3 id="jenkins-cross-project-access"><a class="anchor" href="#jenkins-cross-project-access"></a>Cross Project Access</h3>
+<div class="paragraph">
+<p>If you are going to run Jenkins somewhere other than as a deployment within your same project, you will need to provide an access token to Jenkins to access your project.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Identify the secret for the service account that has appropriate permissions
+to access the project Jenkins needs to access:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe serviceaccount default
+Name:       default
+Labels:     &lt;none&gt;
+Secrets:    {  default-token-uyswp    }
+            {  default-dockercfg-xcr3d    }
+Tokens:     default-token-izv1u
+            default-token-uyswp</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case the secret is named <code>default-token-uyswp</code></p>
+</div>
+</li>
+<li>
+<p>Retrieve the token from the secret:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc describe secret &lt;secret name from above&gt; # e.g. default-token-izv1u
+Name:       default-token-izv1u
+Labels:     &lt;none&gt;
+Annotations:    kubernetes.io/service-account.name=default,kubernetes.io/service-account.uid=32f5b661-2a8f-11e5-9528-3c970e3bf0b7
+Type:   kubernetes.io/service-account-token
+Data
+====
+ca.crt: 1066 bytes
+token:  eyJhbGc..&lt;content cut&gt;....wRA</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The token field contains the token value Jenkins needs to access the project.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkins-volume-mount-points"><a class="anchor" href="#jenkins-volume-mount-points"></a>Volume Mount Points</h3>
 <div class="paragraph">
 <p>The Jenkins image can be run with mounted volumes to enable persistent storage for the configuration:</p>
 </div>
@@ -498,7 +793,7 @@ The default password can be configured by setting the <code><strong>JENKINS_PASS
 </div>
 </div>
 <div class="sect1">
-<h2 id="creating-a-jenkins-service-from-a-template"><a class="anchor" href="#creating-a-jenkins-service-from-a-template"></a>Creating a Jenkins Service from a Template</h2>
+<h2 id="jenkins-creating-jenkins-service-from-template"><a class="anchor" href="#jenkins-creating-jenkins-service-from-template"></a>Creating a Jenkins Service from a Template</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="../../dev_guide/templates.html#dev-guide-templates">Templates</a> provide parameter fields to
@@ -653,7 +948,7 @@ you can use in deployment configuration instead of the official Jenkins image.</
 <p>The official Digital Garage Jenkins image includes the pre-installed
 <a href="https://wiki.jenkins-ci.org/display/JENKINS/Kubernetes+Plugin">Kubernetes
 plug-in</a> that allows Jenkins slaves to be dynamically provisioned on multiple
-Docker hosts using Kubernetes and Digital Garage.</p>
+container hosts using Kubernetes and Digital Garage.</p>
 </div>
 <div class="paragraph">
 <p>The Jenkins image entrypoint also provides auto-discovery and auto-configuration
@@ -663,10 +958,10 @@ existing image streams with the label <strong>role</strong> set to <strong>jenki
 <div class="paragraph">
 <p>When an image stream with this label is found, the entrypoint generates the
 corresponding Kubernetes plug-in configuration so you can assign your Jenkins
-jobs to run in a pod running the Docker image provided by the image stream.</p>
+jobs to run in a pod running the container image provided by the image stream.</p>
 </div>
 <div class="paragraph">
-<p>To use a Docker image as an Jenkins slave, the image must run the slave agent as
+<p>To use a container image as an Jenkins slave, the image must run the slave agent as
 an entrypoint. For more details about this, refer to the official
 <a href="https://wiki.jenkins-ci.org/display/JENKINS/Distributed+builds#Distributedbuilds-Launchslaveagentheadlessly">Jenkins
 documentation</a>.</p>
@@ -684,6 +979,34 @@ slave.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>For more details on the sample job included in this image, see this <a href="https://github.com/openshift/origin/blob/master/examples/jenkins/README.md">tutorial</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="digital-garage-pipeline-plug-in"><a class="anchor" href="#digital-garage-pipeline-plug-in"></a>Digital Garage Pipeline Plug-in</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins image&#8217;s list of pre-installed plug-ins includes a plug-in which
+assists in the creating of CI/CD workflows that run against an Digital Garage
+server.  A series of build steps, post-build actions, as well as SCM-style
+polling are provided which equate to administrative and operational actions on
+the Digital Garage server and the API artifacts hosted there.</p>
+</div>
+<div class="paragraph">
+<p>In addition to being accessible from the classic "freestyle" form of Jenkins
+job, the build steps as of version 1.0.14 of the Digital Garage Pipeline
+Plug-in are also avaible to Jenkins Pipeline jobs via the DSL extension points
+provided by the Jenkins Pipeline Plug-in.</p>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://github.com/openshift/jenkins/tree/master/1/contrib/openshift/configuration/jobs/OpenShift%20Sample">sample
+Jenkins job</a> that is pre-configured in the Jenkins image utilizes the
+Digital Garage pipeline plug-in and serves as an example of how to leverage the
+plug-in for creating CI/CD flows for Digital Garage in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://github.com/openshift/jenkins-plugin/">the plug-in&#8217;s README</a> for a detailed description of what is available.</p>
 </div>
 </div>
 </div>
@@ -745,5 +1068,13 @@ slave.</p>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

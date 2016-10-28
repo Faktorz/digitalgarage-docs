@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -351,6 +352,7 @@
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a></li>
 <li><a href="#copying-basic-usage">Basic Usage</a></li>
+<li><a href="#backing-up-and-restoring-databases">Backing Up and Restoring Databases</a></li>
 <li><a href="#copying-requirements">Requirements</a></li>
 <li><a href="#specifying-the-copy-source">Specifying the Copy Source</a></li>
 <li><a href="#specifying-the-copy-destination">Specifying the Copy Destination</a></li>
@@ -403,6 +405,102 @@
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="backing-up-and-restoring-databases"><a class="anchor" href="#backing-up-and-restoring-databases"></a>Backing Up and Restoring Databases</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use <code>oc rsync</code> to copy database archives from an existing database container
+to a new database container&#8217;s persistent volume directory.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>MySQL is used in the example below. Replace <code>mysql|MYSQL</code> with <code>pgsql|PGSQL</code> or
+<code>mongodb|MONGODB</code> and refer to
+<a href="../dev_guide/migrating_applications/index.html#dev-guide-migrating-applications">the
+migration guide</a> to find the exact commands for each of our supported database
+images. The example assumes an existing database container.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Back up the existing database from a running database pod:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc rsh &lt;existing db container&gt;
+# mkdir /var/lib/mysql/data/db_archive_dir
+# mysqldump --skip-lock-tables -h ${MYSQL_SERVICE_HOST} -P ${MYSQL_SERVICE_PORT:-3306} \
+  -u ${MYSQL_USER} --password="$MYSQL_PASSWORD" --all-databases &gt; /var/lib/mysql/data/db_archive_dir/all.sql
+# exit</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Remote sync the archive file to your local machine:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc rsync &lt;existing db container with db archive&gt;:/var/lib/mysql/data/db_archive_dir /tmp/.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start a second MySQL pod into which to load the database archive file created above.
+The MySQL pod must have a unique <code>DATABASE_SERVICE_NAME</code>.</p>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-app mysql-persistent \
+  -p MYSQL_USER=&lt;archived mysql username&gt; \
+  -p MYSQL_PASSWORD=&lt;archived mysql password&gt; \
+  -p MYSQL_DATABASE=&lt;archived database name&gt; \
+  -p DATABASE_SERVICE_NAME='mysql2' <i class="conum" data-value="1"></i><b>(1)</b>
+$ oc rsync /tmp/db_archive_dir new_dbpod1234:/var/lib/mysql/data
+$ oc rsh new_dbpod1234</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>mysql</code> is the default. In this example, <code>mysql2</code> is created.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Use the appropriate commands to restore the database in the new database
+container from the copied database archive directory:</p>
+<div class="listingblock">
+<div class="title">MySQL</div>
+<div class="content">
+<pre class="nowrap">$ cd /var/lib/mysql/data/db_archive_dir
+$ mysql -u root
+$ source all.sql
+$ GRANT ALL PRIVILEGES ON &lt;dbname&gt;.* TO '&lt;your username&gt;'@'localhost'; FLUSH PRIVILEGES;
+$ cd ../; rm -rf /var/lib/mysql/data/db_backup_dir</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You now have two MySQL database pods running in your project with the archived
+database.</p>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -562,5 +660,13 @@ with manual invocations of <code>oc rsync</code>, such as <code>--delete</code>.
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

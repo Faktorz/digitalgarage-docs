@@ -247,6 +247,7 @@
             <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -365,7 +366,7 @@
 <h2 id="pods"><a class="anchor" href="#pods"></a>Pods</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Digital Garage leverages the Kubernetes concept of a <code><strong>pod</strong></code>, which is one or
+<p>Digital Garage leverages the Kubernetes concept of a <em>pod</em>, which is one or
 more <a href="containers_and_images.html#containers">containers</a> deployed
 together on one host, and the smallest compute unit that can be defined,
 deployed, and managed.</p>
@@ -408,7 +409,7 @@ rather than directly by users.</p>
 <div class="paragraph">
 <p>Below is an example definition of a pod that provides a long-running
 service, which is actually a part of the Digital Garage infrastructure: the
-private Docker registry. It demonstrates many features of pods, most of
+integrated container registry. It demonstrates many features of pods, most of
 which are discussed in other topics and thus only briefly mentioned here:</p>
 </div>
 <div class="exampleblock">
@@ -496,7 +497,7 @@ container.</td>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
 <td>Each container in the pod is instantiated from its own
-<a href="containers_and_images.html#docker-images">Docker image</a>.</td>
+<a href="containers_and_images.html#docker-images">Docker-formatted container image</a>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
@@ -666,7 +667,7 @@ configuration file</a>.</p>
 For example, <a href="#pods">pods</a> are "tagged" with labels, and then
 <a href="#services">services</a> use label selectors to identify the pods they
 proxy to. This makes it possible for services to reference groups of
-pods, even treating pods with potentially different Docker containers
+pods, even treating pods with potentially different containers
 as related entities.</p>
 </div>
 <div class="paragraph">
@@ -698,11 +699,11 @@ configurations</a> of a particular application can be grouped.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>A pod consisting of an <strong>nginx</strong> Docker container, with the label
+<p>A pod consisting of an <strong>nginx</strong> container, with the label
 <strong>role=webserver</strong>.</p>
 </li>
 <li>
-<p>A pod consisting of an <strong>Apache httpd</strong> Docker container, with the same label
+<p>A pod consisting of an <strong>Apache httpd</strong> container, with the same label
 <strong>role=webserver</strong>.</p>
 </li>
 </ul>
@@ -808,5 +809,13 @@ Endpoint objects.</p>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

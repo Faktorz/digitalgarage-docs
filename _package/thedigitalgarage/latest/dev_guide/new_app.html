@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -498,10 +499,10 @@ builder to use by the presence of certain files in the root of the repository:</
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>ruby</code></p>
+<p><code>dotnet</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><strong><em>Rakefile</em></strong>, <strong><em>Gemfile</em></strong>, <strong><em>config.ru</em></strong></p>
+<p><strong><em>project.json</em></strong></p>
 </div></div></td>
 </tr>
 <tr>
@@ -522,6 +523,14 @@ builder to use by the presence of certain files in the root of the repository:</
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>perl</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong><em>index.pl</em></strong>, <strong><em>cpanfile</em></strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p><code>php</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
@@ -538,10 +547,10 @@ builder to use by the presence of certain files in the root of the repository:</
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>perl</code></p>
+<p><code>ruby</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><strong><em>index.pl</em></strong>, <strong><em>cpanfile</em></strong></p>
+<p><strong><em>Rakefile</em></strong>, <strong><em>Gemfile</em></strong>, <strong><em>config.ru</em></strong></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -556,7 +565,7 @@ registry</a> for an image that matches the detected language based on name.</p>
 </div>
 <div class="paragraph">
 <p>You can override the image the builder uses for a particular source
-repository by specifying the image (either an image stream or Docker specification) and the repository, with a <code>~</code> as a separator.</p>
+repository by specifying the image (either an image stream or container specification) and the repository, with a <code>~</code> as a separator.</p>
 </div>
 <div class="paragraph">
 <p>For example, to use the <strong>myproject/my-ruby</strong> image stream with the source in a
@@ -572,7 +581,7 @@ remote repository:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>To use the <strong>openshift/ruby-20-centos7:latest</strong> Docker image stream with the source in a local repository:</p>
+<p>To use the <strong>openshift/ruby-20-centos7:latest</strong> container image stream with the source in a local repository:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -767,7 +776,7 @@ location, and the build output location.</p>
 <p>For <code><strong>BuildConfig</strong></code>, two <code><strong>ImageStreams</strong></code> are usually created: one to
 represent the input image (the builder image in the case of <code><strong>Source</strong></code> builds or
 <strong>FROM</strong> image in case of <code><strong>Docker</strong></code> builds), and another one to represent the
-output image.   If a Docker image was specified as input to <code>new-app</code>, then an
+output image. If a container image was specified as input to <code>new-app</code>, then an
 image stream is created for that image as well.</p>
 </div></div></td>
 </tr>
@@ -1249,5 +1258,13 @@ labels for all objects here.</td>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

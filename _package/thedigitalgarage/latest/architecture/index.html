@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -347,10 +348,10 @@
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>OpenShift v3 is a layered system designed to expose underlying
-<a href="https://www.docker.com/">Docker</a> and <a href="http://kubernetes.io/">Kubernetes</a> concepts
-as accurately as possible, with a focus on easy composition of applications by a
-developer. For example, install Ruby, push code, and add MySQL.</p>
+<p>OpenShift v3 is a layered system designed to expose underlying Docker-formatted
+container image and Kubernetes concepts as accurately as possible, with a focus
+on easy composition of applications by a developer. For example, install Ruby,
+push code, and add MySQL.</p>
 </div>
 <div class="paragraph">
 <p>Unlike OpenShift v2, more flexibility of configuration is exposed after creation
@@ -365,12 +366,11 @@ network.</p>
 <h2 id="what-are-the-layers"><a class="anchor" href="#what-are-the-layers"></a>What Are the Layers?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Docker provides the abstraction for packaging and creating Linux-based,
-lightweight
-<a href="core_concepts/containers_and_images.html#containers">containers</a>. Kubernetes
+<p>The Docker service provides the abstraction for packaging and creating
+Linux-based, lightweight
+<a href="core_concepts/containers_and_images.html#containers">container images</a>. Kubernetes
 provides the
-<a href="infrastructure_components/kubernetes_infrastructure.html#architecture-infrastructure-components-kubernetes-infrastructure">cluster
-management</a> and orchestrates Docker containers on multiple hosts.</p>
+<a href="infrastructure_components/kubernetes_infrastructure.html#architecture-infrastructure-components-kubernetes-infrastructure">cluster management</a> and orchestrates containers on multiple hosts.</p>
 </div>
 <div class="paragraph">
 <p>Digital Garage adds:</p>
@@ -563,5 +563,13 @@ components, and also allows application code to easily leverage those secrets.</
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

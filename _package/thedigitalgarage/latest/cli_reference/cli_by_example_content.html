@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -414,7 +415,7 @@
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">  // Create an application based on the source code in the current git repository (with a public remote) and a Docker image
+<pre class="nowrap">  // Create an application based on the source code in the current git repository (with a public remote) and a container image
   $ oc new-app . --docker-image=repo/langimage
 
   // Create a Ruby application based on the provided [image]~[source code] combination
@@ -589,7 +590,7 @@
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">  // Create a build config based on the source code in the current git repository (with a public remote) and a Docker image
+<pre class="nowrap">  // Create a build config based on the source code in the current git repository (with a public remote) and a container image
   $ oc new-build . --docker-image=repo/langimage
 
   // Create a NodeJS build config based on the provided [image]~[source code] combination
@@ -625,7 +626,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="imports-images-from-a-docker-registry"><a class="anchor" href="#imports-images-from-a-docker-registry"></a>Imports images from a Docker registry</h2>
+<h2 id="imports-images-from-a-container-registry"><a class="anchor" href="#imports-images-from-a-container-registry"></a>Imports images from a container registry</h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
@@ -669,7 +670,7 @@
   // Tag a specific image.
   $ oc tag openshift/ruby@sha256:6b646fa6bf5e5e4c7fa41056c27910e679c03ebe7f93e361e6515a9da7e258cc yourproject/ruby:tip
 
-  // Tag an external Docker image.
+  // Tag an external container image.
   $ oc tag --source=docker openshift/origin:latest yourproject/ruby:tip
 
   // Remove the specified spec tag from an image stream.
@@ -1334,5 +1335,13 @@
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

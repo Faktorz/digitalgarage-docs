@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -350,7 +351,7 @@
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a></li>
-<li><a href="#general-docker-guidelines">General Docker Guidelines</a></li>
+<li><a href="#general-container-image-guidelines">General Container Image Guidelines</a></li>
 <li><a href="#digital-garage-specific-guidelines">Digital Garage-Specific Guidelines</a></li>
 <li><a href="#external-references">External References</a></li>
 </ul>
@@ -361,7 +362,7 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When creating Docker images to run on Digital Garage there are a number of best
+<p>When creating container images to run on Digital Garage there are a number of best
 practices to consider as an image author to ensure a good experience for
 consumers of those images. Because images are intended to be immutable and used
 as-is, the following guidelines help ensure that your images are highly
@@ -370,10 +371,10 @@ consumable and easy to use on Digital Garage.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="general-docker-guidelines"><a class="anchor" href="#general-docker-guidelines"></a>General Docker Guidelines</h2>
+<h2 id="general-container-image-guidelines"><a class="anchor" href="#general-container-image-guidelines"></a>General Container Image Guidelines</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following guidelines apply when creating a Docker image in general, and are
+<p>The following guidelines apply when creating a container image in general, and are
 independent of whether the images are used on Digital Garage.</p>
 </div>
 <div class="paragraph">
@@ -436,7 +437,7 @@ processes.</p>
 documentation</a> for more information.</p>
 </div>
 <div class="paragraph">
-<p>Also note that your process runs as PID 1 when running in a Docker container.
+<p>Also note that your process runs as PID 1 when running in a container.
 This means that if your main process terminates, the entire container is
 stopped, killing any child processes you may have launched from your PID 1
 process.</p>
@@ -655,7 +656,7 @@ volume cannot be used to share state in a cluster.
 <p>Docker documentation - <a href="https://docs.docker.com/articles/dockerfile_best-practices/">Best practices for writing Dockerfiles</a></p>
 </li>
 <li>
-<p>Project Atomic documentation - <a href="http://www.projectatomic.io/docs/docker-image-author-guidance/">Guidance for Docker Image Authors</a></p>
+<p>Project Atomic documentation - <a href="http://www.projectatomic.io/docs/docker-image-author-guidance/">Guidance for Container Image Authors</a></p>
 </li>
 </ul>
 </div>
@@ -665,7 +666,7 @@ volume cannot be used to share state in a cluster.
 <h2 id="digital-garage-specific-guidelines"><a class="anchor" href="#digital-garage-specific-guidelines"></a>Digital Garage-Specific Guidelines</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following are guidelines that apply when creating Docker images specifically
+<p>The following are guidelines that apply when creating container images specifically
 for use on Digital Garage.</p>
 </div>
 <div class="paragraph">
@@ -878,7 +879,7 @@ in Docker containers:</p>
 <p><strong>Set Image Metadata</strong></p>
 </div>
 <div class="paragraph">
-<p>Defining image metadata helps Digital Garage better consume your Docker images,
+<p>Defining image metadata helps Digital Garage better consume your container images,
 allowing Digital Garage to create a better experience for developers using your
 image. For example, you can add metadata to provide helpful descriptions of your
 image, or offer suggestions on other images that may also be needed.</p>
@@ -951,7 +952,7 @@ and readiness probes</a> you documented with the image, for completeness.</p>
 <p><a href="https://docs.docker.com/reference/builder">Dockerfile reference</a></p>
 </li>
 <li>
-<p><a href="http://www.projectatomic.io/docs/docker-image-author-guidance">Project Atomic Guidance for Docker Image Authors</a></p>
+<p><a href="http://www.projectatomic.io/docs/docker-image-author-guidance">Project Atomic Guidance for Container Image Authors</a></p>
 </li>
 </ul>
 </div>
@@ -1015,5 +1016,13 @@ and readiness probes</a> you documented with the image, for completeness.</p>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

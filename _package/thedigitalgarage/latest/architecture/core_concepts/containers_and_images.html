@@ -247,6 +247,7 @@
             <li><a class="" href="../../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -350,8 +351,8 @@
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
 <li><a href="#containers">Containers</a></li>
-<li><a href="#docker-images">Docker Images</a></li>
-<li><a href="#docker-registries">Docker Registries</a></li>
+<li><a href="#docker-images">Images</a></li>
+<li><a href="#docker-registries">Container Registries</a></li>
 </ul>
 </div>
 </div>
@@ -360,78 +361,81 @@
 <h2 id="containers"><a class="anchor" href="#containers"></a>Containers</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The basic units of Digital Garage applications are called containers.
+<p>The basic units of Digital Garage applications are called <em>containers</em>.
 <a href="https://access.redhat.com/articles/1353593">Linux container technologies</a>
 are lightweight mechanisms for isolating running processes so that they are
-limited to interacting with only their designated resources. Many application
-instances can be running in containers on a single host without visibility into
-each others' processes, files, network, and so on. Typically, each container
-provides a single service (often called a "micro-service"), such as a web server
-or a database, though containers can be used for arbitrary workloads.</p>
+limited to interacting with only their designated resources.</p>
+</div>
+<div class="paragraph">
+<p>Many application instances can be running in containers on a single host without
+visibility into each others' processes, files, network, and so on. Typically,
+each container provides a single service (often called a "micro-service"), such
+as a web server or a database, though containers can be used for arbitrary
+workloads.</p>
 </div>
 <div class="paragraph">
 <p>The Linux kernel has been incorporating capabilities for container technologies
-for years. More recently the
-<a href="https://www.docker.com/whatisdocker/">Docker project</a> has developed a
-convenient management interface for Linux containers on
-a host. Digital Garage and Kubernetes add the ability to orchestrate Docker
-containers across multi-host installations.</p>
+for years. More recently the Docker project has developed a convenient
+management interface for Linux containers on a host. Digital Garage and
+Kubernetes add the ability to orchestrate Docker-formatted containers across
+multi-host installations.</p>
 </div>
 <div class="paragraph">
-<p>Though you do not directly interact with Docker tools when using
-Digital Garage, understanding Docker&#8217;s capabilities and terminology is
-important for understanding its role in Digital Garage and how your
-applications function inside of containers. Docker is available
+<p>Though you do not directly interact with the Docker CLI or service when using
+Digital Garage, understanding their capabilities and terminology is
+important for understanding their role in Digital Garage and how your
+applications function inside of containers. The <strong>docker</strong> RPM is available
 as part of RHEL 7, as well as CentOS and Fedora, so you can
 experiment with it separately from Digital Garage. Refer to the article
-<a href="https://access.redhat.com/articles/881893">Get Started with Docker
-Formatted Container Images on Red Hat Systems</a> for a guided introduction.</p>
+<a href="https://access.redhat.com/articles/881893">Get Started with Docker Formatted Container Images on Red Hat Systems</a> for a guided introduction.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="docker-images"><a class="anchor" href="#docker-images"></a>Docker Images</h2>
+<h2 id="docker-images"><a class="anchor" href="#docker-images"></a>Images</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Docker containers are based on Docker images. A Docker image is a
-binary that includes all of the requirements for running a single Docker
-container, as well as metadata describing its needs and capabilities. You
-can think of it as a packaging technology. Docker containers only
-have access to resources defined in the image unless you give the
-container additional access when creating it. By deploying the same
-image in multiple containers across multiple hosts and load balancing
-between them, Digital Garage can provide redundancy and horizontal scaling
-for a service packaged into an image.</p>
+<p>Containers in Digital Garage are based on Docker-formatted container <em>images</em>. An
+image is a binary that includes all of the requirements for running a single
+container, as well as metadata describing its needs and capabilities.</p>
 </div>
 <div class="paragraph">
-<p>You can use Docker directly to build images, but Digital Garage also supplies
-builders that assist with creating an image by adding your code or
-configuration to existing images.</p>
+<p>You can think of it as a packaging technology. Containers only have access to
+resources defined in the image unless you give the container additional access
+when creating it. By deploying the same image in multiple containers across
+multiple hosts and load balancing between them, Digital Garage can provide
+redundancy and horizontal scaling for a service packaged into an image.</p>
 </div>
 <div class="paragraph">
-<p>Since applications develop over time, a single image name can actually
+<p>You can use the Docker CLI directly to build images, but Digital Garage also
+supplies builder images that assist with creating new images by adding your code
+or configuration to existing images.</p>
+</div>
+<div class="paragraph">
+<p>Because applications develop over time, a single image name can actually
 refer to many different versions of the "same" image. Each different
 image is referred to uniquely by its hash (a long hexadecimal number
 e.g. <code>fd44297e2ddb050ec4f&#8230;&#8203;</code>) which is usually shortened to 12
-characters (e.g. <code>fd44297e2ddb</code>). Rather than version numbers, Docker
-allows applying tags (such as <code>v1</code>, <code>v2.1</code>, <code>GA</code>, or the default <code>latest</code>)
-in addition to the image name to further specify the image desired, so
-you may see the same image referred to as <code>centos</code> (implying the <code>latest</code>
-tag), <code>centos:centos7</code>, or <code>fd44297e2ddb</code>.</p>
+characters (e.g. <code>fd44297e2ddb</code>).</p>
+</div>
+<div class="paragraph">
+<p>Rather than version numbers, the Docker service allows applying tags (such as
+<code>v1</code>, <code>v2.1</code>, <code>GA</code>, or the default <code>latest</code>) in addition to the image name to
+further specify the image desired, so you may see the same image referred to as
+<code>centos</code> (implying the <code>latest</code> tag), <code>centos:centos7</code>, or <code>fd44297e2ddb</code>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="docker-registries"><a class="anchor" href="#docker-registries"></a>Docker Registries</h2>
+<h2 id="docker-registries"><a class="anchor" href="#docker-registries"></a>Container Registries</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A Docker registry is a service for storing and retrieving Docker images. A
-registry contains a collection of one or more Docker image repositories. Each
-image repository contains one or more tagged images. Docker provides its own
-registry, the <a href="https://registry.hub.docker.com/">Docker Hub</a>, but you may
-also use private or third-party registries. Red Hat provides a Docker registry
-at <code>registry.access.redhat.com</code> for subscribers. Digital Garage can also supply
-its own internal registry for managing custom Docker images.</p>
+<p>A container registry is a service for storing and retrieving Docker-formatted
+container images. A registry contains a collection of one or more image
+repositories. Each image repository contains one or more tagged images. Docker
+provides its own registry, the <a href="https://registry.hub.docker.com/">Docker Hub</a>, and you can also use private or third-party registries. Red Hat provides a
+registry at <code>registry.access.redhat.com</code> for subscribers. Digital Garage can
+also supply its own internal registry for managing custom container images.</p>
 </div>
 <div class="paragraph">
 <p>The relationship between Docker containers, images, and registries is
@@ -502,5 +506,13 @@ depicted in the following diagram:</p>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

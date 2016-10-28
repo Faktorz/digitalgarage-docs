@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Digital Garage | Developer Guide | Port Forwarding</title>
+  <title>Digital Garage | Developer Guide | Scheduled Jobs</title>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -70,7 +70,7 @@
       </li>
       
       <li class="hidden-xs active">
-        Port Forwarding
+        Scheduled Jobs
       </li>
     </ol>
     <div class="row row-offcanvas row-offcanvas-left">
@@ -240,14 +240,14 @@
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
             <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
             <li><a class="" href="../dev_guide/copy_files_to_container.html">Copying Files</a></li>
-            <li><a class=" active" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
+            <li><a class="" href="../dev_guide/port_forwarding.html">Port Forwarding</a></li>
             <li><a class="" href="../dev_guide/shared_memory.html">Shared Memory</a></li>
             <li><a class="" href="../dev_guide/application_health.html">Application Health</a></li>
             <li><a class="" href="../dev_guide/events.html">Events</a></li>
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
-            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
+            <li><a class=" active" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -343,7 +343,7 @@
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 main">
         <div class="page-header">
-          <h2>Port Forwarding</h2>
+          <h2>Scheduled Jobs</h2>
         </div>
         <div id="preamble">
 <div class="sectionbody">
@@ -351,8 +351,7 @@
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a></li>
-<li><a href="#basic-usage">Basic Usage</a></li>
-<li><a href="#protocol">Protocol</a></li>
+<li><a href="#creating-a-scheduledjob">Creating a Scheduled Job</a></li>
 </ul>
 </div>
 </div>
@@ -361,182 +360,96 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can use the CLI to forward one or more local ports to a pod. This allows you
-to listen on a given or random port locally, and have data forwarded to and from
-given ports in the pod.</p>
+<p>A <em>scheduled job</em> builds on a regular
+<a href="../dev_guide/jobs.html#dev-guide-jobs">job</a> by allowing you to specifically
+schedule how the job should be run. Scheduled jobs are part of the
+<a href="http://kubernetes.io/docs/user-guide/scheduled-jobs">Kubernetes</a> API, which
+can be managed with <code>oc</code> commands like other
+<a href="../cli_reference/basic_cli_operations.html#object-types">object types</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="basic-usage"><a class="anchor" href="#basic-usage"></a>Basic Usage</h2>
+<h2 id="creating-a-scheduledjob"><a class="anchor" href="#creating-a-scheduledjob"></a>Creating a Scheduled Job</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Support for port forwarding is built into
-<a href="../cli_reference/index.html#cli-reference-index">the CLI</a>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc port-forward &lt;pod&gt; [&lt;local_port&gt;:]&lt;remote_port&gt; [...[&lt;local_port_n&gt;:]&lt;remote_port_n&gt;]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The CLI listens on each local port specified by the user, forwarding via the
-<a href="#protocol">protocol</a> described below.</p>
-</div>
-<div class="paragraph">
-<p>Ports may be specified using the following formats:</p>
-</div>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-<code>5000</code>
-</td>
-<td class="hdlist2">
-<p>The client listens on port 5000 locally and forwards to 5000 in the
-pod.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>6000:5000</code>
-</td>
-<td class="hdlist2">
-<p>The client listens on port 6000 locally and forwards to 5000 in
-the pod.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-<code>:5000</code> or <code>0:5000</code>
-</td>
-<td class="hdlist2">
-<p>The client selects a free local port and forwards to 5000
-in the pod.</p>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>For example, to listen on ports <code>5000</code> and <code>6000</code> locally and forward data to and from ports <code>5000</code> and <code>6000</code> in the pod, run:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc port-forward &lt;pod&gt; 5000 6000</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>To listen on port <code>8888</code> locally and forward to <code>5000</code> in the pod, run:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc port-forward &lt;pod&gt; 8888:5000</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>To listen on a free port locally and forward to <code>5000</code> in the pod, run:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc port-forward &lt;pod&gt; :5000</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Or, alternatively:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc port-forward &lt;pod&gt; 0:5000</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="protocol"><a class="anchor" href="#protocol"></a>Protocol</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Clients initiate port forwarding to a pod by issuing a request to the
-Kubernetes API server:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">/proxy/minions/&lt;node_name&gt;/portForward/&lt;namespace&gt;/&lt;pod&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In the above URL:</p>
+<p>A scheduled job configuration consists of the following key parts:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>&lt;node_name&gt;</code> is the FQDN of the node.</p>
+<p>A schedule specified in <a href="https://en.wikipedia.org/wiki/Cron">cron format</a>.</p>
 </li>
 <li>
-<p><code>&lt;namespace&gt;</code> is the namespace of the target pod.</p>
+<p>A job template used when creating the next job.</p>
 </li>
 <li>
-<p><code>&lt;pod&gt;</code> is the name of the target pod.</p>
+<p>An optional deadline (in seconds) for starting the job if it misses its
+scheduled time for any reason. Missed jobs executions will be counted as failed
+ones. If not specified, there is no deadline.</p>
+</li>
+<li>
+<p><code><strong>ConcurrencyPolicy</strong></code>: An optional concurrency policy, specifying how to treat
+concurrent jobs within a scheduled job. Only one of the following concurrent
+policies may be specified. If not specified, this defaults to allowing
+concurrent executions.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Allow</code> allows Scheduled Jobs to run concurrently.</p>
+</li>
+<li>
+<p><code>Forbid</code> forbids concurrent runs, skipping the next run if the previous has not
+finished yet.</p>
+</li>
+<li>
+<p><code>Replace</code> cancels the currently running job and replaces
+it with a new one.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>An optional flag allowing the suspension of a scheduled job. If set to <code>true</code>,
+all subsequent executions will be suspended.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>For example:</p>
+<p>The following is an example of a <code><strong>ScheduledJob</strong></code> resource:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">/proxy/minions/node123.openshift.com/portForward/myns/mypod</pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">batch/v2alpha1</span></span>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">ScheduledJob</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">pi</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">schedule</span>: <span style="color:#F00;background-color:#FAA">*/1 * * * ?    </span><i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">jobTemplate</span>:             <i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#606">spec</span>:
+      <span style="color:#606">template</span>:
+        <span style="color:#606">spec</span>:
+          <span style="color:#606">containers</span>:
+          - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: pi</span></span>
+            <span style="color:#606">image</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">perl</span></span>
+            <span style="color:#606">command</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">[&quot;perl&quot;,  &quot;-Mbignum=bpi&quot;, &quot;-wle&quot;, &quot;print bpi(2000)&quot;]</span></span>
+          <span style="color:#606">restartPolicy</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Never</span></span></code></pre>
 </div>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Schedule for the job. In this example, a job will run every minute.</p>
+</li>
+<li>
+<p>Job template. This is similar to the <a href="../dev_guide/jobs.html#creating-a-job">job example</a>.</p>
+</li>
+</ol>
 </div>
 </div>
-<div class="paragraph">
-<p>After sending a port forward request to the API server, the client upgrades the
-connection to one that supports multiplexed streams; the current implementation
-uses <a href="http://www.chromium.org/spdy"><strong>SPDY</strong></a>.</p>
-</div>
-<div class="paragraph">
-<p>The client creates a stream with the <code>port</code> header containing the target port in
-the pod. All data written to the stream is delivered via the Kubelet to the
-target pod and port. Similarly, all data sent from the pod for that forwarded
-connection is delivered back to the same stream in the client.</p>
-</div>
-<div class="paragraph">
-<p>The client closes all streams, the upgraded connection, and the underlying
-connection when it is finished with the port forwarding request.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Administrators can see the
-<a href="../architecture/additional_concepts/port_forwarding.html#architecture-additional-concepts-port-forwarding">Architecture</a>
-guide for more information.</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>

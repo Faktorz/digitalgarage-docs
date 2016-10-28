@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class="" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -359,7 +360,7 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Defining image metadata helps Digital Garage better consume your Docker images,
+<p>Defining image metadata helps Digital Garage better consume your container images,
 allowing Digital Garage to create a better experience for developers using your
 image. For example, you can add metadata to provide helpful descriptions of your
 image, or offer suggestions on other images that may also be needed.</p>
@@ -413,9 +414,9 @@ metadata</a> documentation for details about the format.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>This label contains a list of tags represented as list of comma separated
-string values. The tags are the way to categorize the Docker images into broad
+string values. The tags are the way to categorize the container images into broad
 areas of functionality. Tags help UI and generation tools to suggest relevant
-Docker images during the application creation process.</p>
+container images during the application creation process.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -433,9 +434,9 @@ Docker images during the application creation process.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Specifies a list of tags that the generation tools and the UI might use to
-provide relevant suggestions if you don&#8217;t have the Docker images with given tags
-already. For example, if the Docker image wants <code>mysql</code> and <code>redis</code> and you
-don&#8217;t have the Docker image with <code>redis</code> tag, then UI might suggest you to add
+provide relevant suggestions if you don&#8217;t have the container images with given tags
+already. For example, if the container image wants <code>mysql</code> and <code>redis</code> and you
+don&#8217;t have the container image with <code>redis</code> tag, then UI might suggest you to add
 this image into your deployment.</p>
 </div>
 <div class="exampleblock">
@@ -453,9 +454,9 @@ this image into your deployment.</p>
 <p><code><strong>io.k8s.description</strong></code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>This label can be used to give the Docker image consumers more detailed
+<p>This label can be used to give the container image consumers more detailed
 information about the service or functionality this image provides. The UI can
-then use this description together with the Docker image name to provide more
+then use this description together with the container image name to provide more
 human friendly information to end users.</p>
 </div>
 <div class="exampleblock">
@@ -516,8 +517,8 @@ than 1.</p>
 <p><code><strong>io.openshift.min-memory</strong></code> and <code><strong>io.openshift.min-cpu</strong></code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>This label suggests how much resources the Docker image might need in order to
-work properly. The UI might warn the user that deploying this Docker image may
+<p>This label suggests how much resources the container image might need in order to
+work properly. The UI might warn the user that deploying this container image may
 exceed their user quota.  The values must be compatible with
 <a href="https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/resources.md#resource-quantities">Kubernetes
 quantity</a>.</p>
@@ -595,5 +596,13 @@ LABEL io.openshift.min-cpu     4</pre>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>

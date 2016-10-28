@@ -247,6 +247,7 @@
             <li><a class="" href="../dev_guide/downward_api.html">Downward API</a></li>
             <li><a class="" href="../dev_guide/environment_variables.html">Managing Environment Variables</a></li>
             <li><a class=" active" href="../dev_guide/jobs.html">Jobs</a></li>
+            <li><a class="" href="../dev_guide/scheduled_jobs.html">Scheduled Jobs</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -278,9 +279,9 @@
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
+                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
-                  <li><a class="" href="../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/perl.html">Perl</a></li>
 
@@ -368,7 +369,7 @@ deployment</a> (or
 replication controller</a>), runs any number of pods to completion. A job tracks the
 overall progress of a task and updates its status with information about active,
 succeeded, and failed pods. Deleting a job will clean up any pods it created.
-Jobs are part of the extensions Kubernetes API, which can be managed with <code>oc</code> commands like other
+Jobs are part of the Kubernetes API, which can be managed with <code>oc</code> commands like other
 <a href="../cli_reference/basic_cli_operations.html#object-types">object types</a>.</p>
 </div>
 <div class="paragraph">
@@ -404,21 +405,16 @@ the value in the <code><strong>completions</strong></code> parameter.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">extensions/v1beta1</span></span>
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">batch/v1</span></span>
 <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Job</span></span>
 <span style="color:#606">metadata</span>:
   <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">pi</span></span>
 <span style="color:#606">spec</span>:
-  <span style="color:#606">selector</span>:         <i class="conum" data-value="1"></i><b>(1)</b>
-    <span style="color:#606">matchLabels</span>:
-      <span style="color:#606">app</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">pi</span></span>
-  <span style="color:#606">parallelism</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1    </span></span><i class="conum" data-value="2"></i><b>(2)</b>
-  <span style="color:#606">completions</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1    </span></span><i class="conum" data-value="3"></i><b>(3)</b>
-  <span style="color:#606">template</span>:         <i class="conum" data-value="4"></i><b>(4)</b>
+  <span style="color:#606">parallelism</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1    </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+  <span style="color:#606">completions</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">1    </span></span><i class="conum" data-value="2"></i><b>(2)</b>
+  <span style="color:#606">template</span>:         <i class="conum" data-value="3"></i><b>(3)</b>
     <span style="color:#606">metadata</span>:
       <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">pi</span></span>
-      <span style="color:#606">labels</span>:
-        <span style="color:#606">app</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">pi</span></span>
     <span style="color:#606">spec</span>:
       <span style="color:#606">containers</span>:
       - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: pi</span></span>
@@ -429,9 +425,6 @@ the value in the <code><strong>completions</strong></code> parameter.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
-<li>
-<p>Label selector of the pod to run. It uses the <a href="https://github.com/kubernetes/kubernetes/blob/master/docs/user-guide/labels.md#label-selectors">generalized label selectors</a>.</p>
-</li>
 <li>
 <p>Optional value for how many pods a job should run in parallel, defaults to <code><strong>completions</strong></code>.</p>
 </li>
@@ -573,5 +566,13 @@ terminated by Digital Garage.</p>
     </div>
   </div>
 </footer>
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
 </body>
 </html>
