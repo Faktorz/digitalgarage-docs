@@ -23,21 +23,6 @@ link:https://github.com/openshift/mysql/tree/master/5.6[5.6] of MySQL.
 
 == Images
 
-This image comes in two flavors, depending on your needs:
-
-* RHEL 7
-* CentOS 7
-
-*RHEL 7 Based Image*
-
-The RHEL 7 image is available through Red Hat's subscription registry via:
-
-----
-$ docker pull registry.access.redhat.com/openshift3/mysql-55-rhel7
-----
-
-*CentOS 7 Based Image*
-
 This image is available on DockerHub. To download it:
 
 ----
@@ -49,7 +34,7 @@ registries or push them into your {product-title} Docker registry. Additionally,
 you can create an ImageStream that points to the image,
 either in your Docker registry or at the external location. Your {product-title}
 resources can then reference the ImageStream. You can find
-https://github.com/openshift/origin/tree/master/examples/image-streams[example]
+https://github.com/thedigitalgarage/examples/image-streams[example]
 ImageStream definitions for all the provided {product-title} images.
 
 == Configuration and Usage
@@ -395,7 +380,7 @@ endif::[]
 Red Hat provides a proof-of-concept
 xref:../../architecture/core_concepts/templates.adoc#architecture-core-concepts-templates[template] for MySQL
 master-slave replication (clustering); you can obtain the
-https://github.com/openshift/mysql/tree/master/5.5/examples/replica[example
+https://github.com/thedigitalgarage/dg-mysql-container/tree/master/5.5/examples/replica[example
 template from GitHub].
 
 To upload the example template into the current project's template library:
@@ -403,7 +388,7 @@ To upload the example template into the current project's template library:
 ====
 ----
 $ oc create -f \
-    https://raw.githubusercontent.com/openshift/mysql/master/5.5/examples/replica/mysql_replica.json
+    https://raw.githubusercontent.com/thedigitalgarage/dg-mysql-container/master/5.5/examples/replica/mysql_replica.json
 ----
 ====
 
