@@ -288,6 +288,8 @@ Topics:
         File: manual_upgrades
       - Name: Blue-Green Deployments
         File: blue_green_deployments
+      - Name: Operating System Updates and Upgrades
+        File: os_upgrades
   - Name: Downgrading
     File: downgrade
     Distros: openshift-enterprise
@@ -630,6 +632,8 @@ Topics:
     File: daemonsets
   - Name: Pod Autoscaling
     File: pod_autoscaling
+  - Name: Pod Disruption Budget
+    File: pod_disruption_budget
   - Name: Managing Volumes
     File: volumes
   - Name: Using Persistent Volumes
@@ -699,6 +703,7 @@ Topics:
         Distros: openshift-origin,openshift-online
       - Name: .NET Core
         File: dot_net_core
+        Distros: openshift-online,openshift-enterprise,openshift-dedicated
       - Name: Node.js
         File: nodejs
       - Name: Perl

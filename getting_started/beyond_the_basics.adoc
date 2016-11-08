@@ -245,8 +245,11 @@ MongoDB service.
 . Add the {product-title}-provided MongoDB database to your project with:
 +
 ----
-$ oc new-app mongodb-ephemeral \
--p MONGODB_USER=admin,MONGODB_PASSWORD=secret,MONGODB_ADMIN_PASSWORD=super-secret
+$ oc new-app mongodb-ephemeral -p MONGODB_USER=admin, MONGODB_PASSWORD=secret,MONGODB_ADMIN_PASSWORD=super-secret
+----
+If you would like to deploy a persistent version of MongoDB use the following command instead:
+----
+$ oc new-app mongodb-persistent -p MONGODB_USER=admin -p MONGODB_PASSWORD=secret -p MONGODB_ADMIN_PASSWORD=super-secret
 ----
 +
 [NOTE]
