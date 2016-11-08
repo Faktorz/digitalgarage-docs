@@ -236,6 +236,7 @@
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
             <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/pod_disruption_budget.html">Pod Disruption Budget</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
             <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
@@ -278,8 +279,6 @@
                   <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
-
-                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
@@ -325,6 +324,8 @@
                   <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
 
                   <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+
+                  <li><a class="" href="../using_images/other_images/wordpress.html">Wordpress</a></li>
               </ul>
             </li>
       </ul>
@@ -633,9 +634,9 @@ output to <code>oc create</code>:</p>
 <div class="paragraph">
 <p>You can override any
 <a href="../dev_guide/templates.html#templates-parameters">parameter</a> values defined
-in the file by adding the <code>-v</code> option followed by a comma-separated list of
-<code>&lt;name&gt;=&lt;value&gt;</code> pairs. A parameter reference may appear in any text field
-inside the template items.</p>
+in the file by adding the <code>-v</code> option for each <code>&lt;name&gt;=&lt;value&gt;</code> pair you want
+to override. A parameter reference may appear in any text field inside the
+template items.</p>
 </div>
 <div class="paragraph">
 <p>For example, in the following the <strong><code>POSTGRESQL_USER</code></strong> and <strong><code>POSTGRESQL_DATABASE</code></strong>
@@ -648,7 +649,8 @@ customized environment variables:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">$ oc process -f my-rails-postgresql \
-    -v POSTGRESQL_USER=bob,POSTGRESQL_DATABASE=mydatabase</pre>
+    -v POSTGRESQL_USER=bob \
+    -v POSTGRESQL_DATABASE=mydatabase</pre>
 </div>
 </div>
 </div>
@@ -663,7 +665,8 @@ command:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">$ oc process -f my-rails-postgresql \
-    -v POSTGRESQL_USER=bob,POSTGRESQL_DATABASE=mydatabase \
+    -v POSTGRESQL_USER=bob \
+    -v POSTGRESQL_DATABASE=mydatabase \
     | oc create -f -</pre>
 </div>
 </div>
@@ -854,9 +857,34 @@ labels:
 <p>Parameters allow a value to be supplied by the user or generated when the
 template is instantiated. This is useful for generating random passwords or
 allowing the user to supply a host name or other user-specific value that is
-required to customize the template. Parameters can be referenced by placing
-values in the form <strong>"${PARAMETER_NAME}"</strong> in place of any string field in the
+required to customize the template. Parameters can be referenced in two ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>As a string value by placing values in the form <strong>${PARAMETER_NAME}</strong> in any string field in the
 template.</p>
+</li>
+<li>
+<p>As a json/yaml value by playing values in the form <strong>${{PARAMETER_NAME}}</strong> in place of any
+field in the template.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When using the <strong>${PARAMETER_NAME}</strong> syntax, multiple parameter references can be combined in
+a single field and the reference can be embedded within fixed data, such as <strong>"http://{PARAMETER_1}#{$PARAMETER_2}"</strong>.
+Both parameter values will be substituted and the resulting value will be a quoted string.</p>
+</div>
+<div class="paragraph">
+<p>When using the <strong>${{PARAMETER_NAME}}</strong> syntax only a single parameter reference is allowed
+and leading/trailing characters are not permitted.  The resulting value will be unquoted
+unless, after substitution is performed, the result is not a valid json object.  If the result
+is not a valid json value, the resulting value will be quoted and treated as a standard string.</p>
+</div>
+<div class="paragraph">
+<p>A single parameter can be referenced multiple times within a template and it can be referenced
+using both substitution syntaxes within a single template.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -878,16 +906,26 @@ objects:
           uri: "${SOURCE_REPOSITORY_URL}" <i class="conum" data-value="1"></i><b>(1)</b>
           ref: "${SOURCE_REPOSITORY_REF}"
         contextDir: "${CONTEXT_DIR}"
+  - kind: DeploymentConfig
+    apiVersion: v1
+    metadata:
+      name: frontend
+    spec:
+      replicas: "${{REPLICA_COUNT}}" <i class="conum" data-value="2"></i><b>(2)</b>
 parameters:
-  - name: SOURCE_REPOSITORY_URL <i class="conum" data-value="2"></i><b>(2)</b>
-    description: The URL of the repository with your application source code <i class="conum" data-value="3"></i><b>(3)</b>
-    value: https://github.com/openshift/cakephp-ex.git <i class="conum" data-value="4"></i><b>(4)</b>
-    required: true <i class="conum" data-value="5"></i><b>(5)</b>
+  - name: SOURCE_REPOSITORY_URL <i class="conum" data-value="3"></i><b>(3)</b>
+    description: The URL of the repository with your application source code <i class="conum" data-value="4"></i><b>(4)</b>
+    value: https://github.com/openshift/cakephp-ex.git <i class="conum" data-value="5"></i><b>(5)</b>
+    required: true <i class="conum" data-value="6"></i><b>(6)</b>
   - name: GITHUB_WEBHOOK_SECRET
     description: A secret string used to configure the GitHub webhook
-    generate: expression <i class="conum" data-value="6"></i><b>(6)</b>
-    from: "[a-zA-Z0-9]{40}" <i class="conum" data-value="7"></i><b>(7)</b>
-message: "... The GitHub webhook secret is ${GITHUB_WEBHOOK_SECRET} ..." <i class="conum" data-value="8"></i><b>(8)</b></pre>
+    generate: expression <i class="conum" data-value="7"></i><b>(7)</b>
+    from: "[a-zA-Z0-9]{40}" <i class="conum" data-value="8"></i><b>(8)</b>
+  - name: REPLICA_COUNT
+    description: Number of replicas to run
+    value: "2"
+    required: true
+message: "... The GitHub webhook secret is ${GITHUB_WEBHOOK_SECRET} ..." <i class="conum" data-value="9"></i><b>(9)</b></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -899,37 +937,42 @@ parameter when the template is instantiated.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This value will be replaced with the unquoted value of the <code><strong>REPLICA_COUNT</strong></code>
+parameter when the template is instantiated.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>The name of the parameter. This value is displayed to users and used to
 reference the parameter within the template.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>A description of the parameter.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
 <td>A default value for the parameter which will be used if the user does not
 override the value when instantiating the template.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
 <td>Indicates this parameter is required, meaning the user cannot override it
 with an empty value. If the parameter does not provide a default or generated
 value, the user must supply a value.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
 <td>A parameter which has its value generated via a
 <a href="../architecture/core_concepts/templates.html#parameters">regular
 expression-like syntax</a>.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
 <td>The input to the generator. In this case, the generator will produce a 40
 character alphanumeric value including upper and lowercase characters.</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
 <td>Parameters can be included in the template message. This informs the
 user about generated values.</td>
 </tr>

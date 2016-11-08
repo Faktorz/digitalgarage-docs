@@ -236,6 +236,7 @@
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
             <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/pod_disruption_budget.html">Pod Disruption Budget</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
             <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
@@ -278,8 +279,6 @@
                   <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
-
-                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
@@ -325,6 +324,8 @@
                   <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
 
                   <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+
+                  <li><a class="" href="../using_images/other_images/wordpress.html">Wordpress</a></li>
               </ul>
             </li>
       </ul>
@@ -411,7 +412,7 @@ or limit compute resources in your own pods and containers.</p>
 <p>A resource quota, defined by a <code><strong>ResourceQuota</strong></code> object, provides constraints
 that limit aggregate resource consumption per project. It can limit the quantity
 of objects that can be created in a project by type, as well as the total amount
-of compute resources that may be consumed by resources in that project.</p>
+of compute resources and storage that may be consumed by resources in that project.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -715,6 +716,35 @@ this quota would charge for build or deployer pods, but not long running pods li
 </div>
 </div>
 </div>
+<div class="exampleblock">
+<div class="title">Example 7. <strong>storage-consumption.yaml</strong></div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: storage-consumption
+spec:
+  hard:
+    persistentvolumeclaims: "10" <i class="conum" data-value="1"></i><b>(1)</b>
+    requests.storage: "50Gi" <i class="conum" data-value="2"></i><b>(2)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The total number of persistent volume claims in a project</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Across all persistent volume claims in a project, the sum of storage requested cannot exceed this value.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="dev-managed-by-quota"><a class="anchor" href="#dev-managed-by-quota"></a>Resources Managed by Quota</h3>
@@ -772,6 +802,16 @@ interchangeably.</p>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Across all pods in a non-terminal state, the sum of memory requests cannot
 exceed this value. <code><strong>memory</strong></code> and <code><strong>requests.memory</strong></code> are the same value and can
+be used interchangeably.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>requests.storage</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Across all persistent volume claim in any state, the sum of storage requests cannot
+exceed this value. <code><strong>storage</strong></code> and <code><strong>requests.storage</strong></code> are the same value and can
 be used interchangeably.</p>
 </div></div></td>
 </tr>
@@ -1026,8 +1066,8 @@ and limits in pods and containers.</p>
 <p>A limit range, defined by a <code><strong>LimitRange</strong></code> object, enumerates
 <a href="../dev_guide/compute_resources.html#dev-compute-resources">compute resource
 constraints</a> in a <a href="../dev_guide/projects.html#dev-guide-projects">project</a> at the pod,
-container, image and image stream level, and specifies the amount of resources
-that a pod, container, image or image stream can consume.</p>
+container, image, image stream, and persistent volume claim level, and specifies the amount of resources
+that a pod, container, image, image stream, or persistent volume claim can consume.</p>
 </div>
 <div class="paragraph">
 <p>All resource create and modification requests are evaluated against each
@@ -1108,7 +1148,7 @@ openshift.io/ImageStream  openshift.io/images      -    12  -       -     -</pre
 The following shows an example limit range definition:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 7. Core Limit Range Object Definition</div>
+<div class="title">Example 8. Core Limit Range Object Definition</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">

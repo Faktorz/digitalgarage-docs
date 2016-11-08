@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Digital Garage | Using Images | Source-to-Image (S2I) | .NET Core</title>
+  <title>Digital Garage | Using Images | Other Images | Wordpress</title>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -68,9 +68,9 @@
       <li class="hidden-xs active">
         <a href="../../using_images/index.html">Using Images</a>
       </li>
-      <li class="hidden-xs active"><a href="../../using_images/s2i_images/index.html">Source-to-Image (S2I)</a></li>
+      <li class="hidden-xs active"><a href="../../using_images/other_images/index.html">Other Images</a></li>
       <li class="hidden-xs active">
-        .NET Core
+        Wordpress
       </li>
     </ol>
     <div class="row row-offcanvas row-offcanvas-left">
@@ -236,6 +236,7 @@
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
             <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/pod_disruption_budget.html">Pod Disruption Budget</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
             <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
@@ -271,15 +272,13 @@
             <li><a class="" href="../../using_images/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
-                <span id="sgSpan-6-1" class="fa fa-caret-down"></span>&nbsp;Source-to-Image (S2I)
+                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
               </a>
-              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse in">
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
 
                   <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
-
-                  <li><a class=" active" href="../../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
                   <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
@@ -318,13 +317,15 @@
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-4">
-                <span id="sgSpan-6-4" class="fa fa-caret-right"></span>&nbsp;Other Images
+                <span id="sgSpan-6-4" class="fa fa-caret-down"></span>&nbsp;Other Images
               </a>
-              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-6-4" class="nav-tertiary list-unstyled collapse in">
 
                   <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
 
                   <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+
+                  <li><a class=" active" href="../../using_images/other_images/wordpress.html">Wordpress</a></li>
               </ul>
             </li>
       </ul>
@@ -343,98 +344,147 @@
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 main">
         <div class="page-header">
-          <h2>.NET Core</h2>
+          <h2>Wordpress</h2>
         </div>
         <div id="preamble">
 <div class="sectionbody">
 <div id="toc" class="toc">
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
-<li><a href="#benefits-of-using-dot-net-core">Benefits of Using .NET Core</a></li>
-<li><a href="#dot-net-core-supported-versions">Supported Versions</a></li>
-<li><a href="#dot-net-core-configuration">Configuration</a></li>
+<li><a href="#deploying-wordpress-on-digital-garage">Deploying WordPress on Digital Garage</a></li>
+<li><a href="#wordpress-version">Versions</a></li>
+<li><a href="#wordpress-images">Images</a></li>
+<li><a href="#wordpress-configuration-and-usage">Configuration and Usage</a>
+<ul class="sectlevel2">
+<li><a href="#wordpress-installation">Installation</a></li>
+<li><a href="#wordpress-installing-themes-and-plugins">Installing Themes and Plugins</a></li>
+<li><a href="#wordpress-advanced-configuration-via-developer-quickstart">Wordpress Advanced Configuration and Developer Quickstart</a></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="benefits-of-using-dot-net-core"><a class="anchor" href="#benefits-of-using-dot-net-core"></a>Benefits of Using .NET Core</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="http://developers.redhat.com/dotnet/">.NET Core</a> is a general purpose
-development platform featuring automatic memory management and modern
-programming languages. It allows users to build high quality applications
-efficiently. .NET Core is available on Red Hat Enterprise Linux (RHEL 7) and
-Digital Garage via certified containers. .NET Core offers:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The ability to follow a microservices-based approach, where some components are
-built with .NET and others with Java, but all can run on a common, supported
-platform in Red Hat Enterprise Linux and Digital Garage.</p>
-</li>
-<li>
-<p>The capacity to more easily develop new .NET Core workloads on Windows;
-customers are able to deploy and run on either Red Hat Enterprise Linux or
-Windows Server.</p>
-</li>
-<li>
-<p>A heterogeneous data center, where the underlying infrastructure is capable of
-running .NET applications without having to rely solely on Windows Server.</p>
-</li>
-<li>
-<p>Access to many of the popular development frameworks such as .NET, Java, Ruby,
-and Python from within Digital Garage.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dot-net-core-supported-versions"><a class="anchor" href="#dot-net-core-supported-versions"></a>Supported Versions</h2>
+<h2 id="deploying-wordpress-on-digital-garage"><a class="anchor" href="#deploying-wordpress-on-digital-garage"></a>Deploying WordPress on Digital Garage</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>.NET Core version 1.0</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Supported on Red Hat Enterprise Linux (RHEL) 7 Digital Garage versions 3.3 and later</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<div class="paragraph">
+<p>WordPress is web software you can use to create a beautiful website, blog, or app. We like to say that WordPress is both free and priceless at the same time.</p>
 </div>
 <div class="paragraph">
-<p>The RHEL 7 images are available through Red Hat&#8217;s subscription registry using:</p>
+<p>The core software is built by hundreds of community volunteers, and when you’re ready for more there are thousands of plugins and themes available to transform your site into almost anything you can imagine. Over 60 million people have chosen WordPress to power the place on the web they call “home” — we’d love you to join the family.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wordpress-version"><a class="anchor" href="#wordpress-version"></a>Versions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Digital Garage follows the <a href="https://wordpress.org/download/">LTS</a> releases of Wordpress.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wordpress-images"><a class="anchor" href="#wordpress-images"></a>Images</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Wordpress image is based on the CentOS 7 base image.</p>
+</div>
+<div class="paragraph">
+<p>This image is available on DockerHub. To download it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>$ docker pull registry.access.redhat.com/dotnet/dotnetcore-10-rhel7</pre>
+<pre class="nowrap">$ docker pull thedigitalgarage/wordpress</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To use these images, you can either access them directly from these
-<a href="../../architecture/infrastructure_components/image_registry.html#architecture-infrastructure-components-image-registry">image
-registries</a>, or push them into your
-<a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">Digital Garage
-Docker registry</a>. Additionally, you can create an
-<a href="../../architecture/core_concepts/builds_and_image_streams.html#image-streams">image
-stream</a> that points to the image, either in your Docker registry or at the
-external location. Your Digital Garage resources can then reference the
-<a href="https://github.com/redhat-developer/s2i-dotnetcore/blob/master/dotnet_imagestreams.json">image stream definition</a>.</p>
+<p>To use these images, you can either access them directly from these registries or push them into your Digital Garage container registry.
+Additionally, you can create an ImageStream that points to the image, either in your Docker registry or at the external location.
+Your Digital Garage resources can then reference the ImageStream.
+You can find <a href="https://github.com/thedigitalgarage/examples/tree/master/image-streams">example</a> ImageStream definitions for all the provided Digital Garage images.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dot-net-core-configuration"><a class="anchor" href="#dot-net-core-configuration"></a>Configuration</h2>
+<h2 id="wordpress-configuration-and-usage"><a class="anchor" href="#wordpress-configuration-and-usage"></a>Configuration and Usage</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="wordpress-installation"><a class="anchor" href="#wordpress-installation"></a>Installation</h3>
 <div class="paragraph">
-<p>The .NET Core image currently does not support any environment variables. No
-configuration is necessary.</p>
+<p>If you are planning to use Worpress for your personal blog or in a development environment, the easiest way to get WordPress up and running on the Digital Garage is to use the Official Digital Garage WordPress Instant App.
+ In the Add to Project screen, simply click the Wordpress Instant App card, enter a few details and you’ll be up and running in no time.</p>
+</div>
+<div class="paragraph">
+<p>If you would like to add the Wordpress Instant App to your project via the Digital Garage CLI, simply verify that you are in the correct
+project namespace by typing the following command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc project</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your current project will be displayed. Then create the new application with the Wordpress Instant App template with the following command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-app wordpress-instant-app</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The Digital Garage Worpress Instant App is preconfigured with an ephemeral MySQL database. For information on configuring a persistent
+MySQL database and/or scaling MySQL, see the <a href="#../../dev_guide/using_images/mysql.adoc ">MySQL Image Guide</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you need more control over your WordPress installation or want to manage all
+of the files through git, you can try using the Digital Garage WordPress Developer QuickStart</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="wordpress-installing-themes-and-plugins"><a class="anchor" href="#wordpress-installing-themes-and-plugins"></a>Installing Themes and Plugins</h3>
+<div class="paragraph">
+<p>There are two ways that you can add Themes and Plugins to your WordPress application.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can use the WordPress Admin section of your application (located at /wp-admin) and use the standard Theme and Plugin installation procedures.</p>
+</li>
+<li>
+<p>If you are deploying Wordpress via the Digital Garage Wordpress Developer Quickstart, you can download Themes and Plugins to your workstation
+and then copy them into your git repository in the wp-content/themes and wp-content/plugins directories.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="wordpress-advanced-configuration-via-developer-quickstart"><a class="anchor" href="#wordpress-advanced-configuration-via-developer-quickstart"></a>Wordpress Advanced Configuration and Developer Quickstart</h3>
+<div class="paragraph">
+<p>Coming Soon</p>
+</div>
 </div>
 </div>
 </div>

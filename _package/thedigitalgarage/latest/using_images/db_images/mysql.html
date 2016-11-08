@@ -236,6 +236,7 @@
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
             <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../../dev_guide/pod_disruption_budget.html">Pod Disruption Budget</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
             <li><a class="" href="../../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
@@ -278,8 +279,6 @@
                   <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
 
                   <li><a class="" href="../../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
-
-                  <li><a class="" href="../../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
                   <li><a class="" href="../../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
@@ -325,6 +324,8 @@
                   <li><a class="" href="../../using_images/other_images/index.html">Overview</a></li>
 
                   <li><a class="" href="../../using_images/other_images/jenkins.html">Jenkins</a></li>
+
+                  <li><a class="" href="../../using_images/other_images/wordpress.html">Wordpress</a></li>
               </ul>
             </li>
       </ul>
@@ -441,8 +442,10 @@ MySQL running in a container:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ oc new-app -e \
-    MYSQL_USER=&lt;username&gt;,MYSQL_PASSWORD=&lt;password&gt;,MYSQL_DATABASE=&lt;database_name&gt; \</pre>
+<pre class="nowrap">$ oc new-app \
+    -e MYSQL_USER=&lt;username&gt; \
+    -e MYSQL_PASSWORD=&lt;password&gt; \
+    -e MYSQL_DATABASE=&lt;database_name&gt; \</pre>
 </div>
 </div>
 </div>

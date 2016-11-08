@@ -236,6 +236,7 @@
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
             <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
+            <li><a class="" href="../dev_guide/pod_disruption_budget.html">Pod Disruption Budget</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
             <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
@@ -278,8 +279,6 @@
                   <li><a class="" href="../using_images/s2i_images/index.html">Overview</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/customizing_s2i_images.html">Customizing S2I images</a></li>
-
-                  <li><a class="" href="../using_images/s2i_images/dot_net_core.html">.NET Core</a></li>
 
                   <li><a class="" href="../using_images/s2i_images/nodejs.html">Node.js</a></li>
 
@@ -325,6 +324,8 @@
                   <li><a class="" href="../using_images/other_images/index.html">Overview</a></li>
 
                   <li><a class="" href="../using_images/other_images/jenkins.html">Jenkins</a></li>
+
+                  <li><a class="" href="../using_images/other_images/wordpress.html">Wordpress</a></li>
               </ul>
             </li>
       </ul>
@@ -754,9 +755,22 @@ MongoDB service.</p>
 <p>Add the Digital Garage-provided MongoDB database to your project with:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ oc new-app mongodb-ephemeral \
--p MONGODB_USER=admin,MONGODB_PASSWORD=secret,MONGODB_ADMIN_PASSWORD=super-secret</pre>
+<pre class="nowrap">$ oc new-app mongodb-ephemeral -p MONGODB_USER=admin, MONGODB_PASSWORD=secret,MONGODB_ADMIN_PASSWORD=super-secret</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>If you would like to deploy a persistent version of MongoDB use the following command instead:</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc new-app mongodb-persistent -p MONGODB_USER=admin -p MONGODB_PASSWORD=secret -p MONGODB_ADMIN_PASSWORD=super-secret</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -773,7 +787,8 @@ database template.</p>
 </tr>
 </table>
 </div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Next, get the internal IP address and port of the newly-created MongoDB service:</p>
 <div class="listingblock">

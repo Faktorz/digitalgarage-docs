@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Digital Garage | CLI Reference | Managing CLI Profiles</title>
+  <title>Digital Garage | Developer Guide | Pod Disruption Budget</title>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -66,11 +66,11 @@
         <a href="../welcome/index.html">Digital Garage Discovery</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../cli_reference/index.html">CLI Reference</a>
+        <a href="../dev_guide/index.html">Developer Guide</a>
       </li>
       
       <li class="hidden-xs active">
-        Managing CLI Profiles
+        Pod Disruption Budget
       </li>
     </ol>
     <div class="row row-offcanvas row-offcanvas-left">
@@ -165,20 +165,20 @@
     </li>
     <li class="nav-header">
       <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup3">
-        <span id="tgSpan3" class="fa fa-angle-down"></span>CLI Reference
+        <span id="tgSpan3" class="fa fa-angle-right"></span>CLI Reference
       </a>
-      <ul id="topicGroup3" class="collapse in list-unstyled">
+      <ul id="topicGroup3" class="collapse  list-unstyled">
             <li><a class="" href="../cli_reference/index.html">Overview</a></li>
             <li><a class="" href="../cli_reference/cli_by_example_content.html">CLI by example</a></li>
             <li><a class="" href="../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
-            <li><a class=" active" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
       </ul>
     </li>
     <li class="nav-header">
       <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup4">
-        <span id="tgSpan4" class="fa fa-angle-right"></span>Developer Guide
+        <span id="tgSpan4" class="fa fa-angle-down"></span>Developer Guide
       </a>
-      <ul id="topicGroup4" class="collapse  list-unstyled">
+      <ul id="topicGroup4" class="collapse in list-unstyled">
             <li><a class="" href="../dev_guide/index.html">Overview</a></li>
             <li><a class="" href="../dev_guide/application_lifecycle.html">Application Life Cycle Examples</a></li>
             <li><a class="" href="../dev_guide/authentication.html">Authentication</a></li>
@@ -236,7 +236,7 @@
             <li><a class="" href="../dev_guide/configmaps.html">ConfigMaps</a></li>
             <li><a class="" href="../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
-            <li><a class="" href="../dev_guide/pod_disruption_budget.html">Pod Disruption Budget</a></li>
+            <li><a class=" active" href="../dev_guide/pod_disruption_budget.html">Pod Disruption Budget</a></li>
             <li><a class="" href="../dev_guide/volumes.html">Managing Volumes</a></li>
             <li><a class="" href="../dev_guide/persistent_volumes.html">Using Persistent Volumes</a></li>
             <li><a class="" href="../dev_guide/executing_remote_commands.html">Executing Remote Commands</a></li>
@@ -344,7 +344,7 @@
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 main">
         <div class="page-header">
-          <h2>Managing CLI Profiles</h2>
+          <h2>Pod Distribution Budget</h2>
         </div>
         <div id="preamble">
 <div class="sectionbody">
@@ -352,9 +352,7 @@
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a></li>
-<li><a href="#switching-between-cli-profiles">Switching Between CLI Profiles</a></li>
-<li><a href="#manually-configuring-cli-profiles">Manually Configuring CLI Profiles</a></li>
-<li><a href="#loading-and-merging-rules">Loading and Merging Rules</a></li>
+<li><a href="#creating-a-poddisruptionbudget">Creating a Pod Disruption Budget</a></li>
 </ul>
 </div>
 </div>
@@ -363,582 +361,74 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A CLI configuration file allows you to configure different profiles, or
-<em>contexts</em>, for use with the <a href="index.html#cli-reference-index">Digital Garage CLI</a>. A context
-consists of <a href="../architecture/additional_concepts/authentication.html#architecture-additional-concepts-authentication">user
-authentication</a> andDigital Garage server information associated with a
-<em>nickname</em>.</p>
+<p>A <em>Pod Disruption Budget</em> is part of the
+<a href="http://kubernetes.io/docs/admin/disruptions/">Kubernetes</a> API, which can be
+managed with <code>oc</code> commands like other
+<a href="../cli_reference/basic_cli_operations.html#object-types">object types</a>. They
+allow the specification of safety constraints on pods during operations, such as
+draining a node for maintenance.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="switching-between-cli-profiles"><a class="anchor" href="#switching-between-cli-profiles"></a>Switching Between CLI Profiles</h2>
+<h2 id="creating-a-poddisruptionbudget"><a class="anchor" href="#creating-a-poddisruptionbudget"></a>Creating a Pod Disruption Budget</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Contexts allow you to easily switch between multiple users across multiple
-Digital Garage servers, or <em>clusters</em>, when using issuing CLI operations. Nicknames
-make managing CLI configuration easier by providing short-hand references to
-contexts, user credentials, and cluster details.</p>
+<p>A <code>PodDisruptionBudget</code> configuration consists of the following key parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A label selector, which is a label query over a set of pods.</p>
+</li>
+<li>
+<p>An availability level, which specifies the minimum number of pods that must be
+available simultaneously.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>After <a href="get_started_cli.html#cli-reference-get-started-cli">logging in with the CLI</a> for the first time,
-Digital Garage creates a <strong><em>~/.kube/config</em></strong> file if one does not
-already exist. As more authentication and connection details are provided to the
-CLI, either automatically during an <code>oc login</code> operation or by
-<a href="#manually-configuring-cli-profiles">setting them explicitly</a>, the updated
-information is stored in the configuration file:</p>
+<p>The following is an example of a <code>PodDisruptionBudget</code> resource:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 1. CLI Configuration File <a id="cli-config-file"></a></div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">v1</span></span>
-<span style="color:#606">clusters</span>: <i class="conum" data-value="1"></i><b>(1)</b>
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">cluster:</span><span style="color:#D20">
-    insecure-skip-tls-verify: true
-    server: https://openshift1.example.com:8443</span></span>
-  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift1.example.com:8443</span></span>
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">cluster:</span><span style="color:#D20">
-    insecure-skip-tls-verify: true
-    server: https://openshift2.example.com:8443</span></span>
-  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">openshift2.example.com:8443</span></span>
-<span style="color:#606">contexts</span>: <i class="conum" data-value="2"></i><b>(2)</b>
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">context:</span><span style="color:#D20">
-    cluster: openshift1.example.com:8443
-    namespace: alice-project
-    user: alice/openshift1.example.com:8443</span></span>
-  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">alice-project/openshift1.example.com:8443/alice</span></span>
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">context:</span><span style="color:#D20">
-    cluster: openshift1.example.com:8443
-    namespace: joe-project
-    user: alice/openshift1.example.com:8443</span></span>
-  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">joe-project/openshift1/alice</span></span>
-<span style="color:#606">current-context</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">joe-project/openshift1.example.com:8443/alice </span></span><i class="conum" data-value="3"></i><b>(3)</b>
-<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Config</span></span>
-<span style="color:#606">preferences</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">{}</span></span>
-<span style="color:#606">users</span>: <i class="conum" data-value="4"></i><b>(4)</b>
-- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: alice/openshift1.example.com:8443</span></span>
-  <span style="color:#606">user</span>:
-    <span style="color:#606">token</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">xZHd2piv5_9vQrg-SKXRJ2Dsl9SceNJdhNTljEKTb8k</span></span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">apiVersion</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">policy/v1alpha1 </span></span><i class="conum" data-value="1"></i><b>(1)</b>
+<span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">PodDisruptionBudget</span></span>
+<span style="color:#606">metadata</span>:
+  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">foo</span></span>
+<span style="color:#606">spec</span>:
+  <span style="color:#606">selector</span>:  <i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#606">matchLabels</span>:
+      <span style="color:#606">foo</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bar</span></span>
+  <span style="color:#606">minAvailable</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">2  </span></span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code><strong>clusters</strong></code> section defines connection details for Digital Garage clusters,
-including the address for their master server. In this example, one cluster is
-nicknamed <strong>openshift1.example.com:8443</strong> and another is nicknamed
-<strong>openshift2.example.com:8443</strong>.</td>
+<td><code>PodDisruptionBudget</code> is part of the <code>policy/v1alpha</code> API group.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>This <code><strong>contexts</strong></code> section defines two contexts: one nicknamed
-<strong>alice-project/openshift1.example.com:8443/alice</strong>, using the <strong>alice-project</strong>
-project, <strong>openshift1.example.com:8443</strong> cluster, and <strong>alice</strong> user, and another
-nicknamed <strong>joe-project/openshift1.example.com:8443/alice</strong>, using the
-<strong>joe-project</strong> project, <strong>openshift1.example.com:8443</strong> cluster and <strong>alice</strong> user.</td>
+<td>A label query over a set of resources. The result of <code>matchLabels</code> and
+<code>matchExpressions</code> are logically conjoined.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The <code><strong>current-context</strong></code> parameter shows that the
-<strong>joe-project/openshift1.example.com:8443/alice</strong> context is currently in use,
-allowing the <strong>alice</strong> user to work in the <strong>joe-project</strong> project on the
-<strong>openshift1.example.com:8443</strong> cluster.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>The <code><strong>users</strong></code> section defines user credentials. In this example, the user
-nickname <strong>alice/openshift1.example.com:8443</strong> uses an
-<a href="../architecture/additional_concepts/authentication.html#api-authentication">access
-token</a>.</td>
+<td>The minimum number of pods that must be available simultaneously. This can
+be either an integer or a string specifying a percentage (for example, <code>20%</code>).</td>
 </tr>
 </table>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>The CLI can support multiple configuration files; they are
-<a href="#loading-and-merging-rules">loaded at runtime and merged together</a> along
-with any override options specified from the command line.</p>
-</div>
-<div class="paragraph">
-<p>After you are logged in, you can use the <code>oc status</code> command or the <code>oc
-project</code> command to verify your current working environment:</p>
-</div>
-<div class="exampleblock">
-<div class="title">Example 2. Verifying the Current Working Environment</div>
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc status
-oc status
-In project Joe's Project (joe-project)
-
-service database (172.30.43.12:5434 -&gt; 3306)
-  database deploys docker.io/openshift/mysql-55-centos7:latest
-    #1 deployed 25 minutes ago - 1 pod
-
-service frontend (172.30.159.137:5432 -&gt; 8080)
-  frontend deploys origin-ruby-sample:latest &lt;-
-    builds https://github.com/openshift/ruby-hello-world with joe-project/ruby-20-centos7:latest
-    #1 deployed 22 minutes ago - 2 pods
-
-To see more information about a service or deployment, use 'oc describe service &lt;name&gt;' or 'oc describe dc &lt;name&gt;'.
-You can use 'oc get all' to see lists of each of the types described above.</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc project
-Using project "joe-project" from context named "joe-project/openshift1.example.com:8443/alice" on server "https://openshift1.example.com:8443".</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>To log in using any other combination of user credentials and cluster details,
-run the <code>oc login</code> command again and supply the relevant information during the
-interactive process. A context is constructed based on the supplied information
-if one does not already exist.</p>
-</div>
-<div class="paragraph">
-<p>If you are already logged in and want to switch to another project the current
-user already has access to, use the <code>oc project</code> command and supply the name of
-the project:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc project alice-project
-Now using project "alice-project" on server "https://openshift1.example.com:8443".</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>At any time, you can use the <code>oc config view</code> command to view your current,
-full CLI configuration, as seen in <a href="#cli-config-file">the above output</a>.</p>
-</div>
-<div class="paragraph">
-<p>Additional CLI configuration commands are also available for more
-<a href="#manually-configuring-cli-profiles">advanced usage</a>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If you have access to administrator credentials but are no longer logged in as
-the <a href="../architecture/core_concepts/projects_and_users.html#users">default
-system user</a> <strong>system:admin</strong>, you can log back in as this user at any time as
-long as the credentials are still present in your
-<a href="../cli_reference/get_started_cli.html#cli-configuration-files">CLI
-configuration file</a>. The following command logs in and switches to the <strong>default</strong>
-project:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc login -u system:admin -n default</pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="manually-configuring-cli-profiles"><a class="anchor" href="#manually-configuring-cli-profiles"></a>Manually Configuring CLI Profiles</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This section covers more advanced usage of CLI configurations. In most
-situations, you can simply use the <code>oc login</code> and <code>oc project</code> commands to log
-in and switch between contexts and projects.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>If you want to manually configure your CLI configuration files, you can use the
-<code>oc config</code> command instead of modifying the files themselves. The <code>oc config</code>
-command includes a number of helpful subcommands for this purpose:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. CLI Configuration Subcommands</caption>
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 88.8889%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Subcommand</th>
-<th class="tableblock halign-left valign-top">Usage</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>set-credentials</code></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Sets a user entry in the CLI configuration file. If the referenced user
-nickname already exists, the specified information is merged in.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc config set-credentials &lt;user_nickname&gt;
-[--client-certificate=&lt;path/to/certfile&gt;] [--client-key=&lt;path/to/keyfile&gt;]
-[--token=&lt;bearer_token&gt;] [--username=&lt;basic_user&gt;] [--password=&lt;basic_password&gt;]</pre>
-</div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>set-cluster</code></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Sets a cluster entry in the CLI configuration file. If the referenced cluster
-nickname already exists, the specified information is merged in.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc config set-cluster &lt;cluster_nickname&gt; [--server=&lt;master_ip_or_fqdn&gt;]
-[--certificate-authority=&lt;path/to/certificate/authority&gt;]
-[--api-version=&lt;apiversion&gt;] [--insecure-skip-tls-verify=true]</pre>
-</div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>set-context</code></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Sets a context entry in the CLI configuration file. If the referenced context
-nickname already exists, the specified information is merged in.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc config set-context &lt;context_nickname&gt; [--cluster=&lt;cluster_nickname&gt;]
-[--user=&lt;user_nickname&gt;] [--namespace=&lt;namespace&gt;]</pre>
-</div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>use-context</code></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Sets the current context using the specified context nickname.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc config use-context &lt;context_nickname&gt;</pre>
-</div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>set</code></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Sets an individual value in the the CLI configuration file.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc config set &lt;property_name&gt; &lt;property_value&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>&lt;property_name&gt;</code> is a dot-delimited name where each token represents either
-an attribute name or a map key. The <code>&lt;property_value&gt;</code> is the new value being
-set.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>unset</code></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Unsets individual values in the CLI configuration file.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc config unset &lt;property_name&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>&lt;property_name&gt;</code> is a dot-delimited name where each token represents either
-an attribute name or a map key.</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>view</code></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Displays the merged CLI configuration currently in use.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc config view</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Displays the result of the specified CLI configuration file.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc config view --config=&lt;specific_filename&gt;</pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Example Usage</strong> <a id="example-usage"></a></p>
-</div>
-<div class="paragraph">
-<p>Consider the following configuration workflow. First, set credentials for a user
-nickname <strong>alice</strong> that uses an
-<a href="../architecture/additional_concepts/authentication.html#api-authentication">access
-token</a>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ oc config set-credentials alice --token=NDM2N2MwODgtNjI1Yy10N3VhLTg1YmItYzI4NDEzZDUyYzVi</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Set a cluster entry named <strong>openshift1</strong>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc config set-cluster openshift1 --server=https://openshift1.example.com</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Set a context named <strong>alice</strong> that uses the <strong>alice</strong> user and the
-<strong>openshift1</strong> cluster:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc config set-context alice --cluster=openshift1 --user=alice</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now that the <strong>alice</strong> context has been created, switch to that context:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc config use-context alice</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Set the <strong>aliceproject</strong> namespace for the <strong>alice</strong> context:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ oc config set contexts.alice.namespace aliceproject</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can now view the configuration that has been created:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre>$ oc config view
-apiVersion: v1
-clusters:
-- cluster:
-    server: https://openshift1.example.com
-  name: openshift1
-contexts:
-- context:
-    cluster: openshift1
-    namespace: aliceproject
-    user: alice
-  name: alice
-current-context: alice <i class="conum" data-value="1"></i><b>(1)</b>
-kind: Config
-preferences: {}
-users:
-- name: alice
-  user:
-    token: NDM2N2MwODgtNjI1Yy10N3VhLTg1YmItYzI4NDEzZDUyYzVi</pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The current context is set to <strong>alice</strong>.</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>All subsequent CLI operations will use the <strong>alice</strong> context, unless otherwise
-specified by overriding CLI options or until the context is switched.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="loading-and-merging-rules"><a class="anchor" href="#loading-and-merging-rules"></a>Loading and Merging Rules</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>When issuing CLI operations, the loading and merging order for the CLI
-configuration follows these rules:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>CLI configuration files are retrieved from your workstation, using the
-following hierarchy and merge rules:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If the <code>--config</code> option is set, then only that file is loaded. The flag may
-only be set once and no merging takes place.</p>
-</li>
-<li>
-<p>If <code><strong>$KUBECONFIG</strong></code> environment variable is set, then it is used. The
-variable can be a list of paths, and if so the paths are merged together. When
-a value is modified, it is modified in the file that defines the stanza. When
-a value is created, it is created in the first file that exists. If no files
-in the chain exist, then it creates the last file in the list.</p>
-</li>
-<li>
-<p>Otherwise, the <strong><em>~/.kube/config</em></strong> file is used and no
-merging takes place.
-<br>
-<br></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>The context to use is determined based on the first hit in the following
-chain:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The value of the <code>--context</code> option.</p>
-</li>
-<li>
-<p>The <code>current-context</code> value from the CLI configuration file.</p>
-</li>
-<li>
-<p>An empty value is allowed at this stage.
-<br>
-<br></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>The user and cluster to use is determined. At this point, you may or may not
-have a context; they are built based on the first hit in the following chain,
-which is run once for the user and once for the cluster:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The value of the <code>--user</code> option for user name and the <code>--cluster</code> option for
-cluster name.</p>
-</li>
-<li>
-<p>If the <code>--context</code> option is present, then use the context&#8217;s value.</p>
-</li>
-<li>
-<p>An empty value is allowed at this stage.
-<br>
-<br></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>The actual cluster information to use is determined. At this point, you may or
-may not have cluster information. Each piece of the cluster information is built
-based on the first hit in the following chain:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The values of any of the following command line options:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>--server</code>,</p>
-</li>
-<li>
-<p><code>--api-version</code></p>
-</li>
-<li>
-<p><code>--certificate-authority</code></p>
-</li>
-<li>
-<p><code>--insecure-skip-tls-verify</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>If cluster information and a value for the attribute is present, then use it.</p>
-</li>
-<li>
-<p>If you do not have a server location, then there is an error.
-<br>
-<br></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>The actual user information to use is determined. Users are built using the
-same rules as clusters, except that you can only have one authentication
-technique per user; conflicting techniques cause the operation to fail. Command
-line options take precedence over configuration file values. Valid command line
-options are:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>--auth-path</code></p>
-</li>
-<li>
-<p><code>--client-certificate</code></p>
-</li>
-<li>
-<p><code>--client-key</code></p>
-</li>
-<li>
-<p><code>--token</code>
-<br>
-<br></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>For any information that is still missing, default values are used and prompts
-are given for additional information.</p>
-</li>
-</ol>
+<p>The <code>PodDisruptionBudget</code> is considered healthy when there are at least
+<code>minAvailable</code> pods running in the system. Every pod above that limit can be
+<a href="../admin_guide/out_of_resource_handling.html#out-of-resource-eviction-policy">evicted</a>.</p>
 </div>
 </div>
 </div>
