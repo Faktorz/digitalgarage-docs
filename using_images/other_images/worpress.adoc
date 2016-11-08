@@ -1,0 +1,82 @@
+[[using-images-other-images-wordpress]]
+= Wordpress
+{product-author}
+{product-version}
+:data-uri:
+:icons:
+:experimental:
+:toc: macro
+:toc-title:
+:prewrap!:
+
+toc::[]
+
+== Deploying WordPress on {product-title}
+WordPress is web software you can use to create a beautiful website, blog, or app. We like to say that WordPress is both free and priceless at the same time.
+
+The core software is built by hundreds of community volunteers, and when you’re ready for more there are thousands of plugins and themes available to transform your site into almost anything you can imagine. Over 60 million people have chosen WordPress to power the place on the web they call “home” — we’d love you to join the family.
+
+[[wordpress-version]]
+== Versions
+
+{product-title} follows the https://wordpress.org/download/[LTS] releases of Wordpress.
+
+[[wordpress-images]]
+== Images
+
+The Wordpress image is based on the CentOS 7 base image.
+
+This image is available on DockerHub. To download it:
+
+----
+$ docker pull thedigitalgarage/wordpress
+----
+
+To use these images, you can either access them directly from these registries or push them into your {product-title} container registry.
+Additionally, you can create an ImageStream that points to the image, either in your Docker registry or at the external location.
+Your {product-title} resources can then reference the ImageStream.
+You can find https://github.com/thedigitalgarage/examples/tree/master/image-streams[example] ImageStream definitions for all the provided {product-title} images.
+
+[[wordpress-configuration-and-usage]]
+== Configuration and Usage
+
+[[wordpress-installation]]
+=== Installation
+If you are planning to use Worpress for your personal blog or in a development environment, the easiest way to get WordPress up and running on the Digital Garage is to use the Official Digital Garage WordPress Instant App.
+ In the Add to Project screen, simply click the Wordpress Instant App card, enter a few details and you’ll be up and running in no time.
+
+If you would like to add the Wordpress Instant App to your project via the Digital Garage CLI, simply verify that you are in the correct
+project namespace by typing the following command.
+
+----
+$ oc project
+----
+Your current project will be displayed. Then create the new application with the Wordpress Instant App template with the following command.
+----
+$ oc new-app wordpress-instant-app
+----
+[NOTE]
+====
+The Digital Garage Worpress Instant App is preconfigured with an ephemeral MySQL database. For information on configuring a persistent
+MySQL database and/or scaling MySQL, see the xref:../../dev_guide/using_images/mysql.adoc [MySQL Image Guide].
+====
+
+[TIP]
+====
+If you need more control over your WordPress installation or want to manage all
+of the files through git, you can try using the Digital Garage WordPress Developer QuickStart
+====
+
+[[wordpress-installing-themes-and-plugins]]
+=== Installing Themes and Plugins
+
+There are two ways that you can add Themes and Plugins to your WordPress application.
+
+* You can use the WordPress Admin section of your application (located at /wp-admin) and use the standard Theme and Plugin installation procedures.
+* If you are deploying Wordpress via the Digital Garage Wordpress Developer Quickstart, you can download Themes and Plugins to your workstation
+and then copy them into your git repository in the wp-content/themes and wp-content/plugins directories.
+
+[[wordpress-advanced-configuration-via-developer-quickstart]]
+=== Wordpress Advanced Configuration and Developer Quickstart
+
+Coming Soon

@@ -60,7 +60,7 @@
     </p>
     <ol class="breadcrumb">
       <li class="sitename">
-        <a href="../../../index.html">Documentation</a>
+        <a href="../../welcome/index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
         <a href="../../welcome/index.html">Digital Garage Discovery</a>
@@ -403,33 +403,6 @@ settings provided via configuration.</p>
 <h2 id="images"><a class="anchor" href="#images"></a>Images</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This image comes in two flavors, depending on your needs:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>RHEL 7</p>
-</li>
-<li>
-<p>CentOS 7</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>RHEL 7 Based Image</strong></p>
-</div>
-<div class="paragraph">
-<p>The RHEL 7 image is available through Red Hat&#8217;s subscription registry via:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">$ docker pull registry.access.redhat.com/openshift3/mysql-55-rhel7</pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>CentOS 7 Based Image</strong></p>
-</div>
-<div class="paragraph">
 <p>This image is available on DockerHub. To download it:</p>
 </div>
 <div class="listingblock">
@@ -443,7 +416,7 @@ registries or push them into your Digital Garage Docker registry. Additionally,
 you can create an ImageStream that points to the image,
 either in your Docker registry or at the external location. Your Digital Garage
 resources can then reference the ImageStream. You can find
-<a href="https://github.com/openshift/origin/tree/master/examples/image-streams">example</a>
+<a href="https://github.com/thedigitalgarage/examples/image-streams">example</a>
 ImageStream definitions for all the provided Digital Garage images.</p>
 </div>
 </div>
@@ -988,7 +961,7 @@ access the database via the service that was defined.</p>
 <p>Red Hat provides a proof-of-concept
 <a href="../../architecture/core_concepts/templates.html#architecture-core-concepts-templates">template</a> for MySQL
 master-slave replication (clustering); you can obtain the
-<a href="https://github.com/openshift/mysql/tree/master/5.5/examples/replica">example
+<a href="https://github.com/thedigitalgarage/dg-mysql-container/tree/master/5.5/examples/replica">example
 template from GitHub</a>.</p>
 </div>
 <div class="paragraph">
@@ -999,7 +972,7 @@ template from GitHub</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">$ oc create -f \
-    https://raw.githubusercontent.com/openshift/mysql/master/5.5/examples/replica/mysql_replica.json</pre>
+    https://raw.githubusercontent.com/thedigitalgarage/dg-mysql-container/master/5.5/examples/replica/mysql_replica.json</pre>
 </div>
 </div>
 </div>

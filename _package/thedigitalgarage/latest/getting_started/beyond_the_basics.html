@@ -60,7 +60,7 @@
     </p>
     <ol class="breadcrumb">
       <li class="sitename">
-        <a href="../../index.html">Documentation</a>
+        <a href="../../welcome/index.html">Documentation</a>
       </li>
       <li class="hidden-xs active">
         <a href="../welcome/index.html">Digital Garage Discovery</a>
@@ -379,7 +379,7 @@
 <p>This getting started experience walks you through the “long way” of getting the
 same sample project from the
 <a href="../getting_started/basic_walkthrough.html#getting-started-basic-walkthrough">Basic Walkthrough</a> topic up and
-running on Digital Garage Developer Preview.</p>
+running on Digital Garage.</p>
 </div>
 <div class="paragraph">
 <p>The following sections guide you through creating a project that contains a
@@ -403,10 +403,10 @@ involves creating two <a href="../architecture/core_concepts/pods_and_services.h
 <div class="ulist">
 <ul>
 <li>
-<p>a free Digital Garage account.</p>
+<p>a Digital Garage account.</p>
 </li>
 <li>
-<p>a free <a href="https://github.com/">GitHub</a> account.</p>
+<p>a <a href="https://github.com/">GitHub</a> account.</p>
 </li>
 <li>
 <p><a href="https://help.github.com/articles/set-up-git/">Git</a> installed locally.</p>
@@ -481,9 +481,11 @@ tools to interact with each component of your system.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First, download the Digital Garage CLI from the <strong>About</strong> page in the
-Digital Garage web console. The CLI is available for Linux (32- or 64-bit), Mac
-OS X, and Windows. After you have downloaded the CLI, return to these steps.</p>
+<p>First, download the Digital Garage CLI from the Command Line Tools page in the
+Digital Garage web console. You find the Command Line Tools menu item under the
+Support button (?) one the left side of the top menu bar. The CLI is available
+for Linux (32- or 64-bit), Mac OS X, and Windows. After you have downloaded the
+CLI, return to these steps.</p>
 </li>
 <li>
 <p>Next, unpack or unzip the archive and move the <code>oc</code> binary to a directory on
@@ -520,9 +522,10 @@ your <code><strong>PATH</strong></code>.</p>
 </div>
 </li>
 <li>
-<p>Then, visit <a href="https://apps.thedigitalgarage.io/console/about">the
-<strong>About</strong> page</a> in the Digital Garage web console and copy the <code>oc login</code> command
-shown with your current session token to log in to Digital Garage from the CLI:</p>
+<p>Then, visit the <a href="https://apps.thedigitalgarage.io:8443/console/command-line">
+<strong>Command Line Tools</strong></a> page in the Digital Garage web console and copy the
+<code>oc login</code> command shown with your current session token to log in to
+Digital Garage from the CLI:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">$ oc login https://apps.thedigitalgarage.io:8443 --token=&lt;your_session_token&gt;</pre>
@@ -548,16 +551,13 @@ the web console.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>First, create a new project. Replace <code>&lt;project_name&gt;</code> below with a unique name
-for your project, such as <code>&lt;your_github_username&gt;-example</code>:</p>
+<p>First, if you have multiple projects, verify that you are in the correct project.
+Replace <code>&lt;project_name&gt;</code> below with a unique name for your project, such as
+<code>&lt;your_github_username&gt;-example</code>:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ oc new-project &lt;project_name&gt;</pre>
+<pre class="nowrap">$ oc project &lt;project_name&gt;</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>After creating the new project, you will be automatically switched to the new
-project namespace.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -754,7 +754,7 @@ MongoDB service.</p>
 <p>Add the Digital Garage-provided MongoDB database to your project with:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ oc new-app mongodb-persistent \
+<pre class="nowrap">$ oc new-app mongodb-ephemeral \
 -p MONGODB_USER=admin,MONGODB_PASSWORD=secret,MONGODB_ADMIN_PASSWORD=super-secret</pre>
 </div>
 </div>
@@ -766,7 +766,7 @@ MongoDB service.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The <code>-p</code> flag sets the parameter values used by the <strong>mongodb-persistent</strong>
+<p>The <code>-p</code> flag sets the parameter values used by the <strong>mongodb-ephemeral</strong>
 database template.</p>
 </div>
 </td>
