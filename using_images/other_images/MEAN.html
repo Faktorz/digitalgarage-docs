@@ -1,0 +1,204 @@
+<div class="col-xs-12 col-sm-9 col-md-9 main">
+      <h1><a href="https://www.openshift.com/meanstack"><span class="image" style="float: right"><img src="https://www.openshift.com/sites/default/files/mean_logo.png" alt="mean_logo" width="100px" title="MEAN Stack"></span></a> The MEAN Stack on OpenShift</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The MEAN stack is a potent new concoction of javascript-flavored tooling, services, and frameworks that make modern, single-page application design a breeze:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="/images/mean-logo.png" alt="MEAN"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A complete stack for Javascript, comprised of <strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>A</strong>ngular, and <strong>N</strong>ode.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.openshift.com/developers/mongodb"><span class="image"><img src="/images/mongodb-logo.png" alt="mongodb"></span></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB for a schema-optional, "NoSQL" data store - perfectly suited for working with JSON data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.openshift.com/blogs/set-up-nodejs-mongodb-and-express-on-free-spatial-web-hosting"><span class="image"><img src="/images/express-logo.png" alt="Express"></span></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Express Javascript framework, with a large library of middleware and add-ons - including Mongoose, an ORM for MongoDB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.openshift.com/blogs/day-2-angularjs-getting-my-head-around-angularjs"><span class="image"><img src="/images/angularjs-logo.png" alt="Angular"></span></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AngularJS for declarative templating, and easy client-side application design</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.openshift.com/developers/node-js"><span class="image"><img src="/images/nodejs-logo.png" alt="nodejs"></span></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nodejs, for an event-driven, server-side Javascript runtime - powered by the V8 engine</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Just like the classic <a href="https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29">LAMP stack</a>, the MEAN stack is not an official standard or vendor-specific product.  Both stacks simply represent a loose collection of best-of-breed open source solutions that can be easily customized, reconfigured, and replaced as needed.  In fact, as LAMP became more popular and it&#8217;s related community grew, the "<strong>P</strong>" which originally just stood for <strong>Perl</strong> was redefined and expanded to represent <strong>PHP</strong> and <strong>Python</strong> as well.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_started">Getting Started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guide uses <strong>Yeoman</strong> and the <code>angular-fullstack-generator</code> to set up your development environment.  The folks at <a href="http://learn.mean.io/#mean-io-hosting-mean-openshift">MEAN.io</a> also provide a nice distribution of MEAN that will run well on OpenShift.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g grunt grunt-cli bower yo generator-angular-fullstack</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll also need access to the <code>git</code> command-line tools, and a MongoDB datastore - which can be <a href="http://www.mongodb.org/downloads">installed locally</a>, provided as-a-service (see <a href="https://mongolab.com/">MongoLab</a> or <a href="https://www.mongohq.com/">MongoHQ</a>), or made available via <a href="https://www.openshift.com/blogs/set-up-local-access-to-openshift-hosted-services-with-port-forwarding">port-forwarding</a>.  This particular distribution of the MEAN stack is configured to look for a local installation of MongoDB when started in a development mode.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create"><a href="https://www.openshift.com/blogs/day-24-yeoman-ember-the-missing-tutorial"><span class="image" style="float: right"><img src="https://www.openshift.com/sites/default/files/yo-man.png" alt="yo-man" width="100px" title="yeoman"></span></a> 1. Create your Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scaffold up a new MEAN stack application with <a href="https://www.openshift.com/blogs/day-24-yeoman-ember-the-missing-tutorial">Yeoman</a> ("Yo", for short) and the <code>angular-fullstack</code> generator:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ yo angular-fullstack YOUR_APP_NAME</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When prompted, answer "yes" to every available option except Sass &amp; Compass support.</p>
+</div>
+<div class="paragraph">
+<p>Now that your development environment is ready to go, initialize your remotely-hosted OpenShift environment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ yo angular-fullstack:openshift OPENSHIFT_APP_NAME</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command can be run multiple times in order to setup additional OpenShift hosting environments if your OpenShift account has sufficient capacity.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="develop"><a href="https://www.openshift.com/blogs/day-5-gruntjs-let-someone-else-do-my-tedious-repetitive-tasks"><span class="image" style="float: right"><img src="https://www.openshift.com/sites/default/files/grunt_logo.gif" alt="grunt_logo" width="100px" title="Grunt"></span></a> 2. Develop</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://www.openshift.com/blogs/day-5-gruntjs-let-someone-else-do-my-tedious-repetitive-tasks">Grunt</a> provides a nice set of tools for assisting with dev task automation.  It includes livereload support for refreshing connected browsers during development - <strong><strong><a href="https://www.openshift.com/blogs/day-7-gruntjs-livereload-take-productivity-to-the-next-level">No need to reload the page!</a></strong></strong></p>
+</div>
+<div class="paragraph">
+<p>Run <code>grunt serve</code> to give it a try:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ grunt serve</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s usually a good idea to store your resulting project source in a version control system.  Feel free to add your own top-level git repository by running <code>git init</code> at the root of your project.  GitHub, or similar hosting accomodations can be used at this level, to help facilitate source code collaboration.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deploy"><a href="https://www.openshift.com/blogs/10-reasons-openshift-is-the-best-place-to-host-your-nodejs-app#git"><span class="image" style="float: right"><img src="https://www.openshift.com/sites/default/files/git-logo.jpg" alt="git-logo" width="100px" title="Git"></span></a> 3. Deploy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The initial setup should create a secondary git repository to track of the project&#8217;s build results, where client-side sources are combined, minified, and optimised for production use.</p>
+</div>
+<div class="paragraph">
+<p>Generate a new <strong>build</strong> of your application in your project&#8217;s <code>dist</code> folder:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ grunt build</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Include a brief note about this release as you`add` and <code>commit</code> the new build for deployment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ cd dist
+$ git commit -am &quot;Launching our first BETA release - Ship it!&quot;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, use <code>git push</code> to send the release to your remote OpenShift hosting environment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ git push openshift master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>LAMP stack afficianados should pause and take note: Your old stack probably never included a build / optimization process, or a complete development workflow.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scale">4. Scale</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Scaling the MEAN stack on OpenShift is easy - especially when working with the <code>angular-fullstack</code> generator, which enables scaling by default during the earlier <code>yo angular-fullstack:openshift</code> step.</p>
+</div>
+<div class="paragraph">
+<p>You can check your application&#8217;s current list of container environments (or gears) with the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ rhc app show OPENSHIFT_APP_NAME --gears</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command output should include one front-end environment for running nodejs, and a back-end environment for MongoDB.</p>
+</div>
+<div class="paragraph">
+<p>Scale up your front-end by adding a second instance to your application cluster:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ rhc app scale-up OPENSHIFT_APP_NAME</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Scaling limits can be set via the command line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ rhc cartridge scale nodejs -a OPENSHIFT_APP_NAME --min=2 --max=5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or, in the OpenShift web console:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://www.openshift.com/sites/default/files/scaling_web.png" alt="OpenShift web console scaling"></span></p>
+</div>
+<div class="paragraph">
+<p>OpenShift Online&#8217;s <a href="https://www.openshift.com/products/pricing">free plan includes support for running up to three containers concurrently</a>.  You can increase your account&#8217;s capacity by <a href="https://www.openshift.com/products/pricing">upgrading to OpenShift Online&#8217;s Silver or Bronze plans</a>, or by setting up <a href="http://openshift.com/">your own open source cloud</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="next-steps">Next Steps</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="http://twitter.com/OpenShift">Tell us</a> about your experiences with MEANStack on OpenShift</p>
+</li>
+<li>
+<p>Find out how easy it is to <a href="https://www.openshift.com/blogs/domain-names-and-ssl-in-the-openshift-web-console">assign a custom domain name to your applications</a></p>
+</li>
+<li>
+<p>Upgrade to OpenShift Online&#8217;s <a href="https://www.openshift.com/products/pricing">Bronze plan</a> to access <a href="https://www.openshift.com/products/pricing">additional scaling capacity, and the ability to add your own custom SSL certificates</a></p>
+</li>
+<li>
+<p>Help us find your questions on StackOverflow by using the <a href="http://stackoverflow.com/questions/tagged/openshift">OpenShift</a> and <a href="http://stackoverflow.com/questions/tagged/mean-stack">MEAN Stack</a> tags</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+    </div>
+  </div>
+</div>

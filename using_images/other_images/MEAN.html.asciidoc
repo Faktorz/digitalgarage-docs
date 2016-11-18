@@ -1,0 +1,224 @@
+https://www.openshift.com/meanstack[image:https://www.openshift.com/sites/default/files/mean_logo.png[mean_logo,title="MEAN Stack"]]
+The MEAN Stack on OpenShift
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The MEAN stack is a potent new concoction of javascript-flavored
+tooling, services, and frameworks that make modern, single-page
+application design a breeze:
+
+[cols="<,<",]
+|=======================================================================
+a|
+image:/images/mean-logo.png[MEAN]
+
+A complete stack for Javascript, comprised of *M*ongoDB, *E*xpress,
+*A*ngular, and *N*ode.
+
+ a|
+https://www.openshift.com/developers/mongodb[image:/images/mongodb-logo.png[mongodb]]
+
+MongoDB for a schema-optional, "NoSQL" data store - perfectly suited for
+working with JSON data
+
+ a|
+https://www.openshift.com/blogs/set-up-nodejs-mongodb-and-express-on-free-spatial-web-hosting[image:/images/express-logo.png[Express]]
+
+The Express Javascript framework, with a large library of middleware and
+add-ons - including Mongoose, an ORM for MongoDB
+
+ a|
+https://www.openshift.com/blogs/day-2-angularjs-getting-my-head-around-angularjs[image:/images/angularjs-logo.png[Angular]]
+
+AngularJS for declarative templating, and easy client-side application
+design
+
+ a|
+https://www.openshift.com/developers/node-js[image:/images/nodejs-logo.png[nodejs]]
+
+Nodejs, for an event-driven, server-side Javascript runtime - powered by
+the V8 engine
+
+|=======================================================================
+
+Just like the classic
+https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29[LAMP stack],
+the MEAN stack is not an official standard or vendor-specific product.
+Both stacks simply represent a loose collection of best-of-breed open
+source solutions that can be easily customized, reconfigured, and
+replaced as needed. In fact, as LAMP became more popular and it’s
+related community grew, the "*P*" which originally just stood for *Perl*
+was redefined and expanded to represent *PHP* and *Python* as well.
+
+[[_getting_started]]
+Getting Started
+~~~~~~~~~~~~~~~
+
+This guide uses *Yeoman* and the `angular-fullstack-generator` to set up
+your development environment. The folks at
+http://learn.mean.io/#mean-io-hosting-mean-openshift[MEAN.io] also
+provide a nice distribution of MEAN that will run well on OpenShift.
+
+code,CodeRay,highlight---------------------------------------------------------------------
+code,CodeRay,highlight
+$ npm install -g grunt grunt-cli bower yo generator-angular-fullstack
+---------------------------------------------------------------------
+
+You’ll also need access to the `git` command-line tools, and a MongoDB
+datastore - which can be http://www.mongodb.org/downloads[installed
+locally], provided as-a-service (see https://mongolab.com/[MongoLab] or
+https://www.mongohq.com/[MongoHQ]), or made available via
+https://www.openshift.com/blogs/set-up-local-access-to-openshift-hosted-services-with-port-forwarding[port-forwarding].
+This particular distribution of the MEAN stack is configured to look for
+a local installation of MongoDB when started in a development mode.
+
+[[create]]
+https://www.openshift.com/blogs/day-24-yeoman-ember-the-missing-tutorial[image:https://www.openshift.com/sites/default/files/yo-man.png[yo-man,title="yeoman"]]
+1. Create your Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Scaffold up a new MEAN stack application with
+https://www.openshift.com/blogs/day-24-yeoman-ember-the-missing-tutorial[Yeoman]
+("Yo", for short) and the `angular-fullstack` generator:
+
+code,CodeRay,highlight------------------------------------
+code,CodeRay,highlight
+$ yo angular-fullstack YOUR_APP_NAME
+------------------------------------
+
+When prompted, answer "yes" to every available option except Sass &
+Compass support.
+
+Now that your development environment is ready to go, initialize your
+remotely-hosted OpenShift environment:
+
+code,CodeRay,highlight---------------------------------------------------
+code,CodeRay,highlight
+$ yo angular-fullstack:openshift OPENSHIFT_APP_NAME
+---------------------------------------------------
+
+This command can be run multiple times in order to setup additional
+OpenShift hosting environments if your OpenShift account has sufficient
+capacity.
+
+[[develop]]
+https://www.openshift.com/blogs/day-5-gruntjs-let-someone-else-do-my-tedious-repetitive-tasks[image:https://www.openshift.com/sites/default/files/grunt_logo.gif[grunt_logo,title="Grunt"]]
+2. Develop
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+https://www.openshift.com/blogs/day-5-gruntjs-let-someone-else-do-my-tedious-repetitive-tasks[Grunt]
+provides a nice set of tools for assisting with dev task automation. It
+includes livereload support for refreshing connected browsers during
+development -
+**https://www.openshift.com/blogs/day-7-gruntjs-livereload-take-productivity-to-the-next-level[No
+need to reload the page!]**
+
+Run `grunt serve` to give it a try:
+
+code,CodeRay,highlight------------- code,CodeRay,highlight
+$ grunt serve
+-------------
+
+It’s usually a good idea to store your resulting project source in a
+version control system. Feel free to add your own top-level git
+repository by running `git init` at the root of your project. GitHub, or
+similar hosting accomodations can be used at this level, to help
+facilitate source code collaboration.
+
+[[deploy]]
+https://www.openshift.com/blogs/10-reasons-openshift-is-the-best-place-to-host-your-nodejs-app#git[image:https://www.openshift.com/sites/default/files/git-logo.jpg[git-logo,title="Git"]]
+3. Deploy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The initial setup should create a secondary git repository to track of
+the project’s build results, where client-side sources are combined,
+minified, and optimised for production use.
+
+Generate a new *build* of your application in your project’s `dist`
+folder:
+
+code,CodeRay,highlight------------- code,CodeRay,highlight
+$ grunt build
+-------------
+
+Include a brief note about this release as you`add` and `commit` the new
+build for deployment:
+
+code,CodeRay,highlight--------------------------------------------------------------
+code,CodeRay,highlight
+$ cd dist
+$ git commit -am "Launching our first BETA release - Ship it!"
+--------------------------------------------------------------
+
+Finally, use `git push` to send the release to your remote OpenShift
+hosting environment:
+
+code,CodeRay,highlight--------------------------- code,CodeRay,highlight
+$ git push openshift master
+---------------------------
+
+LAMP stack afficianados should pause and take note: Your old stack
+probably never included a build / optimization process, or a complete
+development workflow.
+
+[[scale]]
+4. Scale
+~~~~~~~~
+
+Scaling the MEAN stack on OpenShift is easy - especially when working
+with the `angular-fullstack` generator, which enables scaling by default
+during the earlier `yo angular-fullstack:openshift` step.
+
+You can check your application’s current list of container environments
+(or gears) with the following command:
+
+code,CodeRay,highlight-----------------------------------------
+code,CodeRay,highlight
+$ rhc app show OPENSHIFT_APP_NAME --gears
+-----------------------------------------
+
+The command output should include one front-end environment for running
+nodejs, and a back-end environment for MongoDB.
+
+Scale up your front-end by adding a second instance to your application
+cluster:
+
+code,CodeRay,highlight-------------------------------------
+code,CodeRay,highlight
+$ rhc app scale-up OPENSHIFT_APP_NAME
+-------------------------------------
+
+Scaling limits can be set via the command line:
+
+code,CodeRay,highlight------------------------------------------------------------------
+code,CodeRay,highlight
+$ rhc cartridge scale nodejs -a OPENSHIFT_APP_NAME --min=2 --max=5
+------------------------------------------------------------------
+
+Or, in the OpenShift web console:
+
+image:https://www.openshift.com/sites/default/files/scaling_web.png[OpenShift
+web console scaling]
+
+OpenShift Online’s https://www.openshift.com/products/pricing[free plan
+includes support for running up to three containers concurrently]. You
+can increase your account’s capacity by
+https://www.openshift.com/products/pricing[upgrading to OpenShift
+Online’s Silver or Bronze plans], or by setting up
+http://openshift.com/[your own open source cloud].
+
+[[next-steps]]
+Next Steps
+^^^^^^^^^^
+
+1.  http://twitter.com/OpenShift[Tell us] about your experiences with
+MEANStack on OpenShift
+2.  Find out how easy it is to
+https://www.openshift.com/blogs/domain-names-and-ssl-in-the-openshift-web-console[assign
+a custom domain name to your applications]
+3.  Upgrade to OpenShift Online’s
+https://www.openshift.com/products/pricing[Bronze plan] to access
+https://www.openshift.com/products/pricing[additional scaling capacity,
+and the ability to add your own custom SSL certificates]
+4.  Help us find your questions on StackOverflow by using the
+http://stackoverflow.com/questions/tagged/openshift[OpenShift] and
+http://stackoverflow.com/questions/tagged/mean-stack[MEAN Stack] tags
