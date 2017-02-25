@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Digital Garage | Architecture | Additional Concepts | Source Control Management</title>
+  <title>Digital Garage | Using Images | Source-to-Image (S2I) | Ruby</title>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -60,11 +60,11 @@
         <a href="../../welcome/index.html">Digital Garage Discovery</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../architecture/index.html">Architecture</a>
+        <a href="../../using_images/index.html">Using Images</a>
       </li>
-      <li class="hidden-xs active"><a href="../../architecture/additional_concepts/overview.html">Additional Concepts</a></li>
+      <li class="hidden-xs active"><a href="../../using_images/s2i_images/index.html">Source-to-Image (S2I)</a></li>
       <li class="hidden-xs active">
-        Source Control Management
+        Ruby
       </li>
     </ol>
     <div class="row row-offcanvas row-offcanvas-left">
@@ -109,9 +109,9 @@
     </li>
     <li class="nav-header">
       <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
-        <span id="tgSpan2" class="fa fa-angle-down"></span>Architecture
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Architecture
       </a>
-      <ul id="topicGroup2" class="collapse in list-unstyled">
+      <ul id="topicGroup2" class="collapse  list-unstyled">
             <li><a class="" href="../../architecture/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
@@ -140,9 +140,9 @@
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
-                <span id="sgSpan-2-2" class="fa fa-caret-down"></span>&nbsp;Additional Concepts
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
               </a>
-              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse in">
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../architecture/additional_concepts/overview.html">Overview</a></li>
 
@@ -152,7 +152,7 @@
 
                   <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
 
-                  <li><a class=" active" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
               </ul>
             </li>
       </ul>
@@ -259,15 +259,15 @@
     </li>
     <li class="nav-header">
       <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
-        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+        <span id="tgSpan6" class="fa fa-angle-down"></span>Using Images
       </a>
-      <ul id="topicGroup6" class="collapse  list-unstyled">
+      <ul id="topicGroup6" class="collapse in list-unstyled">
             <li><a class="" href="../../using_images/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
-                <span id="sgSpan-6-1" class="fa fa-caret-right"></span>&nbsp;Source-to-Image (S2I)
+                <span id="sgSpan-6-1" class="fa fa-caret-down"></span>&nbsp;Source-to-Image (S2I)
               </a>
-              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-6-1" class="nav-tertiary list-unstyled collapse in">
 
                   <li><a class="" href="../../using_images/s2i_images/index.html">Overview</a></li>
 
@@ -281,7 +281,7 @@
 
                   <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
 
-                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+                  <li><a class=" active" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
 
                   <li><a class="" href="../../using_images/s2i_images/java.html">Java</a></li>
               </ul>
@@ -348,33 +348,309 @@
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 main">
         <div class="page-header">
-          <h2>Source Control Management</h2>
+          <h2>Ruby</h2>
         </div>
-        <div class="paragraph">
-<p>Digital Garage takes advantage of preexisting source control management (SCM) systems
-hosted either internally (such as an in-house Git server) or externally (for
-example, on <a href="https://github.com/">GitHub</a>, <a href="https://bitbucket.org/">Bitbucket</a>,
-etc.). Currently, Digital Garage only supports <a href="https://git-scm.com/">Git</a> solutions.</p>
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#s2i-images-ruby-versions">Versions</a></li>
+<li><a href="#s2i-images-ruby-images">Images</a></li>
+<li><a href="#s2i-images-ruby-config">Configuration</a></li>
+<li><a href="#ruby-hot-deploy">Hot Deploying</a></li>
+</ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>SCM integration is tightly coupled with
-<a href="../core_concepts/builds_and_image_streams.html#architecture-core-concepts-builds-and-image-streams">builds</a>, the two points
-being:</p>
+<p>Digital Garage provides
+<a href="../../architecture/core_concepts/builds_and_image_streams.html#source-build">S2I</a>
+enabled Ruby images for building and running Ruby applications.
+assembles your application source with any required dependencies to create a
+new image containing your Ruby application. This resulting image can be run either by Digital Garage or by Docker.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="s2i-images-ruby-versions"><a class="anchor" href="#s2i-images-ruby-versions"></a>Versions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Currently, Digital Garage provides versions
+<a href="https://github.com/openshift/sti-ruby/tree/master/2.0">2.0</a>,
+<a href="https://github.com/openshift/sti-ruby/tree/master/2.2">2.2</a>, and
+<a href="https://github.com/openshift/sti-ruby/tree/master/2.3">2.3</a> of Ruby.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="s2i-images-ruby-images"><a class="anchor" href="#s2i-images-ruby-images"></a>Images</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These images come in two flavors, depending on your needs:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Creating a <code><strong>BuildConfig</strong></code> using a repository, which allows building your
-application inside of Digital Garage. You can create a <code><strong>BuildConfig</strong></code>
-<a href="../../dev_guide/builds.html#defining-a-buildconfig">manually</a> or let
-Digital Garage create it <a href="../../dev_guide/new_app.html#dev-guide-new-app">automatically</a> by
-inspecting your repository.</p>
+<p>RHEL 7</p>
 </li>
 <li>
-<p><a href="../../dev_guide/builds.html#webhook-triggers">Triggering a build</a> upon
-repository changes.</p>
+<p>CentOS 7</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p><strong>RHEL 7 Based Image</strong></p>
+</div>
+<div class="paragraph">
+<p>The RHEL 7 images are available through Red Hat&#8217;s subscription registry using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ docker pull registry.access.redhat.com/openshift3/ruby-20-rhel7
+$ docker pull registry.access.redhat.com/rhscl/ruby-23-rhel7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CentOS 7 Based Image</strong></p>
+</div>
+<div class="paragraph">
+<p>These images are available on DockerHub. To download them:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ docker pull openshift/ruby-20-centos7
+$ docker pull centos/ruby-23-centos7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To use these images, you can either access them directly from these
+<a href="../../architecture/infrastructure_components/image_registry.html#architecture-infrastructure-components-image-registry">image
+registries</a>, or push them into your
+<a href="../../architecture/infrastructure_components/image_registry.html#integrated-openshift-registry">Digital Garage
+Docker registry</a>. Additionally, you can create an
+<a href="../../architecture/core_concepts/builds_and_image_streams.html#image-streams">image
+stream</a> that points to the image, either in your Docker registry or at the
+external location. Your Digital Garage resources can then reference the
+ImageStream. You can find
+<a href="https://github.com/openshift/origin/tree/master/examples/image-streams">example
+image stream definitions</a> for all the provided Digital Garage images.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="s2i-images-ruby-config"><a class="anchor" href="#s2i-images-ruby-config"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Ruby image supports a number of environment variables which can be set to
+control the configuration and behavior of the Ruby runtime.</p>
+</div>
+<div class="paragraph">
+<p>To set these environment variables as part of your image, you can place them into
+<a href="../../dev_guide/builds.html#environment-files">a <strong><em>.s2i/environment</em></strong> file</a>
+inside your source code repository, or define them in
+<a href="../../dev_guide/builds.html#buildconfig-environment">the environment
+section</a> of the build configuration&#8217;s <code><strong>sourceStrategy</strong></code> definition.</p>
+</div>
+<div class="paragraph">
+<p>You can also set environment variables to be used with an existing image when
+<a href="../../dev_guide/new_app.html#specifying-environment-variables">creating new
+applications</a>, or by
+<a href="../../dev_guide/environment_variables.html#set-environment-variables">updating
+environment variables for existing objects</a> such as deployment configurations.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Environment variables that control build behavior must be set as part of the s2i build
+configuration or in the <strong><em>.s2i/environment</em></strong> file to make them available to the build
+steps.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Ruby Environment Variables</caption>
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Variable name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>RACK_ENV</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This variable specifies the environment within which the Ruby application is
+deployed; for example, <code>production</code>, <code>development</code>, or <code>test</code>. Each level has
+different behavior in terms of logging verbosity, error pages, and ruby gem
+installation. The application assets are only compiled if <code><strong>RACK_ENV</strong></code> is set to
+<code>production</code>; the default value is <code>production</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>RAILS_ENV</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This variable specifies the environment within which the Ruby on Rails
+application is deployed; for example, <code>production</code>, <code>development</code>, or <code>test</code>.
+Each level has different behavior in terms of logging verbosity, error pages,
+and ruby gem installation. The application assets are only compiled if
+<code><strong>RAILS_ENV</strong></code> is set to <code>production</code>. This variable is set to <code>${RACK_ENV}</code> by default.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>DISABLE_ASSET_COMPILATION</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>When set to <code>true</code>, this variable disables the process of asset compilation.
+Asset compilation only happens when the application runs in a production
+environment. Therefore, you can use this variable when assets have already been
+compiled.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>PUMA_MIN_THREADS</strong></code>, <code><strong>PUMA_MAX_THREADS</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This variable indicates the minimum and maximum number of threads that will be
+available in <a href="https://github.com/puma/puma">Puma</a>'s thread pool.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>PUMA_WORKERS</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This variable indicates the number of worker processes to be launched in Puma&#8217;s
+<a href="https://github.com/puma/puma#clustered-mode">clustered mode</a> (when Puma runs
+more than two processes). If not explicitly set, the default behavior sets
+<code><strong>PUMA_WORKERS</strong></code> to a value that is appropriate for the memory available to the
+container and the number of cores on the host.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>RUBYGEM_MIRROR</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Set this variable to use a custom RubyGems mirror URL to download required gem
+packages during the build process.
+Note: This environment variable is only available for Ruby 2.2+ images.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ruby-hot-deploy"><a class="anchor" href="#ruby-hot-deploy"></a>Hot Deploying</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hot deployment allows you to quickly make and deploy changes to your application
+without having to generate a new S2I build. The method for enabling hot
+deployment in this image differs based on the application type.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ruby on Rails Applications</strong></p>
+</div>
+<div class="paragraph">
+<p>For Ruby on Rails application, run the built Rails application with the
+<code><strong>RAILS_ENV=development</strong></code> environment variable passed to the running pod. For an
+existing deployment configuration, you can use
+<a href="../../dev_guide/environment_variables.html#set-environment-variables">the
+<code>oc env</code></a> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc env dc/rails-app RAILS_ENV=development</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Other Types of Ruby Applications (Sinatra, Padrino, etc.)</strong></p>
+</div>
+<div class="paragraph">
+<p>For other types of Ruby applications, your application must be built with a gem
+that can reload the server every time a change to the source code is made inside
+the running container. Those gems are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/rtomayko/shotgun">Shotgun</a></p>
+</li>
+<li>
+<p><a href="https://github.com/alexch/rerun">Rerun</a></p>
+</li>
+<li>
+<p><a href="https://github.com/johnbintz/rack-livereload">Rack-livereload</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In order to be able to run your application in development mode, you must modify
+the <a href="../../creating_images/s2i.html#s2i-scripts">S2I <strong><em>run</em></strong> script</a> so that
+the web server is launched by the chosen gem, which checks for changes in the
+source code.</p>
+</div>
+<div class="paragraph">
+<p>After you build your application image with your version of the
+<a href="../../creating_images/s2i.html#s2i-scripts">S2I <strong><em>run</em></strong> script</a>, run the
+image with the <code><strong>RACK_ENV=development</strong></code> environment variable. For example, see the
+<a href="../../dev_guide/new_app.html#specifying-environment-variables"><code>oc new-app</code></a>
+command. You can use the
+<a href="../../dev_guide/environment_variables.html#set-environment-variables"><code>oc env</code></a>
+command to update environment variables of existing objects.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You should only use this option while developing or debugging; it is not
+recommended to turn this on in your production environment.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To change your source code in a running pod, use the
+<a href="../../cli_reference/basic_cli_operations.html#troubleshooting-and-debugging-cli-operations"><code>oc rsh</code></a>
+command to enter the container:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ oc rsh &lt;pod_id&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After you enter into the running container, your current directory is set to
+<strong><em>/opt/app-root/src</em></strong>, where the source code is located.</p>
+</div>
+</div>
 </div>
       </div>
     </div>

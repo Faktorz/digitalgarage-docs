@@ -166,6 +166,7 @@
             <li><a class="" href="../../cli_reference/cli_by_example_content.html">CLI by example</a></li>
             <li><a class="" href="../../cli_reference/get_started_cli.html">Get Started with the CLI</a></li>
             <li><a class="" href="../../cli_reference/manage_cli_profiles.html">Managing CLI Profiles</a></li>
+            <li><a class="" href="../../cli_reference/basic_cli_operations.html">Developer CLI Operations</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -223,12 +224,10 @@
             <li><a class="" href="../../dev_guide/managing_images.html">Managing Images</a></li>
             <li><a class="" href="../../dev_guide/compute_resources.html">Quotas and Limit Ranges</a></li>
             <li><a class="" href="../../dev_guide/deployments.html">Deployments</a></li>
-            <li><a class="" href="../../dev_guide/getting_traffic_into_cluster.html">Getting Traffic Into The Cluster</a></li>
             <li><a class="" href="../../dev_guide/routes.html">Routes</a></li>
             <li><a class="" href="../../dev_guide/integrating_external_services.html">Integrating External Services</a></li>
             <li><a class="" href="../../dev_guide/secrets.html">Secrets</a></li>
             <li><a class="" href="../../dev_guide/configmaps.html">ConfigMaps</a></li>
-            <li><a class="" href="../../dev_guide/daemonsets.html">Using Daemonsets</a></li>
             <li><a class="" href="../../dev_guide/pod_autoscaling.html">Pod Autoscaling</a></li>
             <li><a class="" href="../../dev_guide/pod_disruption_budget.html">Pod Disruption Budget</a></li>
             <li><a class="" href="../../dev_guide/volumes.html">Managing Volumes</a></li>
@@ -282,6 +281,8 @@
 
                   <li><a class="" href="../../using_images/s2i_images/python.html">Python</a></li>
 
+                  <li><a class="" href="../../using_images/s2i_images/ruby.html">Ruby</a></li>
+
                   <li><a class="" href="../../using_images/s2i_images/java.html">Java</a></li>
               </ul>
             </li>
@@ -322,6 +323,15 @@
                   <li><a class="" href="../../using_images/other_images/wordpress.html">Wordpress</a></li>
               </ul>
             </li>
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-5">
+                <span id="sgSpan-6-5" class="fa fa-caret-right"></span>&nbsp;xPaaS Middleware Images
+              </a>
+              <ul id="topicSubGroup-6-5" class="nav-tertiary list-unstyled collapse">
+
+                  <li><a class="" href="../../using_images/xpaas_images/index.html">Overview</a></li>
+              </ul>
+            </li>
       </ul>
     </li>
     <li class="nav-header">
@@ -346,11 +356,7 @@
 <div id="toctitle" class="title"></div>
 <ul class="sectlevel1">
 <li><a href="#pods">Pods</a></li>
-<li><a href="#services">Services</a>
-<ul class="sectlevel2">
-<li><a href="#service-proxy-mode">Service Proxy Mode</a></li>
-</ul>
-</li>
+<li><a href="#services">Services</a></li>
 <li><a href="#labels">Labels</a></li>
 <li><a href="#endpoints">Endpoints</a></li>
 </ul>
@@ -626,31 +632,6 @@ of internal IPs.</td>
 <div class="paragraph">
 <p>The <a href="http://kubernetes.io/docs/user-guide/services/">Kubernetes
 documentation</a> has more information on services.</p>
-</div>
-<div class="sect2">
-<h3 id="service-proxy-mode"><a class="anchor" href="#service-proxy-mode"></a>Service Proxy Mode</h3>
-<div class="paragraph">
-<p>Digital Garage has two different implementations of the service-routing
-infrastructure. The default implementation is entirely <strong>iptables</strong>-based, and
-uses probabilistic <strong>iptables</strong> rewriting rules to distribute incoming service
-connections between the endpoint pods. The older implementation uses a user
-space process to accept incoming connections and then proxy traffic between the
-client and one of the endpoint pods.</p>
-</div>
-<div class="paragraph">
-<p>The <strong>iptables</strong>-based implementation is much more efficient, but it requires that
-all endpoints are always able to accept connections; the user space
-implementation is slower, but can try multiple endpoints in turn until it finds
-one that works. If you have good
-<a href="../../dev_guide/application_health.html#dev-guide-application-health">readiness
-checks</a> (or generally reliable nodes and pods), then the <strong>iptables</strong>-based
-service proxy is the best choice. Otherwise, you can enable the user space-based
-proxy
-<a href="../../install_config/install/advanced_install.html#install-config-install-advanced-install">when
-installing</a>, or after deploying the cluster by editing the
-<a href="../../install_config/master_node_configuration.html#install-config-master-node-configuration">node
-configuration file</a>.</p>
-</div>
 </div>
 </div>
 </div>

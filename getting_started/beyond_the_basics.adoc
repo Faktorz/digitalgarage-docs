@@ -452,4 +452,4 @@ and xref:../dev_guide/new_app.adoc#dev-guide-new-app[Creating New Applications] 
 [[btb-troubleshooting]]
 === Troubleshooting
 
-Review some of the common tips and suggestions http://www.thedigitalgarage.io/community/tag/q-a/[here].
+Review some of the common tips and suggestions http://community.thedigitalgarage.io[here].

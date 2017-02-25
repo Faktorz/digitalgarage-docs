@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Digital Garage | Architecture | Additional Concepts | Source Control Management</title>
+  <title>Digital Garage | Using Images | xPaaS Middleware Images | Overview</title>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/subdomain.css" rel="stylesheet" type="text/css">
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/docs.css" rel="stylesheet" type="text/css"/>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -60,11 +60,11 @@
         <a href="../../welcome/index.html">Digital Garage Discovery</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../../architecture/index.html">Architecture</a>
+        <a href="../../using_images/index.html">Using Images</a>
       </li>
-      <li class="hidden-xs active"><a href="../../architecture/additional_concepts/overview.html">Additional Concepts</a></li>
+      <li class="hidden-xs active"><a href="../../using_images/xpaas_images/index.html">xPaaS Middleware Images</a></li>
       <li class="hidden-xs active">
-        Source Control Management
+        Overview
       </li>
     </ol>
     <div class="row row-offcanvas row-offcanvas-left">
@@ -109,9 +109,9 @@
     </li>
     <li class="nav-header">
       <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
-        <span id="tgSpan2" class="fa fa-angle-down"></span>Architecture
+        <span id="tgSpan2" class="fa fa-angle-right"></span>Architecture
       </a>
-      <ul id="topicGroup2" class="collapse in list-unstyled">
+      <ul id="topicGroup2" class="collapse  list-unstyled">
             <li><a class="" href="../../architecture/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-1">
@@ -140,9 +140,9 @@
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-2">
-                <span id="sgSpan-2-2" class="fa fa-caret-down"></span>&nbsp;Additional Concepts
+                <span id="sgSpan-2-2" class="fa fa-caret-right"></span>&nbsp;Additional Concepts
               </a>
-              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse in">
+              <ul id="topicSubGroup-2-2" class="nav-tertiary list-unstyled collapse">
 
                   <li><a class="" href="../../architecture/additional_concepts/overview.html">Overview</a></li>
 
@@ -152,7 +152,7 @@
 
                   <li><a class="" href="../../architecture/additional_concepts/port_forwarding.html">Port Forwarding</a></li>
 
-                  <li><a class=" active" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
+                  <li><a class="" href="../../architecture/additional_concepts/scm.html">Source Control Management</a></li>
               </ul>
             </li>
       </ul>
@@ -259,9 +259,9 @@
     </li>
     <li class="nav-header">
       <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup6">
-        <span id="tgSpan6" class="fa fa-angle-right"></span>Using Images
+        <span id="tgSpan6" class="fa fa-angle-down"></span>Using Images
       </a>
-      <ul id="topicGroup6" class="collapse  list-unstyled">
+      <ul id="topicGroup6" class="collapse in list-unstyled">
             <li><a class="" href="../../using_images/index.html">Overview</a></li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-1">
@@ -325,11 +325,11 @@
             </li>
             <li class="nav-header">
               <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-6-5">
-                <span id="sgSpan-6-5" class="fa fa-caret-right"></span>&nbsp;xPaaS Middleware Images
+                <span id="sgSpan-6-5" class="fa fa-caret-down"></span>&nbsp;xPaaS Middleware Images
               </a>
-              <ul id="topicSubGroup-6-5" class="nav-tertiary list-unstyled collapse">
+              <ul id="topicSubGroup-6-5" class="nav-tertiary list-unstyled collapse in">
 
-                  <li><a class="" href="../../using_images/xpaas_images/index.html">Overview</a></li>
+                  <li><a class=" active" href="../../using_images/xpaas_images/index.html">Overview</a></li>
               </ul>
             </li>
       </ul>
@@ -348,33 +348,10 @@
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 main">
         <div class="page-header">
-          <h2>Source Control Management</h2>
+          <h2>Overview</h2>
         </div>
         <div class="paragraph">
-<p>Digital Garage takes advantage of preexisting source control management (SCM) systems
-hosted either internally (such as an in-house Git server) or externally (for
-example, on <a href="https://github.com/">GitHub</a>, <a href="https://bitbucket.org/">Bitbucket</a>,
-etc.). Currently, Digital Garage only supports <a href="https://git-scm.com/">Git</a> solutions.</p>
-</div>
-<div class="paragraph">
-<p>SCM integration is tightly coupled with
-<a href="../core_concepts/builds_and_image_streams.html#architecture-core-concepts-builds-and-image-streams">builds</a>, the two points
-being:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Creating a <code><strong>BuildConfig</strong></code> using a repository, which allows building your
-application inside of Digital Garage. You can create a <code><strong>BuildConfig</strong></code>
-<a href="../../dev_guide/builds.html#defining-a-buildconfig">manually</a> or let
-Digital Garage create it <a href="../../dev_guide/new_app.html#dev-guide-new-app">automatically</a> by
-inspecting your repository.</p>
-</li>
-<li>
-<p><a href="../../dev_guide/builds.html#webhook-triggers">Triggering a build</a> upon
-repository changes.</p>
-</li>
-</ul>
+<p>Red Hat offers a containerized xPaaS image for a host of middleware products that are designed for use with Digital Garage. With the 3.2 release of Digital Garage, the documentation for these images has been migrated to the <a href="https://access.redhat.com/documentation/en/red-hat-xpaas/">Red Hat Customer Portal</a>.</p>
 </div>
       </div>
     </div>

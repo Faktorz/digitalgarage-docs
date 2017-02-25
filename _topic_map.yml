@@ -551,7 +551,7 @@ Topics:
     File: manage_cli_profiles
   - Name: Developer CLI Operations
     File: basic_cli_operations
-    Distros: openshift-*
+    Distros: openshift-*,digital-garage
   - Name: Administrator CLI Operations
     File: admin_cli_operations
     Distros: openshift-enterprise,openshift-dedicated,openshift-origin
@@ -620,6 +620,7 @@ Topics:
     File: deployments
   - Name: Getting Traffic Into The Cluster
     File: getting_traffic_into_cluster
+    Distros: openshift-origin,openshift-enterprise
   - Name: Routes
     File: routes
   - Name: Integrating External Services
@@ -630,6 +631,7 @@ Topics:
     File: configmaps
   - Name: Using Daemonsets
     File: daemonsets
+    Distros: openshift-origin,openshift-enterprise
   - Name: Pod Autoscaling
     File: pod_autoscaling
   - Name: Pod Disruption Budget
@@ -712,6 +714,8 @@ Topics:
         File: php
       - Name: Python
         File: python
+      - Name: Ruby
+        File: ruby
       - Name: Java
         File: java
         Distros: openshift-origin,openshift-online,digital-garage
@@ -742,7 +746,7 @@ Topics:
         File: wordpress
   - Name: xPaaS Middleware Images
     Dir: xpaas_images
-    Distros: openshift-online,openshift-enterprise,openshift-dedicated
+    Distros: openshift-online,openshift-enterprise,openshift-dedicated,digital-garage
     Topics:
       - Name: Overview
         File: index
