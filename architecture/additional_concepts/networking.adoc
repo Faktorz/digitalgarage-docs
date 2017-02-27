@@ -103,7 +103,7 @@ endif::[]
 
 [[openshift-sdn]]
 
-=== {product-title} SDN
+== {product-title} SDN
 
 {product-title} deploys a software-defined networking (SDN) approach for connecting
 pods in an {product-title} cluster. The {product-title} SDN connects all

@@ -12,7 +12,7 @@ ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[
 toc::[]
 
 == Overview
-endif::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
+endif::[]
 The {product-title} web console is a user interface accessible from a web browser.
 Developers can use the web console to visualize, browse, and manage the contents
 of xref:../core_concepts/projects_and_users.adoc#projects[projects].
@@ -50,7 +50,7 @@ whitelist that host name by specifying the `--cors-allowed-origins` option
 on `openshift start` or from the related
 xref:../../install_config/master_node_configuration.adoc#master-configuration-files[master
 configuration file parameter `corsAllowedOrigins`].
-endif::openshift-enterprise,openshift-origin[]
+endif::[]
 
 ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
 
@@ -95,6 +95,19 @@ used to access the web console.
 
 |===
 
+[[web-console-cli-downloads]]
+
+== CLI Downloads
+You can download and unpack the CLI from the
+xref:../../install_config/web_console_customization.adoc#adding-or-changing-links-to-download-the-cli[*About*
+page on the web console] for use on Linux, MacOSX, and Windows clients
+ifdef::openshift-enterprise,openshift-origin[]
+if your cluster administrator has enabled it
+endif::[]
+:
+
+image::about_page.png["About Page"]
+
 [[project-overviews]]
 
 == Project Overviews
@@ -110,7 +123,7 @@ image::console_navigation.png["Web Console Project Overview"]
 xref:../../dev_guide/projects.adoc#view-projects[switch between projects] you
 have access to.
 <2> Create new applications
-xref:../../dev_guide/new_app.adoc#using-the-web-console-na[using a source
+xref:../../dev_guide/application_lifecycle/new_app.adoc#using-the-web-console-na[using a source
 repository] or
 xref:../../dev_guide/templates.adoc#creating-from-templates-using-the-web-console[using a
 template].
@@ -126,9 +139,9 @@ project with a high-level view of each component.
 ifdef::openshift-enterprise[]
 [NOTE]
 ====
-http://cockpit-project.org[Cockpit] is automatically installed and enabled in
+link:http://cockpit-project.org[Cockpit] is automatically installed and enabled in
 {product-title} 3.1 and later to help you monitor your development environment.
-https://access.qa.redhat.com/documentation/en/red-hat-enterprise-linux-atomic-host/version-7/getting-started-with-cockpit/[Red
+link:https://access.redhat.com/documentation/en/red-hat-enterprise-linux-atomic-host/version-7/getting-started-with-cockpit/[Red
 Hat Enterprise Linux Atomic Host: Getting Started with Cockpit] provides more
 information on using Cockpit.
 ====
@@ -189,10 +202,11 @@ The following pages are available:
 |Karaf
 |
 ////
+
 endif::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
 
 ifdef::atomic-registry[]
-The web console is based on the link:http://cockpit-project.org/[Cockpit
-Project]. It is deployed as a service using an {product-title} template. The web
-console is an optional component.
-endif::atomic-registry[]
+The web console is based on the link:http://cockpit-project.org/[Cockpit Project].
+It is deployed as a service using an {product-title} template. The web console is an
+optional component.
+endif::[]

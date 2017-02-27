@@ -156,8 +156,8 @@ For example:
 
 == Roles
 Roles are collections of policy xref:rules-def[rules], which are sets of
-permitted verbs that can be performed on a set of resources. {product-title}
-includes a set of default roles that can be added to users and groups in the
+permitted verbs that can be performed on a set of resources. {product-title} includes
+a set of default roles that can be added to users and groups in the
 xref:cluster-policy-and-local-policy[cluster policy] or in a
 xref:cluster-policy-and-local-policy[local policy].
 
@@ -259,6 +259,20 @@ a `*policyBinding*` object named `_<projectname>_:default` with the CLI using a
 JSON file. This allows the project *admin* to bind users to roles that are
 defined only in the `_<projectname>_` local policy.
 
+[IMPORTANT]
+====
+The `cluster-` role assigned by the project administrator is limited in a
+project. It is not the same `cluster-` role granted by the *cluster-admin* or
+*system:admin*.
+
+Cluster roles are xref:roles[roles] defined at the cluster level, but can be bound either at
+the cluster level or at the project level.
+====
+
+xref:../../admin_guide/manage_authorization_policy.adoc#manage-authorization-policy-creating-local-role[Learn
+how to create a local role for a project].
+
+
 ifdef::openshift-enterprise,openshift-origin[]
 [[updating-cluster-roles]]
 
@@ -284,6 +298,7 @@ can do, {product-title} provides _security context constraints_ (SCC) that contr
 actions that a xref:../core_concepts/pods_and_services.adoc#pods[pod] can
 perform and what it has the ability to access. Administrators can
 xref:../../admin_guide/manage_scc.adoc#admin-guide-manage-scc[manage SCCs] using the CLI.
+
 SCCs are also very useful for
 xref:../../install_config/persistent_storage/pod_security_context.adoc#install-config-persistent-storage-pod-security-context[managing
 access to persistent storage].
@@ -314,7 +329,7 @@ ifdef::openshift-origin,openshift-enterprise,openshift-dedicated[]
 . Controlling the usage of volume types
 . Configuring allowable seccomp profiles
 
-Six SCCs are added to the cluster by default, and are viewable by cluster
+Seven SCCs are added to the cluster by default, and are viewable by cluster
 administrators using the CLI:
 
 ====
@@ -462,7 +477,9 @@ the entire allowable range.
 provided.
 . *RunAsAny* - No default provided. Allows any `*runAsUser*` to be specified.
 
+
 [[authorization-SELinuxContext]]
+
 ==== SELinuxContext
 
 . *MustRunAs* - Requires `*seLinuxOptions*` to be configured if not using
@@ -488,48 +505,46 @@ pre-allocated values. Uses the minimum value of the first range as the default.
 Validates against the first ID in the first range.
 . *RunAsAny* - No default provided. Allows any `*fsGroup*` ID to be specified.
 
-[[authorization-controlling-volumes]]
 === Controlling Volumes
 
-The usage of specific volume types can be controlled by setting the `*volumes*`
-field of the SCC. The allowable values of this field correspond to the volume
-sources that are defined when creating a volume:
+The usage of specific volume types can be controlled by setting the `*volumes*` field
+of the SCC.  The allowable values of this field correspond to the volume sources that
+are defined when creating a volume:
 
-* *azureFile*
-* *flocker*
-* *flexVolume*
-* *hostPath*
-* *emptyDir*
-* *gcePersistentDisk*
-* *awsElasticBlockStore*
-* *gitRepo*
-* *secret*
-* *nfs*
-* *iscsi*
-* *glusterfs*
-* *persistentVolumeClaim*
-* *rbd*
-* *cinder*
-* *cephFS*
-* *downwardAPI*
-* *fc*
-* *configMap*
-*  ***
+.  azureFile
+.  flocker
+.  flexVolume
+.  hostPath
+.  emptyDir
+.  gcePersistentDisk
+.  awsElasticBlockStore
+.  gitRepo
+.  secret
+.  nfs
+.  iscsi
+.  glusterfs
+.  persistentVolumeClaim
+.  rbd
+.  cinder
+.  cephFS
+.  downwardAPI
+.  fc
+.  configMap
+.  *
 
-The recommended minimum set of allowed volumes for new SCCs are *configMap*,
-*downwardAPI*, *emptyDir*, *persistentVolumeClaim*, and *secret*.
-
-[NOTE]
-====
-`***` is a special value to allow the use of all volume types.
-====
+The recommended minimum set of allowed volumes for new SCCs are configMap, downwardAPI, emptyDir,
+persistentVolumeClaim, and secret.
 
 [NOTE]
 ====
-For backwards compatibility, the usage of `*allowHostDirVolumePlugin*` overrides
-settings in the `*volumes*` field.  For example, if `*allowHostDirVolumePlugin*`
-is set to false but allowed in the `*volumes*` field, then the `*hostPath*`
-value will be removed from `*volumes*`.
+`***` is a special value to allow the use of all volume types
+====
+
+[NOTE]
+====
+For backwards compatibility, the usage of `*allowHostDirVolumePlugin*` will override settings
+in the `*volumes*` field.  For example, if `*allowHostDirVolumePlugin*` is set to false but allowed
+in the `*volumes*` field the `*hostPath*` value will be removed from `*volumes*`.
 ====
 
 [[authorization-seccomp]]
@@ -541,8 +556,10 @@ profiles are specified by the pod or container. Use the wildcard `*` to allow
 all profiles. When used to generate a value for a pod, the first non-wildcard
 profile is used as the default.
 
-Refer to the xref:../../admin_guide/seccomp.adoc#[seccomp documentation] for more information
+ifdef::openshift-enterprise,openshift-origin[]
+Refer to the xref:../../admin_guide/seccomp.adoc#admin-guide-seccomp[seccomp documentation] for more information
 about configuring and using custom profiles.
+endif::[]
 
 [[admission]]
 

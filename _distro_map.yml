@@ -7,5 +7,5 @@ digital-garage:
   site_url: http://docs.thedigitalgarage.io
   branches:
     master:
-      name: 'Discovery'
+      name: ''
       dir: latest

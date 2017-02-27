@@ -271,7 +271,7 @@ ID. This provides additional security against processes escaping the container
 due to a container engine vulnerability and thereby achieves escalated
 permissions on the host node.
 
-For an image to support running as an arbitray user, directories and files that
+For an image to support running as an arbitrary user, directories and files that
 may be written to by processes in the image should be owned by the root group
 and be read/writable by that group. Files to be executed should also have group
 execute permissions.
@@ -281,9 +281,8 @@ to allow users in the root group to access them in the built image:
 
 ====
 ----
-RUN chgrp -R 0 /some/directory
-RUN chmod -R g+rw /some/directory
-RUN find /some/directory -type d -exec chmod g+x {} +
+RUN chgrp -R 0 /some/directory \
+  && chmod -R g+rwX /some/directory
 ----
 ====
 
@@ -305,7 +304,7 @@ start script:
 export USER_ID=$(id -u)
 export GROUP_ID=$(id -g)
 envsubst < ${HOME}/passwd.template > /tmp/passwd
-export LD_PRELOAD=libnss_wrapper.so
+export LD_PRELOAD=/usr/lib64/libnss_wrapper.so
 export NSS_WRAPPER_PASSWD=/tmp/passwd
 export NSS_WRAPPER_GROUP=/etc/group
 ----
@@ -439,7 +438,7 @@ See the following references for more on how to manage *cgroup* quotas
 in Docker containers:
 
 - Blog article - https://goldmann.pl/blog/2014/09/11/resource-management-in-docker[Resource management in Docker]
-- Docker documentation - https://docs.docker.com/articles/runmetrics[Runtime Metrics]
+- Docker documentation - https://docs.docker.com/engine/admin/runmetrics[Runtime Metrics]
 - Blog article - http://fabiokung.com/2014/03/13/memory-inside-linux-containers[Memory inside Linux containers]
 
 *Set Image Metadata*

@@ -6,6 +6,7 @@
 :icons:
 :experimental:
 
+
 ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
 This guide helps developers set up and configure a workstation to develop and
 deploy applications in an {product-title} cloud environment with a command-line

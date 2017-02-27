@@ -51,10 +51,4 @@ trying out {product-title}:
 using the web console and create your first project and application.
 * Go xref:../getting_started/beyond_the_basics.adoc#getting-started-beyond-the-basics[*beyond the basics*] and get
 hands-on with the CLI.
-
-[IMPORTANT]
-====
-For the {product-title} Discovery offering, consult the
-xref:../getting_started/devpreview_faq.adoc#getting-started-devpreview-faq[Developer Discovery FAQ] for details
-around current usage considerations during this preview phase.
 endif::digital-garage[]

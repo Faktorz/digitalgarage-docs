@@ -33,7 +33,7 @@ application development. Language support centers around the
 xref:../dev_guide/app_tutorials/quickstarts.adoc#dev-guide-app-tutorials-quickstarts[Quickstart templates], which in
 turn leverage xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[builder images].
 
-// end::overview[]
+// end::overview-online[]
 
 [[getting-started-developers-cli-languages]]
 
@@ -96,6 +96,7 @@ With each of these offerings, a series of combinations are provided:
 * If desired, integration with A-MQ
 endif::[]
 
+
 To help illustrate constructing such applications, the following sections guide
 you through creating a project that contains a sample Node.js application that
 will serve a welcome page and the current hit count (stored in a database).
@@ -151,6 +152,15 @@ https://help.github.com/articles/set-up-git/#next-steps-authenticating-with-gith
 xref:../cli_reference/get_started_cli.adoc#cli-reference-get-started-cli[downloaded and installed].
 
 // end::beforeyoubegin[]
+
+[[developers-cli-video]]
+== Tutorial Video
+
+The following video walks you through the rest of this topic:
+https://access.redhat.com/videos/2481041[Click here to watch]
+
+image::dev-cli-video-thumb.png[CLI Getting Started Experience, 579, 246, link="https://access.redhat.com/videos/2481041"]
+
 [[developers-cli-forking-the-sample-repository]]
 
 // tag::forking[]
@@ -247,7 +257,6 @@ $ oc expose service ruby-ex
 $ oc get route
 ----
 . Copy the route location, which will be something like `ruby-ex-my-test.apps.thedigitalgarage.io`.
-
 [[developers-cli-view-running-app]]
 == View the Running Application
 

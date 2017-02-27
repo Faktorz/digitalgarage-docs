@@ -11,7 +11,7 @@
 
 toc::[]
 
-ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
+ifdef::openshift-origin,openshift-online,openshift-enterprise,digital-garage,openshift-dedicated[]
 == LimitRange
 
 A limit range provides a mechanism to enforce min/max limits placed on resources
@@ -41,6 +41,7 @@ documentation] for more information on `*ResourceQuota*`.
 endif::[]
 
 ifdef::openshift-dedicated,digital-garage[]
+
 See https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/admin/resource-quota.md[Kubernetes
 documentation] or contact your administrator for more information on `*ResourceQuota*`.
 endif::[]
