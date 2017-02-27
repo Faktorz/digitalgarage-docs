@@ -16,8 +16,8 @@ syntax. You must xref:get_started_cli.adoc#cli-reference-get-started-cli[setup a
 you can perform these operations.
 
 The developer CLI uses the `oc` command, and is used for project-level
-operations. This differs from the xref:admin_cli_operations.adoc#cli-reference-admin-cli-operations[administrator
-CLI], which uses the `oadm` command for more advanced, administrator operations.
+operations. This differs from the administrator CLI, which uses the `oadm`
+command for more advanced, administrator operations.
 
 [[oc-common-operations]]
 
@@ -107,6 +107,7 @@ syntax:
 |`build` |
 |`buildConfig` | `bc`
 |`deploymentConfig` | `dc`
+|`deployments` (Technology Preview)| `deploy`
 |`event` |`ev`
 |`imageStream` | `is`
 |`imageStreamTag` | `istag`
@@ -117,6 +118,7 @@ syntax:
 |`pod` |`po`
 |`ResourceQuota` | `quota`
 |`replicationController` |`rc`
+|`replicaSet` (Technology Preview)|`rs`
 |`secrets` |
 |`service` |`svc`
 |`ServiceAccount` | `serviceaccounts`
@@ -154,7 +156,7 @@ $ oc new-project <project_name>
 ----
 
 === new-app
-xref:../dev_guide/new_app.adoc#dev-guide-new-app[Creates a new application] based on the source
+xref:../dev_guide/application_lifecycle/new_app.adoc#dev-guide-new-app[Creates a new application] based on the source
 code in the current directory:
 ----
 $ oc new-app .
@@ -211,12 +213,6 @@ $ oc edit <object_type>/<object_name> \
     -o <object_type_format>
 ----
 
-=== env
-Update the desired object type with a new environment variable:
-----
-$ oc env <object_type>/<object_name> <var_name>=<value>
-----
-
 === volume
 Modify a xref:../dev_guide/volumes.adoc#dev-guide-volumes[volume]:
 ----
@@ -229,11 +225,18 @@ Update the labels on a object:
 $ oc label <object_type> <object_name> <label>
 ----
 
+[[expose]]
 === expose
 Look up a service and expose it as a route. There is also the ability to expose
 a deployment configuration, replication controller, service, or pod as a new
 service on a specified port. If no labels are specified, the new object will
 re-use the labels from the object it exposes.
+
+If you are exposing a service, the default generator is
+`--generator=route/v1`. For all other cases the default is
+`--generator=service/v2`, which leaves the port unnamed. Generally, there is
+no need to set a generator with the `oc expose` command. A third generator,
+`--generator=service/v1`, is available with the port name default.
 ----
 $ oc expose <object_type> <object_name>
 ----
@@ -258,7 +261,7 @@ $ oc delete all -l <label>
 ----
 
 === set
-Modify a specific property of the specified object. 
+Modify a specific property of the specified object.
 
 ==== set env
 Sets an environment variable on a deployment configuration or a build configuration:
@@ -279,9 +282,9 @@ $ oc set build-secret --source bc/mybc mysecret
 One of the fundamental capabilities of {product-title} is the ability to build
 applications into a container from source.
 
-{product-title} provides CLI access to inspect and manipulate
-xref:../dev_guide/deployments.adoc#dev-guide-deployments[deployment configurations] using standard
-`oc` resource operations, such as `get`, `create`, and `describe`.
+{product-title} provides CLI access to inspect and manipulate deployment
+configurations using standard `oc` resource operations, such as `get`, `create`,
+and `describe`.
 
 === start-build
 Manually start the build process with the specified build configuration file:
@@ -358,15 +361,15 @@ $ oc start-build --list-webhooks
 ----
 
 === deploy
-View a xref:../dev_guide/deployments.adoc#dev-guide-deployments[deployment], or manually start,
-cancel, or retry a deployment:
+View a deployment, or manually start, cancel, or retry a deployment:
+
 ----
 $ oc deploy <deploymentconfig>
 ----
 
 === rollback
 Perform a
-xref:../dev_guide/deployments.adoc#rolling-back-a-deployment[rollback]:
+xref:../dev_guide/deployments/basic_deployment_operations.adoc#rolling-back-a-deployment[rollback]:
 ----
 $ oc rollback <deployment_name>
 ----
@@ -408,9 +411,8 @@ $ oc import-image <image_stream>
 
 === scale
 Set the number of desired replicas for a
-xref:../architecture/core_concepts/deployments.adoc#replication-controllers[replication
-controller] or a xref:../dev_guide/deployments.adoc#dev-guide-deployments[deployment configuration] to
-the number of specified replicas:
+xref:../architecture/core_concepts/deployments.adoc#replication-controllers[replication controller] or a deployment configuration to the number of specified replicas:
+
 ----
 $ oc scale <object_type> <object_name> --replicas=<#_of_replicas>
 ----
@@ -499,6 +501,7 @@ Configure xref:../dev_guide/secrets.adoc#dev-guide-secrets[secrets]:
 $ oc secrets [--options] path/to/ssh_key
 ----
 
+[[autoscale]]
 === autoscale
 Setup an xref:../dev_guide/pod_autoscaling.adoc#dev-guide-pod-autoscaling[autoscaler] for your
 application. Requires metrics to be enabled in the cluster.
@@ -515,7 +518,6 @@ $ oc autoscale dc/<dc_name> [--options]
 ----
 
 [[troubleshooting-and-debugging-cli-operations]]
-
 == Troubleshooting and Debugging CLI Operations
 
 === logs
@@ -557,11 +559,3 @@ Run a proxy to the Kubernetes API server:
 ----
 $ oc proxy --port=<port> --www=<static_directory>
 ----
-
-[IMPORTANT]
-====
-link:https://access.redhat.com/errata/RHSA-2015:1650[For security purposes], the
-`oc exec` command does not work when accessing privileged containers. Instead,
-administrators can SSH into a node host, then use the `docker exec` command on
-the desired container.
-====

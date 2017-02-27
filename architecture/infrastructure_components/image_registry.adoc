@@ -9,7 +9,11 @@
 :toc-title:
 :linkattrs:
 
+<<<<<<< HEAD
 ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
+=======
+ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+>>>>>>> openshift/online
 toc::[]
 
 == Overview
@@ -27,9 +31,15 @@ xref:../core_concepts/builds_and_image_streams.adoc#builds[builds] to push the
 resulting images.
 
 Whenever a new image is pushed to the integrated registry, the registry notifies
+<<<<<<< HEAD
 {product-title} about the new image, passing along all the information about it,
 such as the namespace, name, and image metadata. Different pieces of
 {product-title} react to new images, creating new
+=======
+{product-title} about the new image, passing along all the information about it, such
+as the namespace, name, and image metadata. Different pieces of {product-title} react
+to new images, creating new
+>>>>>>> openshift/online
 xref:../core_concepts/builds_and_image_streams.adoc#builds[builds] and
 xref:../core_concepts/deployments.adoc#deployments-and-deployment-configurations[deployments].
 
@@ -47,11 +57,18 @@ deployment reactions occur.
 [[authentication]]
 
 === Authentication
+<<<<<<< HEAD
 {product-title} can communicate with registries to access private image
 repositories using credentials supplied by the user. This allows {product-title}
 to push and pull images to and from private repositories. The
 xref:../additional_concepts/authentication.adoc#architecture-additional-concepts-authentication[Authentication] topic has more
 information.
+=======
+{product-title} can communicate with registries to access private image repositories
+using credentials supplied by the user. This allows {product-title} to push and pull
+images to and from private repositories. The xref:../additional_concepts/authentication.adoc#architecture-additional-concepts-authentication[Authentication] topic
+has more information.
+>>>>>>> openshift/online
 
 endif::[]
 

@@ -11,7 +11,11 @@
 toc::[]
 
 == Overview
+<<<<<<< HEAD
 {product-title} provides
+=======
+OpenShift provides
+>>>>>>> openshift/online
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#source-build[S2I]
 enabled PHP images for building and running PHP applications.
 ifdef::openshift-origin[]
@@ -58,12 +62,20 @@ $ docker pull openshift/php-55-centos7
 To use these images, you can either access them directly from these
 xref:../../architecture/infrastructure_components/image_registry.adoc#architecture-infrastructure-components-image-registry[image
 registries], or push them into your
+<<<<<<< HEAD
 xref:../../architecture/infrastructure_components/image_registry.adoc#integrated-openshift-registry[{product-title}
 Docker registry]. Additionally, you can create an
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#image-streams[image
 stream] that points to the image, either in your Docker registry or at the
 external location. Your {product-title} resources can then reference the image
 stream.
+=======
+xref:../../architecture/infrastructure_components/image_registry.adoc#integrated-openshift-registry[OpenShift Docker
+registry]. Additionally, you can create an
+xref:../../architecture/core_concepts/builds_and_image_streams.adoc#image-streams[image
+stream] that points to the image, either in your Docker registry or at the
+external location. Your OpenShift resources can then reference the image stream.
+>>>>>>> openshift/online
 
 You can find
 https://github.com/openshift/origin/tree/master/examples/image-streams[example
@@ -76,6 +88,7 @@ The PHP image supports a number of environment variables which can be set to
 control the configuration and behavior of the PHP runtime.
 
 To set these environment variables as part of your image, you can place them into
+<<<<<<< HEAD
 xref:../../dev_guide/builds.adoc#environment-files[a *_.s2i/environment_* file]
 inside your source code repository, or define them in
 xref:../../dev_guide/builds.adoc#buildconfig-environment[the environment
@@ -83,6 +96,15 @@ section] of the build configuration's `*sourceStrategy*` definition.
 
 You can also set environment variables to be used with an existing image when
 xref:../../dev_guide/new_app.adoc#specifying-environment-variables[creating new
+=======
+xref:../../dev_guide/builds/build_strategies.adoc#environment-files[a *_.s2i/environment_* file]
+inside your source code repository, or define them in
+xref:../../dev_guide/builds/build_strategies.adoc#buildconfig-environment[the environment
+section] of the build configuration's `*sourceStrategy*` definition.
+
+You can also set environment variables to be used with an existing image when
+xref:../../dev_guide/application_lifecycle/new_app.adoc#specifying-environment-variables[creating new
+>>>>>>> openshift/online
 applications], or by
 xref:../../dev_guide/environment_variables.adoc#set-environment-variables[updating
 environment variables for existing objects] such as deployment configurations.
@@ -132,6 +154,13 @@ handled separately from display errors.
 |`*SESSION_PATH*`
 |Location for session data files.
 |*_/tmp/sessions_*
+<<<<<<< HEAD
+=======
+
+|`*DOCUMENTROOT*`
+|Path that defines the document root for your application (for example, *_/public_*).
+|*_/_*
+>>>>>>> openshift/online
 |===
 
 The following environment variable sets its equivalent property value in the
@@ -168,6 +197,7 @@ You can also override the entire directory used to load the PHP configuration by
 
 |`*PHP_INI_SCAN_DIR*`
 |Path to scan for additional *_.ini_* configuration files
+<<<<<<< HEAD
 |===
 
 You can use a custom composer repository mirror URL to download packages instead of the default 'packagist.org':
@@ -176,6 +206,16 @@ You can use a custom composer repository mirror URL to download packages instead
 [cols="4a,6a,6a",options="header"]
 |===
 
+=======
+|===
+
+You can use a custom composer repository mirror URL to download packages instead of the default 'packagist.org':
+
+.Composer Environment Variables
+[cols="4a,6a,6a",options="header"]
+|===
+
+>>>>>>> openshift/online
 |Variable Name |Description
 
 |`*COMPOSER_MIRROR*`
@@ -212,7 +252,11 @@ changes made in your application source code, you must run your built image with
 the `*OPCACHE_REVALIDATE_FREQ=0*` environment variable.
 
 For example, see the
+<<<<<<< HEAD
 xref:../../dev_guide/new_app.adoc#specifying-environment-variables[`oc new-app`]
+=======
+xref:../../dev_guide/application_lifecycle/new_app.adoc#specifying-environment-variables[`oc new-app`]
+>>>>>>> openshift/online
 command. You can use the
 xref:../../dev_guide/environment_variables.adoc#set-environment-variables[`oc
 env`] command to update environment variables of existing objects.

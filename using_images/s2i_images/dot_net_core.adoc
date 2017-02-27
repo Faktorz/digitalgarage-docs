@@ -34,10 +34,16 @@ and Python from within {product-title}.
 == Supported Versions
 
 * .NET Core version 1.0
+<<<<<<< HEAD
 ** Supported on Red Hat Enterprise Linux (RHEL) 7
 ifdef::openshift-enterprise[]
 and {product-title} versions 3.3 and later
 
+=======
+** Supported on Red Hat Enterprise Linux (RHEL) 7 {product-title} versions 3.3 and later
+
+ifdef::openshift-enterprise[]
+>>>>>>> openshift/online
 [[dot-net-core-installing-images]]
 == Images
 
@@ -67,7 +73,10 @@ link:https://github.com/redhat-developer/s2i-dotnetcore/blob/master/dotnet_image
 The .NET Core image currently does not support any environment variables. No
 configuration is necessary.
 
+<<<<<<< HEAD
 ifdef::openshift-enterprise[]
+=======
+>>>>>>> openshift/online
 [[dot-net-quickly-deploy-applications]]
 == Quickly Deploying Applications from .NET Core Source
 

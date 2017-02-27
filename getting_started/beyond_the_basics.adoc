@@ -14,7 +14,19 @@ toc::[]
 This getting started experience walks you through the “long way” of getting the
 same sample project from the
 xref:../getting_started/basic_walkthrough.adoc#getting-started-basic-walkthrough[Basic Walkthrough] topic up and
+<<<<<<< HEAD
 running on {product-title}.
+=======
+running on {product-title} (Next Gen) Developer Preview.
+
+[NOTE]
+====
+If you are unfamiliar with the core concepts of OpenShift version 3, you might
+want to start by reading about
+xref:../getting_started/online_v2_vs_v3.adoc#getting-started-online-v2-vs-v3[what’s new]. This version of
+OpenShift is significantly different from version 2.
+====
+>>>>>>> openshift/online
 
 The following sections guide you through creating a project that contains a
 sample Node.js application that will serve a welcome page and the current hit
@@ -26,27 +38,46 @@ involves creating two xref:../architecture/core_concepts/pods_and_services.adoc#
 
 The tutorial assumes that you have:
 
+<<<<<<< HEAD
 - a {product-title} account.
 - a https://github.com/[GitHub] account.
+=======
+- a free {product-title} (Next Gen) Developer Preview account.
+- a free https://github.com/[GitHub] account.
+>>>>>>> openshift/online
 - https://help.github.com/articles/set-up-git/[Git] installed locally.
 
 [[btb_setup]]
 == Setup
 
+<<<<<<< HEAD
 In this section, you will _fork_ the {product-title} Node.js sample application
 on GitHub and clone the repository to your local machine so that you can deploy
 and edit the application.
+=======
+In this section, you will _fork_ the OpenShift Node.js sample application on GitHub
+and clone the repository to your local machine so that you can deploy and edit
+the app.
+>>>>>>> openshift/online
 
 [NOTE]
 ====
 You can skip this step if you already forked the
+<<<<<<< HEAD
 https://github.com/thedigitalgarage/nodejs-ex[*thedigitalgarage/nodejs-ex*] repository when
+=======
+https://github.com/openshift/nodejs-ex[*openshift/nodejs-ex*] repository when
+>>>>>>> openshift/online
 following the xref:../getting_started/basic_walkthrough.adoc#getting-started-basic-walkthrough[Basic Walkthrough]
 topic.
 ====
 
 . On GitHub, navigate to the
+<<<<<<< HEAD
 https://github.com/thedigitalgarage/nodejs-ex[*thedigitalgarage/nodejs-ex*] repository. In the
+=======
+https://github.com/openshift/nodejs-ex[*openshift/nodejs-ex*] repository. In the
+>>>>>>> openshift/online
 top-right corner of the page, click *Fork*:
 +
 image::gs-fork.png[Fork the project]
@@ -59,6 +90,7 @@ $ git clone https://github.com/<your_github_username>/nodejs-ex
 $ cd nodejs-ex
 ----
 
+<<<<<<< HEAD
 That's it! Now, you have a fork of the original *thedigitalgarage/nodejs-ex* example
 application Git repository and a copy on your local machine.
 
@@ -74,6 +106,22 @@ tools to interact with each component of your system.
 Support button (?) one the left side of the top menu bar. The CLI is available
 for Linux (32- or 64-bit), Mac OS X, and Windows. After you have downloaded the
 CLI, return to these steps.
+=======
+That's it! Now, you have a fork of the original *openshift/nodejs-ex* example
+application Git repository and a copy on your local machine.
+
+[[btb-installing-the-openshift-cli]]
+== Installing the OpenShift CLI
+
+In this section, you will install the OpenShift CLI. The OpenShift CLI exposes
+commands for managing your applications, as well as lower level tools to
+interact with each component of your system.
+
+. First, download the OpenShift CLI from
+https://console.preview.openshift.com/console/about[the *About* page] in the
+{product-title} web console. The CLI is available for Linux (32- or 64-bit), Mac
+OS X, and Windows. After you have downloaded the CLI, return to these steps.
+>>>>>>> openshift/online
 
 . Next, unpack or unzip the archive and move the `oc` binary to a directory on
 your `*PATH*`.
@@ -95,6 +143,7 @@ C:\> path
 +
 After it is installed, you can use the `oc` command from your command shell.
 
+<<<<<<< HEAD
 . Then, visit the https://apps.thedigitalgarage.io:8443/console/command-line[
 *Command Line Tools*] page in the {product-title} web console and copy the
 `oc login` command shown with your current session token to log in to
@@ -102,6 +151,14 @@ After it is installed, you can use the `oc` command from your command shell.
 +
 ----
 $ oc login https://apps.thedigitalgarage.io:8443 --token=<your_session_token>
+=======
+. Then, visit https://console.preview.openshift.com/console/about[the
+*About* page] in the {product-title} web console and copy the `oc login` command
+shown with your current session token to log in to {product-title} from the CLI:
++
+----
+$ oc login https://api.preview.openshift.com --token=<your_session_token>
+>>>>>>> openshift/online
 ----
 +
 The `oc login` command is the best way to initially set up the {product-title}
@@ -114,6 +171,7 @@ then used for subsequent commands.
 In this section, you will deploy your first application to {product-title} using
 the web console.
 
+<<<<<<< HEAD
 . First, if you have multiple projects, verify that you are in the correct project.
 Replace `<project_name>` below with a unique name for your project, such as
 `<your_github_username>-example`:
@@ -123,6 +181,17 @@ $ oc project <project_name>
 ----
 +
 
+=======
+. First, create a new project. Replace `<project_name>` below with a unique name
+for your project, such as `<your_github_username>-example`:
++
+----
+$ oc new-project <project_name>
+----
++
+After creating the new project, you will be automatically switched to the new
+project namespace.
+>>>>>>> openshift/online
 +
 [NOTE]
 ====
@@ -231,7 +300,11 @@ $ oc get routes
 . Finally, copy the route *HOST/PORT* for your application and paste it in the
 browser to view your application:
 +
+<<<<<<< HEAD
 image::dg-running-nodejs-app.png[Running Node.js app]
+=======
+image::gs-running-nodejs-app.png[Running Node.js app]
+>>>>>>> openshift/online
 
 [[btb-provisioning-a-database]]
 == Provisioning a Database
@@ -245,16 +318,27 @@ MongoDB service.
 . Add the {product-title}-provided MongoDB database to your project with:
 +
 ----
+<<<<<<< HEAD
 $ oc new-app mongodb-ephemeral -p MONGODB_USER=admin, MONGODB_PASSWORD=secret,MONGODB_ADMIN_PASSWORD=super-secret
 ----
 If you would like to deploy a persistent version of MongoDB use the following command instead:
 ----
 $ oc new-app mongodb-persistent -p MONGODB_USER=admin -p MONGODB_PASSWORD=secret -p MONGODB_ADMIN_PASSWORD=super-secret
+=======
+$ oc new-app mongodb-persistent \
+-p MONGODB_USER=admin \
+-p MONGODB_PASSWORD=secret \
+-p MONGODB_ADMIN_PASSWORD=super-secret
+>>>>>>> openshift/online
 ----
 +
 [NOTE]
 ====
+<<<<<<< HEAD
 The `-p` flag sets the parameter values used by the *mongodb-ephemeral*
+=======
+The `-p` flag sets the parameter values used by the *mongodb-persistent*
+>>>>>>> openshift/online
 database template.
 ====
 
@@ -292,7 +376,11 @@ Use the following to get a list of environment variables set for all pods in the
 project:
 
 ----
+<<<<<<< HEAD
 $ oc env pods --all --list
+=======
+$ oc set env pods --all --list
+>>>>>>> openshift/online
 ----
 ====
 
@@ -314,7 +402,11 @@ $ oc describe buildConfig nodejs-mongodb-example
 in the following format:
 +
 ----
+<<<<<<< HEAD
 http://<digital_garage_api_host:port>/osapi/v1/namespaces/<namespace>/buildconfigs/frontend/webhooks/<your_secret_key>/github
+=======
+http://<openshift_api_host:port>/osapi/v1/namespaces/<namespace>/buildconfigs/frontend/webhooks/<your_secret_key>/github
+>>>>>>> openshift/online
 ----
 
 . Next, navigate to your forked repository on GitHub, then:
@@ -361,12 +453,28 @@ rest.
 == What's Next?
 
 The following sections provide some next steps now that you have finished your
+<<<<<<< HEAD
 initial walkthrough of {product-title} Developer Preview.
+=======
+initial walkthrough of {product-title} (Next Gen) Developer Preview.
+
+[[btb-developer-preview-considerations]]
+=== Developer Preview Usage Considerations
+
+Please review the xref:../getting_started/devpreview_faq.adoc#getting-started-devpreview-faq[Developer Preview
+FAQ] for current usage considerations to keep in mind when using the
+{product-title} (Next Gen) Developer Preview.
+>>>>>>> openshift/online
 
 [[btb-other-quickstarts]]
 === Other Quickstarts
 
+<<<<<<< HEAD
 {product-title} Developer Preview provides out of the box a set of
+=======
+Similar to xref:../getting_started/online_v2_vs_v3.adoc#getting-started-online-v2-vs-v3[OpenShift Online 2],
+{product-title} (Next Gen) Developer Preview provides out of the box a set of
+>>>>>>> openshift/online
 xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[languages] and
 xref:../using_images/db_images/index.adoc#using-images-db-images-index[databases] for developers with
 corresponding implementations and tutorials that allow you to kickstart your
@@ -374,7 +482,11 @@ application development. Language support centers around the
 xref:../dev_guide/app_tutorials/quickstarts.adoc#dev-guide-app-tutorials-quickstarts[Quickstart templates], which in
 turn leverage xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[builder images].
 
+<<<<<<< HEAD
 Check out the xref:../dev_guide/new_app.adoc#dev-guide-new-app[Creating New Applications] topic
+=======
+Check out the xref:../dev_guide/application_lifecycle/new_app.adoc#dev-guide-new-app[Creating New Applications] topic
+>>>>>>> openshift/online
 and try out Quickstart templates for the following languages:
 
 |===
@@ -410,9 +522,15 @@ Other images provided by {product-title} include:
 * https://github.com/openshift/jenkins[Jenkins]
 
 In addition, JBoss Middleware has put together a broad range of
+<<<<<<< HEAD
 https://github.com/jboss-openshift/application-templates[OpenShift
 templates] as part of their xPaaS services that can be used on {product-title}
 as xref:../using_images/xpaas_images/index.adoc#using-images-xpaas-images-index[images].
+=======
+https://github.com/jboss-openshift/application-templates[{product-title}
+templates] as well as xref:../using_images/xpaas_images/index.adoc#using-images-xpaas-images-index[images] as
+part of their xPaaS services.
+>>>>>>> openshift/online
 
 The technologies available with the xPaaS services in particular include:
 
@@ -442,14 +560,28 @@ See xref:../dev_guide/pod_autoscaling.adoc#dev-guide-pod-autoscaling[Pod Autosca
 automatically increasing or decreasing the scale of a replication controller or
 deployment configuration, based on metrics.
 
+<<<<<<< HEAD
+=======
+You can also check out the https://blog.openshift.com/openshift-3-1-pod-autoscaling/[OpenShift blog] for an article on autoscaling.
+
+>>>>>>> openshift/online
 [[btb-explore-the-developer-guide]]
 === Explore the Developer Guide
 
 Further explore the Developer Guide. For example, start with the
+<<<<<<< HEAD
 xref:../dev_guide/application_lifecycle.adoc#dev-guide-application-lifecycle[Application Life Cycle Examples]
 and xref:../dev_guide/new_app.adoc#dev-guide-new-app[Creating New Applications] topics.
+=======
+xref:../dev_guide/application_lifecycle/development_process.adoc#dev-guide-development-process[Planning Your Development Process]
+and xref:../dev_guide/application_lifecycle/new_app.adoc#dev-guide-new-app[Creating New Applications] topics.
+>>>>>>> openshift/online
 
 [[btb-troubleshooting]]
 === Troubleshooting
 
+<<<<<<< HEAD
 Review some of the common tips and suggestions http://community.thedigitalgarage.io[here].
+=======
+Review some of the common tips and suggestions https://github.com/openshift/origin/blob/master/docs/debugging-openshift.md[here].
+>>>>>>> openshift/online

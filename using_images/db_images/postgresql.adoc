@@ -22,6 +22,7 @@ https://github.com/openshift/postgresql/tree/master/9.2[9.2], https://github.com
 
 == Images
 
+<<<<<<< HEAD
 The Digital Garage uses the base CentOS 7 image for the postgresql DB images.
 
 These images are available on DockerHub. To download them:
@@ -30,6 +31,31 @@ These images are available on DockerHub. To download them:
 $ docker pull thedigitalgarage/postgresql-92-centos7
 $ docker pull thedigitalgarage/postgresql-94-centos7
 $ docker pull thedigitalgarage/postgresql-95-centos7
+=======
+These images come in two flavors, depending on your needs:
+
+* RHEL 7
+* CentOS 7
+
+*RHEL 7 Based Image*
+
+The RHEL 7 images are available through Red Hat's subscription registry via:
+
+----
+$ docker pull registry.access.redhat.com/openshift3/postgresql-92-rhel7
+$ docker pull registry.access.redhat.com/rhscl/postgresql-94-rhel7
+$ docker pull registry.access.redhat.com/rhscl/postgresql-95-rhel7
+----
+
+*CentOS 7 Based Image*
+
+These images are available on DockerHub. To download them:
+
+----
+$ docker pull openshift/postgresql-92-centos7
+$ docker pull centos/postgresql-94-centos7
+$ docker pull centos/postgresql-95-centos7
+>>>>>>> openshift/online
 ----
 
 or
@@ -70,7 +96,11 @@ ifdef::openshift-enterprise[]
     registry.access.redhat.com/rhscl/postgresql-94-rhel7
 endif::[]
 ifdef::openshift-origin[]
+<<<<<<< HEAD
     thedigitalgarage/postgresql-94-centos7
+=======
+    centos/postgresql-94-centos7
+>>>>>>> openshift/online
 endif::[]
 ----
 
@@ -112,7 +142,11 @@ default=>
 
 When you are finished, enter *\q* to leave the PostgreSQL session.
 
+<<<<<<< HEAD
 [[pg-env-vars]]
+=======
+[[postgresql-environment-variables]]
+>>>>>>> openshift/online
 === Environment Variables
 
 The PostgreSQL user name, password, and database name must be configured with
@@ -198,7 +232,7 @@ configuration in the web console or by listing the environment variables with
 the CLI:
 
 ----
-$ oc env pod <pod_name> --list
+$ oc set env pod <pod_name> --list
 ----
 
 Changing database passwords through SQL statements or any way other than through
@@ -208,14 +242,14 @@ container starts, it resets the passwords to the values stored in the
 environment variables.
 
 To change these passwords, update one or both of the desired environment
-variables for the related deployment configuration(s) using the `oc env`
+variables for the related deployment configuration(s) using the `oc set env`
 command. If multiple deployment configurations utilize these environment
 variables, for example in the case of an application created from a template,
 you must update the variables on each deployment configuration so that the
 passwords are in sync everywhere. This can be done all in the same command:
 
 ----
-$ oc env dc <dc_name> [<dc_name_2> ...] \
+$ oc set env dc <dc_name> [<dc_name_2> ...] \
   POSTGRESQL_PASSWORD=<new_password> \
   POSTGRESQL_ADMIN_PASSWORD=<new_admin_password>
 ----
@@ -232,7 +266,11 @@ application, otherwise your pods may fail to redeploy when triggered.
 
 Updating the environment variables triggers the redeployment of the database
 server if you have a
+<<<<<<< HEAD
 xref:../../dev_guide/deployments.adoc#config-change-trigger[configuration change
+=======
+xref:../../dev_guide/deployments/basic_deployment_operations.adoc#config-change-trigger[configuration change
+>>>>>>> openshift/online
 trigger]. Otherwise, you must manually start a new deployment in order to apply
 the password changes.
 
@@ -279,7 +317,11 @@ If the password was changed correctly, you should see a table like this:
 
 == Creating a Database Service from a Template
 
+<<<<<<< HEAD
 {product-title} provides a xref:../../dev_guide/templates.adoc#dev-guide-templates[template] to make
+=======
+OpenShift provides a xref:../../dev_guide/templates.adoc#dev-guide-templates[template] to make
+>>>>>>> openshift/online
 creating a new database service easy. The template provides parameter fields to
 define all the mandatory environment variables (user, password, database name,
 etc) with predefined defaults including auto-generation of password values. It
@@ -304,7 +346,11 @@ another node or the deployment configuration being updated and triggering a
 redeploy, all data will be lost.
 * `PostgreSQL-persistent` uses a persistent volume store for the database data
 which means the data will survive a pod restart. Using persistent volumes
+<<<<<<< HEAD
 requires a persistent volume pool be defined in the {product-title} deployment.
+=======
+requires a persistent volume pool be defined in the OpenShift deployment.
+>>>>>>> openshift/online
 ifdef::openshift-enterprise,openshift-origin[]
 Cluster administrator instructions for setting up the pool are located
 xref:../../install_config/persistent_storage/persistent_storage_nfs.adoc#install-config-persistent-storage-persistent-storage-nfs[here].

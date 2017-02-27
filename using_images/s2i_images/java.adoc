@@ -11,7 +11,11 @@
 toc::[]
 
 == Overview
+<<<<<<< HEAD
 {product-title} provides
+=======
+OpenShift provides
+>>>>>>> openshift/online
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#source-build[S2I]
 enabled Java images for building and running Java applications.
 ifdef::openshift-origin[]
@@ -33,8 +37,13 @@ The current version supports JDK 1.7 and Maven 3.2.x projects.
 
 To use this image, you can either access it directly from those
 xref:../../architecture/infrastructure_components/image_registry.adoc#architecture-infrastructure-components-image-registry[image
+<<<<<<< HEAD
 registries], or push it into your {product-title} Docker registry.
 Additionally, you can create an
+=======
+registries], or push it into your {product-title} Docker registry. Additionally,
+you can create an
+>>>>>>> openshift/online
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#image-streams[image
 stream] that points to the image, either in your Docker registry or at the
 external location. Your {product-title} resources can then reference the ImageStream.
