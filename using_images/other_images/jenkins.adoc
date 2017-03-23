@@ -109,8 +109,6 @@ administrative privileges will not be given those privileges when
 explicitly defines that user in the {product-title} identity provider and
 assigns the `admin` role to the user.
 ====
-<<<<<<< HEAD
-
 Jenkins' users permissions can be changed after the users are initially
 established. The OpenShift Login plug-in polls the {product-title} API server
 for permissions and updates the permissions stored in Jenkins for each user with
@@ -165,63 +163,6 @@ administrator user and password. The default user credentials are `*admin*` and
 environment variable when using (and only when using) standard Jenkins
 authentication.
 
-=======
-
-Jenkins' users permissions can be changed after the users are initially
-established. The OpenShift Login plug-in polls the {product-title} API server
-for permissions and updates the permissions stored in Jenkins for each user with
-the permissions retrieved from {product-title}. If the Jenkins UI is used to
-update permissions for a Jenkins user, the permission changes are overwritten
-the next time the plug-in polls {product-title}.
-
-You can control how often the polling occurs with the
-`OPENSHIFT_PERMISSIONS_POLL_INTERVAL` environment variable. The default polling
-interval is five minutes.
-
-.Creating a New Jenkins Pod
-
-. Ensure the
-ifdef::openshift-enterprise,openshift-origin[]
-xref:../../install_config/imagestreams_templates.adoc#install-config-imagestreams-templates[the default image streams and templates]
-endif::[]
-ifdef::openshift-dedicated,openshift-online[]
-default image streams and templates
-endif::[]
-are already installed.
-
-. Create a new Jenkins application using:
-.. Persistent volumes:
-----
-$ oc new-app jenkins-persistent
-----
-
-.. Or an `EmptyDir` type volume (where configuration does not persist across pod restarts):
-----
-$ oc new-app jenkins-ephemeral
-----
-
-[NOTE]
-====
-If you instantiate the template against releases prior to v3.4 of
-{product-title}, standard Jenkins authentication is used, and the default
-'admin' account will exist with password 'password'. See
-xref:../../using_images/other_images/jenkins.adoc#jenkins-jenkins-standard-authentication[Jenkins
-Standard Authentication] for details about changing this password.
-====
-
-[[jenkins-jenkins-standard-authentication]]
-==== Jenkins Standard Authentication
-
-Jenkins authentication is used by default if the image is run outside of
-{product-title}.
-
-The first time Jenkins starts, the configuration is created along with the
-administrator user and password. The default user credentials are `*admin*` and
-`*password*`. Configure the default password by setting the `*JENKINS_PASSWORD*`
-environment variable when using (and only when using) standard Jenkins
-authentication.
-
->>>>>>> openshift/online
 To create a new Jenkins application using standard Jenkins authentication:
 
 ----
@@ -285,15 +226,9 @@ Data
 ca.crt: 1066 bytes
 token:  eyJhbGc..<content cut>....wRA
 ----
-<<<<<<< HEAD
 
 The token field contains the token value Jenkins needs to access the project.
 
-=======
-
-The token field contains the token value Jenkins needs to access the project.
-
->>>>>>> openshift/online
 [[jenkins-volume-mount-points]]
 === Volume Mount Points
 The Jenkins image can be run with mounted volumes to enable persistent storage for the configuration:
@@ -353,16 +288,7 @@ repository with the following directory structure:
 This directory contains those binary Jenkins plug-ins you want to copy into Jenkins.
 
 *_plugins.txt_*::
-<<<<<<< HEAD
-<<<<<<< HEAD
 This file lists the plug-ins you want to install (see the section above).
-=======
-This file lists the plug-ins you want to install:
-
-----
-pluginId:pluginVersion
-----
->>>>>>> openshift/master
 
 *_configuration/jobs_*::
 This directory contains the Jenkins job definitions.
@@ -460,12 +386,6 @@ an entrypoint. For more details about this, refer to the official
 https://wiki.jenkins-ci.org/display/JENKINS/Distributed+builds#Distributedbuilds-Launchslaveagentheadlessly[Jenkins
 documentation].
 
-<<<<<<< HEAD
-Alternatively, you can use
-https://github.com/openshift/origin/blob/master/examples/jenkins/master-slave/jenkins-slave-template.json[a
-provided {product-title} template] to convert an existing image stream to a Jenkins
-slave.
-=======
 This file lists the plug-ins you want to install:
 
 ----
@@ -568,9 +488,6 @@ an entrypoint. For more details about this, refer to the official
 https://wiki.jenkins-ci.org/display/JENKINS/Distributed+builds#Distributedbuilds-Launchslaveagentheadlessly[Jenkins
 documentation].
 
->>>>>>> openshift/online
-=======
->>>>>>> openshift/master
 
 == Tutorial
 
@@ -578,40 +495,17 @@ For more details on the sample job included in this image, see this link:https:/
 
 == {product-title} Pipeline Plug-in
 
-<<<<<<< HEAD
-The Jenkins image's list of pre-installed plug-ins includes a plug-in which
-assists in the creating of CI/CD workflows that run against an {product-title}
-server.  A series of build steps, post-build actions, as well as SCM-style
-polling are provided which equate to administrative and operational actions on
-the {product-title} server and the API artifacts hosted there.
-=======
 The Jenkins image's list of pre-installed plug-ins includes a plug-in which assists in the creating of CI/CD workflows that run against
 an {product-title} server.  A series of build steps, post-build actions, as well as SCM-style polling are provided which equate to administrative
 and operational actions on the {product-title} server and the API artifacts hosted there.
->>>>>>> openshift/online
 
 In addition to being accessible from the classic "freestyle" form of Jenkins
 job, the build steps as of version 1.0.14 of the {product-title} Pipeline
 Plug-in are also avaible to Jenkins Pipeline jobs via the DSL extension points
-<<<<<<< HEAD
-<<<<<<< HEAD
-provided by the Jenkins Pipeline Plug-in.
-=======
-provided by the Jenkins Pipeline Plug-in. The https://github.com/openshift/origin/blob/master/examples/jenkins/pipeline/samplepipeline.json[OpenShift Jenkins Pipeline build strategy sample]
-illustrates how to use the OpenShift Pipeline plugin DSL versions of its steps.
->>>>>>> openshift/master
-
-The
-https://github.com/openshift/jenkins/tree/master/1/contrib/openshift/configuration/jobs/OpenShift%20Sample[sample
-Jenkins job] that is pre-configured in the Jenkins image utilizes the
-{product-title} pipeline plug-in and serves as an example of how to leverage the
-plug-in for creating CI/CD flows for {product-title} in Jenkins.
-=======
 provided by the Jenkins Pipeline Plug-in. The https://github.com/openshift/origin/blob/master/examples/jenkins/pipeline/samplepipeline.json[OpenShift Jenkins Pipeline build strategy sample]
 illustrates how to use the OpenShift Pipeline plugin DSL versions of its steps.
 
 The https://github.com/openshift/jenkins/tree/master/1/contrib/openshift/configuration/jobs/OpenShift%20Sample[sample Jenkins job] that is pre-configured in the Jenkins image utilizes the OpenShift pipeline plug-in and serves as an example of
 how to leverage the plug-in for creating CI/CD flows for {product-title} in Jenkins.
->>>>>>> openshift/online
 
 See the https://github.com/openshift/jenkins-plugin/[the plug-in's README] for a detailed description of what is available.
