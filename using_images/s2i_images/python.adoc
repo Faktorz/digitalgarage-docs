@@ -11,11 +11,7 @@
 toc::[]
 
 == Overview
-<<<<<<< HEAD
 {product-title} provides
-=======
-OpenShift provides
->>>>>>> openshift/online
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#source-build[S2I]
 enabled Python images for building and running Python applications.
 ifdef::openshift-origin[]
@@ -63,13 +59,8 @@ $ docker pull centos/python-35-centos7
 To use these images, you can either access them directly from these
 xref:../../architecture/infrastructure_components/image_registry.adoc#architecture-infrastructure-components-image-registry[image
 registries], or push them into your
-<<<<<<< HEAD
 xref:../../architecture/infrastructure_components/image_registry.adoc#integrated-openshift-registry[{product-title}
 Docker registry]. Additionally, you can create an
-=======
-xref:../../architecture/infrastructure_components/image_registry.adoc#integrated-openshift-registry[OpenShift Docker
-registry]. Additionally, you can create an
->>>>>>> openshift/online
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#image-streams[image
 stream] that points to the image, either in your Docker registry or at the
 external location. Your {product-title} resources can then reference the
@@ -82,26 +73,16 @@ The Python image supports a number of environment variables which can be set to
 control the configuration and behavior of the Python runtime.
 
 To set these environment variables as part of your image, you can place them into
-<<<<<<< HEAD
 xref:../../dev_guide/builds.adoc#environment-files[a *_.s2i/environment_* file]
-inside your source code repository, or define them in
-xref:../../dev_guide/builds.adoc#buildconfig-environment[the environment
-section] of the build configuration's `*sourceStrategy*` definition.
-
-You can also set environment variables to be used with an existing image when
-xref:../../dev_guide/new_app.adoc#specifying-environment-variables[creating new
-=======
-xref:../../dev_guide/builds/build_strategies.adoc#environment-files[a *_.s2i/environment_* file]
 inside your source code repository, or define them in
 xref:../../dev_guide/builds/build_strategies.adoc#buildconfig-environment[the environment
 section] of the build configuration's `*sourceStrategy*` definition.
 
 You can also set environment variables to be used with an existing image when
-xref:../../dev_guide/application_lifecycle/new_app.adoc#specifying-environment-variables[creating new
->>>>>>> openshift/online
-applications], or by
-xref:../../dev_guide/environment_variables.adoc#set-environment-variables[updating
-environment variables for existing objects] such as deployment configurations.
+xref:../../dev_guide/builds/build_strategies.adoc#environment-files[a *_.s2i/environment_* file]
+inside your source code repository, or define them in
+xref:../../dev_guide/builds/build_strategies.adoc#buildconfig-environment[the environment
+section] of the build configuration's `*sourceStrategy*` definition.
 
 [NOTE]
 ====
@@ -165,15 +146,9 @@ configuration file inside your repository with
 https://gunicorn-docs.readthedocs.org/en/latest/settings.html#reload[the
 `*reload*` option] set to *true*. Specify your configuration file using the
 `*APP_CONFIG*` environment variable. For example, see the
-<<<<<<< HEAD
-xref:../../dev_guide/new_app.adoc#specifying-environment-variables[`oc new-app`]
-command. You can use the
-xref:../../dev_guide/environment_variables.adoc#set-environment-variables[`oc env`]
-=======
 xref:../../dev_guide/application_lifecycle/new_app.adoc#specifying-environment-variables[`oc new-app`]
 command. You can use the
 xref:../../dev_guide/environment_variables.adoc#set-environment-variables[`oc set env`]
->>>>>>> openshift/online
 command to update environment variables of existing objects.
 
 [WARNING]

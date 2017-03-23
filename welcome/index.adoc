@@ -16,11 +16,7 @@ to set up and manage your {product-title} environment
 ifdef::openshift-origin,openshift-enterprise[]
 as a **cluster administrator** or an **application developer**.
 endif::[]
-<<<<<<< HEAD
 ifdef::openshift-dedicated,digital-garage[]
-=======
-ifdef::openshift-dedicated,openshift-online[]
->>>>>>> openshift/online
 as an **application developer**.
 endif::[]
 
@@ -30,22 +26,6 @@ Use the left navigation bar to browse the documentation, the Search bar in the
 top-left to look for something specific, or the links below to access some
 highlights.
 ====
-<<<<<<< HEAD
-
-ifdef::openshift-origin[]
-'''
-[cols="2",frame="none",grid="none"]
-|===
-
-.^|[big]#Release Notes#
-a|[none]
-
-* link:https://github.com/openshift/origin/releases[Find all release notes on GitHub]
-
-|===
-endif::[]
-=======
->>>>>>> openshift/online
 
 '''
 [cols="2",frame="none",grid="none"]
@@ -58,15 +38,9 @@ ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 * xref:../getting_started/developers_console.adoc#getting-started-developers-console[As an application developer]
 endif::openshift-enterprise,openshift-origin,openshift-dedicated[]
 
-<<<<<<< HEAD
 ifdef::digital-garage[]
 * xref:../getting_started/index.adoc#getting-started-index[Check out a walkthrough on creating your first app]
 endif::digital-garage[]
-=======
-ifdef::openshift-online[]
-* xref:../getting_started/index.adoc#getting-started-index[Check out a walkthrough on creating your first app]
-endif::openshift-online[]
->>>>>>> openshift/online
 
 ifdef::openshift-origin[]
 * xref:../getting_started/administrators.adoc#getting-started-administrators[As a cluster administrator]
@@ -89,7 +63,6 @@ endif::[]
 ifdef::openshift-dedicated[]
 * xref:../release_notes/osd_3_2_release_notes.adoc#release-notes-osd-3-2-release-notes[Find out the what's new in the latest release of {product-title} 3]
 endif::[]
-<<<<<<< HEAD
 
 * xref:../architecture/index.adoc#architecture-index[Understand the architecture of {product-title}]
 
@@ -101,19 +74,6 @@ ifdef::openshift-enterprise,openshift-origin[]
 [cols="2",frame="none",grid="none"]
 |===
 
-=======
-
-* xref:../architecture/index.adoc#architecture-index[Understand the architecture of {product-title}]
-
-* xref:../cli_reference/index.adoc#cli-reference-index[Get to know the CLI]
-|===
-
-ifdef::openshift-enterprise,openshift-origin[]
-'''
-[cols="2",frame="none",grid="none"]
-|===
-
->>>>>>> openshift/online
 .^|[big]#Run Your Own Platform-as-a-Service (PaaS)#
 a|[none]
 
@@ -131,21 +91,12 @@ endif::[]
 .^|[big]#Build, Deploy, and Manage Applications#
 a|[none]
 
-<<<<<<< HEAD
-* xref:../dev_guide/application_lifecycle.adoc#dev-guide-application-lifecycle[Understand the application life cycle on {product-title}]
-
-* xref:../dev_guide/new_app.adoc#dev-guide-new-app[Bring your code or use example repos to create a new application]
-
-* xref:../dev_guide/app_tutorials/quickstarts.adoc#dev-guide-app-tutorials-quickstarts[Check out the Quickstart templates]
-
-=======
 * xref:../dev_guide/application_lifecycle/development_process.adoc#dev-guide-development-process[Understand the application life cycle on {product-title}]
 
 * xref:../dev_guide/application_lifecycle/new_app.adoc#dev-guide-new-app[Bring your code or use example repos to create a new application]
 
 * xref:../dev_guide/app_tutorials/quickstarts.adoc#dev-guide-app-tutorials-quickstarts[Check out the Quickstart templates]
 
->>>>>>> openshift/online
 * xref:../dev_guide/index.adoc#dev-guide-index[Further explore the Developer's Guide]
 |===
 
@@ -168,11 +119,7 @@ a|[none]
 
 * xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[Web frameworks powered by Source-to-Image (S2I)]
 * xref:../using_images/db_images/index.adoc#using-images-db-images-index[Databases to back your application]
-<<<<<<< HEAD
 ifdef::openshift-enterprise,openshift-dedicated,digital-garage[]
-=======
-ifdef::openshift-enterprise,openshift-dedicated,openshift-online[]
->>>>>>> openshift/online
 * xref:../using_images/xpaas_images/index.adoc#using-images-xpaas-images-index[Services provided by xPaaS Middleware Images]
 endif::[]
 * xref:../using_images/docker_images/index.adoc#using-images-docker-images-index[Or, bring and run any Docker image]

@@ -105,37 +105,6 @@ MYSQL_DATABASE=root
 KUBERNETES_PORT_53_TCP=tcp://10.0.0.11:53
 KUBERNETES_SERVICE_HOST=10.0.0.11
 ----
-=== Automatically Added Environment Variables
-
-.Automatically Added Environment Variables
-[cols="1",options="header"]
-|===
-
-|Variable Name
-
-|`*<SVCNAME>_SERVICE_HOST*`
-
-|`*<SVCNAME>_SERVICE_PORT*`
-
-|===
-
-*Example Usage*
-
-The service *KUBERNETES* which exposes TCP port 53 and has been allocated
-cluster IP address 10.0.0.11 produces the following environment variables:
-
-----
-KUBERNETES_SERVICE_PORT=53
-MYSQL_DATABASE=root
-KUBERNETES_PORT_53_TCP=tcp://10.0.0.11:53
-KUBERNETES_SERVICE_HOST=10.0.0.11
-----
-
-[NOTE]
-====
-Use the xref:../dev_guide/ssh_environment.adoc#dev-guide-ssh-environment[`oc rsh` command] to SSH into your
-container and run `oc env` to list all available variables.
-====
 
 [NOTE]
 ====

@@ -194,22 +194,6 @@
 ====
 
 
-== Show logs from the deployment process
-
-====
-
-[options="nowrap"]
-----
-  // Stream logs from the latest deployment for deployment config "frontend" to stdout
-  // Note that if the deployment process is successful, there will be no logs to show
-  $ oc logs -f dc/frontend
-  // Return the logs from the first deployment for deployment config "database" to stdout
-  // Note that if the deployment process was successful, there will be no logs to show
-  $ oc logs --version=1 dc/database
-----
-====
-
-
 == Revert part of an application back to a previous deployment
 
 ====

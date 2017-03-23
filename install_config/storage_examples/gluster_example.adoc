@@ -17,13 +17,17 @@ toc::[]
 This topic provides an end-to-end example of how to use an existing Gluster
 cluster as an {product-title} persistent store. It is assumed that a working
 Gluster cluster is already set up. If not, consult the
-link:https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3/html/Administration_Guide/index.html[Red
+link:https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3.1/html/Administration_Guide/index.html[Red
 Hat Gluster Storage Administration Guide].
 
 xref:../../install_config/persistent_storage/persistent_storage_glusterfs.adoc#install-config-persistent-storage-persistent-storage-glusterfs[Persistent
 Storage Using GlusterFS] provides an explanation of persistent volumes (PVs),
 persistent volume claims (PVCs), and using GlusterFS as persistent storage.
 
+For an end-to-end example of how to dynamically provision GlusterFS volumes, see
+xref:../../install_config/storage_examples/gluster_dynamic_example.adoc#install-config-storage-examples-gluster-dynamic-example[Complete
+Example of Dynamic Provisioning Using GlusterFS]. The persistent volume (PV) and
+endpoints are both created dynamically by GlusterFS.
 
 [NOTE]
 ====
@@ -62,7 +66,7 @@ The named endpoints define each node in the Gluster-trusted storage pool:
 apiVersion: v1
 kind: Endpoints
 metadata:
-  name: gluster-endpoints <1>
+  name: gluster-cluster <1>
 subsets:
 - addresses:              <2>
   - ip: 192.168.122.21
@@ -76,7 +80,8 @@ subsets:
     protocol: TCP
 
 ----
-<1> The name of the endpoints is used in the PV definition below.
+<1> The endpoints name. If using a service, then the endpoints name must match the
+service name.
 <2> An array of IP addresses for each node in the Gluster pool. Currently, host
 names are not supported.
 <3> The port numbers are ignored, but must be legal port numbers. The value *1*
@@ -89,7 +94,7 @@ then create the endpoints object:
 ====
 ----
 # oc create -f gluster-endpoints.yaml
-endpoints "gluster-endpoints" created
+endpoints "gluster-cluster" created
 ----
 ====
 
@@ -97,9 +102,9 @@ Verify that the endpoints were created:
 
 ====
 ----
-# oc get endpoints gluster-endpoints
+# oc get endpoints gluster-cluster
 NAME                ENDPOINTS                           AGE
-gluster-endpoints   192.168.122.21:1,192.168.122.22:1   1m
+gluster-cluster     192.168.122.21:1,192.168.122.22:1   1m
 ----
 ====
 
@@ -109,6 +114,11 @@ gluster-endpoints   192.168.122.21:1,192.168.122.22:1   1m
 To persist the Gluster endpoints, you also need to create a service.
 ====
 
+[NOTE]
+====
+Endpoints are name-spaced. Each project accessing the Gluster volume needs its own endpoints.
+====
+
 .GlusterFS Service Definition
 ====
 [source,yaml]
@@ -116,13 +126,14 @@ To persist the Gluster endpoints, you also need to create a service.
 apiVersion: v1
 kind: Service
 metadata:
-  name: gluster-service <1>
+  name: gluster-cluster <1>
 spec:
   ports:
   - port: 1 <2>
 
 ----
-<1> The name of the service.
+<1> The name of the service. If using a service, then the endpoints name must match
+the service name.
 <2> The port should match the same port used in the endpoints.
 ====
 
@@ -132,7 +143,7 @@ then create the endpoints object:
 ====
 ----
 # oc create -f gluster-service.yaml
-endpoints "gluster-service" created
+endpoints "gluster-cluster" created
 ----
 ====
 
@@ -140,9 +151,9 @@ Verify that the service was created:
 
 ====
 ----
-# oc get service gluster-service
+# oc get service gluster-cluster
 NAME                CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-gluster-service   10.0.0.130   <none>        1/TCP     9s
+gluster-cluster     10.0.0.130   <none>        1/TCP     9s
 
 ----
 ====
@@ -169,7 +180,7 @@ spec:
   accessModes:
   - ReadWriteMany    <3>
   glusterfs:         <4>
-    endpoints: gluster-endpoints        <5>
+    endpoints: gluster-cluster <5>
     path: /HadoopVol <6>
     readOnly: false
   persistentVolumeReclaimPolicy: Retain <7>

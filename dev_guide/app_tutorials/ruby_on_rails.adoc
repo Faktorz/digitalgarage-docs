@@ -302,6 +302,8 @@ $ oc new-app path/to/source/code --name=rails-app -e POSTGRESQL_USER=username -e
 With this command, {product-title} fetches the source code, sets up the builder image, xref:../builds/index.adoc#dev-guide-how-builds-work[builds] your application image, and deploys the newly created image together with the specified xref:../../using_images/db_images/postgresql.adoc#postgresql-environment-variables[environment variables]. The application is named `rails-app`.
 
 You can verify the environment variables have been added by viewing the JSON document of the `rails-app` xref:../deployments/how_deployments_work.adoc#dev-guide-how-deployments-work[DeploymentConfig]:
+
+You can verify the environment variables have been added by viewing the JSON document of the `rails-app` xref:../deployments/how_deployments_work.adoc#dev-guide-how-deployments-work[DeploymentConfig]:
 ----
 $ oc get dc rails-app -o json
 ----
@@ -370,9 +372,9 @@ It's the user's responsibility to ensure the hostname they specify resolves into
 ====
 * xref:../../architecture/core_concepts/routes.adoc#routers[Routes]
 ifdef::openshift-enterprise,openshift-origin[]
-* xref:../../admin_guide/high_availability.adoc#configuring-a-highly-available-routing-service[Configuring a Highly-available Routing Service]
+* xref:../../admin_guide/high_availability.adoc#configuring-a-highly-available-service[Configuring a Highly-available Routing Service]
 endif::[]
 ifdef::openshift-dedicated[]
-* https://docs.openshift.com/enterprise/latest/admin_guide/high_availability.html#configuring-a-highly-available-routing-service[Configuring
+* https://docs.openshift.com/enterprise/latest/admin_guide/high_availability.html#configuring-a-highly-available-service[Configuring
 a Highly-available Routing Service] (OpenShift Enterprise documentation)
 endif::[]

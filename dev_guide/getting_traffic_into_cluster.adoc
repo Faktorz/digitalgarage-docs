@@ -21,13 +21,12 @@ The recommendation is:
 - If you have HTTP/HTTPS, use the xref:using-a-router[router].
 - If you have a TLS-encrypted protocol other than HTTPS (for example, TLS with the
 SNI header), use the xref:using-a-router[router].
-- Otherwise, use xref:using-the-loadbalancer[Load Balancer],
+- Otherwise, use Load Balancer,
 xref:using-externalIP[ExternalIP], or xref:using-nodeport[NodePort].
 
 TCP or UDP offers several approaches:
 
-- Use the non-cloud xref:using-the-loadbalancer[Load Balancer]. This limits you to
-
+- Use the non-cloud Load Balancer. This limits you to
 a single edge router IP (which can be a virtual IP (VIP), but still is a single
 machine for initial load balancing). It simplifies the administrator's job, but
 uses one IP per service.
@@ -49,10 +48,11 @@ involved.
 
 The administrator must set up the external port to the cluster networking
 environment so that requests can reach the cluster. For example, names can be
-configured into DNS to point to specific nodes or other IP addresses in the cluster.
-The DNS wildcard feature can be used to configure a subset of names to an IP
-address in the cluster. This is convenient when using routers because it allows
-the users to set up routes within the cluster without further administrator attention.
+configured into DNS to point to
+specific nodes or other IP addresses in the cluster. The DNS wildcard feature
+can be used to configure a subset of names to an IP address in the cluster. This
+is convenient when using routers because it allows the users to set up routes
+within the cluster without further administrator attention.
 
 The administrator must ensure that the local firewall on each node permits the
 request to reach the IP address.
@@ -75,7 +75,7 @@ ifdef::openshift-dedicated,digital-garage,atomic-registry[]
 wildcard DNS
 endif::[]
 
- entry, and then set up a router. Afterward, the users can self-service the edge
+entry, and then set up a router. Afterward, the users can self-service the edge
 router without having to contact the administrators. The router has controls to
 allow the administrator to specify whether the users can self-provision host
 names, or if they must fit a pattern the administrator defines. The other
@@ -176,7 +176,7 @@ INGRESS
 
 The external IP address is not managed by the underlying Kubernetes
 infrastructure and must be maintained and provided by a cluster administrator.
-While external IPs provide a solution for accessing services on the {product-tlte}
+While external IPs provide a solution for accessing services on the {product-title}
 cluster, there are several shortcomings:
 
 * The cluster administrator user must ensure the external IP is not in any range
@@ -335,7 +335,7 @@ that allows traffic to terminate at any node in the cluster.
 Instead of connecting directly to individual nodes, you can use one of
 {product-title}'s
 ifdef::openshift-enterprise,openshift-origin[]
-xref:../../admin_guide/high_availability.adoc#admin-guide-high-availability[highly availability]
+xref:../admin_guide/high_availability.adoc#admin-guide-high-availability[highly availability]
 endif::[]
 ifdef::openshift-dedicated,openshift-online,atomic-registry[]
 high availability
@@ -400,11 +400,22 @@ pool.
 
 [[ingress-load-balancer]]
 == Non-Cloud Edge Router Load Balancer
-
-In a non-cloud environment, cluster administrators can assign a unique external IP address to a service
-xref:../admin_guide/tcp_ingress_external_ports.adoc#unique-external-ips-ingress-traffic-configure-cluster[(as described here)]. When routed correctly, external traffic can reach the service endpoints via any TCP/UDP port the service exposes. This is simpler than having to
-manage the port space of a limited number of shared IP addresses, when manually assigning external IPs to services.
->>>>>>> openshift/online
+ifdef::openshift-enterprise,openshift-origin[]
+In a non-cloud environment, cluster administrators can assign a unique external
+IP address to a service
+xref:../admin_guide/tcp_ingress_external_ports.adoc#unique-external-ips-ingress-traffic-configure-cluster[(as
+described here)]. When routed correctly, external traffic can reach the service
+endpoints via any TCP/UDP port the service exposes. This is simpler than having
+to manage the port space of a limited number of shared IP addresses, when
+manually assigning external IPs to services.
+endif::[]
+ifdef::openshift-dedicated,openshift-online[]
+In a non-cloud environment, cluster administrators can assign a unique external
+IP address to a service. When routed correctly, external traffic can reach the
+service endpoints via any TCP/UDP port the service exposes. This is simpler than
+having to manage the port space of a limited number of shared IP addresses, when
+manually assigning external IPs to services.
+endif::[]
 
 [[edge-load-balancer]]
 == Edge Load Balancer

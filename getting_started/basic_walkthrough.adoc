@@ -69,8 +69,11 @@ blank.
 +
 image::dg-new-project.png[New projects]
 
-. Next, scroll to the *NodeJS* section and select the *nodejs-mongodb-example*
-Quickstart template:
+. Click on the *JavaScript* option:
++
+image::console_select_image_or_template.png[Browse the catalog]
+
+. Select the *nodejs-mongodb-example* Quickstart template:
 +
 image::dg-select-quickstart.png[Select Quickstart templates]
 
