@@ -74,13 +74,14 @@ The Ruby image supports a number of environment variables which can be set to
 control the configuration and behavior of the Ruby runtime.
 
 To set these environment variables as part of your image, you can place them into
+<<<<<<< HEAD
 xref:../../dev_guide/builds.adoc#environment-files[a *_.s2i/environment_* file]
 inside your source code repository, or define them in
-xref:../../dev_guide/builds.adoc#buildconfig-environment[the environment
+xref:../../dev_guide/builds/build_strategies.adoc#buildconfig-environment[the environment
 section] of the build configuration's `*sourceStrategy*` definition.
 
 You can also set environment variables to be used with an existing image when
-xref:../../dev_guide/new_app.adoc#specifying-environment-variables[creating new
+xref:../../dev_guide/application_lifecycle/new_app.adoc#specifying-environment-variables[creating new
 applications], or by
 xref:../../dev_guide/environment_variables.adoc#set-environment-variables[updating
 environment variables for existing objects] such as deployment configurations.
@@ -148,10 +149,10 @@ For Ruby on Rails application, run the built Rails application with the
 `*RAILS_ENV=development*` environment variable passed to the running pod. For an
 existing deployment configuration, you can use
 xref:../../dev_guide/environment_variables.adoc#set-environment-variables[the
-`oc env`] command:
+`oc set env`] command:
 
 ----
-$ oc env dc/rails-app RAILS_ENV=development
+$ oc set env dc/rails-app RAILS_ENV=development
 ----
 
 *Other Types of Ruby Applications (Sinatra, Padrino, etc.)*
@@ -172,9 +173,9 @@ source code.
 After you build your application image with your version of the
 xref:../../creating_images/s2i.adoc#s2i-scripts[S2I *_run_* script], run the
 image with the `*RACK_ENV=development*` environment variable. For example, see the
-xref:../../dev_guide/new_app.adoc#specifying-environment-variables[`oc new-app`]
+xref:../../dev_guide/application_lifecycle/new_app.adoc#specifying-environment-variables[`oc new-app`]
 command. You can use the
-xref:../../dev_guide/environment_variables.adoc#set-environment-variables[`oc env`]
+xref:../../dev_guide/environment_variables.adoc#set-environment-variables[`oc set env`]
 command to update environment variables of existing objects.
 
 [WARNING]

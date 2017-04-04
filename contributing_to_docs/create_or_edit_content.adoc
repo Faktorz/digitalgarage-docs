@@ -11,12 +11,18 @@ toc::[]
 == Before you begin
 Before you proceed, we recommend that you have completed the following:
 
+<<<<<<< HEAD
 * Read and reviewed the link:contributing.adoc[Contribute to OpenShift
 documentation] topic to understand some basics
 * link:tools_and_setup.adoc[Installed and set up the tools and software]
 required to contribute
 * Read and reviewed the link:doc_guidelines.adoc[Documentation guidelines] topic
 to understand the basic guidelines for consistency
+=======
+* Read and reviewed the xref:contributing.adoc#contributing-to-docs-contributing[Contribute to OpenShift documentation] topic to understand some basics
+* xref:tools_and_setup.adoc#contributing-to-docs-tools-and-setup[Installed and set up the tools and software] required to contribute
+* Read and reviewed the xref:doc_guidelines.adoc#contributing-to-docs-doc-guidelines[Documentation guidelines] topic to understand the basic guidelines for consistency
+>>>>>>> openshift/online
 
 == Ensure your local repository is in sync with the remote
 Before you create a local working branch, it is good practice to ensure that
@@ -52,6 +58,7 @@ $ git push origin master
 ----
 
 == Add new topics or update existing content on local branch
+<<<<<<< HEAD
 With your local and forked repositories in sync with the remote, you can now
 create a local working branch where you will make all your updates, or create
 any new content.
@@ -65,6 +72,13 @@ do indeed reflect that name.
 In particular, it is a good idea to use separate PRs
 for bugfix changes (for an old or current release)
 vs enhancement changes (for an upcoming new release).
+=======
+With your local and forked repositories in sync with the remote, you can now create a local working branch where you will make all your updates, or create any new content.
+
+*Step 1:* Create local branch
+
+The following command creates a new local branch and checks it out automatically. Be sure to replace <working_branch> with a suitable name.
+>>>>>>> openshift/online
 
 ----
 $ git checkout -b <working_branch>
@@ -94,9 +108,13 @@ History Template].
 https://github.com/openshift/openshift-docs/blob/master/contributing_to_docs/templates/topic_template.adoc[normal
 topic template].
 
+<<<<<<< HEAD
 Otherwise, ensure that any new topic contains the required metadata as described
 in the link:doc_guidelines.adoc[documentation guidelines] topic, including
 naming and title conventions.
+=======
+Otherwise, ensure that any new topic contains the required metadata as described in the xref:doc_guidelines.adoc#contributing-to-docs-doc-guidelines[documentation guidelines] topic, including naming and title conventions.
+>>>>>>> openshift/online
 
 *Step 3:* Add all of your changes to a pending commit
 
@@ -154,6 +172,15 @@ your local branch that includes all of your work.
 `openshift-docs` repository.
 3. Attach labels to your *Pull Request* to indicate to the DOCS team which branches your PR might apply to. Some requests may only apply to the origin distro (origin-only), and some may only apply to a specific version of the enterprise (branch/enterprise-3.0, branch/enterprise-3.1, branch/enterprise-3.2, branch/enterprise-3.3) or dedicated (branch/dedicated) or online (branch/online) docs. If a request applies to multiple versions of a distro, then specify the minimum version (branch/enterprise-3.1 and above, for example).
 
+<<<<<<< HEAD
+=======
+1. Go to your forked GitHub repository on the GitHub website, and you should see
+your local branch that includes all of your work.
+2. Click on *Pull Request* to submit the PR against the `master` branch of the
+`openshift-docs` repository.
+3. Attach labels to your *Pull Request* to indicate to the DOCS team which branches your PR might apply to. Some requests may only apply to the origin distro (origin-only), and some may only apply to a specific version of the enterprise (branch/enterprise-3.0, branch/enterprise-3.1, branch/enterprise-3.2, branch/enterprise-3.3) or dedicated (branch/dedicated) or online (branch/online) docs. If a request applies to multiple versions of a distro, then specify the minimum version (branch/enterprise-3.1 and above, for example).
+
+>>>>>>> openshift/online
 *If you don't have permissions to apply labels, please make sure to leave that information as a comment.*
 
 == Confirm your changes have been merged

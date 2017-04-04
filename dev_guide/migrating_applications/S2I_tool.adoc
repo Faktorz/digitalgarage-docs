@@ -53,9 +53,13 @@ $ docker run -d --name <new-name> -p <port-number>:<port-number> <output-image-n
 $ curl localhost:<port-number>
 ----
 
-. Push the new image to the Digital Garage Docker registry.
+ifdef::openshift-enterprise,openshift-origin[]
+. Push the new image to the
+xref:../../install_config/registry/accessing_registry.adoc#access-pushing-and-pulling-images[OpenShift
+registry].
 
-. Create a new application from the image in the Digital Garage registry using the `oc` command:
+
+. Create a new application from the image in the {product-title} registry using the `oc` command:
 +
 ----
 $ oc new-app <image-name>

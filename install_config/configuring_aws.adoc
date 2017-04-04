@@ -11,8 +11,14 @@
 toc::[]
 
 == Overview
+<<<<<<< HEAD
 {product-title} can be configured to access an
 link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html[AWS EC2 infrastructure], including
+=======
+OpenShift can be configured to access an
+link:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html[AWS EC2
+infrastructure], including
+>>>>>>> openshift/online
 xref:../install_config/persistent_storage/persistent_storage_aws.adoc#install-config-persistent-storage-persistent-storage-aws[using AWS
 volumes as persistent storage] for application data. After AWS is configured
 properly, some additional configurations will need to be completed on the
@@ -21,8 +27,13 @@ properly, some additional configurations will need to be completed on the
 [[configuring-aws-variables]]
 == Configuring AWS Variables
 
+<<<<<<< HEAD
 To set the required AWS variables, create a *_/etc/aws/aws.conf_* file with the
 following contents on all of your {product-title} hosts, both masters and nodes:
+=======
+To set the required AWS variables, create a *_/etc/aws/aws.conf_* file with
+the following contents on all of your OpenShift hosts, both masters and nodes:
+>>>>>>> openshift/online
 
 ====
 ----
@@ -31,6 +42,7 @@ Zone = us-east-1c <1>
 ----
 <1> This is the Availability Zone of your AWS Instance and where your EBS Volume
 resides; this information is obtained from the AWS Managment Console.
+<<<<<<< HEAD
 ====
  
 [[aws-configuring-masters]]
@@ -81,6 +93,12 @@ When Ansible configures AWS, the following files are created for you:
 
 [[aws-configuring-masters-manually]]
 === Manually Configuring {product-title} Masters for AWS
+=======
+====
+
+[[aws-configuring-masters]]
+== Configuring Masters
+>>>>>>> openshift/online
 
 Edit or
 xref:../install_config/master_node_configuration.adoc#creating-new-configuration-files[create]
@@ -106,6 +124,7 @@ kubernetesMasterConfig:
 ----
 ====
 
+<<<<<<< HEAD
 [IMPORTANT]
 ====
 When triggering a containerized installation, only the directories of
@@ -116,6 +135,10 @@ container. Therefore, *_aws.conf_* should be in *_/etc/origin/_* instead of
 
 [[aws-configuring-nodes]]
 === Manually Configuring {product-title} Nodes for AWS
+=======
+[[aws-configuring-nodes]]
+== Configuring Nodes
+>>>>>>> openshift/online
 
 Edit or
 xref:../install_config/master_node_configuration.adoc#creating-new-configuration-files[create]
@@ -133,6 +156,7 @@ kubeletArguments:
 ----
 ====
 
+<<<<<<< HEAD
 [IMPORTANT]
 ====
 When triggering a containerized installation, only the directories of
@@ -144,6 +168,11 @@ container. Therefore, *_aws.conf_* should be in *_/etc/origin/_* instead of
 [[aws-setting-key-value-access-pairs]]
 == Setting Key Value Access Pairs
 
+=======
+[[aws-setting-key-value-access-pairs]]
+== Setting Key Value Access Pairs
+
+>>>>>>> openshift/online
 Make sure the following environment variables are set in the
 ifdef::openshift-enterprise[]
 *_/etc/sysconfig/atomic-openshift-master_* file on masters and the
@@ -169,7 +198,11 @@ Access keys are obtained when setting up your AWS IAM user.
 [[aws-applying-configuration-changes]]
 == Applying Configuration Changes
 
+<<<<<<< HEAD
 Start or restart {product-title} services on all master and node hosts to apply your
+=======
+Start or restart OpenShift services on all master and node hosts to apply your
+>>>>>>> openshift/online
 configuration changes:
 
 ifdef::openshift-enterprise[]

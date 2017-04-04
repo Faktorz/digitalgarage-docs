@@ -11,9 +11,16 @@
 toc::[]
 
 == Overview
+<<<<<<< HEAD
 When deployed on link:https://www.openstack.org/[OpenStack], {product-title} can
 be configured to access OpenStack infrastructure, including
 xref:../install_config/persistent_storage/persistent_storage_cinder.adoc#install-config-persistent-storage-persistent-storage-cinder[using OpenStack Cinder volumes as persistent storage] for application data.
+=======
+When deployed on link:https://www.openstack.org/[OpenStack], OpenShift can be
+configured to access OpenStack infrastructure, including
+xref:../install_config/persistent_storage/persistent_storage_cinder.adoc#install-config-persistent-storage-persistent-storage-cinder[using
+OpenStack Cinder volumes as persistent storage] for application data.
+>>>>>>> openshift/online
 
 [[configuring-openstack-variables]]
 == Configuring OpenStack Variables
@@ -39,6 +46,7 @@ Consult your OpenStack administrators for values of the `*OS_*` variables, which
 are commonly used in OpenStack configuration.
 
 [[openstack-configuring-masters]]
+<<<<<<< HEAD
 == Configuring {product-title} Masters for OpenStack
 
 You can set an OpenStack configuration on your {product-title} master and node hosts in two different ways:
@@ -88,6 +96,9 @@ xref:../install_config/install/advanced_install.adoc#advanced-install-configurin
 
 [[openstack-configuring-masters-manually]]
 === Manually Configuring {product-title} Masters for OpenStack
+=======
+== Configuring Masters
+>>>>>>> openshift/online
 
 Edit or
 xref:../install_config/master_node_configuration.adoc#creating-new-configuration-files[create] the
@@ -113,6 +124,7 @@ kubernetesMasterConfig:
 ----
 ====
 
+<<<<<<< HEAD
 [IMPORTANT]
 ====
 When triggering a containerized installation, only the directories of
@@ -123,6 +135,10 @@ container. Therefore, *_cloud.conf_* should be in *_/etc/origin/_* instead of
 
 [[openstack-configuring-nodes-manually]]
 === Manually Configuring {product-title} Nodes for OpenStack
+=======
+[[openstack-configuring-nodes]]
+== Configuring Nodes
+>>>>>>> openshift/online
 
 Edit or
 xref:../install_config/master_node_configuration.adoc#creating-new-configuration-files[create]
@@ -143,6 +159,7 @@ kubeletArguments:
     - "/etc/cloud.conf"
 ----
 <1> Name of the OpenStack instance where the node runs (i.e., name of the virtual machine)
+<<<<<<< HEAD
 ====
 
 [IMPORTANT]
@@ -151,4 +168,6 @@ When triggering a containerized installation, only the directories of
 *_/etc/origin_* and *_/var/lib/origin_* are mounted to the master and node
 container. Therefore, *_cloud.conf_* should be in *_/etc/origin/_* instead of
 *_/etc/_*.
+=======
+>>>>>>> openshift/online
 ====

@@ -7,7 +7,11 @@
 :experimental:
 :linkattrs:
 
+<<<<<<< HEAD
 ifdef::openshift-origin,digital-garage,openshift-online,openshift-enterprise,openshift-dedicated[]
+=======
+ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+>>>>>>> openshift/online
 OpenShift v3 is a layered system designed to expose underlying Docker-formatted
 container image and Kubernetes concepts as accurately as possible, with a focus
 on easy composition of applications by a developer. For example, install Ruby,
@@ -36,7 +40,11 @@ to manage services.
 * An image abstraction called xref:core_concepts/builds_and_image_streams.adoc#architecture-core-concepts-builds-and-image-streams[image streams] to enhance image management.
 
 endif::[]
+<<<<<<< HEAD
 ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
+=======
+ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+>>>>>>> openshift/online
 
 == What Are the Layers?
 
@@ -84,7 +92,11 @@ runs a process on the cluster to perform that build. When the build completes,
 the controller updates the build object via the REST API and the user sees that
 their build is complete.
 
+<<<<<<< HEAD
 ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
+=======
+ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+>>>>>>> openshift/online
 The controller pattern means that much of the functionality in {product-title}
 is extensible. The way that builds are run and launched can be customized
 independently of how images are managed, or how
@@ -137,7 +149,11 @@ checks for one or more of the roles assigned to the user (e.g., cluster
 administrator or administrator of the current project) before allowing it to
 continue.
 
+<<<<<<< HEAD
 ifdef::openshift-origin,digital-garage,openshift-enterprise,openshift-dedicated[]
+=======
+ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
+>>>>>>> openshift/online
 Since every container that runs on the cluster is associated with a service
 account, it is also possible to associate
 xref:../dev_guide/secrets.adoc#dev-guide-secrets[secrets] to those service accounts and have them

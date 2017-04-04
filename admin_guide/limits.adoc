@@ -15,10 +15,17 @@ toc::[]
 
 // tag::admin_limits_overview[]
 A limit range, defined by a `*LimitRange*` object, enumerates
+<<<<<<< HEAD
 xref:../dev_guide/compute_resources.adoc#dev-compute-resources[compute resource
 constraints] in a xref:../dev_guide/projects.adoc#dev-guide-projects[project] at the pod,
 container, image, image stream, and persistent volume claim level, and specifies the amount of resources
 that a pod, container, image, image stream, or persistent volume claim can consume.
+=======
+link:../dev_guide/compute_resources.html#dev-compute-resources[compute resource
+constraints] in a link:../dev_guide/projects.html[project] at the pod,
+container, image and image stream level, and specifies the amount of resources
+that a pod, container, image or image stream can consume.
+>>>>>>> openshift/online
 
 All resource create and modification requests are evaluated against each
 `*LimitRange*` object in the project. If the resource violates any of the
@@ -65,7 +72,7 @@ spec:
       maxLimitRequestRatio:
         cpu: "10" <14>
 ----
-<1> The name of the limit range document.
+<1> The name of the limit range object.
 <2> The maximum amount of CPU that a pod can request on a node across all
 containers.
 <3> The maximum amount of memory that a pod can request on a node across all
@@ -85,9 +92,13 @@ specified.
 <13> The default amount of memory that a container will request to use if not specified.
 <14> The maximum amount of CPU burst that a container can make as a ratio of its limit over request.
 ====
+<<<<<<< HEAD
 // end::admin_limits_sample_definitions[]
 
 // tag::admin_limits_sample_definitions_2[]
+=======
+
+>>>>>>> openshift/online
 .{product-title} Limit Range Object Definition
 ====
 [source,yaml]
@@ -110,10 +121,17 @@ spec:
 <2> The maximum number of unique image tags per image stream's spec.
 <3> The maximum number of unique image references per image stream's status.
 ====
+<<<<<<< HEAD
 // end::admin_limits_sample_definitions_2[]
 
 Both core and {product-title} resources can be specified in just one limit range
 object. They are separated here into two examples for clarity.
+=======
+
+Both core and {product-title} resources can be specified in just one limit range
+object. They are separated here into two examples for clarity.
+// end::admin_limits_sample_definitions[]
+>>>>>>> openshift/online
 
 
 [[container-limits]]
@@ -232,7 +250,10 @@ Per image, the following must hold true if specified:
 |`image.dockerimagemetadata.size` less than or equal to `Max[resource]`
 |===
 
+<<<<<<< HEAD
 ifdef::openshift-enterprise,openshift-origin[]
+=======
+>>>>>>> openshift/online
 [NOTE]
 ====
 To prevent blobs exceeding the limit from being uploaded to the registry, the
@@ -243,7 +264,10 @@ deployment configuration, refer to
 xref:../install_config/upgrading/manual_upgrades.adoc#enforcing-quota-in-the-registry[Enforcing
 quota in the Registry].
 ====
+<<<<<<< HEAD
 endif::[]
+=======
+>>>>>>> openshift/online
 
 [WARNING]
 ====
@@ -297,7 +321,11 @@ image's digest.
 ==== Counting of Image References
 
 Resource `openshift.io/image-tags` represents unique
+<<<<<<< HEAD
 xref:../dev_guide/managing_images.adoc#referencing-images-in-image-streams[image
+=======
+link:../dev_guide/managing_images.html#referencing-images-in-image-streams[image
+>>>>>>> openshift/online
 references]. Possible references are an `*ImageStreamTag*`, an
 `*ImageStreamImage*` and a `*DockerImage*`. They may be created using commands
 `oc tag` and `oc import-image` or by using
@@ -314,6 +342,7 @@ distinguished.
 
 // end::admin_limits_image_stream_limits[]
 
+<<<<<<< HEAD
 
 [[claim-limits]]
 === PersistentVolumeClaim Limits
@@ -338,13 +367,12 @@ Across all persistent volume claims in a project, the following must hold true:
 
 |`*Max*`
 |claim.spec.resources.requests[resource] (required) <= Max[resource]
+|===
 
 [[limit-range-def]]
 
 .Limit Range Object Definition
 ====
-
-|===
 
 [source,json]
 ----
@@ -358,17 +386,17 @@ Across all persistent volume claims in a project, the following must hold true:
     "limits": [{
         "type": "PersistentVolumeClaim",
         "min": {
-          "storage": "2Gi", <2>
+          "storage": "2Gi" <2>
         },
         "max": {
-          "storage": "50Gim", <3>
+          "storage": "50Gi" <3>
         }
-      },
-    }]
+      }
+    ]
   }
 }
 ----
-<1> The name of the limit range document.
+<1> The name of the limit range object.
 <2> The minimum amount of storage that can be requested in a persistent volume claim
 <3> The maximum amount of storage that can be requested in a persistent volume claim
 ====
@@ -376,6 +404,8 @@ Across all persistent volume claims in a project, the following must hold true:
 // end::admin_limits_claim_limits[]
 
 
+=======
+>>>>>>> openshift/online
 [[creating-a-limit-range]]
 == Creating a Limit Range
 
@@ -411,18 +441,18 @@ resource-limits   6d
 +
 ====
 ----
-$ oc describe limits resource-limits
-Name:                     limits
-Namespace:                default
-Type                      Resource                 Min  Max Request Limit Limit/Request
-----                      --------                 ---  --- ------- ----- -------------
-Pod                       memory                   6Mi  1Gi -       -     -
-Pod                       cpu                      200m  2  -       -     -
-Container                 cpu                      100m  2  200m    300m  10
-Container                 memory                   4Mi  1Gi 100Mi   200Mi -
-openshift.io/Image        storage                  -    1Gi -       -     -
-openshift.io/ImageStream  openshift.io/image-tags  -    10  -       -     -
-openshift.io/ImageStream  openshift.io/images      -    12  -       -     -
+$ oc describe limits resource-limits -n demoproject
+Name:                           resource-limits
+Namespace:                      demoproject
+Type                            Resource                Min     Max     Default Request Default Limit   Max Limit/Request Ratio
+----                            --------                ---     ---     --------------- -------------   -----------------------
+Pod                             cpu                     200m    2       -               -               -
+Pod                             memory                  6Mi     1Gi     -               -               -
+Container                       cpu                     100m    2       200m            300m            10
+Container                       memory                  4Mi     1Gi     100Mi           200Mi           -
+openshift.io/Image              storage                 -       1Gi     -               -               -
+openshift.io/ImageStream        openshift.io/image      -       12      -               -               -
+openshift.io/ImageStream        openshift.io/image-tags -       10      -               -               -
 ----
 ====
 // end::admin_limits_viewing[]

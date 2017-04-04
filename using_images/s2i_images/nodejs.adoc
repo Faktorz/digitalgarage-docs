@@ -71,13 +71,19 @@ The Node.js image supports a number of environment variables, which can be set
 to control the configuration and behavior of the Node.js runtime.
 
 To set these environment variables as part of your image, you can place them into
-xref:../../dev_guide/builds.adoc#environment-files[a *_.s2i/environment_* file]
+xref:../../dev_guide/builds/build_strategies.adoc#environment-files[a *_.s2i/environment_* file]
 inside your source code repository, or define them in
-xref:../../dev_guide/builds.adoc#buildconfig-environment[the environment
+xref:../../dev_guide/builds/build_strategies.adoc#buildconfig-environment[the environment
 section] of the build configuration's `*sourceStrategy*` definition.
 
 You can also set environment variables to be used with an existing image when
-xref:../../dev_guide/new_app.adoc#specifying-environment-variables[creating new
+xref:../../dev_guide/builds/build_strategies.adoc#environment-files[a *_.s2i/environment_* file]
+inside your source code repository, or define them in
+xref:../../dev_guide/builds/build_strategies.adoc#buildconfig-environment[the environment
+section] of the build configuration's `*sourceStrategy*` definition.
+
+You can also set environment variables to be used with an existing image when
+xref:../../dev_guide/application_lifecycle/new_app.adoc#specifying-environment-variables[creating new
 applications], or by
 xref:../../dev_guide/environment_variables.adoc#set-environment-variables[updating
 environment variables for existing objects] such as deployment configurations.
@@ -115,7 +121,7 @@ changes made in your application source code, you must run your built image with
 the `*DEV_MODE=true*` environment variable.
 
 You can set new environment variables when
-xref:../../dev_guide/new_app.adoc#specifying-environment-variables[creating new
+xref:../../dev_guide/application_lifecycle/new_app.adoc#specifying-environment-variables[creating new
 applications], or
 xref:../../dev_guide/environment_variables.adoc#set-environment-variables[updating
 environment variables for existing objects].

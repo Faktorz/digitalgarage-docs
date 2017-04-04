@@ -43,13 +43,14 @@ To get a current list of SCCs:
 ----
 $ oc get scc
 
-NAME               PRIV      CAPS      SELINUX     RUNASUSER          FSGROUP    SUPGROUP   PRIORITY   READONLYROOTFS   VOLUMES
-anyuid             false     []        MustRunAs   RunAsAny           RunAsAny   RunAsAny   10         false            [awsElasticBlockStore azureFile cephFS cinder configMap downwardAPI emptyDir fc flexVolume flocker gcePersistentDisk gitRepo glusterfs iscsi nfs persistentVolumeClaim rbd secret]
-hostaccess         false     []        MustRunAs   MustRunAsRange     RunAsAny   RunAsAny   <none>     false            [*]
-hostmount-anyuid   false     []        MustRunAs   RunAsAny           RunAsAny   RunAsAny   <none>     false            [*]
-nonroot            false     []        MustRunAs   MustRunAsNonRoot   RunAsAny   RunAsAny   <none>     false            [awsElasticBlockStore azureFile cephFS cinder configMap downwardAPI emptyDir fc flexVolume flocker gcePersistentDisk gitRepo glusterfs iscsi nfs persistentVolumeClaim rbd secret]
-privileged         true      []        RunAsAny    RunAsAny           RunAsAny   RunAsAny   <none>     false            [*]
-restricted         false     []        MustRunAs   MustRunAsRange     RunAsAny   RunAsAny   <none>     false            [awsElasticBlockStore azureFile cephFS cinder configMap downwardAPI emptyDir fc flexVolume flocker gcePersistentDisk gitRepo glusterfs iscsi nfs persistentVolumeClaim rbd secret]
+NAME               PRIV      CAPS      SELINUX     RUNASUSER          FSGROUP     SUPGROUP    PRIORITY   READONLYROOTFS   VOLUMES
+anyuid             false     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    10         false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
+hostaccess         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir hostPath persistentVolumeClaim secret]
+hostmount-anyuid   false     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    <none>     false            [configMap downwardAPI emptyDir hostPath nfs persistentVolumeClaim secret]
+hostnetwork        false     []        MustRunAs   MustRunAsRange     MustRunAs   MustRunAs   <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
+nonroot            false     []        MustRunAs   MustRunAsNonRoot   RunAsAny    RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
+privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny    RunAsAny    <none>     false            [*]
+restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ----
 ====
 
@@ -92,7 +93,10 @@ Settings:
     Ranges:					<none>
   Supplemental Groups Strategy: RunAsAny
     Ranges:					<none>
+<<<<<<< HEAD
 ----
+=======
+>>>>>>> openshift/online
 ====
 
 ifdef::openshift-enterprise,openshift-origin[]
@@ -156,7 +160,7 @@ documentation].
 ====
 ----
 $ oc create -f scc_admin.yaml
-securitycontextconstraints/scc-admin
+securitycontextconstraints "scc-admin" created
 ----
 ====
 
@@ -164,11 +168,9 @@ securitycontextconstraints/scc-admin
 +
 ====
 ----
-$ oc get scc
-NAME         PRIV      CAPS      HOSTDIR   SELINUX     RUNASUSER
-privileged   true      []        true      RunAsAny    RunAsAny
-restricted   false     []        false     MustRunAs   MustRunAsRange
-scc-admin    true      []        false     RunAsAny    RunAsAny
+$ oc get scc scc-admin
+NAME        PRIV      CAPS      SELINUX    RUNASUSER   FSGROUP    SUPGROUP   PRIORITY   READONLYROOTFS   VOLUMES
+scc-admin   true      []        RunAsAny   RunAsAny    RunAsAny   RunAsAny   <none>     false            [awsElasticBlockStore azureDisk azureFile cephFS cinder configMap downwardAPI emptyDir fc flexVolume flocker gcePersistentDisk gitRepo glusterfs iscsi nfs persistentVolumeClaim photonPersistentDisk quobyte rbd secret vsphere]
 ----
 ====
 
@@ -251,14 +253,23 @@ administrator group access to create more privileged pods. To do so, you can:
 . Run:
 +
 ----
+<<<<<<< HEAD
 $ oadm policy add-scc-to-user <scc_name> <user_name>
 $ oadm policy add-scc-to-group <scc_name> <group_name>
+=======
+$ oadm policy add-user-to-scc <scc_name> <user_name>
+$ oadm policy add-group-to-scc <scc_name> <group_name>
+>>>>>>> openshift/online
 ----
 
 For example, to allow the *e2e-user* access to the *privileged* SCC, run:
 
 ----
+<<<<<<< HEAD
 $ oadm policy add-scc-to-user privileged e2e-user
+=======
+$ oadm policy add-user-to-scc privileged e2e-user
+>>>>>>> openshift/online
 ----
 
 [[grant-a-service-account-access-to-the-privileged-scc]]
@@ -288,7 +299,11 @@ pre-allocated UID, without granting everyone access to the *privileged* SCC:
 . Grant all authenticated users access to the *anyuid* SCC:
 +
 ----
+<<<<<<< HEAD
 $ oadm policy add-scc-to-group anyuid system:authenticated
+=======
+$ oadm policy add-group-to-scc anyuid system:authenticated
+>>>>>>> openshift/online
 ----
 
 [WARNING]

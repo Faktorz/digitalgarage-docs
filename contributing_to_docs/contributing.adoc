@@ -13,6 +13,7 @@ There are a few different ways you can contribute to OpenShift documentation:
 
 * Submit comments at the bottom of each topic (still awaiting implementation)
 * Email the OpenShift documentation team openshift-docs@redhat.com
+<<<<<<< HEAD
 * https://github.com/openshift/openshift-docs/issues/new[Create an issue in
 GitHub]
 * If you would like to do the work yourself, or if it is a substantial change,
@@ -21,6 +22,10 @@ Each PR should have closely-related changes.
 In particular, it is a good idea to use separate PRs
 for bugfix changes (for an old or current release)
 vs enhancement changes (for an upcoming new release).
+=======
+* https://github.com/openshift/openshift-docs/issues/new[Create an issue in GitHub]
+* If you would like to do the work yourself, or if it is a substantial change, then you you should clone the repository, make your changes, and submit a PR
+>>>>>>> openshift/online
 
 *What happens when you submit a PR?*
 
@@ -38,9 +43,13 @@ second level of topics. The exceptions to this rule are directories whose names
 start with an underscore (like `_builder_lib` and `_javascripts`), which contain
 the assets used to generate the finished documentation.
 
+<<<<<<< HEAD
 Each top level `<topic>` directory contains the topics as AsciiDoc files, any
 `<subtopic>` subdirectories, and an `images` directory where all images for that
 topic are stored.
+=======
+Each top level 'topic' directory contains the topics as asciidoc files, any 'subtopic' subdirectories, and an 'images' directory where all images for that topic are stored.
+>>>>>>> openshift/online
 
 ----
 /
@@ -72,9 +81,13 @@ tracking the release versions of documentation for the various OpenShift
 products.
 
 === Conditional text between products
+<<<<<<< HEAD
 OpenShift documentation uses AsciiDoc's `ifdef/endif` macro to conditionalize
 and reuse content across the different OpenShift products, down to the
 single-line level.
+=======
+OpenShift documentation uses AsciiDoc's `ifdef/endif` macro to conditionalize and reuse content across the different OpenShift products, down to the single-line level.
+>>>>>>> openshift/online
 
 The supported distribution attributes used with the OpenShift build mechanism
 are:
@@ -118,6 +131,10 @@ with the metadata `yaml` file.
 block cannot contain other conditional blocks.
 
 == Release branches
+<<<<<<< HEAD
+=======
+
+>>>>>>> openshift/online
 With the combination of conditionalizing content within topics with
 `ifdef/endif` and conditionalizing whole topics with the
 xref:how-it-all-comes-together[metadata `yaml` file], the `master` branch of
@@ -140,12 +157,16 @@ OpenShift product will remain the same while development continues on the
 documentation the next day.
 
 [NOTE]
+<<<<<<< HEAD
 ====
 All OpenShift content development occurs on the `master`, or *working* branch.
 Therefore, when submitting your work the PR must be created against the `master`
 branch. Once it is reviewed that content will then migrate to the corresponding
 release branches.
 ====
+=======
+All OpenShift content development occurs on the `master`, or *working* branch. Therefore, when submitting your work the PR must be created against the `master` branch. Once it is reviewed that content will then migrate to the corresponding release branches.
+>>>>>>> openshift/online
 
 [[how-it-all-comes-together]]
 == How it all comes together
@@ -205,6 +226,7 @@ as *all*.
 ****
 
 == Next steps
+<<<<<<< HEAD
 * First, you should link:tools_and_setup.adoc[Install and set up the tools and
 software] on your workstation so that you can contribute.
 * Next, we recommend that you link:doc_guidelines.adoc[review the documentation
@@ -213,3 +235,8 @@ across our content.
 * If you are ready to create new content, or want to edit existing content, the
 link:create_or_edit_content.adoc[create or edit content] topic describes how
 you can do this by creating a working branch.
+=======
+* First, you should xref:tools_and_setup.adoc#contributing-to-docs-tools-and-setup[Install and set up the tools and software] on your workstation so that you can contribute.
+* Next, we recommend that you xref:doc_guidelines.adoc#contributing-to-docs-doc-guidelines[review the documentation guidelines] to understand some basic guidelines to keep things consistent across our content.
+* If you are ready to create new content, or want to edit existing content, the xref:create_or_edit_content.adoc#contributing-to-docs-create-or-edit-content[create or edit content] topic describes how you can do this by creating a working branch.
+>>>>>>> openshift/online

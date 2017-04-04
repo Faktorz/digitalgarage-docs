@@ -60,174 +60,315 @@ related community grew, the "*P*" which originally just stood for *Perl*
 was redefined and expanded to represent *PHP* and *Python* as well.
 
 [[_getting_started]]
-Getting Started
-~~~~~~~~~~~~~~~
+MEAN Stack sample app on Digital Garage!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This guide uses *Yeoman* and the `angular-fullstack-generator` to set up
-your development environment. The folks at
-http://learn.mean.io/#mean-io-hosting-mean-openshift[MEAN.io] also
-provide a nice distribution of MEAN that will run well on OpenShift.
+The MEAN stack is a popular, open-source, full-stack JavaScript
+framework for building dynamic websites and web applications by
+combining useful JavaScript modules such as MongoDB, Express.js,
+AngularJS, and Node.js. The MEAN Stack has achieved a high level of
+harmony between the client and server. In fact, the MEAN Stack is
+JavaScript from front to back which means that these applications are
+quick to put together, and represent the modern state of web application
+development.
 
-code,CodeRay,highlight
-code,CodeRay,highlight
-$ npm install -g grunt grunt-cli bower yo generator-angular-fullstack
+In this brief tutorial we combine the MEAN Stack with best practices in
+both application architecture and deployment, namely, Microservices and
+Linux Containers. We will bootstrap our MEAN Stack application on the
+popular PaaS provider, the Digital Garage. Digital Garage utilizes Red
+Hat Openshift, Google Kubernetes and Docker Containers to create an open
+and efficient way to incorporate these best practices into our project.
 
-You’ll also need access to the `git` command-line tools, and a MongoDB
-datastore - which can be http://www.mongodb.org/downloads[installed
-locally], provided as-a-service (see https://mongolab.com/[MongoLab] or
-https://www.mongohq.com/[MongoHQ]), or made available via
-https://www.openshift.com/blogs/set-up-local-access-to-openshift-hosted-services-with-port-forwarding[port-forwarding].
-This particular distribution of the MEAN stack is configured to look for
-a local installation of MongoDB when started in a development mode.
+[[prerequisites]]
+Prerequisites
+~~~~~~~~~~~~~
 
-[[create]]
-https://www.openshift.com/blogs/day-24-yeoman-ember-the-missing-tutorial[image:https://www.openshift.com/sites/default/files/yo-man.png[yo-man,title="yeoman"]]
-1. Create your Application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* A Github account. If you do not already have a Github account, you can
+follow https://github.com/join?source=header-home[this link] to sign up
+for free.
+* A Digital Garage Account. If you do not already have a Digital Garage
+account, you can sign up for free at
+http://cochera.thedigitalgarage.io/free-signup/mean[www.thedigitalgarage.io].
 
-Scaffold up a new MEAN stack application with
-https://www.openshift.com/blogs/day-24-yeoman-ember-the-missing-tutorial[Yeoman]
-("Yo", for short) and the `angular-fullstack` generator:
+[[bootstrapping-the-mean-stack]]
+Bootstrapping the MEAN Stack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-code,CodeRay,highlight------------------------------------
-code,CodeRay,highlight
-$ yo angular-fullstack YOUR_APP_NAME
-------------------------------------
+We will be:
 
-When prompted, answer "yes" to every available option except Sass &
-Compass support.
+* Forking the MEAN seed project on the Digital Garage Github
+Organization to your private repository.
+* Creating a MEAN Stack application workspace on the Digital Garage
+platform.
+* Bootstrapping the MEAN Stack in your MEAN Stack Application workspace
+with MongoDB and Node.js containers from Docker Hub.
+* Building the AngularJS application from the source in the forked
+repository and deploying the application on the MEAN Stack.
 
-Now that your development environment is ready to go, initialize your
-remotely-hosted OpenShift environment:
+After signing into your Github account, go to:
+link:www.github.com/thedigitalgarage/mean-ex[www.github.com/thdigitalgarage/mean-ex]
+and fork the repository into your own account. This repository contains
+some files and a file structure that will give you a quick start on your
+MEAN application. I go into more detail on the files and file structure
+a little further into the tutorial. For now, let's complete our setup by
+logging into your Digital Garage account and set up the MEAN stack.
 
-code,CodeRay,highlight---------------------------------------------------
-code,CodeRay,highlight
-$ yo angular-fullstack:openshift OPENSHIFT_APP_NAME
----------------------------------------------------
+After signing into your Digital Garage account, Choose the Add to
+Project link in the top menu bar to go to the template catalog.
 
-This command can be run multiple times in order to setup additional
-OpenShift hosting environments if your OpenShift account has sufficient
-capacity.
+image:http://assets-digitalgarage-infra.apps.thedigitalgarage.io/images/screenshots/add_to_project.png[Add
+To Project]
 
-[[develop]]
-https://www.openshift.com/blogs/day-5-gruntjs-let-someone-else-do-my-tedious-repetitive-tasks[image:https://www.openshift.com/sites/default/files/grunt_logo.gif[grunt_logo,title="Grunt"]]
-2. Develop
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In the add to project screen, choose the MEAN Stack Quickstart (qs-mean)
+from the catalog.
 
-https://www.openshift.com/blogs/day-5-gruntjs-let-someone-else-do-my-tedious-repetitive-tasks[Grunt]
-provides a nice set of tools for assisting with dev task automation. It
-includes livereload support for refreshing connected browsers during
-development -
-**https://www.openshift.com/blogs/day-7-gruntjs-livereload-take-productivity-to-the-next-level[No
-need to reload the page!]**
+image:http://assets-digitalgarage-infra.apps.thedigitalgarage.io/images/screenshots/choose_quickstart.png[Add
+To Project]
 
-Run `grunt serve` to give it a try:
+In the template configuration page for the MEAN Stack Quickstart change
+the Git Repository URL to point to the repository that was just forked
+into your account. `https://github.com/johnmccawley/mean-ex.git`. If you
+are running this tutorial in the free Hello World tier, you will want to
+set the `Memory Limit` for MongoDB to 128Mi rather than the default
+192Mi. This will give your application enough room to build and deploy
+all of the containers it needs. For the rest of the parameters, you can
+simply accept the defaults for the remaining parameters and click
+"Create"
 
-code,CodeRay,highlight------------- code,CodeRay,highlight
-$ grunt serve
--------------
+image:http://assets-digitalgarage-infra.apps.thedigitalgarage.io/images/screenshots/quickstart-configure.png[Add
+To Project]
 
-It’s usually a good idea to store your resulting project source in a
-version control system. Feel free to add your own top-level git
-repository by running `git init` at the root of your project. GitHub, or
-similar hosting accomodations can be used at this level, to help
-facilitate source code collaboration.
+That's it. Digital Garage is now setting up your MEAN Stack. On the next
+page you'll be presented with some information about your new
+application. When you are ready, click "Continue to Overview". You will
+be taken to the Project Overview screen where you can watch Digital
+Garage do the setup work for you. In just a few minutes you'll have full
+MEAN stack running in containers and managed through Google Kubernetes.
+When MongoDB and Node.js are completely deployed, (the pod status circle
+is Green) simply click on the application URL in the upper right corner
+of the overview screen. You will be taken to a browser to see a simple
+"Hello World" message.
 
-[[deploy]]
-https://www.openshift.com/blogs/10-reasons-openshift-is-the-best-place-to-host-your-nodejs-app#git[image:https://www.openshift.com/sites/default/files/git-logo.jpg[git-logo,title="Git"]]
-3. Deploy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[file-structure]]
+File Structure
+~~~~~~~~~~~~~~
 
-The initial setup should create a secondary git repository to track of
-the project’s build results, where client-side sources are combined,
-minified, and optimised for production use.
+Now that we have the MEAN Example repository forked into your account,
+let's take a few minutes to review the file structure for the
+repository. There are many ways to structure a MEAN application. I have
+tried to take the best-practices from several tutorials and create a
+simple yet expandable file structure for this example project. For
+further reading on file structures for the MEAN Stack,
+http://mean.io[Mean.io] is a good boilerplate to see best practices and
+how to separate file structure. For now we will just use the following
+structure and adjust as we go.
 
-Generate a new *build* of your application in your project’s `dist`
-folder:
+---------------------------------------------------------------------
 
-code,CodeRay,highlight------------- code,CodeRay,highlight
-$ grunt build
--------------
+mean-ex
+  ├── app - files for node components (models, routes)
+  ├── config - all our configuration will be here
+  │   └── database.js
+  ├── LICENSE
+  ├── openshift
+  │   └── templates
+  │       └── qs-mean.json - example template for Kubernetes.
+  ├── public - files for our front-end angular application
+  │   ├── app.js
+  │   └── index.html
+  ├── package.json -npm configuration to install dependencies/modules
+  ├── README.md
+  ├── tests - files for basic test scripts
+  └── server.js -Node configuration
+---------------------------------------------------------------------
 
-Include a brief note about this release as you`add` and `commit` the new
-build for deployment:
+Congratulations! You have deployed your first application on the MEAN
+Stack.
 
-code,CodeRay,highlight--------------------------------------------------------------
-code,CodeRay,highlight
-$ cd dist
-$ git commit -am "Launching our first BETA release - Ship it!"
---------------------------------------------------------------
+[[bootstrapping-your-application-via-the-command-line-interface-cli]]
+Bootstrapping your application via the Command-Line-Interface (CLI)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Finally, use `git push` to send the release to your remote OpenShift
-hosting environment:
+You can create a new application using the web console or by running the
+`oc new-app` command from the CLI. With the OpenShift CLI there are
+three ways to create a new application, by specifying either:
 
-code,CodeRay,highlight--------------------------- code,CodeRay,highlight
-$ git push openshift master
----------------------------
+*
+http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-source-code[With
+source code]
+*
+http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-a-template[Via
+templates]
+*
+http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-an-image[DockerHub
+images]
 
-LAMP stack afficianados should pause and take note: Your old stack
-probably never included a build / optimization process, or a complete
-development workflow.
+[[create-a-new-app-from-source-code-method-1]]
+Create a new app from source code (method 1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-[[scale]]
-4. Scale
-~~~~~~~~
+Pointing `oc new-app` at source code kicks off a chain of events, for
+our example run:
 
-Scaling the MEAN stack on OpenShift is easy - especially when working
-with the `angular-fullstack` generator, which enables scaling by default
-during the earlier `yo angular-fullstack:openshift` step.
+--------------------------------------------------------------------------
+    $ oc new-app https://github.com/thedigitalgarage/mean-ex -l name=myapp
+--------------------------------------------------------------------------
 
-You can check your application’s current list of container environments
-(or gears) with the following command:
+The tool will inspect the source code, locate an appropriate image on
+DockerHub, create an ImageStream for that image, and then create the
+right build configuration, deployment configuration and service
+definition.
 
-code,CodeRay,highlight-----------------------------------------
-code,CodeRay,highlight
-$ rhc app show OPENSHIFT_APP_NAME --gears
------------------------------------------
+(The -l flag will apply a label of "name=myapp" to all the resources
+created by new-app, for easy management later.)
 
-The command output should include one front-end environment for running
-nodejs, and a back-end environment for MongoDB.
+[[create-a-new-app-from-a-template-method-2]]
+Create a new app from a template (method 2)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Scale up your front-end by adding a second instance to your application
-cluster:
+We can also
+http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-a-template[create
+new apps using template files]. Clone the demo app source code from
+https://github.com/thedigitalgarage/mean-ex[GitHub repo] (fork if you
+like).
 
-code,CodeRay,highlight-------------------------------------
-code,CodeRay,highlight
-$ rhc app scale-up OPENSHIFT_APP_NAME
+-----------------------------------------------------------
+    $ git clone https://github.com/thedigitalgarage/mean-ex
+-----------------------------------------------------------
+
+Looking at the repo, you'll notice one file in the openshift/templates
+directory:
+
+---------------------------------------------------------------------
+mean-ex
+  ├── app - files for node components (models, routes)
+  ├── config - all our configuration will be here
+  │   └── database.js
+  ├── LICENSE
+  ├── openshift
+  │   └── templates
+  │       └── qs-mean.json - example template for Kubernetes.
+  ├── public - files for our front-end angular application
+  │   ├── app.js
+  │   └── index.html
+  ├── package.json -npm configuration to install dependencies/modules
+  ├── README.md
+  ├── tests - files for basic test scripts
+  └── server.js -Node configuration
+---------------------------------------------------------------------
+
+We can create the the new app from the `qs-nodejs-mongo.json` template
+by using the `-f` flag and pointing the tool at a path to the template
+file:
+
+-------------------------------------------------
+    $ oc new-app -f /path/to/qs-nodejs-mongo.json
+-------------------------------------------------
+
+[[build-the-app]]
+Build the app
++++++++++++++
+
+`oc new-app` will kick off a build once all required dependencies are
+confirmed.
+
+Check the status of your new nodejs app with the command:
+
+---------------
+    $ oc status
+---------------
+
+Which should return something like:
+
+-------------------------------------------------------------------------------------------
+    In project my-project on server https://10.2.2.2:8443
+
+    svc/mean-ex - 172.30.108.183:8080
+      dc/mean-ex deploys istag/nodejs-ex:latest <-
+        bc/mean-ex builds https://github.com/openshift/nodejs-ex with openshift/nodejs:0.10
+          build #1 running for 7 seconds
+        deployment #1 waiting on image or update
+-------------------------------------------------------------------------------------------
+
+Note: You can follow along with the web console to see what new
+resources have been created and watch the progress of builds and
+deployments.
+
+If the build is not yet started (you can check by running
+`oc get builds`), start one and stream the logs with:
+
+-------------------------------------
+    $ oc start-build mean-ex --follow
 -------------------------------------
 
-Scaling limits can be set via the command line:
+You can alternatively leave off `--follow` and use
+`oc logs build/mean-ex-n` where _n_ is the number of the build to track
+the output of the build.
 
-code,CodeRay,highlight------------------------------------------------------------------
-code,CodeRay,highlight
-$ rhc cartridge scale nodejs -a OPENSHIFT_APP_NAME --min=2 --max=5
-------------------------------------------------------------------
+[[deploy-the-app]]
+Deploy the app
+++++++++++++++
 
-Or, in the OpenShift web console:
+Deployment happens automatically once the new application image is
+available. To monitor its status either watch the web console or execute
+`oc get pods` to see when the pod is up. Another helpful command is
 
-image:https://www.openshift.com/sites/default/files/scaling_web.png[OpenShift
-web console scaling]
+----------------
+    $ oc get svc
+----------------
 
-OpenShift Online’s https://www.openshift.com/products/pricing[free plan
-includes support for running up to three containers concurrently]. You
-can increase your account’s capacity by
-https://www.openshift.com/products/pricing[upgrading to OpenShift
-Online’s Silver or Bronze plans], or by setting up
-http://openshift.com/[your own open source cloud].
+This will help indicate what IP address the service is running, the
+default port for it to deploy at is 8080. Output should look like:
 
-[[next-steps]]
-Next Steps
-^^^^^^^^^^
+-----------------------------------------------------------------------------------------------------
+    NAME        CLUSTER-IP       EXTERNAL-IP   PORT(S)    SELECTOR                                AGE
+    mean-ex   172.30.249.251   <none>        8080/TCP   deploymentconfig=nodejs-ex,name=myapp   17m
+-----------------------------------------------------------------------------------------------------
 
-1.  http://twitter.com/OpenShift[Tell us] about your experiences with
-MEANStack on OpenShift
-2.  Find out how easy it is to
-https://www.openshift.com/blogs/domain-names-and-ssl-in-the-openshift-web-console[assign
-a custom domain name to your applications]
-3.  Upgrade to OpenShift Online’s
-https://www.openshift.com/products/pricing[Bronze plan] to access
-https://www.openshift.com/products/pricing[additional scaling capacity,
-and the ability to add your own custom SSL certificates]
-4.  Help us find your questions on StackOverflow by using the
-http://stackoverflow.com/questions/tagged/openshift[OpenShift] and
-http://stackoverflow.com/questions/tagged/mean-stack[MEAN Stack] tags
+[[configure-routing]]
+Configure routing
++++++++++++++++++
+
+An OpenShift route exposes a service at a host name, like
+www.example.com, so that external clients can reach it by name.
+
+DNS resolution for a host name is handled separately from routing; you
+may wish to configure a cloud domain that will always correctly resolve
+to the OpenShift router, or if using an unrelated host name you may need
+to modify its DNS records independently to resolve to the router.
+
+After logging into the web console with your account credentials, make
+sure you are in the correct project/workspace and then click
+`Create route`.
+
+This could also be accomplished by running:
+
+-------------------------------------------------------------------------------
+    $ oc expose svc/mean-ex --hostname=myapp-myproject.apps.thedigitalgarage.io
+-------------------------------------------------------------------------------
+
+in the CLI.
+
+Now navigate to the newly created MEAN web app at the hostname we just
+configured.
+
+[[setting-environment-variables]]
+Setting environment variables
++++++++++++++++++++++++++++++
+
+To take a look at environment variables set for each pod, run
+`oc env pods --all --list`.
+
+[[success]]
+Success
++++++++
+
+You should now have a MEAN welcome page rendered via AngularJS.
+
+[[pushing-updates]]
+Pushing updates
++++++++++++++++
+
+Assuming you used the URL of your own forked repository, we can easily
+push changes and simply repeat the steps above which will trigger the
+newly built image to be deployed.

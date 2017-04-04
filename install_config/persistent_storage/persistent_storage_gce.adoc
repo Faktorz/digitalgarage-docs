@@ -12,6 +12,7 @@
 toc::[]
 
 == Overview
+<<<<<<< HEAD
 {product-title} supports GCE Persistent Disk volumes (gcePD). You can provision
 your {product-title} cluster with
 xref:../../architecture/additional_concepts/storage.adoc#architecture-additional-concepts-storage[persistent storage]
@@ -21,6 +22,16 @@ with Kubernetes and GCE is assumed.
 [IMPORTANT]
 ====
 Before creating persistent volumes using GCE, {product-title} must first be properly
+=======
+OpenShift supports GCE Persistent Disk volumes (gcePD). You can provision your OpenShift cluster with
+xref:../../architecture/additional_concepts/storage.adoc#architecture-additional-concepts-storage[persistent storage] using
+link:https://cloud.google.com/compute/docs/disks/[GCE].
+Some familiarity with Kubernetes and GCE is assumed.
+
+[IMPORTANT]
+====
+Before creating persistent volumes using GCE, OpenShift must first be properly
+>>>>>>> openshift/online
 xref:../../install_config/configuring_gce.adoc#install-config-configuring-gce[configured for GCE Persistent
 Disk].
 ====
@@ -33,7 +44,11 @@ the underlying infrastructure.
 GCE Persistent Disk volumes can be
 xref:dynamically_provisioning_pvs.adoc#install-config-persistent-storage-dynamically-provisioning-pvs[provisioned dynamically].
 Persistent volumes are not bound to a single
+<<<<<<< HEAD
 project or namespace; they can be shared across the {product-title} cluster.
+=======
+project or namespace; they can be shared across the OpenShift cluster.
+>>>>>>> openshift/online
 xref:../../architecture/additional_concepts/storage.adoc#persistent-volume-claims[Persistent
 volume claims], however, are specific to a project or namespace and can be
 requested by users.
@@ -50,14 +65,26 @@ storage provider.
 
 == Provisioning
 Storage must exist in the underlying infrastructure before it can be mounted as
+<<<<<<< HEAD
 a volume in {product-title}. After ensuring {product-title} is
 xref:../../install_config/configuring_gce.adoc#install-config-configuring-gce[configured for GCE
 PersistentDisk], all that is required for {product-title} and GCE is an GCE
 Persistent Disk volume ID and the `*PersistentVolume*` API.
+=======
+a volume in OpenShift. After ensuring OpenShift is
+xref:../../install_config/configuring_gce.adoc#install-config-configuring-gce[configured for GCE
+PersistentDisk], all that is required for Openshift and GCE is an GCE Persistent
+Disk volume ID and the `*PersistentVolume*` API.
+>>>>>>> openshift/online
 
 [[gce-creating-persistent-volume]]
 
 === Creating the Persistent Volume
+
+[NOTE]
+====
+GCE does not support the 'Recycle' recycling policy.
+====
 
 You must define your persistent volume in an object definition before creating
 it in {product-title}:
@@ -137,3 +164,36 @@ formatted with the given file system.
 
 This allows using unformatted GCE volumes as persistent volumes, because
 {product-title} formats them before the first use.
+
+[[gce-persistent-disk-multi-zone-configuration]]
+
+=== Multi-zone Configuration
+In multi-zone configurations, You must specify
+`*failure-domain.beta.kubernetes.io/region*` and
+`*failure-domain.beta.kubernetes.io/zone*` PV labels to match the zone where
+GCE volume exists.
+
+.Persistent Volume Object With Failure Domain
+====
+
+[source,yaml]
+----
+apiVersion: "v1"
+kind: "PersistentVolume"
+metadata:
+  name: "pv0001"
+  labels:
+    failure-domain.beta.kubernetes.io/region: "us-central1" <1>
+    failure-domain.beta.kubernetes.io/zone: "us-central1-a" <2>
+spec:
+  capacity:
+    storage: "5Gi"
+  accessModes:
+    - "ReadWriteOnce"
+  gcePersistentDisk:
+    fsType: "ext4"
+    pdName: "pd-disk-1"
+----
+<1> The region in which the volume exists.
+<2> The zone in which the volume exists.
+====

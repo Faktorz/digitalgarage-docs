@@ -1,5 +1,9 @@
 [[install-config-storage-examples-shared-storage]]
+<<<<<<< HEAD
 = Sharing an NFS Persistent Volume (PV) Across Two Pods
+=======
+= Sharing an NFS mount across two persistent volume claims
+>>>>>>> openshift/online
 {product-author}
 {product-version}
 :data-uri:
@@ -12,6 +16,10 @@
 toc::[]
 
 == Overview
+<<<<<<< HEAD
+=======
+
+>>>>>>> openshift/online
 The following use case describes how a cluster administrator wanting to leverage
 shared storage for use by two separate containers would configure the solution.
 This example highlights the use of NFS, but can easily be adapted to other
@@ -343,7 +351,11 @@ spec:
   restartPolicy: Always
   securityContext:
     supplementalGroups:
+<<<<<<< HEAD
     - 100003 <3>
+=======
+    - 100003i <3>
+>>>>>>> openshift/online
   serviceAccount: default
   serviceAccountName: default
   terminationGracePeriodSeconds: 30

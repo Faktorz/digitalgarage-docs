@@ -11,6 +11,7 @@
 toc::[]
 
 == Overview
+<<<<<<< HEAD
 As an {product-title} administrator, you can use groups to manage users, change
 their permissions, and enhance collaboration. Your organization may have already
 created user groups and stored them in an LDAP server. {product-title} can sync
@@ -18,6 +19,15 @@ those LDAP records with internal {product-title} records, enabling you to manage
 your groups in one place. {product-title} currently supports group sync with
 LDAP servers using three common schemas for defining group membership: RFC 2307,
 Active Directory, and augmented Active Directory.
+=======
+As an OpenShift administrator, you can use groups to manage users, change their
+permissions, and enhance collaboration. Your organization may have already
+created user groups and stored them in an LDAP server. OpenShift can sync those
+LDAP records with internal OpenShift records, enabling you to manage your groups
+in one place. OpenShift currently supports group sync with LDAP servers using
+three common schemas for defining group membership: RFC 2307, Active Directory,
+and augmented Active Directory.
+>>>>>>> openshift/online
 
 [NOTE]
 ====
@@ -37,7 +47,11 @@ configuration file. This file contains LDAP client configuration details:
 server.
 
 A sync configuration file can also contain an administrator-defined list of name
+<<<<<<< HEAD
 mappings that maps {product-title} Group names to groups in your LDAP server.
+=======
+mappings that maps OpenShift Group names to groups in your LDAP server.
+>>>>>>> openshift/online
 
 [[ldap-client-configuration]]
 === LDAP Client Configuration
@@ -55,9 +69,15 @@ ca: my-ldap-ca-bundle.crt <5>
 <1> The connection protocol, IP address of the LDAP server hosting your
 database, and the port to connect to, formatted as `scheme://host:port`.
 <2> Optional distinguished name (DN) to use as the Bind DN.
+<<<<<<< HEAD
 {product-title} uses this if elevated privilege is required to retrieve entries for
 the sync operation.
 <3> Optional password to use to bind. {product-title} uses this if elevated privilege is
+=======
+OpenShift uses this if elevated privilege is required to retrieve entries for
+the sync operation.
+<3> Optional password to use to bind. OpenShift uses this if elevated privilege is
+>>>>>>> openshift/online
 necessary to retrieve entries for the sync operation. This value may also be
 provided in an
 xref:../install_config/master_node_configuration.adoc#master-node-configuration-passwords-and-other-data[environment
@@ -133,7 +153,11 @@ the query.
 [[user-defined-name-mapping]]
 === User-Defined Name Mapping
 
+<<<<<<< HEAD
 A user-defined name mapping explicitly maps the names of {product-title} Groups to
+=======
+A user-defined name mapping explicitly maps the names of OpenShift Groups to
+>>>>>>> openshift/online
 unique identifiers that find groups on your LDAP server. The mapping uses normal
 YAML syntax. A user-defined mapping can contain an entry for every group in your
 LDAP server or only a subset of those groups. If there are groups on the LDAP
@@ -155,30 +179,51 @@ groupUIDNameMapping:
 == Running LDAP Sync
 
 Once you have created a xref:configuring-ldap-sync[sync configuration file],
+<<<<<<< HEAD
 then sync can begin. {product-title} allows administrators to perform a number of
+=======
+then sync can begin. OpenShift allows administrators to perform a number of
+>>>>>>> openshift/online
 different sync types with the same server.
 
 [NOTE]
 ====
+<<<<<<< HEAD
 By default, all group synchronization or pruning operations are dry-run, so you
 must set the `--confirm` flag on the `oadm groups sync` command in order to make
 changes to {product-title} group records.
 ====
 
 To sync all groups from the LDAP server with {product-title}:
+=======
+By default, all group synchronization or pruning operations are dry-run, so you must set
+the `--confirm` flag on the `sync-groups` command in order to make changes to
+OpenShift Group records.
+====
+
+To sync all groups from the LDAP server with OpenShift:
+>>>>>>> openshift/online
 
 ----
 $ oadm groups sync --sync-config=config.yaml --confirm
 ----
 
+<<<<<<< HEAD
 To sync all Groups already in {product-title} that correspond to groups in the
+=======
+To sync all Groups already in OpenShift that correspond to groups in the
+>>>>>>> openshift/online
 LDAP server specified in the configuration file:
 
 ----
 $ oadm groups sync --type=openshift --sync-config=config.yaml --confirm
 ----
 
+<<<<<<< HEAD
 To sync a subset of LDAP groups with {product-title}, you can use whitelist files,
+=======
+To sync a subset of LDAP groups with OpenShift, you can use whitelist files,
+>>>>>>> openshift/online
 blacklist files, or both:
 
 [NOTE]
@@ -186,7 +231,11 @@ blacklist files, or both:
 Any combination of blacklist files, whitelist files, or whitelist literals will
 work; whitelist literals can be included directly in the command itself. This
 applies to groups found on LDAP servers, as well as Groups already present in
+<<<<<<< HEAD
 {product-title}. Your files must contain one unique group identifier per line.
+=======
+OpenShift. Your files must contain one unique group identifier per line.
+>>>>>>> openshift/online
 ====
 
 ----
@@ -213,6 +262,7 @@ $ oadm groups sync --type=openshift             \
 [[running-a-group-pruning-job]]
 == Running a Group Pruning Job
 
+<<<<<<< HEAD
 An administrator can also choose to remove groups from {product-title} records
 if the records on the LDAP server that created them are no longer present. The
 prune job will accept the same sync configuration file and white- or black-lists
@@ -223,6 +273,17 @@ For example, if groups had previously been synchronized from LDAP using some
 server, the following command would determine which Groups in {product-title}
 corresponded to the deleted groups in LDAP and then remove them from
 {product-title}:
+=======
+An administrator can also choose to remove groups from OpenShift records if the
+records on the LDAP server that created them are no longer present. The prune
+job will accept the same sync configuration file and white- or black-lists as
+used for the sync job.
+
+For example, if groups had previously been synchronized from LDAP using some
+*_config.yaml_* file, and some of those groups no longer existed on the LDAP
+server, the following command would determine which Groups in OpenShift
+corresponded to the deleted groups in LDAP and then remove them from OpenShift:
+>>>>>>> openshift/online
 
 ----
 $ oadm groups prune --sync-config=config.yaml --confirm
@@ -239,7 +300,11 @@ members: *Jane* and *Jim*. Each example explains:
 
 * How the group and users are added to the LDAP server.
 * What the LDAP sync configuration file looks like.
+<<<<<<< HEAD
 * What the resulting Group record in {product-title} will be after synchronization.
+=======
+* What the resulting Group record in OpenShift will be after synchronization.
+>>>>>>> openshift/online
 
 [[sync-ldap-rfc-2307]]
 === RFC 2307
@@ -295,10 +360,17 @@ the group.
 To sync this group, you must first create the configuration file. The
 RFC 2307 schema requires you to provide an LDAP query definition for both user
 and group entries, as well as the attributes with which to represent them in the
+<<<<<<< HEAD
 internal {product-title} records.
 
 For clarity, the Group you create in {product-title} should use attributes other
 than the distinguished name whenever possible for user- or administrator-facing
+=======
+internal OpenShift records.
+
+For clarity, the Group you create in OpenShift should use attributes other than
+the distinguished name whenever possible for user- or administrator-facing
+>>>>>>> openshift/online
 fields. For example, identify the users of a Group by their e-mail, and use the
 name of the group as the common name. The following configuration file creates
 these relationships:
@@ -322,6 +394,10 @@ rfc2307:
         baseDN: "ou=groups,dc=example,dc=com"
         scope: sub
         derefAliases: never
+<<<<<<< HEAD
+=======
+        filter: (objectclass=groupOfNames)
+>>>>>>> openshift/online
         pageSize: 0
     groupUIDAttribute: dn <3>
     groupNameAttributes: [ cn ] <4>
@@ -330,6 +406,10 @@ rfc2307:
         baseDN: "ou=users,dc=example,dc=com"
         scope: sub
         derefAliases: never
+<<<<<<< HEAD
+=======
+        filter: (objectclass=inetOrgPerson)
+>>>>>>> openshift/online
         pageSize: 0
     userUIDAttribute: dn <6>
     userNameAttributes: [ mail ] <7>
@@ -341,6 +421,7 @@ stored.
 <2> When `true`, no TLS connection is made to the server. When `false`, secure
 LDAP (`ldaps://`) URLs connect using TLS, and insecure LDAP (`ldap://`) URLs are
 upgraded to TLS.
+<<<<<<< HEAD
 <3> The attribute that uniquely identifies a group on the LDAP server. 
 You cannot specify `groupsQuery` filters when using DN for groupUIDAttribute.
 For fine-grained filtering, use the 
@@ -352,6 +433,13 @@ cannot specify `usersQuery` filters when using DN for userUIDAttribute. For
 fine-grained  filtering, use the 
 xref:../install_config/syncing_groups_with_ldap.adoc#running-ldap-sync[whitelist / blacklist method].
 <7> The attribute to use as the name of the user in the {product-title} Group record.
+=======
+<3> The attribute that uniquely identifies a group on the LDAP server.
+<4> The attribute to use as the name of the Group.
+<5> The attribute on the group that stores the membership information.
+<6> The attribute that uniquely identifies a user on the LDAP server.
+<7> The attribute to use as the name of the user in the OpenShift Group record.
+>>>>>>> openshift/online
 ====
 
 To run sync with the *_rfc2307_config.yaml_* file:
@@ -360,10 +448,17 @@ To run sync with the *_rfc2307_config.yaml_* file:
 $ oadm groups sync --sync-config=rfc2307_config.yaml --confirm
 ----
 
+<<<<<<< HEAD
 {product-title} creates the following Group record as a result of the above sync
 operation:
 
 .{product-title} Group Created Using *_rfc2307_config.yaml_*
+=======
+OpenShift creates the following Group record as a result of the above sync
+operation:
+
+.OpenShift Group Created Using *_rfc2307_config.yaml_*
+>>>>>>> openshift/online
 ====
 [source,yaml]
 ----
@@ -408,6 +503,10 @@ rfc2307:
         baseDN: "ou=groups,dc=example,dc=com"
         scope: sub
         derefAliases: never
+<<<<<<< HEAD
+=======
+        filter: (objectclass=groupOfNames)
+>>>>>>> openshift/online
         pageSize: 0
     groupUIDAttribute: dn <2>
     groupNameAttributes: [ cn ] <3>
@@ -416,14 +515,21 @@ rfc2307:
         baseDN: "ou=users,dc=example,dc=com"
         scope: sub
         derefAliases: never
+<<<<<<< HEAD
         pageSize: 0
     userUIDAttribute: dn <4>
+=======
+        filter: (objectclass=inetOrgPerson)
+        pageSize: 0
+    userUIDAttribute: dn
+>>>>>>> openshift/online
     userNameAttributes: [ mail ]
     tolerateMemberNotFoundErrors: false
     tolerateMemberOutOfScopeErrors: false
 ----
 <1> The user-defined name mapping.
 <2> The unique identifier attribute that is used for the keys in the
+<<<<<<< HEAD
 user-defined name mapping. You cannot specify `groupsQuery` filters when using
 DN for groupUIDAttribute. For fine-grained filtering, use the 
 xref:../install_config/syncing_groups_with_ldap.adoc#running-ldap-sync[whitelist / blacklist method].
@@ -433,6 +539,11 @@ not in the user-defined name mapping.
 cannot specify `usersQuery` filters when using DN for userUIDAttribute. For
 fine-grained  filtering, use the 
 xref:../install_config/syncing_groups_with_ldap.adoc#running-ldap-sync[whitelist / blacklist method].
+=======
+user-defined name mapping.
+<3> The attribute to name OpenShift Groups with if their unique identifier is
+not in the user-defined name mapping.
+>>>>>>> openshift/online
 ====
 
 To run sync with the *_rfc2307_config_user_defined.yaml_* file:
@@ -441,10 +552,17 @@ To run sync with the *_rfc2307_config_user_defined.yaml_* file:
 $ oadm groups sync --sync-config=rfc2307_config_user_defined.yaml --confirm
 ----
 
+<<<<<<< HEAD
 {product-title} creates the following Group record as a result of the above sync
 operation:
 
 .{product-title} Group Created Using *_rfc2307_config_user_defined.yaml_*
+=======
+OpenShift creates the following Group record as a result of the above sync
+operation:
+
+.OpenShift Group Created Using *_rfc2307_config_user_defined.yaml_*
+>>>>>>> openshift/online
 ====
 [source,yaml]
 ----
@@ -462,8 +580,78 @@ users:
 - jim.adams@example.com
 ----
 <1> The name of the Group as specified by the user-defined name mapping.
+<<<<<<< HEAD
+=======
 ====
 
+[[rfc2307-with-error-tolerances]]
+=== RFC 2307 with User-Defined Error Tolerances
+
+By default, if the groups being synced contain members whose entries are outside
+of the scope defined in the member query, the group sync fails with an error:
+
+----
+Error determining LDAP group membership for "<group>": membership lookup for user "<user>" in group "<group>" failed because of "search for entry with dn="<user-dn>" would search outside of the base dn specified (dn="<base-dn>")".
+----
+
+This often indicates a mis-configured `baseDN` in the `usersQuery` field.
+However, in cases where the `baseDN` intentionally does not contain some of the
+members of the group, setting `tolerateMemberOutOfScopeErrors: true` allows
+the group sync to continue. Out of scope members will be ignored.
+
+Similarly, when the group sync process fails to locate a member for a group, it
+fails outright with errors:
+
+----
+Error determining LDAP group membership for "<group>": membership lookup for user "<user>" in group "<group>" failed because of "search for entry with base dn="<user-dn>" refers to a non-existent entry".
+
+Error determining LDAP group membership for "<group>": membership lookup for user "<user>" in group "<group>" failed because of "search for entry with base dn="<user-dn>" and filter "<filter>" did not return any results".
+----
+
+This often indicates a mis-configured `usersQuery` field. However, in cases
+where the group contains member entries that are known to be missing, setting
+`tolerateMemberNotFoundErrors: true` allows the group sync to continue.
+Problematic members will be ignored.
+
+[WARNING]
+>>>>>>> openshift/online
+====
+Enabling error tolerances for the LDAP group sync causes the sync process to
+ignore problematic member entries. If the LDAP group sync is not configured
+correctly, this could result in synced {product-title} groups missing members.
+====
+
+.LDAP Entries Using RFC 2307 Schema With Problematic Group Membership: *_rfc2307_problematic_users.ldif_*
+====
+[source,ldif]
+----
+  dn: ou=users,dc=example,dc=com
+  objectClass: organizationalUnit
+  ou: users
+
+  dn: cn=Jane,ou=users,dc=example,dc=com
+  objectClass: person
+  objectClass: organizationalPerson
+  objectClass: inetOrgPerson
+  cn: Jane
+  sn: Smith
+  displayName: Jane Smith
+  mail: jane.smith@example.com
+
+  dn: cn=Jim,ou=users,dc=example,dc=com
+  objectClass: person
+  objectClass: organizationalPerson
+  objectClass: inetOrgPerson
+  cn: Jim
+  sn: Adams
+  displayName: Jim Adams
+  mail: jim.adams@example.com
+
+  dn: ou=groups,dc=example,dc=com
+  objectClass: organizationalUnit
+  ou: groups
+
+<<<<<<< HEAD
 [[rfc2307-with-error-tolerances]]
 === RFC 2307 with User-Defined Error Tolerances
 
@@ -530,6 +718,8 @@ correctly, this could result in synced {product-title} groups missing members.
   objectClass: organizationalUnit
   ou: groups
 
+=======
+>>>>>>> openshift/online
   dn: cn=admins,ou=groups,dc=example,dc=com
   objectClass: groupOfNames
   cn: admins
@@ -561,6 +751,10 @@ rfc2307:
         baseDN: "ou=groups,dc=example,dc=com"
         scope: sub
         derefAliases: never
+<<<<<<< HEAD
+=======
+        filter: (objectclass=groupOfNames)
+>>>>>>> openshift/online
     groupUIDAttribute: dn
     groupNameAttributes: [ cn ]
     groupMembershipAttributes: [ member ]
@@ -568,7 +762,12 @@ rfc2307:
         baseDN: "ou=users,dc=example,dc=com"
         scope: sub
         derefAliases: never
+<<<<<<< HEAD
     userUIDAttribute: dn <3>
+=======
+        filter: (objectclass=inetOrgPerson)
+    userUIDAttribute: dn
+>>>>>>> openshift/online
     userNameAttributes: [ mail ]
     tolerateMemberNotFoundErrors: true <1>
     tolerateMemberOutOfScopeErrors: true <2>
@@ -581,10 +780,13 @@ found.
 the user scope given in the `usersQuery` base DN, and members outside the member
 query scope are ignored. The default behavior for the sync job is to fail if a
 member of a group is out of scope.
+<<<<<<< HEAD
 <3> The attribute that uniquely identifies a user on the LDAP server. You
 cannot specify `usersQuery` filters when using DN for userUIDAttribute. For
 fine-grained  filtering, use the 
 xref:../install_config/syncing_groups_with_ldap.adoc#running-ldap-sync[whitelist / blacklist method].
+=======
+>>>>>>> openshift/online
 ====
 
 To run sync with the *_rfc2307_config_tolerating.yaml_* file:
@@ -596,7 +798,11 @@ $ oadm groups sync --sync-config=rfc2307_config_tolerating.yaml --confirm
 {product-title} creates the following group record as a result of the above sync
 operation:
 
+<<<<<<< HEAD
 .{product-title} Group Created Using *_rfc2307_config.yaml_*
+=======
+.OpenShift Group Created Using *_rfc2307_config.yaml_*
+>>>>>>> openshift/online
 ====
 [source,yaml]
 ----
@@ -664,9 +870,15 @@ returned to the client, but not committed to the database.
 To sync this group, you must first create the configuration file. The
 Active Directory schema requires you to provide an LDAP query definition for
 user entries, as well as the attributes to represent them with in the internal
+<<<<<<< HEAD
 {product-title} Group records.
 
 For clarity, the Group you create in {product-title} should use attributes other
+=======
+OpenShift Group records.
+
+For clarity, the Group you create in OpenShift should use attributes other
+>>>>>>> openshift/online
 than the distinguished name whenever possible for user- or administrator-facing
 fields. For example, identify the users of a Group by their e-mail, but define
 the name of the Group by the name of the group on the LDAP server.
@@ -690,7 +902,11 @@ activeDirectory:
     userNameAttributes: [ mail ] <1>
     groupMembershipAttributes: [ testMemberOf ] <2>
 ----
+<<<<<<< HEAD
 <1> The attribute to use as the name of the user in the {product-title} Group record.
+=======
+<1> The attribute to use as the name of the user in the OpenShift Group record.
+>>>>>>> openshift/online
 <2> The attribute on the user that stores the membership information.
 ====
 
@@ -700,10 +916,17 @@ To run sync with the *_active_directory_config.yaml_* file:
 $ oadm groups sync --sync-config=active_directory_config.yaml --confirm
 ----
 
+<<<<<<< HEAD
 {product-title} creates the following Group record as a result of the above sync
 operation:
 
 .{product-title} Group Created Using *_active_directory_config.yaml_*
+=======
+OpenShift creates the following Group record as a result of the above sync
+operation:
+
+.OpenShift Group Created Using *_active_directory_config.yaml_*
+>>>>>>> openshift/online
 ====
 [source,yaml]
 ----
@@ -787,9 +1010,15 @@ member: cn=Jim,ou=users,dc=example,dc=com
 To sync this group, you must first create the configuration file. The
 augmented Active Directory schema requires you to provide an LDAP query
 definition for both user entries and group entries, as well as the attributes
+<<<<<<< HEAD
 with which to represent them in the internal {product-title} Group records.
 
 For clarity, the Group you create in {product-title} should use attributes other
+=======
+with which to represent them in the internal OpenShift Group records.
+
+For clarity, the Group you create in OpenShift should use attributes other
+>>>>>>> openshift/online
 than the distinguished name whenever possible for user- or administrator-facing
 fields. For example, identify the users of a Group by their e-mail,
 and use the name of the Group as the common name. The following configuration
@@ -808,6 +1037,10 @@ augmentedActiveDirectory:
         baseDN: "ou=groups,dc=example,dc=com"
         scope: sub
         derefAliases: never
+<<<<<<< HEAD
+=======
+        filter: (objectclass=groupOfNames)
+>>>>>>> openshift/online
         pageSize: 0
     groupUIDAttribute: dn <1>
     groupNameAttributes: [ cn ] <2>
@@ -815,16 +1048,26 @@ augmentedActiveDirectory:
         baseDN: "ou=users,dc=example,dc=com"
         scope: sub
         derefAliases: never
+<<<<<<< HEAD
+=======
+        filter: (objectclass=inetOrgPerson)
+>>>>>>> openshift/online
         pageSize: 0
     userNameAttributes: [ mail ] <3>
     groupMembershipAttributes: [ testMemberOf ] <4>
 ----
+<<<<<<< HEAD
 <1> The attribute that uniquely identifies a group on the LDAP server. You
 cannot specify `groupsQuery` filters when using DN for groupUIDAttribute. For
 fine-grained filtering, use the 
 xref:../install_config/syncing_groups_with_ldap.adoc#running-ldap-sync[whitelist / blacklist method].
 <2> The attribute to use as the name of the Group.
 <3> The attribute to use as the name of the user in the {product-title} Group record.
+=======
+<1> The attribute that uniquely identifies a group on the LDAP server.
+<2> The attribute to use as the name of the Group.
+<3> The attribute to use as the name of the user in the OpenShift Group record.
+>>>>>>> openshift/online
 <4> The attribute on the user that stores the membership information.
 ====
 
@@ -834,7 +1077,11 @@ To run sync with the *_augmented_active_directory_config.yaml_* file:
 $ oadm groups sync --sync-config=augmented_active_directory_config.yaml --confirm
 ----
 
+<<<<<<< HEAD
 {product-title} creates the following Group record as a result of the above sync
+=======
+OpenShift creates the following Group record as a result of the above sync
+>>>>>>> openshift/online
 operation:
 
 .OpenShift Group Created Using *_augmented_active_directory_config.yaml_*

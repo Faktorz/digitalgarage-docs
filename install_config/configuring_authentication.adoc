@@ -1,5 +1,9 @@
 [[install-config-configuring-authentication]]
+<<<<<<< HEAD
 = Configuring Authentication and User Agent
+=======
+= Configuring Authentication
+>>>>>>> openshift/online
 {product-author}
 {product-version}
 :data-uri:
@@ -12,7 +16,11 @@
 toc::[]
 
 == Overview
+<<<<<<< HEAD
 The {product-title}
+=======
+The OpenShift
+>>>>>>> openshift/online
 xref:../architecture/infrastructure_components/kubernetes_infrastructure.adoc#master[master]
 includes a built-in
 xref:../architecture/additional_concepts/authentication.adoc#oauth[OAuth
@@ -98,6 +106,11 @@ openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 
 #openshift_master_request_header_ca_file
 ----
 ====
+<<<<<<< HEAD
+=======
+
+[[identity-providers]]
+>>>>>>> openshift/online
 
 [[identity-providers]]
 == Identity Providers
@@ -105,7 +118,11 @@ You can configure the master host for authentication using your desired identity
 provider by modifying the
 xref:../install_config/master_node_configuration.adoc#install-config-master-node-configuration[master configuration
 file]. The following sections detail the identity providers supported by
+<<<<<<< HEAD
 {product-title}.
+=======
+OpenShift.
+>>>>>>> openshift/online
 
 There are four parameters common to all identity providers:
 
@@ -182,7 +199,11 @@ process.
 user with the preferred user name is already mapped to an existing identity, a
 unique user name is generated. For example, *myuser2*. This method should not be
 used in combination with external processes that require exact matches between
+<<<<<<< HEAD
 {product-title} user names and identity provider user names, such as LDAP group
+=======
+OpenShift user names and identity provider user names, such as LDAP group
+>>>>>>> openshift/online
 sync.
 
 |`*add*` | Provisions a user with the identity's preferred user name. If a user
@@ -197,7 +218,11 @@ the same user names.
 === Allow All
 Set *AllowAllPasswordIdentityProvider* in the `*identityProviders*` stanza to
 allow any non-empty user name and password to log in. This is the default
+<<<<<<< HEAD
 identity provider when running {product-title} without a
+=======
+identity provider when running OpenShift without a
+>>>>>>> openshift/online
 xref:../install_config/master_node_configuration.adoc#install-config-master-node-configuration[master configuration file].
 
 .Master Configuration Using *AllowAllPasswordIdentityProvider*
@@ -267,6 +292,17 @@ link:http://httpd.apache.org/docs/2.4/programs/htpasswd.html[`htpasswd`].
 [NOTE]
 ====
 The `htpasswd` utility is in the `httpd-tools` package:
+<<<<<<< HEAD
+=======
+
+----
+# yum install httpd-tools
+----
+====
+
+Only MD5, bcrypt, and SHA encryption types are supported. MD5 encryption is recommended,
+and is the default for `htpasswd`. Plaintext and crypt hashes are not currently supported.
+>>>>>>> openshift/online
 
 ----
 # yum install httpd-tools
@@ -280,23 +316,56 @@ other hash functions are not currently supported.
 The flat file is reread if its modification time changes, without requiring a
 server restart.
 
-To create the file, run:
+To use the htpasswd command:
 
+// tag::htpasswd[]
+
+* To create a flat file with a user name and hashed password, run:
++
 ----
 $ htpasswd -c </path/to/users.htpasswd> <user_name>
 ----
++
+Then, enter and confirm a clear-text password for the user. The command generates a hashed version of the password.
++
+For example:
++
+----
+htpasswd -c users.htpasswd user1
+New password: 
+Re-type new password: 
+Adding password for user user1
+----
++
+[NOTE]
+====
+You can include the `-b` option to supply the password on the command line:
 
-To add or update a login to the file, run:
+----
+$ htpasswd -c -b <user_name> <password>
+----
 
+For example:
+----
+$ htpasswd -c -b file user1 MyPassword!
+Adding password for user user1
+----
+====
+
+// end::htpasswd[]
+
+* To add or update a login to the file, run:
++
 ----
 $ htpasswd </path/to/users.htpasswd> <user_name>
 ----
 
-To remove a login from the file, run:
-
+* To remove a login from the file, run:
++
 ----
 $ htpasswd -D </path/to/users.htpasswd> <user_name>
 ----
+
 
 .Master Configuration Using *HTPasswdPasswordIdentityProvider*
 ====
@@ -323,6 +392,7 @@ console) are redirected to a login page backed by this provider.
 <4> Controls how mappings are established between this provider's identities and user objects,
 xref:mapping-identities-to-users[as described above].
 <5> File generated using
+<<<<<<< HEAD
 link:http://httpd.apache.org/docs/2.4/programs/htpasswd.html[`htpasswd`].
 ====
 
@@ -367,6 +437,50 @@ xref:mapping-identities-to-users[as described above].
 <7> Optional: Certificate bundle to use to validate server certificates for the configured URL.
 <8> Optional: Client certificate to present when making requests to the configured URL.
 <9> Key for the client certificate. Required if `*certFile*` is specified.
+=======
+http://httpd.apache.org/docs/2.4/programs/htpasswd.html[`htpasswd`].
+>>>>>>> openshift/online
+====
+
+[[KeystonePasswordIdentityProvider]]
+
+=== Keystone
+
+Set *KeystonePasswordIdentityProvider* in the `*identityProviders*` stanza to
+validate user names and passwords against an OpenStack Keystone v3 server.
+This enables shared authentication with an OpenStack server configured to store
+users in an internal Keystone database.
+
+.Master Configuration Using *KeystonePasswordIdentityProvider*
+====
+
+----
+oauthConfig:
+  ...
+  identityProviders:
+  - name: my_keystone_provider <1>
+    challenge: true <2>
+    login: true <3>
+    mappingMethod: claim <4>
+    provider:
+      apiVersion: v1
+      kind: KeystonePasswordIdentityProvider
+      domainName: default <5>
+      ca: ca.pem <6>
+      certFile: keystone.pem <7>
+      keyFile: keystonekey.pem <8>
+----
+<1> This provider name is prefixed to provider user names to form an identity name.
+<2> When *true*, unauthenticated token requests from non-web clients (like the
+CLI) are sent a `WWW-Authenticate` challenge header for this provider.
+<3> When *true*, unauthenticated token requests from web clients (like the web
+console) are redirected to a login page backed by this provider.
+<4> Controls how mappings are established between this provider's identities and user objects,
+xref:mapping-identities-to-users[as described above].
+<5> Keystone domain name. In Keystone, usernames are domain-specific. Only a single domain is supported.
+<6> Optional: Certificate bundle to use to validate server certificates for the configured URL.
+<7> Optional: Client certificate to present when making requests to the configured URL.
+<8> Key for the client certificate. Required if `*certFile*` is specified.
 ====
 
 [[LDAPPasswordIdentityProvider]]
@@ -756,6 +870,12 @@ xref:requestheader-master-ca-config[master's identity provider configuration].
   --serial='/etc/origin/master/proxyca.serial.txt'
 ----
 
+[NOTE]
+The `oadm ca create-signer-cert` command generates a certificate that is valid
+for five years. This can be altered with the `--expire-days` option, but for
+security reasons, it is recommended to not make it greater than this
+value.
+
 Generate a client certificate for the proxy. This can be done using any x509
 certificate tooling. For convenience, the `oadm` CLI can be used:
 
@@ -786,6 +906,12 @@ instead of using the default master certificate as shown above. The value for
 must be included in the `X509v3 Subject Alternative Name` in the certificate
 that is specified for `*SSLCertificateFile*`. If a new certificate needs to be
 created, the `oadm ca create-server-cert` command can be used.
+
+[NOTE]
+The `oadm create-api-client-config` command generates a certificate that is
+valid for two years. This can be altered with the `--expire-days` option, but
+for security reasons, it is recommended to not make it greater than
+this value.
 
 *Configuring Apache*
 
@@ -858,7 +984,7 @@ LoadModule request_module modules/mod_request.so
     AuthUserFile /etc/origin/master/htpasswd
     AuthName openshift
     Require valid-user
-    RequestHeader set X-Remote-User %{REMOTE_USER}s
+    RequestHeader set X-Remote-User %{REMOTE_USER}s env=REMOTE_USER
 
     # For ldap:
     # AuthBasicProvider ldap
@@ -1043,8 +1169,13 @@ the first GitHub login by the organization's administrator, or from the GitHub o
 === GitLab
 
 Set *GitLabIdentityProvider* in the `*identityProviders*` stanza to use
+<<<<<<< HEAD
 link:https://gitlab.com/[GitLab.com] or any other GitLab instance as an identity provider, using the
 link:http://doc.gitlab.com/ce/integration/oauth_provider.html[OAuth integration].
+=======
+https://gitlab.com/[GitLab.com] or any other GitLab instance as an identity provider, using the
+http://doc.gitlab.com/ce/integration/oauth_provider.html[OAuth integration].
+>>>>>>> openshift/online
 The OAuth provider feature requires GitLab version 7.7.0 or higher.
 
 [NOTE]
@@ -1061,7 +1192,11 @@ oauthConfig:
   ...
   identityProviders:
   - name: gitlab <1>
+<<<<<<< HEAD
     challenge: true <2>
+=======
+    challenge: false <2>
+>>>>>>> openshift/online
     login: true <3>
     mappingMethod: claim <4>
     provider:
@@ -1076,13 +1211,21 @@ oauthConfig:
 identity name. It is also used to build the callback URL.
 <2> When *true*, unauthenticated token requests from non-web clients (like
 the CLI) are sent a `WWW-Authenticate` challenge header for this provider.
+<<<<<<< HEAD
 This uses the link:http://doc.gitlab.com/ce/api/oauth2.html#resource-owner-password-credentials[Resource Owner Password Credentials]
+=======
+This uses the http://doc.gitlab.com/ce/api/oauth2.html#resource-owner-password-credentials[Resource Owner Password Credentials]
+>>>>>>> openshift/online
 grant flow to obtain an access token from GitLab.
 <3> When *true*, unauthenticated token requests from web clients (like the web
 console) are redirected to GitLab to log in.
 <4> Controls how mappings are established between this provider's identities and user objects,
 xref:mapping-identities-to-users[as described above].
+<<<<<<< HEAD
 <5> The host URL of a GitLab OAuth provider. This could either be `\https://gitlab.com/`
+=======
+<5> The host URL of a GitLab OAuth provider. This could either be `https://gitlab.com/`
+>>>>>>> openshift/online
 or any other self hosted instance of GitLab.
 <6> The client ID of a
 link:https://gitlab.com/oauth/applications/new[registered GitLab OAuth
@@ -1446,16 +1589,19 @@ within {product-title}:
 So, for example, when:
 
 * <command> = `oc`
-* <version> = `v1.3.0`
+* <version> = The client version. For example, `v3.3.0`. Requests made against the Kubernetes
+API at `/api` receive the Kubernetes version, while requests made against the
+{product-title} API at `/oapi` receive the {product-title} version (as specified
+by `oc version`)
 * <platform> = `linux`
 * <architecture> = `amd64`
-* <client> = `openshift` (or `kubernetes` depending on if you accessed the Kubernetes API in `/api` instead of the {product-title} API in `/oapi`)
+* <client> = `openshift`, or `kubernetes` depending on if the request is made against the Kubernetes API at `/api`, or the {product-title} API at `/oapi`
 * <git_commit> = The Git commit of the client version (for example, `f034127`)
 
 the user agent will be:
 
 ----
-oc/v1.3.0 (linux/amd64) openshift/f034127
+oc/v3.3.0 (linux/amd64) openshift/f034127
 ----
 
 As an {product-title} administrator, you can prevent clients from accessing the

@@ -12,13 +12,20 @@ toc::[]
 
 == Overview
 
+<<<<<<< HEAD
 Your {product-title} cluster by default comes loaded with sets of image
+=======
+Your {product-title} cluster by default comes loaded with a core set of image
+>>>>>>> openshift/online
 streams and templates, which are accessible by all users across the cluster via
 the global *openshift* project. As a cluster administrator, you can add, remove,
 and edit these defaults at your discretion.
 
+<<<<<<< HEAD
 include::install_config/imagestreams_templates.adoc[tag=installconfig_imagestreams_templates2]
 
+=======
+>>>>>>> openshift/online
 The following sections detail the default image streams and templates, and show
 how to modify them or create new ones in the global *openshift* project.
 

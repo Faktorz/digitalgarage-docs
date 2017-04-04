@@ -17,13 +17,17 @@ toc::[]
 This topic provides an end-to-end example of how to use an existing Gluster
 cluster as an {product-title} persistent store. It is assumed that a working
 Gluster cluster is already set up. If not, consult the
-link:https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3/html/Administration_Guide/index.html[Red
+link:https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3.1/html/Administration_Guide/index.html[Red
 Hat Gluster Storage Administration Guide].
 
 xref:../../install_config/persistent_storage/persistent_storage_glusterfs.adoc#install-config-persistent-storage-persistent-storage-glusterfs[Persistent
 Storage Using GlusterFS] provides an explanation of persistent volumes (PVs),
 persistent volume claims (PVCs), and using GlusterFS as persistent storage.
 
+For an end-to-end example of how to dynamically provision GlusterFS volumes, see
+xref:../../install_config/storage_examples/gluster_dynamic_example.adoc#install-config-storage-examples-gluster-dynamic-example[Complete
+Example of Dynamic Provisioning Using GlusterFS]. The persistent volume (PV) and
+endpoints are both created dynamically by GlusterFS.
 
 [NOTE]
 ====
@@ -46,7 +50,11 @@ The {product-title} all-in-one host is often not used to run pod workloads and, 
 ====
 
 [[complete-example-using-gusterfs-creating-the-gluster-endpoints]]
+<<<<<<< HEAD
 == Creating the Gluster Endpoints and Gluster Service for Persistence
+=======
+== Creating the Gluster Endpoints
+>>>>>>> openshift/online
 
 The named endpoints define each node in the Gluster-trusted storage pool:
 
@@ -58,7 +66,7 @@ The named endpoints define each node in the Gluster-trusted storage pool:
 apiVersion: v1
 kind: Endpoints
 metadata:
-  name: gluster-endpoints <1>
+  name: gluster-cluster <1>
 subsets:
 - addresses:              <2>
   - ip: 192.168.122.21
@@ -72,7 +80,8 @@ subsets:
     protocol: TCP
 
 ----
-<1> The name of the endpoints is used in the PV definition below.
+<1> The endpoints name. If using a service, then the endpoints name must match the
+service name.
 <2> An array of IP addresses for each node in the Gluster pool. Currently, host
 names are not supported.
 <3> The port numbers are ignored, but must be legal port numbers. The value *1*
@@ -85,7 +94,7 @@ then create the endpoints object:
 ====
 ----
 # oc create -f gluster-endpoints.yaml
-endpoints "gluster-endpoints" created
+endpoints "gluster-cluster" created
 ----
 ====
 
@@ -93,15 +102,21 @@ Verify that the endpoints were created:
 
 ====
 ----
-# oc get endpoints gluster-endpoints
+# oc get endpoints gluster-cluster
 NAME                ENDPOINTS                           AGE
-gluster-endpoints   192.168.122.21:1,192.168.122.22:1   1m
+gluster-cluster     192.168.122.21:1,192.168.122.22:1   1m
 ----
+====
+
+<<<<<<< HEAD
+[NOTE]
+====
+To persist the Gluster endpoints, you also need to create a service.
 ====
 
 [NOTE]
 ====
-To persist the Gluster endpoints, you also need to create a service.
+Endpoints are name-spaced. Each project accessing the Gluster volume needs its own endpoints.
 ====
 
 .GlusterFS Service Definition
@@ -111,13 +126,14 @@ To persist the Gluster endpoints, you also need to create a service.
 apiVersion: v1
 kind: Service
 metadata:
-  name: gluster-service <1>
+  name: gluster-cluster <1>
 spec:
   ports:
   - port: 1 <2>
 
 ----
-<1> The name of the service.
+<1> The name of the service. If using a service, then the endpoints name must match
+the service name.
 <2> The port should match the same port used in the endpoints.
 ====
 
@@ -127,7 +143,7 @@ then create the endpoints object:
 ====
 ----
 # oc create -f gluster-service.yaml
-endpoints "gluster-service" created
+endpoints "gluster-cluster" created
 ----
 ====
 
@@ -135,13 +151,15 @@ Verify that the service was created:
 
 ====
 ----
-# oc get service gluster-service
+# oc get service gluster-cluster
 NAME                CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-gluster-service   10.0.0.130   <none>        1/TCP     9s
+gluster-cluster     10.0.0.130   <none>        1/TCP     9s
 
 ----
 ====
 
+=======
+>>>>>>> openshift/online
 [[complete-example-using-gusterfs-creating-the-persistent-volume]]
 == Creating the Persistent Volume
 Next, before creating the PV object, define the persistent volume in
@@ -162,7 +180,7 @@ spec:
   accessModes:
   - ReadWriteMany    <3>
   glusterfs:         <4>
-    endpoints: gluster-endpoints        <5>
+    endpoints: gluster-cluster <5>
     path: /HadoopVol <6>
     readOnly: false
   persistentVolumeReclaimPolicy: Retain <7>
@@ -176,9 +194,14 @@ do not define any form of access control.
 plug-in is defined.
 <5> This references the endpoints named above.
 <6> This is the Gluster volume name, preceded by `/`.
+<<<<<<< HEAD
 <7> A volume reclaim policy of *retain* indicates that the volume will be preserved
 after the pods accessing it terminate. Accepted values include Retain, Delete,
 and Recycle.
+=======
+<7> A volume reclaim policy of *retain* indicates that the volume will be
+preserved after the pods accessing it terminate.
+>>>>>>> openshift/online
 ====
 
 Save the PV definition to a file, for example *_gluster-pv.yaml_*,
@@ -266,6 +289,10 @@ drwxrwx---. yarn hadoop system_u:object_r:fusefs_t:s0    HadoopVol
 uid=592(yarn) gid=590(hadoop) groups=590(hadoop)
     <1>
                   <2>
+<<<<<<< HEAD
+=======
+                                     <2>
+>>>>>>> openshift/online
 ----
 <1> The owner has ID 592.
 <2> The group has ID 590.
@@ -294,11 +321,16 @@ is installed.
 ====
 
 [[complete-example-using-gusterfs-creating-the-pod]]
+<<<<<<< HEAD
 == Creating the Pod using NGINX Web Server image
+=======
+== Creating the Pod
+>>>>>>> openshift/online
 A pod definition file or a template file can be used to define a pod. Below is a
 pod specification that creates a single container and mounts the Gluster volume
 for read-write access:
 
+<<<<<<< HEAD
 [NOTE]
 ====
 The NGINX image may require to run in privileged mode to create the mount and
@@ -316,6 +348,9 @@ Context Constraints] provides additional information regarding SCCs.
 ====
 
 .Pod Object Definition using NGINX image
+=======
+.Pod Object Definition
+>>>>>>> openshift/online
 ====
 [source,yaml]
 ----
@@ -328,6 +363,7 @@ metadata:
 spec:
   containers:
   - name: gluster-pod1
+<<<<<<< HEAD
     image: nginx       <2>
     ports:
     - name: web
@@ -340,18 +376,37 @@ spec:
       readOnly: false
   securityContext:
     supplementalGroups: [590]       <5>
+=======
+    image: busybox       <2>
+    command: ["sleep", "60000"]
+    volumeMounts:
+    - name: gluster-vol1 <3>
+      mountPath: /usr/share/busybox <4>
+      readOnly: false
+  securityContext:
+    supplementalGroups: [590]       <5>
+    privileged: false
+>>>>>>> openshift/online
   volumes:
   - name: gluster-vol1   <3>
     persistentVolumeClaim:
       claimName: gluster-claim      <6>
 ----
 <1> The name of this pod as displayed by `oc get pod`.
+<<<<<<< HEAD
 <2> The image run by this pod. In this case, we are using a standard NGINX image.
 <3> The name of the volume. This name must be the same in both the
 `*containers*` and `*volumes*` sections.
 <4> The mount path as seen in the container.
 <5> The `*SupplementalGroup*` ID (Linux Groups) to be assigned at the pod level
 and as discussed this should match the POSIX permissions on the Gluster volume.
+=======
+<2> The image run by this pod. In this case, we are telling *busybox* to sleep.
+<3> The name of the volume. This name must be the same in both the
+`*containers*` and `*volumes*` sections.
+<4> The mount path as seen in the container.
+<5> The group ID to be assigned to the container.
+>>>>>>> openshift/online
 <6> The PVC that is bound to the Gluster cluster.
 ====
 
@@ -383,6 +438,7 @@ More details are shown in the `oc describe pod` command:
 ====
 ----
 # oc describe pod gluster-pod1
+<<<<<<< HEAD
 Name:			gluster-pod1
 Namespace:		default  <1>
 Security Policy:	privileged
@@ -428,6 +484,54 @@ Events:    <4>
   4s		4s		1	{kubelet ose1.rhs}	spec.containers{gluster-pod1}	Normal		Pulled		Successfully pulled image "nginx"
   3s		3s		1	{kubelet ose1.rhs}	spec.containers{gluster-pod1}	Normal		Created		Created container with docker id e67ed01729e1
   3s		3s		1	{kubelet ose1.rhs}	spec.containers{gluster-pod1}	Normal		Started		Started container with docker id e67ed01729e1
+=======
+Name:				gluster-pod1
+Namespace:			default   <1>
+Image(s):			busybox
+Node:				rhel7.2-dev/192.168.122.177
+Start Time:			Tue, 22 Mar 2016 10:55:57 -0700
+Labels:				name=gluster-pod1
+Status:				Running
+Reason:
+Message:
+IP:				10.1.0.2  <2>
+Replication Controllers:	<none>
+Containers:
+  gluster-pod1:
+    Container ID:	docker://acc0c80c28a5cd64b6e3f2848052ef30a21ee850d27ef5fe959d11da4e5a3f4f
+    Image:		busybox
+    Image ID:		docker://964092b7f3e54185d3f425880be0b022bfc9a706701390e0ceab527c84dea3e3
+    QoS Tier:
+      cpu:		BestEffort
+      memory:		BestEffort
+    State:		Running
+      Started:		Tue, 22 Mar 2016 10:56:00 -0700
+    Ready:		True
+    Restart Count:	0
+    Environment Variables:
+Conditions:
+  Type		Status
+  Ready 	True
+Volumes:
+  gluster-vol1:
+    Type:	PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:	gluster-claim  <3>
+    ReadOnly:	false
+  default-token-rbi9o:
+    Type:	Secret (a secret that should populate this volume)
+    SecretName:	default-token-rbi9o
+
+Events:                        <4>
+  FirstSeen	LastSeen	Count	From			SubobjectPath	Reason		Message
+  ─────────	────────	─────	────			─────────────	──────		───────
+  2m		2m		1	{scheduler }				Scheduled	Successfully assigned gluster-pod1 to rhel7.2-dev
+  2m		2m		1	{kubelet rhel7.2-dev}	implicitly required container POD	Pulled		Container image "openshift3/ose-pod:v3.1.1.6" already present on machine
+  2m		2m		1	{kubelet rhel7.2-dev}	implicitly required container POD	Created		Created with docker id d5c66b4f3aaa
+  2m		2m		1	{kubelet rhel7.2-dev}	implicitly required container POD	Started		Started with docker id d5c66b4f3aaa
+  2m		2m		1	{kubelet rhel7.2-dev}	spec.containers{gluster-pod1}		Pulled		Container image "busybox" already present on machine
+  2m		2m		1	{kubelet rhel7.2-dev}	spec.containers{gluster-pod1}		Created		Created with docker id acc0c80c28a5
+  2m		2m		1	{kubelet rhel7.2-dev}	spec.containers{gluster-pod1}		Started		Started with docker id acc0c80c28a5
+>>>>>>> openshift/online
 ----
 <1> The project (namespace) name.
 <2> The IP address of the {product-title} node running the pod.
@@ -446,6 +550,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   annotations:
+<<<<<<< HEAD
     openshift.io/scc: privileged  <1>
   creationTimestamp: 2016-08-24T16:37:45Z
   labels:
@@ -483,10 +588,54 @@ spec:
   securityContext:
     supplementalGroups:
     - 590   <4>
+=======
+    openshift.io/scc: restricted  <1>
+  creationTimestamp: 2016-03-22T17:55:57Z
+  labels:
+    name: gluster-pod1
+  name: gluster-pod1
+  namespace: default              <2>
+  resourceVersion: "511908"
+  selflink: /api/v1/namespaces/default/pods/gluster-pod1
+  uid: 545068a3-f057-11e5-a8e5-5254008f071b
+spec:
+  containers:
+  - command:
+    - sleep
+    - "60000"
+    image: busybox
+    imagePullPolicy: IfNotPresent
+    name: gluster-pod1
+    resources: {}
+    securityContext:
+      privileged: false
+      runAsUser: 1000000000      <3>
+      seLinuxOptions:
+        level: s0:c1,c0          <4>
+    terminationMessagePath: /dev/termination-log
+    volumeMounts:
+    - mountPath: /usr/share/busybox
+      name: gluster-vol1
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-rbi9o
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  host: rhel7.2-dev
+  imagePullSecrets:
+  - name: default-dockercfg-2g6go
+  nodeName: rhel7.2-dev
+  restartPolicy: Always
+  securityContext:
+    seLinuxOptions:
+      level: s0:c1,c0            <4>
+    supplementalGroups:
+    - 590                        <5>
+>>>>>>> openshift/online
   serviceAccount: default
   serviceAccountName: default
   terminationGracePeriodSeconds: 30
   volumes:
+<<<<<<< HEAD
   - name: glustervol
     persistentVolumeClaim:
       claimName: gluster-claim  <5>
@@ -511,12 +660,31 @@ status:
   - containerID: docker://e67ed01729e1dc7369c5112d07531a27a7a02a7eb942f17d1c5fce32d8c31a2d
     image: nginx
     imageID: docker://sha256:4efb2fcdb1ab05fb03c9435234343c1cc65289eeb016be86193e88d3a5d84f6b
+=======
+  - name: gluster-vol1
+    persistentVolumeClaim:
+      claimName: gluster-claim   <6>
+  - name: default-token-rbi9o
+    secret:
+      secretName: default-token-rbi9o
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2016-03-22T17:56:00Z
+    status: "True"
+    type: Ready
+  containerStatuses:
+  - containerID: docker://acc0c80c28a5cd64b6e3f2848052ef30a21ee850d27ef5fe959d11da4e5a3f4f
+    image: busybox
+    imageID: docker://964092b7f3e54185d3f425880be0b022bfc9a706701390e0ceab527c84dea3e3
+>>>>>>> openshift/online
     lastState: {}
     name: gluster-pod1
     ready: true
     restartCount: 0
     state:
       running:
+<<<<<<< HEAD
         startedAt: 2016-08-24T16:37:52Z
   hostIP: 192.168.122.251
   phase: Running
@@ -528,4 +696,19 @@ status:
 <3> The security context level requested, in this case privileged
 <4> The supplemental group ID for the pod (all containers).
 <5> The PVC name used by the pod.
+=======
+        startedAt: 2016-03-22T17:56:00Z
+  hostIP: 192.168.122.177
+  phase: Running
+  podIP: 10.1.0.2
+  startTime: 2016-03-22T17:55:57Z
+----
+<1> The SCC used by the pod.
+<2> The project (namespace) name.
+<3> The UID of the busybox container.
+<4> The ⁠SELinux label for the container, and the default ⁠SELinux label for the
+entire pod, which happen to be the same here.
+<5> The supplemental group ID for the pod (all containers).
+<6> The PVC name used by the pod.
+>>>>>>> openshift/online
 ====

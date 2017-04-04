@@ -16,6 +16,7 @@ toc::[]
 provide database services based on username, password, and database name
 settings provided via configuration.
 
+
 == Versions
 Currently, {product-title} provides version
 link:https://github.com/openshift/mysql/tree/master/5.5[5.5] and
@@ -205,7 +206,7 @@ MySQL settings can be configured with the following environment variables:
 |===
 
 Some of the memory-related parameters have two default values. The fixed value
-is used when a container does not have xref:../../dev_guide/compute_resources.adoc#dev-memory-limits[memory limits]
+is used when a container does not have link:../../dev_guide/compute_resources.html#memory-limits[memory limits]
 assigned. The other value is calculated dynamically during a container's startup
 based on available memory.
 
@@ -230,7 +231,7 @@ configuration in the web console or by listing the environment variables with
 the CLI:
 
 ----
-$ oc env pod <pod_name> --list
+$ oc set env pod <pod_name> --list
 ----
 
 Whenever `*MYSQL_ROOT_PASSWORD*` is set, it enables remote access for the *root*
@@ -246,14 +247,14 @@ starts, it resets the passwords to the values stored in the environment
 variables.
 
 To change these passwords, update one or both of the desired environment
-variables for the related deployment configuration(s) using the `oc env`
+variables for the related deployment configuration(s) using the `oc set env`
 command. If multiple deployment configurations utilize these environment
 variables, for example in the case of an application created from a template,
 you must update the variables on each deployment configuration so that the
 passwords are in sync everywhere. This can be done all in the same command:
 
 ----
-$ oc env dc <dc_name> [<dc_name_2> ...] \
+$ oc set env dc <dc_name> [<dc_name_2> ...] \
   MYSQL_PASSWORD=<new_password> \
   MYSQL_ROOT_PASSWORD=<new_root_password>
 ----
@@ -270,7 +271,7 @@ application, otherwise your pods may fail to redeploy when triggered.
 
 Updating the environment variables triggers the redeployment of the database
 server if you have a
-xref:../../dev_guide/deployments.adoc#config-change-trigger[configuration change
+xref:../../dev_guide/deployments/basic_deployment_operations.adoc#config-change-trigger[configuration change
 trigger]. Otherwise, you must manually start a new deployment in order to apply
 the password changes.
 
@@ -503,9 +504,9 @@ server is started, it will create the database defined by `*MYSQL_DATABASE*` and
 configure the server to replicate this database to slaves.
 
 The example provided defines only one replica of the MySQL master server. This
-causes {product-title}to start only one instance of the server. Multiple
-instances (multi-master) is not supported and therefore you can not scale this
-replication controller.
+causes {product-title} to start only one instance of the server. Multiple instances
+(multi-master) is not supported and therefore you can not scale this replication
+controller.
 
 [[creating-the-mysql-slaves]]
 
@@ -620,7 +621,7 @@ status:
 [[scaling-the-mysql-slaves]]
 === Scaling the MySQL Slaves
 
-To xref:../../dev_guide/deployments.adoc#scaling[increase the number of members]
+To xref:../../dev_guide/deployments/basic_deployment_operations.adoc#scaling[increase the number of members]
 in the cluster:
 
 ----

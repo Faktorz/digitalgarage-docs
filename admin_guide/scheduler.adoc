@@ -242,11 +242,19 @@ To modify the scheduler policy:
 xref:default-scheduler-policy[predicates and priority functions].
 You can create a custom configuration, or modify one of the
 xref:scheduler-sample-policies[sample policy configurations].
+<<<<<<< HEAD
 
 . Restart the {product-title}
 xref:../install_config/master_node_configuration.adoc#launching-servers-using-configuration-files[master services]
 for the changes to take effect.
 
+=======
+
+. Restart the {product-title}
+xref:../install_config/master_node_configuration.adoc#launching-servers-using-configuration-files[master services]
+for the changes to take effect.
+
+>>>>>>> openshift/online
 [[use-cases]]
 == Use Cases
 One of the important use cases for scheduling within {product-title} is to
@@ -293,13 +301,21 @@ were to be specified via the scheduler policy file.
 ----
 kind: "Policy"
 version: "v1"
+<<<<<<< HEAD
 predicates:
+=======
+predicates: 
+>>>>>>> openshift/online
   - name: "PodFitsPorts"
   - name: "PodFitsResources"
   - name: "NoDiskConflict"
   - name: "MatchNodeSelector"
   - name: "HostName"
+<<<<<<< HEAD
 priorities:
+=======
+priorities: 
+>>>>>>> openshift/online
   - name: "LeastRequestedPriority"
     weight: 1
   - name: "BalancedResourceAllocation"
@@ -323,17 +339,28 @@ version: "v1"
 predicates:
 ...
   - name: "RegionZoneAffinity"
+<<<<<<< HEAD
     argument:
       serviceAffinity:
         labels:
+=======
+    argument: 
+      serviceAffinity: 
+        labels: 
+>>>>>>> openshift/online
           - "region"
           - "zone"
 priorities:
 ...
   - name: "RackSpread"
     weight: 1
+<<<<<<< HEAD
     argument:
       serviceAntiAffinity:
+=======
+    argument: 
+      serviceAntiAffinity: 
+>>>>>>> openshift/online
         label: "rack"
 ----
 
@@ -345,14 +372,21 @@ version: "v1"
 predicates:
 ...
   - name: "CityAffinity"
+<<<<<<< HEAD
     argument:
       serviceAffinity:
         labels:
+=======
+    argument: 
+      serviceAffinity: 
+        labels: 
+>>>>>>> openshift/online
           - "city"
 priorities:
 ...
   - name: "BuildingSpread"
     weight: 1
+<<<<<<< HEAD
     argument:
       serviceAntiAffinity:
         label: "building"
@@ -360,6 +394,15 @@ priorities:
     weight: 1
     argument:
       serviceAntiAffinity:
+=======
+    argument: 
+      serviceAntiAffinity: 
+        label: "building"
+  - name: "RoomSpread"
+    weight: 1
+    argument: 
+      serviceAntiAffinity: 
+>>>>>>> openshift/online
         label: "room"
 ----
 
@@ -371,6 +414,7 @@ version: "v1"
 predicates:
 ...
   - name: "RequireRegion"
+<<<<<<< HEAD
     argument:
       labelsPresence:
         labels:
@@ -382,6 +426,19 @@ priorities:
     weight: 1
     argument:
       labelPreference:
+=======
+    argument: 
+      labelsPresence: 
+        labels: 
+          - "region"
+        presence: true
+priorities:
+... 
+  - name: "ZonePreferred"
+    weight: 1
+    argument: 
+      labelPreference: 
+>>>>>>> openshift/online
         label: "zone"
         presence: true
 ----
@@ -394,6 +451,7 @@ version: "v1"
 predicates:
 ...
   - name: "RegionAffinity"
+<<<<<<< HEAD
     argument:
       serviceAffinity:
         labels:
@@ -408,6 +466,22 @@ predicates:
     argument:
       labelsPresence:
         labels:
+=======
+    argument: 
+      serviceAffinity: 
+        labels: 
+          - "region"
+  - name: "RequireRegion"
+    argument: 
+      labelsPresence: 
+        labels: 
+          - "region"
+        presence: true
+  - name: "BuildingNodesAvoid"
+    argument: 
+      labelsPresence: 
+        labels: 
+>>>>>>> openshift/online
           - "building"
         presence: false
   - name: "PodFitsPorts"
@@ -416,6 +490,7 @@ priorities:
 ...
   - name: "ZoneSpread"
     weight: 2
+<<<<<<< HEAD
     argument:
       serviceAntiAffinity:
         label: "zone"
@@ -423,6 +498,15 @@ priorities:
     weight: 1
     argument:
       labelPreference:
+=======
+    argument: 
+      serviceAntiAffinity: 
+        label: "zone"
+  - name: "ZonePreferred"
+    weight: 1
+    argument: 
+      labelPreference: 
+>>>>>>> openshift/online
         label: "zone"
         presence: true
   - name: "ServiceSpreadingPriority"
@@ -476,7 +560,11 @@ control over the labels that certain roles can specify in a pod configuration's
 *pods/binding* permission are prohibited from setting a `nodeSelector` for any
 label that appears in `nodeSelectorLabelBlacklist`.
 
+<<<<<<< HEAD
 As a hypothetical example, an {product-title} cluster might consist of five data
+=======
+As a hypothetical example, an OpenShift cluster might consist of five data
+>>>>>>> openshift/online
 centers spread across two regions. In the U.S., "us-east", "us-central", and
 "us-west"; and in the Asia-Pacific region (APAC), "apac-east" and "apac-west".
 Each node in each geographical region is labeled accordingly. For example,
@@ -560,15 +648,24 @@ kubernetesMasterConfig:
 ----
 ====
 
+<<<<<<< HEAD
 . Restart {product-title} for the changes to take effect.
 ifdef::openshift-origin[]
 +
+=======
+. Restart OpenShift for the changes to take effect:
++
+ifdef::openshift-origin[]
+>>>>>>> openshift/online
 ----
 # systemctl restart origin-master
 ----
 endif::[]
 ifdef::openshift-enterprise[]
+<<<<<<< HEAD
 +
+=======
+>>>>>>> openshift/online
 ----
 # systemctl restart atomic-openshift-master
 ----
@@ -646,15 +743,24 @@ kubernetesMasterConfig:
 ----
 ====
 
+<<<<<<< HEAD
 . Restart {product-title} for the changes to take effect.
 ifdef::openshift-origin[]
 +
+=======
+. Restart OpenShift for the changes to take effect:
++
+ifdef::openshift-origin[]
+>>>>>>> openshift/online
 ----
 # systemctl restart origin-master
 ----
 endif::[]
 ifdef::openshift-enterprise[]
+<<<<<<< HEAD
 +
+=======
+>>>>>>> openshift/online
 ----
 # systemctl restart atomic-openshift-master
 ----

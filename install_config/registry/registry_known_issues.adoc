@@ -59,6 +59,12 @@ Settings] in the
 xref:../../install_config/persistent_storage/persistent_storage_nfs.adoc#install-config-persistent-storage-persistent-storage-nfs[Persistent
 Storage Using NFS] topic for details.
 
+[NOTE]
+====
+The guidelines for NFS are recommended to help you get started. You
+may switch off from NFS when moving to production.
+====
+
 == Pull of Internally Managed Image Fails with "not found" Error
 
 This error occurs when the pulled image is pushed to an image stream different
@@ -86,7 +92,11 @@ Error: image anyproject/pullimagestream:latest not found
 
 To prevent this, avoid the tagging of internally managed images completely, or
 re-push the built image to the desired namespace
+<<<<<<< HEAD
 xref:../../install_config/registry/accessing_registry.adoc#access-pushing-and-pulling-images[manually].
+=======
+xref:access-pushing-and-pulling-images[manually].
+>>>>>>> openshift/online
 
 [[known-issue-s3-image-push-fails]]
 == Image Push Fails with "500 Internal Server Error" on S3 Storage
@@ -99,7 +109,11 @@ error:
 Received unexpected HTTP status: 500 Internal Server Error
 ----
 
+<<<<<<< HEAD
 To debug this, you need to xref:../../install_config/registry/accessing_registry.adoc#registry-viewing-logs[view the registry logs]. In there,
+=======
+To debug this, you need to link:#viewing-logs[view the registry logs]. In there,
+>>>>>>> openshift/online
 look for similar error messages occurring at the time of the failed push:
 
 ----
@@ -123,13 +137,23 @@ If you encounter the following error when pruning images:
 BLOB sha256:49638d540b2b62f3b01c388e9d8134c55493b1fa659ed84e97cb59b87a6b8e6c error deleting blob
 ----
 
+<<<<<<< HEAD
 And your xref:../../install_config/registry/accessing_registry.adoc#registry-viewing-logs[registry log] contains the following information:
+=======
+And your xref:viewing-logs[registry log] contains the following information:
+>>>>>>> openshift/online
 
 ----
 error deleting blob \"sha256:49638d540b2b62f3b01c388e9d8134c55493b1fa659ed84e97cb59b87a6b8e6c\": operation unsupported
 ----
 
+<<<<<<< HEAD
 It means that your xref:../../install_config/registry/extended_registry_configuration.adoc#advanced-overriding-the-registry-configuration[custom configuration file] lacks mandatory entries in the
 xref:../../install_config/registry/extended_registry_configuration.adoc#docker-registry-configuration-reference-storage[storage section], namely
+=======
+It means that your xref:advanced-overriding-the-registry-configuration[custom
+configuration file] lacks mandatory entries in the
+xref:docker-registry-configuration-reference-storage[storage section], namely
+>>>>>>> openshift/online
 `*storage:delete:enabled*` set to *true*. Add them, re-deploy the registry, and
 repeat your image pruning operation.

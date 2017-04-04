@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 [[admin-solutions-user-role-mgmt]]
+=======
+>>>>>>> openshift/online
 = User and Role Management
 {product-author}
 {product-version}
@@ -10,7 +13,29 @@
 
 toc::[]
 
+<<<<<<< HEAD
 [[limiting-and-monitoring-users-and-projects]]
+=======
+== Overview
+As an OpenShift cluster administrator, you can manage users and roles, as well
+as the projects, templates, and available resources they manage themselves. For
+now, this topic focuses on common operations a cluster administrator needs to
+perform. You can:
+
+* link:../admin_solutions/user_role_mgmt.html#setting-limits-users-projects[Place quotas and limits on projects],
+enabling you to control pod and container limits, object counts, and compute
+resources.
+* link:../admin_solutions/user_role_mgmt.html#limit-number-projects[Limit the number of projects a user can have].
+* link:../admin_solutions/user_role_mgmt.html#control-monitor-resources[Monitor resource usage],
+enabling you to check the amount of used resources, such as CPU usage.
+* link:../admin_solutions/user_role_mgmt.html#determine-default-user-roles[Determine which roles users get by default].
+* link:../admin_solutions/user_role_mgmt.html#control-user-roles[Apply roles to users and service accounts],
+enabling you to control what they are able to do in OpenShift projects and in
+the cluster.
+* link:../admin_solutions/user_role_mgmt.html#share-templates-cluster[Share templates with all projects in the cluster].
+* link:../admin_solutions/user_role_mgmt.html#create-cluster-admin[Create other cluster administrators].
+
+>>>>>>> openshift/online
 == Limiting and Monitoring Users and Projects
 
 [[setting-limits-users-projects]]
@@ -18,6 +43,7 @@ toc::[]
 
 *How can I create limits for users and projects?*
 
+<<<<<<< HEAD
 You can place limits within your OpenShift cluster using xref:../admin_guide/quota.adoc#admin-guide-quota[ResourceQuotas]
 and
 xref:../admin_guide/limits.adoc#admin-guide-limits[LimitRanges].
@@ -32,6 +58,17 @@ xref:../admin_solutions/user_role_mgmt.adoc#limit-number-projects[limit on how m
 
 To create a quota in the "awesomeproject" that limits the number of pods that
 can be created to a maximum of 10:
+=======
+You can place limits within your OpenShift cluster using link:../admin_guide/quota.html[ResourceQuotas]
+and
+link:../admin_guide/limits.html[LimitRanges],
+These quotas and limits allow you to control pod and container limits, object
+counts, and compute resources. Currently, these limits and quotas only apply to
+projects and not to users. However, you can make a quota-like
+link:../admin_solutions/user_role_mgmt.html#limit-number-projects[limit on how many project requests a user can make].
+
+*Use Case: I want to create a quota in my "awesomeproject", so that there is a maximum of only 10 pods that can be created in the project.*
+>>>>>>> openshift/online
 
 . Create a *_resource-quota.yaml_* file with the following contents:
 +
@@ -77,13 +114,18 @@ pods     		3	10
 ====
 +
 . Optionally, you can
+<<<<<<< HEAD
 xref:../admin_guide/quota.adoc#configuring-quota-sync-period[configure the quota synchronization period], which controls how long to wait before restoring quota usage after resources are deleted.
+=======
+link:../admin_guide/quota.html#configuring-quota-sync-period[configure the quota synchronization period], which controls how long to wait before restoring quota usage after resources are deleted.
+>>>>>>> openshift/online
 . If you want to remove an active quota to no longer enforce the limits of a project:
 +
 ----
 $ oc delete quota <quota_name>
 ----
 
+<<<<<<< HEAD
 ==== Configuration Options
 
 The 
@@ -111,22 +153,64 @@ include::admin_guide/quota.adoc[tag=admin_quota_object_counts_2]
 
 include::admin_guide/quota.adoc[tag=admin_quota_compute_resources]
 
+=======
+*The use case above is just a basic example. Below is the same procedure, but with references to all the available options:*
+
+. To create project limits or quotas, you must first write a .yaml file that describes the resource that you want to restrict:
+
+* This *_LimitRange_* example explains all the
+link:../admin_guide/limits.html#container-limits[container limits] and
+link:../admin_guide/limits.html#pod-limits[pod limits] that you can place within
+your project:
++
+include::admin_guide/limits.adoc[tag=admin_limits_sample_definitions]
++
+* These *_ResourceQuota_* examples explain all the
+link:../admin_guide/quota.html#sample-resource-quota-definitions[Object Counts]
+and
+link:../admin_guide/quota.html#sample-resource-quota-definitions[Compute Resources] that you can place within your project:
++
+include::admin_guide/quota.adoc[tag=admin_quota_object_counts]
++
+include::admin_guide/quota.adoc[tag=admin_quota_compute_resources]
++
+. Once you have defined your limit range object file, you can create a limit range:
++
+----
+$ oc create -f <limit_range_file> -n <project_name>
+----
++
+The `-n` flag is optional. Use it to create the limit in a different project
+than the one you currently are in.
+>>>>>>> openshift/online
 
 [[limit-number-projects]]
 === Limiting the Number of Projects a User Can Have
 
 You can
+<<<<<<< HEAD
 xref:../admin_guide/managing_projects.adoc#limit-projects-per-user[limit the number of projects] that a user may request by categorizing users with label selectors with the `oc label` command. A label selector consists of the label name and the label value:
+=======
+link:../admin_guide/managing_projects.html#limit-projects-per-user[limit the number of projects] that a user may request by categorizing users with label selectors with the `oc label` command. A label selector consists of the label name and the label value:
+>>>>>>> openshift/online
 
 ----
 label=value
 ----
 
 Once users are labeled, you must
+<<<<<<< HEAD
 xref:../admin_guide/managing_projects.adoc#modifying-the-template-for-new-projects[modify the default project template] in the *_master-config.yaml_* file
 xref:../architecture/additional_concepts/admission_controllers.adoc#architecture-additional-concepts-admission-controllers[using an admission control plug-in]. This allows some users to create more projects than others, and you can define different values (or levels) for each label.
 
 *Limiting how many projects a user can request by defining three different privilege levels*
+=======
+link:../admin_guide/managing_projects.html#modifying-the-template-for-new-projects[modify the default project template] in the *_master-config.yaml_* file
+link:../architecture/additional_concepts/admission_controllers.html[using an admission control plug-in]. This allows some users to create more projects than others, and you can define different values (or levels) for each label.
+
+*Use Case: You want to define 3 different levels for your users which define how
+*many projects they can request.*
+>>>>>>> openshift/online
 
 The label is named `level`, and the possible values are  `bronze`, `silver`,
 `gold`, and `platinum`. Platinum users do not have a maximum number of project
@@ -134,6 +218,7 @@ requests, gold users can request up to 10 projects, silver users up to 7
 projects, bronze users up to 5 projects, and any users without a label are by
 default only allowed 2 projects.
 
+<<<<<<< HEAD
 Each user can only have one value per label. For example, a user cannot be both
 `gold` and `silver` for the level label. However, when configuring the
 *_master-config.yaml_* file, you could select users that have any value for a
@@ -141,6 +226,8 @@ label with a wildcard; for example, `level=*`.
 
 To define privilege levels for project requests:
 
+=======
+>>>>>>> openshift/online
 . Apply label selectors to users. For example, to apply the `level` label selector with a value of `bronze`:
 +
 ----
@@ -148,6 +235,18 @@ $ oc label user <user_name> level=bronze
 ----
 +
 Repeat this step for all bronze users, and then for the other levels.
+<<<<<<< HEAD
+=======
++
+[NOTE]
+====
+Each user can only have one value per label. For example, a user cannot be both
+`gold` and `silver` for the level label. However, when configuring the
+*_master-config.yaml_* file, you could select users that have any value for a
+label with a wildcard; for example, `level=*`.
+====
++
+>>>>>>> openshift/online
 . Optionally, verify the previous step by viewing the list of labeled users for each value:
 +
 ----
@@ -227,7 +326,11 @@ $ oc describe quota <quota-name>
 ----
 
 Alternatively, you can set up
+<<<<<<< HEAD
 xref:../install_config/cluster_metrics.adoc#install-config-cluster-metrics[cluster metrics] for more detailed statistics.
+=======
+link:../install_config/cluster_metrics.html[cluster metrics] for more detailed statistics.
+>>>>>>> openshift/online
 
 [[determine-default-user-roles]]
 == Determining Which Roles Users Get by Default
@@ -235,9 +338,15 @@ xref:../install_config/cluster_metrics.adoc#install-config-cluster-metrics[clust
 When a user first logs in, there is a default set of permissions that is
 applied to that user. The scope of permissions that a user can have is
 controlled by the
+<<<<<<< HEAD
 xref:../architecture/additional_concepts/authorization.adoc#roles[various types]
 of
 xref:../admin_guide/manage_authorization_policy.adoc#admin-guide-manage-authorization-policy[roles within OpenShift]:
+=======
+link:../architecture/additional_concepts/authorization.html#roles[various types]
+of
+link:../admin_guide/manage_authorization_policy.html[roles within OpenShift]:
+>>>>>>> openshift/online
 
 - `ClusterRoles`
 - `ClusterRoleBindings`
@@ -245,8 +354,13 @@ xref:../admin_guide/manage_authorization_policy.adoc#admin-guide-manage-authoriz
 - `RoleBindings` (project-scoped)
 
 You may want to modify the default set of permissions. In order to do this, it's important to understand the default groups and roles assigned, and to be aware of the roles and users bound to
+<<<<<<< HEAD
 xref:../admin_solutions/user_role_mgmt.adoc#view-roles-users-project[each project] or
 xref:../admin_solutions/user_role_mgmt.adoc#view-roles-users-cluster[the entire cluster].
+=======
+link:../admin_solutions/user_role_mgmt.html#view-roles-users-project[each project] or
+link:../admin_solutions/user_role_mgmt.html#view-roles-users-cluster[the entire cluster].
+>>>>>>> openshift/online
 
 === Leveraging Default Groups
 
@@ -274,7 +388,11 @@ For example, you could share a template with all users by granting
 The "default" permissions of users are defined by which roles are bound to the
 `system:authenticated` and `sytem:authenticated:oauth` groups. As mentioned
 above, you are not able to modify membership to these groups, but you can
+<<<<<<< HEAD
 xref:../admin_guide/manage_authorization_policy.adoc#managing-role-bindings[change the roles bound to these groups].
+=======
+link:../admin_guide/manage_authorization_policy.html#managing-role-bindings[change the roles bound to these groups].
+>>>>>>> openshift/online
 For example, to bind a role to the `system:authenticated` group for all projects
 in the cluster:
 
@@ -374,7 +492,11 @@ These commands can generate huge lists, so you may want to pipe the output into 
 == Controlling User Permissions with Roles
 
 You can define
+<<<<<<< HEAD
 xref:../admin_guide/manage_authorization_policy.adoc#admin-guide-manage-authorization-policy[roles] (or permissions)
+=======
+link:../admin_guide/manage_authorization_policy.html[roles] (or permissions)
+>>>>>>> openshift/online
 for a user before their initial log in so they can start working immediately.
 You can assign many different types of roles to users such as admin,
 basic-user, self-provisioner, and cluster-reader.
@@ -388,7 +510,11 @@ $ oadm policy
 The following section includes examples of some common operations related to
 adding (binding) and removing roles from users and groups. For a complete list
 of available local policy operations, see
+<<<<<<< HEAD
 xref:../admin_guide/manage_authorization_policy.adoc#managing-role-bindings[Managing Role Bindings].
+=======
+link:../admin_guide/manage_authorization_policy.html#managing-role-bindings[Managing Role Bindings].
+>>>>>>> openshift/online
 
 === Adding a Role to a User
 
@@ -413,7 +539,11 @@ You can specify a project with the `-n` flag.
 === Adding a Cluster Role to a User for All Projects
 
 To bind a
+<<<<<<< HEAD
 xref:../architecture/additional_concepts/authorization.adoc#cluster-policy-and-local-policy[cluster role]
+=======
+link:../architecture/additional_concepts/authorization.html#cluster-policy-and-local-policy[cluster role]
+>>>>>>> openshift/online
 to a user for all projects:
 
 ----
@@ -423,7 +553,11 @@ $ oadm policy add-cluster-role-to-user <role> <user_name>
 === Removing a Cluster Role from a User for All Projects
 
 To remove a
+<<<<<<< HEAD
 xref:../architecture/additional_concepts/authorization.adoc#cluster-policy-and-local-policy[cluster role]
+=======
+link:../architecture/additional_concepts/authorization.html#cluster-policy-and-local-policy[cluster role]
+>>>>>>> openshift/online
 from a user for all projects:
 
 ----
@@ -466,6 +600,158 @@ To remove a role from a specified group for all projects in the cluster:
 $ oadm policy remove-cluster-role-from-group <role> <groupname>
 ----
 
+[[role-binding-restriction]]
+== Restricting Role Bindings
+
+By default, a project administrator can create role bindings within the project
+that specify any users, groups, or service accounts in the cluster as subjects
+of those bindings. However, the cluster administrator can define restrictions in
+order to allow only specific subjects.
+
+The administrator defines these restrictions in the form of
+RoleBindingRestriction objects. An individual RoleBindingRestriction object is
+specific to a project or namespace. Role bindings in a namespace are restricted
+by the RoleBindingRestriction objects in that namespace. Restrictions on
+subjects are enforced as follows:
+
+. If no RoleBindingRestriction object exists within a particular namespace, then
+no restrictions are enforced in that namespace (i.e., any subject is allowed).
+
+. If any RoleBindingRestriction object in the namespace matches a subject, then
+that subject is allowed.
+
+. If one or more RoleBindingRestriction objects exist in the namespace, but none
+matches a given subject, then that subject is not allowed.
+
+Each RoleBindingRestriction object can match subjects of one type: users,
+groups, or service accounts.  Users can be matched by name, label selector, or
+group membership.  Groups can be matched by name or label selector.  Service
+accounts can be matched by name or namespace.
+
+Role binding restrictions are enforced by the RestrictSubjectBindings admission
+control plug-in, which is disabled by default. To enable it, add the following
+stanza to the *_master-config.yaml_* file:
+
+====
+[source,yaml]
+----
+admissionConfig:
+  pluginConfig:
+    openshift.io/RestrictSubjectBindings:
+      configuration:
+        apiversion: v1
+        kind: DefaultAdmissionConfig
+----
+====
+
+Restart the {product-title} master for the change to take effect:
+ifdef::openshift-origin[]
++
+----
+# systemctl restart origin-master
+----
+endif::[]
+ifdef::openshift-enterprise[]
++
+----
+# systemctl restart atomic-openshift-master
+----
+endif::[]
+
+The following example creates a role binding restriction that permits role
+bindings that have matching users as subjects:
+
+.Example Role Binding Restriction Matching Users
+----
+$ oc create -f - -n swoodilypoopers <<EOF
+apiVersion: v1
+kind: RoleBindingRestriction
+metadata:
+  name: match-users
+spec:
+  userrestriction: <1>
+    users: <2>
+    - callum
+    - seb
+    groups: <3>
+    - swoodilypoopers
+    labels: <4>
+    - mvp: true
+EOF
+rolebindingrestriction "match-users" created
+----
+<1> Match against user subjects. A RoleBindingRestriction spec must specify
+exactly one of "userrestriction", "grouprestriction", or
+"serviceaccountrestriction".
+<2> Match any user with the name "callum" or "seb".
+<3> Match any user that is in the "swoodilypoopers" group.
+<4> Match any user that matches the specified label selector.
+
+With the foregoing RoleBindingRestriction, role bindings with the subject
+"callum" or "seb" will be allowed. Role bindings with subjects that are members
+of the "swoodilypoopers" group or who match the specified label will also be
+allowed. The admission control plug-in will prohibit bindings with any subject
+that is not matched by some RoleBindingRestriction in the namespace:
+
+.Example of RoleBindingRestriction Enforcement
+----
+$ oadm policy add-role-to-user view ojgreen -n swoodilypoopers
+Error from server: rolebindings "view" is forbidden: rolebindings to User "ojgreen" are not allowed in project "swoodilypoopers"
+$ oadm policy add-role-to-user view callum seb -n swoodilypoopers
+$ oc get rolebindings/view -n swoodilypoopers
+NAME      ROLE      USERS        GROUPS    SERVICE ACCOUNTS   SUBJECTS
+view      /view     callum, seb
+----
+
+The following example creates a role binding restriction that permits role
+bindings with the group "swoodilypoopers" as the subject:
+
+.Example Role Binding Restriction Matching Groups
+----
+$ oc create -f - -n wimblywomblys <<EOF
+apiVersion: v1
+kind: RoleBindingRestriction
+metadata:
+  name: match-groups
+spec:
+  grouprestriction: <1>
+    groups:
+    - wimblywomblys <2>
+    labels:
+    - division: four <3>
+EOF
+rolebindingrestriction "match-groups" created
+----
+<1> Match against group subjects.
+<2> Match any group with the name "wimblywomblys".
+<3> Match any group that matches the specified label selector.
+
+.Example Role Binding Restriction Matching Service Accounts
+----
+$ oc create -f - -n wimblywomblys <<EOF
+apiVersion: v1
+kind: RoleBindingRestriction
+metadata:
+  name: match-sa
+spec:
+  serviceaccountrestriction: <1>
+    serviceaccounts:
+    - name: wimbler
+      namespace: wimbledon <2>
+    - name: wombler
+      namespace: "" <3>
+    namespaces:
+    - wimblewomble <4>
+EOF
+rolebindingrestriction "match-sa" created
+----
+<1> Match against service account subjects.
+<2> Match any service account with the name "wimbler" in the namespace
+"wimbledon".
+<3> Match any service account with the name "wombler" in the same namespace as
+the RoleBindingRestriction object (in this case, the "wimblywomblys" namespace).
+<4> Match any service account in the "wimblewomble" namespace.
+
 [[share-templates-cluster]]
 == Sharing Templates for Use in Projects Across the Cluster
 
@@ -499,7 +785,11 @@ $ oc policy add-role-to-user registry-viewer <user-name>
 ----
 
 [[create-cluster-admin]]
+<<<<<<< HEAD
 == Creating a Cluster Administrator User
+=======
+== How to Create a Cluster Administrator User
+>>>>>>> openshift/online
 
 Cluster administrator is a very powerful role, which has ultimate control
 within the cluster, including the power to destroy that cluster. You can grant
@@ -509,7 +799,11 @@ want to create such a powerful user. For example, `admin` is a constrained
 role that has the power to do many things inside of their project, but cannot
 affect (or destroy) the entire cluster.
 
+<<<<<<< HEAD
 === Creating an Administrator Within a Project
+=======
+=== Create an Administrator Within a Project
+>>>>>>> openshift/online
 
 To create a basic administrator role within a project:
 

@@ -11,6 +11,7 @@
 toc::[]
 
 include::getting_started/developers_cli.adoc[tag=overview]
+include::getting_started/developers_cli.adoc[tag=overview-online]
 
 [[getting-started-developers-console-languages]]
 
@@ -44,10 +45,10 @@ include::getting_started/developers_cli.adoc[tag=forking]
 == Creating a Project
 
 To create an application, you must first create a new project, then select an
-InstantApp template. From there, {product-title} begins the build process and
-creates a new deployment.
+InstantApp template. From there, OpenShift begins the build process and creates
+a new deployment.
 
-. Visit the {product-title} web console in your browser. The web console uses a self-signed certificate, so if prompted, continue past a browser warning.
+. Visit the web console in your browser. The web console uses a self-signed certificate, so if prompted, continue past a browser warning.
 . Log in using the username and password recommended to you by your administrator.
 . To create a new project, click *New Project*.
 . Type a unique name, display name, and description for the new project.

@@ -61,6 +61,7 @@ xref:../../architecture/additional_concepts/authorization.adoc#security-context-
 endif::[]
 
 ifdef::openshift-origin[]
+<<<<<<< HEAD
 == Configuring the Router Service Account
 Router service account must have permissions to a
 xref:../../architecture/additional_concepts/authorization.adoc#security-context-constraints[security
@@ -78,16 +79,48 @@ You can also use 'privileged' SCC for running your router, but it is recommended
 to use only the necessary SCC for running router.
 ====
 
+=======
+== Creating the Router Service Account
+You must first create a
+xref:../../admin_guide/service_accounts.adoc#admin-guide-service-accounts[service account]
+for the router before deploying. This service account must have permissions to a
+xref:../../architecture/additional_concepts/authorization.adoc#security-context-constraints[security
+context constraint] (SCC) that allows it to specify host ports.
+
+To create a service account named *router* in the *default* namespace:
+
+====
+----
+$ oc create serviceaccount router -n default
+----
+====
+
+To add a privileged SCC to the *router* service account in the *default* namespace:
+
+====
+----
+$ oadm policy add-scc-to-user privileged system:serviceaccount:default:router
+----
+====
+>>>>>>> openshift/online
 // See NB[1] below.
 endif::[]
 
 
 // NB[1]: The following blurb+codeblock is to both:
+<<<<<<< HEAD
 // - Configuring the Router Service Account (origin)
 // - Router Service Account (enterprise)
 // and both of these have anchor ‘creating-the-router-service-account’.
 
 Use of labels (e.g., to define xref:../../install_config/router/default_haproxy_router.adoc#using-router-shards[router shards])
+=======
+// - Creating the Router Service Account (origin)
+// - Router Service Account (enterprise)
+// and both of these have anchor ‘creating-the-router-service-account’.
+
+Use of labels (e.g., to define xref:using-router-shards[router shards])
+>>>>>>> openshift/online
 requires `cluster-reader` permission.
 
 ----
@@ -95,6 +128,7 @@ $ oadm policy add-cluster-role-to-user \
     cluster-reader \
     system:serviceaccount:default:router
 ----
+<<<<<<< HEAD
 
 ifdef::openshift-origin[]
 With a service account in place, you can proceed to installing
@@ -105,3 +139,5 @@ customized HAProxy Router] or
 xref:../../install_config/router/f5_router.adoc#install-config-router-f5[F5
 Router].
 endif::[]
+=======
+>>>>>>> openshift/online

@@ -12,10 +12,9 @@ toc::[]
 
 == Overview
 A CLI configuration file allows you to configure different profiles, or
-_contexts_, for use with the xref:index.adoc#cli-reference-index[{product-title} CLI]. A context
+_contexts_, for use with the xref:index.adoc#cli-reference-index[OpenShift CLI]. A context
 consists of xref:../architecture/additional_concepts/authentication.adoc#architecture-additional-concepts-authentication[user
-authentication] and{product-title} server information associated with a
-_nickname_.
+authentication] and {product-title} server information associated with a _nickname_.
 
 [[switching-between-cli-profiles]]
 

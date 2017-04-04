@@ -66,6 +66,7 @@ authentication provider after starting to use {product-title}, the user names
 that overlap will not work because of the entries in the identity list, which
 will still point to the old authentication method.
 
+<<<<<<< HEAD
 [[managing-users-managing-user-and-group-labels]]
 == Managing User and Group Labels
 
@@ -93,6 +94,8 @@ To show labels for a user or group:
 $ oc describe user/<user_name>
 ----
 
+=======
+>>>>>>> openshift/online
 [[managing-users-deleting-a-user]]
 == Deleting a User
 

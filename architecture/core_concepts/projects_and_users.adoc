@@ -54,11 +54,9 @@ Service accounts are represented with the `*ServiceAccount*` object. Examples:
 
 |===
 
-Every user must xref:../additional_concepts/authentication.adoc#architecture-additional-concepts-authentication[authenticate] in
-some way in order to access {product-title}. API requests with no authentication
-or invalid authentication are authenticated as requests by the `*anonymous*`
-system user. Once authenticated, policy determines what the user is
-xref:../additional_concepts/authorization.adoc#architecture-additional-concepts-authorization[authorized] to do.
+Every user must xref:../additional_concepts/authentication.adoc#architecture-additional-concepts-authentication[authenticate] in some way in order to access {product-title}.
+API requests with no authentication or invalid authentication are authenticated as requests by the `*anonymous*` system user.
+Once authenticated, policy determines what the user is xref:../additional_concepts/authorization.adoc#architecture-additional-concepts-authorization[authorized] to do.
 
 [[namespaces]]
 == Namespaces

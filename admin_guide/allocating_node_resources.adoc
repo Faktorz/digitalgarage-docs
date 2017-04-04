@@ -101,6 +101,7 @@ status:
 ----
 ====
 
+<<<<<<< HEAD
 [[system-resources-reported-by-node]]
 == System Resources Reported by Node
 
@@ -155,6 +156,8 @@ $ curl <certificate details> https://<master>/api/v1/nodes/cluster.node22/proxy/
 
 See xref:../rest_api/index.adoc[REST API Overview] for more details about certificate details.
 
+=======
+>>>>>>> openshift/online
 [[allocating-node-scheduler]]
 == Scheduler
 

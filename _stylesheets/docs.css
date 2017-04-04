@@ -430,7 +430,8 @@ table tr.even, table tr.alt, table tr:nth-of-type(even) { background: #f9f9f9; }
 table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td { display: table-cell; line-height: 1.6; }
 .clearfix:before, .clearfix:after, .float-group:before, .float-group:after { content: " "; display: table; }
 .clearfix:after, .float-group:after { clear: both; }
-*:not(pre) > code { font-size: inherit; padding: 0; white-space: nowrap; background-color: inherit; border: 0 solid #dddddd; -webkit-border-radius: 4px; border-radius: 4px; text-shadow: none; line-height: 1; }
+*:not(pre) > code { font-size: inherit; padding: 0; white-space: nowrap; background-color: #e7e7e7; border: 0 solid #dddddd; -webkit-border-radius: 0px; border-radius: 0px; text-shadow: none; line-height: 1; }
+pre code { text-shadow: none; }
 .keyseq { color: #666666; }
 kbd:not(.keyseq) { display: inline-block; color: #333333; font-size: 0.75em; line-height: 1.4; background-color: #f7f7f7; border: 1px solid #ccc; -webkit-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset; margin: -0.15em 0.15em 0 0.15em; padding: 0.2em 0.6em 0.2em 0.5em; vertical-align: middle; white-space: nowrap; }
 .keyseq kbd:first-child { margin-left: 0; }
@@ -506,7 +507,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p { font-si
 .sidebarblock h1.subheader, .sidebarblock h2.subheader, .sidebarblock h3.subheader, .sidebarblock .subheader#toctitle, .sidebarblock > .content > .subheader.title, .sidebarblock h4.subheader, .sidebarblock h5.subheader, .sidebarblock h6.subheader { line-height: 1.4; }
 .sidebarblock > .content > .title { color: #7a2518; margin-top: 0; line-height: 1.6; }
 .exampleblock > .content > :last-child > :last-child, .exampleblock > .content .olist > ol > li:last-child > :last-child, .exampleblock > .content .ulist > ul > li:last-child > :last-child, .exampleblock > .content .qlist > ol > li:last-child > :last-child, .sidebarblock > .content > :last-child > :last-child, .sidebarblock > .content .olist > ol > li:last-child > :last-child, .sidebarblock > .content .ulist > ul > li:last-child > :last-child, .sidebarblock > .content .qlist > ol > li:last-child > :last-child { margin-bottom: 0; }
-.literalblock pre, .literalblock pre[class], .listingblock pre, .listingblock pre[class] { border: 0px; background-color: #F0F3F5; -webkit-border-radius: 5px; border-radius: 5px; padding: 1.5em 2.5em; word-wrap: break-word; }
+.literalblock pre, .literalblock pre[class], .listingblock pre, .listingblock pre[class] { border: 0px; background-color: #e7e7e7; -webkit-border-radius: 0px; border-radius: 0px; padding: 1.5em 2.5em; word-wrap: break-word; color: #404040; font-family: "Roboto Mono", monospace; }
 .literalblock pre.nowrap, .literalblock pre[class].nowrap, .listingblock pre.nowrap, .listingblock pre[class].nowrap { overflow-x: auto; white-space: pre; word-wrap: normal; }
 .literalblock pre > code, .literalblock pre[class] > code, .listingblock pre > code, .listingblock pre[class] > code { display: block; }
 .listingblock > .content { position: relative; }
@@ -553,12 +554,12 @@ table.grid-rows tfoot > tr > th.tableblock, table.grid-rows tfoot > tr > td.tabl
 table.frame-all { border-width: 1px; }
 table.frame-sides { border-width: 0 1px; }
 table.frame-topbot { border-width: 1px 0; }
-th.halign-left, td.halign-left { text-align: left; }
-th.halign-right, td.halign-right { text-align: right; }
-th.halign-center, td.halign-center { text-align: center; }
-th.valign-top, td.valign-top { vertical-align: top; }
-th.valign-bottom, td.valign-bottom { vertical-align: bottom; }
-th.valign-middle, td.valign-middle { vertical-align: middle; }
+table.tableblock th.halign-left, table.tableblock td.halign-left { text-align: left; }
+table.tableblock th.halign-right, table.tableblock td.halign-right { text-align: right; }
+table.tableblock th.halign-center, table.tableblock td.halign-center { text-align: center; }
+table.tableblock th.valign-top, table.tableblock td.valign-top { vertical-align: top; }
+table.tableblock th.valign-bottom, table.tableblock td.valign-bottom { vertical-align: bottom; }
+table.tableblock th.valign-middle, table.tableblock td.valign-middle { vertical-align: middle; }
 table thead th, table tfoot th { font-weight: bold; }
 tbody tr th { display: table-cell; line-height: 1.6; background: whitesmoke; }
 tbody tr th, tbody tr th p, tfoot tr th, tfoot tr th p { color: #333333; font-weight: bold; }
@@ -608,6 +609,10 @@ span.footnote a:active, span.footnoteref a:active { text-decoration: underline; 
 .gist .file-data > table { border: none; background: #fff; width: 100%; margin-bottom: 0; }
 .gist .file-data > table td.line-data { width: 99%; }
 div.unbreakable { page-break-inside: avoid; }
+code { color: #404040; background-color: #e7e7e7; font-weight: bold; font-family: "Roboto Mono", monospace;}
+strong { color: #404040; font-weight: bold; font-family: "Roboto Mono", monospace; }
+a strong { color: inherit; }
+a code { color: inherit; }
 .replaceable { font-style: italic; font-color: inherit; font-family: inherit; }
 .parameter { font-style: italic; font-family: monospace; }
 .userinput { font-weight: bold; font-family: monospace; }
@@ -659,7 +664,7 @@ span.icon > .fa { cursor: default; }
 .admonitionblock td.icon .icon-warning:before { content: "\f071"; color: #ec7a08; }
 .admonitionblock td.icon .icon-caution:before { content: "\f06d"; color: #ec7a08; }
 .admonitionblock td.icon .icon-important:before { content: "\f06a"; color: #c00; }
-.conum[data-value] { display: inline-block; color: white !important; background-color: #333333; -webkit-border-radius: 100px; border-radius: 100px; text-align: center; width: 20px; height: 20px; font-size: 12px; line-height: 20px; font-family: "Open Sans", "Sans", sans-serif; font-style: normal; font-weight: bold; text-indent: -1px; }
+.conum[data-value] { display: inline-block; color: white !important; background-color: #c00; -webkit-border-radius: 100px; border-radius: 100px; text-align: center; width: 20px; height: 20px; font-size: 12px; line-height: 20px; font-family: "Open Sans", "Sans", sans-serif; font-style: normal; font-weight: bold; text-indent: -1px; }
 .conum[data-value] * { color: white !important; }
 .conum[data-value] + b { display: none; }
 .conum[data-value]:after { content: attr(data-value); }

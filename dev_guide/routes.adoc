@@ -12,9 +12,9 @@ toc::[]
 
 == Overview
 
-An {product-title} xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[route] exposes
-a xref:../architecture/core_concepts/pods_and_services.adoc#services[service] at
-a host name, like _www.example.com_, so that external clients can reach it by
+An {product-title} xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[route] exposes a
+xref:../architecture/core_concepts/pods_and_services.adoc#services[service] at a
+host name, like _www.example.com_, so that external clients can reach it by
 name.
 
 DNS resolution for a host name is handled separately from routing;
@@ -113,6 +113,14 @@ spec:
       -----END CERTIFICATE-----
 ----
 ====
+
+Currently, password protected key files are not supported. HAProxy prompts for
+a password upon starting and does not have a way to automate this process. To
+remove a passphrase from a keyfile, you can run:
+
+----
+# openssl rsa -in <passwordProtectedKey.key> -out <new.key>
+----
 
 You can create a secured route without specifying a key and certificate,
 in which case the

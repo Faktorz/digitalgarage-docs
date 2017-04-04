@@ -160,7 +160,11 @@ human-readable name exists. This is used as a hint when provisioning the
 error: `{"error":"Error message"}`
 
 [[view-users-basic-auth]]
+<<<<<<< HEAD
 === Verifying Users
+=======
+=== Viewing Users
+>>>>>>> openshift/online
 
 Once one or more users have logged in, you can run `oc get users` to view a
 list of users and verify that users were created successfully. 
@@ -305,13 +309,21 @@ using as an authentication server, and if required you must add the users to
 that system. 
 
 [[view-users-request-header-auth]]
+<<<<<<< HEAD
 === Verifying Users
+=======
+=== Viewing Users
+>>>>>>> openshift/online
 
 Once one or more users have logged in, you can run `oc get users` to view a
 list of users and verify that users were created successfully. 
 
 From here, you might want to examine 
+<<<<<<< HEAD
 xref:../install_config/advanced_ldap_configuration/index.adoc#advanced-ldap-configuration-index[advanced LDAP configuration] 
+=======
+xref:../install_config/advanced_ldap_configuration/index.html#advanced-ldap-configuration-index[advanced LDAP configuration] 
+>>>>>>> openshift/online
 for an example of Request Header authentication in use with Apache. You can also
 learn how to
 xref:../admin_solutions/user_role_mgmt.adoc#control-user-roles[control user roles].
@@ -330,14 +342,22 @@ database. Once configured, this configuration allows users to log in to
 === Configuring Authentication on the Master
 
 . If you have:
+<<<<<<< HEAD
 - Already completed the installation of Openshift, then copy the
+=======
+.. Already completed the installation of Openshift, then copy the
+>>>>>>> openshift/online
 *_/etc/origin/master/master-config.yaml_* file into a new directory; for example:
 +
 ----
 $ cd /etc/origin/master
 $ mkdir keystoneconfig; cp master-config.yaml keystoneconfig
 ----
+<<<<<<< HEAD
 - Not yet installed {product-title}, then start the {product-title} API server,
+=======
+.. Not yet installed {product-title}, then start the {product-title} API server,
+>>>>>>> openshift/online
 specifying the hostname of the (future) {product-title} master and a directory
 to store the configuration file created by the start command:
 +
@@ -393,7 +413,11 @@ authentication provider, such as, in this case, Keystone. Keystone is the system
 To add a user to {product-title}, the user must exist in the Keystone database, and if required you must create a new Keystone account for the user.
 
 [[view-users-keystone-auth]]
+<<<<<<< HEAD
 === Verifying Users
+=======
+=== Viewing Users
+>>>>>>> openshift/online
 
 Once one or more users have logged in, you can run `oc get users` to view a
 list of users and verify that users were created successfully:
@@ -449,14 +473,22 @@ topic ends, and describe the setup for a fault-tolerant authentication system:
 === Configuring Authentication on the Master
 
 . If you have:
+<<<<<<< HEAD
 - Already completed the installation of Openshift, then copy the
+=======
+.. Already completed the installation of Openshift, then copy the
+>>>>>>> openshift/online
 *_/etc/origin/master/master-config.yaml_* file into a new directory; for example:
 +
 ----
 $ cd /etc/origin/master
 $ mkdir ldapconfig; cp master-config.yaml ldapconfig
 ----
+<<<<<<< HEAD
 - Not yet installed {product-title}, then start the {product-title} API server,
+=======
+.. Not yet installed {product-title}, then start the {product-title} API server,
+>>>>>>> openshift/online
 specifying the hostname of the (future) {product-title} master and a directory
 to store the configuration file created by the start command:
 +
@@ -546,7 +578,11 @@ record, meaning that users are defined in LDAP, and any user with a valid LDAP I
 To add a user to {product-title}, the user must exist in the LDAP system, and if required you must create a new LDAP account for the user.
 
 [[view-users-ldap-auth]]
+<<<<<<< HEAD
 === Verifying Users
+=======
+=== Viewing Users
+>>>>>>> openshift/online
 
 Once one or more users have logged in, you can run `oc get users` to view a
 list of users and verify that users were created successfully:
@@ -608,14 +644,22 @@ master configuration file.
 === Configuring Authentication on the Master
 
 . If you have:
+<<<<<<< HEAD
 - Already completed the installation of Openshift, then copy the
+=======
+.. Already completed the installation of Openshift, then copy the
+>>>>>>> openshift/online
 *_/etc/origin/master/master-config.yaml_* file into a new directory; for example:
 +
 ----
 $ cd /etc/origin/master
 $ mkdir githubconfig; cp master-config.yaml githubconfig
 ----
+<<<<<<< HEAD
 - Not yet installed {product-title}, then start the {product-title} API server,
+=======
+.. Not yet installed {product-title}, then start the {product-title} API server,
+>>>>>>> openshift/online
 specifying the hostname of the (future) {product-title} master and a directory
 to store the configuration file created by the start command:
 +
@@ -691,7 +735,11 @@ organization on GitHub, and if required create a new GitHub account for the
 user.
 
 [[view-users-github-auth]]
+<<<<<<< HEAD
 === Verifying Users
+=======
+=== Viewing Users
+>>>>>>> openshift/online
 
 Once one or more users have logged in, you can run `oc get users` to view a
 list of users and verify that users were created successfully:

@@ -23,7 +23,11 @@ operations.
 [NOTE]
 ====
 While your account does have these increased permissions, the actual cluster
+<<<<<<< HEAD
 maintenance and host configuration is still performed by the {product-title}
+=======
+maintenance and host configuration is still performed by the OpenShift
+>>>>>>> openshift/online
 Operations Team. If you would like to request a change to your cluster that you
 cannot perform using the administrator CLI, please open a support case on the
 https://access.redhat.com/support/[Red Hat Customer Portal].
@@ -109,6 +113,33 @@ $ oc describe clusterrole/dedicated-cluster-admin
 $ oc describe clusterrole/dedicated-project-admin
 ----
 
+[[gs-dedicated-admin-managing-admin-list]]
+== Managing Dedicated Administrators
+
+Administrator roles are managed using a `dedicated-admins` group on the cluster.
+Existing members of this group can edit membership. To view a list of current
+dedicated administrators by user name, you can use the following command:
+
+----
+$ oc describe group dedicated-admins
+----
+
+To add a new member to the `dedicated-admins` group:
+
+----
+$ oadm groups add-users dedicated-admins <user_name>
+----
+
+To remove an existing user from the `dedicated-admins` group:
+
+----
+$ oadm groups remove-users dedicated-admins <user_name>
+----
+
+If this group is currently empty or if you need assistance editing group
+membership, please open a support case on the
+link:https://access.redhat.com/support/[Red Hat Customer Portal].
+
 [[gs-dedicated-admin-granting-permissions]]
 == Granting Permissions to Users or Groups
 
@@ -164,5 +195,9 @@ https://access.redhat.com/support/[Red Hat Customer Portal].
 
 Further explore the xref:../admin_guide/index.adoc#admin-guide-index[Cluster Administration] guide
 for more reference information on what's possible with your role and what other
+<<<<<<< HEAD
 cluster settings can be configured for you by the {product-title} Operations
 Team.
+=======
+cluster settings can be configured for you by the OpenShift Operations Team.
+>>>>>>> openshift/online

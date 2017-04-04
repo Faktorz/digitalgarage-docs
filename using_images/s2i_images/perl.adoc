@@ -63,6 +63,7 @@ ImageStream. You can find
 https://github.com/openshift/origin/tree/master/examples/image-streams[example
 image stream definitions] for all the provided {product-title} images.
 
+[[perl-configuration]]
 == Configuration
 The Perl image supports a number of environment variables which can be set to
 control the configuration and behavior of the Perl runtime.
@@ -70,14 +71,14 @@ control the configuration and behavior of the Perl runtime.
 To set these environment variables as part of your image, you can place them into
 xref:../../dev_guide/builds.adoc#environment-files[a *_.s2i/environment_* file]
 inside your source code repository, or define them in
-xref:../../dev_guide/builds.adoc#buildconfig-environment[the environment
+xref:../../dev_guide/builds/build_strategies.adoc#buildconfig-environment[the environment
 section] of the build configuration's `*sourceStrategy*` definition.
 
 You can also set environment variables to be used with an existing image when
-xref:../../dev_guide/new_app.adoc#specifying-environment-variables[creating new
-applications], or by
-xref:../../dev_guide/environment_variables.adoc#set-environment-variables[updating
-environment variables for existing objects] such as deployment configurations.
+xref:../../dev_guide/builds/build_strategies.adoc#environment-files[a *_.s2i/environment_* file]
+inside your source code repository, or define them in
+xref:../../dev_guide/builds/build_strategies.adoc#buildconfig-environment[the environment
+section] of the build configuration's `*sourceStrategy*` definition.
 
 [NOTE]
 ====
@@ -130,8 +131,9 @@ rsh`] command to access the container.
 Hot deployment allows you to quickly make and deploy changes to your application
 without having to generate a new S2I build. To enable hot deployment in this
 image, you must set the `*PERL_APACHE2_RELOAD*` environment variable to `true`.
-For example, see the xref:../../dev_guide/new_app.adoc#specifying-environment-variables[`oc new-app`]
-command. You can use the xref:../../dev_guide/environment_variables.adoc#set-environment-variables[`oc env`]
+
+For example, see the xref:../../dev_guide/application_lifecycle/new_app.adoc#specifying-environment-variables[`oc new-app`]
+command. You can use the xref:../../dev_guide/environment_variables.adoc#set-environment-variables[`oc set env`]
 command to update environment variables of existing objects.
 
 [WARNING]

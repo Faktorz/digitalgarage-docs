@@ -12,12 +12,13 @@ toc::[]
 
 == Overview
 
-The downward API is a mechanism that allows containers to consume information
-about API objects without coupling to {product-title}. Such information includes
-the pod's name, namespace, and resource values. Containers can consume
-information from the downward API using environment variables or a volume
-plug-in.
+It is common for containers to consume information about API objects. The
+downward API is a mechanism that allows containers to do this without coupling
+to {product-title}. Containers can consume information from the downward API
+xref:dapi-using-environment-variables[using environment variables] or a
+xref:dapi-using-volume-plugin[volume plug-in].
 
+[[selecting-fields]]
 == Selecting Fields
 
 Fields within the pod are selected using the `*FieldRef*` API type. `*FieldRef*`
@@ -59,11 +60,11 @@ Currently, the valid selectors in the v1 API include:
 The `*apiVersion*` field, if not specified, defaults to the API version of the
 enclosing pod template.
 
-[[dapi-consuming-container-values]]
-== Consuming the Container Values Using the Downward API
+In the future, more information, such as resource limits for pods and
+information about services, will be available using the downward API.
 
-[[dapi-values-using-environment-variables]]
-=== Using Environment Variables
+[[dapi-using-environment-variables]]
+== Using Environment Variables
 
 One mechanism for consuming the downward API is using a container's environment
 variables. The `*EnvVar*` type's `*valueFrom*` field (of type `*EnvVarSource*`)
@@ -123,10 +124,11 @@ values:
 $ oc logs -p dapi-env-test-pod
 ----
 ====
++
+You should see `MY_POD_NAME` and `MY_POD_NAMESPACE` in the logs.
 
-[[dapi-values-using-volume-plugin]]
-=== Using the Volume Plug-in
-
+[[dapi-using-volume-plugin]]
+== Using the Volume Plug-in
 Another mechanism for consuming the downward API is using a volume plug-in. The
 downward API volume plug-in creates a volume with configured fields projected
 into files. The `*metadata*` field of the `*VolumeSource*` API object is used to
@@ -345,5 +347,3 @@ downward API defaults to the node's CPU and memory allocatable values.
 $ oc create -f volume-pod.json
 ----
 ====
-
-
