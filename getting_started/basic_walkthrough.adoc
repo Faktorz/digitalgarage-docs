@@ -59,17 +59,53 @@ In this section, you will deploy your first application to {product-title} using
 the web console.
 
 . Navigate to the https://apps.thedigitalgarage.io/console/[welcome
-page] of the {product-title} web console and click the New Project icon to create
-your first project:
+page] of the {product-title} web console. If you have not created a project, you will
+see a welcome message from the Digital Garage with instructions to go to your account
+dashboard and create a new project. You can click the link provided in the message or
+choose the drop down menu for your profile in the upper right corner of the screen. In the
+dropdown menu choose `Account` to be directed to your account dashboard.
 +
+image::dg-no-projects.png[Welcome to Digital Garage]
 
-. Replace `my-project` with a unique name for your project, such as
-`<your_github_username>-example`. You can leave the display name and description
-blank.
+
+. In your account dashboard and click the Create a Project button to configure the
+settings for your project. In the New Subscription screen replace `my-project` with a
+unique and lasting name for your project, such as `<your_github_username>-<application>`. This
+namespace can be used for many projects in many stages over coming months. It is best to think
+of the project as a long-lived workspace rather than a temporary project. You can leave
+the description blank if you like. With the slider, choose the resources you would like
+to assign to this workspace/project.
++
+image::dg-account-dashboard.png[Account Dashboard]
++
+[NOTE]
+====
+You will be able to change the resources assigned to this workspace at any time by
+upgrading or downgrading your resource plan.
+====
+Click the GO/CODE button.
 +
 image::dg-new-project.png[New projects]
++
+[NOTE]
+====
+If you have not entered your payment information for the account, you will see a pop-up
+payments screen. On this screen you will have the option of entering a discount code for
+a free subscription or discounts off of our standard plans.
+====
+. After you have created your project, go back to the web console page by closing the
+account tab or window. You will now see your new created project in your project list.
++
+image::dg-projects-page-pop.png[Select Project]
++
+. Choose your project by clicking on the project card. This will take you to the Project Overview
+screen for your new project. At this point your project will be empty unless you chose to create
+your project with an instant application. We are going to add a Node.js application to the project
+by first selecting `Add to Project` link on the top of the screen. This will take you
+to the Add to Project screen with a catalog of Quickstart templates, Instant Applications, DataBase templates
+Builders for different languages.
 
-. Next, scroll to the *NodeJS* section and select the *nodejs-mongodb-example*
+. Scroll to the *NodeJS* section and select the *qs-nodejs-mongodb*
 Quickstart template:
 +
 image::dg-select-quickstart.png[Select Quickstart templates]
