@@ -151,9 +151,6 @@ Topics:
       - Name: Overview
         File: index
         Distros: openshift-*,digital-garage
-      - Name: Containers and Images
-        File: containers_and_images
-        Distros: openshift-*,digital-garage
       - Name: Images
         File: containers_and_images
         Distros: atomic-*,digital-garage
@@ -165,9 +162,6 @@ Topics:
       - Name: Builds and Image Streams
         File: builds_and_image_streams
         Distros: openshift-*,digital-garage
-      - Name: Image Streams
-        File: builds_and_image_streams
-        Distros: atomic-*
       - Name: Deployments
         File: deployments
         Distros: openshift-*,digital-garage
@@ -783,6 +777,8 @@ Topics:
     Topics:
       - Name: Overview
         File: index
+     - Name: MEAN Stack
+       File: MEAN
       - Name: Jenkins
         File: jenkins
       - Name: Wordpress
