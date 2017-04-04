@@ -777,8 +777,8 @@ Topics:
     Topics:
       - Name: Overview
         File: index
-     - Name: MEAN Stack
-       File: MEAN
+      - Name: MEAN Stack
+        File: MEAN
       - Name: Jenkins
         File: jenkins
       - Name: Wordpress
