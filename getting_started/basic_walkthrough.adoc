@@ -69,11 +69,8 @@ blank.
 +
 image::dg-new-project.png[New projects]
 
-. Click on the *JavaScript* option:
-+
-image::console_select_image_or_template.png[Browse the catalog]
-
-. Select the *nodejs-mongodb-example* Quickstart template:
+. Next, scroll to the *NodeJS* section and select the *nodejs-mongodb-example*
+Quickstart template:
 +
 image::dg-select-quickstart.png[Select Quickstart templates]
 
@@ -145,6 +142,7 @@ application. Click the web address displayed underneath the
 *NODEJS-MONGODB-EXAMPLE* service to open your application in a new browser tab:
 
 image::dg-running-nodejs-app.png[Running Node.js app]
+
 [NOTE]
 ====
 You can find all routes configured for your project at any time in the web
@@ -196,21 +194,6 @@ of your Node.js application:
 +
 image::dg-scaling-app.png[Scaling an app]
 +
-[NOTE]
-====
-The *nodejs-mongodb-example* Quickstart is configured to use 512 MiB of memory
-per pod. Your quota will allow up to 3 replicas of the *nodejs-mongodb-example*
-pod in addition to the MongoDB database (for a total of 2 GiB).
-
-You can check your quota usage at any time in the web console:
-
-. From the web console, navigate to the project containing your application.
-. Click the *[ Settings ]* tab and scroll to the section titled *Quota
-compute-resources* to view usage:
-
-image::gs-quota.png[Quota]
-====
-
 [[bw-next-up]]
 == Next Up: Beyond the Basics
 

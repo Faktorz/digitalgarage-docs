@@ -70,7 +70,7 @@ tools to interact with each component of your system.
 
 . First, download the {product-title} CLI from the Command Line Tools page in the
 {product-title} web console. You find the Command Line Tools menu item under the
-Support button (?) one the left side of the top menu bar. The CLI is available
+Support button (?) on the left side of the top menu bar. The CLI is available
 for Linux (32- or 64-bit), Mac OS X, and Windows. After you have downloaded the
 CLI, return to these steps.
 
