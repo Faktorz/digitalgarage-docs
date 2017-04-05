@@ -1,4 +1,4 @@
-<%= render((distro_key['digital-garage'] ? "_templates/_page_digital_garage.html.erb" : "_templates/_page_openshift.html.erb"),
+<%= render("_templates/_page_digital_garage.html.erb",
            :distro_key => distro_key,
            :distro => distro,
            :version => version,
