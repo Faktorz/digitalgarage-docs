@@ -31,8 +31,8 @@ A job configuration consists of the following key parts:
 
 - A pod template, which describes the application the pod will create.
 - An optional `*parallelism*` parameter, which specifies how many pod replicas running in parallel should execute a job. If not specified, this defaults to
- the value in the `*completions*` parameter.
-- An optional `*completions*` parameter, specifying how many successful pod completions are needed to finish a job. If not specified, this value defaults to one.
+the value in the `*completions*` parameter.
+- An optional `*completions*` parameter, specifying how many concurrently running pods should execute a job. If not specified, this value defaults to one.
 
 The following is an example of a `*job*` resource:
 
