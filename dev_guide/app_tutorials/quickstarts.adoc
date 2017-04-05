@@ -39,17 +39,14 @@ reflected in the deployed application.
 These quickstarts provide a basic application of the indicated framework and language:
 
 * CakePHP: a PHP web framework (includes a MySQL database)
-** link:https://github.com/openshift/origin/tree/master/examples/quickstarts/cakephp-mysql.json[Template definition]
-** link:https://github.com/openshift/cakephp-ex[Source repository]
-* Dancer: a Perl web framework (includes a MySQL database)
-** link:https://github.com/openshift/origin/tree/master/examples/quickstarts/dancer-mysql.json[Template definition]
-** link:https://github.com/openshift/dancer-ex[Source repository]
+** link:https://github.com/thedigitalgarage/cakephp-ex[Source repository]
 * Django: a Python web framework (includes a PostgreSQL database)
-** link:https://github.com/openshift/origin/tree/master/examples/quickstarts/django-postgresql.json[Template definition]
-** link:https://github.com/openshift/django-ex[Source repository]
+** link:https://github.com/thedigitalgarage/django-ex[Source repository]
+* Laravel: a PHP web framework (includes a MySQL database)
+** link:https://github.com/thedigitalgarage/larvel-ex[Source repository]
+* MEAN Stack: a full-stack JavaScript Framework (includes a MongoDB database, Express.js, AngularJS and Node.js)
+** link:https://github.com/thedigitalgarage/mean-ex[Source repository]
 * NodeJS: a NodeJS web application (includes a MongoDB database)
-** link:https://github.com/openshift/origin/tree/master/examples/quickstarts/nodejs-mongodb.json[Template definition]
-** link:https://github.com/openshift/nodejs-ex[Source repository]
+** link:https://github.com/thedigitalgarage/nodejs-ex[Source repository]
 * Rails: a Ruby web framework (includes a PostgreSQL database)
-** link:https://github.com/openshift/origin/tree/master/examples/quickstarts/rails-postgresql.json[Template definition]
-** link:https://github.com/openshift/rails-ex[Source repository]
+** link:https://github.com/thedigitalgarage/rails-ex[Source repository]

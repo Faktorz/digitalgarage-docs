@@ -1,5 +1,5 @@
 [[django-sample-app-on-digital-garage]]
-= Quickstart Templates
+= Django Quickstart
 {product-author}
 {product-version}
 :data-uri:
