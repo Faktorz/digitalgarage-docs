@@ -22,7 +22,7 @@ involves creating two xref:../architecture/core_concepts/pods_and_services.adoc#
 - one to host the Node.js application
 - one to host the MongoDB database
 
-The tutorial assumes that you have:
+The tutorial assumes you have:
 
 - a free {product-title} account.
 - a free https://github.com/[GitHub] account.
@@ -60,15 +60,15 @@ the web console.
 
 . Navigate to the https://apps.thedigitalgarage.io/console/[welcome
 page] of the {product-title} web console. If you have not created a project, you will
-see a welcome message from the Digital Garage with instructions to go to your account
-dashboard and create a new project. You can click the link provided in the message or
+see a welcome message from the Digital Garage with instructions to "open your account settings"
+and create a new project. You can click the link provided in the message or
 choose the drop down menu for your profile in the upper right corner of the screen. In the
 dropdown menu choose `Account` to be directed to your account dashboard.
 +
 image::dg-no-projects.png[Welcome to Digital Garage]
 
 
-. In your account dashboard and click the Create a Project button to configure the
+. In your account dashboard, click the Create a Project button to configure the
 settings for your project. In the New Subscription screen replace `my-project` with a
 unique and lasting name for your project, such as `<your_github_username>-<application>`. This
 namespace can be used for many projects in many stages over coming months. It is best to think
@@ -94,7 +94,7 @@ payments screen. On this screen you will have the option of entering a discount 
 a free subscription or discounts off of our standard plans.
 ====
 . After you have created your project, go back to the web console page by closing the
-account tab or window. You will now see your new created project in your project list.
+account tab or window. You will now see the project you just  created in your project list.
 +
 image::dg-projects-page-pop.png[Select Project]
 +
@@ -132,7 +132,7 @@ MongoDB pod then starts up and displays its newly-assigned IP address.
 
 In this section, you will configure a GitHub webhook to automatically trigger a
 rebuild of your application whenever you push code changes to your forked
-repository. This involves adding the Github webhook URL from your application
+repository. This requires adding the Github webhook URL from your application
 into your Github repository. You obtain this webhook from these locations:
 
 - At the bottom of *Next Steps* page shown after creating your app, you will see a

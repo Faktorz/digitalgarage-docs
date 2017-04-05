@@ -602,6 +602,10 @@ Topics:
         File: index
       - Name: Quickstart Templates
         File: quickstarts
+      - Name: Django
+        File: django
+      - Name: MEAN Stack
+        File: MEAN
       - Name: Ruby on Rails
         File: ruby_on_rails
       - Name: Setting Up a Custom URL
@@ -779,8 +783,6 @@ Topics:
     Topics:
       - Name: Overview
         File: index
-      - Name: MEAN Stack
-        File: MEAN
       - Name: Jenkins
         File: jenkins
       - Name: Wordpress
