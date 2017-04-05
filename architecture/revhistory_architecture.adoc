@@ -7,7 +7,6 @@
 :experimental:
 
 // do-release: revhist-tables
-
 == Mon Mar 20 2017
 
 // tag::architecture_mon_mar_20_2017[]
@@ -38,7 +37,6 @@
 |===
 
 // end::architecture_wed_mar_08_2017[]
->>>>>>> openshift/online
 == Fri Feb 17 2017
 
 // tag::architecture_fri_feb_17_2017[]

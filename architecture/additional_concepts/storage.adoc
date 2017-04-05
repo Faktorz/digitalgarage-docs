@@ -12,7 +12,6 @@
 toc::[]
 
 == Overview
-
 Managing storage is a distinct problem from managing compute resources.
 {product-title} leverages the Kubernetes persistent volume (PV) framework to allow
 administrators to provision persistent storage for a cluster. Using persistent
