@@ -87,6 +87,9 @@ Topics:
   - Name: Beyond the Basics
     File: beyond_the_basics
     Distros: openshift-online,digital-garage
+  - Name: Building with a private Github Repository
+    File: github-private-repo
+    Distros: digital-garage
   - Name: Web Console Walkthrough
     File: developers_console
     Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage

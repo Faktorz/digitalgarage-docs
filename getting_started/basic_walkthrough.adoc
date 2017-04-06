@@ -157,6 +157,12 @@ webhook ]* to finish adding the webhook to your project:
 +
 image::gs-add-webhook.png[Add webhook]
 
+[NOTE]
+====
+Be sure to set the "Content type" to `application/json`. Then, click "Disable SSL verification"
+to bypass verification of the SSL certificate for the webhook payload.
+====
+
 . GitHub now attempts to ping the {product-title} server to ensure that
 communication is successful. If it is correctly configured, you will see a green
 check mark next to your new webhook URL in GitHub. Hover your mouse over the

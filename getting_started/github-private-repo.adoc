@@ -1,0 +1,319 @@
+[[getting-started-github-private-repositories]]
+= Building from Private Github Repositories
+:toc: macro
+:toc-title:
+:data-uri:
+:prewrap!:
+:description: This is the getting started experience for Developers, focusing building from source code located in private Github repositories.
+:keywords: getting started, developers, cli, templates, Github, private repository
+
+toc::[]
+
+== Overview
+
+This getting started tutorial walks you through the easiest way to configure your
+Quickstart template to build source from a private Github repository. We will be
+using the MEAN Stack Quickstart template in this example.
+
+The following sections guide you through creating a project that contains a
+sample MEAN Stack (MongoDB, Express.js, AngularJS and Node.js) application that
+will serve a welcome page. This involves requires
+two xref:../architecture/core_concepts/pods_and_services.adoc#pods[pods]:
+
+- one to host the Node.js/Express.js server and AngularJS application
+- one to host the MongoDB database
+
+The tutorial assumes that you have:
+
+- a {product-title} account.
+- a https://github.com/[GitHub] account.
+- https://help.github.com/articles/set-up-git/[Git] installed locally.
+
+[[btb_setup]]
+== Setup
+
+In this section, you will _fork_ the {product-title} MEAN sample application
+on GitHub and clone the repository to your local machine so that you can deploy
+and edit the application.
+
+[NOTE]
+====
+You can skip this step if you already forked the
+https://github.com/thedigitalgarage/mean-ex[*thedigitalgarage/mean-ex*] repository.
+====
+
+. On GitHub, navigate to the
+https://github.com/thedigitalgarage/mean-ex[*thedigitalgarage/mean-ex*] repository. In the
+top-right corner of the page, click *Fork*:
++
+image::gs-fork.png[Fork the project]
+
+. Next, execute the following commands on your local machine to clone the sample
+application and change to the new directory:
++
+----
+$ git clone https://github.com/<your_github_username>/mean-ex
+$ cd mean-ex
+----
+
+That's it! Now, you have a fork of the original *thedigitalgarage/mean-ex* example
+application Git repository and a copy on your local machine.
+
+[[btb-installing-the-digital-garage-cli]]
+== Installing the Digital Garage CLI
+
+In this section, you will install the {product-title} CLI. The {product-title}
+CLI exposes commands for managing your applications, as well as lower level
+tools to interact with each component of your system.
+
+. First, download the {product-title} CLI from the Command Line Tools page in the
+{product-title} web console. You find the Command Line Tools menu item under the
+Support button (?) on the left side of the top menu bar. The CLI is available
+for Linux (32- or 64-bit), Mac OS X, and Windows. After you have downloaded the
+CLI, return to these steps.
+
+. Next, unpack or unzip the archive and move the `oc` binary to a directory on
+your `*PATH*`.
++
+[NOTE]
+====
+To check your `*PATH*` on Linux or Mac OS X, open the Terminal and run:
+
+----
+$ echo $PATH
+----
+
+To check it on Windows, open the Command Prompt and run:
+
+----
+C:\> path
+----
+====
++
+After it is installed, you can use the `oc` command from your command shell.
+
+. Then, visit the https://apps.thedigitalgarage.io:8443/console/command-line[
+*Command Line Tools*] page in the {product-title} web console and copy the
+`oc login` command shown with your current session token to log in to
+{product-title} from the CLI:
++
+----
+$ oc login https://apps.thedigitalgarage.io:8443 --token=<your_session_token>
+----
++
+The `oc login` command is the best way to initially set up the {product-title}
+CLI. The information is automatically saved in a CLI configuration file that is
+then used for subsequent commands.
+
+[[btb-creating-a-new-application-from-source-code]]
+== Creating a New Application from Source Code
+
+In this section, you will deploy your first application to {product-title} using
+the web console.
+
+. First, if you have multiple projects, verify that you are in the correct project.
+Replace `<project_name>` below with a unique name for your project, such as
+`<your_github_username>-example`:
++
+----
+$ oc project <project_name>
+----
++
+
++
+[NOTE]
+====
+If you followed the xref:../getting_started/basic_walkthrough.adoc#getting-started-basic-walkthrough[Basic
+Walkthrough] topic, you already created your first project. You must switch to
+your project namespace and clear out the original sample application.
+
+.. Use the following command to find the name of your existing project(s):
++
+----
+$ oc get projects
+----
+
+.. Next, switch to your project namespace:
++
+----
+$ oc project <your_project_name>
+----
+
+.. Then, delete all existing objects in your project:
++
+----
+$ oc delete all --all
+----
+
+.. Use the following command to find the name of your existing persistent
+volume claims:
++
+----
+$ oc get pvc
+----
+
+.. Finally, if any exist, delete your existing persistent volume claims with:
++
+----
+$ oc delete pvc mongodb
+----
+====
+
+== Creating a New Application from a quickstart template
+In this section you will follow the steps outlined in the
+xref:../getting_started/basic_walkthrough.adoc#getting-started-basic-walkthrough[Basic Walkthrough] section.
+this time, however, you will be deploying a MEAN Stack Application which is very similar
+to the Node.js application deployed in that tutorial.
+
+. First, we will create a xref:../dev_guide/secrets.adoc[build secret] that will
+be passed to Github during the build process.
++
+----
+$ oc secrets new-basicauth SECRETNAME --username=USERNAME --password=PASSWORD
+----
+
+[NOTE]
+====
+In this example we will be using a Secret with Basic Authentication. You can use other
+Authentication methods with Github. See the Developer Guide on xref:../dev_guide/secrets.adoc[Secrets]
+for more information.
+====
+
+. Navigate to the https://apps.thedigitalgarage.io/console/[welcome
+page] of the {product-title} web console. If you have not created a project, follow the
+instructions in the xref:../getting_started/basic_walkthrough.adoc#getting-started-basic-walkthrough[Basic Walkthrough] section of
+the Getting Started Guide.
+
+. Choose your project by clicking on the project card. This will take you to the Project Overview
+screen for your new project. At this point your project will be empty.
+
+. We are first going to modify the qs-mean template to include the build secret we
+just created. A copy of the MEAN Quickstart template is located in the openshift/templates
+folder of the mean-ex repository you forked earlier. You can also get a copy here:
+https://github.com/thedigitalgarage/mean-ex/openshift/templates/qs-mean.json[*thedigitalgarage/mean-exopenshift/templates/qs-mean.json*]
+
+. Open the qs-mean.json Quickstart template in your favorite editor locate the "spec" section for the
+Build configuration at approximately line 74.
+----
+{
+  "kind": "BuildConfig",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "${NAME}",
+    "annotations": {
+      "description": "Defines how to build the application"
+   }
+  },
+  "spec": {
+    "source": {
+      "type": "Git",
+      "git": {
+        "uri": "${SOURCE_REPOSITORY_URL}",
+        "ref": "${SOURCE_REPOSITORY_REF}"
+      },
+      "contextDir": "${CONTEXT_DIR}"
+    },
+----
+
+Before the "contextDir" key, add the following:
+----
+"sourceSecret": {
+  "name": "SECRETNAME"
+},
+----
+
+[NOTE]
+====
+Replace SECRETNAME with the name you used for the secret.
+====
+
+The resulting change should look like this:
+----
+{
+  "kind": "BuildConfig",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "${NAME}",
+    "annotations": {
+      "description": "Defines how to build the application"
+   }
+  },
+  "spec": {
+    "source": {
+      "type": "Git",
+      "git": {
+        "uri": "${SOURCE_REPOSITORY_URL}",
+        "ref": "${SOURCE_REPOSITORY_REF}"
+      },
+      "sourceSecret": {
+        "name": "my-secret"
+      },
+      "contextDir": "${CONTEXT_DIR}"
+    },
+----
+
+. Save the template file to your local working directory.
+
+. We are going to add the modified MEAN Quickstart template to your project/workspace
+by first selecting `Add to Project` link on the top of the screen. This will take you
+to the Add to Project screen with a catalog of Quickstart templates, Instant Applications, DataBase templates
+Builders for different languages.
+
+. Choose "Import YAML/JSON" tab at the top of the page.
++
+image::dg-select-quickstart.png[Select Quickstart templates]
+
+. On the "Import YAML/JSON" screen, you will have the option to either paste the text
+from you edited Quickstart template or browse your local file system to choose the
+template that you saved in the previous step. Upload the saved template and click the
+*[ Create ]* button at the bottom of the page.
++
+image::dg-import-json-yaml-add-to-project.png[Import YAML/JSON]
+
+. If your template is well formed, a pop-up screen will ask some additional questions.
+Check both the "Process the template" and "Save template" checkboxes. Click the *[ Continue ]*
+button.
++
+image::dg-process-template.png[Save template Popup]
+
+. In the next screen, replace the repository URL in the *Git Repository URL* parameter
+with your URL to your private GitHub repository. Use the default values provided for all other
+parameters:
++
+image::dg-change-git-url.png[Change Git URL]
+
+. Finally, scroll to the bottom of the page and click *[ Create ]* to deploy your
+application.
++
+[NOTE]
+====
+You can follow along on the *Overview* page of the web console to see the new
+resources being created, and watch the progress of the build and deployment.
+While the MongoDB pod is being created, its status is shown as pending. The
+MongoDB pod then starts up and displays its newly-assigned IP address.
+====
+
+[[bw-viewing-your-running-application]]
+== Viewing Your Running Application
+
+In this section, you will view your running application using a web browser.
+
+In the https://console.preview.openshift.com/console/[web console], view
+the *Overview* page for your project to determine the web address for your
+application. Click the web address displayed underneath the
+*QS MEAN* service to open your application in a new browser tab:
+
+[NOTE]
+====
+You can find all routes configured for your project at any time in the web
+console:
+
+. From the web console, navigate to the project containing your application.
+. Click the *[ Browse ]* tab, then click *[ Routes ]*.
+. Click the host name to open your application in a browser new tab.
+====
+
+[[btb-troubleshooting]]
+=== Troubleshooting
+
+Review some of the common tips and suggestions http://community.thedigitalgarage.io[here].
