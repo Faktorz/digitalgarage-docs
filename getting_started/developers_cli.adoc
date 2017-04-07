@@ -127,11 +127,6 @@ not have access, contact your cluster administrator.
 endif::[]
 ifdef::digital-garage[]
 - You must register for an account with the http://www.thedigitalgarage.io[{product-title}]
-- Your project must be populated with the
-xref:../dev_guide/templates.adoc#using-the-instantapp-templates[Instant App
-templates] and xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[builder images] that
-conform to the current xref:../getting_started/devpreview_faq.adoc#getting-started-devpreview-faq[set of
-considerations] for running in the {product-title} offering.
 endif::[]
 ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 - Your instance must be pre-configured by a cluster administrator with the
