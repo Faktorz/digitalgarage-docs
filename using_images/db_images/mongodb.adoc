@@ -18,7 +18,6 @@ settings provided via configuration.
 
 == Versions
 Currently, {product-title} provides versions
-<<<<<<< HEAD
 https://github.com/ç/mongodb-container/tree/master/2.4[2.4], https://github.com/thedigitalgarage/mongodb-container/tree/master/2.6[2.6], and https://github.com/thedigitalgarage/mongodb-container/tree/master/3.2[3.2] of MongoDB.
 
 == Images
