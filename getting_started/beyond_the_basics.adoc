@@ -68,7 +68,8 @@ In this section, you will install the {product-title} CLI. The {product-title}
 CLI exposes commands for managing your applications, as well as lower level
 tools to interact with each component of your system.
 
-. First, download the {product-title} CLI from the Command Line Tools page in the
+. First, download the {product-title} CLI from the https://apps.thedigitalgarage.io:8443/console/command-line[
+*Command Line Tools*] page in the
 {product-title} web console. You find the Command Line Tools menu item under the
 Support button (?) on the left side of the top menu bar. The CLI is available
 for Linux (32- or 64-bit), Mac OS X, and Windows. After you have downloaded the
@@ -402,7 +403,7 @@ and try out Quickstart templates for the following languages:
 .^|xref:../using_images/s2i_images/perl.adoc#using-images-s2i-images-perl[Perl]
 |https://github.com/openshift/dancer-ex[Dancer]
 
-.^|xref:../using_images/xpaas_images/jws.adoc#using-images-xpaas-images-jws[Java]
+.^|xref:../using_images/s2i_images/java.adoc#using-images-s2i-images-java[Java]
 |https://github.com/openshift-s2i/s2i-wildfly[Maven]
 |===
 
