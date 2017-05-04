@@ -262,7 +262,14 @@ The example `ruby-ex` application is a simple welcome screen, and contains detai
 
 Next, configure automated builds via a GitHub webhook trigger, so that code changes in your forked repository cause your application to rebuild.
 
-include::getting_started/developers_console.adoc[tag=deploycode1]
+== Configuring Automated Builds
+
+You forked the source code for this application from the
+https://github.com/openshift/ruby-ex[{product-title} GitHub repository]. Therefore,
+you can use a webhook to automatically trigger a rebuild of your application
+whenever you push code changes to your forked repository.
+
+To set up a webhook for your application:
 
 . View the triggers section of the `*BuildConfig*` to verify that a GitHub webhook trigger exists:
 +
