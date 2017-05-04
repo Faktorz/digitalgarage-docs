@@ -58,7 +58,7 @@ application Git repository and a copy on your local machine.
 In this section, you will deploy your first application to {product-title} using
 the web console.
 
-. Navigate to the https://apps.thedigitalgarage.io:8433/console/[welcome
+. Navigate to the https://apps.thedigitalgarage.io/console/[welcome
 page] of the {product-title} web console. If you have not created a project, you will
 see a welcome message from the Digital Garage with instructions to "open your account settings"
 and create a new project. You can click the link provided in the message or
@@ -178,7 +178,7 @@ will automatically rebuild.
 
 In this section, you will view your running application using a web browser.
 
-In the https://apps.thedigitalgarage.io:8433/console/[web console], view
+In the https://apps.thedigitalgarage.io/console/[web console], view
 the *Overview* page for your project to determine the web address for your
 application. Click the web address displayed underneath the
 *NODEJS-MONGODB-EXAMPLE* service to open your application in a new browser tab:
