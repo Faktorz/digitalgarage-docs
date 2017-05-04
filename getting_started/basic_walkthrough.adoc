@@ -58,7 +58,7 @@ application Git repository and a copy on your local machine.
 In this section, you will deploy your first application to {product-title} using
 the web console.
 
-. Navigate to the https://apps.thedigitalgarage.io/console/[welcome
+. Navigate to the https://apps.thedigitalgarage.io:8433/console/[welcome
 page] of the {product-title} web console. If you have not created a project, you will
 see a welcome message from the Digital Garage with instructions to "open your account settings"
 and create a new project. You can click the link provided in the message or
@@ -236,6 +236,7 @@ of your Node.js application:
 +
 image::dg-scaling-app.png[Scaling an app]
 +
+
 [[bw-next-up]]
 == Next Up: Beyond the Basics
 
