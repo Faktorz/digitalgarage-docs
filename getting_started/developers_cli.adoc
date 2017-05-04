@@ -96,9 +96,7 @@ In contrast, Instant Apps like Jenkins are instantly usable.
 
 Before you can get started:
 
-ifdef::openshift-online,digital-garage[]
 - Visit link:http://www.thedigitalgarage.io[www.thedigitalgarage.io] to register for {product-title} for free today.
-endif::[]
 - You must have the {product-title} CLI
 xref:../cli_reference/get_started_cli.adoc#cli-reference-get-started-cli[downloaded and installed].
 
