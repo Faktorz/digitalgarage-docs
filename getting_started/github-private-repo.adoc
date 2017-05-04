@@ -17,7 +17,7 @@ using the MEAN Stack Quickstart template in this example.
 
 The following sections guide you through creating a project that contains a
 sample MEAN Stack (MongoDB, Express.js, AngularJS and Node.js) application that
-will serve a welcome page. This involves requires
+will serve a welcome page. This requires
 two xref:../architecture/core_concepts/pods_and_services.adoc#pods[pods]:
 
 - one to host the Node.js/Express.js server and AngularJS application
@@ -66,7 +66,8 @@ In this section, you will install the {product-title} CLI. The {product-title}
 CLI exposes commands for managing your applications, as well as lower level
 tools to interact with each component of your system.
 
-. First, download the {product-title} CLI from the Command Line Tools page in the
+. First, download the {product-title} CLI from the https://apps.thedigitalgarage.io:8443/console/command-line[
+*Command Line Tools*] page in the
 {product-title} web console. You find the Command Line Tools menu item under the
 Support button (?) on the left side of the top menu bar. The CLI is available
 for Linux (32- or 64-bit), Mac OS X, and Windows. After you have downloaded the
@@ -165,7 +166,7 @@ xref:../getting_started/basic_walkthrough.adoc#getting-started-basic-walkthrough
 this time, however, you will be deploying a MEAN Stack Application which is very similar
 to the Node.js application deployed in that tutorial.
 
-. First, we will create a xref:../dev_guide/secrets.adoc[build secret] that will
+. First, we will create a xref:../dev_guide/builds/build_inputs.adoc#using-secrets-during-build[build secret] that will
 be passed to Github during the build process.
 +
 ----
@@ -175,7 +176,7 @@ $ oc secrets new-basicauth SECRETNAME --username=USERNAME --password=PASSWORD
 [NOTE]
 ====
 In this example we will be using a Secret with Basic Authentication. You can use other
-Authentication methods with Github. See the Developer Guide on xref:../dev_guide/secrets.adoc[Secrets]
+Authentication methods with Github. See the Developer Guide on xref:../dev_guide/builds/build_inputs.adoc#using-secrets-during-build[Secrets]
 for more information.
 ====
 
@@ -190,7 +191,7 @@ screen for your new project. At this point your project will be empty.
 . We are first going to modify the qs-mean template to include the build secret we
 just created. A copy of the MEAN Quickstart template is located in the openshift/templates
 folder of the mean-ex repository you forked earlier. You can also get a copy here:
-https://github.com/thedigitalgarage/mean-ex/openshift/templates/qs-mean.json[*thedigitalgarage/mean-exopenshift/templates/qs-mean.json*]
+https://github.com/thedigitalgarage/mean-ex/blob/master/openshift/templates/qs-mean.json[*https://github.com/thedigitalgarage/mean-ex/blob/master/openshift/templates/qs-mean.json*]
 
 . Open the qs-mean.json Quickstart template in your favorite editor locate the "spec" section for the
 Build configuration at approximately line 74.
@@ -298,7 +299,7 @@ MongoDB pod then starts up and displays its newly-assigned IP address.
 
 In this section, you will view your running application using a web browser.
 
-In the https://console.preview.openshift.com/console/[web console], view
+In the https://apps.thedigitalgarage.io/console/[web console], view
 the *Overview* page for your project to determine the web address for your
 application. Click the web address displayed underneath the
 *QS MEAN* service to open your application in a new browser tab:
