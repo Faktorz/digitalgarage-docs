@@ -42,27 +42,23 @@ turn leverage xref:../using_images/s2i_images/index.adoc#using-images-s2i-images
 |===
 |Language|Implementations and Tutorials
 
-.^|Ruby
+.^|xref:../using_images/s2i_images/ruby.adoc#using-images-s2i-images-ruby[Ruby]
 |https://github.com/openshift/rails-ex[Rails]
 
-.^|Python
+.^|xref:../using_images/s2i_images/python.adoc#using-images-s2i-images-python[Python]
 |https://github.com/openshift/django-ex[Django]
 
-.^|Node.js
+.^|xref:../using_images/s2i_images/nodejs.adoc#using-images-s2i-images-nodejs[Node.js]
 |https://github.com/openshift/nodejs-ex[Node.js]
 
-.^|PHP
+.^|xref:../using_images/s2i_images/php.adoc#using-images-s2i-images-php[PHP]
 |https://github.com/openshift/cakephp-ex[CakePHP]
 
-.^|Perl
+.^|xref:../using_images/s2i_images/perl.adoc#using-images-s2i-images-perl[Perl]
 |https://github.com/openshift/dancer-ex[Dancer]
 
-.^|Java
-a|
-ifdef::openshift-origin[]
-xref:../using_images/s2i_images/java.adoc#using-images-s2i-images-java[Maven]
-endif::[]
-
+.^|xref:../using_images/s2i_images/java.adoc#using-images-s2i-images-java[Java]
+|https://github.com/openshift-s2i/s2i-wildfly[Maven]
 |===
 
 Other images provided by {product-title} include:
