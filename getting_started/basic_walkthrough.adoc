@@ -178,7 +178,7 @@ will automatically rebuild.
 
 In this section, you will view your running application using a web browser.
 
-In the https://console.preview.openshift.com/console/[web console], view
+In the https://apps.thedigitalgarage.io:8433/console/[web console], view
 the *Overview* page for your project to determine the web address for your
 application. Click the web address displayed underneath the
 *NODEJS-MONGODB-EXAMPLE* service to open your application in a new browser tab:
