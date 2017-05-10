@@ -36,7 +36,7 @@ xref:creating-from-templates-using-the-web-console[using the web console].
 == Uploading a Template
 
 If you have a JSON or YAML file that defines a template, for example as seen in
-xref:../architecture/core_concepts/templates.adoc#architecture-core-concepts-templates[this example], you can upload
+xref:writing-templates[this example], you can upload
 the template to projects using the CLI. This saves the template to the project
 for repeated use by any user with appropriate access to that project.
 Instructions on xref:writing-templates[writing your own templates] are provided
@@ -133,7 +133,7 @@ $ oc process --parameters -n <project> <template_name>
 ----
 
 For example, the following shows the output when listing the parameters for one
-of the Quickstart templates in the default *openshift* project:
+of the Quickstart templates in a default project:
 
 ====
 ----
