@@ -387,7 +387,7 @@ A service or replication controller that is defined to use pods with the
 *role=webserver* label treats both of these pods as part of the same group.
 
 The
-http://kubernetes.github.io/docs/user-guide/labels[Kubernetes
+https://kubernetes.io/docs/concepts/overview/working-with-objects/labels[Kubernetes
 documentation] has more information on labels.
 
 [[endpoints]]
