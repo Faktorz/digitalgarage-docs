@@ -113,7 +113,7 @@ the controllers can always bring the system into sync.
 == How Is {product-title} Secured?
 
 The {product-title} and Kubernetes APIs
-xref:additional_concepts/authentication.adoc[authenticate] users who present
+xref:../dev_guide/authentication.adoc[authenticate] users who present
 credentials, and then xref:additional_concepts/authorization.adoc[authorize]
 them based on their role. Both developers and administrators can be
 authenticated via a number of means, primarily
