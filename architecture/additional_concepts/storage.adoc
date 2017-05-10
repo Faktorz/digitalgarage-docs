@@ -186,7 +186,7 @@ endif::[]
 
 Generally, a PV will have a specific storage capacity. This is set using the
 PV's `capacity` attribute. See the
-link:https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/resources.md[Kubernetes
+link:https://github.com/kubernetes/community/blob/master/contributors/design-proposals/resources.md[Kubernetes
 Resource Model] to understand the units expected by `capacity`.
 
 Currently, storage capacity is the only resource that can be set or requested.
@@ -418,7 +418,7 @@ access modes.
 
 Claims, like pods, can request specific quantities of a resource. In this case,
 the request is for storage. The same
-link:https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/resources.md[resource
+link:https://github.com/kubernetes/community/blob/master/contributors/design-proposals/resources.md[resource
 model] applies to both volumes and claims.
 
 [[pvc-claims-as-volumes]]

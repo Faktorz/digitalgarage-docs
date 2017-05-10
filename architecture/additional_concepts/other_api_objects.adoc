@@ -22,7 +22,7 @@ By adding a limit range to your namespace, you can enforce the minimum and
 maximum amount of CPU and Memory consumed by an individual pod or container.
 
 See the
-https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/admission_control_limit_range.md[Kubernetes
+https://github.com/kubernetes/community/blob/master/contributors/design-proposals/admission_control_limit_range.md[Kubernetes
 documentation] for more information.
 
 == ResourceQuota
@@ -42,7 +42,7 @@ endif::[]
 
 ifdef::openshift-dedicated,digital-garage[]
 
-See https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/admin/resource-quota.md[Kubernetes
+See https://kubernetes.io/docs/concepts/policy/resource-quotas[Kubernetes
 documentation] or contact your administrator for more information on `*ResourceQuota*`.
 endif::[]
 
@@ -53,7 +53,7 @@ or consumed by a pod or container. Examples include memory (RAM), CPU,
 disk-time, and network bandwidth.
 
 See the xref:../../dev_guide/compute_resources.adoc#dev-guide-compute-resources[Developer Guide] and
-http://kubernetes.io/docs/user-guide/compute-resources/[Kubernetes
+https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/[Kubernetes
 documentation] for more information.
 
 == Secret
@@ -70,7 +70,7 @@ administrator. Persistent volumes provide durable storage for stateful
 applications.
 
 See the
-https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/persistent-storage.md[Kubernetes
+https://github.com/kubernetes/community/blob/master/contributors/design-proposals/persistent-storage.md[Kubernetes
 documentation] for more information.
 
 == PersistentVolumeClaim
@@ -82,7 +82,7 @@ binds them together. The claim is then used as a volume by a pod. Kubernetes
 makes sure the volume is available on the same node as the pod that requires it.
 
 See the
-https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/persistent-storage.md[Kubernetes
+https://github.com/kubernetes/community/blob/master/contributors/design-proposals/persistent-storage.md[Kubernetes
 documentation] for more information.
 endif::[]
 
