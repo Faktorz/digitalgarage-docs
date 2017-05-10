@@ -22,10 +22,10 @@ sample project up and running on {product-title}. There are a few different ways
 to launch images within a project, but this topic focuses on the quickest and
 easiest method.
 
-If this is the first part of the documentation you have read, and you are
-unfamiliar with the core concepts of {product-title}, you might want to
-start by reading about the concepts behind {product-title}. {product-title} provides
-out of the box a set of
+// end::overview[]
+
+// tag::overview-online[]
+{product-title} provides out of the box a set of
 xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[languages] and
 xref:../using_images/db_images/index.adoc#using-images-db-images-index[databases] for developers with
 corresponding implementations and tutorials that allow you to kickstart your
@@ -42,6 +42,7 @@ turn leverage xref:../using_images/s2i_images/index.adoc#using-images-s2i-images
 |===
 |Language|Implementations and Tutorials
 
+<<<<<<< HEAD
 .^|xref:../using_images/s2i_images/ruby.adoc#using-images-s2i-images-ruby[Ruby]
 |https://github.com/openshift/rails-ex[Rails]
 
@@ -59,39 +60,37 @@ turn leverage xref:../using_images/s2i_images/index.adoc#using-images-s2i-images
 
 .^|xref:../using_images/s2i_images/java.adoc#using-images-s2i-images-java[Java]
 |https://github.com/openshift-s2i/s2i-wildfly[Maven]
+=======
+.^|Ruby
+|https://github.com/thedigitalgarage/rails-ex[Rails]
+
+.^|Python
+|https://github.com/thedigitalgarage/django-ex[Django]
+
+.^|Node.js
+|https://github.com/thedigitalgarage/nodejs-ex[Node.js]
+
+.^|PHP
+|https://github.com/thedigitalgarage/cakephp-ex[CakePHP]
+
+.^|Perl
+|https://github.com/thedigitalgarage/dancer-ex[Dancer]
+
+.^|Java
+a|
+
+>>>>>>> origin/master
 |===
 
 Other images provided by {product-title} include:
 
-* https://github.com/openshift/mysql[MySQL]
+* https://github.com/thedigitalgarage/dg-mysql-container[MySQL]
 
-* https://github.com/openshift/mongodb[MongoDB]
+* https://github.com/thedigitalgarage/dg-mongodb-container[MongoDB]
 
-* https://github.com/openshift/postgresql[PostgreSQL]
+* https://github.com/thedigitalgarage/dg-postgresql-container[PostgreSQL]
 
-* https://github.com/openshift/jenkins[Jenkins]
-
-ifdef::openshift-enterprise,openshift-dedicated[]
-In addition, JBoss Middleware has put together a broad range of
-https://github.com/jboss-openshift/application-templates[{product-title}
-templates] as well as xref:../using_images/xpaas_images/index.adoc#using-images-xpaas-images-index[images] as
-part of their xPaaS services.
-
-The technologies available with the xPaaS services in particular include:
-
-* Java EE 6 Application Server provided by JBoss EAP 6
-* Integration and Messaging Services provided by JBoss Fuse and JBoss A-MQ
-* Data Grid Service provided by JBoss Data Grid
-* Real Time Decision Service provided by JBoss BRMS
-* Java Web Server 3.0 provided by Tomcat 7 and Tomcat 8
-
-With each of these offerings, a series of combinations are provided:
-
-* HTTP only vs. HTTP and HTTPS
-* No database required, or the use of either MongoDB, PostgreSQL, or MySQL
-* If desired, integration with A-MQ
-endif::[]
-
+* https://github.com/thedigitalgarage/dg-jenkins-container[Jenkins]
 
 To help illustrate constructing such applications, the following sections guide
 you through creating a project that contains a sample Node.js application that
@@ -117,28 +116,7 @@ In contrast, Instant Apps like Jenkins are instantly usable.
 
 Before you can get started:
 
-ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
-- You must be able to access a running instance of {product-title}. If you do
-not have access, contact your cluster administrator.
-endif::[]
-ifdef::digital-garage[]
-- You must register for an account with the http://www.thedigitalgarage.io[{product-title}]
-endif::[]
-ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
-- Your instance must be pre-configured by a cluster administrator with the
-xref:../dev_guide/templates.adoc#using-the-instantapp-templates[Instant App templates]
-and xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[builder images]. If they
-are not available,
-endif::[]
-ifdef::openshift-enterprise,openshift-origin[]
-direct your cluster administrator to the
-xref:../install_config/imagestreams_templates.adoc#install-config-imagestreams-templates[Loading the Default Image Streams and Templates] topic.
-endif::[]
-ifdef::openshift-dedicated[]
-contact your cluster administrator.
-endif::[]
-- You must have an account on http://www.github.com[GitHub], have https://help.github.com/articles/set-up-git/[Git set up], and
-https://help.github.com/articles/set-up-git/#next-steps-authenticating-with-github-from-git[set up authentication to GitHub from Git].
+- Visit link:http://www.thedigitalgarage.io[www.thedigitalgarage.io] to register for {product-title} for free today.
 - You must have the {product-title} CLI
 xref:../cli_reference/get_started_cli.adoc#cli-reference-get-started-cli[downloaded and installed].
 
@@ -183,10 +161,16 @@ a new deployment.
 
 . Log into {product-title} from the CLI:
 +
+* With username and password:
++
+----
+$ oc login -u=<username> -p=<password> --server=<your-thedigitalgarage-server> --insecure-skip-tls-verify
+----
++
 * With oauth token:
 +
 ----
-$ oc login https://apps.thedigitalgarage.io:8443 --token=<tokenID>
+$ oc login <https://api.your-thedigitalgarage-server.com> --token=<tokenID>
 ----
 . To create a new project:
 +
@@ -204,7 +188,7 @@ To create a new application from the code in your forked repository:
 . Create the application by specifying the source of the code:
 +
 ----
-$ oc new-app openshift/ruby-20-centos7~https://github.com/<your_github_username>/ruby-ex
+$ oc new-app thedigitalgarage/ruby-20-centos7~https://github.com/<your_github_username>/ruby-ex
 ----
 +
 {product-title} finds the matching builder image (which in this case is *ruby-20-centos7*) and then creates resources for the application (image stream, build configuration, deployment configuration, service). It also schedules the build.
@@ -258,8 +242,14 @@ The example `ruby-ex` application is a simple welcome screen, and contains detai
 
 Next, configure automated builds via a GitHub webhook trigger, so that code changes in your forked repository cause your application to rebuild.
 
-include::getting_started/developers_console.adoc[tag=deploycode1]
+== Configuring Automated Builds
 
+You forked the source code for this application from the
+https://github.com/thedigitalgarage/ruby-ex[{product-title} GitHub repository]. Therefore,
+you can use a webhook to automatically trigger a rebuild of your application
+whenever you push code changes to your forked repository.
+
+To set up a webhook for your application:
 . View the triggers section of the `*BuildConfig*` to verify that a GitHub webhook trigger exists:
 +
 ----
@@ -283,11 +273,9 @@ $ oc describe bc ruby-ex
 ----
 +
 . Copy the GitHub webhook payload URL output by the above command.
-
 include::getting_started/developers_console.adoc[tag=deploycode2]
 
 [[developers-cli-writing-a-code-change]]
-
 include::getting_started/developers_console.adoc[tag=deploycode3]
 
 [[developers-cli-manually-rebuilding-images]]
