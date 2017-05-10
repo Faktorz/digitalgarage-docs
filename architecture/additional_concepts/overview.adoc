@@ -7,6 +7,6 @@
 :experimental:
 
 If you want to contribute to {product-title} documentation, see our
-https://github.com/openshift/openshift-docs[source repository] and
-https://github.com/openshift/openshift-docs/blob/master/contributing_to_docs/doc_guidelines.html[guidelines]
+https://github.com/thedigitalgarage/digitalgarage-docs[source repository] and
+https://github.com/thedigitalgarage/digitalgarage-docs/blob/master/contributing_to_docs/contributing.adoc[guidelines]
 to get started.
