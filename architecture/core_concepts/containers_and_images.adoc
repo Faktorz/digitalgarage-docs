@@ -50,9 +50,9 @@ containers allow you to reorganize setup scripts and binding code. An init
 container differs from a regular container in that it always runs to completion.
 Each init container must complete successfully before the next one is started.
 
-The link:http://kubernetes.io/docs/user-guide/pods/init-container/[Kubernetes
+The link:https://kubernetes.io/docs/concepts/workloads/pods/init-containers/Kubernetes
 documentation] has more information on init containers, including
-link:https://kubernetes.io/docs/user-guide/production-pods/#handling-initialization[usage
+link:https://kubernetes.io/docs/concepts/workloads/pods/init-containers/#examples[usage
 examples].
 
 [[docker-images]]
