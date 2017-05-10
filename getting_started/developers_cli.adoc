@@ -46,13 +46,13 @@ turn leverage xref:../using_images/s2i_images/index.adoc#using-images-s2i-images
 |https://github.com/openshift/rails-ex[Rails]
 
 .^|xref:../using_images/s2i_images/python.adoc#using-images-s2i-images-python[Python]
-|https://github.com/openshift/django-ex[Django]
+|https://github.com/thedigitalgarage/django-ex[Django]
 
 .^|xref:../using_images/s2i_images/nodejs.adoc#using-images-s2i-images-nodejs[Node.js]
-|https://github.com/openshift/nodejs-ex[Node.js]
+|https://github.com/thedigitalgarage/nodejs-ex[Node.js]
 
 .^|xref:../using_images/s2i_images/php.adoc#using-images-s2i-images-php[PHP]
-|https://github.com/openshift/cakephp-ex[CakePHP]
+|https://github.com/thedigitalgarage/cakephp-ex[CakePHP]
 
 .^|xref:../using_images/s2i_images/perl.adoc#using-images-s2i-images-perl[Perl]
 |https://github.com/openshift/dancer-ex[Dancer]
@@ -63,11 +63,11 @@ turn leverage xref:../using_images/s2i_images/index.adoc#using-images-s2i-images
 
 Other images provided by {product-title} include:
 
-* https://github.com/openshift/mysql[MySQL]
+* https://github.com/thedigitalgarage/dg-mysql-container[MySQL]
 
-* https://github.com/openshift/mongodb[MongoDB]
+* https://github.com/thedigitalgarage/dg-mongodb-container[MongoDB]
 
-* https://github.com/openshift/postgresql[PostgreSQL]
+* https://github.com/thedigitalgarage/dg-postgresql-container[PostgreSQL]
 
 * https://github.com/openshift/jenkins[Jenkins]
 
