@@ -113,8 +113,8 @@ the controllers can always bring the system into sync.
 == How Is {product-title} Secured?
 
 The {product-title} and Kubernetes APIs
-xref:../dev_guide/authentication.adoc[authenticate] users who present
-credentials, and then xref:additional_concepts/authorization.adoc[authorize]
+http://docs.thedigitalgarage.io/dev_guide/authentication.html[authenticate] users who present
+credentials, and then xref:additional_concepts/authorization.adoc#architecture-additional-concepts-authorization[authorize]
 them based on their role. Both developers and administrators can be
 authenticated via a number of means, primarily
 xref:additional_concepts/other_api_objects.adoc#oauth-objects[OAuth tokens] and SSL
