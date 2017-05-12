@@ -65,7 +65,7 @@ xref:../../architecture/core_concepts/builds_and_image_streams.adoc#image-stream
 stream] that points to the image, either in your Docker registry or at the
 external location. Your {product-title} resources can then reference the
 ImageStream. You can find
-https://github.com/openshift/origin/tree/master/examples/image-streams[example
+https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example
 image stream definitions] for all the provided {product-title} images.
 
 [[s2i-images-ruby-config]]
@@ -74,7 +74,7 @@ The Ruby image supports a number of environment variables which can be set to
 control the configuration and behavior of the Ruby runtime.
 
 To set these environment variables as part of your image, you can place them into
-xref:../../dev_guide/builds.adoc#environment-files[a *_.s2i/environment_* file]
+xref:../../dev_guide/builds/build_strategies.adoc#environment-files[a *_.s2i/environment_* file]
 inside your source code repository, or define them in
 xref:../../dev_guide/builds/build_strategies.adoc#buildconfig-environment[the environment
 section] of the build configuration's `*sourceStrategy*` definition.
