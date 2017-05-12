@@ -57,7 +57,7 @@ $ oc new-app wordpress-instant-app
 ----
 [NOTE]
 ====
-The Digital Garage Worpress Instant App is preconfigured with an ephemeral MySQL database. For information on configuring a persistent
+The Digital Garage Wordpress Instant App is preconfigured with an ephemeral MySQL database. For information on configuring a persistent
 MySQL database and/or scaling MySQL, see the xref:../../dev_guide/using_images/db_images/mysql.adoc [MySQL Image Guide].
 ====
 
