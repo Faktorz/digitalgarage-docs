@@ -119,7 +119,7 @@ The following steps describe the default workflow to test S2I image builders:
 
 [options="nowrap"]
 ****
-`$ s2i build file:///path-to-sample-app _<BUILDER_IMAGE_NAME>_ _<OUTPUT_APPLICATION_IMAGE_NAME>_`
+`$ s2i build file://path-to-sample-app _<BUILDER_IMAGE_NAME>_ _<OUTPUT_APPLICATION_IMAGE_NAME>_`
 ****
 ====
 

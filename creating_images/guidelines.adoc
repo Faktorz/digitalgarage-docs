@@ -205,7 +205,7 @@ attack and requirements for security patching.
 
 *Use Volumes for Persistent Data*
 
-Images should use a https://docs.docker.com/reference/builder/#volume[Docker
+Images should use a https://docs.docker.com/engine/reference/builder/[Docker
 volume] for persistent data. This way {product-title} mounts the network storage
 to the node running the container, and if the container moves to a new node the
 storage is reattached to that node. By using the volume for all persistent
@@ -224,7 +224,7 @@ for consumers of the image to understand what volumes they need to define when
 running your image.
 
 See the
-https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/user-guide/volumes.md[Kubernetes
+https://kubernetes.io/docs/concepts/storage/volumes/[Kubernetes
 documentation] for more information on how volumes are used in {product-title}.
 
 ////
@@ -239,7 +239,7 @@ volume cannot be used to share state in a cluster.
 
 See the following references for other guidelines:
 
-- Docker documentation - https://docs.docker.com/articles/dockerfile_best-practices/[Best practices for writing Dockerfiles]
+- Docker documentation - https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/[Best practices for writing Dockerfiles]
 - Project Atomic documentation - http://www.projectatomic.io/docs/docker-image-author-guidance/[Guidance for Container Image Authors]
 
 
@@ -493,6 +493,6 @@ and readiness probes] you documented with the image, for completeness.
 
 
 == External References
-* https://docs.docker.com/engine/userguide/basics/[Docker basics]
-* https://docs.docker.com/reference/builder[Dockerfile reference]
+* https://docs.docker.com/engine/docker-overview/[Docker basics]
+* https://docs.docker.com/engine/reference/builder/[Dockerfile reference]
 * http://www.projectatomic.io/docs/docker-image-author-guidance[Project Atomic Guidance for Container Image Authors]

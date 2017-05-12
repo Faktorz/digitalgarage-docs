@@ -214,7 +214,7 @@ example:
 - https://registry.hub.docker.com/u/library/node[Node.js]
 - https://registry.hub.docker.com/u/library/python[Python]
 
-See the https://docs.docker.com/reference/builder/#onbuild[Docker documentation]
+See the https://docs.docker.com/engine/reference/builder/#onbuild[Docker documentation]
 for more information on `ONBUILD`.
 
 Upon startup, S2I detects whether the builder image contains `sh` and `tar` binaries
