@@ -35,8 +35,8 @@ registries or push them into your {product-title} Docker registry. Additionally,
 you can create an ImageStream that points to the image,
 either in your Docker registry or at the external location. Your {product-title}
 resources can then reference the ImageStream. You can find
-https://github.com/thedigitalgarage/examples/image-streams[example]
-ImageStream definitions for all the provided {product-title} images.
+https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example
+ImageStream definitions] for all the provided {product-title} images.
 
 == Configuration and Usage
 
@@ -331,7 +331,7 @@ xref:../../architecture/core_concepts/deployments.adoc#deployments-and-deploymen
 configuration] and a
 xref:../../architecture/core_concepts/pods_and_services.adoc#services[service].
 
-The MySQL templates should have been registered in the default *openshift*
+The MySQL templates should have been registered in the default Digital Garage
 project by your cluster administrator during the initial cluster setup.
 ifdef::openshift-enterprise,openshift-origin[]
 See xref:../../install_config/imagestreams_templates.adoc#install-config-imagestreams-templates[Loading the Default Image Streams and Templates]
@@ -353,8 +353,8 @@ Cluster administrator instructions for setting up the pool are located
 xref:../../install_config/persistent_storage/persistent_storage_nfs.adoc#install-config-persistent-storage-persistent-storage-nfs[here].
 endif::[]
 
-You can find instructions for instantiating templates by following these
-xref:../../dev_guide/templates.adoc#dev-guide-templates[instructions].
+You can find instructions for instantiating templates 
+xref:../../dev_guide/templates.adoc#dev-guide-templates[here].
 
 Once you have instantiated the service, you can copy the user name, password,
 and database name environment variables into a deployment configuration for

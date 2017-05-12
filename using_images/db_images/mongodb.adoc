@@ -37,7 +37,7 @@ registries or push them into your {product-title} Docker registry. Additionally,
 you can create an ImageStream that points to the image,
 either in your Docker registry or at the external location. Your {product-title}
 resources can then reference the ImageStream. You can find
-https://github.com/openshift/origin/tree/master/examples/image-streams[example]
+https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example]
 ImageStream definitions for all the provided {product-title} images.
 
 == Configuration and Usage
@@ -282,7 +282,7 @@ xref:../../architecture/core_concepts/deployments.adoc#deployments-and-deploymen
 configuration] and a
 xref:../../architecture/core_concepts/pods_and_services.adoc#services[service].
 
-The MongoDB templates should have been registered in the default *openshift*
+The MongoDB templates should have been registered in the default Digital Garage
 project by your cluster administrator during the initial cluster setup.
 ifdef::openshift-enterprise,openshift-origin[]
 See xref:../../install_config/imagestreams_templates.adoc#install-config-imagestreams-templates[Loading the Default Image Streams and Templates]
@@ -301,8 +301,8 @@ which means the data will survive a pod restart. Using persistent volumes
 requires a persistent volume pool be defined in the OpenShift deployment.
 
 
-You can find instructions for instantiating templates by following these
-xref:../../dev_guide/templates.adoc#dev-guide-templates[instructions].
+You can find instructions for instantiating templates 
+xref:../../dev_guide/templates.adoc#dev-guide-templates[here].
 
 Once you have instantiated the service, you can copy the user name, password,
 and database name environment variables into a deployment configuration for
