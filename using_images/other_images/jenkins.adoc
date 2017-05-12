@@ -449,7 +449,7 @@ and operational actions on the {product-title} server and the API artifacts host
 In addition to being accessible from the classic "freestyle" form of Jenkins
 job, the build steps as of version 1.0.14 of the {product-title} Pipeline
 Plug-in are also avaible to Jenkins Pipeline jobs via the DSL extension points
-provided by the Jenkins Pipeline Plug-in. The https://github.com/openshift/origin/blob/master/examples/jenkins/pipeline/samplepipeline.json[OpenShift Jenkins Pipeline build strategy sample]
+provided by the Jenkins Pipeline Plug-in. The https://github.com/openshift/origin/tree/master/examples/jenkins/pipeline[OpenShift Jenkins Pipeline build strategy sample]
 illustrates how to use the OpenShift Pipeline plugin DSL versions of its steps.
 
 The https://github.com/openshift/jenkins/tree/master/1/contrib/openshift/configuration/jobs/OpenShift%20Sample[sample Jenkins job] that is pre-configured in the Jenkins image utilizes the OpenShift pipeline plug-in and serves as an example of
