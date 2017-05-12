@@ -336,7 +336,7 @@ include::dev_guide/authentication.adoc[tag=systemadminlogin]
 == CLI Configuration Files
 
 A CLI configuration file permanently stores `oc` options and contains a series
-of xref:../architecture/additional_concepts/authentication.adoc#architecture-additional-concepts-authentication[authentication]
+of http://docs.thedigitalgarage.io/dev_guide/authentication.html[authentication]
 mechanisms and {product-title} server connection information associated with
 nicknames.
 
