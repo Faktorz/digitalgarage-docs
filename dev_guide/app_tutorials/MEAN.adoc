@@ -106,7 +106,7 @@ with MongoDB and Node.js containers from Docker Hub.
 repository and deploying the application on the MEAN Stack.
 
 After signing into your Github account, go to:
-link:www.github.com/thedigitalgarage/mean-ex[www.github.com/thdigitalgarage/mean-ex]
+link:https://github.com/thedigitalgarage/mean-ex[www.github.com/thdigitalgarage/mean-ex]
 and fork the repository into your own account. This repository contains
 some files and a file structure that will give you a quick start on your
 MEAN application. I go into more detail on the files and file structure
@@ -127,7 +127,7 @@ To Project]
 
 In the template configuration page for the MEAN Stack Quickstart change
 the Git Repository URL to point to the repository that was just forked
-into your account. `https://github.com/johnmccawley/mean-ex.git`. If you
+into your account. For example, `https://github.com/johnmccawley/mean-ex.git`. If you
 are running this tutorial in the free Hello World tier, you will want to
 set the `Memory Limit` for MongoDB to 128Mi rather than the default
 192Mi. This will give your application enough room to build and deploy
@@ -194,13 +194,13 @@ You can create a new application using the web console or by running the
 three ways to create a new application, by specifying either:
 
 *
-http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-source-code[With
+http://docs.thedigitalgarage.io/dev_guide/application_lifecycle/new_app.html#specifying-source-code[With
 source code]
 *
-http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-a-template[Via
+http://docs.thedigitalgarage.io/dev_guide/application_lifecycle/new_app.html#specifying-a-template[Via
 templates]
 *
-http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-an-image[DockerHub
+http://docs.thedigitalgarage.io/dev_guide/application_lifecycle/new_app.html#specifying-an-image[DockerHub
 images]
 
 [[create-a-new-app-from-source-code-method-1]]
@@ -227,7 +227,7 @@ Create a new app from a template (method 2)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We can also
-http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-a-template[create
+http://docs.thedigitalgarage.io/dev_guide/application_lifecycle/new_app.html#specifying-a-template[create
 new apps using template files]. Clone the demo app source code from
 https://github.com/thedigitalgarage/mean-ex[GitHub repo] (fork if you
 like).

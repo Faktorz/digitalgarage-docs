@@ -230,7 +230,7 @@ computing resource requests and limits so that image and application authors can
 correctly create an image for specific environments.
 
 You can do this using both the xref:dapi-resources-environment-variables[environment
-variable] and xref:dapi-values-using-volume-plugin[volume plug-in] methods.
+variable] and xref:dapi-using-volume-plugin[volume plug-in] methods.
 
 [[dapi-resources-environment-variables]]
 === Using Environment Variables

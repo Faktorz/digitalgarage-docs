@@ -98,9 +98,7 @@ If you use xref:../cli_reference/get_started_cli.adoc#cli-reference-get-started-
 xref:create-a-project[create a new project], you can then refresh the page in
 the browser to see the new project.
 
-Selecting a project brings you to the
-xref:../architecture/infrastructure_components/web_console.adoc#project-overviews[project
-overview] for that project.
+Selecting a project brings you to the project overview for that project.
 
 [[check-project-status]]
 

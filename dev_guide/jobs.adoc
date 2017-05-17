@@ -21,7 +21,7 @@ replicas it created. Jobs are part of the Kubernetes API, which can be managed
 with `oc` commands like other
 xref:../cli_reference/basic_cli_operations.adoc#object-types[object types].
 
-See the http://kubernetes.io/docs/user-guide/jobs/[Kubernetes documentation] for
+See the https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/[Kubernetes documentation] for
 more information about jobs.
 
 [[creating-a-job]]

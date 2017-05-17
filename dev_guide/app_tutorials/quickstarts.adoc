@@ -43,7 +43,7 @@ These quickstarts provide a basic application of the indicated framework and lan
 * Django: a Python web framework (includes a PostgreSQL database)
 ** link:https://github.com/thedigitalgarage/django-ex[Source repository]
 * Laravel: a PHP web framework (includes a MySQL database)
-** link:https://github.com/thedigitalgarage/larvel-ex[Source repository]
+** link:https://github.com/thedigitalgarage/laravel-ex[Source repository]
 * MEAN Stack: a full-stack JavaScript Framework (includes a MongoDB database, Express.js, AngularJS and Node.js)
 ** link:https://github.com/thedigitalgarage/mean-ex[Source repository]
 * NodeJS: a NodeJS web application (includes a MongoDB database)

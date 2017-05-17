@@ -19,7 +19,7 @@ A daemonset can be used to run replicas of a pod on specific or all nodes in an
 Use daemonsets to create shared storage, run a logging pod on every node in
 your cluster, or deploy a monitoring agent on every node.
 
-For more information on daemonsets, see the link:http://kubernetes.io/docs/admin/daemons/[Kubernetes documentation].
+For more information on daemonsets, see the link:https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/[Kubernetes documentation].
 
 [[dev-guide-creating-daemonsets]]
 == Creating Daemonsets

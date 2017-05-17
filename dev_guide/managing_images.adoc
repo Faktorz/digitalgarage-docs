@@ -142,34 +142,6 @@ If you require dates in tag names, periodically inspect old and unsupported
 images and _istags_ and remove them. Otherwise, you might experience increasing
 resource usage caused by old images.
 
-[[tag-naming]]
-=== Tag Naming
-
-Images evolve over time and the tag reflects this. It always points to the
-latest image built. If there is too much information embedded in a tag name (for
-example, `v2.0.1-may-2016`), the tag will point to just one revision of an image
-and will never be updated. Using default image pruning options, such an image
-will never be removed. Instead, if the tag is named `v2.0`, more image revisions
-are more likely. This results in longer
-xref:../architecture/core_concepts/builds_and_image_streams.adoc#image-stream-tag[tag
-history] and, therefore, the image pruner will more likely remove old and unused
-images. Refer to
-xref:../admin_guide/pruning_resources.adoc#pruning-images[pruning images] for
-more information.
-
-Although tag naming convention is up to you, here are a few examples:
-
-[width="40%",frame="topbot",options="header"]
-|======================
-|Description |Example
-|Revision    |`v2.0.1`
-|Architecture|`v2.0-x86_64`
-|Base image  |`v1.2-centos7`
-|======================
-
-If you require dates in tag names, periodically inspect old and unsupported
-images and _istags_ and remove them. Otherwise, you might experience increasing
-resource usage caused by old images.
 [[tag-removal]]
 === Removing Tags from Image Streams
 To remove a tag completely from an image stream run:
@@ -384,7 +356,7 @@ internal registry located at *_registry.preview.openshift.com_*.
 endif::[]
 
 The internal registry authenticates using the same
-xref:../architecture/additional_concepts/authentication.adoc#api-authentication[tokens]
+http://docs.thedigitalgarage.io/dev_guide/authentication.html[tokens]
 as the {product-title} API. To perform a `docker login` against the internal registry,
 you can choose any user name and email, but the password must be a valid
 {product-title} token.
@@ -937,7 +909,7 @@ endif::[]
 ifdef::openshift-online,openshift-dedicated,atomic-registry[]
 CSS customizations
 endif::[]
-that can be added to an {product-title} cluster that uses your
+that can be added to a {product-title} cluster that uses your
 image stream. You must specify an icon class that exists, or it will prevent
 falling back to the generic icon.
 <6> A URL to a source repository that works with this builder image tag and results
@@ -946,7 +918,7 @@ falling back to the generic icon.
 required for it to show up in the catalog. Add tags that will associate it with one
 of the provided catalog categories. Refer to the `id` and `categoryAliases` in
 `CATALOG_CATEGORIES` in the console's
-link:https://github.com/openshift/origin-web-console/blob/master/app/scripts/constants.js[constants
+link:https://github.com/thedigitalgarage/origin-web-console/blob/master/app/scripts/constants.js[constants
 file]. The categories can also be
 ifdef::openshift-enterprise,openshift-origin[]
 xref:../install_config/web_console_customization.adoc#configuring-catalog-categories[customized]
