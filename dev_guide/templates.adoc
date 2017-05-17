@@ -20,7 +20,7 @@ anything you have permission to create within a project, for example
 xref:../architecture/core_concepts/pods_and_services.adoc#services[services],
 xref:../architecture/core_concepts/builds_and_image_streams.adoc#builds[build
 configurations], and
-xref:deployments.adoc[deployment
+xref:/deployments.adoc[deployment
 configurations]. A template may also define a set of
 xref:../architecture/core_concepts/pods_and_services.adoc#labels[labels]
 to apply to every object defined in the template.
@@ -267,7 +267,7 @@ xref:../install_config/imagestreams_templates.adoc#install-config-imagestreams-t
 topic.
 endif::[]
 
-By default, the templates build using a public source repository on
+By default, the templates built using a public source repository on
 https://github.com[GitHub] that contains the necessary application code. In
 order to be able to modify the source and build your own version of the
 application, you must:
@@ -369,7 +369,7 @@ deploying. It should also provide links to additional information, such as a
 <4> Tags to be associated with the template for searching and grouping. Add tags
 that will include it into one of the provided catalog categories. Refer to the
 `id` and `categoryAliases` in `CATALOG_CATEGORIES` in the console's
-link:https://github.com/openshift/origin-web-console/blob/master/app/scripts/constants.js[constants
+link:https://github.com/thedigitalgarage/origin-web-console/blob/master/app/scripts/constants.js[constants
 file].
 ifdef::openshift-enterprise,openshift-origin[]
 The categories can also be
@@ -600,46 +600,6 @@ substitution will be performed and the object will be created in whatever
 namespace the parameter substitution resolved the value to, assuming the user
 has permission to create objects in that namespace.
 ====
-
-[[other-recommendations]]
-=== Other Recommendations
-
-* Group related services together in the management console by adding the
-`service.alpha.openshift.io/dependencies` annotation to the Service object in
-your template.
-+
-.Group the Frontend and Database Services Together on the Management Console Overview
-====
-[source,yaml]
-----
-kind: "Template"
-apiVersion: "v1"
-objects:
-  - kind: "Service"
-    apiVersion: "v1"
-    metadata:
-      name: "frontend"
-      annotations:
-        "service.alpha.openshift.io/dependencies": "[{\"name\": \"database\", \"kind\": \"Service\"}]"
-...
-  - kind: "Service"
-    apiVersion: "v1"
-    metadata:
-      name: "database"
-----
-====
-* Set xref:compute_resources.adoc#dev-compute-resources[memory, CPU], and
-xref:../architecture/additional_concepts/storage.adoc#pvc-resources[storage]
-default sizes to make sure your application is given enough resources to run
-smoothly.
-
-* Avoid referencing the `latest` tag from images if that tag is used across major
-versions. This may cause running applications to break when new images are
-pushed to that tag.
-
-* A good template builds and deploys cleanly without requiring modifications
-after the template is deployed.
-
 
 [[other-recommendations]]
 === Other Recommendations
