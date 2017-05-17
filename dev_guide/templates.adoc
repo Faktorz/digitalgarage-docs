@@ -20,7 +20,7 @@ anything you have permission to create within a project, for example
 xref:../architecture/core_concepts/pods_and_services.adoc#services[services],
 xref:../architecture/core_concepts/builds_and_image_streams.adoc#builds[build
 configurations], and
-xref:../dev_guide/deployments.adoc[deployment
+xref:deployments.adoc[deployment
 configurations]. A template may also define a set of
 xref:../architecture/core_concepts/pods_and_services.adoc#labels[labels]
 to apply to every object defined in the template.
