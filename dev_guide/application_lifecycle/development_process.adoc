@@ -46,9 +46,9 @@ ifdef::openshift-dedicated[]
 * You should have access to an {product-title} instance. If you are not sure of
 these details, contact your {product-title} cluster administrator.
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 * Access {product-title} by logging in and creating an account at
-link:https://www.openshift.com/devpreview/[].
+link:https://thedigitalgarage.io/[].
 endif::[]
 
 *Develop*
