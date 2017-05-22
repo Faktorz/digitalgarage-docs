@@ -49,4 +49,4 @@ These quickstarts provide a basic application of the indicated framework and lan
 * NodeJS: a NodeJS web application (includes a MongoDB database)
 ** link:https://github.com/thedigitalgarage/nodejs-ex[Source repository]
 * Rails: a Ruby web framework (includes a PostgreSQL database)
-** link:https://github.com/thedigitalgarage/rails-ex[Source repository]
+// ** link:https://github.com/thedigitalgarage/rails-ex[Source repository]
