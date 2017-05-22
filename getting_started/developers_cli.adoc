@@ -43,7 +43,7 @@ turn leverage xref:../using_images/s2i_images/index.adoc#using-images-s2i-images
 |Language|Implementations and Tutorials
 
 .^|xref:../using_images/s2i_images/ruby.adoc#using-images-s2i-images-ruby[Ruby]
-|https://github.com/openshift/rails-ex[Rails]
+|Rails
 
 .^|xref:../using_images/s2i_images/python.adoc#using-images-s2i-images-python[Python]
 |https://github.com/thedigitalgarage/django-ex[Django]
@@ -55,10 +55,10 @@ turn leverage xref:../using_images/s2i_images/index.adoc#using-images-s2i-images
 |https://github.com/thedigitalgarage/cakephp-ex[CakePHP]
 
 .^|xref:../using_images/s2i_images/perl.adoc#using-images-s2i-images-perl[Perl]
-|https://github.com/openshift/dancer-ex[Dancer]
+|Dancer
 
 .^|xref:../using_images/s2i_images/java.adoc#using-images-s2i-images-java[Java]
-|https://github.com/openshift-s2i/s2i-wildfly[Maven]
+|Maven
 |===
 
 Other images provided by {product-title} include:
@@ -69,7 +69,7 @@ Other images provided by {product-title} include:
 
 * https://github.com/thedigitalgarage/dg-postgresql-container[PostgreSQL]
 
-* https://github.com/openshift/jenkins[Jenkins]
+* Jenkins
 
 ifdef::openshift-enterprise,openshift-dedicated[]
 In addition, JBoss Middleware has put together a broad range of
