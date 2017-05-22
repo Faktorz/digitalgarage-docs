@@ -65,7 +65,7 @@ You can manage Jenkins authentication in two ways:
 [[jenkins-openshift-oauth-authentication]]
 ==== {product-title} OAuth authentication
 
-http://docs.thedigitalgarage.io/dev_guide/authentication.html[OAuth
+xref:../architecture/additional_concepts/other_api_objects.html#oauth-objects[OAuth
 authentication] is activated by configuring the `*Configure Global Security*`
 panel in the Jenkins UI, or by setting the `*OPENSHIFT_ENABLE_OAUTH*`
 environment variable on the Jenkins `*Deployment Config*` to anything other than

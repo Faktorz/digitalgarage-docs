@@ -13,7 +13,7 @@ toc::[]
 == Overview
 A CLI configuration file allows you to configure different profiles, or
 _contexts_, for use with the xref:index.adoc#cli-reference-index[OpenShift CLI]. A context
-consists of http://docs.thedigitalgarage.io/dev_guide/authentication.html[user
+consists of xref:../dev_guide/authentication.adoc#dev-guide-authentication[user
 authentication] and {product-title} server information associated with a _nickname_.
 
 [[switching-between-cli-profiles]]
@@ -80,9 +80,7 @@ nicknamed *joe-project/openshift1.example.com:8443/alice*, using the
 allowing the *alice* user to work in the *joe-project* project on the
 *openshift1.example.com:8443* cluster.
 <4> The `*users*` section defines user credentials. In this example, the user
-nickname *alice/openshift1.example.com:8443* uses an
-http://docs.thedigitalgarage.io/dev_guide/authentication.html[access
-token].
+nickname *alice/openshift1.example.com:8443* uses an access token.
 ====
 
 The CLI can support multiple configuration files; they are
@@ -240,9 +238,7 @@ $ oc config view --config=<specific_filename>
 *Example Usage* [[example-usage]]
 
 Consider the following configuration workflow. First, set credentials for a user
-nickname *alice* that uses an
-http://docs.thedigitalgarage.io/dev_guide/authentication.html[access
-token]:
+nickname *alice* that uses an access token:
 
 [options="nowrap"]
 ----

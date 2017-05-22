@@ -18,9 +18,11 @@ stream, image tag, or template.
 
 Create from URL only works with image streams or templates from namespaces that
 have been explicitly whitelisted. The whitelist contains the `openshift`
-namespace by default. To add namespaces to the whitelist, see
-xref:../install_config/web_console_customization.adoc#configuring-the-create-from-url-namespace-whitelist[Configuring
-the Create From URL Namespace Whitelist].
+namespace by default.
+
+// To add namespaces to the whitelist, see
+// xref:../install_config/web_console_customization.adoc#configuring-the-create-from-url-namespace-whitelist[Configuring
+// the Create From URL Namespace Whitelist].
 
 [[create-for-url-using-an-image-stream-and-image-tag]]
 == Using an Image Stream and Image Tag

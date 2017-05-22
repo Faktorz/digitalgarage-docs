@@ -54,7 +54,7 @@ Service accounts are represented with the `*ServiceAccount*` object. Examples:
 
 |===
 
-Every user must http://docs.thedigitalgarage.io/dev_guide/authentication.html[authenticate] in some way in order to access {product-title}.
+Every user must xref:../../dev_guide/authentication.adoc#dev-guide-authentication[authenticate] in some way in order to access {product-title}.
 API requests with no authentication or invalid authentication are authenticated as requests by the `*anonymous*` system user.
 Once authenticated, policy determines what the user is xref:../additional_concepts/authorization.adoc#architecture-additional-concepts-authorization[authorized] to do.
 

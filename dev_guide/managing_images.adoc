@@ -702,9 +702,8 @@ policy.
 
 The `Local` policy instructs clients to always pull from the integrated
 registry. This is useful if you want to pull from external insecure registries
-without modifying Docker daemon settings. The
-xref:../install_config/registry/extended_registry_configuration.adoc#middleware-repository-pullthrough[pull-through
-feature] of the registry serves the remote image to the client. Additionally,
+without modifying Docker daemon settings. The pull-through
+feature of the registry serves the remote image to the client. Additionally,
 all the blobs are mirrored for faster access later.
 
 You can set the policy in a specification of image stream tag as

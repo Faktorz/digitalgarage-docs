@@ -65,9 +65,7 @@ Once your limit is reached, you may need to delete an existing project in order 
 == Viewing Projects
 
 When viewing projects, you are restricted to seeing only the projects you have
-access to view based on the
-xref:../architecture/additional_concepts/authorization.adoc#architecture-additional-concepts-authorization[authorization
-policy].
+access to view based on the authorization policy.
 
 To view a list of projects:
 

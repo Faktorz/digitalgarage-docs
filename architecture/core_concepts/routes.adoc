@@ -19,8 +19,7 @@ host name, like _www.example.com_, so that external clients can reach it by
 name.
 
 DNS resolution for a host name is handled separately from routing.
-Your administrator may have configured a
-xref:../../install_config/install/prerequisites.adoc#prereq-dns[DNS wildcard entry]
+Your administrator may have configured a DNS wildcard entry
 that will resolve to the {product-title} node that is running the
 {product-title} router. If you are using a different host name you may
 need to modify its DNS records independently to resolve to the node that
@@ -296,8 +295,7 @@ technical limitation of {product-title}.
 [[routing-traffic-to-pods-through-the-sdn]]
 ==== Routing Traffic to Pods Through the SDN
 
-Because *F5 BIG-IP®* is external to the
-xref:../additional_concepts/sdn.adoc#architecture-additional-concepts-sdn[{product-title} SDN], a
+Because *F5 BIG-IP®* is external to the {product-title} SDN, a
 cluster administrator must create a peer-to-peer tunnel between *F5 BIG-IP®* and
 a host that is on the SDN, typically an {product-title} node host.
 ifdef::openshift-dedicated[]
@@ -359,9 +357,7 @@ pool, the router deletes that pool.
 [[architecture-f5-native-integration]]
 ==== F5 Native Integration
 
-With
-xref:../../install_config/router/f5_router.adoc#setting-up-f5-native-integration-with-openshift[native
-integration of F5 with {product-title}], you do not need to configure a ramp
+With native integration of F5 with {product-title}], you do not need to configure a ramp
 node for F5 to be able to reach the pods on the overlay network as created by
 OpenShift SDN.
 
@@ -1021,7 +1017,7 @@ wildcard policy as part of its configuration using the `wildcardPolicy` field.
 Any routers run with a policy allowing wildcard routes will expose the route
 appropriately based on the wildcard policy.
 
-xref:../../install_config/router/default_haproxy_router.adoc#using-wildcard-routes[Learn how to configure HAProxy routers to allow wildcard routes].
+// xref:../../install_config/router/default_haproxy_router.adoc#using-wildcard-routes[Learn how to configure HAProxy routers to allow wildcard routes].
 
 .A Route Specifying a Subdomain WildcardPolicy
 [source,yaml]
