@@ -17,7 +17,7 @@ Review the
 xref:../architecture/infrastructure_components/web_console.adoc#architecture-infrastructure-components-web-console[browser versions
 and operating systems] that can be used to access the web console.
 
-include::getting_started/developers_cli.adoc[tag=overview]
+// include::getting_started/developers_cli.adoc[tag=overview]
 
 ifdef::openshift-enterprise,openshift-dedicated,openshift-origin[]
 [[developers-console-video]]
@@ -29,9 +29,9 @@ https://access.redhat.com/videos/2480801[Click here to watch]
 image::dev-console-video-thumb.png[Web Console Getting Started Experience, 579, 246, link="https://access.redhat.com/videos/2480801"]
 endif::openshift-enterprise,openshift-dedicated,openshift-origin[]
 
-ifdef::openshift-enterprise,openshift-dedicated,openshift-origin[]
+ifdef::openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage[]
 
-include::getting_started/developers_cli.adoc[tag=forking]
+// include::getting_started/developers_cli.adoc[tag=forking]
 
 [[developers-console-creating-a-project]]
 == Creating a Project
@@ -150,4 +150,4 @@ committed change to your forked repository:
 . Click the *Browse* tab, then click *Builds*.
 . Find your build, then click *Start Build*.
 
-endif::openshift-enterprise,openshift-dedicated,openshift-origin[]
+endif::openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage[]
