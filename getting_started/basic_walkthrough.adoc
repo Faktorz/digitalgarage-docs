@@ -233,6 +233,7 @@ that your application can handle additional traffic volume.
 . In the web console, view the *Overview* page for your project. Click the *[ up
 arrow ]* under the *NODEJS-MONGODB-EXAMPLE* service to add an additional replica
 of your Node.js application:
+
 +
 image::dg-scaling-app.png[Scaling an app]
 +
