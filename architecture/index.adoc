@@ -70,7 +70,7 @@ cluster], with data about the objects stored in
 xref:infrastructure_components/kubernetes_infrastructure.adoc#master[etcd], a
 reliable clustered key-value store. Those services are broken down by function:
 
-- xref:../rest_api/index.adoc#rest-api-index[REST APIs], which expose each of the
+- REST APIs, which expose each of the
 xref:core_concepts/index.adoc#architecture-core-concepts-index[core objects].
 - Controllers, which read those APIs, apply changes to other objects, and report
 status or write back to the object.
@@ -113,8 +113,8 @@ the controllers can always bring the system into sync.
 == How Is {product-title} Secured?
 
 The {product-title} and Kubernetes APIs
-http://docs.thedigitalgarage.io/dev_guide/authentication.html[authenticate] users who present
-credentials, and then xref:additional_concepts/authorization.adoc#architecture-additional-concepts-authorization[authorize]
+xref:../dev_guide/authentication.adoc[authenticate] users who present
+credentials, and then authorize
 them based on their role. Both developers and administrators can be
 authenticated via a number of means, primarily
 xref:additional_concepts/other_api_objects.adoc#oauth-objects[OAuth tokens] and SSL

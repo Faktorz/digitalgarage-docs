@@ -49,7 +49,7 @@ deployment reactions occur.
 === Authentication
 {product-title} can communicate with registries to access private image repositories
 using credentials supplied by the user. This allows {product-title} to push and pull
-images to and from private repositories. The http://docs.thedigitalgarage.io/dev_guide/authentication.html[Authentication] topic
+images to and from private repositories. The xref:../dev_guide/authentication.html[Authentication] topic
 has more information.
 
 endif::[]
