@@ -10,14 +10,14 @@
 
 toc::[]
 
-include::getting_started/developers_cli.adoc[tag=overview]
-
 [[developers-console-browser-reqs]]
 == Browser Requirements
 
 Review the
 xref:../architecture/infrastructure_components/web_console.adoc#architecture-infrastructure-components-web-console[browser versions
 and operating systems] that can be used to access the web console.
+
+include::getting_started/developers_cli.adoc[tag=overview]
 
 ifdef::openshift-enterprise,openshift-dedicated,openshift-origin[]
 [[developers-console-video]]
