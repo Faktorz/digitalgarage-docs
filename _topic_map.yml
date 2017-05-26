@@ -801,16 +801,16 @@ Topics:
     Distros: openshift-enterprise,openshift-dedicated
 
 
----
-Name: REST API Reference
-Dir: rest_api
-Topics:
-  - Name: Overview
-    File: index
-  - Name: OpenShift v1
-    File: openshift_v1
-  - Name: Kubernetes v1
-    File: kubernetes_v1
-  - Name: Revision History
-    File: revhistory_rest_api
-    Distros: openshift-enterprise,openshift-dedicated
+# ---
+# Name: REST API Reference
+# Dir: rest_api
+# Topics:
+#   - Name: Overview
+#     File: index
+#   - Name: OpenShift v1
+#     File: openshift_v1
+#   - Name: Kubernetes v1
+#     File: kubernetes_v1
+#   - Name: Revision History
+#     File: revhistory_rest_api
+#     Distros: openshift-enterprise,openshift-dedicated
