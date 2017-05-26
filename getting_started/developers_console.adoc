@@ -11,15 +11,6 @@
 toc::[]
 
 include::getting_started/developers_cli.adoc[tag=overview]
-include::getting_started/developers_cli.adoc[tag=overview-online]
-
-[[getting-started-developers-console-languages]]
-
-include::getting_started/developers_cli.adoc[tag=dev-cli-languages]
-
-[[developers-console-before-you-begin]]
-
-include::getting_started/developers_cli.adoc[tag=beforeyoubegin]
 
 [[developers-console-browser-reqs]]
 == Browser Requirements
@@ -36,6 +27,7 @@ The following video walks you through the rest of this topic:
 https://access.redhat.com/videos/2480801[Click here to watch]
 
 image::dev-console-video-thumb.png[Web Console Getting Started Experience, 579, 246, link="https://access.redhat.com/videos/2480801"]
+endif::openshift-enterprise,openshift-dedicated,openshift-origin[]
 
 ifdef::openshift-enterprise,openshift-dedicated,openshift-origin[]
 
@@ -157,3 +149,5 @@ committed change to your forked repository:
 
 . Click the *Browse* tab, then click *Builds*.
 . Find your build, then click *Start Build*.
+
+endif::openshift-enterprise,openshift-dedicated,openshift-origin[]
