@@ -100,15 +100,15 @@ a|[none]
 * xref:../dev_guide/index.adoc#dev-guide-index[Further explore the Developer's Guide]
 |===
 
-'''
-[cols="2",frame="none",grid="none"]
-|===
-
-.^|[big]#Advanced Resources#
-a|[none]
-
-* xref:../rest_api/index.adoc#rest-api-index[REST API reference]
-|===
+// '''
+// [cols="2",frame="none",grid="none"]
+// |===
+//
+// .^|[big]#Advanced Resources#
+// a|[none]
+//
+// * xref:../rest_api/index.adoc#rest-api-index[REST API reference]
+// |===
 
 '''
 [cols="2",frame="none",grid="none"]
