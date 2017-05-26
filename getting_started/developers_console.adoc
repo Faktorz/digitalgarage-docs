@@ -37,7 +37,7 @@ ifdef::openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage[
 == Creating a Project
 
 To create an application, you must first create a new project, then select an
-InstantApp template. From there, OpenShift begins the build process and creates
+InstantApp template. From there, Digital Garage begins the build process and creates
 a new deployment.
 
 . Visit the web console in your browser. The web console uses a self-signed certificate, so if prompted, continue past a browser warning.
@@ -76,8 +76,6 @@ is running, the build is complete.
 
 [[developers-console-view-app]]
 == Viewing the Running Application
-If your DNS is correctly configured, then your new application can be accessed using a web browser. If you cannot access your application, then speak with your system administrator.
-
 To view your new application:
 
 . In the web console, view the overview page to determine the web address for the application. For example, under *SERVICE: RUBY-EX* you should see something similar to: `ruby-ex-my-test.example.openshiftapps.com`.
@@ -90,7 +88,7 @@ To view your new application:
 == Configuring Automated Builds
 
 You forked the source code for this application from the
-https://github.com/openshift/ruby-ex[{product-title} GitHub repository]. Therefore,
+https://github.com/thedigitalgarage/ruby-ex[{product-title} GitHub repository]. Therefore,
 you can use a webhook to automatically trigger a rebuild of your application
 whenever you push code changes to your forked repository.
 

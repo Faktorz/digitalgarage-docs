@@ -12,7 +12,7 @@ ifdef::openshift-origin,openshift-online,openshift-dedicated,openshift-enterpris
 toc::[]
 endif::[]
 
-ifdef::atomic-registry[]
+ifdef::atomic-registry,digital-garage[]
 [NOTE]
 ====
 {product-title} is based on OpenShift and Kubernetes. The typical {product-title}
@@ -169,7 +169,7 @@ that are a representation of those nodes. The master uses the information from
 node objects to validate nodes with health checks. A node is ignored until it
 passes the health checks, and the master continues checking nodes until they are
 valid. The
-https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/admin/node.md#node-management[Kubernetes documentation] has more information on node management.
+https://kubernetes.io/docs/concepts/architecture/nodes[Kubernetes documentation] has more information on node management.
 
 ifdef::openshift-enterprise,openshift-origin[]
 Administrators can xref:../../admin_guide/manage_nodes.adoc#admin-guide-manage-nodes[manage nodes] in an
@@ -254,6 +254,6 @@ command.
 can be reached. Defaults to the *`metadata.name`* value when empty.
 ====
 
-The xref:../../rest_api/kubernetes_v1.adoc#rest-api-kubernetes-v1[REST API Reference] has
-more details on these definitions.
+// The xref:../../rest_api/kubernetes_v1.adoc#rest-api-kubernetes-v1[REST API Reference] has
+// more details on these definitions.
 endif::[]
