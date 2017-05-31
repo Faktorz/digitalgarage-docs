@@ -208,7 +208,7 @@ centos/ruby-22-centos7@sha256:3a335d7d8a452970c5b4054ad7118ff134b3a6b50a2bb6d0c0
 ----
 
 When viewing example image stream definitions, such as the
-https://github.com/openshift/origin/blob/master/examples/image-streams/image-streams-centos7.json[example
+https://github.com/thedigitalgarage/examples/blob/master/v1.3/image-streams/image-streams-centos7.json[example
 CentOS image streams], you may notice they contain definitions of
 `*ImageStreamTag*` and references to `*DockerImage*`, but nothing related to
 `*ImageStreamImage*`.
