@@ -190,11 +190,11 @@ Project]. It is deployed as a service using an {product-title} template. The web
 console is an optional component.
 endif::atomic-registry[]
 
-ifdef::openshift-enterprise,openshift-online,digital-garage[]
+ifdef::openshift-enterprise,openshift-online[]
 [[web-console-statefulsets]]
 == StatefulSets
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online[]
 `StatefulSet` is a
 link:https://access.redhat.com/support/offerings/techpreview[Technology Preview]
 feature in {product-title} 3.5.
@@ -207,4 +207,4 @@ deletion and termination.
 
 .StatefulSet in {product-title}
 image::statefulsets.png[StatefulSets view in OpenShift]
-endif::openshift-enterprise,openshift-online,digital-garage[]
+endif::openshift-enterprise,openshift-online[]
