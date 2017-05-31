@@ -389,7 +389,7 @@ and try out Quickstart templates for the following languages:
 |Language|Implementations and Tutorials
 
 .^|xref:../using_images/s2i_images/ruby.adoc#using-images-s2i-images-ruby[Ruby]
-|Rails
+|https://github.com/thedigitalgarage/examples/tree/master/v1.3/quickstart-templates#quickstarts[Rails]
 
 .^|xref:../using_images/s2i_images/python.adoc#using-images-s2i-images-python[Python]
 |https://github.com/thedigitalgarage/django-ex[Django]
@@ -401,7 +401,7 @@ and try out Quickstart templates for the following languages:
 |https://github.com/thedigitalgarage/cakephp-ex[CakePHP]
 
 .^|xref:../using_images/s2i_images/perl.adoc#using-images-s2i-images-perl[Perl]
-|Dancer
+|https://github.com/thedigitalgarage/examples/tree/master/v1.3/quickstart-templates#quickstarts[Dancer]
 
 .^|xref:../using_images/s2i_images/java.adoc#using-images-s2i-images-java[Java]
 |Maven
@@ -415,7 +415,7 @@ Other images provided by {product-title} include:
 
 * https://github.com/thedigitalgarage/dg-postgresql-container[PostgreSQL]
 
-* Jenkins
+* https://github.com/thedigitalgarage/examples/tree/master/v1.3/quickstart-templates#quickstarts[Jenkins]
 
 In addition, JBoss Middleware has put together a broad range of
 https://github.com/jboss-openshift/application-templates[{product-title}
