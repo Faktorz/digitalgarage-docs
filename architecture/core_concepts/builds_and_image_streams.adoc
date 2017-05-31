@@ -155,7 +155,7 @@ It must be manually deleted by the user.
 ====
 
 For more information about Jenkins Pipelines, please see the
-link:https://jenkins.io/doc/pipeline/[Jenkins documentation].
+link:https://jenkins.io/doc/book/pipeline/[Jenkins documentation].
 
 endif::[]
 [[image-streams]]
