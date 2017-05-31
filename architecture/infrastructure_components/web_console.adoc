@@ -64,7 +64,8 @@ xref:../../install_config/web_console_customization.adoc#adding-or-changing-link
 these links further].
 endif::openshift-enterprise,openshift-origin[]
 
-image::ocp_35_cli_help.png["Command Line Tools"]
+// this image not found, no equivalent available on Openshift documentation
+// image::ocp_35_cli_help.png["Command Line Tools"]
 
 [[browser-requirements]]
 == Browser Requirements
