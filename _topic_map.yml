@@ -197,7 +197,7 @@ Topics:
         Distros: openshift-*
       - Name: Authorization
         File: authorization
-        Distros: openshift-*
+        Distros: openshift-*,digital-garage
       - Name: Persistent Storage
         File: storage
         Distros: openshift-*,digital-garage
