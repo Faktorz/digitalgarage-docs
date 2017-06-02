@@ -12,7 +12,7 @@
 toc::[]
 
 == Overview
-{product-title} provides a container image for running Jenkins. This image provides a Jenkins server instance, which can be used to set up a basic flow for continuous testing, integration, and delivery.
+{product-title} provides https://github.com/thedigitalgarage/jenkins[a container image] for running Jenkins. This image provides a Jenkins server instance, which can be used to set up a basic flow for continuous testing, integration, and delivery.
 
 This image also includes a sample Jenkins job, which triggers a new build of a `*BuildConfig*` defined in {product-title}, tests the output of that build, and then on successful build, retags the output to indicate the build is ready for production.
 
@@ -81,8 +81,8 @@ For non-browser access, the OpenShift Login plug-in also supports using
 the HTTP bearer token authorization header to supply valid credentials for
 accessing Jenkins. Ensure to use the token associated with the
 serviceaccount for the project in which Jenkins is running, which, if you started
-Jenkins using the https://github.com/openshift/origin/blob/master/examples/jenkins/jenkins-ephemeral-template.json[jenkins-ephemeral]
-or https://github.com/openshift/origin/blob/master/examples/jenkins/jenkins-persistent-template.json[jenkins-persistent] templates, are found by using:
+Jenkins using the https://github.com/thedigitalgarage/examples/blob/master/v1.3/quickstart-templates/jenkins-ephemeral-template.json[jenkins-ephemeral]
+or https://github.com/thedigitalgarage/examples/blob/master/v1.3/quickstart-templates/jenkins-persistent-template.json[jenkins-persistent] templates, are found by using:
 
 ----
 $ oc describe serviceaccount jenkins
@@ -96,7 +96,7 @@ user will have.
 Users with the `admin` role will have the traditional Jenkins administrative
 user permissions. Users with the `edit` or `view` role will have progressively
 less permissions.  See the
-https://github.com/openshift/jenkins#jenkins-admin-user[Jenkins image source
+https://github.com/thedigitalgarage/jenkins#jenkins-admin-user[Jenkins image source
 repository README] for the specifics on the OpenShift roles to Jenkins
 permissions mappings.
 
@@ -241,7 +241,7 @@ The Jenkins image can be run with mounted volumes to enable persistent storage f
 xref:../../dev_guide/templates.adoc#dev-guide-templates[Templates] provide parameter fields to
 define all the environment variables (password) with predefined defaults.
 {product-title} provides templates to make creating a new Jenkins service easy. The
-Jenkins templates should have been registered in the default *openshift* project
+Jenkins templates should have been registered in the default {product-title} project
 by your cluster administrator during the initial cluster setup.
 ifdef::openshift-enterprise,openshift-origin[]
 See xref:../../install_config/imagestreams_templates.adoc#install-config-imagestreams-templates[Loading the Default Image Streams and Templates]
@@ -345,7 +345,7 @@ container hosts using Kubernetes and {product-title}.
 To use the Kubernetes plug-in, {product-title} provides three images
 suitable for use as Jenkins slaves: the *_Base_*, *_Maven_*, and *_NodeJS_* images.
 
-The first is a https://github.com/openshift/jenkins/tree/master/slave-base[base image] for Jenkins slaves:
+The first is a https://github.com/thedigitalgarage/jenkins/tree/master/slave-base[base image] for Jenkins slaves:
 
  - It pulls in both the required tools (headless Java, the Jenkins JNLP client) and the useful ones
 (including git, tar, zip, nss among others).
@@ -355,8 +355,8 @@ The first is a https://github.com/openshift/jenkins/tree/master/slave-base[base 
 
 Two additional images, that extends the base image are also provided, namely:
 
-* https://github.com/openshift/jenkins/tree/master/slave-maven[Maven], and
-* https://github.com/openshift/jenkins/tree/master/slave-nodejs[NodeJS]
+* https://github.com/thedigitalgarage/jenkins/tree/master/slave-maven[Maven], and
+* https://github.com/thedigitalgarage/jenkins/tree/master/slave-nodejs[NodeJS]
 
 Both the Maven and NodeJS slave images are configured as Kubernetes Pod Tempate images within the {product-title} Jenkins image's
 configuration for the Kubernetes plugin.  That configuration includes labels for each of the images that can
@@ -392,50 +392,6 @@ This file lists the plug-ins you want to install:
 pluginId:pluginVersion
 ----
 
-*_configuration/jobs_*::
-This directory contains the Jenkins job definitions.
-
-*_configuration/config.xml_*::
-This file contains your custom Jenkins configuration.
-
-The contents of the *_configuration/_* directory will be copied
-into the *_/var/lib/jenkins/_* directory, so you can also include
-additional files, such as *_credentials.xml_*, there.
-
-The following is an example build configuration that customizes the Jenkins
-image in {product-title}:
-
-[source,yaml]
-----
-apiVersion: v1
-kind: BuildConfig
-metadata:
-  name: custom-jenkins-build
-spec:
-  source:                       <1>
-    git:
-      uri: https://github.com/custom/repository
-    type: Git
-  strategy:                     <2>
-    sourceStrategy:
-      from:
-        kind: ImageStreamTag
-        name: jenkins:latest
-        namespace: openshift
-    type: Source
-  output:                       <3>
-    to:
-      kind: ImageStreamTag
-      name: custom-jenkins:latest
-----
-
-<1> The `source` field defines the source Git repository
-with the layout described above.
-<2> The `strategy` field defines the original Jenkins image to use
-as a source image for the build.
-<3> The `output` field defines the resulting, customized Jenkins image
-you can use in deployment configuration instead of the official Jenkins image.
-
 == Tutorial
 
 For more details on the sample job included in this image, see this link:https://github.com/openshift/origin/blob/master/examples/jenkins/README.md[tutorial].
@@ -452,7 +408,7 @@ Plug-in are also avaible to Jenkins Pipeline jobs via the DSL extension points
 provided by the Jenkins Pipeline Plug-in. The https://github.com/openshift/origin/tree/master/examples/jenkins/pipeline[OpenShift Jenkins Pipeline build strategy sample]
 illustrates how to use the OpenShift Pipeline plugin DSL versions of its steps.
 
-The https://github.com/openshift/jenkins/tree/master/1/contrib/openshift/configuration/jobs/OpenShift%20Sample[sample Jenkins job] that is pre-configured in the Jenkins image utilizes the OpenShift pipeline plug-in and serves as an example of
+The https://github.com/thedigitalgarage/jenkins/tree/master/1/contrib/openshift/configuration/jobs/OpenShift%20Sample[sample Jenkins job] that is pre-configured in the Jenkins image utilizes the OpenShift pipeline plug-in and serves as an example of
 how to leverage the plug-in for creating CI/CD flows for {product-title} in Jenkins.
 
 See the https://github.com/openshift/jenkins-plugin/[the plug-in's README] for a detailed description of what is available.
