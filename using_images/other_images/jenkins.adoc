@@ -24,18 +24,7 @@ This image also includes a sample Jenkins job, which triggers a new build of a `
 [[jenkins-images]]
 == Images
 
-This image comes in two flavors, depending on your needs:
-
-* RHEL 7
-* CentOS 7
-
-*RHEL 7 Based Image*
-
-The RHEL 7 image is available through Red Hat's subscription registry:
-
-----
-$ docker pull registry.access.redhat.com/openshift3/jenkins-1-rhel7
-----
+{product-title} uses a CentOS-based image.
 
 *CentOS 7 Based Image*
 
