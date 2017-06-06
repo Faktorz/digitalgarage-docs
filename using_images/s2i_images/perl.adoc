@@ -30,7 +30,7 @@ https://github.com/openshift/sti-perl/tree/master/5.16[5.16] of Perl.
 
 == Images
 
-{product-title} supports the CentOS-based image:
+{product-title} supports the CentOS-based image.
 
 *CentOS 7 Based Image*
 

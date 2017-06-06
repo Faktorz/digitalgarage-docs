@@ -33,7 +33,7 @@ link:https://github.com/openshift/sti-ruby/tree/master/2.3[2.3] of Ruby.
 [[s2i-images-ruby-images]]
 == Images
 
-{product-title} supports CentOS-based images:
+{product-title} supports CentOS-based images.
 
 *CentOS 7 Based Image*
 

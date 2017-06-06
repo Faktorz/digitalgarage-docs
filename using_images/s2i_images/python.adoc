@@ -33,7 +33,7 @@ https://github.com/openshift/sti-python/tree/master/3.5[3.5] of Python.
 
 == Images
 
-{product-title} supports CentOS-based images:
+{product-title} supports CentOS-based images.
 
 *CentOS 7 Based Image*
 
