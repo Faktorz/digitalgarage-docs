@@ -238,6 +238,7 @@ of your Node.js application:
 image::dg-scaling-app.png[Scaling an app]
 +
 
+
 [[bw-next-up]]
 == Next Up: Beyond the Basics
 
