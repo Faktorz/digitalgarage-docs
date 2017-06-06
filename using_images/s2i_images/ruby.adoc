@@ -14,9 +14,9 @@ toc::[]
 {product-title} provides
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#source-build[S2I]
 enabled Ruby images for building and running Ruby applications.
-ifdef::openshift-origin[]
-The https://github.com/openshift/sti-ruby[Ruby S2I builder image]
-endif::openshift-origin[]
+ifdef::openshift-origin,digital-garage[]
+The https://github.com/thedigitalgarage/s2i-ruby[Ruby S2I builder image]
+endif::openshift-origin,digital-garage[]
 ifdef::openshift-enterprise[]
 The Ruby S2I builder image
 endif::openshift-enterprise[]
@@ -33,19 +33,7 @@ link:https://github.com/openshift/sti-ruby/tree/master/2.3[2.3] of Ruby.
 [[s2i-images-ruby-images]]
 == Images
 
-These images come in two flavors, depending on your needs:
-
-* RHEL 7
-* CentOS 7
-
-*RHEL 7 Based Image*
-
-The RHEL 7 images are available through Red Hat's subscription registry using:
-
-----
-$ docker pull registry.access.redhat.com/openshift3/ruby-20-rhel7
-$ docker pull registry.access.redhat.com/rhscl/ruby-23-rhel7
-----
+{product-title} supports CentOS-based images:
 
 *CentOS 7 Based Image*
 

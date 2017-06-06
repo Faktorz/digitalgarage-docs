@@ -17,9 +17,9 @@ enabled PHP images for building and running PHP applications.
 ifdef::openshift-origin[]
 The https://github.com/openshift/sti-php[PHP S2I builder image]
 endif::openshift-origin[]
-ifdef::openshift-enterprise[]
+ifdef::openshift-enterprise,digital-garage[]
 The PHP S2I builder image
-endif::openshift-enterprise[]
+endif::openshift-enterprise,digital-garage[]
 assembles your application source with any required dependencies to create a
 new image containing your PHP application. This resulting image can be run
 either by {product-title} or by Docker.
@@ -34,18 +34,7 @@ link:https://github.com/sclorg/s2i-php-container/tree/master/5.6[5.6] of PHP.
 [[php-images]]
 == Images
 
-This image comes in two flavors, depending on your needs:
-
-* RHEL 7
-* CentOS 7
-
-*RHEL 7 Based Image*
-
-The RHEL 7 image is available through Red Hat's subscription registry using:
-
-----
-$ docker pull registry.access.redhat.com/openshift3/php-55-rhel7
-----
+{product-title} supports the CentOS-based image:
 
 *CentOS 7 Based Image*
 
@@ -62,7 +51,7 @@ xref:../../architecture/infrastructure_components/image_registry.adoc#integrated
 registry]. Additionally, you can create an
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#image-streams[image
 stream] that points to the image, either in your Docker registry or at the
-external location. Your OpenShift resources can then reference the image stream.
+external location. Your {product-title} resources can then reference the image stream.
 
 You can find
 https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example

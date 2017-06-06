@@ -17,9 +17,9 @@ enabled Perl images for building and running Perl applications.
 ifdef::openshift-origin[]
 The https://github.com/openshift/sti-perl[Perl S2I builder image]
 endif::openshift-origin[]
-ifdef::openshift-enterprise[]
+ifdef::openshift-enterprise,digital-garage[]
 The Perl S2I builder image
-endif::openshift-enterprise[]
+endif::openshift-enterprise,digital-garage[]
 assembles your application source with any required dependencies to create a
 new image containing your Perl application. This resulting image can be run
 either by {product-title} or by Docker.
@@ -30,18 +30,7 @@ https://github.com/openshift/sti-perl/tree/master/5.16[5.16] of Perl.
 
 == Images
 
-This image comes in two flavors, depending on your needs:
-
-* RHEL 7
-* CentOS 7
-
-*RHEL 7 Based Image*
-
-The RHEL 7 image is available through Red Hat's subscription registry using:
-
-----
-$ docker pull registry.access.redhat.com/openshift3/perl-516-rhel7
-----
+{product-title} supports the CentOS-based image:
 
 *CentOS 7 Based Image*
 

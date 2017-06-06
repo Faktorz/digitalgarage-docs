@@ -14,9 +14,9 @@ toc::[]
 {product-title} provides
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#source-build[S2I]
 enabled Node.js images for building and running Node.js applications.
-ifdef::openshift-origin[]
-The https://github.com/openshift/sti-nodejs[Node.js S2I builder image]
-endif::openshift-origin[]
+ifdef::openshift-origin,digital-garage[]
+The https://github.com/thedigitalgarage/s2i-nodejs[Node.js S2I builder image]
+endif::openshift-origin,digital-garage[]
 ifdef::openshift-enterprise[]
 The Node.js S2I builder image
 endif::openshift-enterprise[]
@@ -31,19 +31,7 @@ https://github.com/openshift/sti-nodejs[4] of Node.js.
 
 == Images
 
-These images come in two flavors, depending on your needs:
-
-* RHEL 7
-* CentOS 7
-
-*RHEL 7 Based Image*
-
-The RHEL 7 images are available through Red Hat's subscription registry using:
-
-----
-$ docker pull registry.access.redhat.com/openshift3/nodejs-010-rhel7
-$ docker pull registry.access.redhat.com/rhscl/nodejs-4-rhel7
-----
+{product-title} supports the CentOS-based image:
 
 *CentOS 7 Based Image*
 
