@@ -340,7 +340,7 @@ The first is a https://github.com/thedigitalgarage/jenkins/tree/master/slave-bas
 (including git, tar, zip, nss among others).
  - It establishes the JNLP slave agent as the entrypoint.
  - It includes the oc client tooling for invoking command line operations from within Jenkins jobs, and
- - It provides Dockerfiles for both Centos and RHEL images.
+ - It provides Dockerfiles for the CentOS image.
 
 Two additional images, that extends the base image are also provided, namely:
 
@@ -352,7 +352,7 @@ configuration for the Kubernetes plugin.  That configuration includes labels for
 be applied to any of your Jenkins jobs under their "Restrict where this project can be run" setting. If the label is applied,
 execution of the given job will be done under an {product-title} Pod running the respective slave image.
 
-The Maven and NodeJS Jenkins slave images provide Dockerfiles for both Centos and RHEL that you can reference when building new slave images.
+The Maven and NodeJS Jenkins slave images provide Dockerfiles for Centos that you can reference when building new slave images.
 Also note the `contrib` and `contrib/bin` subdirectories.  They allow for the insertion of configuration files and executable
 scripts for your image.
 
