@@ -129,6 +129,7 @@ $ oc project <project_name>
 If you followed the xref:../getting_started/basic_walkthrough.adoc#getting-started-basic-walkthrough[Basic
 Walkthrough] topic, you already created your first project. You must switch to
 your project namespace and clear out the original sample application.
+====
 
 .. Use the following command to find the name of your existing project(s):
 +
@@ -160,7 +161,7 @@ $ oc get pvc
 ----
 $ oc delete pvc mongodb
 ----
-====
+
 
 . Next, create a new application from your forked copy of the *nodejs-ex* source
 code file:
