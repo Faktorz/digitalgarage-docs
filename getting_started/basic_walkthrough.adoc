@@ -144,24 +144,21 @@ image::dg-copy-webhook.png[Copy webhook]
 
 - In the {product-title}  web console:
 .. Navigate to the project containing your application.
-.. Click the *[ Browse ]* tab, then click *[ Builds ]*, then click the name of the
+.. Click *[ Builds ]*, then click the name of the
 build for your Node.js application.
 .. From the *[ Configuration ]* tab, click image:copy.jpg[] next to *GitHub webhook
 URL* to copy your GitHub webhook.
 
 Next, add the webhook to the Github repository:
 
-. In GitHub click *[ Add webhook ]* in the GitHub Webhook settings for your
-project. Paste the payload URL into the *Payload URL* field, then click *[ Add
-webhook ]* to finish adding the webhook to your project:
-+
-image::gs-add-webhook.png[Add webhook]
+. In the GitHub repository for your project, click *[ Settings ]*, then *[ Webhooks ]*, then *[ Add Webhook ]*. Paste the payload URL into the *Payload URL* field, then click *[ Add Webhook ]* to finish adding the webhook to your project:
 
 [NOTE]
 ====
-Be sure to set the "Content type" to `application/json`. Then, click "Disable SSL verification"
-to bypass verification of the SSL certificate for the webhook payload.
+Be sure to set the "Content type" to `application/json`. Then, click "Disable SSL verification" to bypass verification of the SSL certificate for the webhook payload.
 ====
++
+image::gs-add-webhook.png[Add webhook]
 
 . GitHub now attempts to ping the {product-title} server to ensure that
 communication is successful. If it is correctly configured, you will see a green
