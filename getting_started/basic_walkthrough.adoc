@@ -139,6 +139,7 @@ into your Github repository. You obtain this webhook from these locations:
 section titled *Making code changes*. Copy the payload URL from the bottom of
 the page and follow the link to the GitHub project webhook settings page
 provided:
+
 +
 image::dg-copy-webhook.png[Copy webhook]
 
