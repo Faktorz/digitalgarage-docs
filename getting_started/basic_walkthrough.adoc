@@ -191,7 +191,7 @@ You can find all routes configured for your project at any time in the web
 console:
 
 . From the web console, navigate to the project containing your application.
-. Click the *[ Browse ]* tab, then click *[ Routes ]*.
+. Click the *[ Applications ]* tab, then click *[ Routes ]*.
 . Click the host name to open your application in a browser new tab.
 ====
 
