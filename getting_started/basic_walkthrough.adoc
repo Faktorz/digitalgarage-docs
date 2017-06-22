@@ -158,6 +158,7 @@ Next, add the webhook to the Github repository:
 ====
 Be sure to set the "Content type" to `application/json`. Then, click "Disable SSL verification" to bypass verification of the SSL certificate for the webhook payload.
 ====
+
 +
 image::gs-add-webhook.png[Add webhook]
 
