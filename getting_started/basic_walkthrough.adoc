@@ -148,12 +148,13 @@ into your Github repository. You obtain this webhook from these locations:
 section titled *Making code changes*. Copy the payload URL from the bottom of
 the page and follow the link to the GitHub project webhook settings page
 provided:
+
 +
 image::dg-copy-webhook.png[Copy webhook]
 
 - In the {product-title}  web console:
 .. Navigate to the project containing your application.
-.. Click the *Browse* tab, then click *Builds*, then click the name of the
+.. Click *[ Builds ]*, then click the name of the
 build for your Node.js application.
 .. From the *Configuration* tab, click image:copy.jpg[] next to *GitHub webhook
 URL* to copy your GitHub webhook.
@@ -168,10 +169,11 @@ the webhook to your project:
 +
 image::gs-add-webhook.png[Add webhook]
 
+. In the GitHub repository for your project, click *Settings*, then *Webhooks*, then *[ Add Webhook ]*. Paste the payload URL into the *Payload URL* field, then click *[ Add Webhook ]* to finish adding the webhook to your project:
+
 [NOTE]
 ====
-Be sure to set the "Content type" to `application/json`. Then, click "Disable SSL verification"
-to bypass verification of the SSL certificate for the webhook payload.
+Be sure to set the "Content type" to `application/json`. Then, click "Disable SSL verification" to bypass verification of the SSL certificate for the webhook payload.
 ====
 
 . GitHub now attempts to ping the {product-title} server to ensure that
@@ -202,7 +204,7 @@ You can find all routes configured for your project at any time in the web
 console:
 
 . From the web console, navigate to the project containing your application.
-. Click the *Browse* tab, then click *Routes*.
+. Click the *[ Applications ]* tab, then click *[ Routes ]*.
 . Click the host name to open your application in a browser new tab.
 ====
 
@@ -264,6 +266,7 @@ You can check your quota usage at any time in the web console:
 compute-resources* to view usage:
 
 image::gs-quota.png[Quota]
+
 
 [[bw-next-up]]
 == Next Up: Beyond the Basics

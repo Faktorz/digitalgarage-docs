@@ -25,15 +25,8 @@ new image containing your Perl application. This resulting image can be run
 either by {product-title} or by Docker.
 
 == Versions
-<<<<<<< HEAD
 Currently, {product-title} supports version
 https://github.com/openshift/sti-perl/tree/master/5.16[5.16] of Perl.
-=======
-Currently, {product-title} supports versions
-https://github.com/openshift/sti-perl/tree/master/5.16[5.16],
-https://github.com/openshift/sti-perl/tree/master/5.20[5.20], and
-https://github.com/openshift/sti-perl/tree/master/5.24[5.24] of Perl.
->>>>>>> openshift/online-3.7-stage
 
 == Images
 
@@ -75,27 +68,15 @@ $ docker pull openshift/perl-516-centos7
 
 To use these images, you can either access them directly from these
 xref:../../architecture/infrastructure_components/image_registry.adoc#architecture-infrastructure-components-image-registry[image
-<<<<<<< HEAD
 registries], or push them into your
-=======
-registries] or push them into your
->>>>>>> openshift/online-3.7-stage
 xref:../../architecture/infrastructure_components/image_registry.adoc#integrated-openshift-registry[{product-title}
 Docker registry]. Additionally, you can create an
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#image-streams[image
 stream] that points to the image, either in your Docker registry or at the
-<<<<<<< HEAD
 external location. Your {product-title}t resources can then reference the
 ImageStream. You can find
 https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example
 image stream definitions] for all the provided {product-title} images.
-=======
-external location. Your OpenShift resources can then reference the ImageStream.
-You can find
-https://github.com/openshift/origin/tree/master/examples/image-streams[example
-image stream definitions] for all the provided {product-title} images.
-endif::openshift-online[]
->>>>>>> openshift/online-3.7-stage
 
 [[perl-configuration]]
 == Configuration
