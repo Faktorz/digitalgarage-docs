@@ -24,7 +24,7 @@ https://github.com/ç/mongodb-container/tree/master/2.4[2.4], https://github.com
 
 The Digital Garage uses the base CentOS 7 image for the Mongo DB images.
 
-These images are available on DockerHub. To download them:
+These images are available on Docker Hub:
 
 ----
 $ docker pull thedigitalgarage/mongodb-24-centos7
@@ -44,14 +44,15 @@ ImageStream definitions for all the provided {product-title} images.
 
 === Initializing the Database
 
-The first time you use the shared volume, the database is created along with the
+You can configure MongoDB with an ephemeral volume or a persistent volume.
+The first time you use the volume, the database is created along with the
 database administrator user. Afterwards, the MongoDB daemon starts up. If you
 are re-attaching the volume to another container, then the database, database
 user, and the administrator user are not created, and the MongoDB daemon starts.
 
 The following command creates a new database
 xref:../../architecture/core_concepts/pods_and_services.adoc#pods[pod] with
-MongoDB running in a container:
+MongoDB running in a container with an ephemeral volume:
 
 ----
 $ oc new-app \
@@ -59,11 +60,14 @@ $ oc new-app \
     -e MONGODB_PASSWORD=<password> \
     -e MONGODB_DATABASE=<database_name> \
     -e MONGODB_ADMIN_PASSWORD=<admin_password> \
-ifdef::openshift-enterprise[]
+ifdef::openshift-enterprise,openshift-dedicated[]
     registry.access.redhat.com/rhscl/mongodb-26-rhel7
 endif::[]
 ifdef::openshift-origin[]
     thedigitalgarage/mongodb-26-centos7
+endif::[]
+ifdef::openshift-online[]
+    mongodb:2.6
 endif::[]
 ----
 
@@ -289,6 +293,10 @@ See xref:../../install_config/imagestreams_templates.adoc#install-config-imagest
 for more details, if required.
 endif::[]
 
+ifdef::openshift-online[]
+The following template is available:
+endif::[]
+ifndef::openshift-online[]
 There are two templates available:
 
 * `mongodb-ephemeral` is for development/testing purposes only because it uses
@@ -296,12 +304,19 @@ ephemeral storage for the database content. This means that if the database
 pod is restarted for any reason, such as the pod being moved to another node
 or the deployment configuration being updated and triggering a redeploy, all
 data will be lost.
+endif::[]
 * `mongodb-persistent` uses a persistent volume store for the database data
-which means the data will survive a pod restart. Using persistent volumes
-requires a persistent volume pool be defined in the OpenShift deployment.
+which means the data will survive a pod restart.
+ifndef::openshift-online[]
+Using persistent volumes requires a persistent volume pool be defined in the
+{product-title} deployment.
+endif::[]
+ifdef::openshift-enterprise,openshift-origin[]
+Cluster administrator instructions for setting up the pool are located
+xref:../../install_config/persistent_storage/persistent_storage_nfs.adoc#install-config-persistent-storage-persistent-storage-nfs[here].
+endif::[]
 
-
-You can find instructions for instantiating templates 
+You can find instructions for instantiating templates
 xref:../../dev_guide/templates.adoc#dev-guide-templates[here].
 
 Once you have instantiated the service, you can copy the user name, password,
@@ -329,7 +344,7 @@ not intended for production use.
 endif::[]
 
 Red Hat provides a proof-of-concept
-xref:../../architecture/core_concepts/templates.adoc#architecture-core-concepts-templates[template] for MongoDB
+xref:../../dev_guide/templates.adoc#dev-guide-templates[template] for MongoDB
 replication (clustering); you can obtain the
 https://github.com/openshift/mongodb/tree/master/2.4/examples/replica[example
 template from GitHub].

@@ -17,20 +17,12 @@ xref:../architecture/infrastructure_components/kubernetes_infrastructure.adoc#no
 in your instance using the xref:../cli_reference/index.adoc#cli-reference-index[CLI].
 
 When you perform node management operations, the CLI interacts with
-<<<<<<< HEAD
-xref:../architecture/infrastructure_components/kubernetes_infrastructure.adoc#node-object-definition[node objects]
-that are representations of actual node hosts. The
-xref:../architecture/infrastructure_components/kubernetes_infrastructure.adoc#master[master]
-uses the information from node objects to validate nodes with
-xref:../architecture/infrastructure_components/kubernetes_infrastructure.adoc#node[health checks].
-=======
 xref:../architecture/infrastructure_components/kubernetes_infrastructure.adoc#node-object-definition[node
 objects] that are representations of actual node hosts. The
 xref:../architecture/infrastructure_components/kubernetes_infrastructure.adoc#master[master]
 uses the information from node objects to validate nodes with
 xref:../architecture/infrastructure_components/kubernetes_infrastructure.adoc#node[health
 checks].
->>>>>>> openshift/online
 
 [[listing-nodes]]
 == Listing Nodes
@@ -118,32 +110,23 @@ No events.
 [[adding-nodes]]
 == Adding Nodes
 
-<<<<<<< HEAD
-To add nodes to your existing {product-title} cluster, you can run an Ansible
-playbook that handles installing the node components, generating the required
-certificates, and other important steps. See the
-xref:../install_config/adding_hosts_to_existing_cluster.adoc#adding-nodes-advanced[advanced
-=======
 To add nodes to your existing OpenShift cluster, you can run an Ansible playbook
 that handles installing the node components, generating the required
 certificates, and other important steps. See the
 xref:../install_config/install/advanced_install.adoc#adding-nodes-advanced[advanced
->>>>>>> openshift/online
 installation] method for instructions on running the playbook directly.
 
 ifdef::openshift-enterprise[]
 Alternatively, if you used the quick installation method, you can
-<<<<<<< HEAD
-xref:../install_config/adding_hosts_to_existing_cluster.adoc#adding-nodes-or-reinstalling-quick[re-run
-=======
 xref:../install_config/install/quick_install.adoc#adding-nodes-or-reinstalling-quick[re-run
->>>>>>> openshift/online
+=======
+xref:../install_config/adding_hosts_to_existing_cluster.adoc#adding-nodes-or-reinstalling-quick[re-run
+>>>>>>> openshift/online-3.7-stage
 the installer to add nodes], which performs the same steps.
 endif::[]
 
 [[deleting-nodes]]
 == Deleting Nodes
-<<<<<<< HEAD
 
 When you delete a node using the CLI, the node object is deleted in Kubernetes,
 but the pods that exist on the node itself are not deleted. Any bare pods not
@@ -155,19 +138,6 @@ manifest pods] would need to be manually deleted.
 
 To delete a node from the {product-title} cluster:
 
-=======
-
-When you delete a node using the CLI, the node object is deleted in Kubernetes,
-but the pods that exist on the node itself are not deleted. Any bare pods not
-backed by a replication controller would be inaccessible to {product-title},
-pods backed by replication controllers would be rescheduled to other available
-nodes, and
-xref:../install_config/master_node_configuration.adoc#node-configuration-files[local
-manifest pods] would need to be manually deleted.
-
-To delete a node from the {product-title} cluster:
-
->>>>>>> openshift/online
 . xref:evacuating-pods-on-nodes[Evacuate pods] from the node you are preparing
 to delete.
 
@@ -460,76 +430,3 @@ installation] using the `*openshift_node_kubelet_args*` variable. For example:
 openshift_node_kubelet_args={'max-pods': ['40'], 'resolv-conf': ['/etc/resolv.conf'],  'image-gc-high-threshold': ['90'], 'image-gc-low-threshold': ['80']}
 ----
 ====
-<<<<<<< HEAD
-
-[[admin-guide-max-pods-per-node]]
-=== Setting Maximum Pods Per Node
-
-In the *_/etc/origin/node/node-config.yaml_* file, two parameters control the
-maximum number of pods that can be scheduled to a node: `pods-per-core` and
-`max-pods`. When both options are in use, the lower of the two limits the number
-of pods on a node.
-
-`pods-per-core` sets the number of pods the node can run based on the number of
-processor cores on the node. For example, if `pods-per-core` is set to `10` on
-a node with 4 processor cores, the maxiumum number of pods allowed on the node
-will be 40.
-
-====
-----
-kubeletArguments:
-  pods-per-core:
-    - 10
-----
-====
-
-`max-pods` sets the number of pods the node can run to a fixed value, regardless
-of the properties of the node.
-
-====
-----
-kubeletArguments:
-  max-pods:
-    - 250
-----
-====
-
-Using the above example, the default value for `pods-per-core` is `10` and the
-default value for `max-pods` is `250`. This means that unless the node has 25
-cores or more, by default, `pods-per-core` will be the limiting factor.
-
-[[manage-node-change-node-traffic-interface]]
-== Changing Node Traffic Interface
-
-By default, DNS routes all node traffic. During node registration, the master
-receives the node IP addresses from the DNS configuration, and therefore
-accessing nodes via DNS is the most flexible solution for most deployments.
-
-If your deployment is using a cloud provider, then the node gets the IP
-information from the cloud provider. However, *openshift-sdn* attempts to
-determine the IP through a variety of methods, including a DNS lookup on the
-nodeName (if set), or on the system hostname (if nodeName is not set).
-
-However, you may need to change the node traffic interface. For example,
-where:
-
-- {product-title} is installed in a cloud provider where internal hostnames are not configured/resolvable by all hosts.
-- The node's IP from the master's perspective is not the same as the node's IP from its own perspective.
-
-Configuring the `*openshift_set_node_ip*` Ansible variable
-forces node traffic through an interface other than the default network
-interface.
-
-To change the node traffic interface:
-
-. Set the `*openshift_set_node_ip*` Ansible variable to `true`.
-. Set the `*openshift_ip*` to the IP address for the node you want to configure.
-[NOTE]
-====
-Although  `*openshift_set_node_ip*` can be useful as a workaround for the
-cases stated in this section, it is generally not suited for production
-environments. This is because the node will no longer function properly if it
-receives a new IP address.
-====
-=======
->>>>>>> openshift/online

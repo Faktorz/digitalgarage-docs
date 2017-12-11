@@ -469,8 +469,10 @@
   // Create a route and specify your own label and route name
   $ oc expose svc/nginx -l name=myroute --name=fromdowntown
 
+ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
   // Create a route and specify a hostname
   $ oc expose svc/nginx --hostname=www.example.com
+endif::[]
 
   // Expose a deployment configuration as a service and use the specified port
   $ oc expose dc/ruby-hello-world --port=8080
@@ -492,6 +494,8 @@
 ----
 ====
 
+
+ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 == Securely expose containers via a route
 
 ====
@@ -507,7 +511,7 @@
       --ca-cert=${MASTER_CONFIG_DIR}/ca.crt \
       --hostname=www.example.com
 
-  // Create a secure passthrough terminated route.
+  // Create a secure passthrough route.
   $ oc create route passthrough --service=registry
 
   // Create a secure reencrypt-terminated route in
@@ -516,6 +520,24 @@
   $ oc create route reencrypt --service=backend --dest-ca-cert=ca.crt
 ----
 ====
+endif::[]
+
+
+ifdef::openshift-online,digital-garage[]
+== Securely expose containers via a route
+
+====
+
+[options="nowrap"]
+----
+  // Create a secure edge-terminated route.
+  $ oc create route edge --service=frontend
+
+  // Create a secure passthrough route.
+  oc create route passthrough --service=frontend
+----
+====
+endif::[]
 
 
 == Delete a resource by filename, stdin, resource and ID, or by resources and label selector.
@@ -647,10 +669,10 @@
 [options="nowrap"]
 ----
   // Update a pod using the data in pod.json.
-  $ oc update -f pod.json
+  $ oc replace -f pod.json
 
   // Update a pod based on the JSON passed into stdin.
-  $ cat pod.json | oc update -f -
+  $ cat pod.json | oc replace -f -
 ----
 ====
 
@@ -735,9 +757,6 @@
 ----
   // Show Merged kubeconfig settings.
   $ oc config view
-
-  // Show only local kubeconfig settings
-  $ oc config view --local
 
   // Get the password for the e2e user
   $ oc config view -o template --template='{{range .users}}{{ if eq .name "e2e" }}{{ index .user.password }}{{end}}{{end}}'

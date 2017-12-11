@@ -47,7 +47,7 @@ endif::[]
 [[installing-the-cli]]
 == Installing the CLI
 ifdef::openshift-dedicated[]
-The easiest way to download the CLI is by accessing the *About* page on the web
+The easiest way to download the CLI is by accessing the *Command Line Tools* page on the web
 console:
 endif::[]
 ifdef::openshift-enterprise,openshift-origin[]
@@ -56,7 +56,7 @@ console if your cluster administrator has enabled the download links:
 endif::[]
 ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 
-image::cli_help.png["Command Line Tools"]
+image::ocp_37_cli_help.png["Command Line Tools"]
 endif::[]
 
 Installation options for the CLI vary depending on your operating system.
@@ -84,14 +84,9 @@ https://access.redhat.com/videos/2212891[Click here to watch]
 image::cli_windows.png[CLI Install for Windows, 579, 248, link="https://access.redhat.com/videos/2212891"]
 endif::[]
 
-ifdef::openshift-dedicated[]
-The CLI for Windows is provided as a *_zip_* archive; contact your Dedicated
-administrator for download instructions.
-endif::[]
-
-ifdef::digital-garage[]
+ifdef::openshift-online,digital-garage,openshift-dedicated[]
 The CLI for Windows is provided as a *_zip_* archive; you can download it from
-the *About* page on the web console.
+the *Command Line Tools* page on the web console.
 endif::[]
 
 ifdef::openshift-origin,atomic-registry[]
@@ -136,14 +131,9 @@ https://access.redhat.com/videos/2212921[Click here to watch]
 image::cli_macosx.png[CLI Install for Mac OS X, 579, 248, link="https://access.redhat.com/videos/2212921"]
 endif::[]
 
-ifdef::openshift-dedicated[]
-The CLI for Mac OS X is provided as a *_tar.gz_* archive; contact your Dedicated
-administrator for download instructions.
-endif::[]
-
-ifdef::digital-garage[]
+ifdef::openshift-online,digital-garage,openshift-dedicated[]
 The CLI for Mac OS X is provided as a *_tar.gz_* archive; you can download it
-from the *About* page on the web console.
+from the *Command Line Tools* page on the web console.
 endif::[]
 
 ifdef::openshift-origin,atomic-registry[]
@@ -195,7 +185,7 @@ Enterprise subscription on your Red Hat account:
 ----
 # subscription-manager register
 # subscription-manager attach --pool=<pool_ID> <1>
-# subscription-manager repos --enable="rhel-7-server-ose-3.3-rpms"
+# subscription-manager repos --enable="rhel-7-server-ose-3.5-rpms"
 # yum install atomic-openshift-clients
 ----
 <1> Pool ID for an active OpenShift Enterprise subscription
@@ -218,14 +208,9 @@ https://access.redhat.com/videos/2213051[Click here to watch]
 image::cli_linux.png[CLI Install for Linux, 580, 249, link="https://access.redhat.com/videos/2213051"]
 endif::[]
 
-ifdef::openshift-dedicated[]
-The CLI for Linux is provided as a *_tar.gz_* archive; contact your Dedicated
-administrator for download instructions.
-endif::[]
-
-ifdef::digital-garage[]
+ifdef::openshift-online,digital-garage,openshift-dedicated[]
 The CLI for Linux is provided as a *_tar.gz_* archive; you can download it from
-the *About* page on the web console.
+the *Command Line Tools* page on the web console.
 endif::[]
 
 ifdef::openshift-origin,atomic-registry[]
@@ -285,7 +270,7 @@ You don't have any projects. You can try to create a new project, by running
 
     $ oc new-project <projectname> <4>
 
-Welcome to {product-title}! See 'oc help' to get started.
+Welcome to OpenShift! See 'oc help' to get started.
 ----
 
 <1> The command prompts for the {product-title} server URL.

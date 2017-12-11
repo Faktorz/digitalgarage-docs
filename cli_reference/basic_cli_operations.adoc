@@ -15,9 +15,14 @@ This topic provides information on the developer CLI operations and their
 syntax. You must xref:get_started_cli.adoc#basic-setup-and-login[setup and login] with the CLI before
 you can perform these operations.
 
+ifndef::openshift-online[]
+
 The developer CLI uses the `oc` command, and is used for project-level
-operations. This differs from the administrator CLI, which uses the `oadm`
-command for more advanced, administrator operations.
+operations. This differs from the xref:../cli_reference/admin_cli_operations.adoc#cli-reference-admin-cli-operations[administrator
+CLI], which uses the `oc adm` command for more advanced, administrator operations.
+
+endif::[]
+
 
 [[oc-common-operations]]
 
@@ -121,7 +126,7 @@ syntax:
 |`replicaSet` (Technology Preview)|`rs`
 |`secrets` |
 |`service` |`svc`
-|`ServiceAccount` | `serviceaccounts`
+|`ServiceAccount` | `sa`
 |`persistentVolume` |`pv`
 |`persistentVolumeClaim` |`pvc`
 |===
@@ -489,14 +494,14 @@ indicated files. Any existing resources are ignored.
 $ oc create -f <file_or_dir_path>
 ----
 
-=== update
+=== replace
 Attempt to modify an existing object based on the contents of the specified
 configuration file. The `-f` flag can be passed multiple times with different
-file or directory paths. When the flag is passed multiple times, `oc update`
+file or directory paths. When the flag is passed multiple times, `oc replace`
 iterates through each one, updating the objects described in all of the
 indicated files.
 ----
-$ oc update -f <file_or_dir_path>
+$ oc replace -f <file_or_dir_path>
 ----
 
 === process
@@ -507,15 +512,45 @@ $ oc process -f <template_file_path>
 ----
 
 === run
-Create and run a particular image, possibly replicated. Create a deployment
-configuration to manage the created container(s). You can choose to run in the
-foreground for an interactive container execution.
+Create and run a particular image, possibly replicated. By default, create a deployment
+configuration to manage the created container(s). You can choose to create a different
+resource using the `--generator` flag:
+
+[options="header"]
+|===
+|API Resource |`--generator` Option
+
+|Deployment configuration
+|`deploymentconfig/v1` (default)
+
+|Pod
+|`run-pod/v1`
+
+|Replication controller
+|`run/v1`
+
+|Deployment using `extensions/v1beta1` endpoint
+|`deployment/v1beta1`
+
+|Deployment using `apps/v1beta1` endpoint
+|`deployment/apps.v1beta1`
+
+|Job
+|`job/v1`
+
+|Cron job
+|`cronjob/v2alpha1`
+|===
+
+You can choose to run in the foreground for an interactive container execution.
+
 ----
 $ oc run NAME --image=<image> \
+    [--generator=<resource>] \
     [--port=<port>] \
     [--replicas=<replicas>] \
     [--dry-run=<bool>] \
-    [--overrides=<inline-json>] \
+    [--overrides=<inline_json>] \
     [options]
 ----
 
@@ -538,6 +573,16 @@ Export resources to be used elsewhere:
 ----
 $ oc export <object_type> [--options]
 ----
+
+ifdef::openshift-online[]
+If you are upgrading from {product-title} Starter to {product-title} Pro, use
+`oc export all` to export all of your existing objects. {product-title} Pro does
+not support per-object resource migration.
+endif::[]
+
+See xref:../dev_guide/templates.adoc#export-as-template[Creating a Template
+from Existing Objects] for more information on exporting existing objects from
+your project in template form.
 
 === policy
 Manage authorization policies:
@@ -590,11 +635,20 @@ Open a remote shell session to a container:
 $ oc rsh <pod>
 ----
 
+[[cli-operations-rsync]]
 === rsync
-Copy contents of local directory to a directory in an already-running pod
-container. It will default to the first container if none is specified.
+
+Copy the contents to or from a directory in an already-running pod
+container. If you do not specify a container, it defaults to the first container in the pod.
+
+To copy contents from a local directory to a directory in a pod:
 ----
 $ oc rsync <local_dir> <pod>:<pod_dir> -c <container>
+----
+
+To copy contents from a directory in a pod to a local directory:
+----
+$ oc rsync <pod>:<pod_dir> <local_dir> -c <container>
 ----
 
 === port-forward

@@ -124,8 +124,6 @@ $ oc project <project_name>
 +
 
 +
-[NOTE]
-====
 If you followed the xref:../getting_started/basic_walkthrough.adoc#getting-started-basic-walkthrough[Basic
 Walkthrough] topic, you already created your first project. You must switch to
 your project namespace and clear out the original sample application.
@@ -160,7 +158,6 @@ $ oc get pvc
 ----
 $ oc delete pvc mongodb
 ----
-====
 
 . Next, create a new application from your forked copy of the *nodejs-ex* source
 code file:
@@ -257,13 +254,7 @@ The `-p` flag sets the parameter values used by the *mongodb-ephemeral*
 database template.
 ====
 
-. Next, get the internal IP address and port of the newly-created MongoDB service:
-+
-----
-$ oc get services
-----
-+
-Note the `*CLUSTER_IP*` of the MongoDB service before heading to the next
+. Note the name of the MongoDB service before heading to the next
 section.
 
 [[btb-setting-environment-variables]]
@@ -277,8 +268,20 @@ so that it will utilize the MongoDB service, and enable the "Page view count"
 feature. Run:
 +
 ----
-$ oc set env dc/nodejs-mongodb-example \
-MONGO_URL='mongodb://admin:secret@<your_mongodb_service_ip>:27017/sampledb'
+$ oc set env dc/nodejs-mongodb-example
+MONGO_URL='mongodb://admin:secret@<MongoDB-service-name>:27017/sampledb'
+----
++
+[NOTE]
+====
+Services in the same project have automatically resolvable DNS names.
+====
++
+For example:
++
+----
+$ oc set env dc/nodejs-mongodb-example
+MONGO_URL='mongodb://admin:secret@mongodb-persistent:27017/sampledb'
 ----
 
 . Next, run `oc status` to confirm that an updated deployment has been kicked off.
@@ -319,8 +322,8 @@ http://<digital_garage_api_host:port>/osapi/v1/namespaces/<namespace>/buildconfi
 . Next, navigate to your forked repository on GitHub, then:
 .. Click *Settings*.
 .. Click *Webhooks & Services*.
-.. Click *[ Add webhook ]*
-.. Paste your webhook URL into the *Payload URL* field and click *[ Add webhook ]*
+.. Click *Add webhook*
+.. Paste your webhook URL into the *Payload URL* field and click *Add webhook*
 to save.
 
 That’s it! Your application will now automatically rebuild when you push code
@@ -356,7 +359,7 @@ once the deployment is completed.
 Now all you need to do is push code updates, and {product-title} handles the
 rest.
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 [[btb-failure-notifications]]
 == Failure Notifications
 
@@ -370,16 +373,21 @@ endif::[]
 == What's Next?
 
 The following sections provide some next steps now that you have finished your
-initial walkthrough of {product-title} Developer Preview.
+initial walkthrough of {product-title} {product-version}.
+
+[[btb-openshift-online-usage-considerations]]
+=== {product-title} Usage Considerations
+
 [[btb-other-quickstarts]]
 === Other Quickstarts
 
-{product-title} Developer Preview provides out of the box a set of
+Similar to xref:../getting_started/online_v2_vs_v3.adoc#getting-started-online-v2-vs-v3[OpenShift Online 2],
+{product-title} {product-version} provides out of the box a set of
 xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[languages] and
 xref:../using_images/db_images/index.adoc#using-images-db-images-index[databases] for developers with
 corresponding implementations and tutorials that allow you to kickstart your
 application development. Language support centers around the
-xref:../dev_guide/app_tutorials/quickstarts.adoc#dev-guide-app-tutorials-quickstarts[Quickstart templates], which in
+xref:../dev_guide/dev_tutorials/quickstarts.adoc#dev-guide-app-tutorials-quickstarts[Quickstart templates], which in
 turn leverage xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[builder images].
 
 Check out the xref:../dev_guide/application_lifecycle/new_app.adoc#dev-guide-new-app[Creating New Applications] topic
@@ -403,8 +411,8 @@ and try out Quickstart templates for the following languages:
 .^|xref:../using_images/s2i_images/perl.adoc#using-images-s2i-images-perl[Perl]
 |https://github.com/thedigitalgarage/examples/tree/master/v1.3/quickstart-templates#quickstarts[Dancer]
 
-.^|xref:../using_images/s2i_images/java.adoc#using-images-s2i-images-java[Java]
-|Maven
+.^|Java
+|https://github.com/openshift-s2i/s2i-wildfly[Maven]
 |===
 
 Other images provided by {product-title} include:
@@ -460,4 +468,6 @@ and xref:../dev_guide/application_lifecycle/new_app.adoc#dev-guide-new-app[Creat
 [[btb-troubleshooting]]
 === Troubleshooting
 
-Review some of the common tips and suggestions http://community.thedigitalgarage.io[here].
+Review
+link:https://github.com/openshift/origin/blob/master/docs/debugging-openshift.md[common
+tips and suggestions].

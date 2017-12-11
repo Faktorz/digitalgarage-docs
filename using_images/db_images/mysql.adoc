@@ -18,9 +18,10 @@ settings provided via configuration.
 
 
 == Versions
-Currently, {product-title} provides version
-link:https://github.com/openshift/mysql/tree/master/5.5[5.5] and
-link:https://github.com/openshift/mysql/tree/master/5.6[5.6] of MySQL.
+Currently, {product-title} provides versions
+link:https://github.com/openshift/mysql/tree/master/5.5[5.5],
+link:https://github.com/openshift/mysql/tree/master/5.6[5.6], and
+link:https://github.com/openshift/mysql/tree/master/5.7[5.7] of MySQL.
 
 == Images
 
@@ -28,6 +29,7 @@ This image is available on DockerHub. To download it:
 
 ----
 $ docker pull openshift/mysql-55-centos7
+$ docker pull openshift/mysql-56-centos7
 ----
 
 To use these images, you can either access them directly from these
@@ -58,11 +60,14 @@ $ oc new-app \
     -e MYSQL_USER=<username> \
     -e MYSQL_PASSWORD=<password> \
     -e MYSQL_DATABASE=<database_name> \
-ifdef::openshift-enterprise[]
+ifdef::openshift-enterprise,openshift-dedicated[]
     registry.access.redhat.com/openshift3/mysql-55-rhel7
 endif::[]
 ifdef::openshift-origin[]
     openshift/mysql-55-centos7
+endif::[]
+ifdef::openshift-online[]
+    mysql:5.5
 endif::[]
 ----
 
@@ -182,7 +187,13 @@ MySQL settings can be configured with the following environment variables:
 
 |`*MYSQL_KEY_BUFFER_SIZE*`
 |The size of the buffer used for index blocks.
-|32M (or 10% of available memory)
+|
+ifdef::openshift-online[]
+10% of available memory
+endif::[]
+ifndef::openshift-online[]
+32M (or 10% of available memory)
+endif::[]
 
 |`*MYSQL_SORT_BUFFER_SIZE*`
 |The size of the buffer used for sorting.
@@ -190,25 +201,57 @@ MySQL settings can be configured with the following environment variables:
 
 |`*MYSQL_READ_BUFFER_SIZE*`
 |The size of the buffer used for a sequential scan.
-|8M (or 5% of available memory)
+|
+ifdef::openshift-online[]
+5% of available memory
+endif::[]
+ifndef::openshift-online[]
+8M (or 5% of available memory)
+endif::[]
 
 |`*MYSQL_INNODB_BUFFER_POOL_SIZE*`
 |The size of the buffer pool where InnoDB caches table and index data.
-|32M (or 50% of available memory)
+|
+ifdef::openshift-online[]
+50% of available memory
+endif::[]
+ifndef::openshift-online[]
+32M (or 50% of available memory)
+endif::[]
 
 |`*MYSQL_INNODB_LOG_FILE_SIZE*`
 |The size of each log file in a log group.
-|8M (or 15% of available memory)
+|
+ifdef::openshift-online[]
+15% of available memory
+endif::[]
+ifndef::openshift-online[]
+8M (or 15% of available memory)
+endif::[]
 
 |`*MYSQL_INNODB_LOG_BUFFER_SIZE*`
 |The size of the buffer that InnoDB uses to write to the log files on disk.
-|8M (or 15% of available memory)
+|
+ifdef::openshift-online[]
+15% of available memory
+endif::[]
+ifndef::openshift-online[]
+8M (or 15% of available memory)
+endif::[]
 |===
 
+ifdef::openshift-online[]
+Some of the memory-related parameters have percentages as default values.  These
+values are calculated dynamically during a container's startup based on
+xref:../../dev_guide/compute_resources.adoc#dev-memory-limits[memory limits].
+endif::[]
+
+ifndef::openshift-online[]
 Some of the memory-related parameters have two default values. The fixed value
 is used when a container does not have link:../../dev_guide/compute_resources.html#memory-limits[memory limits]
 assigned. The other value is calculated dynamically during a container's startup
 based on available memory.
+endif::[]
 
 === Volume Mount Points
 The MySQL image can be run with mounted volumes to enable persistent storage for
@@ -338,13 +381,20 @@ See xref:../../install_config/imagestreams_templates.adoc#install-config-imagest
 for more details, if required.
 endif::[]
 
+ifdef::openshift-online[]
+The following template is available:
+endif::[]
+ifndef::openshift-online[]
 There are two templates available:
+endif::[]
 
+ifndef::openshift-online[]
 * `mysql-ephemeral` is for development or testing purposes only because it uses
 ephemeral storage for the database content. This means that if the database
 pod is restarted for any reason, such as the pod being moved to another node
 or the deployment configuration being updated and triggering a redeploy, all
 data will be lost.
+endif::[]
 * `mysql-persistent` uses a persistent volume store for the database data which
 means the data will survive a pod restart. Using persistent volumes requires a
 persistent volume pool be defined in the {product-title} deployment.
@@ -353,7 +403,7 @@ Cluster administrator instructions for setting up the pool are located
 xref:../../install_config/persistent_storage/persistent_storage_nfs.adoc#install-config-persistent-storage-persistent-storage-nfs[here].
 endif::[]
 
-You can find instructions for instantiating templates 
+You can find instructions for instantiating templates
 xref:../../dev_guide/templates.adoc#dev-guide-templates[here].
 
 Once you have instantiated the service, you can copy the user name, password,
@@ -372,7 +422,7 @@ be used in production.
 ====
 endif::[]
 
-ifdef::openshift-enterprise[]
+ifdef::openshift-enterprise,openshift-dedicated,openshift-online[]
 [NOTE]
 ====
 Enabling clustering for database images is currently in Technology Preview and
@@ -381,7 +431,7 @@ not intended for production use.
 endif::[]
 
 Red Hat provides a proof-of-concept
-xref:../../architecture/core_concepts/templates.adoc#architecture-core-concepts-templates[template] for MySQL
+xref:../../dev_guide/templates.adoc#dev-guide-templates[template] for MySQL
 master-slave replication (clustering); you can obtain the
 https://github.com/thedigitalgarage/dg-mysql-container/tree/master/5.5/examples/replica[example
 template from GitHub].
@@ -495,9 +545,11 @@ spec:
 ----
 ====
 
+ifndef::openshift-online[]
 Since we claimed a persistent volume in this deployment configuration to have
 all data persisted for the MySQL master server, you must ask your cluster
 administrator to create a persistent volume that you can claim the storage from.
+endif::[]
 
 After the deployment configuration is created and the pod with MySQL master
 server is started, it will create the database defined by `*MYSQL_DATABASE*` and
@@ -679,22 +731,24 @@ AIO (Asynchronous I/O) facilities due to resource limits.
 
 .Resolution
 
-1. Turn off AIO usage entirely,
+Turn off AIO usage entirely
 by setting environment variable `*MYSQL_AIO*` to have value `0`.
 On subsequent deployments, this arranges for the
 MySQL configuration variable `*innodb_use_native_aio*`
 to have value `0`.
 
-2. Increase the `aio-max-nr` kernel resource.
+ifndef::openshift-online[]
+Alternatively, increase the `aio-max-nr` kernel resource.
 The following example examines the current value of `aio-max-nr` and doubles it.
-+
+
 ----
 $ sysctl fs.aio-max-nr
 fs.aio-max-nr = 1048576
 # sysctl -w fs.aio-max-nr=2097152
 ----
-+
+
 This is a per-node resolution and lasts until the next node reboot.
+endif::[]
 
 // Add more subsections here.
 // TEMPLATE:

@@ -11,8 +11,9 @@
 
 toc::[]
 
+[[overview]]
 == Overview
-A xref:../architecture/core_concepts/templates.adoc#architecture-core-concepts-templates[template] describes
+A template describes
 a set of xref:../architecture/core_concepts/index.adoc#architecture-core-concepts-index[objects]
 that can be parameterized and processed to produce a list of objects
 for creation by {product-title}. A template can be processed to create
@@ -29,14 +30,17 @@ You can create a list of objects from a template
 xref:creating-from-templates-using-the-cli[using the CLI] or, if a
 xref:uploading-a-template[template has been uploaded] to your project or the
 global template library,
-xref:creating-from-templates-using-the-web-console[using the web console].
+xref:creating-from-templates-using-the-web-console[using the web console]. For a
+curated set of templates, see the
+link:https://github.com/openshift/library[OpenShift Image Streams and Templates
+library].
 
 [[uploading-a-template]]
 
 == Uploading a Template
 
 If you have a JSON or YAML file that defines a template, for example as seen in
-xref:writing-templates[this example], you can upload
+xref:writing-templates-example[this example], you can upload
 the template to projects using the CLI. This saves the template to the project
 for repeated use by any user with appropriate access to that project.
 Instructions on xref:writing-templates[writing your own templates] are provided
@@ -59,40 +63,11 @@ $ oc create -f <filename> -n <project>
 The template is now available for selection using the web console or the CLI.
 
 [[creating-from-templates-using-the-web-console]]
-
 == Creating from Templates Using the Web Console
 
-To create the objects from an xref:uploading-a-template[uploaded template]
-using the web console:
-
-1. While in the desired project, click *Add to Project*:
-+
-====
-
-image::console_create.png["Console Create"]
-====
-
-2. Select a template from the list of templates in your project, or provided by
-the global template library:
-+
-====
-
-image::console_select_image_or_template.png["Select Template"]
-====
-
-3. Modify template parameters in the template creation screen:
-+
-====
-
-image::create_from_template.png["Create from Template"]
-====
-+
-<1> Template name and description.
-<2> Container images included in the template.
-<3> Parameters defined by the template. You can edit values for parameters
-defined in the template here.
-<4> xref:templates-labels[Labels] to assign to all items included in the
-template. You can add and edit labels for objects.
+See
+xref:../dev_guide/application_lifecycle/new_app.adoc#using-the-web-console-na[Creating
+an Application Using the Web Console].
 
 [[creating-from-templates-using-the-cli]]
 
@@ -279,9 +254,13 @@ from the template, specifying your fork instead of the default value.
 
 By doing this, the build configuration created by the template will now point to
 your fork of the application code, and you can modify the code and rebuild the
-application at will. A walkthrough of this process using the web console is
+application at will.
+
+ifdef::openshift-enterprise,openshift-origin[]
+A walkthrough of this process using the web console is
 provided in xref:../getting_started/developers_console.adoc#getting-started-developers-console[Getting
 Started for Developers: Web Console].
+endif::[]
 
 [NOTE]
 ====
@@ -299,6 +278,7 @@ You can define new templates to make it easy to recreate all the objects of your
 application.  The template will define the objects it creates along with some
 metadata to guide the creation of those objects.
 
+[[writing-templates-example]]
 .A Simple Template Object Definition (YAML)
 ====
 [source,yaml]
@@ -339,34 +319,53 @@ labels:
 [[writing-description]]
 
 === Description
-The template description covers information that informs users what your
-template does and helps them find it when searching in the web console. In
-addition to general descriptive information, it includes a set of tags. Useful
-tags include the name of the language your template is related to (e.g., *java*,
-*php*, *ruby*, etc.).
+The template description informs users what the template does and helps them
+find it when searching in the web console. Additional metadata beyond the
+template name is optional, but useful to have. In addition to general
+descriptive information, the metadata also includes a set of tags. Useful tags
+include the name of the language the template is related to (for example,
+*java*, *php*, *ruby*, and so on).
 
 .Template Description Metadata
 ====
 [source,yaml]
 ----
-kind: "Template"
-apiVersion: "v1"
+kind: Template
+apiVersion: v1
 metadata:
-  name: "cakephp-mysql-example" <1>
+  name: cakephp-mysql-example <1>
   annotations:
-    openshift.io/display-name: "CakePHP MySQL Example" <2>
-    description: "An example CakePHP application with a MySQL database.\n\nFor more information see https://github.com/openshift/cakephp-ex" <3>
-    tags: "instant-app,php,cakephp,mysql" <4>
-    iconClass: "icon-php" <5>
-message: "Your admin credentials are ${ADMIN_USERNAME}:${ADMIN_PASSWORD}" <6>
+    openshift.io/display-name: "CakePHP MySQL Example (Ephemeral)" <2>
+    description: >-
+      An example CakePHP application with a MySQL database. For more information
+      about using this template, including OpenShift considerations, see
+      https://github.com/openshift/cakephp-ex/blob/master/README.md.
+
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this
+      template for testing." <3>
+    openshift.io/long-description: >-
+      This template defines resources needed to develop a CakePHP application,
+      including a build configuration, application deployment configuration, and
+      database deployment configuration.  The database is stored in
+      non-persistent storage, so this configuration should be used for
+      experimental purposes only. <4>
+    tags: "quickstart,php,cakephp" <5>
+    iconClass: icon-php <6>
+    openshift.io/provider-display-name: "Red Hat, Inc." <7>
+    openshift.io/documentation-url: "https://github.com/openshift/cakephp-ex" <8>
+    openshift.io/support-url: "https://access.redhat.com" <9>
+message: "Your admin credentials are ${ADMIN_USERNAME}:${ADMIN_PASSWORD}" <10>
 ----
 <1> The unique name of the template.
 <2> A brief, user-friendly name, which can be employed by user interfaces.
 <3> A description of the template. Include enough detail that the user will
 understand what is being deployed and any caveats they need to know before
 deploying. It should also provide links to additional information, such as a
-*_README_* file. Newline characters `\n` can be included to create paragraphs.
-<4> Tags to be associated with the template for searching and grouping. Add tags
+*_README_* file. Newlines can be included to create paragraphs.
+<4> Additional template description. This may be displayed by the service
+catalog, for example.
+<5> Tags to be associated with the template for searching and grouping. Add tags
 that will include it into one of the provided catalog categories. Refer to the
 `id` and `categoryAliases` in `CATALOG_CATEGORIES` in the console's
 link:https://github.com/thedigitalgarage/origin-web-console/blob/master/app/scripts/constants.js[constants
@@ -376,8 +375,8 @@ The categories can also be
 xref:../install_config/web_console_customization.adoc#install-config-web-console-customization[customized]
 for the whole cluster.
 endif::[]
-<5> An icon to be displayed with your template in the web console. Choose from our
-existing
+<6> An icon to be displayed with your template in the web console. Choose from
+our existing
 link:https://rawgit.com/openshift/origin-web-console/master/app/styles/fonts/openshift-logos-icon/demo.html[logo icons] when possible. You can also use icons from
 link:http://fontawesome.io/icons/[FontAwesome] and
 link:https://www.patternfly.org/styles/icons/[Patternfly].
@@ -388,11 +387,15 @@ customizations] that can be added to an {product-title} cluster that uses your
 template. You must specify an icon class that exists, or it will prevent falling
 back to the generic icon.
 endif::[]
-<6> An instructional message that is displayed when this template is instantiated.
-This field should inform the user how to use the newly created resources.
-Parameter substitution is performed on the message before being displayed so
-that generated credentials and other parameters can be included in the output.
-Include links to any next-steps documentation that users should follow.
+<7> The name of the person or organization providing the template.
+<8> A URL referencing further documentation for the template.
+<9> A URL where support can be obtained for the template.
+<10> An instructional message that is displayed when this template is
+instantiated. This field should inform the user how to use the newly created
+resources. Parameter substitution is performed on the message before being
+displayed so that generated credentials and other parameters can be included in
+the output. Include links to any next-steps documentation that users should
+follow.
 ====
 
 [[writing-labels]]
@@ -601,33 +604,231 @@ namespace the parameter substitution resolved the value to, assuming the user
 has permission to create objects in that namespace.
 ====
 
-[[other-recommendations]]
-=== Other Recommendations
+[[writing-marking-templates-as-bindable]]
+=== Marking Templates as Bindable
 
-* Group related services together in the management console by adding the
-`service.alpha.openshift.io/dependencies` annotation to the Service object in
-your template.
-+
-.Group the Frontend and Database Services Together on the Management Console Overview
+The template service broker advertises one service in its catalog for each
+Template object that it is aware of. By default, each of these services is
+advertised as being "bindable", meaning an end user is permitted to bind against
+the provisioned service.
+
+Template authors can prevent end users from binding against services provisioned
+from a given Template by adding the annotation
+`template.openshift.io/bindable: "false"` to the Template.
+
+[[writing-exposing-object-fields]]
+
+=== Exposing Object Fields
+
+Template authors can indicate that fields of particular objects in a template
+should be exposed. The template service broker recognizes exposed fields on
+ConfigMap, Secret, Service and Route objects, and returns the values of the
+exposed fields when a user binds a service backed by the broker.
+
+To expose one or more fields of an object, add annotations prefixed by
+`template.openshift.io/expose-` or `template.openshift.io/base64-expose-` to
+the object in the template.
+
+Each annotation key, with its prefix removed, is passed through to become a key
+in a `bind` response.
+
+Each annotation value is a
+link:https://kubernetes.io/docs/user-guide/jsonpath/[Kubernetes
+JSONPath expression], which is resolved at bind time to indicate the object
+field whose value should be returned in the `bind` response.
+
+[NOTE]
+====
+`Bind` response key/value pairs can be used in other parts of the system as
+environment variables. Therefore, it is recommended that every annotation key
+with its prefix removed should be a valid environment variable name --
+beginning with a character `A-Z`, `a-z`, or `pass:[_]`, and being followed by zero or
+more characters `A-Z`, `a-z`, `0-9`, or `pass:[_]`.
+====
+
+Use the `template.openshift.io/expose-` annotation to return the field value as
+a string. This is convenient, although it does not handle arbitrary binary data.
+If you want to return binary data, use the
+`template.openshift.io/base64-expose-` annotation instead to base64 encode the
+data before it is returned.
+
+[NOTE]
+====
+Unless escaped with a backslash, Kubernetes' JSONPath implementation interprets
+characters such as `.`, `@`, and others as metacharacters, regardless of their
+position in the expression. Therefore, for example, to refer to a `ConfigMap`
+datum named `my.key`, the required JSONPath expression would be
+`{.data['my\.key']}`.
+====
+
+The following is an example of different objects' fields being exposed:
+
 ====
 [source,yaml]
 ----
-kind: "Template"
-apiVersion: "v1"
+kind: Template
+apiVersion: v1
 objects:
-  - kind: "Service"
-    apiVersion: "v1"
-    metadata:
-      name: "frontend"
-      annotations:
-        "service.alpha.openshift.io/dependencies": "[{\"name\": \"database\", \"kind\": \"Service\"}]"
-...
-  - kind: "Service"
-    apiVersion: "v1"
-    metadata:
-      name: "database"
-----
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    annotations:
+      template.openshift.io/expose-username: "{.data['my\.username']}"
+  data:
+    my.username: foo
+- kind: Secret
+  apiVersion: v1
+  metadata:
+    annotations:
+      template.openshift.io/base64-expose-password: "{.data['password']}"
+  stringData:
+    password: bar
+- kind: Service
+  apiVersion: v1
+  metadata:
+    annotations:
+      template.openshift.io/expose-service_ip_port: "{.spec.clusterIP}:{.spec.ports[?(.name==\"web\")].port}"
+  spec:
+    ports:
+    - name: "web"
+      port: 8080
+- kind: Route
+  apiVersion: v1
+  metadata:
+    annotations:
+      template.openshift.io/expose-uri: "http://{.spec.host}{.spec.path}"
+  spec:
+    path: mypath
 ====
+
+An example response to a `bind` operation given the above partial template
+follows:
+
+====
+[source,json]
+----
+{
+  "credentials": {
+    "username": "foo",
+    "password": "YmFy",
+    "service_ip_port": "172.30.12.34:8080",
+    "uri": "http://route-test.router.default.svc.cluster.local/mypath"
+  }
+}
+====
+
+[[waiting-for-template-readiness]]
+=== Waiting for Template Readiness
+
+Template authors can indicate that certain objects within a template
+should be waited for before a template instantiation by the service catalog,
+Template Service Broker, or TemplateInstance API is considered complete.
+
+[NOTE]
+====
+Template Completion Detection is a Technology Preview feature only.
+ifdef::openshift-enterprise[]
+Technology Preview features are not
+supported with Red Hat production service level agreements (SLAs), might not be
+functionally complete, and Red Hat does not recommend to use them for
+production. These features provide early access to upcoming product features,
+enabling customers to test functionality and provide feedback during the
+development process.
+
+For more information on Red Hat Technology Preview features support scope, see
+https://access.redhat.com/support/offerings/techpreview/.
+endif::[]
+====
+
+To use this feature, mark one or more objects of kind
+`Build`, `BuildConfig`, `Deployment`, `DeploymentConfig`, `Job`, or `StatefulSet`
+in a template with the following annotation:
+
+----
+"template.alpha.openshift.io/wait-for-ready": "true"
+----
+
+Template instantiation will not complete until all objects marked with the
+annotation report ready. Similarly, if any of the annotated objects report
+failed, or if the template fails to become ready within a fixed timeout of one
+hour, the template instantiation will fail.
+
+For the purposes of instantiation, readiness and failure of each object kind are
+defined as follows:
+
+[cols="1a,2a,2a", options="header"]
+|===
+
+| Kind
+| Readiness
+| Failure
+
+| `Build`
+| Object reports phase Complete
+| Object reports phase Canceled, Error, or Failed
+
+| `BuildConfig`
+| Latest associated Build object reports phase Complete
+| Latest associated Build object reports phase Canceled, Error, or Failed
+
+| `Deployment`
+| Object reports new ReplicaSet and deployment available (this honors readiness
+probes defined on the object)
+| Object reports Progressing condition as false
+
+|`DeploymentConfig`
+| Object reports new ReplicationController and deployment available (this
+honors readiness probes defined on the object)
+| Object reports Progressing condition as false
+
+| `Job`
+| Object reports completion
+| Object reports that one or more failures have occurred
+
+| `StatefulSet`
+| Object reports all replicas ready (this honors readiness probes defined on
+the object)
+| Not applicable
+|===
+
+The following is an example template extract, which uses the `wait-for-ready`
+annotation. Further examples can be found in the OpenShift quickstart templates.
+
+====
+[source,yaml]
+----
+kind: Template
+apiVersion: v1
+objects:
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    name: ...
+    annotations:
+      # wait-for-ready used on BuildConfig ensures that template instantiation
+      # will fail immediately if build fails
+      template.alpha.openshift.io/wait-for-ready: "true"
+  spec:
+    ...
+- kind: DeploymentConfig
+  apiVersion: v1
+  metadata:
+    name: ...
+    annotations:
+      template.alpha.openshift.io/wait-for-ready: "true"
+  spec:
+    ...
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: ...
+  spec:
+    ...
+====
+
+[[other-recommendations]]
+=== Other Recommendations
+
 * Set xref:compute_resources.adoc#dev-compute-resources[memory, CPU], and
 xref:../architecture/additional_concepts/storage.adoc#pvc-resources[storage]
 default sizes to make sure your application is given enough resources to run
@@ -644,10 +845,16 @@ after the template is deployed.
 [[export-as-template]]
 
 === Creating a Template from Existing Objects
-Rather than writing an entire template from scratch, you can also export
-existing objects from your project in template form, and then modify the
-template from there by adding parameters and other customizations. To export
-objects in a project in template form, run:
+ifdef::openshift-online[]
+If you are upgrading from {product-title} Starter to {product-title} Pro, use
+`oc export all` to export all of your existing objects. {product-title} Pro does
+not support per-object resource migration.
+endif::[]
+
+Rather than writing an entire template from scratch, you can export existing
+objects from your project in template form, and then modify the template from
+there by adding parameters and other customizations. To export objects in a
+project in template form, run:
 
 ----
 $ oc export all --as-template=<template_name> > <template_filename>

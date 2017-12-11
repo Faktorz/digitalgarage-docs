@@ -7,6 +7,213 @@
 :experimental:
 
 // do-release: revhist-tables
+== Thu Sep 07 2017
+
+// tag::architecture_thu_sep_07_2017[]
+[cols="1,3",options="header"]
+|===
+
+|Affected Topic |Description of Change
+//Thu Sep 07 2017
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Added information about the `DEFAULT_DESTINATION_CA_PATH` environment variable.
+
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Added the section xref:../architecture/core_concepts/routes.adoc#ciphers[Router Cipher Suite] and various changes about ciphers.
+
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Added a new xref:../architecture/core_concepts/routes.adoc#strict-sni[HAProxy Strict SNI] section
+
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Added a new xref:../architecture/core_concepts/routes.adoc#whitelist[Route-specific IP Whitelists] section.
+
+|xref:../architecture/additional_concepts/authorization.adoc#architecture-additional-concepts-authorization[Additional Concepts -> Authorization]
+|Users no longer need cluster administrator privileges to create a role binding that references a role in their namespace.
+
+n|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Described the `ROUTER_SYSLOG_FORMAT` environment variable.
+
+|xref:../architecture/additional_concepts/authorization.adoc#install-config-registry-extended-configuration[Additional Concepts -> Routes]
+|Updated SCC capabilities information.
+
+
+
+|===
+
+// end::architecture_thu_sep_07_2017[]
+== Wed Sep 06 2017
+
+// tag::architecture_wed_sep_06_2017[]
+[cols="1,3",options="header"]
+|===
+
+|Affected Topic |Description of Change
+//Wed Sep 06 2017
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Added the xref:../architecture/core_concepts/routes.adoc#alternateBackends[Alternate Backends] section, and various information about multiple deployments.
+
+
+
+|===
+
+// end::architecture_wed_sep_06_2017[]
+== Tue Aug 29 2017
+
+// tag::architecture_tue_aug_29_2017[]
+[cols="1,3",options="header"]
+|===
+
+|Affected Topic |Description of Change
+//Tue Aug 29 2017
+n|xref:../architecture/additional_concepts/sdn.adoc#architecture-additional-concepts-sdn[Additional Concepts -> OpenShift SDN]
+|Corrected `vxlan0` to `vxlan_sys_4789` in the xref:../architecture/additional_concepts/sdn.adoc#sdn-design-on-nodes[Design on Nodes] section.
+
+|===
+
+// end::architecture_tue_aug_29_2017[]
+== Tue Aug 22 2017
+
+// tag::architecture_tue_aug_22_2017[]
+[cols="1,3",options="header"]
+|===
+
+|Affected Topic |Description of Change
+//Tue Aug 22 2017
+|xref:../architecture/additional_concepts/f5_big_ip.adoc#architecture-additional-concepts-f5-big-ip[Additional Concepts -> F5 BIG-IP® Router Plug-in]
+|Added information about the necessary F5 BIG-IP® versions to the xref:../architecture/additional_concepts/f5_big_ip.adoc#architecture-f5-native-integration[F5 Native Integration] section.
+
+
+
+|===
+
+// end::architecture_tue_aug_22_2017[]
+== Thu Jul 27 2017
+
+// tag::architecture_thu_jul_27_2017[]
+[cols="1,3",options="header"]
+|===
+
+|Affected Topic |Description of Change
+//Thu Jul 27 2017
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Added the xref:../architecture/core_concepts/routes.adoc#load-balancing[Load-balancing Strategy] section, as well as some minor rewordings.
+
+|===
+
+// end::architecture_thu_jul_27_2017[]
+== Tue Jul 18 2017
+
+// tag::architecture_tue_jul_18_2017[]
+[cols="1,3",options="header"]
+|===
+
+|Affected Topic |Description of Change
+//Tue Jul 18 2017
+|xref:../architecture/infrastructure_components/web_console.adoc#architecture-infrastructure-components-web-console[Web Console]
+|Added the OSGi row to the JVM Console table in the xref:../architecture/infrastructure_components/web_console.adoc#jvm-console[JVM Console] section.
+
+
+
+|===
+
+// end::architecture_tue_jul_18_2017[]
+== Wed Jul 05 2017
+
+// tag::architecture_wed_jul_05_2017[]
+[cols="1,3",options="header"]
+|===
+
+|Affected Topic |Description of Change
+//Wed Jul 05 2017
+|xref:../architecture/core_concepts/haproxy-router.adoc#architecture-core-concepts-haproxy-router[HAProxy Router Plug-in]
+|Added the HAProxy Router Plug-in file, and made several updates to routes and networking sections throughout the documentation.
+
+
+
+|===
+
+// end::architecture_wed_jul_05_2017[]
+== Thu May 25 2017
+
+// tag::architecture_thu_may_25_2017[]
+[cols="1,3",options="header"]
+|===
+
+|Affected Topic |Description of Change
+//Thu May 25 2017
+|xref:../architecture/core_concepts/containers_and_images.adoc#architecture-core-concepts-containers-and-images[Core Concepts -> Containers and Images]
+|Added the xref:../architecture/core_concepts/containers_and_images.adoc#architecture-images-tag-policy[Image Version Tag Policy] section.
+
+
+
+|===
+
+// end::architecture_thu_may_25_2017[]
+== Tue May 02 2017
+
+// tag::architecture_tue_may_02_2017[]
+[cols="1,3",options="header"]
+|===
+
+|Affected Topic |Description of Change
+//Tue May 02 2017
+|xref:../architecture/additional_concepts/f5_big_ip.adoc#architecture-additional-concepts-f5-big-ip[Additional Concepts -> F5 BIG-IP® Router Plug-in]
+|Removed information about integration with HAProxy router.
+
+|xref:../architecture/additional_concepts/f5_big_ip.adoc#architecture-additional-concepts-f5-big-ip[Additional Concepts -> F5 BIG-IP® Router Plug-in]
+|F5 BIG-IP® Router Plug-in is now its own topic.
+
+|xref:../architecture/core_concepts/builds_and_image_streams.adoc#architecture-core-concepts-builds-and-image-streams[Builds and Image Streams]
+|Added link to OpenShift Image Streams and Templates library in the xref:../architecture/core_concepts/builds_and_image_streams.adoc#image-streams[Image Streams] section.
+
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Added more context to the xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes#routes-sticky-sessions[Sticky Sessions] section.
+
+|xref:../architecture/additional_concepts/storage.adoc#architecture-additional-concepts-storage[Additional Concepts -> Persistent Storage]
+|Added a xref:../architecture/additional_concepts/storage.adoc#pvc-storage-class[Storage Class] section.
+
+ifdef::openshift-enterprise[]
+|xref:../architecture/infrastructure_components/web_console.adoc#architecture-infrastructure-components-web-console[Infrastructure Components -> Web Console]
+|Added information about xref:../architecture/infrastructure_components/web_console.adoc#web-console-statefulsets[`StatefulSet`], currently a Technology Preview feature.
+endif::openshift-enterprise[]
+
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Added `ROUTER_SLOWLORIS_HTTP_KEEPALIVE` to the xref:../architecture/core_concepts/routes.adoc#env-variables[Router Configuration Parameters] table.
+
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|New xref:../architecture/core_concepts/routes.adoc#disable-namespace-ownership-check[Disabling the Namespace Ownership Check] section.
+
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Added `ROUTER_MAX_CONNECTIONS` to the xref:../architecture/core_concepts/routes.adoc#env-variables[Router Configuration Parameters] table.
+
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Added information on how to clear xref:../architecture/core_concepts/routes.adoc#route-status-field[route status].
+
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Added details about `insecureEdgeTerminatePolicy` in regard to reencrypt and passthrough routes.
+
+
+
+|===
+
+// end::architecture_tue_may_02_2017[]
+== Thu Apr 13 2017
+
+// tag::architecture_thu_apr_13_2017[]
+[cols="1,3",options="header"]
+|===
+
+|Affected Topic |Description of Change
+//Thu Apr 13 2017
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
+|Updated router customization details.
+
+
+
+|===
+
+// end::architecture_thu_apr_13_2017[]
+
 == Mon Mar 20 2017
 
 // tag::architecture_mon_mar_20_2017[]
@@ -215,11 +422,11 @@ n|xref:../architecture/additional_concepts/authorization.adoc#architecture-addit
 |xref:../architecture/additional_concepts/authentication.adoc#architecture-additional-concepts-authentication[Additional Concepts -> Authentication]
 |Added section on using Security Context Constraints for OAuth.
 
-|xref:../architecture/core_concepts/routes.adoc[Core Concepts -> Routes]
+|xref:../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[Core Concepts -> Routes]
 |Added router configuration parameters.
 
-|link:../architecture/additional_concepts/authentication.html[Additional Concepts -> Authentication]
-|Added the link:../architecture/additional_concepts/authentication.html#authentication-impersonation[Impersonation] section.
+|link:../architecture/additional_concepts/authentication.adoc#architecture-additional-concepts-authentication[Additional Concepts -> Authentication]
+|Added the link:../architecture/additional_concepts/authentication.adoc#authentication-impersonation[Impersonation] section.
 
 
 

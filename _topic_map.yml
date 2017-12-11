@@ -34,7 +34,7 @@ Topics:
 ---
 Name: Release Notes
 Dir: release_notes
-Distros: openshift-enterprise,openshift-dedicated
+Distros: openshift-enterprise,openshift-dedicated,openshift-online
 Topics:
   - Name: Overview
     File: index
@@ -116,24 +116,39 @@ Name: Quickstart
 Dir: registry_quickstart
 Distros: atomic-registry
 Topics:
+- Name: Overview
+  File: index
+- Name: Developers
+  File: developers
+- Name: Administrators
+  Dir: administrators
+  Topics:
   - Name: Overview
     File: index
-  - Name: Developers
-    File: developers
-  - Name: Administrators
-    Dir: administrators
-    Topics:
-      - Name: Overview
-        File: index
-      - Name: System Configuration
-        File: system_configuration
-      - Name: Uninstall
-        File: uninstall
-
+  - Name: System Configuration
+    File: system_configuration
+  - Name: Uninstall
+    File: uninstall
 ---
 Name: Architecture
 Dir: architecture
 Topics:
+- Name: Overview
+  File: index
+- Name: Infrastructure Components
+  Dir: infrastructure_components
+  Topics:
+  - Name: Kubernetes Infrastructure
+    File: kubernetes_infrastructure
+    Distros: openshift-*
+  - Name: Image Registry
+    File: image_registry
+  - Name: Web Console
+    File: web_console
+    Distros: openshift-*
+- Name: Core Concepts
+  Dir: core_concepts
+  Topics:
   - Name: Overview
     File: index
     Distros: openshift-*,digital-garage
@@ -224,6 +239,80 @@ Name: Installation and Configuration
 Dir: install_config
 Distros: openshift-origin,openshift-enterprise,atomic-*
 Topics:
+- Name: Overview
+  File: index
+  Distros: openshift-origin,openshift-enterprise
+- Name: Installing a Cluster
+  Dir: install
+  Distros: openshift-origin,openshift-enterprise
+  Topics:
+  - Name: Planning
+    File: planning
+  - Name: Prerequisites
+    File: prerequisites
+  - Name: Host Preparation
+    File: host_preparation
+  - Name: Installing on Containerized Hosts
+    File: rpm_vs_containerized
+  - Name: Quick Installation
+    File: quick_install
+  - Name: Advanced Installation
+    File: advanced_install
+  - Name: Disconnected Installation
+    File: disconnected_install
+    Distros: openshift-enterprise
+  - Name: Installing a Stand-alone Deployment of OpenShift Container Registry
+    File: stand_alone_registry
+- Name: Setting up the Registry
+  Dir: registry
+  Distros: openshift-origin,openshift-enterprise
+  Topics:
+  - Name: Registry Overview
+    File: index
+  - Name: Deploying a Registry on Existing Clusters
+    File: deploy_registry_existing_clusters
+  - Name: Accessing the Registry
+    File: accessing_registry
+  - Name: Securing and Exposing the Registry
+    File: securing_and_exposing_registry
+  - Name: Extended Registry Configuration
+    File: extended_registry_configuration
+  - Name: Known Issues
+    File: registry_known_issues
+- Name: Setting up a Router
+  Dir: router
+  Distros: openshift-origin,openshift-enterprise
+  Topics:
+  - Name: Router Overview
+    File: index
+  - Name: Using the Default HAProxy Router
+    File: default_haproxy_router
+  - Name: Deploying a Customized HAProxy Router
+    File: customized_haproxy_router
+  - Name: Configuring the HAProxy Router to Use the PROXY Protocol
+    File: proxy_protocol
+  - Name: Using the F5 Router Plug-in
+    File: f5_router
+- Name: Deploying Red Hat CloudForms
+  Dir: cfme
+  Distros: openshift-origin,openshift-enterprise
+  Topics:
+  - Name: Introduction
+    File: index
+  - Name: Requirements
+    File: requirements
+  - Name: Configuring Role Variables
+    File: role_variables
+  - Name: Running the Installer
+    File: installing
+  - Name: Enabling Container Provider Integration
+    File: container_provider
+  - Name: Uninstalling
+    File: uninstalling
+- Name: Upgrading a Cluster
+  Dir: upgrading
+  Distros: openshift-origin,openshift-enterprise
+  Topics:
   - Name: Overview
     File: index
     Distros: openshift-origin,openshift-enterprise
@@ -527,15 +616,14 @@ Name: User Guide
 Dir: dev_guide
 Distros: atomic-*
 Topics:
-  - Name: Overview
-    File: index
-  - Name: Authentication
-    File: authentication
-  - Name: Managing Images
-    File: managing_images
-  - Name: Service Accounts
-    File: service_accounts
-
+- Name: Overview
+  File: index
+- Name: Authentication
+  File: authentication
+- Name: Managing Images
+  File: managing_images
+- Name: Service Accounts
+  File: service_accounts
 ---
 Name: CLI Reference
 Dir: cli_reference
@@ -564,6 +652,26 @@ Name: Developer Guide
 Dir: dev_guide
 Distros: openshift-*,digital-garage
 Topics:
+- Name: Overview
+  File: index
+- Name: Application Life Cycle Management
+  Dir: application_lifecycle
+  Topics:
+  - Name: Planning Your Development Process
+    File: development_process
+  - Name: Creating New Applications
+    File: new_app
+  - Name: Promoting Applications Across Environments
+    File: promoting_applications
+- Name: Authentication
+  File: authentication
+- Name: Authorization
+  File: authorization
+- Name: Projects
+  File: projects
+- Name: Migrating Applications
+  Dir: migrating_applications
+  Topics:
   - Name: Overview
     File: index
   - Name: Application Life Cycle Management
@@ -718,27 +826,33 @@ Name: Creating Images
 Dir: creating_images
 Distros: openshift-*,digital-garage
 Topics:
-  - Name: Overview
-    File: index
-  - Name: Guidelines
-    File: guidelines
-  - Name: Image Metadata
-    File: metadata
-  - Name: S2I Requirements
-    File: s2i
-  - Name: Testing S2I Images
-    File: s2i_testing
-  - Name: Custom Builder
-    File: custom
-  - Name: Revision History
-    File: revhistory_creating_images
-    Distros: openshift-enterprise,openshift-dedicated
-
+- Name: Overview
+  File: index
+- Name: Guidelines
+  File: guidelines
+- Name: Image Metadata
+  File: metadata
+- Name: S2I Requirements
+  File: s2i
+- Name: Testing S2I Images
+  File: s2i_testing
+- Name: Custom Builder
+  File: custom
+  Distros: openshift-enterprise,openshift-dedicated,openshift-origin
+- Name: Revision History
+  File: revhistory_creating_images
+  Distros: openshift-enterprise,openshift-dedicated
 ---
 Name: Using Images
 Dir: using_images
 Distros: openshift-*,digital-garage
 Topics:
+- Name: Overview
+  File: index
+  Distros: openshift-online,openshift-enterprise,openshift-dedicated
+- Name: Source-to-Image (S2I)
+  Dir: s2i_images
+  Topics:
   - Name: Overview
     File: index
     Distros: openshift-online,digital-garage
