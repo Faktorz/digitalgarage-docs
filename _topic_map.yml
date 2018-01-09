@@ -914,7 +914,7 @@ Topics:
 ---
 Name: Using Images
 Dir: using_images
-Distros: openshift-*
+Distros: openshift-*,digital-garage
 Topics:
 - Name: Overview
   File: index
@@ -1000,6 +1000,7 @@ Topics:
 ---
 Name: REST API Reference
 Dir: rest_api
+Distros: openshift-*
 Topics:
 - Name: Overview
   File: index
