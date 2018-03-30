@@ -659,6 +659,7 @@ Topics:
   File: projects
 - Name: Migrating Applications
   Dir: migrating_applications
+  Distros: openshift-*
   Topics:
   - Name: Overview
     File: index
