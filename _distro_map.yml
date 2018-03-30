@@ -8,4 +8,4 @@ digital-garage:
   branches:
     online:
       name: '2'
-      dir: online
+      dir: digital-garage-v1
