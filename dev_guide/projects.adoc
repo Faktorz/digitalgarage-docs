@@ -66,7 +66,7 @@ ifdef::openshift-dedicated[]
 may be limited by the system administrator.
 endif::[]
 ifdef::openshift-online,digital-garage[]
-is limited.
+is not limited.
 endif::[]
 Once your limit is reached, you may need to delete an existing project in order to create a new one.
 ====
@@ -191,26 +191,16 @@ To delete a project using the CLI:
 $ oc delete project <project_name>
 ----
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 [[project-collaboration-in-online-pro]]
-== Project Collaboration in {product-title} Pro
+== Project Collaboration in {product-title}
 
-[IMPORTANT]
-====
-Collaboration is not available in {product-title} Starter.
-====
-
-Every {product-title} Pro account has the ability to add up to 50 collaborator
+Every {product-title} account has the ability to add up to 50 collaborator
 users per subscription. These collaborator users are granted cluster access from
-{product-title} Pro account subscribers so that they can collaborate on projects
+{product-title} account subscribers so that they can collaborate on projects
 hosted with {product-title}. This allows multiple users to gain access to
 projects under a single subscription, without having to pay a monthly fee for
 every account.
-
-[NOTE]
-====
-Existing {product-title} Pro users do not need to be added as collaborators.
-====
 
 [[collaboration-restrictions]]
 === Collaboration Restrictions
@@ -219,42 +209,6 @@ Collaborators can only access the resources within the projects that they have
 been granted access. Also, their ability to view, edit, and manage the
 project resources will depend on the specific role that they have been granted
 within the project.
-
-[[project-collaboration-adding-collaborators]]
-=== Adding Collaborators
-{product-title} Pro subscribers can add collaborators by following these steps:
-
-. Each user you want to add as a collaborator must create a free account at
- link:https://developers.redhat.com/[developers.redhat.com]. Once your
- collaborator has confirmed their Red Hat Developers account, you can add them
- to your subscription.
-
- . Each collaborator must sign into
-link:https://developers.redhat.com/[developers.redhat.com] and click on their
-name in the upper-right corner to access their account details. Make note of the
-*Red Hat Login ID* on this page, as it is the user name you will be required to
-enter in order to associate the collaborator with your subscription.
-
-. Sign in to link:https://manage.openshift.com[manage.openshift.com] and click on
-*Manage Subscription* under the cluster where you want to add the collaborator.
-+
-image::manage-subscriptions-collaboration.png[]
-
-. Once you are in the subscription management console, click the *Manage* link
-under the *Collaborators* heading, which brings you to the *Collaboration* page.
-+
-image::manage-collaborators.png[]
-
-. On the *Collaboration* page, enter the *Red Hat Login ID* for the user in the user
-name field and click *Add Collaborator*.
-+
-You should now see the user listed under your collaborators, the time the user
-was added, and an option to remove the user from your subscription.
-+
-This does not automatically grant the user any access to your projects. Access
-must be granted manually by the project owner using
-xref:granting-project-access-using-the-cli[`oc policy` commands] or the
-xref:granting-project-access-using-the-web-console[web console].
 
 [[granting-project-access-using-the-web-console]]
 === Granting Project Access Using the Web Console
@@ -271,12 +225,6 @@ grant access.
 See
 xref:../architecture/additional_concepts/authorization.adoc#architecture-additional-concepts-authorization[Authorization]
 for more information on access roles.
-+
-Now, when the collaborator user signs in to
-link:https://manage.openshift.com[manage.openshift.com], they will see a card to
-log in to the web console for the same cluster as your subscription and, if the
-collaborator was granted access to your projects on the cluster, they will have
-access just like any other user.
 
 [[granting-project-access-using-the-cli]]
 === Granting Project Access Using the CLI
@@ -310,12 +258,6 @@ This example grants *view* access to the project for user `collaborator-1234`.
 See
 xref:../architecture/additional_concepts/authorization.adoc#architecture-additional-concepts-authorization[Authorization]
 for more information on access roles.
-+
-Now, when the collaborator user signs in to
-link:https://manage.openshift.com[manage.openshift.com], they will see a card to
-log in to the web console for the same cluster as your subscription and, if the
-collaborator was granted access to your projects on the cluster, they will have
-access just like any other user.
 
 [[project-collaboration-removing-collaborators]]
 === Removing Collaborators
@@ -349,4 +291,4 @@ running:
 ----
 $ oc policy remove-role-from-user <role-name> <username>
 ----
-endif::openshift-online[]
+endif::openshift-online,digital-garage[]

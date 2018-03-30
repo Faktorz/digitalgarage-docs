@@ -121,7 +121,6 @@ Alternatively, if you used the quick installation method, you can
 xref:../install_config/install/quick_install.adoc#adding-nodes-or-reinstalling-quick[re-run
 =======
 xref:../install_config/adding_hosts_to_existing_cluster.adoc#adding-nodes-or-reinstalling-quick[re-run
->>>>>>> openshift/online-3.7-stage
 the installer to add nodes], which performs the same steps.
 endif::[]
 

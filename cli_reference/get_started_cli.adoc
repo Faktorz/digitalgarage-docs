@@ -163,7 +163,7 @@ To check your PATH, open a Terminal window and run:
 $ echo $PATH
 ----
 
-ifdef::openshift-origin,atomic-registry[]
+ifdef::openshift-origin,digital-garage,atomic-registry[]
 [[homebrew]]
 Alternatively, Mac OS X users can install the CLI using
 http://brew.sh/[Homebrew]:

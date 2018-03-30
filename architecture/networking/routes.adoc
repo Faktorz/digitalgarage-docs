@@ -14,13 +14,13 @@ toc::[]
 == Overview
 
 An {product-title} route exposes a
-xref:../../architecture/core_concepts/pods_and_services.adoc#services[service] at a
+xref:pods_and_services.adoc#services[service] at a
 host name, like _www.example.com_, so that external clients can reach it by
 name.
 
 DNS resolution for a host name is handled separately from routing.
 Your administrator may have configured a
-ifdef::openshift-online,openshift-dedicated[]
+ifdef::openshift-online,digital-garage,openshift-dedicated[]
 DNS wildcard entry
 endif::[]
 ifdef::openshift-origin,openshift-enterprise[]
@@ -35,7 +35,7 @@ Each route consists of a name (limited to 63 characters), a service selector,
 and an optional security configuration.
 
 [[routers]]
-include::architecture/topics/router.adoc[]
+include::architecture/topics/routers.adoc[]
 
 [[routes-template-routers]]
 
@@ -79,97 +79,244 @@ include::architecture/topics/sticky_sessions.adoc[]
 [[env-variables]]
 include::architecture/topics/router_environment_variables.adoc[]
 
-[[time-units]]
-== Timeouts
-`TimeUnits` are represented by a number followed by the unit: `us`
-*(microseconds), `ms` (milliseconds, default), `s` (seconds), `m` (minutes), `h`
-*(hours), `d` (days).
+[[f5-router]]
+=== F5 Router
 
-The regular expression is: [1-9][0-9]*(us\|ms\|s\|m\|h\|d)
+ifdef::openshift-enterprise[]
+[NOTE]
+====
+The F5 router plug-in is available starting in OpenShift Enterprise 3.0.2.
+====
+endif::[]
 
-[[load-balancing]]
-== Load-balancing Strategy
+The F5 router plug-in integrates with an existing *F5 BIG-IP®* system in your
+environment. *F5 BIG-IP®* version 11.4 or newer is required in order to have the
+F5 iControl REST API. The F5 router supports xref:route-types[unsecured],
+xref:edge-termination[edge terminated],
+xref:re-encryption-termination[re-encryption terminated], and
+xref:passthrough-termination[passthrough terminated] routes matching on HTTP
+vhost and request path.
 
-When a route has multiple endpoints, HAProxy distributes requests to the route
-among the endpoints based on the selected load-balancing strategy. This applies
-when no xref:routes-sticky-sessions[persistence information] is available, such
-as on the first request in a session.
+The F5 router has feature parity with the
+xref:haproxy-template-router[HAProxy template router],
+and has additional features over the *F5 BIG-IP®* support in
+ifdef::openshift-enterprise[]
+OpenShift Enterprise 2.
+endif::[]
+ifdef::openshift-origin[]
+OpenShift v2.
+endif::[]
+Compared with the *routing-daemon* used in earlier
+versions, the F5 router additionally supports:
 
-The strategy can be one of the following:
+- path-based routing (using policy rules),
+- re-encryption (implemented using client and server SSL profiles), and
+- passthrough of encrypted connections (implemented using an iRule that parses
+the SNI protocol and uses a data group that is maintained by the F5 router for
+the servername lookup).
 
-- `*roundrobin*`: Each endpoint is used in turn, according to its weight.
-This is the smoothest and fairest algorithm when the server's
-processing time remains equally distributed.
-- `*leastconn*`: The endpoint with the lowest number of connections receives the
-request. Round-robin is performed when multiple endpoints have the same lowest
-number of connections. Use this algorithm when very long sessions are
-expected, such as LDAP, SQL, TSE, or others. Not intended to be used
-with protocols that typically use short sessions such as HTTP.
-- `*source*`: The source IP address is hashed and divided by the total
-weight of the running servers to designate which server will
-receive the request. This ensures that the same client IP
-address will always reach the same server as long as no
-server goes down or up. If the hash result changes due to the
-number of running servers changing, many clients will be
-directed to different servers. This algorithm is generally
-used with xref:routes-sticky-sessions[passthrough routes].
+[NOTE]
+====
+Passthrough routes are a special case: path-based routing is technically
+impossible with passthrough routes because *F5 BIG-IP®* itself does not see the
+HTTP request, so it cannot examine the path. The same restriction applies to the
+template router; it is a technical limitation of passthrough encryption, not a
+technical limitation of {product-title}.
+====
 
-The `ROUTER_TCP_BALANCE_SCHEME` xref:env-variables[environment variable] sets the default
-strategy for passthorugh routes. The `ROUTER_LOAD_BALANCE_ALGORITHM` xref:env-variables[environment
-variable] sets the default strategy for the router for the remaining routes.
-A xref:route-specific-annotations[route specific annotation],
-`*haproxy.router.openshift.io/balance*`, can be used to control specific routes.
+[[routing-traffic-to-pods-through-the-sdn]]
+==== Routing Traffic to Pods Through the SDN
 
-[[strict-sni]]
-== HAProxy Strict SNI
+Because *F5 BIG-IP®* is external to the {product-title} SDN, a
+cluster administrator must create a peer-to-peer tunnel between *F5 BIG-IP®* and
+a host that is on the SDN, typically an {product-title} node host.
+ifdef::openshift-dedicated[]
+This _ramp node_ can be configured as unschedulable for pods so that it will not
+be doing anything except act as a gateway for the *F5 BIG-IP®* host.
+endif::[]
+ifdef::openshift-enterprise,openshift-origin[]
+This
+xref:../../install_config/routing_from_edge_lb.adoc#establishing-a-tunnel-using-a-ramp-node[_ramp
+node_] can be configured as
+xref:../../admin_guide/manage_nodes.adoc#marking-nodes-as-unschedulable-or-schedulable[unschedulable]
+for pods so that it will not be doing anything except act as a gateway for the
+*F5 BIG-IP®* host.
+endif::[]
+It is also possible to configure multiple such hosts and use
+the {product-title} *ipfailover* feature for redundancy; the *F5 BIG-IP®* host would
+then need to be configured to use the *ipfailover* VIP for its tunnel's remote
+endpoint.
 
-By default, when a host does not resolve to a route in a HTTPS or TLS SNI
-request, the default certificate is returned to the caller as part of the *503*
-response. This exposes the default certificate and can pose security concerns
-because the wrong certificate is served for a site. The HAProxy `strict-sni`
-option to bind suppresses use of the default certificate.
+[[f5-integration-details]]
+==== F5 Integration Details
 
-The `ROUTER_STRICT_SNI` environment variable controls bind processing. When set
-to `true` or `TRUE`, `strict-sni` is added to the HAProxy bind. The default
-setting is `false`.
+The operation of the F5 router is similar to that of the {product-title}
+*routing-daemon* used in earlier versions. Both use REST API calls to:
 
-The option can be set when the router is created or added later.
+- create and delete pools,
+- add endpoints to and delete them from those pools, and
+- configure policy rules to route to pools based on vhost.
+
+Both also use `scp` and `ssh` commands to upload custom TLS/SSL certificates to
+*F5 BIG-IP®*.
+
+The F5 router configures pools and policy rules on virtual servers as follows:
+
+- When a user creates or deletes a route on {product-title}, the router creates a
+pool to *F5 BIG-IP®* for the route (if no pool already exists) and adds a rule to, or
+deletes a rule from, the policy of the appropriate vserver: the HTTP vserver for
+non-TLS routes, or the HTTPS vserver for edge or re-encrypt routes. In the case
+of edge and re-encrypt routes, the router also uploads and configures the TLS
+certificate and key. The router supports host- and path-based routes.
++
+[NOTE]
+====
+Passthrough routes are a special case: to support those, it is necessary to
+write an iRule that parses the SNI ClientHello handshake record and looks up the
+servername in an F5 data-group. The router creates this iRule, associates the
+iRule with the vserver, and updates the F5 data-group as passthrough routes are
+created and deleted. Other than this implementation detail, passthrough routes
+work the same way as other routes.
+====
+
+- When a user creates a service on {product-title}, the router adds a pool to *F5
+BIG-IP®* (if no pool already exists). As endpoints on that service are created
+and deleted, the router adds and removes corresponding pool members.
+
+- When a user deletes the route and all endpoints associated with a particular
+pool, the router deletes that pool.
+
+[[architecture-f5-native-integration]]
+==== F5 Native Integration
+
+With native integration of F5 with {product-title}], you do not need to configure a ramp
+node for F5 to be able to reach the pods on the overlay network as created by
+OpenShift SDN.
+
+*Connection*
+
+The F5 appliance can connect to the {product-title} cluster via an L3
+connection. An L2 switch connectivity is not required between {product-title}
+nodes. On the appliance, you can use multiple interfaces to manage the
+integration:
+
+* Management interface - Reaches the web console of the F5 appliance.
+* External interface - Configures the virtual servers for inbound web traffic.
+* Internal interface - Programs the appliance and reaches out to the pods.
+
+image::F5-OpenShift-Connection-Diagram.png[F5 and OpenShift Connection Diagram]
+
+An F5 controller pod has `admin` access to the appliance. The F5 image is
+launched within the {product-title} cluster (scheduled on any node) that uses
+iControl REST APIs to program the virtual servers with policies, and configure
+the VxLAN device.
+
+*Data Flow: Packets to Pods*
+
+[NOTE]
+====
+This section explains how the packets reach the pods, and vice versa. These
+actions are performed by the F5 controller pod and the F5 appliance, not the
+user.
+====
+
+When natively integrated, The F5 appliance reaches out to the pods directly
+using VxLAN encapsulation. This integration works only when {product-title} is
+using *openshift-sdn* as the network plug-in. The *openshift-sdn*  plug-in
+employs VxLAN encapsulation for the overlay network that it creates.
+
+To make a successful data path between a pod and the F5 appliance:
+
+. F5 needs to encapsulate the VxLAN packet meant for the pods. This requires the
+*sdn-services* license add-on. A VxLAN device needs to be created and the pod
+overlay network needs to be routed through this device.
+
+. F5 needs to know the VTEP IP address of the pod, which is the IP address of the
+node where the pod is located.
+
+. F5 needs to know which `source-ip` to use for the overlay network when
+encapsulating the packets meant for the pods. This is known as the _gateway address_.
+
+. {product-title} nodes need to know where the F5 gateway address is (the VTEP
+address for the return traffic). This needs to be the internal interface’s
+address. All nodes of the cluster must learn this automatically.
+
+. Since the overlay network is multi-tenant aware, F5 must use a VxLAN ID that is
+representative of an `admin` domain, ensuring that all tenants are reachable by
+the F5. Ensure that F5 encapsulates all packets with a `vnid` of `0` (the
+default `vnid` for the `admin` namespace in {product-title}) by putting an
+annotation on the manually created `hostsubnet` -
+`pod.network.openshift.io/fixed-vnid-host: 0`.
+
+A ghost `hostsubnet` is manually created as part of the setup, which fulfills
+the third and forth listed requirements. When the F5 controller pod is launched,
+this new ghost `hostsubnet` is provided so that the F5 appliance can be
+programmed suitably.
+
+[NOTE]
+====
+The term _ghost_ `hostsubnet` is used because it suggests that a subnet has been
+given to a node of the cluster. However, in reality, it is not a real node of
+the cluster. It is hijacked by an external appliance.
+====
+
+The first requirement is fulfilled by the F5 controller pod once it is launched.
+The second requirement is also fulfilled by the F5 controller pod, but it is an
+ongoing process. For each new node that is added to the cluster, the controller
+pod creates an entry in the VxLAN device’s VTEP FDB. The controller pod needs
+access to the `nodes` resource in the cluster, which you can accomplish by
+giving the service account appropriate privileges. Use the following command:
 
 ----
-$ oc adm router --strict-sni
+$ oadm policy add-cluster-role-to-user system:sdn-reader system:serviceaccount:default:router
 ----
 
-This sets `ROUTER_STRICT_SNI=true`.
+*Data Flow from the F5 Host*
 
-[[ciphers]]
-== Router Cipher Suite
+[NOTE]
+====
+These actions are performed by the F5 controller pod and the F5 appliance, not
+the user.
+====
 
-Each client (for example, Chrome 30, or Java8) includes a suite of ciphers used
-to securely connect with the router. The router must have at least one of the
-ciphers for the connection to be complete:
+. The destination pod is identified by the F5 virtual server for a packet.
 
-.Router Cipher Profiles
-[cols="2,6", options="header"]
-|===
-|Profile | Oldest compatible client
-|modern| Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, Java 8
-|intermediate|Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7
-|old|Windows XP IE6, Java 6
-|===
+. VxLAN dynamic FDB is looked up with pod’s IP address. If a MAC address is found, go to step 5.
 
-See the link:https://wiki.mozilla.org/Security/Server_Side_TLS[Security/Server
-Side TLS] reference guide for more information.
+. Flood all entries in the VTEP FDB with ARP requests seeking the pod’s MAC address.
 
-The router defaults to the `intermediate` profile. You can select a different
-profile using the `--ciphers` option when creating a route, or by changing
-the `ROUTER_CIPHERS` environment variable with the values `modern`,
-`intermediate`, or `old` for an existing router. Alternatively, a set of ":"
-separated ciphers can be provided. The ciphers must be from the set displayed
-by:
+. One of the nodes (VTEP) will respond, confirming that it is the one where the
+pod is located. An entry is made into the VxLAN dynamic FDB with the pod’s MAC
+address and the VTEP to be used as the value.
 
-----
-openssl ciphers
-----
+. Encap an IP packet with VxLAN headers, where the MAC of the pod and the VTEP of
+the node is given as values from the VxLAN dynamic FDB.
+
+. Calculate the VTEP's MAC address by sending out an ARP or checking the host’s
+neighbor cache.
+
+. Deliver the packet through the F5 host’s internal address.
+
+*Data Flow: Return Traffic to the F5 Host*
+
+[NOTE]
+====
+These actions are performed by the F5 controller pod and the F5 appliance, not
+the user.
+====
+
+. The pod sends back a packet with the destination as the F5 host’s VxLAN gateway address.
+
+. The `openvswitch` at the node determines that the VTEP for this packet is the
+ F5 host’s internal interface address. This is learned from the ghost `hostsubnet`
+ creation.
+
+. A VxLAN packet is sent out to the internal interface of the F5 host.
+
+[NOTE]
+====
+During the entire data flow, the VNID is pre-fixed to be `0` to bypass multi-tenancy.
+====
 
 [[route-hostnames]]
 
@@ -470,7 +617,7 @@ spec:
 ----
 <1> The name of the object, which is limited to 63 characters.
 <2> The `*termination*` field is `edge` for edge termination.
-<3> The insecure policy to redirect requests sent on an i/nsecure scheme `HTTP` to a secure scheme `HTTPS`.
+<3> The insecure policy to redirect requests sent on an insecure scheme `HTTP` to a secure scheme `HTTPS`.
 ====
 
 [[passthrough-termination]]
@@ -506,8 +653,8 @@ requiring client certificates (also known as two-way authentication).
 
 [NOTE]
 ====
-Passthrough routes can also have an `insecureEdgeTerminationPolicy`. The only
-valid values are `None` (or empty, for disabled) or `Redirect`.
+passthrough routes can also have an `insecureEdgeTerminationPolicy` the only valid values are
+`None` or empty (for disabled) or `Redirect`.
 ====
 
 [[re-encryption-termination]]
@@ -548,25 +695,11 @@ spec:
 <1> The name of the object, which is limited to 63 characters.
 <2> The `*termination*` field is set to `reencrypt`. Other fields are as in edge
 termination.
-<3> Required for re-encryption. `*destinationCACertificate*`
-specifies a CA certificate to validate the endpoint certificate, securing the
-connection from the router to the destination pods. If the service is using a service signing certificate, or the administrator has specified a default CA certificate for the router and the service has a certificate signed by that CA, this field can be omitted.
+<3> The `*destinationCACertificate*` field specifies a CA certificate to
+validate the endpoint certificate, securing the connection from the router to
+the destination. This field is required, but only for re-encryption.
 ====
 
-If the `*destinationCACertificate*` field is left empty, the router
-automatically leverages the certificate authority that is generated for service
-serving certificates, and is injected into every pod as
-`/var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt`. This allows new
-routes that leverage end-to-end encryption without having to generate a
-certificate for the route. This is useful for custom routers or the F5 router,
-which might not allow the `destinationCACertificate` unless the administrator
-has allowed it.
-
-[NOTE]
-====
-Re-encrypt routes can have an `insecureEdgeTerminationPolicy` with all of the
-same values as edge-terminated routes.
-====
 
 [[router-sharding]]
 == Router Sharding
@@ -579,9 +712,10 @@ include::architecture/topics/alternate_backends_weights.adoc[]
 [[route-specific-annotations]]
 == Route-specific Annotations
 
-Using xref:env-variables[environment variables], a router can set the default
-options for all the routes it exposes. An individual route can override some
-of these defaults by providing specific configurations in its annotations.
+Using environment variables as defined in xref:env-variables[Configuration
+Parameters], a router can set the default options for all the routes it exposes.
+An individual route can override some of these defaults by providing specific
+configurations in its annotations.
 
 *Route Annotations*
 
@@ -601,13 +735,12 @@ and "-". The default is the hashed internal key name for the route. |
 |`*haproxy.router.openshift.io/rate-limit-connections.concurrent-tcp*`| Limits the number of concurrent TCP connections shared by an IP address. |
 |`*haproxy.router.openshift.io/rate-limit-connections.rate-http*`| Limits the rate at which an IP address can make HTTP requests. |
 |`*haproxy.router.openshift.io/rate-limit-connections.rate-tcp*`| Limits the rate at which an IP address can make TCP connections. |
-|`*haproxy.router.openshift.io/timeout*` | Sets a server-side timeout for the route. xref:time-units[(TimeUnits)] | `ROUTER_DEFAULT_SERVER_TIMEOUT`
-|`*router.openshift.io/haproxy.health.check.interval*`| Sets the interval for the back-end health checks. xref:time-units[(TimeUnits)] | `ROUTER_BACKEND_CHECK_INTERVAL`
-|`*haproxy.router.openshift.io/ip_whitelist*` | Sets a xref:whitelist[whitelist] for the route. |
+|`*haproxy.router.openshift.io/timeout*` | Sets a server-side timeout. | `ROUTER_DEFAULT_SERVER_TIMEOUT`
+|`*router.openshift.io/haproxy.health.check.interval*`| Sets the interval for the back-end health checks. | `ROUTER_BACKEND_CHECK_INTERVAL`
 |===
 
+
 .A Route Setting Custom Timeout
-====
 [source,yaml]
 ----
 apiVersion: v1
@@ -619,7 +752,6 @@ metadata:
 ----
 <1> Specifies the new timeout with HAProxy supported units (us, ms, s, m, h, d).
 If unit not provided, ms is the default.
-====
 
 [NOTE]
 ====
@@ -627,51 +759,6 @@ Setting a server-side timeout value for passthrough routes too low can cause
 WebSocket connections to timeout frequently on that route.
 ====
 
-[[whitelist]]
-== Route-specific IP Whitelists
-
-You can restrict access to a route to a select set of IP addresses by adding the
-`haproxy.router.openshift.io/ip_whitelist` annotation on the route. The
-whitelist is a space-separated list of IP addresses and/or CIDRs for the
-approved source addresses. Requests from IP addresses that are not in the
-whitelist are dropped.
-
-Some examples:
-
-When editing a route, add the following annotation to define the desired
-source IP's. Alternatively, use `oc annotate route <name>`.
-
-Allow only one specific IP address:
-
-----
-metadata:
-  annotations:
-    haproxy.router.openshift.io/ip_whitelist: 192.168.1.10
-----
-
-Allow several IP addresses:
-
-----
-metadata:
-  annotations:
-    haproxy.router.openshift.io/ip_whitelist: 192.168.1.10 192.168.1.11 192.168.1.12
-----
-
-Allow an IP CIDR network:
-
-----
-metadata:
-  annotations:
-    haproxy.router.openshift.io/ip_whitelist: 192.168.1.0/24
-----
-
-Allow mixed IP addresses and IP CIDR networks:
-
-----
-metadata:
-  annotations:
-    haproxy.router.openshift.io/ip_whitelist: 180.5.61.153 192.168.1.0/24 10.0.0.0/8
-----
 
 [[wildcard-subdomain-route-policy]]
 == Creating Routes Specifying a Wildcard Subdomain Policy
@@ -682,12 +769,9 @@ wildcard policy as part of its configuration using the `wildcardPolicy` field.
 Any routers run with a policy allowing wildcard routes will expose the route
 appropriately based on the wildcard policy.
 
-ifdef::openshift-enterprise,openshift-origin[]
-xref:../../install_config/router/default_haproxy_router.adoc#using-wildcard-routes[Learn how to configure HAProxy routers to allow wildcard routes].
-endif::[]
+// xref:../../install_config/router/default_haproxy_router.adoc#using-wildcard-routes[Learn how to configure HAProxy routers to allow wildcard routes].
 
 .A Route Specifying a Subdomain WildcardPolicy
-====
 [source,yaml]
 ----
 apiVersion: v1
@@ -703,7 +787,6 @@ spec:
 <2> Specifies that the externally reachable host name should allow all hosts
     in the subdomain `example.com`. `*.example.com` is the subdomain for host
     name `wildcard.example.com` to reach the exposed service.
-====
 
 [[route-status-field]]
 == Route Status
@@ -715,7 +798,6 @@ in the route status, use the
 link:https://github.com/openshift/origin/blob/master/images/router/clear-route-status.sh[clear-route-status
 script].
 
-
 [[architecture-core-concepts-routes-deny-allow]]
 == Denying or Allowing Certain Domains in Routes
 
@@ -726,8 +808,8 @@ the host names in a route using the `ROUTER_DENIED_DOMAINS` and
 [cols="2"]
 |===
 
-|`ROUTER_DENIED_DOMAINS` | Domains listed are not allowed in any indicated routes.
-|`ROUTER_ALLOWED_DOMAINS` | Only the domains listed are allowed in any indicated routes.
+|`*ROUTER_DENIED_DOMAINS*` | Domains listed are not allowed in any indicated routes.
+|`*ROUTER_ALLOWED_DOMAINS*` | Only the domains listed are allowed in any indicated routes.
 
 |===
 
@@ -738,11 +820,11 @@ checks the list of allowed domains. However, the list of allowed domains is more
 restrictive, and ensures that the router only admits routes with hosts that
 belong to that list.
 
-For example, to deny the `[{asterisk}.]open.header.test`, `[{asterisk}.]openshift.org` and
-`[{asterisk}.]block.it` routes for the `myrouter` route:
+For example, to deny the `[*.]open.header.test`, `[*.]openshift.org` and
+`[*.]block.it` routes for the `myrouter` route:
 
 ----
-$ oc adm router myrouter ...
+$ oadm router myrouter ...
 $ oc set env dc/myrouter ROUTER_DENIED_DOMAINS="open.header.test, openshift.org, block.it"
 ----
 
@@ -765,10 +847,10 @@ $ oc expose service/<name> --hostname="openshift.org"
 $ oc expose service/<name> --hostname="api.openshift.org"
 ----
 
-Alternatively, to block any routes where the host name is _not_ set to `[{asterisk}.]stickshift.org` or `[{asterisk}.]kates.net`:
+Alternatively, to block any routes where the host name is _not_ set to `[*.]stickshift.org` or `[*.]kates.net`:
 
 ----
-$ oc adm router myrouter ...
+$ oadm router myrouter ...
 $ oc set env dc/myrouter ROUTER_ALLOWED_DOMAINS="stickshift.org, kates.net"
 ----
 
@@ -794,14 +876,14 @@ $ oc expose service/<name> --hostname="www.deny.it"
 To implement both scenarios, run:
 
 ----
-$ oc adm router adrouter ...
+$ oadm router adrouter ...
 $ oc env dc/adrouter ROUTER_ALLOWED_DOMAINS="openshift.org, kates.net" \
     ROUTER_DENIED_DOMAINS="ops.openshift.org, metrics.kates.net"
 ----
 
-This will allow any routes where the host name is set to `[{asterisk}.]openshift.org` or
-`[{asterisk}.]kates.net`, and not allow any routes where the host name is set to
-`[{asterisk}.]ops.openshift.org` or `[{asterisk}.]metrics.kates.net`.
+This will allow any routes where the host name is set to `[*.]openshift.org` or
+`[*.]kates.net`, and not allow any routes where the host name is set to
+`[*.]ops.openshift.org` or `[*.]metrics.kates.net`.
 
 Therefore, the following will be denied:
 
@@ -822,75 +904,4 @@ $ oc expose service/<name> --hostname="api.openshift.org"
 $ oc expose service/<name> --hostname="m.api.openshift.org"
 $ oc expose service/<name> --hostname="kates.net"
 $ oc expose service/<name> --hostname="api.kates.net"
-----
-
-
-[[disable-namespace-ownership-check]]
-== Disabling the Namespace Ownership Check
-
-Hosts and subdomains are owned by the namespace of the route that first
-makes the claim. Other routes created in the namespace can make claims on
-the subdomain. All other namespaces are prevented from making claims on
-the claimed hosts and subdomains. The namespace that owns the host also
-owns all paths associated with the host, for example `*_www.abc.xyz/path1_*`.
-
-For example, if the host `*_www.abc.xyz_*` is not claimed by any route.
-Creating route `r1` with host `*_www.abc.xyz_*` in namespace `ns1` makes
-namespace `ns1` the owner of host `*_www.abc.xyz_*` and subdomain `abc.xyz`
-for wildcard routes. If another namespace, `ns2`, tries to create a route
-with say a different path `*_www.abc.xyz/path1/path2_*`, it would fail
-because a route in another namespace (`ns1` in this case) owns that host.
-
-ifdef::openshift-enterprise,openshift-origin[]
-With
-xref:../../install_config/router/default_haproxy_router.adoc#using-wildcard-routes[wildcard routes]
-the namespace that owns the subdomain owns all hosts in the subdomain.
-If a namespace owns subdomain `*abc.xyz*` as in the above example,
-another namespace cannot claim `z.abc.xyz`.
-endif::[]
-
-By disabling the namespace ownership rules, you can disable these restrictions
-and allow hosts (and subdomains) to be claimed across namespaces.
-
-[WARNING]
-====
-If you decide to disable the namespace ownership checks in your router,
-be aware that this allows end users to claim ownership of hosts
-across namespaces. While this change can be desirable in certain
-development environments, use this feature with caution in production
-environments, and ensure that your cluster policy has locked down untrusted end
-users from creating routes.
-====
-
-For example, with `ROUTER_DISABLE_NAMESPACE_OWNERSHIP_CHECK=true`, if
-namespace `ns1` creates the oldest route `r1`  `*_www.abc.xyz_*`,  it owns only
-the hostname (+ path).  Another namespace can create a wildcard route
-even though it does not have the oldest route in that subdomain (`abc.xyz`)
-and we could potentially have other namespaces claiming other
-non-wildcard overlapping hosts (for example, `foo.abc.xyz`, `bar.abc.xyz`,
-`baz.abc.xyz`) and their claims would be granted.
-
-Any other namespace (for example, `ns2`) can now create
-a route `r2`  `*_www.abc.xyz/p1/p2_*`,  and it would be admitted.  Similarly
-another namespace (`ns3`) can also create a route  `wildthing.abc.xyz`
-with a subdomain wildcard policy and it can own the wildcard.
-
-As this example demonstrates, the policy `ROUTER_DISABLE_NAMESPACE_OWNERSHIP_CHECK=true` is more
-lax and allows claims across namespaces.  The only time the router would
-reject a route with the namespace ownership disabled is if the host+path
-is already claimed.
-
-For example, if a new route `rx` tries to claim `*_www.abc.xyz/p1/p2_*`, it
-would be rejected as route `r2` owns that host+path combination.  This is true whether route `rx`
-is in the same namespace or other namespace since the exact host+path is already claimed.
-
-This feature can be set during router creation or by setting an environment
-variable in the router's deployment configuration.
-
-----
-$ oc adm router ... --disable-namespace-ownership-check=true
-----
-
-----
-$ oc env dc/router ROUTER_DISABLE_NAMESPACE_OWNERSHIP_CHECK=true
 ----

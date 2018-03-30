@@ -109,7 +109,7 @@ spec:
 ----
 ====
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 See the xref:../../dev_guide/jobs.adoc#dev-guide-jobs[Jobs] topic for more information on how
 to use jobs.
 endif::[]

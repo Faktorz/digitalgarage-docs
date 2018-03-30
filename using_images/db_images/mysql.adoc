@@ -66,7 +66,7 @@ endif::[]
 ifdef::openshift-origin[]
     openshift/mysql-55-centos7
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
     mysql:5.5
 endif::[]
 ----
@@ -188,10 +188,10 @@ MySQL settings can be configured with the following environment variables:
 |`*MYSQL_KEY_BUFFER_SIZE*`
 |The size of the buffer used for index blocks.
 |
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 10% of available memory
 endif::[]
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 32M (or 10% of available memory)
 endif::[]
 
@@ -202,51 +202,51 @@ endif::[]
 |`*MYSQL_READ_BUFFER_SIZE*`
 |The size of the buffer used for a sequential scan.
 |
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 5% of available memory
 endif::[]
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 8M (or 5% of available memory)
 endif::[]
 
 |`*MYSQL_INNODB_BUFFER_POOL_SIZE*`
 |The size of the buffer pool where InnoDB caches table and index data.
 |
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 50% of available memory
 endif::[]
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 32M (or 50% of available memory)
 endif::[]
 
 |`*MYSQL_INNODB_LOG_FILE_SIZE*`
 |The size of each log file in a log group.
 |
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 15% of available memory
 endif::[]
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 8M (or 15% of available memory)
 endif::[]
 
 |`*MYSQL_INNODB_LOG_BUFFER_SIZE*`
 |The size of the buffer that InnoDB uses to write to the log files on disk.
 |
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 15% of available memory
 endif::[]
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 8M (or 15% of available memory)
 endif::[]
 |===
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 Some of the memory-related parameters have percentages as default values.  These
 values are calculated dynamically during a container's startup based on
 xref:../../dev_guide/compute_resources.adoc#dev-memory-limits[memory limits].
 endif::[]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 Some of the memory-related parameters have two default values. The fixed value
 is used when a container does not have link:../../dev_guide/compute_resources.html#memory-limits[memory limits]
 assigned. The other value is calculated dynamically during a container's startup
@@ -381,14 +381,14 @@ See xref:../../install_config/imagestreams_templates.adoc#install-config-imagest
 for more details, if required.
 endif::[]
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 The following template is available:
 endif::[]
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 There are two templates available:
 endif::[]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 * `mysql-ephemeral` is for development or testing purposes only because it uses
 ephemeral storage for the database content. This means that if the database
 pod is restarted for any reason, such as the pod being moved to another node
@@ -410,7 +410,7 @@ Once you have instantiated the service, you can copy the user name, password,
 and database name environment variables into a deployment configuration for
 another component that intends to access the database. That component can then
 access the database via the service that was defined.
-
+ifdef::openshift-origin,openshift-enterprise[]
 [[using-mysql-replication]]
 == Using MySQL Replication
 
@@ -420,15 +420,15 @@ ifdef::openshift-origin[]
 Replication support provided by the MySQL image is experimental and should not
 be used in production.
 ====
-endif::[]
+endif::openshift-origin[]
 
-ifdef::openshift-enterprise,openshift-dedicated,openshift-online[]
+ifdef::openshift-enterprise[]
 [NOTE]
 ====
 Enabling clustering for database images is currently in Technology Preview and
 not intended for production use.
 ====
-endif::[]
+endif::openshift-enterprise[]
 
 Red Hat provides a proof-of-concept
 xref:../../dev_guide/templates.adoc#dev-guide-templates[template] for MySQL
@@ -449,7 +449,7 @@ The following sections detail the objects defined in the example template and
 describe how they work together to start a cluster of MySQL servers implementing
 master-slave replication. This is the recommended replication strategy for
 MySQL.
-
+endif::openshift-origin,openshift-enterprise[]
 [[creating-the-deployment-configuration-for-mysql-master]]
 === Creating the Deployment Configuration for the MySQL Master
 
@@ -545,7 +545,7 @@ spec:
 ----
 ====
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 Since we claimed a persistent volume in this deployment configuration to have
 all data persisted for the MySQL master server, you must ask your cluster
 administrator to create a persistent volume that you can claim the storage from.
@@ -556,9 +556,9 @@ server is started, it will create the database defined by `*MYSQL_DATABASE*` and
 configure the server to replicate this database to slaves.
 
 The example provided defines only one replica of the MySQL master server. This
-causes {product-title} to start only one instance of the server. Multiple instances
-(multi-master) is not supported and therefore you can not scale this replication
-controller.
+causes {product-title} to start only one instance of the server. Multiple
+instances (multi-master) is not supported and therefore you can not scale this
+replication controller.
 
 [[creating-the-mysql-slaves]]
 
@@ -737,7 +737,7 @@ On subsequent deployments, this arranges for the
 MySQL configuration variable `*innodb_use_native_aio*`
 to have value `0`.
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 Alternatively, increase the `aio-max-nr` kernel resource.
 The following example examines the current value of `aio-max-nr` and doubles it.
 

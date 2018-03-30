@@ -16,7 +16,7 @@ toc::[]
 A _cron job_ builds on a regular
 xref:../dev_guide/jobs.adoc#dev-guide-jobs[job] by allowing you to specifically
 schedule how the job should be run. Cron jobs are part of the
-link:https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/[Kubernetes] API, which
+link:http://kubernetes.io/docs/user-guide/cron-jobs[Kubernetes] API, which
 can be managed with `oc` commands like other
 xref:../cli_reference/basic_cli_operations.adoc#object-types[object types].
 

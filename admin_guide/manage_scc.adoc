@@ -95,8 +95,6 @@ Settings:
 =======
     Ranges:				<none>
 ----
->>>>>>> openshift/online-3.7-stage
-====
 
 ifdef::openshift-enterprise,openshift-origin[]
 [NOTE]

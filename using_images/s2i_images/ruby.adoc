@@ -33,7 +33,7 @@ link:https://github.com/openshift/sti-ruby/tree/master/2.3[2.3] of Ruby.
 [[s2i-images-ruby-images]]
 == Images
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 RHEL 7 images are available through the Red Hat registry:
 
 ----
@@ -43,9 +43,9 @@ $ docker pull registry.access.redhat.com/rhscl/ruby-23-rhel7
 ----
 
 You can use these images through the `ruby` image stream.
-endif::openshift-online[]
+endif::openshift-online,digital-garage[]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 These images come in two flavors, depending on your needs:
 
 * RHEL 7
@@ -73,7 +73,7 @@ $ docker pull centos/ruby-23-centos7
 
 To use these images, you can either access them directly from these
 xref:../../architecture/infrastructure_components/image_registry.adoc#architecture-infrastructure-components-image-registry[image
-registries], or push them into your
+registries] or push them into your
 xref:../../architecture/infrastructure_components/image_registry.adoc#integrated-openshift-registry[{product-title}
 Docker registry]. Additionally, you can create an
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#image-streams[image
@@ -82,6 +82,11 @@ external location. Your {product-title} resources can then reference the
 ImageStream. You can find
 https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example
 image stream definitions] for all the provided {product-title} images.
+endif::openshift-online,digital-garage[]
+
+[[s2i-images-ruby-build-process]]
+== Build Process
+include::using_images/s2i_images/topics/build_process.adoc[]
 
 [[s2i-images-ruby-config]]
 == Configuration
@@ -209,7 +214,7 @@ $ oc rsh <pod_id>
 After you enter into the running container, your current directory is set to
 *_/opt/app-root/src_*, where the source code is located.
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 [[ruby-templates]]
 == Ruby Templates
 
@@ -224,4 +229,4 @@ image with the following command:
 ----
 $ oc new-app --template=rails-pgsql-persistent
 ----
-endif::openshift-online[]
+endif::openshift-online,digital-garage[]

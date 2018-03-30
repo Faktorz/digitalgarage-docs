@@ -238,10 +238,8 @@ endif::[]
 
 === Capacity
 
-Generally, a PV will have a specific storage capacity. This is set using the
-PV's `capacity` attribute. See the
-link:https://github.com/kubernetes/community/blob/master/contributors/design-proposals/resources.md[Kubernetes
-Resource Model] to understand the units expected by `capacity`.
+Generally, a PV has a specific storage capacity. This is set using the
+PV's `capacity` attribute.
 
 Currently, storage capacity is the only resource that can be set or requested.
 Future attributes may include IOPS, throughput, etc.
@@ -337,7 +335,7 @@ ifdef::openshift-dedicated,openshift-online[]
 === {product-title} Restrictions
 
 The following restrictions apply when using persistent volumes with {product-title}:
-endif::[]
+endif::openshift-dedicated,openshift-online[]
 
 ifdef::openshift-dedicated[]
 [IMPORTANT]
@@ -364,24 +362,7 @@ ifdef::openshift-online[]
    ** *emptyDir* volumes survive container crashes/restarts.
    ** *emptyDir* volumes are deleted when the pod is deleted.
 ====
-endif::[]
-
-ifdef::digital-garage[]
-The following restrictions apply when using persistent volumes with Digital Garage:
-
-[IMPORTANT]
-====
- * PVs are provisioned with through the GlusterFS Service.
- * Docker volumes are disabled.
-   ** VOLUME directive without a mapped external volume fails to be instantiated.
- * *EmptyDir* is restricted to 512 Mi per project (group) per node.
-   ** If there is a single pod for a project on a particular node, then the pod can consume up to 512 Mi of *emptyDir* storage.
-   ** If there are multiple pods for a project on a particular node, then those pods will share the 512 Mi of *emptyDir* storage.
- *  *EmptyDir* has the same lifecycle as the pod:
-   ** *EmptyDir* volumes survive container crashes/restarts.
-   ** *EmptyDir* volumes are deleted when the pod is deleted.
-====
-endif::[]
+endif::openshift-online[]
 
 
 [[pv-reclaim-policy]]
@@ -441,8 +422,8 @@ cluster.
 
 The CLI shows the name of the PVC bound to the PV.
 
+ifdef::openshift-enterprise,openshift-origin[]
 [[pv-mount-options]]
-
 === Mount Options
 [IMPORTANT]
 ====
@@ -505,7 +486,7 @@ The following persistent volume types support mount options:
 ====
 Fibre Channel and HostPath persistent volumes do not support mount options.
 ====
-
+endif::openshift-enterprise,openshift-origin[]
 [[persistent-volume-claims]]
 
 == Persistent Volume Claims
@@ -556,9 +537,7 @@ access modes.
 === Resources
 
 Claims, like pods, can request specific quantities of a resource. In this case,
-the request is for storage. The same
-link:https://github.com/kubernetes/community/blob/master/contributors/design-proposals/resources.md[resource
-model] applies to both volumes and claims.
+the request is for storage. The same resource model applies to both volumes and claims.
 
 [[pvc-claims-as-volumes]]
 

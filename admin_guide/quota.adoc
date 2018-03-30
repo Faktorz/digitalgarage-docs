@@ -17,7 +17,7 @@ toc::[]
 A resource quota, defined by a `*ResourceQuota*` object, provides constraints
 that limit aggregate resource consumption per project. It can limit the quantity
 of objects that can be created in a project by type, as well as the total amount
-of compute resources and storage that may be consumed by resources in that project.
+of compute resources that may be consumed by resources in that project.
 // end::admin_quota_overview[]
 
 ifdef::openshift-origin,openshift-enterprise,openshift-dedicated[]
@@ -35,11 +35,6 @@ endif::[]
 The following describes the set of compute resources and object types that may be
 managed by a quota.
 
-[NOTE]
-====
-A pod is in a terminal state if `status.phase in (Failed, Succeeded)` is true.
-====
-
 .Compute Resources Managed by Quota
 [cols="3a,8a",options="header"]
 |===
@@ -47,43 +42,29 @@ A pod is in a terminal state if `status.phase in (Failed, Succeeded)` is true.
 |Resource Name |Description
 
 |`*cpu*`
-|The sum of CPU requests across all pods in a non-terminal state cannot exceed
-this value. `*cpu*` and `*requests.cpu*` are the same value and can be used
-interchangeably.
+|Across all pods in a non-terminal state, the sum of CPU requests cannot exceed
+this value.
 
 |`*memory*`
-|The sum of memory requests across all pods in a non-terminal state cannot
-exceed this value. `*memory*` and `*requests.memory*` are the same value and can
-be used interchangeably.
+|Across all pods in a non-terminal state, the sum of memory requests cannot
+exceed this value.
 
 |`*requests.cpu*`
-|The sum of CPU requests across all pods in a non-terminal state cannot exceed
-this value. `*cpu*` and `*requests.cpu*` are the same value and can be used
-interchangeably.
+|Across all pods in a non-terminal state, the sum of CPU requests cannot exceed
+this value.
 
 |`*requests.memory*`
-|The sum of memory requests across all pods in a non-terminal state cannot
-exceed this value. `*memory*` and `*requests.memory*` are the same value and can
-be used interchangeably.
-
-|`*requests.storage*`
-|The sum of storage requests across all persistent volume claims cannot
-exceed this value. `*storage*` and `*requests.storage*` are the same value and can
-be used interchangeably.
+|Across all pods in a non-terminal state, the sum of memory requests cannot
+exceed this value.
 
 |`*limits.cpu*`
-|The sum of CPU limits across all pods in a non-terminal state cannot exceed
+|Across all pods in a non-terminal state, the sum of CPU limits cannot exceed
 this value.
 
 |`*limits.memory*`
-|The sum of memory limits across all pods in a non-terminal state cannot exceed
+|Across all pods in a non-terminal state, the sum of memory limits cannot exceed
 this value.
-
-|`*limits.storage*`
-|The sum of storage limits across all persistent volume claims cannot
-exceed this value.
 |===
-
 
 .Object Counts Managed by Quota
 [cols="3a,8a",options="header"]
@@ -93,6 +74,10 @@ exceed this value.
 
 |`*pods*`
 |The total number of pods in a non-terminal state that can exist in the project.
+<<<<<<< HEAD
+=======
+A pod is in a terminal state if `status.phase in (Failed, Succeeded)` is true.
+>>>>>>> digital-garage-v1
 
 |`*replicationcontrollers*`
 |The total number of replication controllers that can exist in the project.
@@ -125,9 +110,9 @@ Each quota can have an associated set of _scopes_. A quota will only
 measure usage for a resource if it matches the intersection of enumerated
 scopes.
 
-Adding a scope to a quota restricts the set of resources to which that quota can
-apply. Specifying a resource outside of the allowed set results in a validation
-error.
+When a scope is added to a quota, it limits the number of resources it supports
+to those that pertain to the scope. Resources specified on the quota outside of
+the allowed set results in a validation error.
 
 [cols="3a,8a",options="header"]
 |===
@@ -135,10 +120,10 @@ error.
 |Scope |Description
 
 |*Terminating*
-|Match pods where `spec.activeDeadlineSeconds >= 0`.
+|Match pods where `spec.activeDeadlineSeconds >= 0`
 
 |*NotTerminating*
-|Match pods where `spec.activeDeadlineSeconds` is `nil`.
+|Match pods where `spec.activeDeadlineSeconds is nil`
 
 |*BestEffort*
 |Match pods that have best effort quality of service for either `*cpu*` or
@@ -149,11 +134,11 @@ error.
 `*memory*`.
 |===
 
-A *BestEffort* scope restricts a quota to limiting the following resources:
+A *BestEffort* scope restricts a quota to limit the following resources:
 
 - `*pods*`
 
-A *Terminating*, *NotTerminating*, or *NotBestEffort* scope restricts a quota
+A *Terminating*, *NotTerminating*, and *NotBestEffort* scope restricts a quota
 to tracking the following resources:
 
 - `*pods*`
@@ -196,13 +181,13 @@ the system.
 // tag::admin_quota_requests_vs_limits[]
 When allocating
 xref:../dev_guide/compute_resources.adoc#dev-compute-resources[compute
-resources], each container may specify a request and a limit value each for
-CPU and memory. Quotas can restrict any of these values.
+resources], each container may specify a request and a limit value for either
+CPU or memory. The quota can be configured to quota either value.
 
 If the quota has a value specified for `*requests.cpu*` or `*requests.memory*`,
-then it requires that every incoming container make an explicit request for
+then it requires that every incoming container makes an explicit request for
 those resources. If the quota has a value specified for `*limits.cpu*` or
-`*limits.memory*`, then it requires that every incoming container specify an
+`*limits.memory*`, then it requires that every incoming container specifies an
 explicit limit for those resources.
 // end::admin_quota_requests_vs_limits[]
 
@@ -211,7 +196,7 @@ explicit limit for those resources.
 
 // tag::admin_quota_sample_definitions[]
 
-// tag::admin_quota_object_counts_1[]
+// tag::admin_quota_object_counts[]
 
 .*_core-object-counts.yaml_*
 ====
@@ -236,9 +221,6 @@ project.
 <4> The total number of secrets that can exist in the project.
 <5> The total number of services that can exist in the project.
 ====
-// end::admin_quota_object_counts_1[]
-
-// tag::admin_quota_object_counts_2[]
 
 .*_openshift-object-counts.yaml_*
 ====
@@ -255,7 +237,7 @@ spec:
 <1> The total number of image streams that can exist in the project.
 ====
 
-// end::admin_quota_object_counts_2[]
+// end::admin_quota_object_counts[]
 
 // tag::admin_quota_compute_resources[]
 
@@ -287,8 +269,6 @@ exceed 1Gi.
 exceed 2Gi.
 ====
 
-// end::admin_quota_compute_resources[]
-
 .*_besteffort.yaml_*
 ====
 [source,yaml]
@@ -308,68 +288,6 @@ of service that can exist in the project.
 <2> Restricts the quota to only matching pods that have *BestEffort* quality of
 service for either memory or CPU.
 ====
-
-.*_compute-resources-long-running.yaml_*
-====
-----
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: compute-resources-long-running
-spec:
-  hard:
-    pods: "4" <1>
-    limits.cpu: "4" <2>
-    limits.memory: "2Gi" <3>
-  scopes:
-  - NotTerminating <4>
-----
-<1> The total number of pods in a non-terminal state.
-<2> Across all pods in a non-terminal state, the sum of CPU limits cannot exceed this value.
-<3> Across all pods in a non-terminal state, the sum of memory limits cannot exceed this value.
-<4> Restricts the quota to only matching pods where `spec.activeDeadlineSeconds is nil`.  For example,
-this quota would not charge for build or deployer pods.
-====
-
-.*_compute-resources-time-bound.yaml_*
-====
-----
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: compute-resources-time-bound
-spec:
-  hard:
-    pods: "2" <1>
-    limits.cpu: "1" <2>
-    limits.memory: "1Gi" <3>
-  scopes:
-  - Terminating <4>
-----
-<1> The total number of pods in a non-terminal state.
-<2> Across all pods in a non-terminal state, the sum of CPU limits cannot exceed this value.
-<3> Across all pods in a non-terminal state, the sum of memory limits cannot exceed this value.
-<4> Restricts the quota to only matching pods where `spec.activeDeadlineSeconds >=0`.  For example,
-this quota would charge for build or deployer pods, but not long running pods like a web server or database.
-====
-
-.*storage-consumption.yaml*
-====
-----
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: storage-consumption
-spec:
-  hard:
-    persistentvolumeclaims: "10" <1>
-    requests.storage: "50Gi" <2>
-----
-<1> The total number of persistent volume claims in a project
-<2> Across all persistent volume claims in a project, the sum of storage requested cannot exceed this value.
-====
-
-
 // end::admin_quota_sample_definitions[]
 
 [[create-a-quota]]

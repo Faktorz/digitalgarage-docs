@@ -35,7 +35,33 @@ link:https://github.com/sclorg/s2i-php-container/tree/master/7.0[7.0] of PHP.
 [[php-images]]
 == Images
 
-{product-title} supports the CentOS-based image.
+ifdef::openshift-online,digital-garage[]
+RHEL 7 images are available through the Red Hat Registry:
+
+----
+$ docker pull registry.access.redhat.com/openshift3/php-55-rhel7
+$ docker pull registry.access.redhat.com/rhscl/php-56-rhel7
+$ docker pull registry.access.redhat.com/rhscl/php-70-rhel7
+----
+
+You can use these images through the `php` image stream.
+endif::openshift-online,digital-garage[]
+
+ifndef::openshift-online,digital-garage[]
+These images come in two flavors, depending on your needs:
+
+* RHEL 7
+* CentOS 7
+
+*RHEL 7 Based Images*
+
+The RHEL 7 images are available through the Red Hat Registry:
+
+----
+$ docker pull registry.access.redhat.com/openshift3/php-55-rhel7
+$ docker pull registry.access.redhat.com/rhscl/php-56-rhel7
+$ docker pull registry.access.redhat.com/rhscl/php-70-rhel7
+----
 
 *CentOS 7 Based Images*
 
@@ -58,6 +84,12 @@ external location. Your {product-title} resources can then reference the image s
 You can find
 https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example
 image stream definitions] for all the provided {product-title} images.
+endif::openshift-online,digital-garage[]
+
+[[s2i-images-php-build-process]]
+== Build Process
+include::using_images/s2i_images/topics/build_process.adoc[]
+
 
 [[php-configuration]]
 == Configuration
@@ -236,7 +268,7 @@ $ oc rsh <pod_id>
 After you enter into the running container, your current directory is set to
 *_/opt/app-root/src_*, where the source code is located.
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 [[php-templates]]
 == PHP Templates
 
@@ -259,4 +291,4 @@ The sample Laravel application can be built and deployed using the
 ----
 $ oc new-app --template=laravel-mysql-persistent
 ----
-endif::openshift-online[]
+endif::openshift-online,digital-garage[]

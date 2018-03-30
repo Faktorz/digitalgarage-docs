@@ -324,7 +324,7 @@ location, and the build output location.
 a|`ImageStreams`
 a|For `BuildConfig`, two `ImageStreams` are usually created. One
 represents the input image. With `Source` builds, this is the builder image.
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage[]
 With `Docker` builds, this is the *FROM* image.
 endif::[]
 The second one represents the output image. If a container image was specified

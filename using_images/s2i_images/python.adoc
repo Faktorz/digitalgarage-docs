@@ -24,6 +24,7 @@ assembles your application source with any required dependencies to create a
 new image containing your Python application. This resulting image can be run
 either by {product-title} or by Docker.
 
+[[s2i-images-python-versions]]
 == Versions
 Currently, {product-title} provides versions
 link:https://github.com/openshift/sti-python/tree/master/2.7[2.7],
@@ -31,9 +32,38 @@ link:https://github.com/openshift/sti-python/tree/master/3.3[3.3],
 link:https://github.com/openshift/sti-python/tree/master/3.4[3.4], and
 https://github.com/openshift/sti-python/tree/master/3.5[3.5] of Python.
 
+[[s2i-images-python-images]]
 == Images
 
-{product-title} supports CentOS-based images.
+ifdef::openshift-online,digital-garage[]
+RHEL 7 images are available through the Red Hat Registry:
+
+----
+$ docker pull registry.access.redhat.com/rhscl/python-27-rhel7
+$ docker pull registry.access.redhat.com/openshift3/python-33-rhel7
+$ docker pull registry.access.redhat.com/rhscl/python-34-rhel7
+$ docker pull registry.access.redhat.com/rhscl/python-35-rhel7
+----
+
+You can use these images through the `python` image stream.
+endif::openshift-online,digital-garage[]
+
+ifndef::openshift-online,digital-garage[]
+These images come in two flavors, depending on your needs:
+
+* RHEL 7
+* CentOS 7
+
+*RHEL 7 Based Images*
+
+The RHEL 7 images are available through the Red Hat Registry:
+
+----
+$ docker pull registry.access.redhat.com/rhscl/python-27-rhel7
+$ docker pull registry.access.redhat.com/openshift3/python-33-rhel7
+$ docker pull registry.access.redhat.com/rhscl/python-34-rhel7
+$ docker pull registry.access.redhat.com/rhscl/python-35-rhel7
+----
 
 *CentOS 7 Based Images*
 
@@ -48,7 +78,7 @@ $ docker pull centos/python-35-centos7
 
 To use these images, you can either access them directly from these
 xref:../../architecture/infrastructure_components/image_registry.adoc#architecture-infrastructure-components-image-registry[image
-registries], or push them into your
+registries] or push them into your
 xref:../../architecture/infrastructure_components/image_registry.adoc#integrated-openshift-registry[{product-title}
 Docker registry]. Additionally, you can create an
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#image-streams[image
@@ -57,7 +87,13 @@ external location. Your {product-title} resources can then reference the
 ImageStream. You can find
 https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example
 image stream definitions] for all the provided {product-title} images.
+endif::openshift-online,digital-garage[]
 
+[[s2i-images-python-build-process]]
+== Build Process
+include::using_images/s2i_images/topics/build_process.adoc[]
+
+[[s2i-images-python-configuration]]
 == Configuration
 The Python image supports a number of environment variables which can be set to
 control the configuration and behavior of the Python runtime.
@@ -89,7 +125,7 @@ steps.
 
 |`*APP_FILE*`
 |This variable specifies the file name passed to the
-python interpreter which is responsible for launching the application. This variable is set to *_app.py_* by default.
+Python interpreter which is responsible for launching the application. This variable is set to *_app.py_* by default.
 
 |`*APP_MODULE*`
 |This variable specifies the WSGI callable. It follows the pattern
@@ -158,7 +194,7 @@ $ oc rsh <pod_id>
 After you enter into the running container, your current directory is set to
 *_/opt/app-root/src_*, where the source code is located.
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage[]
 [[python-templates]]
 == Python Templates
 
@@ -173,4 +209,4 @@ The sample application can be built and deployed using the
 ----
 $ oc new-app --template=django-psql-persistent
 ----
-endif::openshift-online[]
+endif::openshift-online,digital-garage[]

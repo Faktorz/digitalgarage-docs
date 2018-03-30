@@ -15,7 +15,7 @@ toc::[]
 == Web Console Authentication
 When accessing the
 xref:../architecture/infrastructure_components/web_console.adoc#architecture-infrastructure-components-web-console[web console]
-ifdef::openshift-origin,openshift-dedicated,openshift-enterprise[]
+ifdef::openshift-origin,digital-garage,openshift-dedicated,openshift-enterprise[]
 from a browser at *<master_public_addr>:8443*, you are automatically redirected
 endif::[]
 ifdef::atomic-registry,openshift-online,digital-garage[]
@@ -29,7 +29,7 @@ image::login_page.png["Web Console Login Page"]
 endif::[]
 
 Review the
-xref:../architecture/infrastructure_components/web_console.adoc#architecture-infrastructure-components-web-console[browser versions
+xref:../architecture/infrastructure_components/web_console.adoc#browser-requirements[browser versions
 and operating systems] that can be used to access the web console.
 
 You can provide your login credentials on this page to obtain a token to make

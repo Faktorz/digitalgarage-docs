@@ -13,14 +13,17 @@ toc::[]
 
 == About Routers
 
-The {product-title} xref:../../architecture/core_concepts/routes.adoc#architecture-core-concepts-routes[router] is
-the ingress point for all external traffic destined for
+There are many ways to
+xref:../dev_guide/getting_traffic_into_cluster.adoc#getting-traffic-into-cluster[get traffic into the cluster].
+The most common approach is to use the {product-title}
+xref:../../architecture/networking/routes.adoc#architecture-core-concepts-routes[router]
+as the ingress point for external traffic destined for
 xref:../../architecture/core_concepts/pods_and_services.adoc#services[services]
 in your {product-title} installation. {product-title} provides and supports the
 following two router plug-ins:
 
 - The
-xref:../../architecture/core_concepts/routes.adoc#haproxy-template-router[HAProxy template router]
+xref:../../architecture/networking/routes.adoc#haproxy-template-router[HAProxy template router]
 is the default plug-in. It uses the
 ifdef::openshift-enterprise[]
 *openshift3/ose-haproxy-router*
@@ -35,7 +38,7 @@ interface, unlike most containers that listen only on private IPs. The router
 proxies external requests for route names to the IPs of actual pods identified
 by the service associated with the route.
 
-- The xref:../../architecture/core_concepts/routes.adoc#f5-router[F5 router]
+- The xref:../../architecture/networking/network_plugins.adoc#architecture-additional-concepts-f5-big-ip[F5 router]
 integrates with an existing *F5 BIG-IP®* system in your environment to
 synchronize routes. *F5 BIG-IP®* version 11.4 or newer is required in order to
 have the F5 iControl REST API.
@@ -61,25 +64,6 @@ xref:../../architecture/additional_concepts/authorization.adoc#security-context-
 endif::[]
 
 ifdef::openshift-origin[]
-<<<<<<< HEAD
-== Configuring the Router Service Account
-Router service account must have permissions to a
-xref:../../architecture/additional_concepts/authorization.adoc#security-context-constraints[security
-context constraint] (SCC) that allows it to specify host ports.
-
-To add a 'hostnetwork' SCC to the *router* service account in the *default* namespace:
-
-----
-$ oadm policy add-scc-to-user hostnetwork system:serviceaccount:default:router
-----
-
-[NOTE]
-====
-You can also use 'privileged' SCC for running your router, but it is recommended
-to use only the necessary SCC for running router.
-====
-
-=======
 == Creating the Router Service Account
 You must first create a
 xref:../../admin_guide/service_accounts.adoc#admin-guide-service-accounts[service account]
@@ -102,35 +86,33 @@ To add a privileged SCC to the *router* service account in the *default* namespa
 $ oadm policy add-scc-to-user privileged system:serviceaccount:default:router
 ----
 ====
->>>>>>> openshift/online
 // See NB[1] below.
 endif::[]
 
 
 // NB[1]: The following blurb+codeblock is to both:
-<<<<<<< HEAD
-// - Configuring the Router Service Account (origin)
-// - Router Service Account (enterprise)
-// and both of these have anchor ‘creating-the-router-service-account’.
-
-Use of labels (e.g., to define xref:../../install_config/router/default_haproxy_router.adoc#using-router-shards[router shards])
-=======
 // - Creating the Router Service Account (origin)
 // - Router Service Account (enterprise)
 // and both of these have anchor ‘creating-the-router-service-account’.
 
 Use of labels (e.g., to define xref:using-router-shards[router shards])
->>>>>>> openshift/online
 requires `cluster-reader` permission.
+[[router-use-of-labels]]
+=== Permission to Access Labels
+
+When
+xref:../../architecture/core_concepts/pods_and_services.adoc#labels[namespace labels]
+are used, for example in creating
+xref:../../install_config/router/default_haproxy_router.adoc#using-router-shards[router shards],
+the service account for the router must have `cluster-reader` permission.
 
 ----
 $ oadm policy add-cluster-role-to-user \
     cluster-reader \
     system:serviceaccount:default:router
 ----
-<<<<<<< HEAD
 
-ifdef::openshift-origin[]
+ifdef::openshift-origin,openshift-enterprise[]
 With a service account in place, you can proceed to installing
 xref:../../install_config/router/default_haproxy_router.adoc#install-config-router-default-haproxy[a
 default HAProxy Router],
@@ -139,5 +121,3 @@ customized HAProxy Router] or
 xref:../../install_config/router/f5_router.adoc#install-config-router-f5[F5
 Router].
 endif::[]
-=======
->>>>>>> openshift/online

@@ -7,7 +7,6 @@
 :experimental:
 
 // do-release: revhist-tables
-=======
 == Mon Sep 18 2017
 
 // tag::admin_guide_mon_sep_18_2017[]
@@ -60,6 +59,7 @@
 |===
 
 // end::admin_guide_tue_aug_29_2017[]
+=======
 == Fri Feb 17 2017
 
 // tag::admin_guide_fri_feb_17_2017[]

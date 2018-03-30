@@ -265,7 +265,7 @@ specification definitions.
 [source,yaml]
 ----
 kind: StorageClass
-apiVersion: storage.k8s.io/v1beta1
+apiVersion: storage.k8s.io/v1
 metadata:
   name: gluster-dyn
 provisioner: kubernetes.io/glusterfs
@@ -300,6 +300,7 @@ spec:
  resources:
    requests:
         storage: 30Gi
+ storageClassName: gluster-dyn
 ----
 
 . From the {product-title} master host, create the PVC:

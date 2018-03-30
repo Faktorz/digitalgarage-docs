@@ -65,11 +65,8 @@ xref:../../install_config/web_console_customization.adoc#adding-or-changing-link
 these links further].
 endif::openshift-enterprise,openshift-origin[]
 
-<<<<<<< HEAD
+
 image::dg_cli_help.png["Command Line Tools"]
-=======
-image::ocp_37_cli_help.png["Command Line Tools"]
->>>>>>> openshift/online-3.7-stage
 
 [[browser-requirements]]
 == Browser Requirements
@@ -77,26 +74,13 @@ image::ocp_37_cli_help.png["Command Line Tools"]
 Review the link:https://access.redhat.com/articles/2176281[tested integrations]
 for {product-title}.
 
-<<<<<<< HEAD
-|Internet Explorer
-|Windows 8
-
-|Chrome
-|Fedora 23, Windows 8, and MacOSX
-
-|Safari
-|MacOSX, iPad 2, iPhone 4
-
-|===
-=======
-ifdef::openshift-online,openshift-dedicated[]
+ifdef::openshift-online,digital-garage,openshift-dedicated[]
 From the *About* page in the web console, you can check the cluster's version number.
 
 image::about_page_dropdown.png[About page]
 
 image::version_number.png[version number]
-endif::openshift-online,openshift-dedicated[]
->>>>>>> openshift/online-3.7-stage
+endif::openshift-online,digital-garage,openshift-dedicated[]
 
 [[project-overviews]]
 
@@ -189,20 +173,14 @@ Project]. It is deployed as a service using an {product-title} template. The web
 console is an optional component.
 endif::atomic-registry[]
 
-ifdef::openshift-enterprise,openshift-online[]
+ifdef::openshift-enterprise,openshift-online,digital-garage[]
 [[web-console-statefulsets]]
 == StatefulSets
 
-ifndef::openshift-online[]
-<<<<<<< HEAD
-`StatefulSet` is a
-link:https://access.redhat.com/support/offerings/techpreview[Technology Preview]
-feature in {product-title} 3.5.
-=======
+ifndef::openshift-online,digital-garage[]
 `StatefulSet` was introduced as a
 link:https://access.redhat.com/support/offerings/techpreview[Technology Preview]
 feature in {product-title} 3.5 and remains in Technology Preview.
->>>>>>> openshift/online-3.7-stage
 endif::[]
 
 A `StatefulSet` controller provides a unique identity to its pods and determines
@@ -211,9 +189,5 @@ identifiers, persistent storage, graceful deployment and scaling, and graceful
 deletion and termination.
 
 .StatefulSet in {product-title}
-<<<<<<< HEAD
-image::statefulsets.png[StatefulSets view in OpenShift]
-=======
 image::3.7-statefulsets.png[StatefulSets view in OpenShift]
->>>>>>> openshift/online-3.7-stage
-endif::openshift-enterprise,openshift-online[]
+endif::openshift-enterprise,openshift-online,digital-garage[]

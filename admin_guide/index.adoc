@@ -18,7 +18,7 @@ As an administrator of an {product-title} cluster, your account has increased
 [[admin-guide-index-dedicated-admin-role]]
 == Dedicated Administrator Role
 As a dedicated administrator of an {product-title} cluster, your account has increased
->>>>>>> openshift/online-3.7-stage
+>>>>>>> digital-garage-v1
 permissions and access to all user-created projects. If you are new to the role,
 check out the Getting Started topic on
 xref:../getting_started/dedicated_administrators.adoc#getting-started-dedicated-administrators[Administering an

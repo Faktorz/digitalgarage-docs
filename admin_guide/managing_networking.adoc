@@ -142,13 +142,30 @@ call out to the egress router pod's service
 (`service.project.cluster.domainname.com`) in their application (for example,
 the JDBC connection information) rather than the actual protected service URL.
 
-As an {product-title} cluster administrator, you can control egress traffic in three ways:
+You can also assign static IP addresses to projects, ensuring that all
+outgoing external connections from the specified project have recognizable
+origins. This is different from the default egress router, which is used to send
+traffic to specific destinations.
+ifdef::openshift-origin,openshift-enterprise[]
+See the
+xref:enabling-static-ips-for-external-project-traffic[Enabling Fixed IPs for
+External Project Traffic] section for more information.
+endif::openshift-origin,openshift-enterprise[]
+
+[NOTE]
+====
+The egress router is not available for OpenShift Dedicated.
+====
+
+As an {product-title} cluster administrator, you can control egress traffic in these ways:
 
 xref:admin-guide-limit-pod-access-egress[Firewall]::
 Using an egress firewall allows you to enforce the acceptable outbound traffic
 policies, so that specific endpoints or IP ranges (subnets) are the only
 acceptable targets for the dynamic endpoints (pods within {product-title}) to
 talk to.
+
+ifdef::openshift-origin,openshift-enterprise[]
 
 xref:admin-guide-limit-pod-access-egress-router[Router]::
 Using an egress router allows you to create identifiable services to send
@@ -157,6 +174,9 @@ traffic as though it were coming from a known source. This helps with security,
 because it allows you to secure an external database so that only specific pods
 in a namespace can talk to a service (the egress router), which proxies the
 traffic to your database.
+
+endif::openshift-origin,openshift-enterprise[]
+
 
 xref:admin-guide-limit-pod-access-iptables[iptables]::
 In addition to the above {product-title}-internal solutions, it is also
@@ -297,6 +317,8 @@ at the node `kubeproxy`. When the router is involved, `kubeproxy` is bypassed
 and egress network policy enforcement is not applied. Administrators can prevent
 this bypass by limiting access to create routes.
 ====
+
+ifdef::openshift-origin,openshift-enterprise[]
 
 [[admin-guide-limit-pod-access-egress-router]]
 === Using an Egress Router to Allow External Resources to Recognize Pod Traffic
@@ -829,22 +851,17 @@ is complicated, because nodes have both "external" IP addresses and
 pass through this chain, but other pod-to-node/master traffic may
 bypass it.
 
+endif::openshift-origin,openshift-enterprise[]
+
+
+ifdef::openshift-origin,openshift-enterprise[]
 [[admin-guide-networking-multicast]]
 == Enabling Multicast
 
 [IMPORTANT]
 ====
-Enabling multicast networking is a Technology Preview feature only.
-ifdef::openshift-enterprise[]
-Technology Preview features are not supported with Red Hat production service
-level agreements (SLAs), might not be functionally complete, and Red Hat does
-not recommend to use them for production. These features provide early access to
-upcoming product features, enabling customers to test functionality and provide
-feedback during the development process.
-
-For more information on Red Hat Technology Preview features support scope, see
-https://access.redhat.com/support/offerings/techpreview/.
-endif::[]
+At this time, multicast is best used for low bandwidth coordination or service
+discovery and not a high-bandwidth solution.
 ====
 
 Multicast traffic between {product-title} pods is disabled by default. You can
@@ -908,3 +925,5 @@ such as Google can construct a list of sites that have `preload` set. Browsers
 can then use these lists to determine which sites to only talk to over HTTPS,
 even before they have interacted with the site. Without `preload` set, they need
 to have talked to the site over HTTPS to get the header.
+
+endif::openshift-origin,openshift-enterprise[]

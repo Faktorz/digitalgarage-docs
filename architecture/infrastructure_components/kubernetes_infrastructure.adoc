@@ -168,12 +168,7 @@ systems. Kubernetes interacts with xref:node-object-definition[node objects]
 that are a representation of those nodes. The master uses the information from
 node objects to validate nodes with health checks. A node is ignored until it
 passes the health checks, and the master continues checking nodes until they are
-<<<<<<< HEAD
-valid. The
-https://kubernetes.io/docs/concepts/architecture/nodes[Kubernetes documentation] has more information on node management.
-=======
 valid. The link:https://kubernetes.io/docs/concepts/architecture/nodes/#management[Kubernetes documentation] has more information on node management.
->>>>>>> openshift/online-3.7-stage
 
 ifdef::openshift-enterprise,openshift-origin[]
 Administrators can xref:../../admin_guide/manage_nodes.adoc#admin-guide-manage-nodes[manage nodes] in an
@@ -257,6 +252,5 @@ command.
 can be reached. Defaults to the *`metadata.name`* value when empty.
 ====
 
-// The xref:../../rest_api/kubernetes_v1.adoc#rest-api-kubernetes-v1[REST API Reference] has
-// more details on these definitions.
+The REST API Reference has more details on these definitions.
 endif::[]
