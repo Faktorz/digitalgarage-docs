@@ -24,7 +24,7 @@ https://github.com/openshift/postgresql/tree/master/9.2[9.2], https://github.com
 
 The Digital Garage uses the base CentOS 7 image for the postgresql DB images.
 
-These images are available on DockerHub. To download them:
+These images are available on Docker Hub:
 
 ----
 $ docker pull thedigitalgarage/postgresql-92-centos7
@@ -66,11 +66,14 @@ $ oc new-app \
     -e POSTGRESQL_USER=<username> \
     -e POSTGRESQL_PASSWORD=<password> \
     -e POSTGRESQL_DATABASE=<database_name> \
-ifdef::openshift-enterprise[]
+ifdef::openshift-enterprise,openshift-dedicated[]
     registry.access.redhat.com/rhscl/postgresql-94-rhel7
 endif::[]
 ifdef::openshift-origin[]
     thedigitalgarage/postgresql-94-centos7
+endif::[]
+ifdef::openshift-online[]
+    postgresql:9.4
 endif::[]
 ----
 
@@ -288,20 +291,34 @@ xref:../../architecture/core_concepts/deployments.adoc#deployments-and-deploymen
 configuration] and a
 xref:../../architecture/core_concepts/pods_and_services.adoc#services[service].
 
-The PostgreSQL templates should have been registered in the default *openshift*
+The PostgreSQL
+ifdef::openshift-online[]
+template
+endif::[]
+ifndef::openshift-online[]
+templates
+endif::[]
+should have been registered in the default *openshift*
 project by your cluster administrator during the initial cluster setup.
 ifdef::openshift-enterprise,openshift-origin[]
 See xref:../../install_config/imagestreams_templates.adoc#install-config-imagestreams-templates[Loading the Default Image Streams and Templates]
 for more details, if required.
 endif::[]
 
+ifdef::openshift-online[]
+The following template is available:
+endif::[]
+ifndef::openshift-online[]
 There are two templates available:
+endif::[]
 
+ifndef::openshift-online[]
 * `PostgreSQL-ephemeral` is for development or testing purposes only because it
 uses ephemeral storage for the database content. This means that if the
 database pod is restarted for any reason, such as the pod being moved to
 another node or the deployment configuration being updated and triggering a
 redeploy, all data will be lost.
+endif::[]
 * `PostgreSQL-persistent` uses a persistent volume store for the database data
 which means the data will survive a pod restart. Using persistent volumes
 requires a persistent volume pool be defined in the {product-title} deployment.

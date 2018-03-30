@@ -7,8 +7,6 @@
 :experimental:
 
 // do-release: revhist-tables
-<<<<<<< HEAD
-=======
 == Fri Feb 17 2017
 
 // tag::admin_guide_fri_feb_17_2017[]
@@ -217,4 +215,3 @@ xref:../admin_guide/quota.adoc#admin-guide-quota[Setting Limit Ranges].
 |===
 
 // end::admin_guide_thu_may_12_2016[]
->>>>>>> openshift/online

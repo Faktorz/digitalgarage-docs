@@ -7,8 +7,6 @@
 :experimental:
 
 // do-release: revhist-tables
-<<<<<<< HEAD
-=======
 == Thu Feb 02 2017
 
 // tag::getting_started_thu_feb_02_2017[]
@@ -78,4 +76,3 @@ n|xref:../getting_started/developers_console.adoc#getting-started-developers-con
 == Thu May 12 2016
 
 OpenShift Enterprise 3.2 initial release.
->>>>>>> openshift/online

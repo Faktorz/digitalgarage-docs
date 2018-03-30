@@ -29,11 +29,10 @@ files define a wide range of options that can be configured on the {product-titl
 xref:../architecture/infrastructure_components/kubernetes_infrastructure.adoc#master[master] and
 xref:../architecture/infrastructure_components/kubernetes_infrastructure.adoc#node[nodes]. These options include overriding the default plug-ins, connecting to etcd, automatically creating service accounts, building image names, customizing project requests, configuring volume plug-ins, and much more.
 
-<<<<<<< HEAD
+== How Many Masters Do I Need?
+=======
 [[master-node-config-prereq]]
 == Prerequisites
-=======
-== How Many Masters Do I Need?
 >>>>>>> openshift/online
 For testing environments deployed via the
 xref:../install_config/install/quick_install.adoc#install-config-install-quick-install[quick install], one master should be sufficient. The quick installation method should not be used for production environments.
@@ -52,10 +51,6 @@ cluster to use at least three masters. It cannot use only two masters, because e
 The only way to successfully run only two masters is if you install etcd on hosts other than the masters.
 ====
 
-<<<<<<< HEAD
-[[master-node-config-masters-nodes]]
-=======
->>>>>>> openshift/online
 == Configuring Masters and Nodes
 
 The method you use to configure your master and node configuration files must match the method that was used to install your {product-title} cluster. If you followed the:
@@ -65,10 +60,9 @@ method using Ansible, then make your configuration changes
 xref:../admin_solutions/master_node_config.adoc#master-node-config-ansible[in the Ansible playbook].
 - xref:../install_config/install/quick_install.adoc#install-config-install-quick-install[Quick installation]
 ifdef::openshift-origin[]
-<<<<<<< HEAD
-or link:https://docs.openshift.org/latest/getting_started/administrators.html[Manual installation]
-=======
 or https://docs.openshift.org/latest/getting_started/administrators.html[Manual installation]
+=======
+or link:https://docs.openshift.org/latest/getting_started/administrators.html[Manual installation]
 >>>>>>> openshift/online
 endif::openshift-origin[]
 method, then make your changes
@@ -89,7 +83,7 @@ https://puppet.com/[Puppet], https://www.chef.io/[Chef],
 http://saltstack.com/[Salt]).
 
 [[config-htpasswd]]
-*Use Case: Configure the cluster to use HTPasswd authentication* 
+*Use Case: Configure the cluster to use HTPasswd authentication*
 
 [NOTE]
 ====
@@ -138,10 +132,10 @@ openshift_master_htpasswd_users={'<name>': '<hashed-password>', '<name>': '<hash
 #openshift_master_htpasswd_file=<path/to/local/pre-generated/htpasswdfile>
 ----
 +
-For HTPasswd authentication, you can use either the `openshift_master_htpasswd_users` variable to create the specified user(s) and password(s) or the `openshift_master_htpasswd_file` variable to specify a pre-generated flat file (the _htpasswd_ file) with the users and passwords already created. 
+For HTPasswd authentication, you can use either the `openshift_master_htpasswd_users` variable to create the specified user(s) and password(s) or the `openshift_master_htpasswd_file` variable to specify a pre-generated flat file (the _htpasswd_ file) with the users and passwords already created.
 +
 Because {product-title} requires a hashed password to configure HTPasswd authentication, you can use the `htpasswd` command, xref:htpasswd[as shown in the following section], to generate the hashed password(s) for your user(s) or to create the flat file with the users and associated hashed passwords.
-+ 
++
 The following example changes the authentication method from the default `deny all` setting to `htpasswd` and use the specified file to generate user IDs and passwords for the `jsmith` and `bloblaw` users.
 +
 ----
@@ -169,7 +163,7 @@ https://github.com/openshift/openshift-ansible/blob/master/inventory/byo/hosts.o
 [[htpasswd]]
 ==== Using the `htpasswd` commmand
 
-To configure the {product-title} cluster to use HTPasswd authentication, you need at least one user with a hashed password to include in the xref:config-htpasswd[inventory file]. 
+To configure the {product-title} cluster to use HTPasswd authentication, you need at least one user with a hashed password to include in the xref:config-htpasswd[inventory file].
 
 You can:
 
@@ -195,14 +189,14 @@ $ htpasswd -nb <user_name> <password>
 ----
 ====
 
-. Enter and confirm a clear-text password for the user. 
+. Enter and confirm a clear-text password for the user.
 +
 For example:
 +
 ----
 $ htpasswd -n myuser
-New password: 
-Re-type new password: 
+New password:
+Re-type new password:
 myuser:$apr1$vdW.cI3j$WSKIOzUPs6Q
 ----
 +
@@ -215,7 +209,7 @@ openshift_master_htpasswd_users={'myuser': '$apr1$wIwXkFLI$bAygtISk2eKGmqaJftB'}
 ----
 
 [[htpasswd-file]]
-To create a flat file with a user name and hashed password: 
+To create a flat file with a user name and hashed password:
 
 . Execute the following command:
 +
@@ -232,14 +226,14 @@ $ htpasswd -c -b <user_name> <password>
 ----
 ====
 
-. Enter and confirm a clear-text password for the user. 
+. Enter and confirm a clear-text password for the user.
 +
 For example:
 +
 ----
 htpasswd -c users.htpasswd user1
-New password: 
-Re-type new password: 
+New password:
+Re-type new password:
 Adding password for user user1
 ----
 +
@@ -293,15 +287,8 @@ From here you can see all the
 xref:../admin_solutions/master_node_config.adoc#master-config-options[master] and
 xref:../admin_solutions/master_node_config.adoc#node-config-options[node configuration] options, and further customize your own cluster by making further modifications.
 
-<<<<<<< HEAD
-[[master-node-config-options]]
 == Configuration Options
 
-[[master-node-config-options-master]]
-=======
-== Configuration Options
-
->>>>>>> openshift/online
 === Master Configuration File Options
 
 The table below contains the options available for configuring your
@@ -535,10 +522,6 @@ a|Contains options for configuring volume plug-ins in the master node:
 
 |===
 
-<<<<<<< HEAD
-[[master-node-config-options-node]]
-=======
->>>>>>> openshift/online
 === Node Configuration File Options
 
 The table below contains the options available for configuring your
@@ -573,7 +556,7 @@ and substitute in whatever values you want to change.
 
 |`*iptablesSyncPeriod*`
 |(string) How often iptables rules are refreshed. This can be controlled with
-`*openshift_node_iptables_sync_period*` from the Ansible inventory.
+`*openshift_node_iptables_sync_period*` from the Ansible inventory. If the `*dnsIP*` parameter is omitted, the value defaults to the kubernetes service IP, which is the first nameserver in the pod's *_/etc/resolv.conf_* file.
 
 |`*kubeletArguments,omitempty*`
 |Key-value pairs that are passed directly to the Kubelet that matches the Kubelet's command line arguments. These are not migrated or validated, so if you use them, then they may become invalid. Use caution, because these values override other settings in the node configuration that may cause invalid configurations.

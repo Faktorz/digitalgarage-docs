@@ -24,26 +24,34 @@ A _build configuration_, or `BuildConfig`, is characterized by a _build strategy
 or more sources. The strategy determines the aforementioned process, while the
 sources provide its input.
 
-There are four build strategies:
+The
+ifdef::openshift-online[]
+supported
+endif::[]
+build strategies are:
 
 - Source-to-Image (S2I)
 (xref:../../architecture/core_concepts/builds_and_image_streams.adoc#source-build[description],
 xref:build_strategies.adoc#source-to-image-strategy-options[options])
-- Docker
-(xref:../../architecture/core_concepts/builds_and_image_streams.adoc#docker-build[description],
-xref:build_strategies.adoc#docker-strategy-options[options])
 - Pipeline
 (xref:../../architecture/core_concepts/builds_and_image_streams.adoc#pipeline-build[description],
 xref:build_strategies.adoc#pipeline-strategy-options[options])
+ifndef::openshift-online[]
+- Docker
+(xref:../../architecture/core_concepts/builds_and_image_streams.adoc#docker-build[description],
+xref:build_strategies.adoc#docker-strategy-options[options])
 - Custom
 (xref:../../architecture/core_concepts/builds_and_image_streams.adoc#custom-build[description],
 xref:build_strategies.adoc#custom-strategy-options[options])
+endif::[]
 
 And there are six types of sources that can be given as
 xref:build_inputs.adoc#dev-guide-build-inputs[_build input_]:
 
 - xref:build_inputs.adoc#source-code[Git]
+ifndef::openshift-online[]
 - xref:build_inputs.adoc#dockerfile-source[Dockerfile]
+endif::[]
 - xref:build_inputs.adoc#binary-source[Binary]
 - xref:build_inputs.adoc#image-source[Image]
 - xref:build_inputs.adoc#using-secrets-during-build[Input secrets]
@@ -51,8 +59,15 @@ xref:build_inputs.adoc#dev-guide-build-inputs[_build input_]:
 
 It is up to each build strategy to consider or ignore a certain type of source,
 as well as to determine how it is to be used. Binary and Git are mutually
-exclusive source types. Dockerfile and Image can be used by themselves, with
-each other, or together with either Git or Binary. The Binary source type is
+exclusive source types.
+ifdef::openshift-online[]
+Image can be used by itself or together with either Git or Binary.
+endif::[]
+ifdef::openshift-origin,openshift-dedicated,openshift-enterprise[]
+Dockerfile and Image can be used by themselves, with each other, or together
+with either Git or Binary.
+endif::[]
+The Binary source type is
 unique from the other options in xref:build_inputs.adoc#binary-source[how it is
 specified to the system].
 
@@ -93,12 +108,9 @@ spec:
     -
       type: "ImageChange"
   source: <4>
-    type: "Git"
     git:
       uri: "https://github.com/openshift/ruby-hello-world"
-    dockerfile: "FROM openshift/ruby-22-centos7\nUSER example"
   strategy: <5>
-    type: "Source"
     sourceStrategy:
       from:
         kind: "ImageStreamTag"
@@ -119,13 +131,19 @@ will run sequentially, not simultaneously.
 which cause a new build to be created.
 <4> The `source` section defines the source of the build. The source type
 determines the primary source of input, and can be either `Git`, to point to
-a code repository location, `Dockerfile`, to build from an inline Dockerfile,
+a code repository location,
+ifndef::openshift-online[]
+`Dockerfile`, to build from an inline Dockerfile,
+endif::[]
 or `Binary`, to accept binary payloads. It is possible to have multiple
 sources at once, refer to the documentation for each source type for details.
 <5> The `strategy` section describes the build strategy used to execute the
-build. You can specify `Source`, `Docker` and `Custom` strategies here.
-This above example uses the `ruby-20-centos7` container image that
-Source-To-Image will use for the application build.
+build. You can specify a `Source`
+ifndef::openshift-online[]
+, `Docker`, or `Custom`
+endif::[]
+strategy here. This above example uses the `ruby-20-centos7` container image
+that Source-To-Image will use for the application build.
 <6> After the container image is successfully built, it will be pushed into the
 repository described in the `output` section.
 <7> The `postCommit` section defines an optional xref:build_hooks.adoc#build-hooks[build hook].

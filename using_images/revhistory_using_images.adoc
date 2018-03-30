@@ -7,8 +7,6 @@
 :experimental:
 
 // do-release: revhist-tables
-<<<<<<< HEAD
-=======
 == Thu Feb 02 2017
 
 // tag::using_images_thu_feb_02_2017[]
@@ -189,4 +187,3 @@ OpenShift Enterprise 3.2 initial release.
 |===
 
 // end::using_images_thu_may_12_2016[]
->>>>>>> openshift/online

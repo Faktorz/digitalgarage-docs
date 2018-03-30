@@ -6,6 +6,6 @@ digital-garage:
   site_name: Documentation
   site_url: http://docs.thedigitalgarage.io
   branches:
-    master:
-      name: ''
-      dir: latest
+    online:
+      name: '2'
+      dir: online

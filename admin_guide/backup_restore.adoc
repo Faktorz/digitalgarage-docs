@@ -31,8 +31,8 @@ storage], as those topics are left to the underlying storage provider.
 [[backup-restore-prerequisites]]
 == Prerequisites
 
-. Because the restore procedure involves a xref:cluster-restore[complete
-reinstallation], save all the files used in the initial installation. This may
+. Because the restore procedure involves a complete
+reinstallation, save all the files used in the initial installation. This may
 include:
 +
 - *_~/.config/openshift/installer.cfg.yml_* (from the
@@ -66,12 +66,16 @@ following sections), which depends on how *etcd* is deployed.
 |all-in-one cluster
 |*_/var/lib/origin/openshift.local.etcd_*
 
-|external etcd (not on master)
+|external etcd (located either on a master or another host)
 |*_/var/lib/etcd_*
 
-|embedded etcd (on master)
-|*_/var/lib/etcd_*
 |===
+
+[WARNING]
+====
+Embedded etcd is no longer supported starting with {product-title} 3.7. See
+xref:../install_config/upgrading/migrating_embedded_etcd.adoc#install-config-upgrading-etcd-data-migration[Migrating Embedded etcd to External etcd] for details.
+====
 
 
 [[cluster-backup]]
@@ -117,11 +121,11 @@ inside the container.
 . Copy the *_db_* file over to the backup you created:
 +
 ----
-$ cp "$ETCD_DATA_DIR"/member/snap/db "$HOTDIR"/member/snap/db'
+# cp "$ETCD_DATA_DIR"/member/snap/db "$ETCD_DATA_DIR.bak"/member/snap/db
 ----
 
-[[cluster-restore]]
-== Cluster Restore
+[[registry-certificates-backup]]
+=== Registry Certificates Backup
 
 [NOTE]
 ====
@@ -165,7 +169,7 @@ To do so, edit the *_/usr/lib/systemd/system/etcd.service_* file, and add
 +
 ----
 # sed -i '/ExecStart/s/"$/  --force-new-cluster"/' /usr/lib/systemd/system/etcd.service
-# cat /usr/lib/systemd/system/etcd.service  | grep ExecStart
+# systemctl show etcd.service --property ExecStart --no-pager
 
 ExecStart=/bin/bash -c "GOMAXPROCS=$(nproc) /usr/bin/etcd --force-new-cluster"
 ----
@@ -183,7 +187,7 @@ Then, restart the *etcd* service:
 +
 ----
 # sed -i '/ExecStart/s/ --force-new-cluster//' /usr/lib/systemd/system/etcd.service
-# cat /usr/lib/systemd/system/etcd.service  | grep ExecStart
+# systemctl show etcd.service --property ExecStart --no-pager
 
 ExecStart=/bin/bash -c "GOMAXPROCS=$(nproc) /usr/bin/etcd"
 ----
@@ -204,63 +208,6 @@ by creating a new, single node etcd cluster. If using external etcd with
 multiple members, you must then also add any additional etcd members to the
 cluster one by one.
 
-However, the details of the restoration process differ between
-xref:restoring-embedded-etcd[embedded] and
-xref:restoring-external-etcd[external] etcd. See the following
-section and follow the relevant steps
-before
-xref:bringing-openshift-services-back-online[Bringing OpenShift
-Services Back Online].
-
-[[restoring-embedded-etcd]]
-=== Embedded etcd
-
-Restore your etcd backup and configuration:
-
-. Run the following on the master with the embedded etcd:
-+
-----
-# ETCD_DIR=/var/lib/origin/openshift.local.etcd
-# mv $ETCD_DIR /var/lib/etcd.orig
-# cp -Rp /var/lib/origin/etcd-backup-<timestamp>/ $ETCD_DIR
-# chcon -R --reference /var/lib/etcd.orig/ $ETCD_DIR
-# chown -R etcd:etcd $ETCD_DIR
-----
-+
-[WARNING]
-====
-The `$ETCD_DIR` location differs between external and embedded etcd.
-====
-
-. Create the new, single node etcd cluster:
-+
-----
-# etcd -data-dir=/var/lib/origin/openshift.local.etcd \
-    -force-new-cluster
-----
-+
-Verify etcd has started successfully by checking the output from the above
-command, which should look similar to the following near the end:
-+
-----
-[...]
-2016-06-24 12:14:45.644073 I | etcdserver: starting server... [version: 2.2.5, cluster version: 2.2]
-[...]
-2016-06-24 12:14:46.834394 I | etcdserver: published {Name:default ClientURLs:[http://localhost:2379 http://localhost:4001]} to cluster 5580663a6e0002
-----
-
-. Shut down the process by running the following from a separate terminal:
-+
-----
-# pkill etcd
-----
-
-. Continue to xref:bringing-openshift-services-back-online[Bringing
-{product-title} Services Back Online].
-
-[[restoring-external-etcd]]
-=== External etcd
-
 Choose a system to be the initial etcd member, and restore its etcd backup and
 configuration:
 
@@ -273,16 +220,76 @@ configuration:
 # chcon -R --reference /var/lib/etcd.orig/ $ETCD_DIR
 # chown -R etcd:etcd $ETCD_DIR
 ----
-+
-[WARNING]
-====
-The `$ETCD_DIR` location differs between external and embedded etcd.
-====
 
 . Restore your *_/etc/etcd/etcd.conf_* file from backup or *_.rpmsave_*.
 
+. Depending on your environment, follow the instructions for
+xref:backup-containerized-etcd-deployments[Containerized etcd Deployments] or
+xref:backup-non-containerized-etcd-deployments[Non-Containerized etcd
+Deployments].
+
+[[backup-containerized-etcd-deployments]]
+=== Containerized etcd Deployments
+
 . Create the new single node cluster using etcd's `--force-new-cluster`
-option. You can do this with a long complex command using the values from
+option. You can do this with a long, complex command using the values from
+*_/etc/etcd/etcd.conf_*, or you can temporarily modify the *systemd* unit file
+and start the service normally.
++
+To do so, edit the *_/etc/systemd/system/etcd_container.service_* file, and add
+`--force-new-cluster`:
++
+----
+# sed -i '/ExecStart=/s/$/  --force-new-cluster/' /etc/systemd/system/etcd_container.service
+
+ExecStart=/usr/bin/docker run --name etcd --rm -v \
+/var/lib/etcd:/var/lib/etcd:z -v /etc/etcd:/etc/etcd:ro --env-file=/etc/etcd/etcd.conf \
+--net=host --entrypoint=/usr/bin/etcd rhel7/etcd:3.1.9  --force-new-cluster
+----
++
+Then, restart the *etcd* service:
++
+----
+# systemctl daemon-reload
+# systemctl start etcd_container
+----
+
+. Verify the *etcd* service started correctly, then re-edit the
+*_/etc/systemd/system/etcd_container.service_* file and remove the
+`--force-new-cluster` option:
++
+----
+# sed  -i '/ExecStart=/s/ --force-new-cluster//' /etc/systemd/system/etcd_container.service
+
+ExecStart=/usr/bin/docker run --name etcd --rm -v /var/lib/etcd:/var/lib/etcd:z -v \
+/etc/etcd:/etc/etcd:ro --env-file=/etc/etcd/etcd.conf --net=host \
+--entrypoint=/usr/bin/etcd rhel7/etcd:3.1.9
+----
+
+. Restart the *etcd* service, then verify the etcd cluster is running correctly
+and displays {product-title}'s configuration:
++
+----
+# systemctl daemon-reload
+# systemctl restart etcd_container
+# etcdctl --cert-file=/etc/etcd/peer.crt \
+    --key-file=/etc/etcd/peer.key \
+    --ca-file=/etc/etcd/ca.crt \
+    --peers="https://172.16.4.18:2379,https://172.16.4.27:2379" \
+    ls /
+----
+
+. If you have additional etcd members to add to your cluster, continue to
+xref:adding-addtl-etcd-members[Adding Additional etcd Members].
+Otherwise, if you only want a single node external etcd, continue to
+xref:bringing-openshift-services-back-online[Bringing {product-title}
+Services Back Online].
+
+[[backup-non-containerized-etcd-deployments]]
+=== Non-Containerized etcd Deployments
+
+. Create the new single node cluster using etcd's `--force-new-cluster`
+option. You can do this with a long, complex command using the values from
 *_/etc/etcd/etcd.conf_*, or you can temporarily modify the *systemd* unit file
 and start the service normally.
 +
@@ -291,7 +298,7 @@ To do so, edit the *_/usr/lib/systemd/system/etcd.service_* file, and add
 +
 ----
 # sed -i '/ExecStart/s/"$/  --force-new-cluster"/' /usr/lib/systemd/system/etcd.service
-# cat /usr/lib/systemd/system/etcd.service  | grep ExecStart
+# systemctl show etcd.service --property ExecStart --no-pager
 
 ExecStart=/bin/bash -c "GOMAXPROCS=$(nproc) /usr/bin/etcd --force-new-cluster"
 ----
@@ -309,7 +316,7 @@ Then restart the *etcd* service:
 +
 ----
 # sed -i '/ExecStart/s/ --force-new-cluster//' /usr/lib/systemd/system/etcd.service
-# cat /usr/lib/systemd/system/etcd.service  | grep ExecStart
+# systemctl show etcd.service --property ExecStart --no-pager
 
 ExecStart=/bin/bash -c "GOMAXPROCS=$(nproc) /usr/bin/etcd"
 ----
@@ -334,7 +341,7 @@ xref:bringing-openshift-services-back-online[Bringing {product-title}
 Services Back Online].
 
 [[adding-addtl-etcd-members]]
-==== Adding Additional etcd Members
+=== Adding Additional etcd Members
 
 To add additional etcd members to the cluster, you must first adjust the default
 *localhost* peer in the `*peerURLs*` value for the first member:
@@ -447,17 +454,18 @@ Services Back Online].
 [[backup-restore-adding-etcd-hosts]]
 == Adding New etcd Hosts
 
-In cases where etcd hosts have failed, but you have at least one host still
-running, you can use the one surviving host to recover etcd hosts without
-downtime.
+In cases where etcd members have failed and you still have a quorum of etcd
+cluster members running, you can use the surviving members to
+add additional etcd members without downtime.
 
 *Suggested Cluster Size*
 
 Having a cluster with an odd number of etcd hosts can account for fault
 tolerance. Having an odd number of etcd hosts does not change the number needed
-for majority, but increases the tolerance for failure. For example, a cluster
-size of seven hosts has a majority of four, leaving a failure tolerance of
-three. This ensures that four hosts will be guaranteed to operate.
+for a quorum, but increases the tolerance for failure. For example, a cluster
+size of three members, quorum is two leaving a failure tolerance of
+one. This ensures the cluster will continue to operate if two of the members are
+healthy.
 
 Having an in-production cluster of seven etcd hosts is recommended.
 
@@ -481,6 +489,27 @@ host.
 Ensure version `etcd-2.3.7-4.el7.x86_64` or greater is installed, and that the
 same version is installed on each host.
 
+. xref:cluster-backup[Backup the etcd data store] on surviving hosts before making any cluster configuration changes.
++
+. If replacing a failed etcd member, remove the failed member _before_ adding the new member.
++
+----
+# etcdctl -C https://<surviving host IP>:2379 \
+  --ca-file=/etc/etcd/ca.crt     \
+  --cert-file=/etc/etcd/peer.crt     \
+  --key-file=/etc/etcd/peer.key cluster-health
+
+# etcdctl -C https://<surviving host IP>:2379 \
+  --ca-file=/etc/etcd/ca.crt     \
+  --cert-file=/etc/etcd/peer.crt     \
+  --key-file=/etc/etcd/peer.key member remove <failed member identifier>
+----
++
+Stop the etcd service on the failed etcd member:
++
+----
+# systemctl stop etcd
+----
 . On the new host, add the appropriate iptables rules:
 +
 ----
@@ -720,7 +749,7 @@ $ oc export all -o yaml > project.yaml
 === Role Bindings
 
 Sometimes custom policy
-xref:../admin_guide/manage_authorization_policy.adoc#managing-role-bindings[role
+xref:../admin_guide/manage_rbac.adoc#managing-role-bindings[role
 bindings] are used in a project. For example, a project administrator can give
 another user a certain role in the project and grant that user project access.
 
@@ -786,7 +815,7 @@ accounts).
 In many cases, application data can be backed up using the `oc rsync` command,
 assuming `rsync` is installed within the container image. The Red Hat *rhel7*
 base image does contain `rsync`. Therefore, all images that are based on *rhel7*
-contain it as well.
+contain it as well. See xref:../cli_reference/basic_cli_operations.adoc#cli-operations-rsync[Troubleshooting and Debugging CLI Operations - rsync].
 
 [WARNING]
 ====
@@ -807,16 +836,15 @@ what path to back up by looking at the `*mountPath*` for volumes in the
 . Get the application data `*mountPath*` from the `*deploymentconfig*`:
 +
 ----
-$ oc export dc/jenkins|grep mountPath
-        - mountPath: /var/lib/jenkins
+$ oc get dc/jenkins -o jsonpath='{ .spec.template.spec.containers[?(@.name=="jenkins")].volumeMounts[?(@.name=="jenkins-data")].mountPath }'
+/var/lib/jenkins
 ----
 
 . Get the name of the pod that is currently running:
 +
 ----
-$ oc get po --selector=deploymentconfig=jenkins
-NAME              READY     STATUS    RESTARTS   AGE
-jenkins-1-a3347   1/1       Running   0          18h
+$ oc get pod --selector=deploymentconfig=jenkins -o jsonpath='{ .metadata.name }'
+jenkins-1-37nux
 ----
 
 . Use the `oc rsync` command to copy application data:
@@ -866,7 +894,7 @@ Depending on the application, you may be required to restart the application.
 . Restart the application with new data (_optional_):
 +
 ----
-$ oc delete po jenkins-1-37nux
+$ oc delete pod jenkins-1-37nux
 ----
 +
 Alternatively, you can scale down the deployment to 0, and then up again:

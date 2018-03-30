@@ -11,7 +11,6 @@
 
 toc::[]
 
-ifdef::openshift-origin,openshift-online,openshift-enterprise,digital-garage,openshift-dedicated[]
 == LimitRange
 
 A limit range provides a mechanism to enforce min/max limits placed on resources
@@ -20,10 +19,6 @@ xref:../core_concepts/projects_and_users.adoc#namespaces[namespace].
 
 By adding a limit range to your namespace, you can enforce the minimum and
 maximum amount of CPU and Memory consumed by an individual pod or container.
-
-See the
-https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/admission_control_limit_range.md[Kubernetes
-documentation] for more information.
 
 == ResourceQuota
 
@@ -35,16 +30,8 @@ namespace, as a mechanism of preventing one team from starving another team of
 cluster resources.
 
 ifdef::openshift-enterprise,openshift-origin[]
-See xref:../../admin_guide/quota.adoc#admin-guide-quota[Cluster Administration] and
-https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/admin/resource-quota.md[Kubernetes
-documentation] for more information on `*ResourceQuota*`.
-endif::[]
-
-ifdef::openshift-dedicated,digital-garage[]
-
-See https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/admin/resource-quota.md[Kubernetes
-documentation] or contact your administrator for more information on `*ResourceQuota*`.
-endif::[]
+See xref:../../admin_guide/quota.adoc#admin-guide-quota[Cluster Administration]for more information on `*ResourceQuota*`.
+endif::openshift-enterprise,openshift-origin[]
 
 == Resource
 
@@ -52,9 +39,7 @@ A Kubernetes `*Resource*` is something that can be requested by, allocated to,
 or consumed by a pod or container. Examples include memory (RAM), CPU,
 disk-time, and network bandwidth.
 
-See the xref:../../dev_guide/compute_resources.adoc#dev-guide-compute-resources[Developer Guide] and
-http://kubernetes.io/docs/user-guide/compute-resources/[Kubernetes
-documentation] for more information.
+See the xref:../../dev_guide/compute_resources.adoc#dev-guide-compute-resources[Developer Guide]for more information.
 
 == Secret
 
@@ -69,10 +54,6 @@ A xref:../../dev_guide/persistent_volumes.adoc#dev-guide-persistent-volumes[pers
 administrator. Persistent volumes provide durable storage for stateful
 applications.
 
-See the
-https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/persistent-storage.md[Kubernetes
-documentation] for more information.
-
 == PersistentVolumeClaim
 
 A `*PersistentVolumeClaim*` object is a
@@ -81,10 +62,10 @@ author]. Kubernetes matches the claim against the pool of available volumes and
 binds them together. The claim is then used as a volume by a pod. Kubernetes
 makes sure the volume is available on the same node as the pod that requires it.
 
-See the
-https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/persistent-storage.md[Kubernetes
-documentation] for more information.
-endif::[]
+=== Custom Resources
+
+A _custom resource_ is an extension of the Kubernetes API that extends the API or allows you to
+introduce your own API into a project or a cluster.
 
 == OAuth Objects
 
@@ -100,34 +81,45 @@ The following `*OAuthClient*` objects are automatically created:
 `openshift-challenging-client`:: Client used to request tokens with a user-agent that can handle WWW-Authenticate challenges
 
 .`*OAuthClient*` Object Definition
-====
 
 [source,yaml]
 ----
 kind: "OAuthClient"
+accessTokenMaxAgeSeconds: null <1>
 apiVersion: "v1"
 metadata:
-  name: "openshift-web-console" <1>
-  selflink: "/osapi/v1/oAuthClients/openshift-web-console"
+  name: "openshift-web-console" <2>
+  selflink: "/oapi/v1/oAuthClients/openshift-web-console"
   resourceVersion: "1"
   creationTimestamp: "2015-01-01T01:01:01Z"
-respondWithChallenges: false <2>
-secret: "45e27750-a8aa-11e4-b2ea-3c970e4b7ffe" <3>
+respondWithChallenges: false <3>
+secret: "45e27750-a8aa-11e4-b2ea-3c970e4b7ffe" <4>
 redirectURIs:
-  - "https://localhost:8443" <4>
+  - "https://localhost:8443" <5>
 
 ----
 
-<1> The `name` is used as the `client_id` parameter in OAuth requests.
-<2> When `respondWithChallenges` is set to `true`, unauthenticated requests to
+<1> The lifetime of access tokens in seconds (see xref:accessTokenMaxAgeSeconds[the description below]).
+<2> The `name` is used as the `client_id` parameter in OAuth requests.
+<3> When `respondWithChallenges` is set to `true`, unauthenticated requests to
 `/oauth/authorize` will result in `WWW-Authenticate` challenges, if supported by
 the configured authentication methods.
-<3> The value in the `secret` parameter is used as the `client_secret` parameter
+<4> The value in the `secret` parameter is used as the `client_secret` parameter
 in an authorization code flow.
-<4> One or more absolute URIs can be placed in the `redirectURIs` section. The
+<5> One or more absolute URIs can be placed in the `redirectURIs` section. The
 `redirect_uri` parameter sent with authorization requests must be prefixed by
 one of the specified `redirectURIs`.
-====
+
+
+[[accessTokenMaxAgeSeconds]]
+The `accessTokenMaxAgeSeconds` value overrides the default `accessTokenMaxAgeSeconds` value in the master configuration file
+for individual OAuth clients. Setting this value for a client allows long-lived access tokens for that client
+without affecting the lifetime of other clients.
+
+* If `null`, the default value in the master configuration file is used.
+* If set to `0`, the token will not expire.
+* If set to a value greater than `0`, tokens issued for that client are given the specified expiration time. For example, `accessTokenMaxAgeSeconds: 172800` would cause the token to expire 48 hours after being issued.
+
 
 === OAuthClientAuthorization
 An `*OAuthClientAuthorization*` represents an approval by a `*User*` for a
@@ -138,10 +130,9 @@ Creation of `*OAuthClientAuthorization*` objects is done during an
 authorization request to the `*OAuth*` server.
 
 .`*OAuthClientAuthorization*` Object Definition
-====
 
 [source,yaml]
----
+----
 kind: "OAuthClientAuthorization"
 apiVersion: "v1"
 metadata:
@@ -153,8 +144,6 @@ userName: "bob"
 userUID: "9311ac33-0fde-11e5-97a1-3c970e4b7ffe"
 scopes: []
 ----
-
-====
 
 === OAuthAuthorizeToken
 An `*OAuthAuthorizeToken*` represents an `*OAuth*` authorization code, as
@@ -170,7 +159,6 @@ with a request to the */oauth/token* endpoint, as described in
 https://tools.ietf.org/html/rfc6749#section-4.1.3[RFC 6749, section 4.1.3].
 
 .`*OAuthAuthorizeToken*` Object Definition
-====
 
 [source,yaml]
 ----
@@ -200,7 +188,6 @@ during the authorization flow that resulted in this token.
 OAuthAccessToken for.
 <6> `userUID` represents the UID of the User this token allows obtaining an
 OAuthAccessToken for.
-====
 
 === OAuthAccessToken
 An `*OAuthAccessToken*` represents an `*OAuth*` access token, as described in
@@ -213,7 +200,6 @@ section 4.1.3].
 Access tokens are used as bearer tokens to authenticate to the API.
 
 .`*OAuthAccessToken*` Object Definition
-====
 
 [source,yaml]
 ----
@@ -243,7 +229,6 @@ authorization flow that resulted in this token.
 <6> `userUID` represents the User this token allows authentication as.
 <7> `authorizeToken` is the name of the OAuthAuthorizationToken used to obtain
 this token, if any.
-====
 
 == User Objects
 
@@ -252,10 +237,10 @@ When a user logs into {product-title}, they do so using a configured
 ifdef::openshift-enterprise,openshift-origin[]
 xref:../../install_config/configuring_authentication.adoc#identity-providers[identity
 provider].
-endif::[]
-ifdef::openshift-dedicated[]
+endif::openshift-enterprise,openshift-origin[]
+ifdef::openshift-dedicated,openshift-online[]
 identity provider.
-endif::[]
+endif::openshift-dedicated,openshift-online[]
 This determines the user's identity, and provides that information to
 {product-title}.
 
@@ -270,7 +255,6 @@ given an `*OAuthAccessToken*` for the mapped `*User*`.
 `*OAuthAccessToken*` for the mapped `*User*`.
 
 .`*Identity*` Object Definition
-====
 
 [source,yaml]
 ----
@@ -293,23 +277,21 @@ user:
 <3> `providerUserName` is the name that uniquely represents this identity in the scope of the identity provider.
 <4> The `name` in the `user` parameter is the name of the user this identity maps to.
 <5> The `uid` represents the UID of the user this identity maps to.
-====
 
 === User
 A `*User*` represents an actor in the system. Users are granted permissions by
 ifdef::openshift-enterprise,openshift-origin[]
-xref:../../admin_guide/manage_authorization_policy.adoc#managing-role-bindings[adding
+xref:../../admin_guide/manage_rbac.adoc#managing-role-bindings[adding
 roles to users or to their groups].
-endif::[]
-ifdef::openshift-dedicated[]
+endif::openshift-enterprise,openshift-origin[]
+ifdef::openshift-dedicated,openshift-online[]
 adding roles to users or to their groups.
-endif::[]
+endif::openshift-dedicated,openshift-online[]
 
 User objects are created automatically on first login, or can be created via the
 API.
 
 .`*User*` Object Definition
-====
 
 [source,yaml]
 ----
@@ -323,11 +305,11 @@ metadata:
 identities:
   - "anypassword:bob" <2>
 fullName: "Bob User" <3>
+----
 
 <1> `name` is the user name used when adding roles to a user.
 <2> The values in `identities` are Identity objects that map to this user. May be `null` or empty for users that cannot log in.
 <3> The `fullName` value is an optional display name of user.
-====
 
 === UserIdentityMapping
 A `*UserIdentityMapping*` maps an `*Identity*` to a `*User*`.
@@ -342,7 +324,6 @@ A `*User*` can have multiple identities mapped to it. This allows multiple login
 methods to identify the same `*User*`.
 
 .`*UserIdentityMapping*` Object Definition
-====
 
 [source,yaml]
 ----
@@ -358,23 +339,22 @@ identity:
 user:
   name: "bob"
   uid: "9311ac33-0fde-11e5-97a1-3c970e4b7ffe"
+----
 
 <1> `*UserIdentityMapping*` name matches the mapped `*Identity*` name
-====
 
 [[group]]
 === Group
 A `*Group*` represents a list of users in the system. Groups are granted permissions by
 ifdef::openshift-enterprise,openshift-origin[]
-xref:../../admin_guide/manage_authorization_policy.adoc#managing-role-bindings[adding
+xref:../../admin_guide/manage_rbac.adoc#managing-role-bindings[adding
 roles to users or to their groups].
-endif::[]
-ifdef::openshift-dedicated[]
+endif::openshift-enterprise,openshift-origin[]
+ifdef::openshift-dedicated,openshift-online[]
 adding roles to users or to their groups.
-endif::[]
+endif::openshift-dedicated,openshift-online[][]
 
 .`*Group*` Object Definition
-====
 
 [source,yaml]
 ----
@@ -389,4 +369,3 @@ users:
 
 <1> `name` is the group name used when adding roles to a group.
 <2> The values in `users` are the names of User objects that are members of this group.
-====
