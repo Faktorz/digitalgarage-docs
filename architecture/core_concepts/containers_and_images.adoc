@@ -82,7 +82,7 @@ Rather than version numbers, the Docker service allows applying tags (such as
 further specify the image desired, so you may see the same image referred to as
 `centos` (implying the `latest` tag), `centos:centos7`, or `fd44297e2ddb`.
 
-[WARNING]
+[[WARNING]]
 ====
 Do not use the `latest` tag for any official {product-title} images. These are
 images that start with `openshift3/`. `latest` can refer to a number of

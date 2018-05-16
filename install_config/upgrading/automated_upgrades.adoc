@@ -2,8 +2,8 @@
 = Performing Automated Cluster Upgrades
 {product-author}
 {product-version}
-:latest-tag: v3.7.9
-:latest-int-tag: v3.7.9
+:latest-tag: v3.5.5.5
+:latest-int-tag: v3.5
 :data-uri:
 :icons:
 :experimental:
@@ -14,6 +14,21 @@
 toc::[]
 
 == Overview
+
+[IMPORTANT]
+====
+An etcd performance issue has been discovered on new and upgraded {product-title}
+ifdef::openshift-enterprise[]
+3.5
+endif::[]
+ifdef::openshift-origin[]
+1.4+
+endif::[]
+clusters. See the following Knowledgebase Solution for further details:
+
+https://access.redhat.com/solutions/2916381[] +
+(link:https://bugzilla.redhat.com/show_bug.cgi?id=1415839[*BZ#1415839*])
+====
 
 If you installed using the
 xref:../../install_config/install/advanced_install.adoc#install-config-install-advanced-install[advanced installation]
@@ -110,11 +125,20 @@ ifdef::openshift-enterprise[]
 
 [NOTE]
 ====
-Before upgrading your cluster to {product-title} 3.7, the cluster must be
+Before upgrading your cluster to {product-title} 3.5, the cluster must be
 already upgraded to the
-link:https://docs.openshift.com/container-platform/3.6/release_notes/ocp_3_6_release_notes.html#ocp-36-asynchronous-errata-updates[latest asynchronous release of version 3.6]. Cluster upgrades cannot span more than one
-minor version at a time, so if your cluster is at a version earlier than 3.6,
-you must first upgrade incrementally (e.g., 3.4 to 3.5, then 3.5 to 3.6).
+link:https://docs.openshift.com/container-platform/3.4/release_notes/ocp_3_4_release_notes.html#ocp-34-asynchronous-errata-updates[latest asynchronous release of version 3.4]. Cluster upgrades cannot span more than one
+minor version at a time, so if your cluster is at a version earlier than 3.4,
+you must first upgrade incrementally (e.g., 3.2 to 3.3, then 3.3 to 3.4).
+====
+
+[NOTE]
+====
+Before attempting the upgrade, follow the steps in
+xref:verifying-the-upgrade[Verifying the Upgrade] to verify the cluster's
+health. This will confirm that nodes are in the *Ready* state, running the
+expected starting version, and will ensure that there are no diagnostic errors
+or warnings.
 ====
 
 [IMPORTANT]
@@ -127,15 +151,12 @@ xref:../../release_notes/ose_3_2_release_notes.adoc#ose-32-known-issues[Known
 Issues].
 ====
 
-If you are upgrading from OpenShift Enterprise 3.1 to 3.2, on each master and
-node host you must manually disable the 3.1 channel and enable the 3.2 channel:
-
-. If you are upgrading from {product-title} 3.6 to 3.7, manually disable the 3.6
-channel and enable the 3.7 channel on each master and node host:
+. If you are upgrading from {product-title} 3.4 to 3.5, manually disable the 3.4
+channel and enable the 3.5 channel on each master and node host:
 +
 ----
-# subscription-manager repos --disable="rhel-7-server-ose-3.6-rpms" \
-    --enable="rhel-7-server-ose-3.7-rpms" \
+# subscription-manager repos --disable="rhel-7-server-ose-3.4-rpms" \
+    --enable="rhel-7-server-ose-3.5-rpms" \
     --enable="rhel-7-server-extras-rpms" \
     --enable="rhel-7-fast-datapath-rpms"
 # yum clean all
@@ -208,9 +229,9 @@ you should have an installation configuration file located at
 *_~/.config/openshift/installer.cfg.yml_*. The quick installer requires this file to
 start an upgrade.
 
-The quick installer supports upgrading between minor versions of {product-title}
-(one minor version at a time, e.g., 3.5 to 3.6) as well as between
-xref:../../release_notes/ocp_3_6_release_notes.adoc#ocp-36-asynchronous-errata-updates[asynchronous errata updates] within a minor version (e.g., 3.6.z).
+The installer supports upgrading between minor versions of {product-title}
+(one minor version at a time, e.g., 3.4 to 3.5) as well as between
+xref:../../release_notes/ocp_3_5_release_notes.adoc#ocp-35-asynchronous-errata-updates[asynchronous errata updates] within a minor version (e.g., 3.5.z).
 
 If you have an older format installation configuration file in
 *_~/.config/openshift/installer.cfg.yml_* from an installation of a previous
@@ -223,12 +244,19 @@ To start an upgrade with the quick installer:
 
 . Satisfy the steps in xref:preparing-for-an-automated-upgrade[Preparing for an Automated Upgrade] to ensure you are using the latest upgrade playbooks.
 
-. Run the quick installer with the `upgrade` subcommand:
+. Run the installer with the `upgrade` subcommand:
 +
 ----
 # atomic-openshift-installer upgrade
 ----
 . Then, follow the on-screen instructions to upgrade to the latest release.
+// tag::automated_upgrade_after_reboot[]
+
+. After all master and node upgrades have completed, a recommendation will be
+printed to reboot all hosts. After rebooting, if there are no additional
+features enabled, you can xref:verifying-the-upgrade[verify the upgrade].
+Otherwise, the next step depends on what additional features have you previously
+enabled.
 +
 [NOTE]
 ====
@@ -241,12 +269,12 @@ include::install_config/upgrading/automated_upgrades.adoc[tag=automated_upgrade_
 [[running-the-upgrade-playbook-directly]]
 == Running the Upgrade Playbook Directly
 
-The same *_v3_7_* upgrade playbooks can be used for either of the following
+The same *_v3_5_* upgrade playbooks can be used for either of the following
 scenarios:
 
-- Upgrading existing {product-title} 3.6 clusters to 3.7
-- Upgrading existing {product-title} 3.7 clusters to the latest
-xref:../../release_notes/ocp_3_7_release_notes.html#ocp-37-asynchronous-errata-updates[asynchronous
+- Upgrading existing {product-title} 3.4 clusters to 3.5
+- Upgrading existing {product-title} 3.5 clusters to the latest
+xref:../../release_notes/ocp_3_5_release_notes.html#ocp-35-asynchronous-errata-updates[asynchronous
 errata updates]
 
 [[upgrading-control-plane-nodes-separate-phases]]
@@ -260,8 +288,8 @@ using separate playbooks.
 [NOTE]
 ====
 Instructions on the full upgrade process and when to call these playbooks are
-described in xref:upgrading-to-ocp-3-7[Upgrading to the Latest {product-title}
-3.7 Release].
+described in xref:upgrading-to-ocp-3-5[Upgrading to the Latest {product-title}
+3.5 Release].
 ====
 
 [[upgrading-to-openshift-enterprise-3-2-0]]
@@ -297,8 +325,8 @@ upgrade playbook using the `-e` option.
 [NOTE]
 ====
 Instructions on the full upgrade process and when to call these playbooks are
-described in xref:upgrading-to-ocp-3-7[Upgrading to the Latest {product-title}
-3.7 Release].
+described in xref:upgrading-to-ocp-3-5[Upgrading to the Latest {product-title}
+3.5 Release].
 ====
 
 The `openshift_upgrade_nodes_serial` variable can be set to an integer or
@@ -405,23 +433,16 @@ or `local_action`].
 link:http://docs.ansible.com/ansible/playbooks_delegation.html#delegation[`delegate_to`
 or `local_action`].
 
-[[upgrading-to-ocp-3-7]]
-=== Upgrading to the Latest {product-title} 3.7 Release
+[[upgrading-to-ocp-3-5]]
+=== Upgrading to the Latest {product-title} 3.5 Release
 
-To upgrade an existing {product-title} 3.6 or 3.7 cluster to the latest 3.7
+To upgrade an existing {product-title} 3.4 or 3.5 cluster to the latest 3.5
 release:
 
-. Satisfy the steps in xref:preparing-for-an-automated-upgrade[Preparing for an
-Automated Upgrade] to ensure you are using the latest upgrade playbooks.
-+
-[IMPORTANT]
-====
-Ensure that the steps on etcd v2 to v3 migration are satisfied, which is a
-special requirement for the {product-title} 3.6 to 3.7 upgrade.
-====
+. Satisfy the steps in xref:preparing-for-an-automated-upgrade[Preparing for an Automated Upgrade] to ensure you are using the latest upgrade playbooks.
 
-. Ensure the `openshift_deployment_type` parameter (formerly called
-`deployment_type`) in your inventory file is set to `openshift-enterprise`.
+. Ensure the `openshift_deployment_type` parameter in your inventory file is set to
+`openshift-enterprise`.
 
 . If you have multiple masters configured and want to enable rolling, full system
 restarts of the hosts, you can set the `openshift_rolling_restart_mode`
@@ -457,7 +478,8 @@ one playbook; the control plane is still upgraded first, then nodes in-place:
 +
 ----
 # ansible-playbook -i </path/to/inventory/file> \
-    /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/upgrades/v3_7/upgrade.yml
+    /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/upgrades/v3_5/upgrade.yml \
+    [-e <customized_node_upgrade_variables>] <1>
 ----
 +
 ** *Option B)* Upgrade the control plane and nodes in separate phases.
@@ -467,14 +489,14 @@ playbook:
 +
 ----
 # ansible-playbook -i </path/to/inventory/file> \
-    /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/upgrades/v3_7/upgrade_control_plane.yml
+    /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/upgrades/v3_5/upgrade_control_plane.yml
 ----
 
 .. To upgrade only the nodes, run the *_upgrade_nodes.yaml_* playbook:
 +
 ----
 # ansible-playbook -i </path/to/inventory/file> \
-    /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/upgrades/v3_7/upgrade_nodes.yml \
+    /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/upgrades/v3_5/upgrade_nodes.yml \
     [-e <customized_node_upgrade_variables>] <1>
 ----
 <1> See xref:customizing-node-upgrades[Customizing Node Upgrades] for any desired
@@ -576,7 +598,7 @@ override the defaults, as described in
 xref:../../install_config/aggregate_logging.adoc#aggregate-logging-ansible-variables[Specifying Logging Ansible Variables].
 
 . When you have finished updating your inventory file, follow the instructions in
-xref:../../install_config/aggregate_logging.adoc#deploying-the-efk-stack[Deploying the EFK Stack] to run the *_openshift-logging.yml_* playbook and complete the
+xref:../../install_config/aggregate_logging.html#deploying-the-efk-stack[Deploying the EFK Stack] to run the *_openshift-logging.yml_* playbook and complete the
 logging deployment upgrade.
 
 // end::automated-logging-upgrade-steps[]
@@ -612,8 +634,7 @@ domain name.
 
 . Add any other `openshift_metrics_*` variables that you want to specify to
 override the defaults, as described in
-xref:../../install_config/cluster_metrics.adoc#metrics-ansible-variables[Specifying
-Metrics Ansible Variables].
+xref:../../install_config/cluster_metrics.adoc#metrics-ansible-variables[Specifying Metrics Ansible Variables].
 
 . When you have finished updating your inventory file, follow the instructions in
 xref:../../install_config/cluster_metrics.html#deploying-the-metrics-components[Deploying the Metrics Deployment] to run the *_openshift_metrics.yml_* playbook and
@@ -660,11 +681,8 @@ If you upgraded from Origin 1.0 to Origin 1.1, verify in your old
 that any custom configuration is added to your new
 *_/etc/sysconfig/origin-master_* and *_/etc/sysconfig/origin-node_* files.
 endif::[]
-
-After upgrading, you can use the diagnostics tool on the master to look for
-common issues:
-
-====
+. You can use the diagnostics tool on the master to look for common issues:
++
 ----
 # oadm diagnostics
 ...

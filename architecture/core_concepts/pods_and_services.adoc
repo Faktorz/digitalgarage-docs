@@ -35,11 +35,13 @@ maintain state when recreated. Therefore pods should usually be managed by
 higher-level xref:../../architecture/core_concepts/deployments.adoc#replication-controllers[controllers],
 rather than directly by users.
 
+ifdef::openshift-enterprise,openshift-origin[]
 [IMPORTANT]
 ====
 Bare pods that are not managed by a xref:deployments.adoc#replication-controllers[replication
 controller] will be not rescheduled upon node disruption.
 ====
+endif::[]
 
 [WARNING]
 ====
@@ -264,8 +266,15 @@ to or removed from a service arbitrarily while the service remains consistently
 available, enabling anything that depends on the service to refer to it at a
 consistent address.  The default service clusterIP addresses are from the
 {product-title} internal network and they are used to permit pods to access each
-other.
-
+other. To permit external access to the service, additional externalIP addresses
+that are
+ifndef::openshift-online,digital-garage[]
+xref:../../dev_guide/getting_traffic_into_cluster.adoc#using-externalIP[external]
+endif::[]
+ifdef::openshift-online,digital-garage[]
+external
+endif::[]
+to cluster, can be assigned to the service. These externalIP addresses can also be virtual IP addresses that provide
 ifdef::openshift-enterprise,openshift-origin[]
 To permit external access to the service, additional `externalIP` and
 `ingressIP` addresses that are
@@ -274,6 +283,10 @@ to the cluster can be assigned to the service. These `externalIP` addresses can
 also be virtual IP addresses that provide
 xref:../../admin_guide/high_availability.adoc#admin-guide-high-availability[highly available] access to the service.
 endif::[]
+ifdef::openshift-dedicated,openshift-online,atomic-registry,digital-garage[]
+highly available
+endif::[]
+access to the service.
 
 Services are assigned an IP address and port pair that, when accessed,
 proxy to an appropriate backing pod. A service uses a label selector to find
@@ -331,6 +344,10 @@ xref:../../admin_guide/tcp_ingress_external_ports.adoc#unique-external-ips-ingre
 file. When *_master-config.yaml_* is changed, the master service must be
 restarted.
 
+ifdef::openshift-dedicated,openshift-online,digital-garage[]
+The externalIPs must be selected by the admin from the *ExternalIPNetworkCIDRs*
+range configured in master configuration file.
+endif::[]
 
 .Sample ExternalIPNetworkCIDR /etc/origin/master/master-config.yaml
 ====
@@ -412,6 +429,7 @@ ifdef::openshift-origin,openshift-enterprise[]
 
 Setting the service `type=NodePort` will allocate a port from a flag-configured range (default: 30000-32767), and each node will proxy that port (the same port number on every node) into your service.
 
+ifdef::openshift-origin,openshift-enterprise[]
 The selected port will be reported in the service configuration, under  `spec.ports[*].nodePort`.
 
 To specify a custom port just place the port number in the nodePort field. The custom port number must be in the configured range for nodePorts. When '*master-config.yaml*' is changed the master service must be restarted.
@@ -453,16 +471,6 @@ checks] (or generally reliable nodes and pods), then the *iptables*-based
 service proxy is the best choice. Otherwise, you can enable the user space-based
 proxy when installing, or after deploying the cluster by editing the node
 configuration file.
-endif::[]
-
-ifdef::openshift-online,digital-garage,openshift-dedicated[]
-[[oso-osd-service-proxy]]
-=== Service Proxy
-
-{product-title} has an *iptables*-based implementation of the service-routing
-infrastructure. It uses probabilistic *iptables* rewriting rules to distribute
-incoming service connections between the endpoint pods. It also requires that
-all endpoints are always able to accept connections.
 endif::[]
 
 [[labels]]

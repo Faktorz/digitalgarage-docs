@@ -13,11 +13,7 @@ toc::[]
 == Overview
 
 xref:../architecture/core_concepts/builds_and_image_streams.adoc#builds[Builds]
-<<<<<<< HEAD
 in {product-title} are run in
-=======
-in OpenShift are run in
->>>>>>> openshift/online
 xref:../install_config/install/prerequisites.adoc#security-warning[privileged containers] that
 have access to the Docker daemon socket. As a security measure, it is
 recommended to limit who can run builds and the strategy that is used for those
@@ -26,13 +22,14 @@ xref:../architecture/core_concepts/builds_and_image_streams.adoc#custom-build[Cu
 builds] are inherently less safe than
 xref:../architecture/core_concepts/builds_and_image_streams.adoc#source-build[Source
 builds], given that they can execute any code in the build with potentially full
-access to the node's Docker socket.  xref:../architecture/core_concepts/builds_and_image_streams.adoc#docker-build[Docker
+access to the node's Docker socket, and as such are disabled by default.  xref:../architecture/core_concepts/builds_and_image_streams.adoc#docker-build[Docker
 build] permission should also be granted with caution as a vulnerability in the Docker build
 logic could result in a privileges being granted on the host node.
 
-<<<<<<< HEAD
-By default, all users that can create builds are granted permission to use all
-build strategies (Docker, Source-to-Image, and Custom).
+By default, all users that can create builds are granted permission to use the
+Docker and Source-to-Image build strategies. Users with xref:../architecture/additional_concepts/authorization.adoc#roles[*cluster-admin*]
+privileges can enable the Custom build strategy, as referenced in the xref:restricting-build-strategies-to-a-user-globally[Restricting Build Strategies to a User Globally]
+section of this page.
 
 You can control who can build with what build strategy using an
 xref:../architecture/additional_concepts/authorization.adoc#architecture-additional-concepts-authorization[authorization
@@ -86,26 +83,7 @@ of that type.
 == Disabling a Build Strategy Globally
 To prevent access to a particular build strategy globally, log in as a user with
 xref:../architecture/additional_concepts/authorization.adoc#roles[*cluster-admin*]
-<<<<<<< HEAD
-privileges and remove the corresponding role from the *system:authenticated* group:
-
-----
-$ oadm policy remove-cluster-role-from-group system:build-strategy-custom system:authenticated
-$ oadm policy remove-cluster-role-from-group system:build-strategy-docker system:authenticated
-$ oadm policy remove-cluster-role-from-group system:build-strategy-source system:authenticated
-$ oadm policy remove-cluster-role-from-group system:build-strategy-jenkinspipeline system:authenticated
-----
-
-ifdef::openshift-origin[]
-In versions prior to 1.2, the build strategy subresources were included in the `admin` and `edit` roles.
-endif::[]
-ifdef::openshift-enterprise[]
-In versions prior to 3.2, the build strategy subresources were included in the `admin` and `edit` roles.
-endif::[]
-Ensure the build strategy subresources are also removed from these roles:
-=======
 privileges and edit each of the default roles:
->>>>>>> openshift/online
 
 ----
 $ oc edit clusterrole admin
@@ -139,12 +117,8 @@ rules:
 
 To allow only a set of specific users to create builds with a particular strategy:
 
-<<<<<<< HEAD
-. xref:disabling-a-build-strategy-globally[Disable global access to the build strategy].
-=======
 . xref:disabling-a-build-strategy-globally[Remove the build strategy
 subresource from the default *admin* and *edit* roles].
->>>>>>> openshift/online
 
 . Assign the role corresponding to the build strategy to a specific user.
 For example, to add the *system:build-strategy-docker* cluster role to the user *devuser*:
@@ -170,18 +144,11 @@ Similar to granting the build strategy role to a user globally, to allow only a
 set of specific users within a project to create builds with a particular
 strategy:
 
-<<<<<<< HEAD
-. xref:disabling-a-build-strategy-globally[Disable global access to the build strategy].
-
-. Assign the role corresponding to the build strategy to a specific user within a project.
-For example, to add the *system:build-strategy-docker* role within the project *devproject* to the user *devuser*:
-=======
 . xref:disabling-a-build-strategy-globally[Remove the build strategy resource
 from the default *admin* and *edit* roles].
 . xref:create-separate-role[Create a separate role for that build strategy.]
 . Assign the role to a specific user within a project. For example, to add the
 new *dockerbuilder* role within the project *devproject* to the user *devuser*:
->>>>>>> openshift/online
 +
 ====
 ----

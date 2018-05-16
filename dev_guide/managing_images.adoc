@@ -84,11 +84,6 @@ refer to the current image for the *ruby* image streams *2.0* tag:
 $ oc tag ruby:2.0 ruby:static-2.0
 ----
 
-This will create a new image stream tag named *static-2.0* in the *ruby* image
-stream. The new tag will directly reference the image id that the *ruby:2.0*
-image stream tag pointed to at the time `oc tag` was run, and the image it points
-to will never change.
-
 There are different types of tags available. The default behavior uses a
 _permanent_ tag, which points to a specific image in time; even when the source
 changes, the new (destination) tag will not change.
@@ -125,8 +120,8 @@ ifndef::openshift-origin+openshift-enterprise[]
 pull-through feature
 endif::[]
 to serve the image to the client. By default, the image blobs are
-mirrored locally by the registry. As a result, they can be pulled more quickly
-the next time they are needed. The flag also allows for pulling from
+mirrored locally by the registry. As a result, they are available for a  shorter
+time the next time they are needed. The flag also allows for pulling from
 insecure registries without a need to supply `--insecure-registry` to the Docker
 daemon as long as the image stream has an xref:insecure-registries[insecure annotation]
 or the tag has an xref:insecure-tag-import-policy[insecure import policy].
@@ -891,10 +886,6 @@ The `Local` policy instructs clients to always pull from the integrated
 registry. This is useful if you want to pull from external insecure registries
 without modifying Docker daemon settings.
 
-This policy only affects the use of the image stream tag. Components or
-operations that directly reference or pull the image using its external registry
-location will not be redirected to the internal registry.
-
 The
 ifdef::openshift-enterprise,openshift-origin[]
 xref:../install_config/registry/extended_registry_configuration.adoc#middleware-repository-pullthrough[pull-through feature]
@@ -902,9 +893,8 @@ endif::[]
 ifndef::openshift-enterprise+openshift-origin[]
 pull-through feature
 endif::[]
-of the registry serves the remote image to the client. This feature, which is
-on by default, must be enabled for the local reference policy to be used.
-Additionally, by default, all the blobs are mirrored for faster access later.
+of the registry serves the remote image to the client. Additionally, all the
+blobs are mirrored for faster access later.
 
 You can set the policy in a specification of image stream tag as
 `referencePolicy.type`.

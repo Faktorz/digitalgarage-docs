@@ -252,13 +252,6 @@ cluster configuration:
 - `openshift_master_cluster_hostname`
 - `openshift_master_cluster_public_hostname`
 
-[NOTE]
-====
-The validity (length in days until they expire) for any certificates
-auto-generated while redeploying can be configured via Ansible as well. See
-xref:../install_config/install/advanced_install.adoc#advanced-install-config-certificate-validity[Configuring Certificate Validity].
-====
-
 [[redeploying-all-certificates-current-ca]]
 === Redeploying All Certificates Using the Current CA
 
@@ -595,5 +588,5 @@ $ oc annotate service router \
 . Redeploy the router:
 +
 ----
-$ oc rollout latest dc/router
+$ oc deploy dc/router --latest
 ----

@@ -20,12 +20,42 @@ settings provided via configuration.
 == Versions
 Currently, {product-title} provides versions
 link:https://github.com/openshift/mysql/tree/master/5.5[5.5],
-link:https://github.com/openshift/mysql/tree/master/5.6[5.6], and
-link:https://github.com/openshift/mysql/tree/master/5.7[5.7] of MySQL.
+link:https://github.com/openshift/mysql/tree/master/5.5[5.6], and
+link:https://github.com/openshift/mysql/tree/master/5.6[5.7] of MySQL.
 
 == Images
 
-This image is available on DockerHub. To download it:
+ifdef::openshift-online[]
+RHEL 7 images are available through the Red Hat Registry:
+
+----
+$ docker pull registry.access.redhat.com/openshift3/mysql-55-rhel7
+$ docker pull registry.access.redhat.com/rhscl/mysql-56-rhel7
+$ docker pull registry.access.redhat.com/rhscl/mysql-57-rhel7
+----
+
+You can use these images through the `mysql` image stream.
+endif::[]
+
+ifndef::openshift-online[]
+This image comes in two flavors, depending on your needs:
+
+* RHEL 7
+* CentOS 7
+
+*RHEL 7 Based Images*
+
+The RHEL 7 image is available through the Red Hat Registry:
+
+----
+$ docker pull registry.access.redhat.com/openshift3/mysql-55-rhel7
+$ docker pull registry.access.redhat.com/rhscl/mysql-56-rhel7
+$ docker pull registry.access.redhat.com/rhscl/mysql-57-rhel7
+----
+
+*CentOS 7 Based Images*
+
+CentOS images for MySQL 5.5 and 5.6 are available on Docker Hub:
 
 ----
 $ docker pull openshift/mysql-55-centos7
@@ -37,8 +67,9 @@ registries or push them into your {product-title} Docker registry. Additionally,
 you can create an ImageStream that points to the image,
 either in your Docker registry or at the external location. Your {product-title}
 resources can then reference the ImageStream. You can find
-https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example
-ImageStream definitions] for all the provided {product-title} images.
+https://github.com/openshift/origin/tree/master/examples/image-streams[example]
+ImageStream definitions for all the provided {product-title} images.
+endif::[]
 
 == Configuration and Usage
 
@@ -374,8 +405,7 @@ xref:../../architecture/core_concepts/deployments.adoc#deployments-and-deploymen
 configuration] and a
 xref:../../architecture/core_concepts/pods_and_services.adoc#services[service].
 
-The MySQL templates should have been registered in the default Digital Garage
-project by your cluster administrator during the initial cluster setup.
+The MySQL templates are located in the openshift project/namespace by default.
 ifdef::openshift-enterprise,openshift-origin[]
 See xref:../../install_config/imagestreams_templates.adoc#install-config-imagestreams-templates[Loading the Default Image Streams and Templates]
 for more details, if required.
@@ -396,8 +426,11 @@ or the deployment configuration being updated and triggering a redeploy, all
 data will be lost.
 endif::[]
 * `mysql-persistent` uses a persistent volume store for the database data which
-means the data will survive a pod restart. Using persistent volumes requires a
-persistent volume pool be defined in the {product-title} deployment.
+means the data will survive a pod restart.
+ifndef::openshift-online[]
+Using persistent volumes requires a persistent volume pool be defined in the
+{product-title} deployment.
+endif::[]
 ifdef::openshift-enterprise,openshift-origin[]
 Cluster administrator instructions for setting up the pool are located
 xref:../../install_config/persistent_storage/persistent_storage_nfs.adoc#install-config-persistent-storage-persistent-storage-nfs[here].

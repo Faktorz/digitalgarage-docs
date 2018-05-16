@@ -231,9 +231,12 @@ for internal networks.
 ifndef::openshift-origin[]
 [IMPORTANT]
 ====
-Flannel is only supported for {product-title} on Red Hat OpenStack Platform.
+This is only supported for {product-title} on Red Hat OpenStack Platform.
 ====
 endif::[]
+
+To enable *flannel* within your {product-title} cluster, set the following
+variables in your Ansible inventory file before running the installation.
 
 [IMPORTANT]
 ====
@@ -336,11 +339,6 @@ If you are using a different network interface (eth1), remember to configure the
 interface to start at boot time through the
 *_/etc/sysconfig/network-scripts/ifcfg-eth1_* file:
 
-----
-DEVICE=eth1
-TYPE=Ethernet
-BOOTPROTO=dhcp
-ONBOOT=yes
-DEFTROUTE=no
-PEERDNS=no
-----
+You can optionally specify the interface to use for inter-host communication
+using the `*flannel_interface*` variable. Without this variable, the
+{product-title} installation uses the default interface.

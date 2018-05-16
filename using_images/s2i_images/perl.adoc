@@ -79,11 +79,7 @@ external location. Your {product-title}t resources can then reference the
 ImageStream. You can find
 https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example
 image stream definitions] for all the provided {product-title} images.
-endif::openshift-online,digital-garage[]
-
-[[s2i-images-perl-build-process]]
-== Build Process
-include::using_images/s2i_images/topics/build_process.adoc[]
+endif::openshift-online[]
 
 [[perl-configuration]]
 == Configuration

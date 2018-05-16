@@ -37,30 +37,31 @@ Name: Release Notes
 Dir: release_notes
 Distros: openshift-enterprise,openshift-dedicated,openshift-online
 Topics:
-- Name: Overview
-  File: index
-  Distros: openshift-enterprise,openshift-dedicated
-- Name: OpenShift Container Platform 3.3 Release Notes
-  File: ocp_3_3_release_notes
-  Distros: openshift-enterprise
-- Name: Latest Product Updates
-  File: osd_latest_product_updates
-  Distros: openshift-dedicated
-- Name: OpenShift Online Release Notes
-  File: online_release_notes
-  Distros: openshift-online
-- Name: Known Issues
-  File: online_known_issues
-  Distros: openshift-online
-- Name: xPaaS Release Notes
-  File: xpaas_release_notes
-  Distros: openshift-enterprise
-- Name: Comparing with OpenShift Enterprise 2
-  File: v2_vs_v3
-  Distros: openshift-enterprise
-- Name: Revision History
-  File: revhistory_release_notes
-  Distros: openshift-enterprise,openshift-dedicated
+  - Name: Overview
+    File: index
+    Distros: openshift-enterprise,openshift-dedicated
+  - Name: OpenShift Container Platform 3.5 Release Notes
+    File: ocp_3_5_release_notes
+    Distros: openshift-enterprise
+  - Name: Latest Product Updates
+    File: osd_latest_product_updates
+    Distros: openshift-dedicated
+  - Name: OpenShift Online Starter Release Notes
+    File: online_release_notes
+    Distros: openshift-online
+  - Name: Known Issues
+    File: online_known_issues
+    Distros: openshift-online
+  - Name: xPaaS Release Notes
+    File: xpaas_release_notes
+    Distros: openshift-enterprise
+  - Name: Comparing with OpenShift Enterprise 2
+    File: v2_vs_v3
+    Distros: openshift-enterprise,openshift-dedicated
+  - Name: Revision History
+    File: revhistory_release_notes
+    Distros: openshift-enterprise,openshift-dedicated
+
 ---
 Name: What's New?
 Dir: whats_new
@@ -616,6 +617,29 @@ Topics:
 - Name: Service Accounts
   File: service_accounts
 ---
+Name: Scaling and Performance Guide
+Dir: scaling_performance
+Distros: openshift-origin,openshift-enterprise
+Topics:
+  - Name: Overview
+    File: index
+  - Name: Recommended Installation Practices
+    File: install_practices
+  - Name: Recommended Host Practices
+    File: host_practices
+  - Name: Optimizing Compute Resources
+    File: optimizing_compute_resources
+  - Name: Optimizing Storage
+    File: optimizing_storage
+  - Name: Network Optimization
+    File: network_optimization
+  - Name: Scaling Cluster Metrics
+    File: scaling_cluster_metrics
+  - Name: Revision History
+    File: revhistory_scaling_performance
+    Distros: openshift-enterprise
+
+---
 Name: CLI Reference
 Dir: cli_reference
 Distros: openshift-*,atomic-*,digital-garage,faktorz
@@ -807,22 +831,23 @@ Name: Creating Images
 Dir: creating_images
 Distros: openshift-*,digital-garage,faktorz
 Topics:
-- Name: Overview
-  File: index
-- Name: Guidelines
-  File: guidelines
-- Name: Image Metadata
-  File: metadata
-- Name: S2I Requirements
-  File: s2i
-- Name: Testing S2I Images
-  File: s2i_testing
-- Name: Custom Builder
-  File: custom
-  Distros: openshift-enterprise,openshift-dedicated,openshift-origin
-- Name: Revision History
-  File: revhistory_creating_images
-  Distros: openshift-enterprise,openshift-dedicated
+  - Name: Overview
+    File: index
+  - Name: Guidelines
+    File: guidelines
+  - Name: Image Metadata
+    File: metadata
+  - Name: S2I Requirements
+    File: s2i
+  - Name: Testing S2I Images
+    File: s2i_testing
+  - Name: Custom Builder
+    File: custom
+    Distros: openshift-enterprise,openshift-dedicated,openshift-origin
+  - Name: Revision History
+    File: revhistory_creating_images
+    Distros: openshift-enterprise,openshift-dedicated
+
 ---
 Name: Using Images
 Dir: using_images
@@ -859,35 +884,68 @@ Topics:
   Topics:
   - Name: Overview
     File: index
-  - Name: MySQL
-    File: mysql
-  - Name: PostgreSQL
-    File: postgresql
-  - Name: MongoDB
-    File: mongodb
-  - Name: MariaDB
-    File: mariadb
-- Name: Docker Images
-  Dir: docker_images
-  Topics:
-  - Name: Overview
-    File: index
-- Name: Other Images
-  Dir: other_images
-  Topics:
-  - Name: Overview
-    File: index
-  - Name: Jenkins
-    File: jenkins
-- Name: xPaaS Middleware Images
-  Dir: xpaas_images
-  Distros: openshift-online,openshift-enterprise,openshift-dedicated,digital-garage,faktorz
-  Topics:
-  - Name: Overview
-    File: index
-- Name: Revision History
-  File: revhistory_using_images
-  Distros: openshift-enterprise,openshift-dedicated
+  - Name: Source-to-Image (S2I)
+    Dir: s2i_images
+    Topics:
+      - Name: Overview
+        File: index
+      - Name: Java
+        File: java
+        Distros: openshift-online
+      - Name: .NET Core
+        File: dot_net_core
+        Distros: openshift-online,openshift-enterprise,openshift-dedicated
+      - Name: Node.js
+        File: nodejs
+      - Name: Perl
+        File: perl
+      - Name: PHP
+        File: php
+      - Name: Python
+        File: python
+      - Name: Ruby
+        File: ruby
+      - Name: Wildfly
+        File: wildfly
+        Distros: openshift-origin
+      - Name: Customizing S2I Images
+        File: customizing_s2i_images
+  - Name: Database Images
+    Dir: db_images
+    Topics:
+      - Name: Overview
+        File: index
+      - Name: MySQL
+        File: mysql
+      - Name: PostgreSQL
+        File: postgresql
+      - Name: MongoDB
+        File: mongodb
+      - Name: MariaDB
+        File: mariadb
+  - Name: Docker Images
+    Dir: docker_images
+    Topics:
+      - Name: Overview
+        File: index
+  - Name: Other Images
+    Dir: other_images
+    Topics:
+      - Name: Overview
+        File: index
+      - Name: Jenkins
+        File: jenkins
+  - Name: xPaaS Middleware Images
+    Dir: xpaas_images
+    Distros: openshift-online,openshift-enterprise,openshift-dedicated
+    Topics:
+      - Name: Overview
+        File: index
+  - Name: Revision History
+    File: revhistory_using_images
+    Distros: openshift-enterprise,openshift-dedicated
+
+
 ---
 Name: REST API Reference
 Dir: rest_api

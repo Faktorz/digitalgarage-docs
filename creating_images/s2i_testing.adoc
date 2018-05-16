@@ -141,7 +141,7 @@ verify that saving and restoring artifacts works properly.
 Executing these steps is generally enough to tell if the builder image is
 working as expected.
 
-
+ifndef::openshift-online,digital-garage[]
 [[using-openshift-build-for-automated-testing]]
 
 == Using {product-title} Build for Automated Testing

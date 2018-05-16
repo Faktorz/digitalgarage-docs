@@ -26,14 +26,6 @@ endif::[]
 * xref:using-secrets-during-build[Input secrets]
 * xref:using-external-artifacts[External artifacts]
 
-ifdef::openshift-online,digital-garage[]
-[IMPORTANT]
-====
-The Docker build strategy is not supported in {product-title}. Therefore, inline
-Dockerfile definitions are not accepted.
-====
-endif::[]
-
 Different inputs can be combined into a single build.
 ifndef::openshift-online,digital-garage[]
 As the inline Dockerfile takes
@@ -616,11 +608,6 @@ extracted within the build context directory. This option
 behaves the same as `--from-dir`; an archive is created on your host first,
 whenever the argument to these options is a directory.
 
-* `--from-archive`: The archive you specify is sent to the builder, where it is
-extracted within the build context directory. This option
-behaves the same as `--from-dir`; an archive is created on your host first,
-whenever the argument to these options is a directory.
-
 In each of the above cases:
 
 * If your `BuildConfig` already has a `Binary` source type defined, it will
@@ -822,7 +809,7 @@ There is no technical difference between existing strategy secrets and the input
 secrets. However, your builder image might distinguish between them and use them
 differently, based on your build use case.
 
-The inpout secrets are always mounted into the
+The input secrets are always mounted into the
 *_/var/run/secrets/openshift.io/build_* directory or your builder can parse the
 `$BUILD` environment variable, which includes the full build object.
 endif::[]

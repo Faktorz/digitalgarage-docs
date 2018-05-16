@@ -481,11 +481,12 @@ to filter router namespaces and routes.
 This enables you to partition routes amongst multiple router deployments
 effectively distributing the set of routes.
 
-Example:
-A router deployment `finops-router` is run with route selector
-`NAMESPACE_LABELS="name in (finance, ops)"`
-and a router deployment `dev-router` is run with route selector
-`NAMESPACE_LABELS="name=dev"`.
+.Router Sharding Based on Namespace Labels
+image::router_sharding_namespace_labels.png[Router Sharding Based on Namespace Labels]
+
+Example: A router deployment `finops-router` is run with route selector
+`NAMESPACE_LABELS="name in (finance, ops)"` and a router deployment `dev-router`
+is run with route selector `NAMESPACE_LABELS="name=dev"`.
 
 If all routes are in the 3 namespaces `finance`, `ops` or `dev`,
 then this could effectively distribute our routes across two
@@ -527,6 +528,9 @@ and a router deployment `devtest-router` is run with route selector
 
 Example assumes you have all the routes you wish to serviced tagged with a
 label `"mydeployment=<tag>"`.
+
+.Router Sharding Based on Namespace Names
+image::router_sharding_namespace_names.png[Router Sharding Based on Namespace Names]
 
 [[creating-router-shards]]
 === Creating Router Shards
@@ -697,7 +701,7 @@ oc scale $dc --replicas=3     //<5>
 ====
 In `modshard`, the `oc scale` commands are not necessary if the
 xref:../../dev_guide/deployments/deployment_strategies.adoc#strategies[deployment strategy]
-for `router-dhsard-<id>` is `Rolling`.
+for `router-shard-<id>` is `Rolling`.
 ====
 
 For example, to expand the department for `router-shard-3`

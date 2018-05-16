@@ -178,6 +178,42 @@ every build.
 [[setting-global-build-overrides]]
 == Setting Global Build Overrides
 
+You can set global build overrides two ways:
+
+- xref:ansible-setting-global-build-overrides[using Ansible and the advanced installation tool]
+- xref:manually-setting-global-build-overrides[manually by modifying the *_master-config.yaml_* file]
+
+[[ansible-setting-global-build-overrides]]
+=== Configuring Global Build Overrides with Ansible
+
+During
+xref:../install_config/install/advanced_install.adoc#install-config-install-advanced-install[advanced installations],
+the `BuildOverrides` plug-in can
+be configured using the following parameters, which are configurable in the inventory file:
+
+- `openshift_buildoverrides_force_pull`
+- `openshift_buildoverrides_image_labels`
+- `openshift_buildoverrides_nodeselectors`
+- `openshift_buildoverrides_annotations`
+
+.Example Build Overrides Configuration with Ansible
+====
+----
+# These options configure the BuildOverrides admission controller which injects
+# configuration into Builds.
+openshift_buildoverrides_force_pull=true
+openshift_buildoverrides_image_labels=[{'name':'imagelabelname1','value':'imagelabelvalue1'}]
+openshift_buildoverrides_nodeselectors={'nodelabel1':'nodelabelvalue1'}
+openshift_buildoverrides_annotations={'annotationkey1':'annotationvalue1'}
+
+# Or you may optionally define your own build overrides configuration serialized as json
+#openshift_buildoverrides_json='{"BuildOverrides":{"configuration":{"apiVersion":"v1","kind":"BuildDefaultsConfig","forcePull":"true"}}}'
+----
+====
+
+[[manually-setting-global-build-overrides]]
+=== Manually Setting Global Build Overrides
+
 To configure the `BuildOverrides` plug-in:
 
 . Add a configuration for it in the

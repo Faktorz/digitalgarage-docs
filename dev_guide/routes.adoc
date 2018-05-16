@@ -40,13 +40,21 @@ image::3.7-create-route-form.png["Creating a Route Using the Web Console"]
 ifndef::openshift-online[]
 Using the CLI, the following example creates an unsecured route:
 
+ifndef::openshift-online[]
 ----
 $ oc expose svc/frontend --hostname=www.example.com
 ----
+endif::[]
+ifdef::openshift-online[]
+----
+$ oc expose svc/frontend
+----
+endif::[]
 
 The new route inherits the name from the service unless you specify one
 using the `--name` option.
 
+ifndef::openshift-online[]
 .YAML Definition of the Unsecured Route Created Above
 [source,yaml]
 ----
@@ -60,25 +68,12 @@ spec:
     kind: Service
     name: frontend
 ----
-<1> For xref:../architecture/networking/routes.adoc#path-based-routes[path-based routing], specify a path component that can be compared against a URL.
+====
 endif::[]
-ifdef::openshift-online[]
-Using the CLI, create an unsecured route. For {product-title} Starter, follow this example:
 
-----
-$ oc expose svc/frontend
-----
-
-For {product-title} Pro, follow this example, with `--hostname` being optional:
-
-----
-$ oc expose svc/frontend --hostname=www.example.com
-----
-
-The new route inherits the name from the service unless you specify one
-using the `--name` option.
-
+ifdef::openshift-online,digital-garage[]
 .YAML Definition of the Unsecured Route Created Above
+====
 [source,yaml]
 ----
 apiVersion: v1
@@ -90,6 +85,7 @@ spec:
     kind: Service
     name: frontend
 ----
+====
 endif::[]
 
 ifndef::openshift-online[]
@@ -156,7 +152,7 @@ ifdef::openshift-online[]
 Unsecured routes are the default configuration, and are therefore the simplest
 to set up.
 However,
-xref:../architecture/networking/routes.adoc#secured-routes[secured routes]
+xref:../architecture/core_concepts/routes.adoc#secured-routes[secured routes]
 offer security for connections to remain private.  To create a secured HTTPS route
 encrypted with the default certificate for {product-title} {product-version}
 you can use the `create route` command.
@@ -167,13 +163,12 @@ link:https://en.wikipedia.org/wiki/Transport_Layer_Security[TLS] is the
 replacement of SSL for HTTPS and other encrypted protocols.
 ====
 
-For {product-title} Starter:
-
 ----
 $ oc create route edge --service=frontend
 ----
 
 .YAML Definition of the Secured Route Created Above
+====
 [source,yaml]
 ----
 apiVersion: v1
@@ -187,56 +182,8 @@ spec:
   tls:
     termination: edge
 ----
+====
 
-For {product-title} Pro, you can use your own certificate and key files from a
-CA.  However, you can still omit the certificate and key files if you want to
-use the default certificate. With {product-title} Starter, you cannot specify a
-certificate and key.
-
-For {product-title} Pro:
-
-----
-$ oc create route edge --service=frontend \
-    --cert=example.crt \
-    --key=example.key \
-    --ca-cert=ca.crt \
-    --hostname=www.example.com
-----
-
-.YAML Definition of the Secured Route Created Above
-[source,yaml]
-----
-apiVersion: v1
-kind: Route
-metadata:
-  name: frontend
-spec:
-  host: www.example.com
-  to:
-    kind: Service
-    name: frontend
-  tls:
-    termination: edge
-    key: |-
-      -----BEGIN PRIVATE KEY-----
-      [...]
-      -----END PRIVATE KEY-----
-    certificate: |-
-      -----BEGIN CERTIFICATE-----
-      [...]
-      -----END CERTIFICATE-----
-    caCertificate: |-
-      -----BEGIN CERTIFICATE-----
-      [...]
-      -----END CERTIFICATE-----
-----
-
-Currently, password protected key files are not supported. To remove a
-passphrase from a keyfile, you can run:
-
-----
-# openssl rsa -in <passwordProtectedKey.key> -out <new.key>
-----
 endif::[]
 
 ifndef::openshift-online[]

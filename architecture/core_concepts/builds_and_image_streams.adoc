@@ -167,10 +167,11 @@ endif::[]
 [[image-streams]]
 == Image Streams
 
-An image stream and its associated tags provide an abstraction for referencing
-xref:../../architecture/core_concepts/containers_and_images.adoc#docker-images[Docker images] from within {product-title}.
-The image stream and its tags allow you to see what images are available
-and ensure that you are using the specific image you need even if the image in the repository changes.
+An _image stream_ comprises any number of
+xref:../../architecture/core_concepts/containers_and_images.adoc#docker-images[Docker-formatted
+container images] identified by tags. It presents a single virtual view of
+related images, similar to an image repository, and may contain images from any
+of the following:
 
 Image streams do not contain actual image data, but present a single virtual view of related images, similar to an image repository.
 
@@ -301,7 +302,13 @@ causes a trigger to fire when there are Deployments, Builds, or other resources 
 === Configuring Image Streams
 
 ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
-An image stream object file contains the following elements.
+Image streams can be used to automatically perform an action when new images are
+created. Builds and deployments can watch an image stream to receive
+notifications when new images are added and react by performing a build or
+deployment, respectively. For a
+curated set of image streams, see the
+link:https://github.com/openshift/library[OpenShift Image Streams and Templates
+library].
 
 ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
 [NOTE]

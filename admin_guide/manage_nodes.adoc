@@ -429,3 +429,92 @@ installation] using the `*openshift_node_kubelet_args*` variable. For example:
 openshift_node_kubelet_args={'max-pods': ['40'], 'resolv-conf': ['/etc/resolv.conf'],  'image-gc-high-threshold': ['90'], 'image-gc-low-threshold': ['80']}
 ----
 ====
+
+[[admin-guide-max-pods-per-node]]
+=== Setting Maximum Pods Per Node
+
+////
+The following section is included in the Scaling and Performance Guide.
+////
+// tag::admin_guide_manage_nodes[]
+In the *_/etc/origin/node/node-config.yaml_* file, two parameters control the
+maximum number of pods that can be scheduled to a node: `pods-per-core` and
+`max-pods`. When both options are in use, the lower of the two limits the number
+of pods on a node. Exceeding these values can result in:
+
+* Increased CPU utilization on both {product-title} and Docker.
+* Slow pod scheduling.
+* Potential out-of-memory scenarios (depends on the amount of memory in the node).
+* Exhausting the pool of IP addresses.
+* Resource overcommitting, leading to poor user application performance.
+
+[NOTE]
+====
+In Kubernetes, a pod that is holding a single container actually uses two
+containers. The second container is used to set up networking prior to the
+actual container starting. Therefore, a system running 10 pods will actually
+have 20 containers running.
+====
+
+`pods-per-core` sets the number of pods the node can run based on the number of
+processor cores on the node. For example, if `pods-per-core` is set to `10` on
+a node with 4 processor cores, the maximum number of pods allowed on the node
+will be 40.
+
+====
+----
+kubeletArguments:
+  pods-per-core:
+    - "10"
+----
+====
+
+`max-pods` sets the number of pods the node can run to a fixed value, regardless
+of the properties of the node.
+
+====
+----
+kubeletArguments:
+  max-pods:
+    - "250"
+----
+====
+
+Using the above example, the default value for `pods-per-core` is `10` and the
+default value for `max-pods` is `250`. This means that unless the node has 25
+cores or more, by default, `pods-per-core` will be the limiting factor.
+// end::admin_guide_manage_nodes[]
+
+[[manage-node-change-node-traffic-interface]]
+== Changing Node Traffic Interface
+
+By default, DNS routes all node traffic. During node registration, the master
+receives the node IP addresses from the DNS configuration, and therefore
+accessing nodes via DNS is the most flexible solution for most deployments.
+
+If your deployment is using a cloud provider, then the node gets the IP
+information from the cloud provider. However, *openshift-sdn* attempts to
+determine the IP through a variety of methods, including a DNS lookup on the
+nodeName (if set), or on the system hostname (if nodeName is not set).
+
+However, you may need to change the node traffic interface. For example,
+where:
+
+- {product-title} is installed in a cloud provider where internal hostnames are not configured/resolvable by all hosts.
+- The node's IP from the master's perspective is not the same as the node's IP from its own perspective.
+
+Configuring the `*openshift_set_node_ip*` Ansible variable
+forces node traffic through an interface other than the default network
+interface.
+
+To change the node traffic interface:
+
+. Set the `*openshift_set_node_ip*` Ansible variable to `true`.
+. Set the `*openshift_ip*` to the IP address for the node you want to configure.
+[NOTE]
+====
+Although  `*openshift_set_node_ip*` can be useful as a workaround for the
+cases stated in this section, it is generally not suited for production
+environments. This is because the node will no longer function properly if it
+receives a new IP address.
+====

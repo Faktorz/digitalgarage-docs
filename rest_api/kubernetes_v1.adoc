@@ -171,7 +171,7 @@ GET /api/v1/configmaps
 |QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
 |QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
 |QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
 |QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |===
 
@@ -200,7 +200,47 @@ GET /api/v1/configmaps
 
 === create a ConfigMap
 ----
-POST /api/v1/configmaps
+GET /api/v1/configmaps
+----
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|success|<<v1.ConfigMapList>>
+|===
+
+==== Consumes
+
+* */*
+
+==== Produces
+
+* application/json
+* application/yaml
+* application/vnd.kubernetes.protobuf
+* application/json;stream=watch
+* application/vnd.kubernetes.protobuf;stream=watch
+
+==== Tags
+
+* apiv1
+
+=== list or watch objects of kind Endpoints
+----
+GET /api/v1/endpoints
 ----
 
 ==== Parameters
@@ -215,7 +255,7 @@ POST /api/v1/configmaps
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.ConfigMap>>
+|200|success|<<v1.EndpointsList>>
 |===
 
 ==== Consumes
@@ -227,12 +267,14 @@ POST /api/v1/configmaps
 * application/json
 * application/yaml
 * application/vnd.kubernetes.protobuf
+* application/json;stream=watch
+* application/vnd.kubernetes.protobuf;stream=watch
 
 ==== Tags
 
 * apiv1
 
-=== list or watch objects of kind Endpoints
+=== create Endpoints
 ----
 GET /api/v1/endpoints
 ----
@@ -272,9 +314,9 @@ GET /api/v1/endpoints
 
 * apiv1
 
-=== create Endpoints
+=== list or watch objects of kind Event
 ----
-POST /api/v1/endpoints
+GET /api/v1/events
 ----
 
 ==== Parameters
@@ -289,7 +331,7 @@ POST /api/v1/endpoints
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Endpoints>>
+|200|success|<<v1.EventList>>
 |===
 
 ==== Consumes
@@ -301,12 +343,14 @@ POST /api/v1/endpoints
 * application/json
 * application/yaml
 * application/vnd.kubernetes.protobuf
+* application/json;stream=watch
+* application/vnd.kubernetes.protobuf;stream=watch
 
 ==== Tags
 
 * apiv1
 
-=== list or watch objects of kind Event
+=== create an Event
 ----
 GET /api/v1/events
 ----
@@ -346,9 +390,9 @@ GET /api/v1/events
 
 * apiv1
 
-=== create an Event
+=== list or watch objects of kind LimitRange
 ----
-POST /api/v1/events
+GET /api/v1/limitranges
 ----
 
 ==== Parameters
@@ -363,7 +407,7 @@ POST /api/v1/events
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Event>>
+|200|success|<<v1.LimitRangeList>>
 |===
 
 ==== Consumes
@@ -375,6 +419,8 @@ POST /api/v1/events
 * application/json
 * application/yaml
 * application/vnd.kubernetes.protobuf
+* application/json;stream=watch
+* application/vnd.kubernetes.protobuf;stream=watch
 
 ==== Tags
 
@@ -420,9 +466,9 @@ GET /api/v1/limitranges
 
 * apiv1
 
-=== create a LimitRange
+=== delete collection of Namespace
 ----
-POST /api/v1/limitranges
+DELETE /api/v1/namespaces
 ----
 
 ==== Parameters
@@ -437,7 +483,7 @@ POST /api/v1/limitranges
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.LimitRange>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -528,44 +574,6 @@ POST /api/v1/namespaces
 
 * apiv1
 
-=== delete collection of Namespace
-----
-DELETE /api/v1/namespaces
-----
-
-==== Parameters
-[options="header"]
-|===
-|Type|Name|Description|Required|Schema|Default
-|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
-|===
-
-==== Responses
-[options="header"]
-|===
-|HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
-|===
-
-==== Consumes
-
-* */*
-
-==== Produces
-
-* application/json
-* application/yaml
-* application/vnd.kubernetes.protobuf
-
-==== Tags
-
-* apiv1
-
 === create a Binding
 ----
 POST /api/v1/namespaces/{namespace}/bindings
@@ -585,6 +593,45 @@ POST /api/v1/namespaces/{namespace}/bindings
 |===
 |HTTP Code|Description|Schema
 |200|success|<<v1.Binding>>
+|===
+
+==== Consumes
+
+* */*
+
+==== Produces
+
+* application/json
+* application/yaml
+* application/vnd.kubernetes.protobuf
+
+==== Tags
+
+* apiv1
+
+=== delete collection of ConfigMap
+----
+DELETE /api/v1/namespaces/{namespace}/configmaps
+----
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -677,9 +724,9 @@ POST /api/v1/namespaces/{namespace}/configmaps
 
 * apiv1
 
-=== delete collection of ConfigMap
+=== delete a ConfigMap
 ----
-DELETE /api/v1/namespaces/{namespace}/configmaps
+DELETE /api/v1/namespaces/{namespace}/configmaps/{name}
 ----
 
 ==== Parameters
@@ -687,19 +734,18 @@ DELETE /api/v1/namespaces/{namespace}/configmaps
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the ConfigMap|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -753,9 +799,9 @@ GET /api/v1/namespaces/{namespace}/configmaps/{name}
 
 * apiv1
 
-=== partially update the specified ConfigMap
+=== read the specified ConfigMap
 ----
-PATCH /api/v1/namespaces/{namespace}/configmaps/{name}
+GET /api/v1/namespaces/{namespace}/configmaps/{name}
 ----
 
 ==== Parameters
@@ -763,7 +809,8 @@ PATCH /api/v1/namespaces/{namespace}/configmaps/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the ConfigMap|true|string|
 |===
@@ -827,9 +874,9 @@ PUT /api/v1/namespaces/{namespace}/configmaps/{name}
 
 * apiv1
 
-=== delete a ConfigMap
+=== delete collection of Endpoints
 ----
-DELETE /api/v1/namespaces/{namespace}/configmaps/{name}
+DELETE /api/v1/namespaces/{namespace}/endpoints
 ----
 
 ==== Parameters
@@ -837,19 +884,19 @@ DELETE /api/v1/namespaces/{namespace}/configmaps/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the ConfigMap|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -942,9 +989,9 @@ POST /api/v1/namespaces/{namespace}/endpoints
 
 * apiv1
 
-=== delete collection of Endpoints
+=== delete Endpoints
 ----
-DELETE /api/v1/namespaces/{namespace}/endpoints
+DELETE /api/v1/namespaces/{namespace}/endpoints/{name}
 ----
 
 ==== Parameters
@@ -952,19 +999,18 @@ DELETE /api/v1/namespaces/{namespace}/endpoints
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the Endpoints|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -1018,9 +1064,9 @@ GET /api/v1/namespaces/{namespace}/endpoints/{name}
 
 * apiv1
 
-=== partially update the specified Endpoints
+=== read the specified Endpoints
 ----
-PATCH /api/v1/namespaces/{namespace}/endpoints/{name}
+GET /api/v1/namespaces/{namespace}/endpoints/{name}
 ----
 
 ==== Parameters
@@ -1028,7 +1074,8 @@ PATCH /api/v1/namespaces/{namespace}/endpoints/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Endpoints|true|string|
 |===
@@ -1092,9 +1139,9 @@ PUT /api/v1/namespaces/{namespace}/endpoints/{name}
 
 * apiv1
 
-=== delete Endpoints
+=== delete collection of Event
 ----
-DELETE /api/v1/namespaces/{namespace}/endpoints/{name}
+DELETE /api/v1/namespaces/{namespace}/events
 ----
 
 ==== Parameters
@@ -1102,19 +1149,19 @@ DELETE /api/v1/namespaces/{namespace}/endpoints/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the Endpoints|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -1207,9 +1254,9 @@ POST /api/v1/namespaces/{namespace}/events
 
 * apiv1
 
-=== delete collection of Event
+=== delete an Event
 ----
-DELETE /api/v1/namespaces/{namespace}/events
+DELETE /api/v1/namespaces/{namespace}/events/{name}
 ----
 
 ==== Parameters
@@ -1217,19 +1264,18 @@ DELETE /api/v1/namespaces/{namespace}/events
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the Event|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -1283,9 +1329,9 @@ GET /api/v1/namespaces/{namespace}/events/{name}
 
 * apiv1
 
-=== partially update the specified Event
+=== read the specified Event
 ----
-PATCH /api/v1/namespaces/{namespace}/events/{name}
+GET /api/v1/namespaces/{namespace}/events/{name}
 ----
 
 ==== Parameters
@@ -1293,7 +1339,8 @@ PATCH /api/v1/namespaces/{namespace}/events/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Event|true|string|
 |===
@@ -1357,9 +1404,9 @@ PUT /api/v1/namespaces/{namespace}/events/{name}
 
 * apiv1
 
-=== delete an Event
+=== delete collection of LimitRange
 ----
-DELETE /api/v1/namespaces/{namespace}/events/{name}
+DELETE /api/v1/namespaces/{namespace}/limitranges
 ----
 
 ==== Parameters
@@ -1367,19 +1414,19 @@ DELETE /api/v1/namespaces/{namespace}/events/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the Event|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -1472,9 +1519,9 @@ POST /api/v1/namespaces/{namespace}/limitranges
 
 * apiv1
 
-=== delete collection of LimitRange
+=== delete a LimitRange
 ----
-DELETE /api/v1/namespaces/{namespace}/limitranges
+DELETE /api/v1/namespaces/{namespace}/limitranges/{name}
 ----
 
 ==== Parameters
@@ -1482,19 +1529,18 @@ DELETE /api/v1/namespaces/{namespace}/limitranges
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the LimitRange|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -1548,9 +1594,9 @@ GET /api/v1/namespaces/{namespace}/limitranges/{name}
 
 * apiv1
 
-=== partially update the specified LimitRange
+=== read the specified LimitRange
 ----
-PATCH /api/v1/namespaces/{namespace}/limitranges/{name}
+GET /api/v1/namespaces/{namespace}/limitranges/{name}
 ----
 
 ==== Parameters
@@ -1558,7 +1604,8 @@ PATCH /api/v1/namespaces/{namespace}/limitranges/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the LimitRange|true|string|
 |===
@@ -1622,9 +1669,9 @@ PUT /api/v1/namespaces/{namespace}/limitranges/{name}
 
 * apiv1
 
-=== delete a LimitRange
+=== delete collection of PersistentVolumeClaim
 ----
-DELETE /api/v1/namespaces/{namespace}/limitranges/{name}
+DELETE /api/v1/namespaces/{namespace}/persistentvolumeclaims
 ----
 
 ==== Parameters
@@ -1632,19 +1679,19 @@ DELETE /api/v1/namespaces/{namespace}/limitranges/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the LimitRange|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -1737,9 +1784,9 @@ POST /api/v1/namespaces/{namespace}/persistentvolumeclaims
 
 * apiv1
 
-=== delete collection of PersistentVolumeClaim
+=== delete a PersistentVolumeClaim
 ----
-DELETE /api/v1/namespaces/{namespace}/persistentvolumeclaims
+DELETE /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 ----
 
 ==== Parameters
@@ -1747,19 +1794,18 @@ DELETE /api/v1/namespaces/{namespace}/persistentvolumeclaims
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the PersistentVolumeClaim|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -1813,9 +1859,9 @@ GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 
 * apiv1
 
-=== partially update the specified PersistentVolumeClaim
+=== read the specified PersistentVolumeClaim
 ----
-PATCH /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
+GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 ----
 
 ==== Parameters
@@ -1823,7 +1869,8 @@ PATCH /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the PersistentVolumeClaim|true|string|
 |===
@@ -1887,9 +1934,9 @@ PUT /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 
 * apiv1
 
-=== delete a PersistentVolumeClaim
+=== replace status of the specified PersistentVolumeClaim
 ----
-DELETE /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
+PUT /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 ----
 
 ==== Parameters
@@ -1897,10 +1944,7 @@ DELETE /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|BodyParameter|body||true|<<v1.PersistentVolumeClaim>>|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the PersistentVolumeClaim|true|string|
 |===
@@ -1999,9 +2043,9 @@ PATCH /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 
 * apiv1
 
-=== replace status of the specified PersistentVolumeClaim
+=== delete collection of Pod
 ----
-PUT /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
+DELETE /api/v1/namespaces/{namespace}/pods
 ----
 
 ==== Parameters
@@ -2009,16 +2053,19 @@ PUT /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.PersistentVolumeClaim>>|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the PersistentVolumeClaim|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.PersistentVolumeClaim>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -2111,9 +2158,9 @@ POST /api/v1/namespaces/{namespace}/pods
 
 * apiv1
 
-=== delete collection of Pod
+=== delete a Pod
 ----
-DELETE /api/v1/namespaces/{namespace}/pods
+DELETE /api/v1/namespaces/{namespace}/pods/{name}
 ----
 
 ==== Parameters
@@ -2121,19 +2168,18 @@ DELETE /api/v1/namespaces/{namespace}/pods
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the Pod|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -2187,9 +2233,9 @@ GET /api/v1/namespaces/{namespace}/pods/{name}
 
 * apiv1
 
-=== partially update the specified Pod
+=== read the specified Pod
 ----
-PATCH /api/v1/namespaces/{namespace}/pods/{name}
+GET /api/v1/namespaces/{namespace}/pods/{name}
 ----
 
 ==== Parameters
@@ -2197,7 +2243,8 @@ PATCH /api/v1/namespaces/{namespace}/pods/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Pod|true|string|
 |===
@@ -2245,45 +2292,6 @@ PUT /api/v1/namespaces/{namespace}/pods/{name}
 |===
 |HTTP Code|Description|Schema
 |200|success|<<v1.Pod>>
-|===
-
-==== Consumes
-
-* */*
-
-==== Produces
-
-* application/json
-* application/yaml
-* application/vnd.kubernetes.protobuf
-
-==== Tags
-
-* apiv1
-
-=== delete a Pod
-----
-DELETE /api/v1/namespaces/{namespace}/pods/{name}
-----
-
-==== Parameters
-[options="header"]
-|===
-|Type|Name|Description|Required|Schema|Default
-|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
-|PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the Pod|true|string|
-|===
-
-==== Responses
-[options="header"]
-|===
-|HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
 |===
 
 ==== Consumes
@@ -2574,6 +2582,38 @@ GET /api/v1/namespaces/{namespace}/pods/{name}/portforward
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema|Default
+|PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the Pod|true|string|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|default|success|string
+|===
+
+==== Consumes
+
+* */*
+
+==== Produces
+
+* */*
+
+==== Tags
+
+* apiv1
+
+=== connect GET requests to portforward of Pod
+----
+GET /api/v1/namespaces/{namespace}/pods/{name}/portforward
+----
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
 |QueryParameter|ports|List of ports to forward Required when using WebSockets|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Pod|true|string|
@@ -2598,16 +2638,16 @@ GET /api/v1/namespaces/{namespace}/pods/{name}/portforward
 
 * apiv1
 
-=== connect POST requests to portforward of Pod
+=== connect DELETE requests to proxy of Pod
 ----
-POST /api/v1/namespaces/{namespace}/pods/{name}/portforward
+DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy
 ----
 
 ==== Parameters
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema|Default
-|QueryParameter|ports|List of ports to forward Required when using WebSockets|false|integer|
+|QueryParameter|path|Path is the URL path to use for the current proxy request to pod.|false|string|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Pod|true|string|
 |===
@@ -2664,9 +2704,9 @@ GET /api/v1/namespaces/{namespace}/pods/{name}/proxy
 
 * apiv1
 
-=== connect OPTIONS requests to proxy of Pod
+=== connect GET requests to proxy of Pod
 ----
-OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy
+GET /api/v1/namespaces/{namespace}/pods/{name}/proxy
 ----
 
 ==== Parameters
@@ -2798,7 +2838,7 @@ PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy
 
 === connect DELETE requests to proxy of Pod
 ----
-DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy
+DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 ----
 
 ==== Parameters
@@ -2808,6 +2848,7 @@ DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy
 |QueryParameter|path|Path is the URL path to use for the current proxy request to pod.|false|string|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Pod|true|string|
+|PathParameter|path|path to the resource|true|string|
 |===
 
 ==== Responses
@@ -2863,9 +2904,9 @@ GET /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 
 * apiv1
 
-=== connect OPTIONS requests to proxy of Pod
+=== connect GET requests to proxy of Pod
 ----
-OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+GET /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 ----
 
 ==== Parameters
@@ -2999,26 +3040,26 @@ PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 
 * apiv1
 
-=== connect DELETE requests to proxy of Pod
+=== replace status of the specified Pod
 ----
-DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+PUT /api/v1/namespaces/{namespace}/pods/{name}/status
 ----
 
 ==== Parameters
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema|Default
-|QueryParameter|path|Path is the URL path to use for the current proxy request to pod.|false|string|
+|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
+|BodyParameter|body||true|<<v1.Pod>>|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Pod|true|string|
-|PathParameter|path|path to the resource|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|default|success|string
+|200|success|<<v1.Pod>>
 |===
 
 ==== Consumes
@@ -3027,7 +3068,9 @@ DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
 
 ==== Produces
 
-* */*
+* application/json
+* application/yaml
+* application/vnd.kubernetes.protobuf
 
 ==== Tags
 
@@ -3106,9 +3149,9 @@ PATCH /api/v1/namespaces/{namespace}/pods/{name}/status
 
 * apiv1
 
-=== replace status of the specified Pod
+=== delete collection of PodTemplate
 ----
-PUT /api/v1/namespaces/{namespace}/pods/{name}/status
+DELETE /api/v1/namespaces/{namespace}/podtemplates
 ----
 
 ==== Parameters
@@ -3116,16 +3159,19 @@ PUT /api/v1/namespaces/{namespace}/pods/{name}/status
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Pod>>|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the Pod|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Pod>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -3218,9 +3264,9 @@ POST /api/v1/namespaces/{namespace}/podtemplates
 
 * apiv1
 
-=== delete collection of PodTemplate
+=== delete a PodTemplate
 ----
-DELETE /api/v1/namespaces/{namespace}/podtemplates
+DELETE /api/v1/namespaces/{namespace}/podtemplates/{name}
 ----
 
 ==== Parameters
@@ -3228,19 +3274,18 @@ DELETE /api/v1/namespaces/{namespace}/podtemplates
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the PodTemplate|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -3294,9 +3339,9 @@ GET /api/v1/namespaces/{namespace}/podtemplates/{name}
 
 * apiv1
 
-=== partially update the specified PodTemplate
+=== read the specified PodTemplate
 ----
-PATCH /api/v1/namespaces/{namespace}/podtemplates/{name}
+GET /api/v1/namespaces/{namespace}/podtemplates/{name}
 ----
 
 ==== Parameters
@@ -3304,7 +3349,8 @@ PATCH /api/v1/namespaces/{namespace}/podtemplates/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the PodTemplate|true|string|
 |===
@@ -3368,9 +3414,9 @@ PUT /api/v1/namespaces/{namespace}/podtemplates/{name}
 
 * apiv1
 
-=== delete a PodTemplate
+=== delete collection of ReplicationController
 ----
-DELETE /api/v1/namespaces/{namespace}/podtemplates/{name}
+DELETE /api/v1/namespaces/{namespace}/replicationcontrollers
 ----
 
 ==== Parameters
@@ -3378,19 +3424,19 @@ DELETE /api/v1/namespaces/{namespace}/podtemplates/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the PodTemplate|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -3483,9 +3529,9 @@ POST /api/v1/namespaces/{namespace}/replicationcontrollers
 
 * apiv1
 
-=== delete collection of ReplicationController
+=== delete a ReplicationController
 ----
-DELETE /api/v1/namespaces/{namespace}/replicationcontrollers
+DELETE /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
 ----
 
 ==== Parameters
@@ -3493,12 +3539,11 @@ DELETE /api/v1/namespaces/{namespace}/replicationcontrollers
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the ReplicationController|true|string|
 |===
 
 ==== Responses
@@ -3570,6 +3615,8 @@ PATCH /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
 |BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the ReplicationController|true|string|
 |===
@@ -3647,8 +3694,9 @@ DELETE /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
 |QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
 |QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
 |QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|BodyParameter|body||true|<<v1.Scale>>|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the ReplicationController|true|string|
+|PathParameter|name|name of the Scale|true|string|
 |===
 
 ==== Responses
@@ -3757,14 +3805,14 @@ PUT /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
 |BodyParameter|body||true|<<v1.Scale>>|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the Scale|true|string|
+|PathParameter|name|name of the ReplicationController|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Scale>>
+|200|success|<<v1.ReplicationController>>
 |===
 
 ==== Consumes
@@ -3854,9 +3902,9 @@ PATCH /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
 
 * apiv1
 
-=== replace status of the specified ReplicationController
+=== delete collection of ResourceQuota
 ----
-PUT /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
+DELETE /api/v1/namespaces/{namespace}/resourcequotas
 ----
 
 ==== Parameters
@@ -3864,16 +3912,19 @@ PUT /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.ReplicationController>>|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the ReplicationController|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.ReplicationController>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -3966,9 +4017,9 @@ POST /api/v1/namespaces/{namespace}/resourcequotas
 
 * apiv1
 
-=== delete collection of ResourceQuota
+=== delete a ResourceQuota
 ----
-DELETE /api/v1/namespaces/{namespace}/resourcequotas
+DELETE /api/v1/namespaces/{namespace}/resourcequotas/{name}
 ----
 
 ==== Parameters
@@ -3976,19 +4027,18 @@ DELETE /api/v1/namespaces/{namespace}/resourcequotas
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the ResourceQuota|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -4042,9 +4092,9 @@ GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
 
 * apiv1
 
-=== partially update the specified ResourceQuota
+=== read the specified ResourceQuota
 ----
-PATCH /api/v1/namespaces/{namespace}/resourcequotas/{name}
+GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
 ----
 
 ==== Parameters
@@ -4052,7 +4102,8 @@ PATCH /api/v1/namespaces/{namespace}/resourcequotas/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the ResourceQuota|true|string|
 |===
@@ -4116,9 +4167,9 @@ PUT /api/v1/namespaces/{namespace}/resourcequotas/{name}
 
 * apiv1
 
-=== delete a ResourceQuota
+=== replace status of the specified ResourceQuota
 ----
-DELETE /api/v1/namespaces/{namespace}/resourcequotas/{name}
+PUT /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 ----
 
 ==== Parameters
@@ -4126,10 +4177,7 @@ DELETE /api/v1/namespaces/{namespace}/resourcequotas/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|BodyParameter|body||true|<<v1.ResourceQuota>>|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the ResourceQuota|true|string|
 |===
@@ -4228,9 +4276,9 @@ PATCH /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 
 * apiv1
 
-=== replace status of the specified ResourceQuota
+=== delete collection of Secret
 ----
-PUT /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
+DELETE /api/v1/namespaces/{namespace}/secrets
 ----
 
 ==== Parameters
@@ -4238,16 +4286,19 @@ PUT /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.ResourceQuota>>|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the ResourceQuota|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.ResourceQuota>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -4340,9 +4391,9 @@ POST /api/v1/namespaces/{namespace}/secrets
 
 * apiv1
 
-=== delete collection of Secret
+=== delete a Secret
 ----
-DELETE /api/v1/namespaces/{namespace}/secrets
+DELETE /api/v1/namespaces/{namespace}/secrets/{name}
 ----
 
 ==== Parameters
@@ -4350,19 +4401,18 @@ DELETE /api/v1/namespaces/{namespace}/secrets
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the Secret|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -4416,9 +4466,9 @@ GET /api/v1/namespaces/{namespace}/secrets/{name}
 
 * apiv1
 
-=== partially update the specified Secret
+=== read the specified Secret
 ----
-PATCH /api/v1/namespaces/{namespace}/secrets/{name}
+GET /api/v1/namespaces/{namespace}/secrets/{name}
 ----
 
 ==== Parameters
@@ -4426,7 +4476,8 @@ PATCH /api/v1/namespaces/{namespace}/secrets/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Secret|true|string|
 |===
@@ -4490,9 +4541,9 @@ PUT /api/v1/namespaces/{namespace}/secrets/{name}
 
 * apiv1
 
-=== delete a Secret
+=== delete collection of ServiceAccount
 ----
-DELETE /api/v1/namespaces/{namespace}/secrets/{name}
+DELETE /api/v1/namespaces/{namespace}/serviceaccounts
 ----
 
 ==== Parameters
@@ -4500,19 +4551,19 @@ DELETE /api/v1/namespaces/{namespace}/secrets/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the Secret|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -4605,9 +4656,9 @@ POST /api/v1/namespaces/{namespace}/serviceaccounts
 
 * apiv1
 
-=== delete collection of ServiceAccount
+=== delete a ServiceAccount
 ----
-DELETE /api/v1/namespaces/{namespace}/serviceaccounts
+DELETE /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 ----
 
 ==== Parameters
@@ -4615,19 +4666,18 @@ DELETE /api/v1/namespaces/{namespace}/serviceaccounts
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the ServiceAccount|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -4681,9 +4731,9 @@ GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 
 * apiv1
 
-=== partially update the specified ServiceAccount
+=== read the specified ServiceAccount
 ----
-PATCH /api/v1/namespaces/{namespace}/serviceaccounts/{name}
+GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 ----
 
 ==== Parameters
@@ -4691,7 +4741,8 @@ PATCH /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the ServiceAccount|true|string|
 |===
@@ -4755,9 +4806,9 @@ PUT /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 
 * apiv1
 
-=== delete a ServiceAccount
+=== list or watch objects of kind Service
 ----
-DELETE /api/v1/namespaces/{namespace}/serviceaccounts/{name}
+GET /api/v1/namespaces/{namespace}/services
 ----
 
 ==== Parameters
@@ -4765,19 +4816,19 @@ DELETE /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the ServiceAccount|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<v1.ServiceList>>
 |===
 
 ==== Consumes
@@ -4789,6 +4840,8 @@ DELETE /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 * application/json
 * application/yaml
 * application/vnd.kubernetes.protobuf
+* application/json;stream=watch
+* application/vnd.kubernetes.protobuf;stream=watch
 
 ==== Tags
 
@@ -4835,9 +4888,9 @@ GET /api/v1/namespaces/{namespace}/services
 
 * apiv1
 
-=== create a Service
+=== delete a Service
 ----
-POST /api/v1/namespaces/{namespace}/services
+DELETE /api/v1/namespaces/{namespace}/services/{name}
 ----
 
 ==== Parameters
@@ -4845,15 +4898,15 @@ POST /api/v1/namespaces/{namespace}/services
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Service>>|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
+|PathParameter|name|name of the Service|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Service>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -4907,9 +4960,9 @@ GET /api/v1/namespaces/{namespace}/services/{name}
 
 * apiv1
 
-=== partially update the specified Service
+=== read the specified Service
 ----
-PATCH /api/v1/namespaces/{namespace}/services/{name}
+GET /api/v1/namespaces/{namespace}/services/{name}
 ----
 
 ==== Parameters
@@ -4917,7 +4970,8 @@ PATCH /api/v1/namespaces/{namespace}/services/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Service|true|string|
 |===
@@ -4981,16 +5035,16 @@ PUT /api/v1/namespaces/{namespace}/services/{name}
 
 * apiv1
 
-=== delete a Service
+=== connect DELETE requests to proxy of Service
 ----
-DELETE /api/v1/namespaces/{namespace}/services/{name}
+DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy
 ----
 
 ==== Parameters
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema|Default
-|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
+|QueryParameter|path|Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.|false|string|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Service|true|string|
 |===
@@ -4999,7 +5053,7 @@ DELETE /api/v1/namespaces/{namespace}/services/{name}
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|default|success|string
 |===
 
 ==== Consumes
@@ -5008,9 +5062,7 @@ DELETE /api/v1/namespaces/{namespace}/services/{name}
 
 ==== Produces
 
-* application/json
-* application/yaml
-* application/vnd.kubernetes.protobuf
+* */*
 
 ==== Tags
 
@@ -5049,9 +5101,9 @@ GET /api/v1/namespaces/{namespace}/services/{name}/proxy
 
 * apiv1
 
-=== connect OPTIONS requests to proxy of Service
+=== connect GET requests to proxy of Service
 ----
-OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy
+GET /api/v1/namespaces/{namespace}/services/{name}/proxy
 ----
 
 ==== Parameters
@@ -5183,7 +5235,7 @@ PUT /api/v1/namespaces/{namespace}/services/{name}/proxy
 
 === connect DELETE requests to proxy of Service
 ----
-DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy
+DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 ----
 
 ==== Parameters
@@ -5193,6 +5245,7 @@ DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy
 |QueryParameter|path|Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.|false|string|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Service|true|string|
+|PathParameter|path|path to the resource|true|string|
 |===
 
 ==== Responses
@@ -5248,9 +5301,9 @@ GET /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 
 * apiv1
 
-=== connect OPTIONS requests to proxy of Service
+=== connect GET requests to proxy of Service
 ----
-OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+GET /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 ----
 
 ==== Parameters
@@ -5384,26 +5437,26 @@ PUT /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 
 * apiv1
 
-=== connect DELETE requests to proxy of Service
+=== replace status of the specified Service
 ----
-DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+PUT /api/v1/namespaces/{namespace}/services/{name}/status
 ----
 
 ==== Parameters
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema|Default
-|QueryParameter|path|Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the current proxy request to service. For example, the whole request URL is http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.|false|string|
+|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
+|BodyParameter|body||true|<<v1.Service>>|
 |PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
 |PathParameter|name|name of the Service|true|string|
-|PathParameter|path|path to the resource|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|default|success|string
+|200|success|<<v1.Service>>
 |===
 
 ==== Consumes
@@ -5412,7 +5465,9 @@ DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
 
 ==== Produces
 
-* */*
+* application/json
+* application/yaml
+* application/vnd.kubernetes.protobuf
 
 ==== Tags
 
@@ -5491,9 +5546,9 @@ PATCH /api/v1/namespaces/{namespace}/services/{name}/status
 
 * apiv1
 
-=== replace status of the specified Service
+=== delete a Namespace
 ----
-PUT /api/v1/namespaces/{namespace}/services/{name}/status
+DELETE /api/v1/namespaces/{name}
 ----
 
 ==== Parameters
@@ -5501,16 +5556,17 @@ PUT /api/v1/namespaces/{namespace}/services/{name}/status
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Service>>|
-|PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the Service|true|string|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
+|PathParameter|name|name of the Namespace|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Service>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -5563,9 +5619,9 @@ GET /api/v1/namespaces/{name}
 
 * apiv1
 
-=== partially update the specified Namespace
+=== read the specified Namespace
 ----
-PATCH /api/v1/namespaces/{name}
+GET /api/v1/namespaces/{name}
 ----
 
 ==== Parameters
@@ -5573,7 +5629,8 @@ PATCH /api/v1/namespaces/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|name|name of the Namespace|true|string|
 |===
 
@@ -5635,9 +5692,9 @@ PUT /api/v1/namespaces/{name}
 
 * apiv1
 
-=== delete a Namespace
+=== replace finalize of the specified Namespace
 ----
-DELETE /api/v1/namespaces/{name}
+PUT /api/v1/namespaces/{name}/finalize
 ----
 
 ==== Parameters
@@ -5645,10 +5702,7 @@ DELETE /api/v1/namespaces/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|BodyParameter|body||true|<<v1.Namespace>>|
 |PathParameter|name|name of the Namespace|true|string|
 |===
 
@@ -5673,9 +5727,9 @@ DELETE /api/v1/namespaces/{name}
 
 * apiv1
 
-=== replace finalize of the specified Namespace
+=== replace status of the specified Namespace
 ----
-PUT /api/v1/namespaces/{name}/finalize
+PUT /api/v1/namespaces/{name}/status
 ----
 
 ==== Parameters
@@ -5779,9 +5833,9 @@ PATCH /api/v1/namespaces/{name}/status
 
 * apiv1
 
-=== replace status of the specified Namespace
+=== delete collection of Node
 ----
-PUT /api/v1/namespaces/{name}/status
+DELETE /api/v1/nodes
 ----
 
 ==== Parameters
@@ -5789,15 +5843,18 @@ PUT /api/v1/namespaces/{name}/status
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Namespace>>|
-|PathParameter|name|name of the Namespace|true|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Namespace>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -5888,9 +5945,9 @@ POST /api/v1/nodes
 
 * apiv1
 
-=== delete collection of Node
+=== delete a Node
 ----
-DELETE /api/v1/nodes
+DELETE /api/v1/nodes/{name}
 ----
 
 ==== Parameters
@@ -5898,18 +5955,17 @@ DELETE /api/v1/nodes
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
+|PathParameter|name|name of the Node|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -5962,9 +6018,9 @@ GET /api/v1/nodes/{name}
 
 * apiv1
 
-=== partially update the specified Node
+=== read the specified Node
 ----
-PATCH /api/v1/nodes/{name}
+GET /api/v1/nodes/{name}
 ----
 
 ==== Parameters
@@ -5972,7 +6028,8 @@ PATCH /api/v1/nodes/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|name|name of the Node|true|string|
 |===
 
@@ -6034,20 +6091,16 @@ PUT /api/v1/nodes/{name}
 
 * apiv1
 
-=== delete a Node
+=== connect DELETE requests to proxy of Node
 ----
-DELETE /api/v1/nodes/{name}
+DELETE /api/v1/nodes/{name}/proxy
 ----
 
 ==== Parameters
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema|Default
-|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|QueryParameter|path|Path is the URL path to use for the current proxy request to node.|false|string|
 |PathParameter|name|name of the Node|true|string|
 |===
 
@@ -6055,7 +6108,7 @@ DELETE /api/v1/nodes/{name}
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|default|success|string
 |===
 
 ==== Consumes
@@ -6064,9 +6117,7 @@ DELETE /api/v1/nodes/{name}
 
 ==== Produces
 
-* application/json
-* application/yaml
-* application/vnd.kubernetes.protobuf
+* */*
 
 ==== Tags
 
@@ -6104,9 +6155,9 @@ GET /api/v1/nodes/{name}/proxy
 
 * apiv1
 
-=== connect OPTIONS requests to proxy of Node
+=== connect GET requests to proxy of Node
 ----
-OPTIONS /api/v1/nodes/{name}/proxy
+GET /api/v1/nodes/{name}/proxy
 ----
 
 ==== Parameters
@@ -6234,7 +6285,7 @@ PUT /api/v1/nodes/{name}/proxy
 
 === connect DELETE requests to proxy of Node
 ----
-DELETE /api/v1/nodes/{name}/proxy
+DELETE /api/v1/nodes/{name}/proxy/{path}
 ----
 
 ==== Parameters
@@ -6243,6 +6294,7 @@ DELETE /api/v1/nodes/{name}/proxy
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|path|Path is the URL path to use for the current proxy request to node.|false|string|
 |PathParameter|name|name of the Node|true|string|
+|PathParameter|path|path to the resource|true|string|
 |===
 
 ==== Responses
@@ -6297,9 +6349,9 @@ GET /api/v1/nodes/{name}/proxy/{path}
 
 * apiv1
 
-=== connect OPTIONS requests to proxy of Node
+=== connect GET requests to proxy of Node
 ----
-OPTIONS /api/v1/nodes/{name}/proxy/{path}
+GET /api/v1/nodes/{name}/proxy/{path}
 ----
 
 ==== Parameters
@@ -6429,25 +6481,25 @@ PUT /api/v1/nodes/{name}/proxy/{path}
 
 * apiv1
 
-=== connect DELETE requests to proxy of Node
+=== replace status of the specified Node
 ----
-DELETE /api/v1/nodes/{name}/proxy/{path}
+PUT /api/v1/nodes/{name}/status
 ----
 
 ==== Parameters
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema|Default
-|QueryParameter|path|Path is the URL path to use for the current proxy request to node.|false|string|
+|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
+|BodyParameter|body||true|<<v1.Node>>|
 |PathParameter|name|name of the Node|true|string|
-|PathParameter|path|path to the resource|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|default|success|string
+|200|success|<<v1.Node>>
 |===
 
 ==== Consumes
@@ -6456,7 +6508,9 @@ DELETE /api/v1/nodes/{name}/proxy/{path}
 
 ==== Produces
 
-* */*
+* application/json
+* application/yaml
+* application/vnd.kubernetes.protobuf
 
 ==== Tags
 
@@ -6533,9 +6587,9 @@ PATCH /api/v1/nodes/{name}/status
 
 * apiv1
 
-=== replace status of the specified Node
+=== list or watch objects of kind PersistentVolumeClaim
 ----
-PUT /api/v1/nodes/{name}/status
+GET /api/v1/persistentvolumeclaims
 ----
 
 ==== Parameters
@@ -6543,15 +6597,18 @@ PUT /api/v1/nodes/{name}/status
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Node>>|
-|PathParameter|name|name of the Node|true|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Node>>
+|200|success|<<v1.PersistentVolumeClaimList>>
 |===
 
 ==== Consumes
@@ -6563,6 +6620,8 @@ PUT /api/v1/nodes/{name}/status
 * application/json
 * application/yaml
 * application/vnd.kubernetes.protobuf
+* application/json;stream=watch
+* application/vnd.kubernetes.protobuf;stream=watch
 
 ==== Tags
 
@@ -6608,9 +6667,9 @@ GET /api/v1/persistentvolumeclaims
 
 * apiv1
 
-=== create a PersistentVolumeClaim
+=== delete collection of PersistentVolume
 ----
-POST /api/v1/persistentvolumeclaims
+DELETE /api/v1/persistentvolumes
 ----
 
 ==== Parameters
@@ -6625,7 +6684,7 @@ POST /api/v1/persistentvolumeclaims
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.PersistentVolumeClaim>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -6716,9 +6775,9 @@ POST /api/v1/persistentvolumes
 
 * apiv1
 
-=== delete collection of PersistentVolume
+=== delete a PersistentVolume
 ----
-DELETE /api/v1/persistentvolumes
+DELETE /api/v1/persistentvolumes/{name}
 ----
 
 ==== Parameters
@@ -6726,18 +6785,17 @@ DELETE /api/v1/persistentvolumes
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
+|PathParameter|name|name of the PersistentVolume|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
+|200|success|<<unversioned.Status>>
 |===
 
 ==== Consumes
@@ -6790,9 +6848,9 @@ GET /api/v1/persistentvolumes/{name}
 
 * apiv1
 
-=== partially update the specified PersistentVolume
+=== read the specified PersistentVolume
 ----
-PATCH /api/v1/persistentvolumes/{name}
+GET /api/v1/persistentvolumes/{name}
 ----
 
 ==== Parameters
@@ -6800,7 +6858,8 @@ PATCH /api/v1/persistentvolumes/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
+|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'|false|boolean|
 |PathParameter|name|name of the PersistentVolume|true|string|
 |===
 
@@ -6862,9 +6921,9 @@ PUT /api/v1/persistentvolumes/{name}
 
 * apiv1
 
-=== delete a PersistentVolume
+=== replace status of the specified PersistentVolume
 ----
-DELETE /api/v1/persistentvolumes/{name}
+PUT /api/v1/persistentvolumes/{name}/status
 ----
 
 ==== Parameters
@@ -6872,10 +6931,7 @@ DELETE /api/v1/persistentvolumes/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.DeleteOptions>>|
-|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
-|QueryParameter|orphanDependents|Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.|false|boolean|
-|QueryParameter|propagationPolicy|Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy.|false|string|
+|BodyParameter|body||true|<<v1.PersistentVolume>>|
 |PathParameter|name|name of the PersistentVolume|true|string|
 |===
 
@@ -6971,9 +7027,9 @@ PATCH /api/v1/persistentvolumes/{name}/status
 
 * apiv1
 
-=== replace status of the specified PersistentVolume
+=== list or watch objects of kind Pod
 ----
-PUT /api/v1/persistentvolumes/{name}/status
+GET /api/v1/pods
 ----
 
 ==== Parameters
@@ -6981,15 +7037,18 @@ PUT /api/v1/persistentvolumes/{name}/status
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.PersistentVolume>>|
-|PathParameter|name|name of the PersistentVolume|true|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.PersistentVolume>>
+|200|success|<<v1.PodList>>
 |===
 
 ==== Consumes
@@ -7001,6 +7060,8 @@ PUT /api/v1/persistentvolumes/{name}/status
 * application/json
 * application/yaml
 * application/vnd.kubernetes.protobuf
+* application/json;stream=watch
+* application/vnd.kubernetes.protobuf;stream=watch
 
 ==== Tags
 
@@ -7154,137 +7215,9 @@ POST /api/v1/podtemplates
 
 * apiv1
 
-=== proxy GET requests to Pod
+=== proxy DELETE requests to Pod
 ----
-GET /api/v1/proxy/namespaces/{namespace}/pods/{name}
-----
-
-==== Parameters
-[options="header"]
-|===
-|Type|Name|Description|Required|Schema|Default
-|PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the Pod|true|string|
-|===
-
-==== Responses
-[options="header"]
-|===
-|HTTP Code|Description|Schema
-|default|success|string
-|===
-
-==== Consumes
-
-* */*
-
-==== Produces
-
-* */*
-
-==== Tags
-
-* apiv1
-
-=== proxy OPTIONS requests to Pod
-----
-OPTIONS /api/v1/proxy/namespaces/{namespace}/pods/{name}
-----
-
-==== Parameters
-[options="header"]
-|===
-|Type|Name|Description|Required|Schema|Default
-|PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the Pod|true|string|
-|===
-
-==== Responses
-[options="header"]
-|===
-|HTTP Code|Description|Schema
-|default|success|string
-|===
-
-==== Consumes
-
-* */*
-
-==== Produces
-
-* */*
-
-==== Tags
-
-* apiv1
-
-=== proxy POST requests to Pod
-----
-POST /api/v1/proxy/namespaces/{namespace}/pods/{name}
-----
-
-==== Parameters
-[options="header"]
-|===
-|Type|Name|Description|Required|Schema|Default
-|PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the Pod|true|string|
-|===
-
-==== Responses
-[options="header"]
-|===
-|HTTP Code|Description|Schema
-|default|success|string
-|===
-
-==== Consumes
-
-* */*
-
-==== Produces
-
-* */*
-
-==== Tags
-
-* apiv1
-
-=== proxy PATCH requests to Pod
-----
-PATCH /api/v1/proxy/namespaces/{namespace}/pods/{name}
-----
-
-==== Parameters
-[options="header"]
-|===
-|Type|Name|Description|Required|Schema|Default
-|PathParameter|namespace|object name and auth scope, such as for teams and projects|true|string|
-|PathParameter|name|name of the Pod|true|string|
-|===
-
-==== Responses
-[options="header"]
-|===
-|HTTP Code|Description|Schema
-|default|success|string
-|===
-
-==== Consumes
-
-* */*
-
-==== Produces
-
-* */*
-
-==== Tags
-
-* apiv1
-
-=== proxy HEAD requests to Pod
-----
-HEAD /api/v1/proxy/namespaces/{namespace}/pods/{name}
+DELETE /api/v1/proxy/namespaces/{namespace}/pods/{name}
 ----
 
 ==== Parameters
@@ -7346,9 +7279,9 @@ PUT /api/v1/proxy/namespaces/{namespace}/pods/{name}
 
 * apiv1
 
-=== proxy DELETE requests to Pod
+=== proxy GET requests to Pod
 ----
-DELETE /api/v1/proxy/namespaces/{namespace}/pods/{name}
+GET /api/v1/proxy/namespaces/{namespace}/pods/{name}
 ----
 
 ==== Parameters
@@ -7477,9 +7410,9 @@ POST /api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}
 
 * apiv1
 
-=== proxy PATCH requests to Pod
+=== proxy DELETE requests to Pod
 ----
-PATCH /api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}
+DELETE /api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}
 ----
 
 ==== Parameters
@@ -7543,9 +7476,9 @@ HEAD /api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}
 
 * apiv1
 
-=== proxy PUT requests to Pod
+=== proxy GET requests to Pod
 ----
-PUT /api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}
+GET /api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}
 ----
 
 ==== Parameters
@@ -7673,9 +7606,9 @@ OPTIONS /api/v1/proxy/namespaces/{namespace}/services/{name}
 
 * apiv1
 
-=== proxy POST requests to Service
+=== proxy DELETE requests to Service
 ----
-POST /api/v1/proxy/namespaces/{namespace}/services/{name}
+DELETE /api/v1/proxy/namespaces/{namespace}/services/{name}
 ----
 
 ==== Parameters
@@ -7737,9 +7670,9 @@ PATCH /api/v1/proxy/namespaces/{namespace}/services/{name}
 
 * apiv1
 
-=== proxy HEAD requests to Service
+=== proxy GET requests to Service
 ----
-HEAD /api/v1/proxy/namespaces/{namespace}/services/{name}
+GET /api/v1/proxy/namespaces/{namespace}/services/{name}
 ----
 
 ==== Parameters
@@ -7866,9 +7799,9 @@ GET /api/v1/proxy/namespaces/{namespace}/services/{name}/{path}
 
 * apiv1
 
-=== proxy OPTIONS requests to Service
+=== proxy DELETE requests to Service
 ----
-OPTIONS /api/v1/proxy/namespaces/{namespace}/services/{name}/{path}
+DELETE /api/v1/proxy/namespaces/{namespace}/services/{name}/{path}
 ----
 
 ==== Parameters
@@ -7932,9 +7865,9 @@ POST /api/v1/proxy/namespaces/{namespace}/services/{name}/{path}
 
 * apiv1
 
-=== proxy PATCH requests to Service
+=== proxy GET requests to Service
 ----
-PATCH /api/v1/proxy/namespaces/{namespace}/services/{name}/{path}
+GET /api/v1/proxy/namespaces/{namespace}/services/{name}/{path}
 ----
 
 ==== Parameters
@@ -8064,9 +7997,9 @@ DELETE /api/v1/proxy/namespaces/{namespace}/services/{name}/{path}
 
 * apiv1
 
-=== proxy GET requests to Node
+=== proxy DELETE requests to Node
 ----
-GET /api/v1/proxy/nodes/{name}
+DELETE /api/v1/proxy/nodes/{name}
 ----
 
 ==== Parameters
@@ -8126,9 +8059,9 @@ OPTIONS /api/v1/proxy/nodes/{name}
 
 * apiv1
 
-=== proxy POST requests to Node
+=== proxy GET requests to Node
 ----
-POST /api/v1/proxy/nodes/{name}
+GET /api/v1/proxy/nodes/{name}
 ----
 
 ==== Parameters
@@ -8252,7 +8185,7 @@ PUT /api/v1/proxy/nodes/{name}
 
 === proxy DELETE requests to Node
 ----
-DELETE /api/v1/proxy/nodes/{name}
+DELETE /api/v1/proxy/nodes/{name}/{path}
 ----
 
 ==== Parameters
@@ -8260,6 +8193,7 @@ DELETE /api/v1/proxy/nodes/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |PathParameter|name|name of the Node|true|string|
+|PathParameter|path|path to the resource|true|string|
 |===
 
 ==== Responses
@@ -8313,9 +8247,9 @@ GET /api/v1/proxy/nodes/{name}/{path}
 
 * apiv1
 
-=== proxy OPTIONS requests to Node
+=== proxy GET requests to Node
 ----
-OPTIONS /api/v1/proxy/nodes/{name}/{path}
+GET /api/v1/proxy/nodes/{name}/{path}
 ----
 
 ==== Parameters
@@ -8412,70 +8346,6 @@ PATCH /api/v1/proxy/nodes/{name}/{path}
 === proxy HEAD requests to Node
 ----
 HEAD /api/v1/proxy/nodes/{name}/{path}
-----
-
-==== Parameters
-[options="header"]
-|===
-|Type|Name|Description|Required|Schema|Default
-|PathParameter|name|name of the Node|true|string|
-|PathParameter|path|path to the resource|true|string|
-|===
-
-==== Responses
-[options="header"]
-|===
-|HTTP Code|Description|Schema
-|default|success|string
-|===
-
-==== Consumes
-
-* */*
-
-==== Produces
-
-* */*
-
-==== Tags
-
-* apiv1
-
-=== proxy PUT requests to Node
-----
-PUT /api/v1/proxy/nodes/{name}/{path}
-----
-
-==== Parameters
-[options="header"]
-|===
-|Type|Name|Description|Required|Schema|Default
-|PathParameter|name|name of the Node|true|string|
-|PathParameter|path|path to the resource|true|string|
-|===
-
-==== Responses
-[options="header"]
-|===
-|HTTP Code|Description|Schema
-|default|success|string
-|===
-
-==== Consumes
-
-* */*
-
-==== Produces
-
-* */*
-
-==== Tags
-
-* apiv1
-
-=== proxy DELETE requests to Node
-----
-DELETE /api/v1/proxy/nodes/{name}/{path}
 ----
 
 ==== Parameters
@@ -8722,14 +8592,54 @@ POST /api/v1/secrets
 * application/json
 * application/yaml
 * application/vnd.kubernetes.protobuf
+* application/json;stream=watch
+* application/vnd.kubernetes.protobuf;stream=watch
 
 ==== Tags
 
 * apiv1
 
-=== list or watch objects of kind SecurityContextConstraints
+=== delete collection of SecurityContextConstraints
 ----
-GET /api/v1/securitycontextconstraints
+DELETE /api/v1/securitycontextconstraints
+----
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
+|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
+|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
+|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
+|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history.|false|string|
+|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|success|<<unversioned.Status>>
+|===
+
+==== Consumes
+
+* */*
+
+==== Produces
+
+* application/json
+* application/yaml
+* application/vnd.kubernetes.protobuf
+
+==== Tags
+
+* apiv1
+
+=== delete collection of SecurityContextConstraints
+----
+DELETE /api/v1/securitycontextconstraints
 ----
 
 ==== Parameters
@@ -8748,7 +8658,7 @@ GET /api/v1/securitycontextconstraints
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.SecurityContextConstraintsList>>
+|200|success|<<v1.Status>>
 |===
 
 ==== Consumes
@@ -8801,81 +8711,7 @@ POST /api/v1/securitycontextconstraints
 
 * apiv1
 
-=== delete collection of SecurityContextConstraints
-----
-DELETE /api/v1/securitycontextconstraints
-----
-
-==== Parameters
-[options="header"]
-|===
-|Type|Name|Description|Required|Schema|Default
-|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
-|===
-
-==== Responses
-[options="header"]
-|===
-|HTTP Code|Description|Schema
-|200|success|<<v1.Status>>
-|===
-
-==== Consumes
-
-* */*
-
-==== Produces
-
-* application/json
-* application/yaml
-* application/vnd.kubernetes.protobuf
-
-==== Tags
-
-* apiv1
-
-=== read the specified SecurityContextConstraints
-----
-GET /api/v1/securitycontextconstraints/{name}
-----
-
-==== Parameters
-[options="header"]
-|===
-|Type|Name|Description|Required|Schema|Default
-|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|export|Should this value be exported.  Export strips fields that a user can not specify.|false|boolean|
-|QueryParameter|exact|Should the export be exact.  Exact export maintains cluster-specific fields like 'Namespace'.|false|boolean|
-|PathParameter|name|name of the SecurityContextConstraints|true|string|
-|===
-
-==== Responses
-[options="header"]
-|===
-|HTTP Code|Description|Schema
-|200|success|<<v1.SecurityContextConstraints>>
-|===
-
-==== Consumes
-
-* */*
-
-==== Produces
-
-* application/json
-* application/yaml
-* application/vnd.kubernetes.protobuf
-
-==== Tags
-
-* apiv1
-
-=== partially update the specified SecurityContextConstraints
+=== delete SecurityContextConstraints
 ----
 PATCH /api/v1/securitycontextconstraints/{name}
 ----
@@ -8885,7 +8721,9 @@ PATCH /api/v1/securitycontextconstraints/{name}
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|BodyParameter|body||true|<<v1.Patch>>|
+|BodyParameter|body||true|<<v1.DeleteOptions>>|
+|QueryParameter|gracePeriodSeconds|The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.|false|integer|
+|QueryParameter|orphanDependents|Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list.|false|boolean|
 |PathParameter|name|name of the SecurityContextConstraints|true|string|
 |===
 
@@ -8985,9 +8823,9 @@ DELETE /api/v1/securitycontextconstraints/{name}
 
 * apiv1
 
-=== list or watch objects of kind ServiceAccount
+=== partially update the specified SecurityContextConstraints
 ----
-GET /api/v1/serviceaccounts
+PATCH /api/v1/securitycontextconstraints/{name}
 ----
 
 ==== Parameters
@@ -8995,18 +8833,53 @@ GET /api/v1/serviceaccounts
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<unversioned.Patch>>|
+|PathParameter|name|name of the SecurityContextConstraints|true|string|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.ServiceAccountList>>
+|200|success|<<v1.SecurityContextConstraints>>
+|===
+
+==== Consumes
+
+* application/json-patch+json
+* application/merge-patch+json
+* application/strategic-merge-patch+json
+
+==== Produces
+
+* application/json
+* application/yaml
+* application/vnd.kubernetes.protobuf
+* application/json;stream=watch
+* application/vnd.kubernetes.protobuf;stream=watch
+
+==== Tags
+
+* apiv1
+
+=== create a ServiceAccount
+----
+POST /api/v1/serviceaccounts
+----
+
+==== Parameters
+[options="header"]
+|===
+|Type|Name|Description|Required|Schema|Default
+|QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
+|BodyParameter|body||true|<<v1.ServiceAccount>>|
+|===
+
+==== Responses
+[options="header"]
+|===
+|HTTP Code|Description|Schema
+|200|success|<<v1.ServiceAccount>>
 |===
 
 ==== Consumes
@@ -9054,14 +8927,16 @@ POST /api/v1/serviceaccounts
 * application/json
 * application/yaml
 * application/vnd.kubernetes.protobuf
+* application/json;stream=watch
+* application/vnd.kubernetes.protobuf;stream=watch
 
 ==== Tags
 
 * apiv1
 
-=== list or watch objects of kind Service
+=== create a Service
 ----
-GET /api/v1/services
+POST /api/v1/services
 ----
 
 ==== Parameters
@@ -9069,18 +8944,14 @@ GET /api/v1/services
 |===
 |Type|Name|Description|Required|Schema|Default
 |QueryParameter|pretty|If 'true', then the output is pretty printed.|false|string|
-|QueryParameter|labelSelector|A selector to restrict the list of returned objects by their labels. Defaults to everything.|false|string|
-|QueryParameter|fieldSelector|A selector to restrict the list of returned objects by their fields. Defaults to everything.|false|string|
-|QueryParameter|watch|Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.|false|boolean|
-|QueryParameter|resourceVersion|When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.|false|string|
-|QueryParameter|timeoutSeconds|Timeout for the list/watch call.|false|integer|
+|BodyParameter|body||true|<<v1.Service>>|
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|success|<<v1.ServiceList>>
+|200|success|<<v1.Service>>
 |===
 
 ==== Consumes
@@ -10959,7 +10830,62 @@ APIResourceList is a list of APIResource, it is used to expose the name of the r
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
 |groupVersion|groupVersion is the group and version this APIResourceList is for.|true|string|
-|resources|resources contains the name of the resources and if they are namespaced.|true|<<v1.APIResource>> array|
+|resources|resources contains the name of the resources and if they are namespaced.|true|<<unversioned.APIResource>> array|
+|===
+
+=== unversioned.LabelSelector
+:hardbreaks:
+A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|matchLabels|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.|false|object|
+|matchExpressions|matchExpressions is a list of label selector requirements. The requirements are ANDed.|false|<<unversioned.LabelSelectorRequirement>> array|
+|===
+
+=== unversioned.LabelSelectorRequirement
+:hardbreaks:
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|key|key is the label key that the selector applies to.|true|string|
+|operator|operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist.|true|string|
+|values|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.|false|string array|
+|===
+
+=== unversioned.ListMeta
+:hardbreaks:
+ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.
+
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|selfLink|SelfLink is a URL representing this object. Populated by the system. Read-only.|false|string|
+|resourceVersion|String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#concurrency-control-and-consistency|false|string|
+|===
+
+=== unversioned.Patch
+:hardbreaks:
+Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.
+
+=== unversioned.Status
+:hardbreaks:
+Status is a return value for calls that don't return other objects.
+
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
+|apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
+|status|Status of the operation. One of: "Success" or "Failure". More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status|false|string|
+|message|A human-readable description of the status of this operation.|false|string|
+|reason|A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.|false|string|
+|details|Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.|false|<<unversioned.StatusDetails>>|
+|code|Suggested HTTP return code for this status, 0 if not set.|false|integer (int32)|
 |===
 
 === v1.AWSElasticBlockStoreVolumeSource
@@ -10971,10 +10897,11 @@ An AWS EBS disk must exist before mounting to a container. The disk must also be
 [options="header"]
 |===
 |Name|Description|Required|Schema|Default
-|volumeID|Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore|true|string|
-|fsType|Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore|false|string|
-|partition|The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).|false|integer (int32)|
-|readOnly|Specify "true" to force and set the ReadOnly property in VolumeMounts to "true". If omitted, the default is "false". More info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore|false|boolean|
+|name|The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described).|false|string|
+|group|The group attribute of the resource associated with the status StatusReason.|false|string|
+|kind|The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
+|causes|The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.|false|<<unversioned.StatusCause>> array|
+|retryAfterSeconds|If specified, the time in seconds before the operation should be retried.|false|integer (int32)|
 |===
 
 === v1.Affinity
@@ -10984,9 +10911,10 @@ Affinity is a group of affinity scheduling rules.
 [options="header"]
 |===
 |Name|Description|Required|Schema|Default
-|nodeAffinity|Describes node affinity scheduling rules for the pod.|false|<<v1.NodeAffinity>>|
-|podAffinity|Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).|false|<<v1.PodAffinity>>|
-|podAntiAffinity|Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).|false|<<v1.PodAntiAffinity>>|
+|volumeID|Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore|true|string|
+|fsType|Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore|false|string|
+|partition|The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).|false|integer (int32)|
+|readOnly|Specify "true" to force and set the ReadOnly property in VolumeMounts to "true". If omitted, the default is "false". More info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore|false|boolean|
 |===
 
 === v1.AttachedVolume
@@ -11114,7 +11042,7 @@ Status of all the conditions for the component as a list of ComponentStatus obje
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|List of ComponentStatus objects.|true|<<v1.ComponentStatus>> array|
 |===
 
@@ -11129,19 +11057,6 @@ ConfigMap holds configuration data for pods to consume.
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
 |metadata|Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata|false|<<v1.ObjectMeta>>|
 |data|Data contains the configuration data. Each key must be a valid DNS_SUBDOMAIN with an optional leading dot.|false|object|
-|===
-
-=== v1.ConfigMapEnvSource
-:hardbreaks:
-ConfigMapEnvSource selects a ConfigMap to populate the environment variables with.
-
-The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
-
-[options="header"]
-|===
-|Name|Description|Required|Schema|Default
-|name|Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names|false|string|
-|optional|Specify whether the ConfigMap must be defined|false|boolean|
 |===
 
 === v1.ConfigMapKeySelector
@@ -11165,7 +11080,7 @@ ConfigMapList is a resource containing a list of ConfigMap objects.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata|false|<<v1.ListMeta>>|
+|metadata|More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata|false|<<unversioned.ListMeta>>|
 |items|Items is the list of ConfigMaps.|true|<<v1.ConfigMap>> array|
 |===
 
@@ -11193,7 +11108,7 @@ The contents of the target ConfigMap's Data field will be presented in a volume 
 |===
 |Name|Description|Required|Schema|Default
 |name|Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names|false|string|
-|items|If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.|false|<<v1.KeyToPath>> array|
+|items|If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.|false|<<v1.KeyToPath>> array|
 |defaultMode|Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.|false|integer (int32)|
 |optional|Specify whether the ConfigMap or it's keys must be defined|false|boolean|
 |===
@@ -11218,8 +11133,7 @@ A single application container that you want to run within a pod.
 |livenessProbe|Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/pod-states#container-probes|false|<<v1.Probe>>|
 |readinessProbe|Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/pod-states#container-probes|false|<<v1.Probe>>|
 |lifecycle|Actions that the management system should take in response to container lifecycle events. Cannot be updated.|false|<<v1.Lifecycle>>|
-|terminationMessagePath|Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated.|false|string|
-|terminationMessagePolicy|Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.|false|string|
+|terminationMessagePath|Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated.|false|string|
 |imagePullPolicy|Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/images#updating-images|false|string|
 |securityContext|Security options the pod should run with. More info: http://releases.k8s.io/HEAD/docs/design/security_context.md|false|<<v1.SecurityContext>>|
 |stdin|Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false.|false|boolean|
@@ -11489,7 +11403,7 @@ EndpointsList is a list of endpoints.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|List of endpoints.|true|<<v1.Endpoints>> array|
 |===
 
@@ -11559,7 +11473,7 @@ EventList is a list of events.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|List of events|true|<<v1.Event>> array|
 |===
 
@@ -11835,7 +11749,7 @@ LimitRangeList is a list of LimitRange items.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|Items is a list of LimitRange objects. More info: http://releases.k8s.io/HEAD/docs/design/admission_control_limit_range.md|true|<<v1.LimitRange>> array|
 |===
 
@@ -11926,7 +11840,7 @@ NamespaceList is a list of Namespaces.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|Items is the list of Namespace objects in the list. More info: http://kubernetes.io/docs/user-guide/namespaces|true|<<v1.Namespace>> array|
 |===
 
@@ -12020,7 +11934,7 @@ NodeList is the whole list of all Nodes which have been registered with master.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|List of nodes|true|<<v1.Node>> array|
 |===
 
@@ -12067,7 +11981,6 @@ NodeSpec describes the attributes that a node is created with.
 |externalID|External ID of the node assigned by some machine database (e.g. a cloud provider). Deprecated.|false|string|
 |providerID|ID of the node assigned by the cloud provider in the format: <ProviderName>://<ProviderSpecificNodeID>|false|string|
 |unschedulable|Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#manual-node-administration|false|boolean|
-|taints|If specified, the node's taints.|false|<<v1.Taint>> array|
 |===
 
 === v1.NodeStatus
@@ -12230,7 +12143,7 @@ PersistentVolumeClaimList is a list of PersistentVolumeClaim items.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|A list of persistent volume claims. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims|true|<<v1.PersistentVolumeClaim>> array|
 |===
 
@@ -12242,7 +12155,7 @@ PersistentVolumeClaimSpec describes the common attributes of storage devices and
 |===
 |Name|Description|Required|Schema|Default
 |accessModes|AccessModes contains the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1|false|<<v1.PersistentVolumeAccessMode>> array|
-|selector|A label query over volumes to consider for binding.|false|<<v1.LabelSelector>>|
+|selector|A label query over volumes to consider for binding.|false|<<unversioned.LabelSelector>>|
 |resources|Resources represents the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources|false|<<v1.ResourceRequirements>>|
 |volumeName|VolumeName is the binding reference to the PersistentVolume backing this claim.|false|string|
 |storageClassName|Name of the StorageClass required by the claim. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#class-1|false|string|
@@ -12280,7 +12193,7 @@ PersistentVolumeList is a list of PersistentVolume items.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|List of persistent volumes. More info: http://kubernetes.io/docs/user-guide/persistent-volumes|true|<<v1.PersistentVolume>> array|
 |===
 
@@ -12309,12 +12222,9 @@ PersistentVolumeSpec is the specification of a persistent volume.
 |quobyte|Quobyte represents a Quobyte mount on the host that shares a pod's lifetime|false|<<v1.QuobyteVolumeSource>>|
 |azureDisk|AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.|false|<<v1.AzureDiskVolumeSource>>|
 |photonPersistentDisk|PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine|false|<<v1.PhotonPersistentDiskVolumeSource>>|
-|portworxVolume|PortworxVolume represents a portworx volume attached and mounted on kubelets host machine|false|<<v1.PortworxVolumeSource>>|
-|scaleIO|ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.|false|<<v1.ScaleIOVolumeSource>>|
 |accessModes|AccessModes contains all ways the volume can be mounted. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes|false|<<v1.PersistentVolumeAccessMode>> array|
 |claimRef|ClaimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#binding|false|<<v1.ObjectReference>>|
 |persistentVolumeReclaimPolicy|What happens to a persistent volume when released from its claim. Valid options are Retain (default) and Recycle. Recycling must be supported by the volume plugin underlying this persistent volume. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#recycling-policy|false|string|
-|storageClassName|Name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass.|false|string|
 |===
 
 === v1.PersistentVolumeStatus
@@ -12354,40 +12264,6 @@ Pod is a collection of containers that can run on a host. This resource is creat
 |status|Most recently observed status of the pod. This data may not be up to date. Populated by the system. Read-only. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status|false|<<v1.PodStatus>>|
 |===
 
-=== v1.PodAffinity
-:hardbreaks:
-Pod affinity is a group of inter pod affinity scheduling rules.
-
-[options="header"]
-|===
-|Name|Description|Required|Schema|Default
-|requiredDuringSchedulingIgnoredDuringExecution|NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system will try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied. RequiredDuringSchedulingRequiredDuringExecution []PodAffinityTerm  `json:"requiredDuringSchedulingRequiredDuringExecution,omitempty"` If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.|false|<<v1.PodAffinityTerm>> array|
-|preferredDuringSchedulingIgnoredDuringExecution|The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding "weight" to the sum if the node has pods which matches the corresponding podAffinityTerm; the node(s) with the highest sum are the most preferred.|false|<<v1.WeightedPodAffinityTerm>> array|
-|===
-
-=== v1.PodAffinityTerm
-:hardbreaks:
-Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> tches that of any node on which a pod of the set of pods is running
-
-[options="header"]
-|===
-|Name|Description|Required|Schema|Default
-|labelSelector|A label query over a set of resources, in this case pods.|false|<<v1.LabelSelector>>|
-|namespaces|namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means "this pod's namespace"|false|string array|
-|topologyKey|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. For PreferredDuringScheduling pod anti-affinity, empty topologyKey is interpreted as "all topologies" ("all topologies" here means all the topologyKeys indicated by scheduler command-line argument --failure-domains); for affinity and for RequiredDuringScheduling pod anti-affinity, empty topologyKey is not allowed.|false|string|
-|===
-
-=== v1.PodAntiAffinity
-:hardbreaks:
-Pod anti affinity is a group of inter pod anti affinity scheduling rules.
-
-[options="header"]
-|===
-|Name|Description|Required|Schema|Default
-|requiredDuringSchedulingIgnoredDuringExecution|NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system will try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied. RequiredDuringSchedulingRequiredDuringExecution []PodAffinityTerm  `json:"requiredDuringSchedulingRequiredDuringExecution,omitempty"` If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.|false|<<v1.PodAffinityTerm>> array|
-|preferredDuringSchedulingIgnoredDuringExecution|The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding "weight" to the sum if the node has pods which matches the corresponding podAffinityTerm; the node(s) with the highest sum are the most preferred.|false|<<v1.WeightedPodAffinityTerm>> array|
-|===
-
 === v1.PodCondition
 :hardbreaks:
 PodCondition contains details for the current condition of this pod.
@@ -12412,7 +12288,7 @@ PodList is a list of Pods.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|List of pods. More info: http://kubernetes.io/docs/user-guide/pods|true|<<v1.Pod>> array|
 |===
 
@@ -12440,12 +12316,11 @@ PodSpec is a description of a pod.
 |===
 |Name|Description|Required|Schema|Default
 |volumes|List of volumes that can be mounted by containers belonging to the pod. More info: http://kubernetes.io/docs/user-guide/volumes|false|<<v1.Volume>> array|
-|initContainers|List of initialization containers belonging to the pod. Init containers are executed in order prior to containers being started. If any init container fails, the pod is considered to have failed and is handled according to its restartPolicy. The name for an init container or normal container must be unique among all containers. Init containers may not have Lifecycle actions, Readiness probes, or Liveness probes. The resourceRequirements of an init container are taken into account during scheduling by finding the highest request/limit for each resource type, and then using the max of of that value or the sum of the normal containers. Limits are applied to init containers in a similar fashion. Init containers cannot currently be added or removed. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/containers|false|<<v1.Container>> array|
 |containers|List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/containers|true|<<v1.Container>> array|
 |restartPolicy|Restart policy for all containers within the pod. One of Always, OnFailure, Never. Default to Always. More info: http://kubernetes.io/docs/user-guide/pod-states#restartpolicy|false|string|
 |terminationGracePeriodSeconds|Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.|false|integer (int64)|
 |activeDeadlineSeconds|Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.|false|integer (int64)|
-|dnsPolicy|Set DNS policy for containers within the pod. One of 'ClusterFirstWithHostNet', 'ClusterFirst' or 'Default'. Defaults to "ClusterFirst". To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'.|false|string|
+|dnsPolicy|Set DNS policy for containers within the pod. One of 'ClusterFirst' or 'Default'. Defaults to "ClusterFirst".|false|string|
 |nodeSelector|NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: http://kubernetes.io/docs/user-guide/node-selection/README|false|object|
 |serviceAccountName|ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md|false|string|
 |serviceAccount|DeprecatedServiceAccount is a depreciated alias for ServiceAccountName. Deprecated: Use serviceAccountName instead.|false|string|
@@ -12477,9 +12352,7 @@ PodStatus represents information about the status of a pod. Status may trail the
 |hostIP|IP address of the host to which the pod is assigned. Empty if not yet scheduled.|false|string|
 |podIP|IP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated.|false|string|
 |startTime|RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod.|false|string|
-|initContainerStatuses|The list has one entry per init container in the manifest. The most recent successful init container will have ready = true, the most recently started container will have startTime set. More info: http://kubernetes.io/docs/user-guide/pod-states#container-statuses|false|<<v1.ContainerStatus>> array|
 |containerStatuses|The list has one entry per container in the manifest. Each entry is currently the output of `docker inspect`. More info: http://kubernetes.io/docs/user-guide/pod-states#container-statuses|false|<<v1.ContainerStatus>> array|
-|qosClass|The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https://github.com/kubernetes/kubernetes/blob/master/docs/design/resource-qos.md|false|string|
 |===
 
 === v1.PodTemplate
@@ -12504,7 +12377,7 @@ PodTemplateList is a list of PodTemplates.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|List of pod templates|true|<<v1.PodTemplate>> array|
 |===
 
@@ -12517,18 +12390,6 @@ PodTemplateSpec describes the data a pod should have when created from a templat
 |Name|Description|Required|Schema|Default
 |metadata|Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata|false|<<v1.ObjectMeta>>|
 |spec|Specification of the desired behavior of the pod. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status|false|<<v1.PodSpec>>|
-|===
-
-=== v1.PortworxVolumeSource
-:hardbreaks:
-PortworxVolumeSource represents a Portworx volume resource.
-
-[options="header"]
-|===
-|Name|Description|Required|Schema|Default
-|volumeID|VolumeID uniquely identifies a Portworx volume|true|string|
-|fsType|FSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs". Implicitly inferred to be "ext4" if unspecified.|false|string|
-|readOnly|Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.|false|boolean|
 |===
 
 === v1.Preconditions
@@ -12648,7 +12509,7 @@ ReplicationControllerList is a collection of replication controllers.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|List of replication controllers. More info: http://kubernetes.io/docs/user-guide/replication-controller|true|<<v1.ReplicationController>> array|
 |===
 
@@ -12715,7 +12576,7 @@ ResourceQuotaList is a list of ResourceQuota items.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|Items is a list of ResourceQuota objects. More info: http://releases.k8s.io/HEAD/docs/design/admission_control_resource_quota.md#admissioncontrol-plugin-resourcequota|true|<<v1.ResourceQuota>> array|
 |===
 
@@ -12804,25 +12665,6 @@ Scale represents a scaling request for a resource.
 |status|current status of the scale. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status. Read-only.|false|<<v1.ScaleStatus>>|
 |===
 
-=== v1.ScaleIOVolumeSource
-:hardbreaks:
-ScaleIOVolumeSource represents a persistent ScaleIO volume
-
-[options="header"]
-|===
-|Name|Description|Required|Schema|Default
-|gateway|The host address of the ScaleIO API Gateway.|true|string|
-|system|The name of the storage system as configured in ScaleIO.|true|string|
-|secretRef|SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.|true|<<v1.LocalObjectReference>>|
-|sslEnabled|Flag to enable/disable SSL communication with Gateway, default false|false|boolean|
-|protectionDomain|The name of the Protection Domain for the configured storage (defaults to "default").|false|string|
-|storagePool|The Storage Pool associated with the protection domain (defaults to "default").|false|string|
-|storageMode|Indicates whether the storage for a volume should be thick or thin (defaults to "thin").|false|string|
-|volumeName|The name of a volume already created in the ScaleIO system that is associated with this volume source.|false|string|
-|fsType|Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.|false|string|
-|readOnly|Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.|false|boolean|
-|===
-
 === v1.ScaleSpec
 :hardbreaks:
 ScaleSpec describes the attributes of a scale subresource.
@@ -12893,22 +12735,8 @@ SecretList is a list of Secret.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|Items is a list of secret objects. More info: http://kubernetes.io/docs/user-guide/secrets|true|<<v1.Secret>> array|
-|===
-
-=== v1.SecretProjection
-:hardbreaks:
-Adapts a secret into a projected volume.
-
-The contents of the target Secret's Data field will be presented in a projected volume as files using the keys in the Data field as the file names. Note that this is identical to a secret volume source without the default mode.
-
-[options="header"]
-|===
-|Name|Description|Required|Schema|Default
-|name|Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names|false|string|
-|items|If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.|false|<<v1.KeyToPath>> array|
-|optional|Specify whether the Secret or its key must be defined|false|boolean|
 |===
 
 === v1.SecretVolumeSource
@@ -12921,7 +12749,7 @@ The contents of the target Secret's Data field will be presented in a volume as 
 |===
 |Name|Description|Required|Schema|Default
 |secretName|Name of the secret in the pod's namespace to use. More info: http://kubernetes.io/docs/user-guide/volumes#secrets|false|string|
-|items|If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.|false|<<v1.KeyToPath>> array|
+|items|If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error. Paths must be relative and may not contain the '..' path or start with '..'.|false|<<v1.KeyToPath>> array|
 |defaultMode|Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.|false|integer (int32)|
 |optional|Specify whether the Secret or it's keys must be defined|false|boolean|
 |===
@@ -12981,7 +12809,7 @@ SecurityContextConstraintsList is a list of SecurityContextConstraints objects
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata|false|<<v1.ListMeta>>|
+|metadata|More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata|false|<<unversioned.ListMeta>>|
 |items|List of security context constraints.|true|<<v1.SecurityContextConstraints>> array|
 |===
 
@@ -13011,7 +12839,6 @@ ServiceAccount binds together: * a name, understood by users, and perhaps by per
 |metadata|Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata|false|<<v1.ObjectMeta>>|
 |secrets|Secrets is the list of secrets allowed to be used by pods running using this ServiceAccount. More info: http://kubernetes.io/docs/user-guide/secrets|false|<<v1.ObjectReference>> array|
 |imagePullSecrets|ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: http://kubernetes.io/docs/user-guide/secrets#manually-specifying-an-imagepullsecret|false|<<v1.LocalObjectReference>> array|
-|automountServiceAccountToken|AutomountServiceAccountToken indicates whether pods running as this service account should have an API token automatically mounted. Can be overridden at the pod level.|false|boolean|
 |===
 
 === v1.ServiceAccountList
@@ -13023,7 +12850,7 @@ ServiceAccountList is a list of ServiceAccount objects
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|List of ServiceAccounts. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md#service-accounts|true|<<v1.ServiceAccount>> array|
 |===
 
@@ -13036,7 +12863,7 @@ ServiceList holds a list of services.
 |Name|Description|Required|Schema|Default
 |kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
 |apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
-|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<v1.ListMeta>>|
+|metadata|Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|<<unversioned.ListMeta>>|
 |items|List of services|true|<<v1.Service>> array|
 |===
 
@@ -13061,7 +12888,7 @@ ServiceSpec describes the attributes that a user creates on a service.
 [options="header"]
 |===
 |Name|Description|Required|Schema|Default
-|ports|The list of ports that are exposed by this service. More info: http://kubernetes.io/docs/user-guide/services#virtual-ips-and-service-proxies|false|<<v1.ServicePort>> array|
+|ports|The list of ports that are exposed by this service. More info: http://kubernetes.io/docs/user-guide/services#virtual-ips-and-service-proxies|true|<<v1.ServicePort>> array|
 |selector|Route service traffic to pods with label keys and values matching this selector. If empty or not present, the service is assumed to have an external process managing its endpoints, which Kubernetes will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored if type is ExternalName. More info: http://kubernetes.io/docs/user-guide/services#overview|false|object|
 |clusterIP|clusterIP is the IP address of the service and is usually assigned randomly by the master. If an address is specified manually and is not in use by others, it will be allocated to the service; otherwise, creation of the service will fail. This field can not be changed through updates. Valid values are "None", empty string (""), or a valid IP address. "None" can be specified for headless services when proxying is not required. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored if type is ExternalName. More info: http://kubernetes.io/docs/user-guide/services#virtual-ips-and-service-proxies|false|string|
 |type|type determines how the Service is exposed. Defaults to ClusterIP. Valid options are ExternalName, ClusterIP, NodePort, and LoadBalancer. "ExternalName" maps to the specified externalName. "ClusterIP" allocates a cluster-internal IP address for load-balancing to endpoints. Endpoints are determined by the selector or if that is not specified, by manual construction of an Endpoints object. If clusterIP is "None", no virtual IP is allocated and the endpoints are published as a set of endpoints rather than a stable IP. "NodePort" builds on ClusterIP and allocates a port on every node which routes to the clusterIP. "LoadBalancer" builds on NodePort and creates an external load-balancer (if supported in the current cloud) which routes to the clusterIP. More info: http://kubernetes.io/docs/user-guide/services#overview|false|string|
@@ -13210,9 +13037,6 @@ Volume represents a named volume in a pod that may be accessed by any container 
 |quobyte|Quobyte represents a Quobyte mount on the host that shares a pod's lifetime|false|<<v1.QuobyteVolumeSource>>|
 |azureDisk|AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.|false|<<v1.AzureDiskVolumeSource>>|
 |photonPersistentDisk|PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine|false|<<v1.PhotonPersistentDiskVolumeSource>>|
-|projected|Items for all in one resources secrets, configmaps, and downward API|false|<<v1.ProjectedVolumeSource>>|
-|portworxVolume|PortworxVolume represents a portworx volume attached and mounted on kubelets host machine|false|<<v1.PortworxVolumeSource>>|
-|scaleIO|ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.|false|<<v1.ScaleIOVolumeSource>>|
 |metadata|Metadata represents metadata about the pod that should populate this volume Deprecated: Use downwardAPI instead.|false|<<v1.DeprecatedDownwardAPIVolumeSource>>|
 |===
 
@@ -13252,23 +13076,17 @@ Represents a vSphere volume resource.
 |fsType|Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.|false|string|
 |===
 
-=== v1.WatchEvent
-[options="header"]
-|===
-|Name|Description|Required|Schema|Default
-|type||true|string|
-|object||true|string|
-|===
-
-=== v1.WeightedPodAffinityTerm
+=== v1beta1.Eviction
 :hardbreaks:
 The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
 [options="header"]
 |===
 |Name|Description|Required|Schema|Default
-|weight|weight associated with matching the corresponding podAffinityTerm, in the range 1-100.|true|integer (int32)|
-|podAffinityTerm|Required. A pod affinity term, associated with the corresponding weight.|true|<<v1.PodAffinityTerm>>|
+|kind|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds|false|string|
+|apiVersion|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources|false|string|
+|metadata|ObjectMeta describes the pod that is being evicted.|false|<<v1.ObjectMeta>>|
+|deleteOptions|DeleteOptions may be provided|false|<<v1.DeleteOptions>>|
 |===
 
 === v1beta1.Eviction
@@ -13283,4 +13101,3 @@ Eviction evicts a pod from its node subject to certain policies and safety const
 |metadata|ObjectMeta describes the pod that is being evicted.|false|<<v1.ObjectMeta>>|
 |deleteOptions|DeleteOptions may be provided|false|<<v1.DeleteOptions>>|
 |===
-

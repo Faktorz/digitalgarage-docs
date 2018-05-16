@@ -22,7 +22,35 @@ https://github.com/ç/mongodb-container/tree/master/2.4[2.4], https://github.com
 
 == Images
 
-The Digital Garage uses the base CentOS 7 image for the Mongo DB images.
+ifdef::openshift-online[]
+RHEL 7 images are available through the Red Hat Registry:
+
+----
+$ docker pull registry.access.redhat.com/openshift3/mongodb-24-rhel7
+$ docker pull registry.access.redhat.com/rhscl/mongodb-26-rhel7
+$ docker pull registry.access.redhat.com/rhscl/mongodb-32-rhel7
+----
+
+You can use these images through the `mongodb` image stream.
+endif::[]
+
+ifndef::openshift-online[]
+These images come in two flavors, depending on your needs:
+
+* RHEL 7
+* CentOS 7
+
+*RHEL 7 Based Images*
+
+The RHEL 7 images are available through the Red Hat Registry:
+
+----
+$ docker pull registry.access.redhat.com/openshift3/mongodb-24-rhel7
+$ docker pull registry.access.redhat.com/rhscl/mongodb-26-rhel7
+$ docker pull registry.access.redhat.com/rhscl/mongodb-32-rhel7
+----
+
+*CentOS 7 Based Images*
 
 These images are available on Docker Hub:
 
@@ -39,6 +67,7 @@ either in your Docker registry or at the external location. Your {product-title}
 resources can then reference the ImageStream. You can find
 https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example]
 ImageStream definitions for all the provided {product-title} images.
+endif::[]
 
 == Configuration and Usage
 
@@ -65,6 +94,9 @@ ifdef::openshift-enterprise,openshift-dedicated[]
 endif::[]
 ifdef::openshift-origin[]
     thedigitalgarage/mongodb-26-centos7
+endif::[]
+ifdef::openshift-online[]
+    mongodb:2.6
 endif::[]
 ifdef::openshift-online[]
     mongodb:2.6

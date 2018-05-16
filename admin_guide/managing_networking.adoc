@@ -291,16 +291,6 @@ different, and the egress network policy may not be enforced as expected. In the
 above example, suppose `www.foo.com` resolved to `10.11.12.13` and has a DNS TTL
 of one minute, but was later changed to `20.21.22.23`. {product-title} will then
 take up to one minute to adapt to these changes.
-+
-[NOTE]
-====
-The egress firewall always allows pods access to the external interface of the
-node the pod is on for DNS resolution. If your DNS resolution is not handled by
-something on the local node, then you will need to add egress firewall rules
-allowing access to the DNS server's IP addresses if you are using domain names
-in your pods. The xref:../install_config/install/quick_install.adoc#install-config-install-quick-install[default installer]
-sets up a local dnsmasq, so if you are using that setup you will not need to add extra rules.
-====
 
 . Use the JSON file to create an EgressNetworkPolicy object:
 +
@@ -813,55 +803,22 @@ $ oc create -f <replication_controller>.json
 oc describe rc <replication_controller>
 ----
 
-[[admin-guide-limit-pod-access-iptables]]
-=== Using iptables Rules to Limit Access to External Resources
-
-Some cluster administrators may want to perform actions on outgoing
-traffic that do not fit within the model of `EgressNetworkPolicy` or the
-egress router. In some cases, this can be done by creating iptables
-rules directly.
-
-For example, you could create rules that log traffic to particular
-destinations, or to prevent more than a certain number of outgoing
-connections per second.
-
-{product-title} does not provide a way to add custom iptables rules
-automatically, but it does provide a place where such rules can be
-added manually by the administrator. Each node, on startup, will
-create an empty chain called `OPENSHIFT-ADMIN-OUTPUT-RULES` in the
-`filter` table (assuming that the chain does not already exist). Any
-rules added to that chain by an administrator will be applied to all
-traffic going from a pod to a destination outside the cluster (and not
-to any other traffic).
-
-There are a few things to watch out for when using this functionality:
-
-. It is up to you to ensure that rules get created on each node;
-{product-title} does not provide any way to make that happen
-automatically.
-
-. The rules are not applied to traffic that exits the cluster via an
-egress router, and they run after `EgressNetworkPolicy` rules are applied
-(and so will not see traffic that is denied by an
-`EgressNetworkPolicy`).
-
-. The handling of connections from pods to nodes or pods to the master
-is complicated, because nodes have both "external" IP addresses and
-"internal" SDN IP addresses. Thus, some pod-to-node/master traffic may
-pass through this chain, but other pod-to-node/master traffic may
-bypass it.
-
-endif::openshift-origin,openshift-enterprise[]
-
-
-ifdef::openshift-origin,openshift-enterprise[]
 [[admin-guide-networking-multicast]]
 == Enabling Multicast
 
 [IMPORTANT]
 ====
-At this time, multicast is best used for low bandwidth coordination or service
-discovery and not a high-bandwidth solution.
+Enabling multicast networking is a Technology Preview feature only.
+ifdef::openshift-enterprise[]
+Technology Preview features are not supported with Red Hat production service
+level agreements (SLAs), might not be functionally complete, and Red Hat does
+not recommend to use them for production. These features provide early access to
+upcoming product features, enabling customers to test functionality and provide
+feedback during the development process.
+
+For more information on Red Hat Technology Preview features support scope, see
+https://access.redhat.com/support/offerings/techpreview/.
+endif::[]
 ====
 
 Multicast traffic between {product-title} pods is disabled by default. You can
@@ -913,6 +870,18 @@ For more information on Red Hat Technology Preview features support scope, see
 https://access.redhat.com/support/offerings/techpreview/.
 endif::[]
 ====
+Enabling the Kubernetes `NetworkPolicy` is a Technology Preview feature only.
+ifdef::openshift-enterprise[]
+Technology Preview features are not supported with Red Hat production service
+level agreements (SLAs), might not be functionally complete, and Red Hat does
+not recommend to use them for production. These features provide early access to
+upcoming product features, enabling customers to test functionality and provide
+feedback during the development process.
+
+For more information on Red Hat Technology Preview features support scope, see
+https://access.redhat.com/support/offerings/techpreview/.
+endif::[]
+====
 
 Kubernetes `NetworkPolicy` is not currently fully supported by {product-title},
 and the *ovs-subnet* and *ovs-multitenant* plug-ins ignore `NetworkPolicy`
@@ -926,4 +895,16 @@ can then use these lists to determine which sites to only talk to over HTTPS,
 even before they have interacted with the site. Without `preload` set, they need
 to have talked to the site over HTTPS to get the header.
 
-endif::openshift-origin,openshift-enterprise[]
+Kubernetes `NetworkPolicy` is not currently fully supported by {product-title},
+and the *ovs-subnet* and *ovs-multitenant* plug-ins ignore `NetworkPolicy`
+objects. However, a Technology Preview of `NetworkPolicy` support is available by
+using the *ovs-networkpolicy* plug-in.
+
+In a cluster
+xref:../install_config/configuring_sdn.adoc#install-config-configuring-sdn[configured
+to use the *ovs-networkpolicy* plug-in], network isolation is controlled
+entirely by `NetworkPolicy` objects and the link:https://github.com/kubernetes/community/blob/master/contributors/design-proposals/network-policy.md[associated Namespace annotation]. In particular, by default, all projects are able to access pods
+in all other projects. The project to be isolated must first be configured to
+opt in to isolation by setting the proper annotation on its Namespace object,
+and then creating `NetworkPolicy` objects indicating the incoming connections to
+be allowed.

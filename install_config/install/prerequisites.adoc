@@ -40,7 +40,7 @@ information.
 
 [IMPORTANT]
 ====
-{product-title} 3.7 requires Docker 1.12.
+{product-title} 3.5 requires Docker 1.12.
 ====
 endif::[]
 
@@ -57,11 +57,13 @@ a|- Physical or virtual system, or an instance running on a public or private Ia
 ifdef::openshift-origin[]
 - Base OS: Fedora 21, CentOS 7.3, or RHEL 7.3 with the "Minimal" installation
 option and the latest packages from the Extras channel, or RHEL Atomic Host
-7.4.2 or later.
+7.3.2 or later. RHEL 7.2 is also supported using Docker 1.12 and its
+dependencies.
 endif::[]
 ifdef::openshift-enterprise[]
-- Base OS: RHEL 7.3 or 7.4 with the "Minimal" installation option and the latest
-packages from the Extras channel, or RHEL Atomic Host 7.4.2 or later.
+- Base OS: RHEL 7.3 with the "Minimal" installation option and the latest packages
+from the Extras channel, or RHEL Atomic Host 7.3.2 or later. RHEL 7.2 is also
+supported using Docker 1.12 and its dependencies.
 endif::[]
 - 2 vCPU.
 - Minimum 8 GB RAM.
@@ -70,8 +72,8 @@ endif::[]
 |xref:../../architecture/infrastructure_components/kubernetes_infrastructure.adoc#node[Nodes]
 a| - Physical or virtual system, or an instance running on a public or private IaaS.
 ifdef::openshift-origin[]
-* Base OS: Fedora 21, CentOS 7.3 or 7.4, RHEL 7.3 or 7.4 with "Minimal"
-installation option, or RHEL Atomic Host 7.4.2 or later.
+* Base OS: Fedora 21, CentOS 7.3, or RHEL 7.3 or later with "Minimal"
+installation option, or RHEL Atomic Host 7.3.2 or later. RHEL 7.2 is also supported using Docker 1.12 and its dependencies.
 endif::[]
 ifdef::openshift-enterprise[]
 * Base OS: RHEL 7.3 or 7.4 with "Minimal" installation option, or RHEL Atomic
@@ -85,7 +87,7 @@ endif::[]
 * Minimum 1 GB hard disk space for the file system containing the system's temporary directory. image:redcircle-2.png[]
 * An additional minimum 15 GB unallocated space to be used for Docker's storage
 back end; see xref:../../install_config/install/host_preparation.adoc#configuring-docker-storage[Configuring
-Docker Storage].
+Docker Storage] below.
 
 |External etcd Nodes
 a|* Minimum 20 GB hard disk space for etcd data.
@@ -628,7 +630,7 @@ endif::[]
 
 |*Node Security Group*
 a|- tcp/10250 from masters
-- tcp/4789 from nodes
+- udp/4789 from nodes
 
 |*Infrastructure Nodes*
 (ones that can host the OpenShift router)

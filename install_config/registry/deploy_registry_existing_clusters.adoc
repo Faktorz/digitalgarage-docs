@@ -89,8 +89,24 @@ Use the `oadm registry` command to deploy the registry as a `DaemonSet` with the
 Daemonsets ensure that when nodes are created, they contain copies of a
 specified pod. When the nodes are removed, the pods are garbage collected.
 
-For more information on `DaemonSets`, see
-xref:../../dev_guide/daemonsets.adoc#dev-guide-daemonsets[Using Daemonsets].
+For more information on DaemonSets, see the
+link:http://kubernetes.io/docs/admin/daemons/[DaemonSet documentation].
+
+[IMPORTANT]
+====
+Using daemonsets is a Technology Preview feature only.
+ifdef::openshift-enterprise[]
+Technology Preview features are not
+supported with Red Hat production service level agreements (SLAs), might not be
+functionally complete, and Red Hat does not recommend to use them for
+production. These features provide early access to upcoming product features,
+enabling customers to test functionality and provide feedback during the
+development process.
+
+For more information on Red Hat Technology Preview features support scope, see
+https://access.redhat.com/support/offerings/techpreview/.
+endif::[]
+====
 
 ifdef::openshift-enterprise,openshift-origin[]
 [[registry-compute-resource]]
@@ -114,6 +130,8 @@ endif::openshift-enterprise,openshift-origin[]
 The registry stores container images and metadata. If you simply deploy a pod with
 the registry, it uses an ephemeral volume that is destroyed if the pod exits.
 Any images anyone has built or pushed into the registry would disappear.
+
+include::install_config/registry/extended_registry_configuration.adoc[tag=registry-storage-drivers]
 
 ifdef::atomic-registry[]
 [IMPORTANT]
@@ -311,7 +329,7 @@ ifdef::openshift-origin[]
 . Install template in the default namespace
 +
 ----
-oc create -n default -f https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v1.3/infrastructure-templates/origin/registry-console.yaml
+oc create -n default -f https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_hosted_templates/files/v1.5/origin/registry-console.yaml
 ----
 +
 endif::[]

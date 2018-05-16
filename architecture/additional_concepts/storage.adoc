@@ -168,8 +168,7 @@ spec:
       mountPath: /scrub
 ----
 <1> However, the particular `server` and `path` values specified in the custom recycler pod template in the `volumes` part is replaced with the particular corresponding values from the PV that is being recycled.
-
-endif::[]
+====
 
 [[persistent-volumes]]
 

@@ -43,8 +43,7 @@ database:
 You can define a service either by providing an IP address and endpoints, or
 by providing a Fully qualified domain name (FQDN).
 
-[[mysql-define-service-using-ip-address]]
-==== Using an IP address
+==== Using an IP address and Endpoints
 
 . Create an
 xref:../architecture/core_concepts/pods_and_services.adoc#services[{product-title}
@@ -146,6 +145,27 @@ record telling the client to look up the returned name to get the IP address.
 
 === Step 2: Consume a Service
 
+==== Using FQDN
+Use an `ExternalName` service without defining any ports or endpoints.
+
+====
+
+----
+  kind: "Service"
+  apiVersion: "v1"
+  metadata:
+    name: "external-mysql-service"
+  spec:
+    type: ExternalName
+    externalName: example.domain.name
+  selector: {} <1>
+----
+
+<1> The `selector` field to leave blank.
+
+====
+
+=== Step 2: Consume a Service
 . Now that the service and endpoints are defined, give the appropriate pods
 access to the credentials to use the service by setting environment variables in
 the appropriate containers:
@@ -236,6 +256,8 @@ solution are:
 
 The following steps outline a scenario for integrating with an external SaaS
 provider:
+
+==== Using an IP address and Endpoints
 
 . Create an
 xref:../architecture/core_concepts/pods_and_services.adoc#services[{product-title}
@@ -344,6 +366,26 @@ use the service by setting environment variables in the appropriate containers:
 
 +
 These variables get added to the containers as environment variables. Using environment variables allows service-to-service communication and it may or may not require additional parameters such as API keys, user name and password authentication, or certificates.
+
+==== Using FQDN
+Use an `ExternalName` service without defining any ports or endpoints.
+
+====
+
+----
+  kind: "Service"
+  apiVersion: "v1"
+  metadata:
+    name: "external-mysql-service"
+  spec:
+    type: ExternalName
+    externalName: example.domain.name
+  selector: {} <1>
+----
+
+<1> The `selector` field to leave blank.
+
+====
 
 *External SaaS Provider Environment Variables*
 

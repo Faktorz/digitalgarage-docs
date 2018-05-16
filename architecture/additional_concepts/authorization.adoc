@@ -461,9 +461,9 @@ like the cluster roles granted to the *cluster-admin* or *system:admin*.
 Cluster roles are xref:roles[roles] defined at the cluster level, but can be bound either at
 the cluster level or at the project level.
 ====
-endif::openshift-origin,openshift-enterprise,openshift-dedicated[]
+
 ifdef::openshift-enterprise,openshift-origin[]
-xref:../../admin_guide/manage_rbac.adoc#creating-local-role[Learn
+xref:../../admin_guide/manage_authorization_policy.adoc#manage-authorization-policy-creating-local-role[Learn
 how to create a local role for a project].
 endif::[]
 
@@ -851,25 +851,25 @@ These examples are in the context of a strategy using the preallocated values.
 
 *A FSGroup SCC Strategy of MustRunAs*
 
-If the pod defines a `fsGroup` ID, then that ID must equal the default
-`fsGroup` ID. Otherwise, the pod is not validated by that SCC and the next SCC
+If the pod defines a `*fsGroup*` ID, then that ID must equal the default
+`*fsGroup*` ID. Otherwise, the pod is not validated by that SCC and the next SCC
 is evaluated.
 
-If the `SecurityContextConstraints.fsGroup` field has value *RunAsAny*
-and the pod specification omits the `Pod.spec.securityContext.fsGroup`,
+If the `*SecurityContextConstraints.fsGroup*` field has value *RunAsAny*
+and the pod specification omits the `*Pod.spec.securityContext.fsGroup*`,
 then this field is considered valid. Note that it is possible that during
 validation, other SCC settings will reject other pod fields and thus cause the
 pod to fail.
 
 *A SupplementalGroups SCC Strategy of MustRunAs*
 
-If the pod specification defines one or more `supplementalGroups` IDs, then
+If the pod specification defines one or more `*supplementalGroups*` IDs, then
 the pod's IDs must equal one of the IDs in the namespace's
 *openshift.io/sa.scc.supplemental-groups* annotation. Otherwise, the pod is not
 validated by that SCC and the next SCC is evaluated.
 
-If the `SecurityContextConstraints.supplementalGroups` field has value *RunAsAny*
-and the pod specification omits the `Pod.spec.securityContext.supplementalGroups`,
+If the `*SecurityContextConstraints.supplementalGroups*` field has value *RunAsAny*
+and the pod specification omits the `*Pod.spec.securityContext.supplementalGroups*`,
 then this field is considered valid. Note that it is possible that during
 validation, other SCC settings will reject other pod fields and thus cause the
 pod to fail.
@@ -967,5 +967,24 @@ See xref:../../dev_guide/projects.adoc#project-collaboration-in-online-pro[Proje
 Collaboration in {product-title} Pro] for information on adding and removing
 collaborators.
 
-In {product-title} Starter, collaboration is not available.
-endif::openshift-online[]
+----
+$ oc policy can-i --list
+----
+
+The output will provide a full list.
+
+To determine if you can perform specific xref:action[verbs], run:
+
+----
+$ oc policy can-i <verb> <resource>
+----
+
+ifdef::openshift-enterprise,openshift-origin[]
+xref:../../admin_guide/scoped_tokens.adoc#admin-guide-scoped-tokens-user-scopes[User
+scopes] can provide more information about a given scope. For example:
+
+----
+$ oc policy can-i <verb> <resource> --scopes=user:info
+----
+
+endif::[]

@@ -374,6 +374,12 @@ endif::[]
 == What's Next?
 
 The following sections provide some next steps now that you have finished your
+initial walkthrough of {product-title}.
+
+[[btb-other-quickstarts]]
+=== Other Quickstarts
+
+{product-title} provides out of the box a set of
 xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[languages] and
 xref:../using_images/db_images/index.adoc#using-images-db-images-index[databases] for developers with
 corresponding implementations and tutorials that allow you to kickstart your

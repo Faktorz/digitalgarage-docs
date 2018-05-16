@@ -35,27 +35,97 @@ After the heading block and a single whitespace line, you can include any conten
 The topic title, which is the first line of the document, is the only level 1 ( = ) title. Section headers within the topic must be level 2 ( == ) or lower.
 ====
 
-If using section anchors, they must be all lowercase letters, with no line spaces between the anchor and the section title:
+*All titles must have a unique (within the OpenShift docs suite) section anchor*, and this anchor must be all lowercase letters, with no line spaces between the anchor and the section title:
 
 ----
 [[section-anchor-name]]
 === Section Title
 ----
 
-== Titles, headings, and filenames
-There are some general guidelines and conventions we follow for titles, headings, and topic filenames. These are described in the following table.
+== Topic File Names
 
-[cols="4,5,8",options="header"]
-|===
+Try to shorten the topic file name as much as possible _without_ abbreviating
+important terms that may cause confusion. For example, the
+`managing_authorization_policies.adoc` file name would be appropriate for a
+topic titled "Managing Authorization Policies".
 
-| |Example |Description
+== Topic Titles and Section Headings
 
-.^|Topic filenames
-.^|manage_authorization_policies.adoc
-|Try to shorten the topic filename as much as possible WITHOUT abbreviating important terms that may cause confusion. In this example, this topic filename would be appropriate for a topic titled Managing Authorization Policies.
-.^|Topic / section titles
-.^|Managing Authorization Policies
-|Try to be as descriptive as possible with the topic title or section headings without making them unnecessarily too long. Most importantly, we use title case in all topic titles and section headings. See http://titlecase.com/ for more information.
+Use title case in all topic titles and section headings. See
+http://titlecase.com/ for more information.
+
+Try to be as descriptive as possible with the topic title or section headings
+without making them unnecessarily too long. Use a verb form in headings. Some
+suggestions:
+
+* Creating
+* Managing
+* Using
+* Understanding
+
+Use "Overview" as a heading sparingly. Choose a more descriptive heading
+instead.
+
+=== Unique IDs
+
+The content in this repo is used to build docs that publish to multiple
+locations (e.g., docs.openshift.com, docs.openshift.org, and the Red Hat
+Customer Portal). While heading IDs will be created automatically from any
+section titles (e.g., "Managing Authorization Policies" would generate an ID of
+`managing-authorization-policies`, which would act as an anchor reference), we
+should not rely on this automatic generation because the IDs need to be unique
+across all topics in the repo. This is mainly to avoid build failures for the
+Customer Portal docs, due to ID collision.
+
+Therefore, always add a unique ID manually, and check the repo to make sure that
+it is unique and not already in use (for example, check with `CTRL+F` to search
+the repo if using Atom).
+
+Manual IDs use the following syntax:
+
+----
+[[managing-authorization-policies]]
+== Managing Authorization Policies
+----
+
+=== Discrete Headings
+
+If you have a section heading that you do not want to appear in the TOC (like if you think that some section is not worth showing up or if there are already too many nested levels), you can use a discrete (or floating) heading:
+
+http://asciidoctor.org/docs/user-manual/#discrete-or-floating-section-titles
+
+A discrete heading also will not get a section number in the Customer Portal
+build of hte doc. Previously, we would use plain bold mark-up around a heading
+like this, but discrete headings also allow you to ignore section nesting rules
+(like jumping from a `==` section level to a `====` level if you wanted for some
+style reason).
+
+To use a discrete heading, just add `[discrete]` to the line before your unique
+ID. For example:
+
+----
+[discrete]
+[[managing-authorization-policies]]
+== Managing Authorization Policies
+----
+
+== Product Name & Version Attributes
+
+When possible, generalize references to the product name and/or version using
+the `{product-title}` and/or `{product-version}` attributes. These attributes
+are pulled from distro mapping definitions in the
+https://github.com/openshift/openshift-docs/blob/master/_distro_map.yml[distro_map.yml]
+file.
+
+The `{product-title}` comes from the first `name:` field in a distro mapping,
+while the associated `{product-version}` comes from the `name:` fields on any
+`branches:` defined.
+
+How these attributes render is dependent on which distro and branch build you
+are viewing. The following table shows the current slate of distros and the
+possible values for `{product-title}` and `{product-version}`.
+
+[options="header"]
 |===
 
 
