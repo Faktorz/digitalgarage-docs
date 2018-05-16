@@ -23,7 +23,7 @@
 ---
 Name: About
 Dir: welcome
-Distros: openshift-*,digital-garage
+Distros: openshift-*,digital-garage,faktorz
 Topics:
 - Name: Welcome
   File: index
@@ -80,7 +80,7 @@ Topics:
 ---
 Name: Getting Started
 Dir: getting_started
-Distros: openshift-*,digital-garage
+Distros: openshift-*,digital-garage,faktorz
 Topics:
 - Name: Overview
   File: index
@@ -89,16 +89,16 @@ Topics:
   Distros: openshift-online
 - Name: Basic Walkthrough
   File: basic_walkthrough
-  Distros: openshift-online,digital-garage
+  Distros: openshift-online,digital-garage,faktorz
 - Name: Beyond the Basics
   File: beyond_the_basics
-  Distros: openshift-online,digital-garage
+  Distros: openshift-online,digital-garage,faktorz
 - Name: Web Console Walkthrough
   File: developers_console
-  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage
+  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage,faktorz
 - Name: Command-Line Walkthrough
   File: developers_cli
-  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage
+  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage,faktorz
 - Name: Setting Up a Cluster
   File: administrators
   Distros: openshift-origin,openshift-enterprise
@@ -140,42 +140,42 @@ Topics:
   Topics:
   - Name: Kubernetes Infrastructure
     File: kubernetes_infrastructure
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Image Registry
     File: image_registry
   - Name: Web Console
     File: web_console
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
 - Name: Core Concepts
   Dir: core_concepts
   Topics:
   - Name: Overview
     File: index
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Containers and Images
     File: containers_and_images
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Images
     File: containers_and_images
     Distros: atomic-*
   - Name: Pods and Services
     File: pods_and_services
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Projects and Users
     File: projects_and_users
   - Name: Builds and Image Streams
     File: builds_and_image_streams
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Image Streams
     File: builds_and_image_streams
     Distros: atomic-*
   - Name: Deployments
     File: deployments
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Templates
     File: templates
     Alias: dev_guide/templates
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
 - Name: Additional Concepts
   Dir: additional_concepts
   Topics:
@@ -185,10 +185,10 @@ Topics:
     File: authorization
   - Name: Persistent Storage
     File: storage
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Source Control Management
     File: scm
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Admission Controllers
     File: admission_controllers
     Distros: openshift-enterprise,openshift-origin,openshift-dedicated
@@ -199,25 +199,25 @@ Topics:
   Topics:
   - Name: Networking
     File: networking
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: OpenShift SDN
     File: sdn
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Network Plug-ins
     File: network_plugins
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Port Forwarding
     File: port_forwarding
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Remote Commands
     File: remote_commands
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: HAProxy Router Plug-in
     File: haproxy-router
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
   - Name: Routes
     File: routes
-    Distros: openshift-*,digital-garage
+    Distros: openshift-*,digital-garage,faktorz
 - Name: Service Catalog Components
   Dir: service_catalog
   Distros: openshift-enterprise,openshift-origin
@@ -550,7 +550,7 @@ Topics:
   Distros: openshift-origin,openshift-enterprise
 - Name: Managing Security Context Constraints
   File: manage_scc
-  Distros: openshift-*,digital-garage
+  Distros: openshift-*,digital-garage,faktorz
 - Name: Scheduler
   File: scheduler
   Distros: openshift-origin,openshift-enterprise
@@ -618,7 +618,7 @@ Topics:
 ---
 Name: CLI Reference
 Dir: cli_reference
-Distros: openshift-*,atomic-*,digital-garage
+Distros: openshift-*,atomic-*,digital-garage,faktorz
 Topics:
 - Name: Overview
   File: index
@@ -628,7 +628,7 @@ Topics:
   File: manage_cli_profiles
 - Name: Developer CLI Operations
   File: basic_cli_operations
-  Distros: openshift-*,digital-garage
+  Distros: openshift-*,digital-garage,faktorz
 - Name: Administrator CLI Operations
   File: admin_cli_operations
   Distros: openshift-enterprise,openshift-dedicated,openshift-origin
@@ -638,7 +638,7 @@ Topics:
 ---
 Name: Developer Guide
 Dir: dev_guide
-Distros: openshift-*,digital-garage
+Distros: openshift-*,digital-garage,faktorz
 Topics:
 - Name: Overview
   File: index
@@ -766,10 +766,10 @@ Topics:
   File: persistent_volumes
 - Name: Storage Classes
   File: storage_classes
-  Distros: openshift-online, digital-garage
+  Distros: openshift-online, digital-garage,faktorz
 - Name: Selector and Label Volume Binding
   File: selector_label_volume_binding
-  Distros: openshift-online,digital-garage
+  Distros: openshift-online,digital-garage,faktorz
 - Name: Executing Remote Commands
   File: executing_remote_commands
 - Name: Copying Files
@@ -784,14 +784,14 @@ Topics:
   File: events
 - Name: Notifications
   File: notifications
-  Distros: openshift-online,digital-garage
+  Distros: openshift-online,digital-garage,faktorz
 - Name: Downward API
   File: downward_api
 - Name: Managing Environment Variables
   File: environment_variables
 - Name: Jobs
   File: jobs
-  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,openshift-online,digital-garage
+  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,openshift-online,digital-garage,faktorz
 - Name: OpenShift Pipeline
   File: openshift_pipeline
 - Name: Cron Jobs
@@ -805,7 +805,7 @@ Topics:
 ---
 Name: Creating Images
 Dir: creating_images
-Distros: openshift-*,digital-garage
+Distros: openshift-*,digital-garage,faktorz
 Topics:
 - Name: Overview
   File: index
@@ -826,11 +826,11 @@ Topics:
 ---
 Name: Using Images
 Dir: using_images
-Distros: openshift-*,digital-garage
+Distros: openshift-*,digital-garage,faktorz
 Topics:
 - Name: Overview
   File: index
-  Distros: openshift-online,openshift-enterprise,openshift-dedicated,digital-garage
+  Distros: openshift-online,openshift-enterprise,openshift-dedicated,digital-garage,faktorz
 - Name: Source-to-Image (S2I)
   Dir: s2i_images
   Topics:
@@ -838,10 +838,10 @@ Topics:
     File: index
   - Name: Java
     File: java
-    Distros: openshift-origin,openshift-online,digital-garage
+    Distros: openshift-origin,openshift-online,digital-garage,faktorz
   - Name: .NET Core
     File: dot_net_core
-    Distros: openshift-online,openshift-enterprise,openshift-dedicated,digital-garage
+    Distros: openshift-online,openshift-enterprise,openshift-dedicated,digital-garage,faktorz
   - Name: Node.js
     File: nodejs
   - Name: Perl
@@ -881,7 +881,7 @@ Topics:
     File: jenkins
 - Name: xPaaS Middleware Images
   Dir: xpaas_images
-  Distros: openshift-online,openshift-enterprise,openshift-dedicated,digital-garage
+  Distros: openshift-online,openshift-enterprise,openshift-dedicated,digital-garage,faktorz
   Topics:
   - Name: Overview
     File: index

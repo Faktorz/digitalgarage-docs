@@ -14,8 +14,8 @@ To build it:
 @import "fonts/overpass";
 @import "fonts/sourcecode";
 @import "settings/origin";
-@import "components/asciidoc";
-@import "components/awesome-icons";
+/* @import "components/asciidoc"; */
+/* @import "components/awesome-icons"; */
 
 
 nav.global {
@@ -40,11 +40,11 @@ nav.global {
 		&:hover {
 			color: #ef2e32;
 		}
-		
+
 		img {
 			margin-top: .25em;
 			height: 2.75em;
-		
+
 		}
 	}
 }
@@ -61,7 +61,7 @@ nav.global {
 	&.toc2 {
 		box-shadow: 1px 0 1px rgba(0,0,0,0.3);
 	}
-	
+
 }
 
 
