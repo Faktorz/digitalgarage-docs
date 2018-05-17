@@ -36,7 +36,7 @@
 
   <%= render("_templates/_analytics.html.erb", :distro_key => distro_key) %>
 </head>
-<body id="top">
+<body id="top" class="bg-white">
   <header class="header header-shrink bg-white fixed-top">
 			<div class="container">
 				<%= render("_templates/_topnav.html.erb", :distro_key => distro_key) %>
@@ -46,21 +46,23 @@
     <p class="toggle-nav visible-xs pull-left">
       <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
     </p>
-    <ol class="breadcrumb">
-      <li class="sitename">
-        <a href="../../welcome/index.html"><%= site_name %></a>
-      </li>
-      <li class="hidden-xs active">
-        <%= breadcrumb_root %>
-      </li>
-      <li class="hidden-xs active">
-        <%= breadcrumb_group %>
-      </li>
-      <%= breadcrumb_subgroup_block %>
-      <li class="hidden-xs active">
-        <%= breadcrumb_topic %>
-      </li>
-    </ol>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="../../welcome/index.html"><%= site_name %></a>
+        </li>
+        <li class="breadcrumb-item active">
+          <%= breadcrumb_root %>
+        </li>
+        <li class="breadcrumb-item active">
+          <%= breadcrumb_group %>
+        </li>
+          <%= breadcrumb_subgroup_block %>
+        <li class="breadcrumb-item active">
+          <%= breadcrumb_topic %>
+        </li>
+      </ol>
+    </nav>
     <div class="row row-offcanvas row-offcanvas-left">
       <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
         <div class="row-fluid">
