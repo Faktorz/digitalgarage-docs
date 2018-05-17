@@ -36,7 +36,11 @@
   <%= render("_templates/_analytics.html.erb", :distro_key => distro_key) %>
 </head>
 <body>
-  <%= render("_templates/_topnav.html.erb", :distro_key => distro_key) %>
+  <header class="header header-shrink bg-white fixed-top">
+			<div class="container">
+				<%= render("_templates/_topnav.html.erb", :distro_key => distro_key) %>
+			</div>
+		</header>
   <div class="container">
     <p class="toggle-nav visible-xs pull-left">
       <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
