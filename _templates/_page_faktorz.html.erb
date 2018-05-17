@@ -5,22 +5,32 @@
 <html>
 <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta content="IE=edge" http-equiv="X-UA-Compatible">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <!-- Meta -->
+  <meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="FaktorZ Documentation" name="application-name">
   <title><%= distro %> | <%= [group_title, subgroup_title, topic_title].compact.join(' | ') %></title>
 
-  <!-- CSS -->
+  <!-- favicons -->
+  <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/images/favicon_symbol.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/images/favicon_symbol.png" rel="shortcut icon" type="text/css">
 
+  <!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Nunito+Sans:200,200i,300,400,400i,600,700|Open+Sans|Oswald|Raleway|Roboto" rel="stylesheet" type="text/css"/>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/css/fontawesome-all.min.css" rel="stylesheet" type="text/css"/>
-  <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/css/faktorz.min.css" rel="stylesheet" type="text/css"/>
-  <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/images/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
-  <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/images/favicon.png" rel="shortcut icon" type="text/css">
 
-  <meta content="FaktorZ Documentation" name="application-name">
+  <!-- CSS -->
+  <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/css/style.min.css" rel="stylesheet" type="text/css"/>
 
+
+
+
+
+  <!--
   <script src="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/js/jquery-3.3.1.min.js" type="text/javascript"></script>
-  <script src="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+  -->
+  <script src="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/js/bundle.js" type="text/javascript"></script>
 
 
   <%= render("_templates/_analytics.html.erb", :distro_key => distro_key) %>

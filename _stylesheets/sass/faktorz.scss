@@ -1,151 +1,39 @@
 // faktorz.scss
-// Include all of Bootstrap
 
-@import "bootstrap/scss/bootstrap";
 
 @import "fonts/googlefonts";
 @import "fonts/sourcecode";
 @import "settings/faktorz";
-/* @import "components/asciidoc"; */
-/* @import "components/awesome-icons"; */
 
-// modify bootstrap colors
+// Variable and settings
+@import "variables";
 
-$theme-colors: (
-  "primary": #3E78B2,
-  "secondary": #FF9900,
-  "warning": #FFAD00,
-  "success": #3EC300,
-  "danger": #ff4136
-);
-
-nav.global {
-	background: #222;
-	width: 100%;
-	height: 4em;
-
-	ul {
-		list-style-type: none;
-		margin: 0;
-	}
-	li {
-		display: inline-block;
-	}
-	a {
-		display: block;
-		padding: .5em 1em;
-		font-family: Overpass;
-		font-size: 1.1em;
-		color: white;
-
-		&:hover {
-			color: #ef2e32;
-		}
-
-		img {
-			margin-top: .25em;
-			height: 2.75em;
-
-		}
-	}
-}
+// Mixins
+@import "mixins";
 
 
-#header > h1 {
-	border: none;
-}
+// Component
+@import "components/base";
+@import "components/global";
+@import "components/header";
+@import "components/intro";
+@import "components/footer";
+@import "components/button";
+@import "components/subsribe-form";
+@import "components/accordion";
+@import "components/tabs";
+@import "components/portfolio";
+@import "components/post";
+@import "components/progress-bar";
 
-#toc {
-	background: #eee;
-	border-right: none;
 
-	&.toc2 {
-		box-shadow: 1px 0 1px rgba(0,0,0,0.3);
-	}
-
-}
+// Utilities or helper class
+@import "utilities";
 
 
-code {
-	font-family: source_code_pro;
-}
 
-.admonitionblock td.icon .icon-tip:before {
-	color: #cc6;
-	text-shadow: $icon-text-shadow;
-}
 
-#footer {
-	background-image: url('_images/panda.png');
-	background-position: right bottom;
-	background-repeat: no-repeat;
-}
-
-.footer-digital-garage {
-  background-color: #fff;
-  border-bottom: 38px solid #438c9f;
-  bottom: 0;
-  font-size: 12px;
-  height: 100px;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  a {
-    color: #131313;
-    margin-left: 30px;
-    position: relative;
-    top: 12px;
-    &:hover {
-      color: #cc0000;
-    }
-  }
-  .logo a {
-    background: url(/images/DigitalGarage_logo.svg) no-repeat;
-    display: inline-block;
-    height: 34px;
-    margin: 0;
-    top: auto;
-    width: 110px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .footer-digital-garage a {
-    margin-left: 15px;
-  }
-}
-
-.footer-digital-garage-new {
-  background-color: #010101;
-  bottom: 0;
-  font-size: 12px;
-  height: 60px;
-  padding: 15px 0;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  a {
-    color: #DEE0DC;
-    margin-left: 30px;
-    position: relative;
-    top: 7px;
-    &:hover {
-      color: #ebecea;
-    }
-  }
-  .logo a {
-    background: url(../images/DigitalGarage_logo.svg) no-repeat;
-    background-size: 93.4px 30px;
-    display: inline-block;
-    height: 34px;
-    margin: 0;
-    top: auto;
-    width: 93.4px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .footer-digital-garage-new a {
-    margin-left: 15px;
-  }
-}
+// Vendor plugin modification
+@import "plugin/bootstrap";
+@import "plugin/slick";
+@import "plugin/aws";

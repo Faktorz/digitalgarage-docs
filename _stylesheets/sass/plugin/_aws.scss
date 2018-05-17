@@ -1,0 +1,405 @@
+.lftRigBor {
+	border-left:1px solid #bcbec0;
+	border-right:1px solid #bcbec0;
+}
+.topLogopan {
+	padding:17px 0;
+	background-color:#f2f2f2;
+	border-bottom:1px solid #c1c1c1;
+}
+.contText {
+	color:#1e1e1e;
+}
+.contText a {
+	text-decoration:none;
+	color:#1e1e1e;
+	font-size:14px;
+	font-weight:300;
+}
+.contText a:hover {
+	text-decoration:underline;
+}
+.banner {
+	height:310px;
+	background:url(http://www.amazonwebservices.atworkweb.com/sw/swchannel/images/users/62401/landing/ban-bg.png) no-repeat 0 0;/*background:url(http://www.amazonwebservices.atworkweb.com/sw/swchannel/images/users/62401/landing/banner-bg.png) no-repeat 0 0;*/
+}
+.banner h2 {
+	width:52%;
+	display:block;
+	font-size:40px;
+	line-height:45px;
+	font-weight:300;
+	color:#faa634;
+	margin:65px 0 10px 80px;
+	float:left;
+}
+.banner p {
+	width:47%;
+	display:block;
+	margin:0 0 0 80px;
+	font-size:16px;
+	line-height:20px;
+	float:left;
+}
+.banner img {
+	float:right;
+	margin:67px 102px 0 0;
+}
+.gryPannel {
+	background-color:#f2f2f2;
+	padding:40px 0;
+}
+.gryPannel h2 {
+	font-size:26px;
+	line-height:35px;
+	font-weight:300;
+	color:#414042;
+	padding:0 0 20px 0;
+}
+.icpan {
+	padding:0;
+	margin:0;
+}
+.icpan img {
+	display:block;
+	margin:0 auto;
+}
+.icpan hr {
+	border:1px solid #a6a6a7;
+	display:block;
+	margin: 20px 0;
+	padding:0;
+	line-height:0;
+}
+.icpan h3 {
+	font-size:15px;
+	line-height:18px;
+	font-weight:600;
+	color:#414042;
+	padding-bottom:5px;
+}
+.icpan p {
+	font-size:12px;
+	line-height:15px;
+	font-weight:400;
+	color:#414042;
+}
+.icpan ul {
+	padding:8px 0 0 0;
+	margin:0;
+}
+.icpan ul li {
+	font-size:13px;
+	line-height:15px;
+	font-weight:400;
+	color:#414042;
+	background:url(http://www.amazonwebservices.atworkweb.com/sw/swchannel/images/users/62401/landing/s-bull.png) no-repeat 0 4px;
+	padding:0 0 0 13px;
+	margin:0 0 8px;
+}
+a.yellButt {
+	background:url(http://www.amazonwebservices.atworkweb.com/sw/swchannel/images/users/62401/landing/button.png) no-repeat 0 0;
+	width:254px;
+	height:34px;
+	display:block;
+	margin:0 auto;
+	text-align:center;
+	text-decoration:none;
+	line-height:34px;
+	font-size:13px;
+	color:#414042;
+	margin:0 auto 0;
+	font-weight:300;
+	font-size:13px;
+}
+a.yellButtB {
+	background:url(http://www.amazonwebservices.atworkweb.com/sw/swchannel/images/users/62401/landing/button-B.png) no-repeat 0 0;
+	width:320px;
+	height:34px;
+	display:block;
+	margin:0 auto;
+	text-align:center;
+	text-decoration:none;
+	line-height:34px;
+	font-size:13px;
+	color:#414042;
+	margin:0 auto 0;
+	font-weight:300;
+	font-size:13px;
+}
+a.yellButt:hover {
+	text-decoration:underline;
+}
+.HostPannel {
+
+	height:219px;
+	background:url(http://www.amazonwebservices.atworkweb.com/sw/swchannel/images/users/62401/landing/yell-bg.png) no-repeat 0 0;
+	padding:45px 0;
+}
+.HostPannel h2 {
+	font-size:26px;
+	line-height:28px;
+	color:#fff;
+	font-weight:300;
+	padding:0 0 12px;
+}
+.HostPannel p {
+	color:#fff;
+	font-weight:300;
+	padding:0 0 14px;
+	font-size:13px;
+	line-height:24px;
+}
+.HostPannel a {
+	color:#fff;
+	font-weight:600;
+	text-decoration:none;
+	font-size:14px;
+}
+.HostPannel a:hover {
+	text-decoration:underline;
+}
+.line {
+	background:url(http://www.amazonwebservices.atworkweb.com/sw/swchannel/images/users/62401/landing/wh-line.png) repeat-y 50% 0;
+}
+.taBpannel {
+	padding:50px 0;
+	margin:0;
+}
+.taBpannel h2 {
+	font-size:22px;
+	line-height:30px;
+	color:#414042;
+	padding-bottom:20px;
+	font-weight:400;
+}
+.taBpannel h2 span {
+	color:#ec008c;
+}
+.taBpannel ul {
+	padding:0;
+	margin:0;
+	border-right:1px solid #b1b3b6;
+}
+.taBpannel ul li {
+	padding:0 0 0 0;
+	margin:0 0 10px;
+}
+.taBpannel ul li a {
+	font-size:16px;
+	line-height:25px;
+	color:#b1b3b6;
+	text-decoration:none;
+	text-align:right;
+	padding:0 20px 0 0;
+	display:block;
+	font-weight:400;
+}
+.taBpannel ul li a:hover, .taBpannel ul li a.selected {
+	background:url(http://www.amazonwebservices.atworkweb.com/sw/swchannel/images/users/62401/landing/arrow.png) no-repeat 100% 50%;
+	color:#414041;
+}
+.tabcontent {
+	display:none;
+}
+.tab {
+	padding:0;
+	margin:0;
+}
+.tab h3 {
+	font-size:24px;
+	line-height:28px;
+	color:#414141;
+	padding:0 0 10px;
+	font-weight:400;
+}
+.tab p {
+	font-size:13px;
+	line-height:20px;
+	padding:0 0 15px;
+}
+.tab a {
+	color:#faa634;
+	font-size:13px;
+	line-height:16px;
+	text-decoration:none;
+}
+.tab a:hover {
+	text-decoration:underline;
+}
+.resoutab {
+	height:254px;
+	padding:38px 0;
+	background:url(http://www.amazonwebservices.atworkweb.com/sw/swchannel/images/users/62401/landing/res-bg.png) no-repeat 0 0;
+}
+.resoutab h2 {
+	font-size:30px;
+	line-height:32px;
+	color:#fff;
+	padding:0 0 25px 0;
+	font-weight:300;
+	text-align:center;
+}
+.resoutab img {
+	display:block;
+	margin:0 auto;
+}
+.resoutab hr {
+	border:1px solid #fff;
+	display:block;
+	margin: 20px 0;
+	padding:0;
+	line-height:0;
+}
+.resoutab h3 {
+	font-size:14px;
+	line-height:18px;
+	font-weight:600;
+	color:#fff;
+	padding-bottom:10px;
+}
+.resoutab h3 a {
+	color:#fff;
+	text-decoration:none;
+	font-size:14px;
+	line-height:18px;
+}
+.resoutab p a {
+	font-size:12px;
+	line-height:15px;
+	font-weight:400;
+}
+.resoutab h3 a:hover {
+	text-decoration:underline;
+}
+.resoutab p a:hover {
+	text-decoration:underline;
+}
+.resoutab p {
+	font-size:12px;
+	line-height:15px;
+	font-weight:400;
+	color:#fff;
+	padding:0 0 15px 0;
+}
+.resoutab a {
+	font-size:11px;
+	line-height:15px;
+	font-weight:600;
+	color:#fff;
+	text-decoration:none;
+}
+.resoutab a:hover {
+	text-decoration:underline;
+}
+.partPann {
+	padding:40px 0;
+	background-color:#f2f2f2;
+}
+.partPann img {
+	display:block;
+	margin:0 auto;
+}
+.partPann p {
+	color:#63646a;
+	font-size:13px;
+	line-height:20px;
+	padding:40px 0;
+}
+.partPann a {
+	/*background:url(http://www.amazonwebservices.atworkweb.com/sw/swchannel/images/users/62401/landing/button1.png) no-repeat 0 0;
+	width:230px;
+	height:34px;
+
+	text-decoration:none;
+	text-align:center;
+	line-height:34px;
+	color:#2c2c2c;
+	font-size:13px;
+	font-weight:300;*/
+	display:block;
+	margin:0 auto;
+}
+.partPann a:hover {
+	text-decoration:underline;
+}
+.formPannel {
+	padding:40px 0;
+	background-color:#fff;
+}
+.formPannel h2 {
+	font-size:24px;
+	line-height:26px;
+	font-weight:300;
+	color:#2c2c2c;
+	padding:0 0 25px 0;
+	text-align:center;
+}
+.formPannel table {
+	width:85%;
+PADDING-LEFT: 40PX;
+}
+.formPannel tbody {
+	width:100%;
+}
+.formPannel tr {
+	width:100%;
+}
+.formPannel tr td {
+	width:100%;
+}
+.formPannel tr td form {
+	width:100%;
+}
+.formPannel tr td form table {
+	width:100%;
+}
+.formPannel tr td form table tbody {
+	width:100%;
+}
+.formPannel tr td form table tbody tr {
+	width:50%;
+	float:left;
+}
+.formPannel tr td form table tbody tr td {
+	width:100%;
+	float:left;
+	padding:5px 0;
+}
+.formPannel tr td form table tbody tr td input[type="text"], .formPannel tr td form table tbody tr td input[type="email"] {
+	width:70%;
+	height:30px;
+	border:1px solid #CCC;
+	padding:0 5%;
+	color:#000;
+}
+.foter {
+	background-color:#636466;
+	padding:15px 0;
+}
+.foter p {
+	font-size:12px;
+	line-height:18px;
+	color:#fff;
+	padding:0;
+	margin:0;
+}
+#SubmitButtonDiv {
+	margin:0 0 0 -167px;
+}
+.formPannel .normal_small_text {
+	margin:0 0 0 -127px;
+}
+.addbutt {
+	padding:35px 0 0 0;
+}
+.faaddbutt {
+	padding-right:10px;
+}
+
+.partlogo{
+	padding:0; margin:0;
+}
+.partlogo img{
+	height:38px;
+}
