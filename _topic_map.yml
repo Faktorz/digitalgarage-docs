@@ -23,7 +23,7 @@
 ---
 Name: About
 Dir: welcome
-Distros: openshift-*,digital-garage,faktorz
+Distros: openshift-*,digital-garage
 Topics:
 - Name: Welcome
   File: index
@@ -37,31 +37,30 @@ Name: Release Notes
 Dir: release_notes
 Distros: openshift-enterprise,openshift-dedicated,openshift-online
 Topics:
-  - Name: Overview
-    File: index
-    Distros: openshift-enterprise,openshift-dedicated
-  - Name: OpenShift Container Platform 3.5 Release Notes
-    File: ocp_3_5_release_notes
-    Distros: openshift-enterprise
-  - Name: Latest Product Updates
-    File: osd_latest_product_updates
-    Distros: openshift-dedicated
-  - Name: OpenShift Online Starter Release Notes
-    File: online_release_notes
-    Distros: openshift-online
-  - Name: Known Issues
-    File: online_known_issues
-    Distros: openshift-online
-  - Name: xPaaS Release Notes
-    File: xpaas_release_notes
-    Distros: openshift-enterprise
-  - Name: Comparing with OpenShift Enterprise 2
-    File: v2_vs_v3
-    Distros: openshift-enterprise,openshift-dedicated
-  - Name: Revision History
-    File: revhistory_release_notes
-    Distros: openshift-enterprise,openshift-dedicated
-
+- Name: Overview
+  File: index
+  Distros: openshift-enterprise,openshift-dedicated
+- Name: OpenShift Container Platform 3.9 Release Notes
+  File: ocp_3_9_release_notes
+  Distros: openshift-enterprise
+- Name: Latest Product Updates
+  File: osd_latest_product_updates
+  Distros: openshift-dedicated
+- Name: OpenShift Online Release Notes
+  File: online_release_notes
+  Distros: openshift-online
+- Name: Known Issues
+  File: online_known_issues
+  Distros: openshift-online
+- Name: xPaaS Release Notes
+  File: xpaas_release_notes
+  Distros: openshift-enterprise
+- Name: Comparing with OpenShift Enterprise 2
+  File: v2_vs_v3
+  Distros: openshift-enterprise
+- Name: Revision History
+  File: revhistory_release_notes
+  Distros: openshift-enterprise,openshift-dedicated
 ---
 Name: What's New?
 Dir: whats_new
@@ -81,28 +80,34 @@ Topics:
 ---
 Name: Getting Started
 Dir: getting_started
-Distros: openshift-*,digital-garage,faktorz
+Distros: openshift-*,digital-garage
 Topics:
 - Name: Overview
   File: index
 - Name: Choose a Plan
   File: choose_a_plan
-  Distros: openshift-online
+  Distros: openshift-online,digital-garage
+- Name: Install OpenShift
+  File: install_openshift
+  Distros: openshift-enterprise
+- Name: Configure OpenShift
+  File: configure_openshift
+  Distros: openshift-enterprise
 - Name: Basic Walkthrough
   File: basic_walkthrough
-  Distros: openshift-online,digital-garage,faktorz
+  Distros: openshift-online,digital-garage
 - Name: Beyond the Basics
   File: beyond_the_basics
-  Distros: openshift-online,digital-garage,faktorz
+  Distros: openshift-online,digital-garage
 - Name: Web Console Walkthrough
   File: developers_console
-  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage,faktorz
+  Distros: openshift-enterprise,openshift-dedicated,openshift-origin
 - Name: Command-Line Walkthrough
   File: developers_cli
-  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage,faktorz
+  Distros: openshift-enterprise,openshift-dedicated,openshift-origin
 - Name: Setting Up a Cluster
   File: administrators
-  Distros: openshift-origin,openshift-enterprise
+  Distros: openshift-origin
 - Name: Administering a Cluster
   File: dedicated_administrators
   Distros: openshift-dedicated
@@ -112,24 +117,6 @@ Topics:
 - Name: Revision History
   File: revhistory_getting_started
   Distros: openshift-enterprise,openshift-dedicated
----
-Name: Quickstart
-Dir: registry_quickstart
-Distros: atomic-registry
-Topics:
-- Name: Overview
-  File: index
-- Name: Developers
-  File: developers
-- Name: Administrators
-  Dir: administrators
-  Topics:
-  - Name: Overview
-    File: index
-  - Name: System Configuration
-    File: system_configuration
-  - Name: Uninstall
-    File: uninstall
 ---
 Name: Architecture
 Dir: architecture
@@ -141,42 +128,39 @@ Topics:
   Topics:
   - Name: Kubernetes Infrastructure
     File: kubernetes_infrastructure
-    Distros: openshift-*,digital-garage,faktorz
-  - Name: Image Registry
+  - Name: Container Registry
     File: image_registry
   - Name: Web Console
     File: web_console
-    Distros: openshift-*,digital-garage,faktorz
 - Name: Core Concepts
   Dir: core_concepts
   Topics:
   - Name: Overview
     File: index
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*,digital-garage
   - Name: Containers and Images
     File: containers_and_images
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*,digital-garage
   - Name: Images
     File: containers_and_images
     Distros: atomic-*
   - Name: Pods and Services
     File: pods_and_services
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*,digital-garage
   - Name: Projects and Users
     File: projects_and_users
   - Name: Builds and Image Streams
     File: builds_and_image_streams
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*,digital-garage
   - Name: Image Streams
     File: builds_and_image_streams
     Distros: atomic-*
   - Name: Deployments
     File: deployments
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*,digital-garage
   - Name: Templates
     File: templates
-    Alias: dev_guide/templates
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*,digital-garage
 - Name: Additional Concepts
   Dir: additional_concepts
   Topics:
@@ -186,12 +170,14 @@ Topics:
     File: authorization
   - Name: Persistent Storage
     File: storage
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*,digital-garage
   - Name: Source Control Management
     File: scm
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*,digital-garage
   - Name: Admission Controllers
     File: admission_controllers
+  - Name: Custom Admission Controllers
+    File: dynamic_admission_controllers
     Distros: openshift-enterprise,openshift-origin,openshift-dedicated
   - Name: Other API Objects
     File: other_api_objects
@@ -200,25 +186,25 @@ Topics:
   Topics:
   - Name: Networking
     File: networking
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*,digital-garage
   - Name: OpenShift SDN
     File: sdn
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*
   - Name: Network Plug-ins
     File: network_plugins
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*
   - Name: Port Forwarding
     File: port_forwarding
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*
   - Name: Remote Commands
     File: remote_commands
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*
   - Name: HAProxy Router Plug-in
     File: haproxy-router
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*
   - Name: Routes
     File: routes
-    Distros: openshift-*,digital-garage,faktorz
+    Distros: openshift-*,digital-garage
 - Name: Service Catalog Components
   Dir: service_catalog
   Distros: openshift-enterprise,openshift-origin
@@ -335,27 +321,6 @@ Topics:
     File: container_provider
   - Name: Uninstalling
     File: uninstalling
-- Name: Upgrading a Cluster
-  Dir: upgrading
-  Distros: openshift-origin,openshift-enterprise
-  Topics:
-  - Name: Overview
-    File: index
-  - Name: Automated In-place Upgrades
-    File: automated_upgrades
-  - Name: Manual In-place Upgrades
-    File: manual_upgrades
-  - Name: Blue-Green Deployments
-    File: blue_green_deployments
-  - Name: Operating System Updates and Upgrades
-    File: os_upgrades
-  - Name: Migrating Embedded etcd to External etcd
-    File: migrating_embedded_etcd
-  - Name: Migrating etcd Data (v2 to v3)
-    File: migrating_etcd
-- Name: Downgrading
-  File: downgrade
-  Distros: openshift-enterprise
 - Name: Master and Node Configuration
   File: master_node_configuration
 - Name: OpenShift Ansible Broker Configuration
@@ -376,7 +341,7 @@ Topics:
   File: syncing_groups_with_ldap
 - Name: Advanced LDAP Configuration
   Dir: advanced_ldap_configuration
-  Distros: openshift-origin,openshift-enterprise,atomic-registry
+  Distros: openshift-origin,openshift-enterprise
   Topics:
   - Name: Overview
     File: index
@@ -392,6 +357,9 @@ Topics:
 - Name: Configuring Nuage SDN
   File: configuring_nuagesdn
   Distros: openshift-origin,openshift-enterprise
+- Name: Configuring Kuryr SDN
+  File: configuring_kuryrsdn
+  Distros: openshift-origin
 - Name: Configuring for AWS
   File: configuring_aws
   Distros: openshift-origin,openshift-enterprise
@@ -406,8 +374,10 @@ Topics:
   Distros: openshift-origin,openshift-enterprise
 - Name: Configuring for VMWare vSphere
   File: configuring_vsphere
-- Name: Configuring for local Volume
+- Name: Configuring for Local Volume
   File: configuring_local
+- Name: Configuring for PVC Protection
+  File: configuring_pvc_protection
 - Name: Configuring Persistent Storage
   Dir: persistent_storage
   Distros: openshift-origin,openshift-enterprise
@@ -448,6 +418,8 @@ Topics:
     File: selector_label_binding
   - Name: Enabling Controller-managed Attachment and Detachment
     File: enabling_controller_attach_detach
+  - Name: Persistent Volume Snapshots
+    File: persistent_volume_snapshots
 - Name: Persistent Storage Examples
   Dir: storage_examples
   Distros: openshift-origin,openshift-enterprise
@@ -462,15 +434,11 @@ Topics:
     File: ceph_rbd_dynamic_example
   - Name: Complete Example Using GlusterFS
     File: gluster_example
-  - Name: Dynamic Provisioning Example Using Containerized GlusterFS
+  - Name: Complete Example Using GlusterFS for Dynamic Provisioning
     File: gluster_dynamic_example
-  - Name: Dynamic Provisioning Example Using Dedicated GlusterFS
-    File: dedicated_gluster_dynamic_example
-  - Name: Containerized Heketi for Managing Dedicated GlusterFS
-    File: containerized_heketi_with_dedicated_gluster
   - Name: Mounting Volumes To Privileged Pods
     File: privileged_pod_storage
-  - Name: Backing Docker Registry with GlusterFS Storage
+  - Name: Switching an Integrated OpenShift Container Registry to GlusterFS
     File: gluster_backed_registry
   - Name: Binding Persistent Volumes by Label
     File: binding_pv_by_label
@@ -517,6 +485,45 @@ Topics:
   File: revhistory_install_config
   Distros: openshift-enterprise
 ---
+Name: Upgrading Clusters
+Dir: upgrading
+Distros: openshift-origin,openshift-enterprise
+Topics:
+- Name: Upgrade Methods and Strategies
+  File: index
+- Name: Automated In-place Upgrades
+  File: automated_upgrades
+- Name: Manual In-place Upgrades
+  File: manual_upgrades
+- Name: Blue-Green Deployments
+  File: blue_green_deployments
+- Name: Updating Operating Systems
+  File: os_upgrades
+- Name: Downgrading
+  File: downgrade
+  Distros: openshift-enterprise
+- Name: Known Issues
+  File: upgrading_known_issues
+---
+Name: Day Two Operations Guide
+Dir: day_two_guide
+Distros: openshift-origin,openshift-enterprise
+Topics:
+- Name: Overview
+  File: index
+- Name: Run-once tasks
+  File: run_once_tasks
+- Name: Environment health checks
+  File: environment_health_checks
+- Name: Host-level tasks
+  File: host_level_tasks
+- Name: Project-level tasks
+  File: project_level_tasks
+- Name: Docker tasks
+  File: docker_tasks
+- Name: Managing Certificates
+  File: certificate_management
+---
 Name: Cluster Administration
 Dir: admin_guide
 Distros: openshift-origin,openshift-enterprise,openshift-dedicated,atomic-*
@@ -533,7 +540,6 @@ Topics:
   File: managing_projects
 - Name: Managing Pods
   File: managing_pods
-  Distros: openshift-origin,openshift-enterprise
 - Name: Managing Networking
   File: managing_networking
 - Name: Configuring Service Accounts
@@ -543,6 +549,9 @@ Topics:
 - Name: Image Policy
   File: image_policy
   Distros: openshift-origin,openshift-enterprise,atomic-*
+- Name: Image Signatures
+  File: image_signatures
+  Distros: openshift-origin,openshift-enterprise
 - Name: Scoped Tokens
   File: scoped_tokens
   Distros: openshift-origin,openshift-enterprise,atomic-*
@@ -551,16 +560,40 @@ Topics:
   Distros: openshift-origin,openshift-enterprise
 - Name: Managing Security Context Constraints
   File: manage_scc
-  Distros: openshift-*,digital-garage,faktorz
-- Name: Scheduler
-  File: scheduler
+  Distros: openshift-*
+- Name: Scheduling
+  Dir: scheduling
   Distros: openshift-origin,openshift-enterprise
+  Topics:
+  - Name: Overview
+    File: index
+  - Name: Default Scheduling
+    File: scheduler
+  - Name: Custom Scheduling
+    File: custom_scheduler
+  - Name: Controlling Pod Placement
+    File: pod_placement
+  - Name: Advanced Scheduling
+    File: scheduler-advanced
+  - Name: Advanced Scheduling and Node Affinity
+    File: node_affinity
+  - Name: Advanced Scheduling and Pod Affinity/Anti-affinity
+    File: pod_affinity
+  - Name: Advanced Scheduling and Node Selectors
+    File: node_selector
+  - Name: Advanced Scheduling and Taints and Tolerations
+    File: taints_tolerations
 - Name: Setting Quotas
   File: quota
+- Name: Setting Multi-Project Quotas
+  File: multiproject_quota
 - Name: Setting Limit Ranges
   File: limits
 - Name: Pruning Objects
   File: pruning_resources
+  Distros: openshift-origin,openshift-enterprise
+- Name: Extending the Kubernetes API with Custom Resources
+  File: custom_resource_definitions
   Distros: openshift-origin,openshift-enterprise
 - Name: Garbage Collection
   File: garbage_collection
@@ -592,6 +625,18 @@ Topics:
 - Name: Securing Builds by Strategy
   File: securing_builds
   Distros: openshift-origin,openshift-enterprise
+- Name: Restricting Application Capabilities Using Seccomp
+  File: seccomp
+  Distros: openshift-origin,openshift-enterprise,atomic-*
+- Name: Sysctls
+  File: sysctls
+  Distros: openshift-origin,openshift-enterprise
+- Name: Encrypting Data at Datastore Layer
+  File: encrypting_data
+  Distros: openshift-origin,openshift-enterprise
+- Name: Encrypting Hosts with IPsec
+  File: ipsec
+  Distros: openshift-origin,openshift-enterprise
 - Name: Building Dependency Trees
   File: building_dependency_trees
   Distros: openshift-origin,openshift-enterprise
@@ -600,6 +645,17 @@ Topics:
 - Name: Troubleshooting Networking
   File: sdn_troubleshooting
   Distros: openshift-origin,openshift-enterprise
+- Name: Diagnostics Tool
+  File: diagnostics_tool
+  Distros: openshift-origin,openshift-enterprise
+- Name: Idling Applications
+  File: idling_applications
+- Name: Analyzing Cluster Capacity
+  File: cluster_capacity
+  Distros: openshift-origin,openshift-enterprise
+- Name: Kuryr SDN Administration
+  File: kuryr
+  Distros: openshift-origin
 - Name: Revision History
   File: revhistory_admin_guide
   Distros: openshift-enterprise,openshift-dedicated
@@ -621,28 +677,37 @@ Name: Scaling and Performance Guide
 Dir: scaling_performance
 Distros: openshift-origin,openshift-enterprise
 Topics:
-  - Name: Overview
-    File: index
-  - Name: Recommended Installation Practices
-    File: install_practices
-  - Name: Recommended Host Practices
-    File: host_practices
-  - Name: Optimizing Compute Resources
-    File: optimizing_compute_resources
-  - Name: Optimizing Storage
-    File: optimizing_storage
-  - Name: Network Optimization
-    File: network_optimization
-  - Name: Scaling Cluster Metrics
-    File: scaling_cluster_metrics
-  - Name: Revision History
-    File: revhistory_scaling_performance
-    Distros: openshift-enterprise
-
+- Name: Overview
+  File: index
+- Name: Recommended Installation Practices
+  File: install_practices
+- Name: Recommended Host Practices
+  File: host_practices
+- Name: Optimizing Compute Resources
+  File: optimizing_compute_resources
+- Name: Optimizing Storage
+  File: optimizing_storage
+- Name: Network Optimization
+  File: network_optimization
+- Name: Routing Optimization
+  File: routing_optimization
+- Name: Scaling Cluster Metrics
+  File: scaling_cluster_metrics
+- Name: Cluster Limits
+  File: cluster_limits
+- Name: Using Cluster Loader
+  File: using_cluster_loader
+- Name: Using CPU Manager
+  File: using_cpu_manager
+- Name: Managing Huge Pages
+  File: managing_hugepages
+- Name: Revision History
+  File: revhistory_scaling_performance
+  Distros: openshift-enterprise
 ---
 Name: CLI Reference
 Dir: cli_reference
-Distros: openshift-*,atomic-*,digital-garage,faktorz
+Distros: openshift-*,atomic-*
 Topics:
 - Name: Overview
   File: index
@@ -652,17 +717,20 @@ Topics:
   File: manage_cli_profiles
 - Name: Developer CLI Operations
   File: basic_cli_operations
-  Distros: openshift-*,digital-garage,faktorz
+  Distros: openshift-*
 - Name: Administrator CLI Operations
   File: admin_cli_operations
   Distros: openshift-enterprise,openshift-dedicated,openshift-origin
+- Name: Extending the CLI
+  File: extend_cli
+  Distros: openshift-enterprise,openshift-origin
 - Name: Revision History
   File: revhistory_cli_reference
   Distros: openshift-enterprise,openshift-dedicated
 ---
 Name: Developer Guide
 Dir: dev_guide
-Distros: openshift-*,digital-garage,faktorz
+Distros: openshift-*
 Topics:
 - Name: Overview
   File: index
@@ -683,7 +751,6 @@ Topics:
   File: projects
 - Name: Migrating Applications
   Dir: migrating_applications
-  Distros: openshift-*
   Topics:
   - Name: Overview
     File: index
@@ -754,7 +821,7 @@ Topics:
     File: advanced_deployment_strategies
   - Name: Kubernetes Deployments Support
     File: kubernetes_deployments
-    Distros: openshift-enterprise,openshift-origin,openshift-dedicated
+    Distros: openshift-enterprise,openshift-origin
 - Name: Templates
   File: templates
 - Name: Opening a Remote Shell to Containers
@@ -763,22 +830,42 @@ Topics:
   File: service_accounts
 - Name: Managing Images
   File: managing_images
-- Name: Image Signatures
-  File: image_signatures
-  Distros: openshift-origin,openshift-enterprise
 - Name: Quotas and Limit Ranges
   File: compute_resources
-- Name: Getting Traffic Into The Cluster
-  File: getting_traffic_into_cluster
+- Name: Injecting Information into Pods Using Pod Presets
+  File: pod_preset
+- Name: Getting Traffic into a Cluster over Non-Standard Ports
+  Dir: expose_service
   Distros: openshift-enterprise,openshift-origin
+  Topics:
+  - Name: Overview
+    File: index
+  - Name: Using a Router
+    File: expose_internal_ip_router
+  - Name: Using a Load Balancer
+    File: expose_internal_ip_load_balancer
+  - Name: Using a Service ExternalIP
+    File: expose_internal_ip_service
+  - Name: Using a NodePort
+    File: expose_internal_ip_nodeport
 - Name: Routes
   File: routes
 - Name: Integrating External Services
   File: integrating_external_services
+- Name: Using Device Manager
+  File: device_manager
+  Distros: openshift-enterprise,openshift-origin
+- Name: Using Device Plug-ins
+  File: device_plugins
+  Distros: openshift-enterprise,openshift-origin
 - Name: Secrets
   File: secrets
 - Name: ConfigMaps
   File: configmaps
+- Name: Downward API
+  File: downward_api
+- Name: Projected Volumes
+  File: projected_volumes
 - Name: Using Daemonsets
   File: daemonsets
   Distros: openshift-enterprise,openshift-dedicated,openshift-origin
@@ -788,12 +875,15 @@ Topics:
   File: volumes
 - Name: Using Persistent Volumes
   File: persistent_volumes
+- Name: Expanding Persistent Volumes
+  File: expanding_persistent_volumes
+  Distros: openshift-enterprise,openshift-origin
 - Name: Storage Classes
   File: storage_classes
-  Distros: openshift-online, digital-garage,faktorz
+  Distros: openshift-online,digital-garage
 - Name: Selector and Label Volume Binding
   File: selector_label_volume_binding
-  Distros: openshift-online,digital-garage,faktorz
+  Distros: openshift-online,digital-garage
 - Name: Executing Remote Commands
   File: executing_remote_commands
 - Name: Copying Files
@@ -808,54 +898,52 @@ Topics:
   File: events
 - Name: Notifications
   File: notifications
-  Distros: openshift-online,digital-garage,faktorz
-- Name: Downward API
-  File: downward_api
+  Distros: openshift-online,digital-garage
 - Name: Managing Environment Variables
   File: environment_variables
 - Name: Jobs
   File: jobs
-  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,openshift-online,digital-garage,faktorz
+  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,openshift-online,digital-garage
 - Name: OpenShift Pipeline
   File: openshift_pipeline
 - Name: Cron Jobs
   File: cron_jobs
-  Distros: openshift-enterprise,openshift-origin
+  Distros: openshift-enterprise,openshift-origin,openshift-online,digital-garage
 - Name: Create from URL
   File: create_from_url
+- Name: Application memory sizing
+  File: application_memory_sizing
 - Name: Revision History
   File: revhistory_dev_guide
   Distros: openshift-enterprise,openshift-dedicated
 ---
 Name: Creating Images
 Dir: creating_images
-Distros: openshift-*,digital-garage,faktorz
-Topics:
-  - Name: Overview
-    File: index
-  - Name: Guidelines
-    File: guidelines
-  - Name: Image Metadata
-    File: metadata
-  - Name: S2I Requirements
-    File: s2i
-  - Name: Testing S2I Images
-    File: s2i_testing
-  - Name: Custom Builder
-    File: custom
-    Distros: openshift-enterprise,openshift-dedicated,openshift-origin
-  - Name: Revision History
-    File: revhistory_creating_images
-    Distros: openshift-enterprise,openshift-dedicated
-
----
-Name: Using Images
-Dir: using_images
-Distros: openshift-*,digital-garage,faktorz
+Distros: openshift-*,digital-garage
 Topics:
 - Name: Overview
   File: index
-  Distros: openshift-online,openshift-enterprise,openshift-dedicated,digital-garage,faktorz
+- Name: Guidelines
+  File: guidelines
+- Name: Image Metadata
+  File: metadata
+- Name: S2I Requirements
+  File: s2i
+- Name: Testing S2I Images
+  File: s2i_testing
+- Name: Custom Builder
+  File: custom
+  Distros: openshift-enterprise,openshift-dedicated,openshift-origin
+- Name: Revision History
+  File: revhistory_creating_images
+  Distros: openshift-enterprise,openshift-dedicated
+---
+Name: Using Images
+Dir: using_images
+Distros: openshift-*,digital-garage
+Topics:
+- Name: Overview
+  File: index
 - Name: Source-to-Image (S2I)
   Dir: s2i_images
   Topics:
@@ -863,10 +951,10 @@ Topics:
     File: index
   - Name: Java
     File: java
-    Distros: openshift-origin,openshift-online,digital-garage,faktorz
+    Distros: openshift-online,digital-garage
   - Name: .NET Core
     File: dot_net_core
-    Distros: openshift-online,openshift-enterprise,openshift-dedicated,digital-garage,faktorz
+    Distros: openshift-online,digital-garage,openshift-enterprise,openshift-dedicated
   - Name: Node.js
     File: nodejs
   - Name: Perl
@@ -877,6 +965,9 @@ Topics:
     File: python
   - Name: Ruby
     File: ruby
+  - Name: Wildfly
+    File: wildfly
+    Distros: openshift-origin
   - Name: Customizing S2I Images
     File: customizing_s2i_images
 - Name: Database Images
@@ -884,72 +975,74 @@ Topics:
   Topics:
   - Name: Overview
     File: index
-  - Name: Source-to-Image (S2I)
-    Dir: s2i_images
-    Topics:
-      - Name: Overview
-        File: index
-      - Name: Java
-        File: java
-        Distros: openshift-online
-      - Name: .NET Core
-        File: dot_net_core
-        Distros: openshift-online,openshift-enterprise,openshift-dedicated
-      - Name: Node.js
-        File: nodejs
-      - Name: Perl
-        File: perl
-      - Name: PHP
-        File: php
-      - Name: Python
-        File: python
-      - Name: Ruby
-        File: ruby
-      - Name: Wildfly
-        File: wildfly
-        Distros: openshift-origin
-      - Name: Customizing S2I Images
-        File: customizing_s2i_images
-  - Name: Database Images
-    Dir: db_images
-    Topics:
-      - Name: Overview
-        File: index
-      - Name: MySQL
-        File: mysql
-      - Name: PostgreSQL
-        File: postgresql
-      - Name: MongoDB
-        File: mongodb
-      - Name: MariaDB
-        File: mariadb
-  - Name: Docker Images
-    Dir: docker_images
-    Topics:
-      - Name: Overview
-        File: index
-  - Name: Other Images
-    Dir: other_images
-    Topics:
-      - Name: Overview
-        File: index
-      - Name: Jenkins
-        File: jenkins
-  - Name: xPaaS Middleware Images
-    Dir: xpaas_images
-    Distros: openshift-online,openshift-enterprise,openshift-dedicated
-    Topics:
-      - Name: Overview
-        File: index
-  - Name: Revision History
-    File: revhistory_using_images
-    Distros: openshift-enterprise,openshift-dedicated
-
-
+  - Name: MySQL
+    File: mysql
+  - Name: PostgreSQL
+    File: postgresql
+  - Name: MongoDB
+    File: mongodb
+  - Name: MariaDB
+    File: mariadb
+- Name: Other Images
+  Dir: other_images
+  Topics:
+  - Name: Overview
+    File: index
+  - Name: Jenkins
+    File: jenkins
+  - Name: Jenkins Slaves
+    File: jenkins_slaves
+  - Name: Other Container Images
+    File: other_container_images
+- Name: xPaaS Middleware Images
+  Dir: xpaas_images
+  Distros: openshift-online,digital-garage,openshift-enterprise,openshift-dedicated
+  Topics:
+  - Name: Overview
+    File: index
+- Name: Revision History
+  File: revhistory_using_images
+  Distros: openshift-enterprise,openshift-dedicated
+---
+Name: Ansible Playbook Bundle Development Guide
+Dir: apb_devel
+Distros: openshift-enterprise,openshift-origin
+Topics:
+- Name: Introduction
+  File: index
+- Name: CLI Tooling
+  File: cli_tooling
+- Name: Writing APBs
+  Dir: writing
+  Topics:
+  - Name: Getting Started
+    File: getting_started
+  - Name: Reference
+    File: reference
+- Name: Revision History
+  File: revhistory_apb_devel
+  Distros: openshift-enterprise
+---
+Name: Go Client Library Reference
+Dir: go_client
+Topics:
+- Name: Getting Started
+  File: getting_started
+- Name: Connecting to the Cluster
+  File: connecting_to_the_cluster
+- Name: Tracing API Requests and Responses
+  File: tracing_api_requests_and_responses
+- Name: Standard API Operations
+  File: standard_api_operations
+- Name: Serializing and Deserializing
+  File: serializing_and_deserializing
+- Name: Instantiating Templates
+  File: instantiating_templates
+- Name: Executing Remote Processes
+  File: executing_remote_processes
 ---
 Name: REST API Reference
 Dir: rest_api
-Distros: openshift-*
 Topics:
 - Name: Overview
   File: index
@@ -1008,6 +1101,19 @@ Topics:
     File: v1.APIGroup
   - Name: v1.APIGroupList
     File: v1.APIGroupList
+- Name: /apis/apps/v1
+  Dir: apis-apps
+  Topics:
+  - Name: v1.ControllerRevision
+    File: v1.ControllerRevision
+  - Name: v1.DaemonSet
+    File: v1.DaemonSet
+  - Name: v1.Deployment
+    File: v1.Deployment
+  - Name: v1.ReplicaSet
+    File: v1.ReplicaSet
+  - Name: v1.StatefulSet
+    File: v1.StatefulSet
 - Name: /apis/apps/v1beta1
   Dir: apis-apps
   Topics:
@@ -1017,23 +1123,44 @@ Topics:
     File: v1beta1.Deployment
   - Name: v1beta1.StatefulSet
     File: v1beta1.StatefulSet
+- Name: /apis/apps/v1beta2
+  Dir: apis-apps
+  Topics:
+  - Name: v1beta2.ControllerRevision
+    File: v1beta2.ControllerRevision
+  - Name: v1beta2.DaemonSet
+    File: v1beta2.DaemonSet
+  - Name: v1beta2.Deployment
+    File: v1beta2.Deployment
+  - Name: v1beta2.ReplicaSet
+    File: v1beta2.ReplicaSet
+  - Name: v1beta2.StatefulSet
+    File: v1beta2.StatefulSet
 - Name: /apis/autoscaling/v1
   Dir: apis-autoscaling
   Topics:
   - Name: v1.HorizontalPodAutoscaler
     File: v1.HorizontalPodAutoscaler
+- Name: /apis/autoscaling/v2beta1
+  Dir: apis-autoscaling
+  Topics:
+  - Name: v2beta1.HorizontalPodAutoscaler
+    File: v2beta1.HorizontalPodAutoscaler
 - Name: /apis/batch/v1
   Dir: apis-batch
   Topics:
   - Name: v1.Job
     File: v1.Job
+- Name: /apis/batch/v1beta1
+  Dir: apis-batch
+  Topics:
+  - Name: v1beta1.CronJob
+    File: v1beta1.CronJob
 - Name: /apis/batch/v2alpha1
   Dir: apis-batch
   Topics:
   - Name: v2alpha1.CronJob
     File: v2alpha1.CronJob
-  - Name: v2alpha1.ScheduledJob
-    File: v2alpha1.ScheduledJob
 - Name: /apis/extensions/v1beta1
   Dir: apis-extensions
   Topics:
@@ -1049,13 +1176,23 @@ Topics:
     File: v1beta1.PodSecurityPolicy
   - Name: v1beta1.ReplicaSet
     File: v1beta1.ReplicaSet
-  - Name: v1beta1.ThirdPartyResource
-    File: v1beta1.ThirdPartyResource
 - Name: /apis/policy/v1beta1
   Dir: apis-policy
   Topics:
   - Name: v1beta1.PodDisruptionBudget
     File: v1beta1.PodDisruptionBudget
+- Name: /apis/admissionregistration.k8s.io/v1beta1
+  Dir: apis-admissionregistration.k8s.io
+  Topics:
+  - Name: v1beta1.MutatingWebhookConfiguration
+    File: v1beta1.MutatingWebhookConfiguration
+  - Name: v1beta1.ValidatingWebhookConfiguration
+    File: v1beta1.ValidatingWebhookConfiguration
+- Name: /apis/apiregistration.k8s.io/v1beta1
+  Dir: apis-apiregistration.k8s.io
+  Topics:
+  - Name: v1beta1.APIService
+    File: v1beta1.APIService
 - Name: /apis/authentication.k8s.io/v1
   Dir: apis-authentication.k8s.io
   Topics:
@@ -1073,6 +1210,8 @@ Topics:
     File: v1.LocalSubjectAccessReview
   - Name: v1.SelfSubjectAccessReview
     File: v1.SelfSubjectAccessReview
+  - Name: v1.SelfSubjectRulesReview
+    File: v1.SelfSubjectRulesReview
   - Name: v1.SubjectAccessReview
     File: v1.SubjectAccessReview
 - Name: /apis/authorization.k8s.io/v1beta1
@@ -1082,8 +1221,21 @@ Topics:
     File: v1beta1.LocalSubjectAccessReview
   - Name: v1beta1.SelfSubjectAccessReview
     File: v1beta1.SelfSubjectAccessReview
+  - Name: v1beta1.SelfSubjectRulesReview
+    File: v1beta1.SelfSubjectRulesReview
   - Name: v1beta1.SubjectAccessReview
     File: v1beta1.SubjectAccessReview
+- Name: /apis/rbac.authorization.k8s.io/v1
+  Dir: apis-rbac.authorization.k8s.io
+  Topics:
+  - Name: v1.ClusterRole
+    File: v1.ClusterRole
+  - Name: v1.ClusterRoleBinding
+    File: v1.ClusterRoleBinding
+  - Name: v1.Role
+    File: v1.Role
+  - Name: v1.RoleBinding
+    File: v1.RoleBinding
 - Name: /apis/rbac.authorization.k8s.io/v1beta1
   Dir: apis-rbac.authorization.k8s.io
   Topics:
@@ -1100,6 +1252,11 @@ Topics:
   Topics:
   - Name: v1beta1.CertificateSigningRequest
     File: v1beta1.CertificateSigningRequest
+- Name: /apis/events.k8s.io/v1beta1
+  Dir: apis-events.k8s.io
+  Topics:
+  - Name: v1beta1.Event
+    File: v1beta1.Event
 - Name: /apis/networking.k8s.io/v1
   Dir: apis-networking.k8s.io
   Topics:
@@ -1260,8 +1417,6 @@ Topics:
     File: v1.ClusterRoleBinding
   - Name: v1.DeploymentConfig
     File: v1.DeploymentConfig
-  - Name: v1.DeploymentConfigRollback
-    File: v1.DeploymentConfigRollback
   - Name: v1.EgressNetworkPolicy
     File: v1.EgressNetworkPolicy
   - Name: v1.Group
