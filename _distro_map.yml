@@ -14,8 +14,8 @@ faktorz:
   name: FaktorZ
   author: John McCawley <dev@faktorz.com>
   site: faktorz
-  site_name: Documentation
-  site_url: http://docs.thedigitalgarage.io
+  site_name: FactorZ Documentation
+  site_url: https://docs.faktorz.com
   branches:
     master:
       name: ''
