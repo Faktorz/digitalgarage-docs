@@ -1,11 +1,11 @@
 <ul class="nav nav-sidebar">
   <%- navigation.each.with_index do |topic_group, groupidx| -%>
     <%- current_group = topic_group[:id] == group_id -%>
-    <li class="nav-header" style="width: 210px;">
+    <li class="nav-header">
       <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup<%= groupidx %>">
         <span id="tgSpan<%= groupidx %>" class="fa <%= current_group ? 'fa-angle-down' : 'fa-angle-right' %>"></span><%= topic_group[:name] %>
       </a>
-      <ul id="topicGroup<%= groupidx %>" class="<%= current_group ? 'in' : 'collapse' %> list-unstyled">
+      <ul id="topicGroup<%= groupidx %>" class="collapse <%= current_group ? 'show' : '' %> list-unstyled">
         <%- topic_group[:topics].each.with_index do |topic, topicidx| -%>
           <%- if not topic.has_key?(:topics) -%>
             <%- current_topic = current_group && (topic[:id] == topic_id) -%>
