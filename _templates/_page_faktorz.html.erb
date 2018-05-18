@@ -22,8 +22,8 @@
 
   <!-- CSS -->
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/css/bundle.css" rel="stylesheet" type="text/css"/>
-  <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/css/docs.css" rel="stylesheet" type="text/css"/>
   <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/css/style.min.css" rel="stylesheet" type="text/css"/>
+  <link href="http://assets-digitalgarage-infra.apps.thedigitalgarage.io/css/docs.css" rel="stylesheet" type="text/css"/>
 
 
 
@@ -48,7 +48,7 @@
       <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
     </p>
     <nav aria-label="breadcrumb" class="u-pt-80">
-      <ol class="breadcrumb">
+      <ol class="breadcrumb" style="background-color: white;">
         <li class="breadcrumb-item">
           <a href="../../welcome/index.html"><%= site_name %></a>
         </li>
@@ -68,10 +68,12 @@
     </nav>
     <div class="row row-offcanvas row-offcanvas-left">
       <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas">
+        <!--
         <div class="row-fluid">
           <%= render("_templates/_search.html.erb", :distro_key => distro_key, :version => version) %>
         </div>
-        <%= render("_templates/_nav_openshift.html.erb", :navigation => navigation, :group_id => group_id, :topic_id => topic_id, :subgroup_id => subgroup_id, :subtopic_shim => subtopic_shim) %>
+        -->
+        <%= render("_templates/_nav_faktorz.html.erb", :navigation => navigation, :group_id => group_id, :topic_id => topic_id, :subgroup_id => subgroup_id, :subtopic_shim => subtopic_shim) %>
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 main">
         <div class="page-header">
