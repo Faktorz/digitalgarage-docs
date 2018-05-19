@@ -1,1 +1,2 @@
-<%= render("_templates/_footer_other.html.erb", :images_path => images_path) %>
+<%= render((distro_key == 'faktorz' ? "_templates/_footer_faktorz.html.erb" : "_templates/_footer_other.html.erb"),
+    :images_path => images_path) %>

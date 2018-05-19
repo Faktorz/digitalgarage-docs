@@ -1,4 +1,4 @@
-<%= render("_templates/_page_faktorz.html.erb",
+<%= render((distro_key == 'faktorz' ? "_templates/_page_faktorz.html.erb" : "_templates/_page_digital_garage.html.erb"),
            :distro_key => distro_key,
            :distro => distro,
            :version => version,
