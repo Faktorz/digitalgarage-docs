@@ -9,7 +9,6 @@ digital-garage:
     master:
       name: ''
       dir: latest
-
 faktorz:
   name: FaktorZ
   author: John McCawley <dev@faktorz.com>
