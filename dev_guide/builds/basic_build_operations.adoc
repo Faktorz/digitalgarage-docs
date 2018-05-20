@@ -41,7 +41,7 @@ $ oc start-build <buildconfig_name> --env=<key>=<value>
 ----
 
 Rather than relying on a Git source pull
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 or a Dockerfile
 endif::[]
 for a build, you can
@@ -144,7 +144,7 @@ This displays information such as:
 * How the build was created
 
 If the build uses the
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 `Docker` or
 endif::[]
 `Source` strategy, the `oc describe` output also
@@ -178,7 +178,7 @@ $ oc logs --version=<number> bc/<buildconfig_name>
 
 To enable more verbose output, pass the `BUILD_LOGLEVEL` environment variable
 as part of the `sourceStrategy`
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 or `dockerStrategy`
 endif::[]
 in a `BuildConfig`:

@@ -71,10 +71,10 @@ configuration information from pod data or by interacting with the
 {product-title} API server.
 
 Valid credentials are controlled by the {product-title} identity provider.
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 For example, if `Allow All` is the default identity provider, you can provide
 any non-empty string for both the user name and password.
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
 Jenkins supports both
 https://github.com/openshift/jenkins-openshift-login-plugin/blob/master/README.md#browser-access[browser]
@@ -99,10 +99,10 @@ permissions mappings.
 The `admin` user that is pre-populated in the {product-title} Jenkins image with
 administrative privileges will not be given those privileges when
 {product-title} OAuth is
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 used.
 endif::[]
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 used, unless the {product-title} cluster administrator
 explicitly defines that user in the {product-title} identity provider and
 assigns the `admin` role to the user.
@@ -245,16 +245,16 @@ See xref:../../install_config/imagestreams_templates.adoc#install-config-imagest
 for more details, if required.
 endif::[]
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 A template is provided that defines
 endif::[]
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 The two available templates both define
 endif::[]
 a xref:../../architecture/core_concepts/deployments.adoc#deployments-and-deployment-configurations[deployment
 configuration] and a
 xref:../../architecture/core_concepts/pods_and_services.adoc#services[service].
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 The templates differ in their storage strategy, which affects whether or not
 the Jenkins content persists across a pod restart.
 endif::[]
@@ -265,22 +265,22 @@ A pod may be restarted when it is moved to another node, or when an update of
 the deployment configuration triggers a redeployment.
 ====
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 * `jenkins-ephemeral` uses ephemeral storage. On pod restart, all data is lost.
 This template is useful for development or testing only.
 endif::[]
 
 * `jenkins-persistent` uses a persistent volume store. Data survives a pod
 restart.
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 To use a persistent volume store, the cluster administrator must
 define a persistent volume pool in the {product-title} deployment.
 endif::[]
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 You
 endif::[]
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Once you have selected which template you want, you
 endif::[]
 must xref:../../dev_guide/templates.adoc#dev-guide-templates[instantiate] the
@@ -288,14 +288,14 @@ template to be able to use Jenkins:
 
 .Creating a New Jenkins Service
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 . Create a new Jenkins application using a persistent volume:
 ----
 $ oc new-app jenkins-persistent
 ----
 endif::[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 . Ensure the
 ifdef::openshift-enterprise,openshift-origin[]
 xref:../../install_config/imagestreams_templates.adoc#install-config-imagestreams-templates[the default image streams and templates]

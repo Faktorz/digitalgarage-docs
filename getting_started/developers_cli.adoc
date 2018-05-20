@@ -121,7 +121,7 @@ ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 - You must be able to access a running instance of {product-title}. If you do
 not have access, contact your cluster administrator.
 endif::[]
-ifdef::digital-garage[]
+ifdef::digital-garage,faktorz
 - You must register for an account with the http://www.thedigitalgarage.io[{product-title}]
 endif::[]
 ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]

@@ -523,7 +523,7 @@ ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 endif::[]
 
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 == Securely expose containers via a route
 
 ====

@@ -33,21 +33,21 @@ link:https://github.com/openshift/sti-nodejs/tree/master/0.10[0.10],
 link:https://github.com/sclorg/s2i-nodejs-container/tree/master/4[4], and
 link:https://github.com/sclorg/s2i-nodejs-container/tree/master/6[6] of Node.js.
 endif::openshift-enterprise,openshift-origin,openshift-dedicated[]
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 Currently, {product-title} provides versions
 link:https://github.com/sclorg/s2i-nodejs-container/tree/master/4[4], and
 link:https://github.com/sclorg/s2i-nodejs-container/tree/master/6[6] of Node.js.
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
 [[nodejs-images]]
 == Images
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 [IMPORTANT]
 ====
 In {product-title} v3, version 0.10 is deprecated and no longer available to use.
 ====
-endif::openshift-online[]
+endif::openshift-online,digital-garage,faktorz[]
 
 [[nodejs-images]]
 == Images
@@ -73,7 +73,7 @@ external location. Your {product-title} resources can then reference the
 ImageStream. You can find
 https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example
 image stream definitions] for all the provided {product-title} images.
-endif::openshift-online[]
+endif::openshift-online,digital-garage,faktorz[]
 
 [[nodejs-configuration]]
 == Configuration
@@ -153,7 +153,7 @@ $ oc rsh <pod_id>
 Entering into a running container changes your current directory to
 *_/opt/app-root/src_*, where the source code is located.
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 [[nodejs-templates]]
 == Node.js Templates
 
@@ -168,4 +168,4 @@ The sample application can be built and deployed using the
 ----
 $ oc new-app --template=nodejs-mongo-persistent
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]

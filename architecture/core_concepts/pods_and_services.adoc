@@ -128,11 +128,11 @@ xref:../../architecture/core_concepts/containers_and_images.adoc#docker-images[D
 <6> The container can bind to ports which will be made available on the pod's
 IP.
 <7> {product-title} defines a
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 xref:../../architecture/additional_concepts/authorization.adoc#security-context-constraints[security
 context]
 endif::[]
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 security context
 endif::[]
 for containers which specifies whether they are allowed to run as
@@ -268,10 +268,10 @@ consistent address.  The default service clusterIP addresses are from the
 {product-title} internal network and they are used to permit pods to access each
 other. To permit external access to the service, additional externalIP addresses
 that are
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 xref:../../dev_guide/getting_traffic_into_cluster.adoc#using-externalIP[external]
 endif::[]
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 external
 endif::[]
 to cluster, can be assigned to the service. These externalIP addresses can also be virtual IP addresses that provide
@@ -344,7 +344,7 @@ xref:../../admin_guide/tcp_ingress_external_ports.adoc#unique-external-ips-ingre
 file. When *_master-config.yaml_* is changed, the master service must be
 restarted.
 
-ifdef::openshift-dedicated,openshift-online,digital-garage[]
+ifdef::openshift-dedicated,openshift-online,digital-garage,faktorz[]
 The externalIPs must be selected by the admin from the *ExternalIPNetworkCIDRs*
 range configured in master configuration file.
 endif::[]

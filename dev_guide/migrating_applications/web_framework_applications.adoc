@@ -59,7 +59,7 @@ ifdef::openshift-enterprise,openshift-origin[]
 
 |===
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 See link:https://www.openshift.com/features/containers.html#online3[Supported Container Images].
 endif::[]
 ifdef::openshift-dedicated[]
@@ -119,7 +119,7 @@ ifdef::openshift-enterprise,openshift-origin[]
 
 |===
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 See link:https://www.openshift.com/features/containers.html#online3[Supported Container Images].
 endif::[]
 ifdef::openshift-dedicated[]
@@ -170,7 +170,7 @@ ifdef::openshift-enterprise,openshift-origin[]
 
 |===
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 See link:https://www.openshift.com/features/containers.html#online3[Supported Container Images].
 endif::[]
 ifdef::openshift-dedicated[]
@@ -243,7 +243,7 @@ ifdef::openshift-enterprise,openshift-origin[]
 
 |===
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 See link:https://www.openshift.com/features/containers.html#online3[Supported Container Images].
 endif::[]
 ifdef::openshift-dedicated[]
@@ -306,14 +306,14 @@ ifdef::openshift-enterprise,openshift-origin[]
 
 |===
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 See link:https://www.openshift.com/features/containers.html#online3[Supported Container Images].
 
 [IMPORTANT]
 ====
 In {product-title} v3, version 0.10 is deprecated and no longer available to use.
 ====
-endif::openshift-online[]
+endif::openshift-online,digital-garage,faktorz[]
 ifdef::openshift-dedicated[]
 See link:https://www.openshift.com/features/containers.html#dedicated[Supported Container Images]
 endif::[]
@@ -344,13 +344,13 @@ link:http://blog.openshift.com/migrating-ghost-app-openshift-3/[OpenShift blog].
 
 [[dev-guide-migrating-web-framework-applications-jboss-eap]]
 == JBoss EAP
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 [IMPORTANT]
 ====
 Currently, JBoss EAP is not available for {product-title} Starter. It is only
 available for {product-title} Pro.
 ====
-endif::openshift-online[]
+endif::openshift-online,digital-garage,faktorz[]
 
 . Set up a new GitHub repository and add it as a remote branch to the current,
 local Git repository:
@@ -494,7 +494,7 @@ ifdef::openshift-enterprise,openshift-origin[]
 
 |===
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 See link:https://www.openshift.com/features/containers.html#online3[Supported Container Images].
 endif::[]
 ifdef::openshift-dedicated[]

@@ -29,7 +29,7 @@ For this guide you will need:
 * Basic Ruby/Rails knowledge
 * Locally installed version of Ruby 2.0.0+, Rubygems, Bundler
 * Basic Git knowledge
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 * Provisioned account in {product-title}
 endif::[]
 
@@ -244,7 +244,7 @@ $ git push
 
 == Deploying Your Application to {product-title}
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 To deploy your Ruby on Rails application, create a new xref:../projects.adoc#dev-guide-projects[Project] for the application:
 
 ----
@@ -369,7 +369,7 @@ If you are running your Rails application in a `development` or `test` environme
 
 === Creating a Route for Your Application
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 To expose a service by giving it an externally-reachable hostname like `www.example.com` use {product-title} xref:../routes.adoc#dev-guide-routes[route]. In your case you need to expose the frontend service by typing:
 
 ----
@@ -388,8 +388,8 @@ ifdef::openshift-dedicated[]
 * https://docs.openshift.com/enterprise/latest/admin_guide/high_availability.html#configuring-a-highly-available-service[Configuring
 a Highly-available Routing Service] (OpenShift Enterprise documentation)
 endif::openshift-dedicated[]
-endif::openshift-online,digital-garage[]
-ifdef::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
+ifdef::openshift-online,digital-garage,faktorz[]
 Expose the frontend service by typing:
 
 ----

@@ -22,7 +22,7 @@ https://github.com/ç/mongodb-container/tree/master/2.4[2.4], https://github.com
 
 == Images
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 RHEL 7 images are available through the Red Hat Registry:
 
 ----
@@ -34,7 +34,7 @@ $ docker pull registry.access.redhat.com/rhscl/mongodb-32-rhel7
 You can use these images through the `mongodb` image stream.
 endif::[]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 These images come in two flavors, depending on your needs:
 
 * RHEL 7
@@ -95,10 +95,10 @@ endif::[]
 ifdef::openshift-origin[]
     thedigitalgarage/mongodb-26-centos7
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
     mongodb:2.6
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
     mongodb:2.6
 endif::[]
 ----
@@ -325,10 +325,10 @@ See xref:../../install_config/imagestreams_templates.adoc#install-config-imagest
 for more details, if required.
 endif::[]
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 The following template is available:
 endif::[]
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 There are two templates available:
 
 * `mongodb-ephemeral` is for development/testing purposes only because it uses
@@ -339,7 +339,7 @@ data will be lost.
 endif::[]
 * `mongodb-persistent` uses a persistent volume store for the database data
 which means the data will survive a pod restart.
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Using persistent volumes requires a persistent volume pool be defined in the
 {product-title} deployment.
 endif::[]

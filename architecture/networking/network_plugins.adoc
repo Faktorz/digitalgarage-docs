@@ -25,7 +25,7 @@ The following network plug-ins are currently supported by {product-title}:
 
 - xref:../../architecture/networking/sdn.adoc#network-isolation-multitenant[OpenShift Network Isolation SDN]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 - xref:../../architecture/networking/network_plugins.adoc#flannel-sdn[Flannel SDN]
 endif::[]
 
@@ -50,7 +50,7 @@ Ansible-based installation procedure. See the
 xref:../../architecture/networking/sdn.adoc#architecture-additional-concepts-sdn[OpenShift SDN] section
 for more information.
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 [[flannel-sdn]]
 == Flannel SDN
 include::architecture/topics/flannel.adoc[]

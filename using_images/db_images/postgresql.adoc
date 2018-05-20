@@ -73,10 +73,10 @@ endif::[]
 ifdef::openshift-origin[]
     thedigitalgarage/postgresql-94-centos7
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
     postgresql:9.4
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
     postgresql:9.4
 endif::[]
 ----
@@ -302,14 +302,14 @@ See xref:../../install_config/imagestreams_templates.adoc#install-config-imagest
 for more details, if required.
 endif::[]
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 The following template is available:
 endif::[]
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 There are two templates available:
 endif::[]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 * `PostgreSQL-ephemeral` is for development or testing purposes only because it
 uses ephemeral storage for the database content. This means that if the
 database pod is restarted for any reason, such as the pod being moved to
@@ -318,7 +318,7 @@ redeploy, all data will be lost.
 endif::[]
 * `PostgreSQL-persistent` uses a persistent volume store for the database data
 which means the data will survive a pod restart.
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Using persistent volumes requires a persistent volume pool be defined in the
 {product-title} deployment.
 endif::[]

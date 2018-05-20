@@ -238,7 +238,7 @@ See the following references for other guidelines:
 == {product-title}-Specific Guidelines
 The following are guidelines that apply when creating container images specifically
 for use on {product-title}.
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 *Privileges and Volume Builds*
 
 Docker images cannot be built using the `VOLUME` directive in the `DOCKERFILE`.

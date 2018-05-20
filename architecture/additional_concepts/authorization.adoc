@@ -24,9 +24,9 @@ platform itself and all projects.
 endif::openshift-enterprise,openshift-origin[]
 
 It allows developers to use
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 local roles and bindings
-endif::openshift-online[]
+endif::openshift-online,digital-garage,faktorz[]
 ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 xref:cluster-and-local-rbac[local roles and bindings]
 endif::openshift-enterprise,openshift-origin,openshift-dedicated[]
@@ -48,17 +48,17 @@ xref:../core_concepts/index.adoc#architecture-core-concepts-index[objects]. For 
 |[[roles-def]]*Roles* |Collections of rules.
 xref:authentication.adoc#users-and-groups[Users and groups] can be associated
 with, or _bound_ to, multiple
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 roles at the same time.
-endif::openshift-online[]
+endif::openshift-online,digital-garage,faktorz[]
 ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 xref:roles[roles] at the same time.
 endif::openshift-enterprise,openshift-origin,openshift-dedicated[]
 
 |[[bindings]]*Bindings* |Associations between users and/or groups with a
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 role.
-endif::openshift-online[]
+endif::openshift-online,digital-garage,faktorz[]
 ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 xref:roles[role].
 endif::openshift-enterprise,openshift-origin,openshift-dedicated[]
@@ -445,9 +445,9 @@ ifdef::openshift-enterprise,openshift-origin[]
 xref:../../admin_guide/manage_authorization_policy.adoc#viewing-local-bindings[view
 local bindings].
 endif::[]
-ifdef::openshift-dedicated,openshift-online[]
+ifdef::openshift-dedicated,openshift-online,digital-garage,faktorz[]
 view local bindings.
-endif::openshift-dedicated[],openshift-online[]
+endif::openshift-dedicated[],openshift-online,digital-garage,faktorz[]
 
 ifdef::openshift-origin,openshift-enterprise,openshift-dedicated[]
 [IMPORTANT]
@@ -956,7 +956,7 @@ The *openshift.io/sa.scc.uid-range* annotation accepts only a single block.
 ====
 endif::[]
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 [[authorization-online-collaboration]]
 == Collaboration
 

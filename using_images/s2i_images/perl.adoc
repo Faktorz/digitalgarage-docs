@@ -32,7 +32,7 @@ https://github.com/openshift/sti-perl/tree/master/5.24[5.24] of Perl.
 
 == Images
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 RHEL 7 images are available through the Red Hat Registry:
 
 ----
@@ -42,9 +42,9 @@ $ docker pull registry.access.redhat.com/rhscl/perl-524-rhel7
 ----
 
 You can use these images through the `perl` image stream.
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Images comes in two flavors, depending on your needs:
 
 * RHEL 7
@@ -79,7 +79,7 @@ external location. Your {product-title}t resources can then reference the
 ImageStream. You can find
 https://github.com/thedigitalgarage/examples/tree/master/v1.3/image-streams[example
 image stream definitions] for all the provided {product-title} images.
-endif::openshift-online[]
+endif::openshift-online,digital-garage,faktorz[]
 
 [[perl-configuration]]
 == Configuration
@@ -171,7 +171,7 @@ $ oc rsh <pod_id>
 After you enter into the running container, your current directory is set to
 *_/opt/app-root/src_*, where the source code is located.
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 [[perl-templates]]
 == Perl Templates
 
@@ -186,4 +186,4 @@ The sample application can be built and deployed using the
 ----
 $ oc new-app --template=dancer-mysql-persistent
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]

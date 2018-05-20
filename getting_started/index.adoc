@@ -38,7 +38,7 @@ endif::openshift-dedicated[]
 |===
 endif::openshift-origin,openshift-enterprise,openshift-dedicated[]
 
-ifdef::digital-garage[]
+ifdef::digital-garage,faktorz
 [.lead]
 {product-title} is based on Openshift Origin version 3, Red Hat's application
 hosting platform that makes it easy for developers to quickly build, launch,
@@ -51,4 +51,4 @@ trying out {product-title}:
 using the web console and create your first project and application.
 * Go xref:../getting_started/beyond_the_basics.adoc#getting-started-beyond-the-basics[*beyond the basics*] and get
 hands-on with the CLI.
-endif::digital-garage[]
+endif::digital-garage,faktorz

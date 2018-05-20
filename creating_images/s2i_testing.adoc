@@ -67,7 +67,7 @@ useful, but it provides a good starting point to begin developing.
 ====
 The *_test/run_* script produced by the `s2i create` command requires that the sample application sources are inside the *_test/test-app_* directory.
 ====
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 [[testing-locally]]
 
 == Testing Locally
@@ -141,7 +141,7 @@ verify that saving and restoring artifacts works properly.
 Executing these steps is generally enough to tell if the builder image is
 working as expected.
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 [[using-openshift-build-for-automated-testing]]
 
 == Using {product-title} Build for Automated Testing
@@ -210,4 +210,4 @@ information.
 You can also use the `*CustomBuild*` to trigger a rebuild of your application
 based on the S2I image you updated. See xref:../dev_guide/builds/triggering_builds.adoc#image-change-triggers[image change triggers]
 for more information.
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]

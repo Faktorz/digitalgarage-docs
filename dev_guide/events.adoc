@@ -34,7 +34,7 @@ You can see events in your project from the web console from the *Browse* ->
 *Events* page. Many other objects, such as pods and deployments, have their own
 *Events* tab as well, which shows events related to that object.
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 [[failure-notifications]]
 == Failure Notifications
 

@@ -65,7 +65,7 @@ xref:../../architecture/core_concepts/pods_and_services.adoc#services[service] t
 provide load-balanced access to the deployment running your image.
 
 {product-title} automatically xref:build-strategy-detection[detects] whether the
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 `*Docker*`,
 endif::[]
 `*Pipeline*` or `*Source*`
@@ -81,7 +81,7 @@ If a *_Jenkinsfile_* exists in the root or specified context directory of the
 source repository when creating a new application, {product-title} generates a
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#pipeline-build[`*Pipeline*`
 build strategy].
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Otherwise, if a *_Dockerfile_* is found, {product-title}
 generates a
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#docker-build[`*Docker*`
@@ -92,17 +92,17 @@ xref:../../architecture/core_concepts/builds_and_image_streams.adoc#source-build
 build strategy].
 
 You can override the build strategy by setting the `--strategy` flag to either
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 `docker`,
 endif::[]
 `pipeline` or `source`.
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app /home/user/code/myapp --strategy=docker
 ----
 endif::[]
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app /home/user/code/myapp --strategy=source
 ----
@@ -120,7 +120,7 @@ specified context directory of the repository:
 |===
 
 |Language |Files
-ifdef::openshift-enterprise,openshift-dedicated,openshift-online,digital-garage[]
+ifdef::openshift-enterprise,openshift-dedicated,openshift-online,digital-garage,faktorz[]
 a|`dotnet`
 a|*_project.json_*, *_pass:[*.csproj]_*
 endif::[]
@@ -324,7 +324,7 @@ location, and the build output location.
 a|`ImageStreams`
 a|For `BuildConfig`, two `ImageStreams` are usually created. One
 represents the input image. With `Source` builds, this is the builder image.
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 With `Docker` builds, this is the *FROM* image.
 endif::[]
 The second one represents the output image. If a container image was specified

@@ -16,11 +16,11 @@ to set up and manage your {product-title} environment
 ifdef::openshift-origin,openshift-enterprise[]
 as a **cluster administrator** or an **application developer**.
 endif::[]
-ifdef::openshift-dedicated,digital-garage[]
+ifdef::openshift-dedicated,digital-garage,faktorz[]
 as an **application developer**.
 endif::[]
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 [IMPORTANT]
 ====
 {product-title} Starter is community supported only.
@@ -29,8 +29,7 @@ endif::[]
 
 [TIP]
 ====
-Use the left navigation bar to browse the documentation, the Search bar in the
-top-left to look for something specific, or the links below to access some
+Use the left navigation bar to browse the documentation, or the links below to access some
 highlights.
 ====
 
@@ -45,9 +44,9 @@ ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
 * xref:../getting_started/developers_console.adoc#getting-started-developers-console[As an application developer]
 endif::openshift-enterprise,openshift-origin,openshift-dedicated[]
 
-ifdef::digital-garage[]
+ifdef::digital-garage,faktorz[]
 * xref:../getting_started/index.adoc#getting-started-index[Check out a walkthrough on creating your first app]
-endif::digital-garage[]
+endif::digital-garage,faktorz[]
 
 ifdef::openshift-origin[]
 * xref:../getting_started/administrators.adoc#getting-started-administrators[As a cluster administrator]
@@ -126,7 +125,7 @@ a|[none]
 
 * xref:../using_images/s2i_images/index.adoc#using-images-s2i-images-index[Web frameworks powered by Source-to-Image (S2I)]
 * xref:../using_images/db_images/index.adoc#using-images-db-images-index[Databases to back your application]
-ifdef::openshift-enterprise,openshift-dedicated,digital-garage[]
+ifdef::openshift-enterprise,openshift-dedicated,digital-garage,faktorz
 * xref:../using_images/xpaas_images/index.adoc#using-images-xpaas-images-index[Services provided by xPaaS Middleware Images]
 endif::[]
 * xref:../using_images/docker_images/index.adoc#using-images-docker-images-index[Or, bring and run any Docker image]

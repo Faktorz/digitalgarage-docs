@@ -29,7 +29,7 @@ https://access.redhat.com/videos/2480801[Click here to watch]
 image::dev-console-video-thumb.png[Web Console Getting Started Experience, 579, 246, link="https://access.redhat.com/videos/2480801"]
 endif::openshift-enterprise,openshift-dedicated,openshift-origin[]
 
-ifdef::openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage[]
+ifdef::openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage,faktorz
 
 // include::getting_started/developers_cli.adoc[tag=forking]
 
@@ -148,4 +148,4 @@ committed change to your forked repository:
 . Click the *Browse* tab, then click *Builds*.
 . Find your build, then click *Start Build*.
 
-endif::openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage[]
+endif::openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage,faktorz

@@ -63,9 +63,9 @@ $ docker pull registry.access.redhat.com/dotnet/dotnetcore-10-rhel7
 $ docker pull registry.access.redhat.com/dotnet/dotnetcore-11-rhel7
 ----
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 You can use these images through the `dotnet` image stream.
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
 ifdef::openshift-enterprise[]
 Image stream definitions for the .NET Core on RHEL S2I image are
@@ -170,28 +170,28 @@ image stream will be present.
 An image can be used to build an application by running `oc new-app` against a
 sample repository:
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app dotnet:1.0~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-1.0 --context-dir=app
 $ oc new-app dotnet:1.1~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-1.1 --context-dir=app
 ----
-endif::openshift-online[]
+endif::openshift-online,digital-garage,faktorz[]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app dotnet:2.0~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-2.0 --context-dir=app
 $ oc new-app dotnet:1.1~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-1.1 --context-dir=app
 $ oc new-app dotnet:1.0~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-1.0 --context-dir=app
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app registry.access.redhat.com/dotnet/dotnet-20-rhel7~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-2.0 --context-dir=app
 $ oc new-app registry.access.redhat.com/dotnet/dotnetcore-11-rhel7~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-1.1 --context-dir=app
 $ oc new-app registry.access.redhat.com/dotnet/dotnetcore-10-rhel7~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-1.0 --context-dir=app
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
 ifdef::openshift-enterprise[]
 [NOTE]
@@ -200,7 +200,7 @@ The `oc new-app` command can detect .NET Core source starting in {product-title}
 ====
 endif::openshift-enterprise[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 [[dot-net-core-templates]]
 == .NET Core Templates
 ifdef::openshift-enterprise[]
@@ -241,4 +241,4 @@ using PostgreSQL as database can be deployed with:
 ----
 $ oc new-app --template=dotnet-pgsql-persistent
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]

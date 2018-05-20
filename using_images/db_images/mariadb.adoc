@@ -26,7 +26,7 @@ https://github.com/sclorg/mariadb-container/tree/master/10.1[10.1] of MariaDB.
 [[mariadb-images]]
 == Images
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 RHEL 7 images are available through the Red Hat Registry:
 
 ----
@@ -37,7 +37,7 @@ $ docker pull registry.access.redhat.com/rhscl/mariadb-101-rhel7
 You can use the MariaDB 10.1 image through the `mariadb` image stream.
 endif::[]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 These images come in two flavors, depending on your needs:
 
 * RHEL 7
@@ -98,7 +98,7 @@ endif::[]
 ifdef::openshift-origin[]
     centos/mariadb-101-centos7
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
     mariadb:10.1
 endif::[]
 ----
@@ -252,7 +252,7 @@ for the database:
 * *_/var/lib/mysql/data_* - The MySQL data directory is where
 MariaDB stores database files.
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 [NOTE]
 ====
 When mounting a directory from the host into the container, ensure that the
@@ -370,10 +370,10 @@ configuration] and a
 xref:../../architecture/core_concepts/pods_and_services.adoc#services[service].
 
 The MariaDB
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 template
 endif::[]
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 templates
 endif::[]
 should have been registered in the default *openshift*
@@ -383,10 +383,10 @@ See xref:../../install_config/imagestreams_templates.adoc#install-config-imagest
 for more details, if required.
 endif::[]
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 The following template is available:
 endif::[]
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 There are two templates available:
 
 * `mariadb-ephemeral` is for development or testing purposes only because it uses
@@ -394,10 +394,10 @@ ephemeral storage for the database content. This means that if the database
 pod is restarted for any reason, such as the pod being moved to another node
 or the deployment configuration being updated and triggering a redeploy, all
 data will be lost.
-endif::openshift-online[]
+endif::openshift-online,digital-garage,faktorz[]
 * `mariadb-persistent` uses a persistent volume store for the database data
 which means the data will survive a pod restart.
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Using persistent volumes requires a persistent volume pool be defined in the
 {product-title} deployment.
 endif::[]
@@ -740,7 +740,7 @@ Turn off AIO usage entirely, by setting environment variable `*MYSQL_AIO*` to
 have value `0`.  On subsequent deployments, this arranges for the MySQL
 configuration variable `*innodb_use_native_aio*` to have value `0`.
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Alternatively, increase the `aio-max-nr` kernel resource.
 The following example examines the current value of `aio-max-nr` and doubles it.
 

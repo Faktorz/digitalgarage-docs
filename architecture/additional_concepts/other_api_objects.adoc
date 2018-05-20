@@ -238,9 +238,9 @@ ifdef::openshift-enterprise,openshift-origin[]
 xref:../../install_config/configuring_authentication.adoc#identity-providers[identity
 provider].
 endif::openshift-enterprise,openshift-origin[]
-ifdef::openshift-dedicated,openshift-online[]
+ifdef::openshift-dedicated,openshift-online,digital-garage,faktorz[]
 identity provider.
-endif::openshift-dedicated,openshift-online[]
+endif::openshift-dedicated,openshift-online,digital-garage,faktorz[]
 This determines the user's identity, and provides that information to
 {product-title}.
 
@@ -284,9 +284,9 @@ ifdef::openshift-enterprise,openshift-origin[]
 xref:../../admin_guide/manage_rbac.adoc#managing-role-bindings[adding
 roles to users or to their groups].
 endif::openshift-enterprise,openshift-origin[]
-ifdef::openshift-dedicated,openshift-online[]
+ifdef::openshift-dedicated,openshift-online,digital-garage,faktorz[]
 adding roles to users or to their groups.
-endif::openshift-dedicated,openshift-online[]
+endif::openshift-dedicated,openshift-online,digital-garage,faktorz[]
 
 User objects are created automatically on first login, or can be created via the
 API.
@@ -350,9 +350,9 @@ ifdef::openshift-enterprise,openshift-origin[]
 xref:../../admin_guide/manage_rbac.adoc#managing-role-bindings[adding
 roles to users or to their groups].
 endif::openshift-enterprise,openshift-origin[]
-ifdef::openshift-dedicated,openshift-online[]
+ifdef::openshift-dedicated,openshift-online,digital-garage,faktorz[]
 adding roles to users or to their groups.
-endif::openshift-dedicated,openshift-online[][]
+endif::openshift-dedicated,openshift-online,digital-garage,faktorz[][]
 
 .`*Group*` Object Definition
 

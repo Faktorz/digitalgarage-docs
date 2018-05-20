@@ -17,7 +17,7 @@ toc::[]
 A _build input_ provides source content for builds to operate on. There are
 several ways to provide source in {product-title}. In order of precedence:
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 * xref:dockerfile-source[Inline Dockerfile definitions]
 endif::[]
 * xref:image-source[Content extracted from existing images]
@@ -27,7 +27,7 @@ endif::[]
 * xref:using-external-artifacts[External artifacts]
 
 Different inputs can be combined into a single build.
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 As the inline Dockerfile takes
 precedence, it can overwrite any other file named *_Dockerfile_* provided by
 another input.
@@ -50,13 +50,13 @@ working directory using the target path.
 . The build process changes directories into the `contextDir`, if one is
 defined.
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 . The inline Dockerfile, if any, is written to the current directory.
 endif::[]
 
 . The content from the current directory is provided to the build process
 for reference by the
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Dockerfile, custom builder logic, or
 endif::[]
 *_assemble_* script. This means any input content that resides outside the
@@ -80,18 +80,18 @@ source:
     - destinationDir: app/dir/injected/dir <2>
       sourcePath: /usr/lib/somefile.jar
   contextDir: "app/dir" <3>
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
   dockerfile: "FROM centos:7\nRUN yum install -y httpd" <4>
 endif::[]
 ----
 <1> The repository to be cloned into the working directory for the build.
 <2> *_/usr/lib/somefile.jar_* from `myinputimage` will be stored in *_<workingdir>/app/dir/injected/dir_*.
 <3> The working directory for the build will become *_<original_workingdir>/app/dir_*.
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 <4> A Dockerfile with this content will be created in *_<original_workingdir>/app/dir_*, overwriting any existing file with that name.
 endif::[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 [[dockerfile-source]]
 == Dockerfile Source
 
@@ -165,7 +165,7 @@ source:
 <5> The location of the file to be copied out of the referenced image.
 <6> An optional secret provided if credentials are needed to access the input image.
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 [NOTE]
 ====
 This feature is not supported for builds using the xref:using-secrets-custom-strategy[Custom Strategy].
@@ -177,7 +177,7 @@ endif::[]
 
 When specified, source code will be fetched from the location supplied.
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 If an inline Dockerfile is supplied, it will overwrite the *_Dockerfile_*
 (if any) in the `contextDir` of the Git repository.
 endif::[]
@@ -191,7 +191,7 @@ source:
     uri: "https://github.com/openshift/ruby-hello-world"
     ref: "master"
   contextDir: "app/dir" <2>
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
   dockerfile: "FROM openshift/ruby-22-centos7\nUSER example" <3>
 endif::[]
 ----
@@ -202,7 +202,7 @@ reference. A valid `ref` can be a SHA1 tag or a branch name.
 the source code repository where the build looks for the application source
 code. If your application exists inside a sub-directory, you can override the
 default location (the root folder) using this field.
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 <3> If the optional `dockerfile` field is provided, it should be a string
 containing a Dockerfile that overwrites any Dockerfile that may exist in the
 source repository.
@@ -631,7 +631,7 @@ valid way to run a build for this `BuildConfig` is to use `oc
 start-build` with one of the `--from` options to provide the requisite binary
 data.
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 The `dockerfile` and `contextDir` xref:source-code[source options] have
 special meaning with binary builds.
 
@@ -727,7 +727,7 @@ $ oc new-build \
 
 In both cases, the *_.npmrc_* file is added to the *_/etc_* directory of the
 build environment.
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Note that for a
 xref:../../architecture/core_concepts/builds_and_image_streams.adoc#docker-build[Docker strategy] the destination directory must be a relative path.
 endif::[]
@@ -752,7 +752,7 @@ script. This means that the secret files will exist in the resulting image, but
 they will be empty for security reasons.
 ====
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 [[using-secrets-docker-strategy]]
 === Docker Strategy
 
@@ -847,7 +847,7 @@ used by a Source build, see
 xref:build_strategies.adoc#override-builder-image-scripts[Overriding Builder Image Scripts].
 ====
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 For a `Docker` build strategy, you must modify the *_Dockerfile_* and invoke
 shell commands with the
 link:https://docs.docker.com/engine/reference/builder/#run[`RUN` instruction]:
@@ -867,7 +867,7 @@ endif::[]
 In practice, you may want to use an environment variable for the file location
 so that the specific file to be downloaded can be customized using an
 environment variable defined on the `BuildConfig`, rather than updating the
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 *_Dockerfile_* or
 endif::[]
 *_assemble_* script.
@@ -978,7 +978,7 @@ the build configuration:
 $ oc set build-secret --pull bc/sample-build dockerhub
 ----
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 [NOTE]
 ====
 This example uses `pullSecret` in a Source build, but it is also applicable

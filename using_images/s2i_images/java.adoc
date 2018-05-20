@@ -103,32 +103,32 @@ or from binary artifacts.
 The Java S2I builder image can be used to build an application from source by running `oc
 new-app` against a source repository:
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app redhat-openjdk18-openshift~https://github.com/jboss-openshift/openshift-quickstarts --context-dir=undertow-servlet
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~https://github.com/jboss-openshift/openshift-quickstarts --context-dir=undertow-servlet
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
 By default, tests are not run.  To build an application and run tests as part of
 the build, override the default `MAVEN_ARGS`, as in the following command:
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app redhat-openjdk18-openshift~<git_repo_URL> --context-dir=<context-dir> --build-env='MAVEN_ARGS=-e -Popenshift -Dcom.redhat.xpaas.repo.redhatga package'
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~<git_repo_URL> --context-dir=<context-dir> --build-env='MAVEN_ARGS=-e -Popenshift -Dcom.redhat.xpaas.repo.redhatga package'
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
 If a Java project consists of multiple Maven modules, it can be useful to
 explicitly specify the artifact output directory.  Specifying the directory
@@ -138,17 +138,17 @@ them up.
 To specify the modules to build and the artifact output directory, use the
 following command:
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app redhat-openjdk18-openshift~<git_repo_URL> --context-dir=<context-dir> --build-env='ARTIFACT_DIR=relative/path/to/artifacts/dir' --build-env='MAVEN_ARGS=install -pl <groupId>:<artifactId> -am'
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift~<git_repo_URL> --context-dir=<context-dir> --build-env='ARTIFACT_DIR=relative/path/to/artifacts/dir' --build-env='MAVEN_ARGS=install -pl <groupId>:<artifactId> -am'
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
 [[s2i-images-java-deploy-applications-from-binary]]
 == Building and Deploying from Binary Artifacts
@@ -157,13 +157,13 @@ The Java S2I builder image can be used to build an application using binary
 artifacts that you provide.  To do so, first create a new binary build using the
 `oc new-build` command:
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-build --name=<application-name> redhat-openjdk18-openshift --binary=true
 ----
-endif::openshift-online,digital-garage[]
+endif::openshift-online,digital-garage,faktorz[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc new-app <application-name>
 ----

@@ -378,7 +378,7 @@ Instead of connecting directly to individual nodes, you can use one of
 ifdef::openshift-enterprise,openshift-origin[]
 xref:../admin_guide/high_availability.adoc#admin-guide-high-availability[highly availability]
 endif::[]
-ifdef::openshift-dedicated,openshift-online,digital-garage,atomic-registry[]
+ifdef::openshift-dedicated,openshift-online,digital-garage,faktorz,atomic-registry[]
 high availability
 endif::[]
  strategies by deploying the IP failover router to provide access
@@ -519,7 +519,7 @@ endpoints via any TCP/UDP port the service exposes. This is simpler than having
 to manage the port space of a limited number of shared IP addresses, when
 manually assigning external IPs to services.
 endif::[]
-ifdef::openshift-dedicated,openshift-online,digital-garage[]
+ifdef::openshift-dedicated,openshift-online,digital-garage,faktorz[]
 In a non-cloud environment, cluster administrators can assign a unique external
 IP address to a service. When routed correctly, external traffic can reach the
 service endpoints via any TCP/UDP port the service exposes. This is simpler than

@@ -25,7 +25,7 @@ link:https://github.com/openshift/mysql/tree/master/5.6[5.7] of MySQL.
 
 == Images
 
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 RHEL 7 images are available through the Red Hat Registry:
 
 ----
@@ -37,7 +37,7 @@ $ docker pull registry.access.redhat.com/rhscl/mysql-57-rhel7
 You can use these images through the `mysql` image stream.
 endif::[]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 This image comes in two flavors, depending on your needs:
 
 * RHEL 7
@@ -97,7 +97,7 @@ endif::[]
 ifdef::openshift-origin[]
     openshift/mysql-55-centos7
 endif::[]
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
     mysql:5.5
 endif::[]
 ----
@@ -219,10 +219,10 @@ MySQL settings can be configured with the following environment variables:
 |`*MYSQL_KEY_BUFFER_SIZE*`
 |The size of the buffer used for index blocks.
 |
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 10% of available memory
 endif::[]
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 32M (or 10% of available memory)
 endif::[]
 
@@ -233,51 +233,51 @@ endif::[]
 |`*MYSQL_READ_BUFFER_SIZE*`
 |The size of the buffer used for a sequential scan.
 |
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 5% of available memory
 endif::[]
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 8M (or 5% of available memory)
 endif::[]
 
 |`*MYSQL_INNODB_BUFFER_POOL_SIZE*`
 |The size of the buffer pool where InnoDB caches table and index data.
 |
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 50% of available memory
 endif::[]
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 32M (or 50% of available memory)
 endif::[]
 
 |`*MYSQL_INNODB_LOG_FILE_SIZE*`
 |The size of each log file in a log group.
 |
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 15% of available memory
 endif::[]
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 8M (or 15% of available memory)
 endif::[]
 
 |`*MYSQL_INNODB_LOG_BUFFER_SIZE*`
 |The size of the buffer that InnoDB uses to write to the log files on disk.
 |
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 15% of available memory
 endif::[]
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 8M (or 15% of available memory)
 endif::[]
 |===
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 Some of the memory-related parameters have percentages as default values.  These
 values are calculated dynamically during a container's startup based on
 xref:../../dev_guide/compute_resources.adoc#dev-memory-limits[memory limits].
 endif::[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Some of the memory-related parameters have two default values. The fixed value
 is used when a container does not have link:../../dev_guide/compute_resources.html#memory-limits[memory limits]
 assigned. The other value is calculated dynamically during a container's startup
@@ -411,14 +411,14 @@ See xref:../../install_config/imagestreams_templates.adoc#install-config-imagest
 for more details, if required.
 endif::[]
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 The following template is available:
 endif::[]
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 There are two templates available:
 endif::[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 * `mysql-ephemeral` is for development or testing purposes only because it uses
 ephemeral storage for the database content. This means that if the database
 pod is restarted for any reason, such as the pod being moved to another node
@@ -427,7 +427,7 @@ data will be lost.
 endif::[]
 * `mysql-persistent` uses a persistent volume store for the database data which
 means the data will survive a pod restart.
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Using persistent volumes requires a persistent volume pool be defined in the
 {product-title} deployment.
 endif::[]
@@ -578,7 +578,7 @@ spec:
 ----
 ====
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Since we claimed a persistent volume in this deployment configuration to have
 all data persisted for the MySQL master server, you must ask your cluster
 administrator to create a persistent volume that you can claim the storage from.
@@ -770,7 +770,7 @@ On subsequent deployments, this arranges for the
 MySQL configuration variable `*innodb_use_native_aio*`
 to have value `0`.
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Alternatively, increase the `aio-max-nr` kernel resource.
 The following example examines the current value of `aio-max-nr` and doubles it.
 

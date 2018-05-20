@@ -360,7 +360,7 @@ once the deployment is completed.
 Now all you need to do is push code updates, and {product-title} handles the
 rest.
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz
 [[btb-failure-notifications]]
 == Failure Notifications
 

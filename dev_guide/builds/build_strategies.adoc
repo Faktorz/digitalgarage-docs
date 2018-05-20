@@ -12,7 +12,7 @@
 toc::[]
 
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 [IMPORTANT]
 ====
 The Docker build strategy is not supported in {product-title}.
@@ -207,7 +207,7 @@ available to the `assemble` script.
 
 For more details on the format of the `.s2iignore` file, see the link:https://github.com/openshift/source-to-image#build-workflow[source-to-image documentation].
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 [[docker-strategy-options]]
 == Docker Strategy Options
 

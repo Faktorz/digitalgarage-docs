@@ -868,7 +868,7 @@ after the template is deployed.
 [[export-as-template]]
 
 === Creating a Template from Existing Objects
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 If you are upgrading from {product-title} Starter to {product-title} Pro, use
 `oc export all` to export all of your existing objects. {product-title} Pro does
 not support per-object resource migration.

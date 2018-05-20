@@ -25,7 +25,7 @@ or more sources. The strategy determines the aforementioned process, while the
 sources provide its input.
 
 The
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 supported
 endif::[]
 build strategies are:
@@ -36,7 +36,7 @@ xref:build_strategies.adoc#source-to-image-strategy-options[options])
 - Pipeline
 (xref:../../architecture/core_concepts/builds_and_image_streams.adoc#pipeline-build[description],
 xref:build_strategies.adoc#pipeline-strategy-options[options])
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 - Docker
 (xref:../../architecture/core_concepts/builds_and_image_streams.adoc#docker-build[description],
 xref:build_strategies.adoc#docker-strategy-options[options])
@@ -49,7 +49,7 @@ And there are six types of sources that can be given as
 xref:build_inputs.adoc#dev-guide-build-inputs[_build input_]:
 
 - xref:build_inputs.adoc#source-code[Git]
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 - xref:build_inputs.adoc#dockerfile-source[Dockerfile]
 endif::[]
 - xref:build_inputs.adoc#binary-source[Binary]
@@ -60,7 +60,7 @@ endif::[]
 It is up to each build strategy to consider or ignore a certain type of source,
 as well as to determine how it is to be used. Binary and Git are mutually
 exclusive source types.
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 Image can be used by itself or together with either Git or Binary.
 endif::[]
 ifdef::openshift-origin,openshift-dedicated,openshift-enterprise[]
@@ -132,14 +132,14 @@ which cause a new build to be created.
 <4> The `source` section defines the source of the build. The source type
 determines the primary source of input, and can be either `Git`, to point to
 a code repository location,
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 `Dockerfile`, to build from an inline Dockerfile,
 endif::[]
 or `Binary`, to accept binary payloads. It is possible to have multiple
 sources at once, refer to the documentation for each source type for details.
 <5> The `strategy` section describes the build strategy used to execute the
 build. You can specify a `Source`
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 , `Docker`, or `Custom`
 endif::[]
 strategy here. This above example uses the `ruby-20-centos7` container image

@@ -362,7 +362,7 @@ ifdef::openshift-enterprise,openshift-dedicated,openshift-origin[]
 defaults from the `LimitRange` object apply to pods created during the
 deployment process.
 endif::[]
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 - A limit range defined in your project, where the
 defaults from the `LimitRange` object apply to pods created during the
 deployment process.
@@ -445,7 +445,7 @@ results in a pod that will never be scheduled.
 ====
 endif::[]
 
-ifndef::openshift-online,digital-garage[]
+ifndef::openshift-online,digital-garage,faktorz[]
 [[run-pod-with-different-service-account]]
 == Running a Pod with a Different Service Account
 

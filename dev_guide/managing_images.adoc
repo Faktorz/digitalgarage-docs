@@ -351,7 +351,7 @@ deployments].
 The cluster administrator configures exactly what resources can be used.
 
 endif::[]
-ifdef::openshift-online,digital-garage,openshift-dedicated[]
+ifdef::openshift-online,digital-garage,faktorz,openshift-dedicated[]
 Kubernetes deployments.
 endif::[]
 
@@ -440,7 +440,7 @@ To disable image lookup, pass `*--enabled=false*`:
 $ oc set image-lookup deploy/mysql --enabled=false
 ----
 endif::openshift-enterprise,openshift-origin[]
-ifdef::openshift-origin,openshift-online,digital-garage,openshift-enterprise,openshift-dedicated[]
+ifdef::openshift-origin,openshift-online,digital-garage,faktorz,openshift-enterprise,openshift-dedicated[]
 [[image-pull-policy]]
 == Image Pull Policy
 
@@ -471,7 +471,7 @@ xref:creating-an-image-stream-by-manually-pushing-an-image[create an image
 stream by manually pushing an image], or just to `docker pull` an image
 directly.
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 OpenShift Online gives developers a hands-on preview of the OpenShift platform
 in a hosted environment that includes access to an internal registry.
 endif::[]
@@ -504,7 +504,7 @@ $ docker login -u <user_name> -e <email_address> \
 ifdef::atomic-registry,openshift-origin,openshift-enterprise,openshift-dedicated[]
     -p <token_value> <registry_server>:<port>
 endif::[]
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
     -p <token_value> https://registry.<clusterID>.openshift.com
 endif::[]
 ----
@@ -1178,7 +1178,7 @@ ifdef::openshift-enterprise,openshift-origin[]
 xref:../install_config/web_console_customization.adoc#loading-custom-scripts-and-stylesheets[CSS
 customizations]
 endif::[]
-ifdef::openshift-online,digital-garage,openshift-dedicated,atomic-registry[]
+ifdef::openshift-online,digital-garage,faktorz,openshift-dedicated,atomic-registry[]
 CSS customizations
 endif::[]
 that can be added to a {product-title} cluster that uses your
@@ -1195,7 +1195,7 @@ file]. The categories can also be
 ifdef::openshift-enterprise,openshift-origin[]
 xref:../install_config/web_console_customization.adoc#configuring-catalog-categories[customized]
 endif::[]
-ifdef::openshift-online,digital-garage,openshift-dedicated,atomic-registry[]
+ifdef::openshift-online,digital-garage,faktorz,openshift-dedicated,atomic-registry[]
 customized
 endif::[]
 for the whole cluster.

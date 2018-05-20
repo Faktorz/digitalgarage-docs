@@ -37,15 +37,15 @@ Click *Create Route* to define and create a route in your project:
 .Creating a Route Using the Web Console
 image::3.7-create-route-form.png["Creating a Route Using the Web Console"]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Using the CLI, the following example creates an unsecured route:
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc expose svc/frontend --hostname=www.example.com
 ----
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 ----
 $ oc expose svc/frontend
 ----
@@ -54,7 +54,7 @@ endif::[]
 The new route inherits the name from the service unless you specify one
 using the `--name` option.
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 .YAML Definition of the Unsecured Route Created Above
 [source,yaml]
 ----
@@ -71,7 +71,7 @@ spec:
 ====
 endif::[]
 
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 .YAML Definition of the Unsecured Route Created Above
 ====
 [source,yaml]
@@ -88,7 +88,7 @@ spec:
 ====
 endif::[]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 Unsecured routes are the default configuration, and are therefore the simplest
 to set up.
 However,
@@ -148,7 +148,7 @@ remove a passphrase from a keyfile, you can run:
 # openssl rsa -in <passwordProtectedKey.key> -out <new.key>
 ----
 endif::[]
-ifdef::openshift-online[]
+ifdef::openshift-online,digital-garage,faktorz[]
 Unsecured routes are the default configuration, and are therefore the simplest
 to set up.
 However,
@@ -186,7 +186,7 @@ spec:
 
 endif::[]
 
-ifndef::openshift-online[]
+ifndef::openshift-online,digital-garage,faktorz[]
 You can create a secured route without specifying a key and certificate,
 in which case the
 ifdef::openshift-enterprise,openshift-origin[]

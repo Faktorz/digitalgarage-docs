@@ -46,7 +46,7 @@ ifdef::openshift-dedicated[]
 * You should have access to an {product-title} instance. If you are not sure of
 these details, contact your {product-title} cluster administrator.
 endif::[]
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 * Access {product-title} by logging in and creating an account at
 link:https://openshift.com/get-started/[].
 endif::[]
@@ -111,7 +111,7 @@ ifdef::openshift-dedicated[]
 * You should have access to an {product-title} instance. If you are not sure of
 these details, contact your {product-title} cluster administrator.
 endif::[]
-ifdef::openshift-online,digital-garage[]
+ifdef::openshift-online,digital-garage,faktorz[]
 * Access {product-title} by logging in and creating an account at
 link:https://www.openshift.com/get-started/[].
 endif::[]
