@@ -99,10 +99,10 @@ Topics:
   Distros: openshift-online,digital-garage,faktorz
 - Name: Web Console Walkthrough
   File: developers_console
-  Distros: openshift-enterprise,openshift-dedicated,openshift-origin
+  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,faktorz
 - Name: Command-Line Walkthrough
   File: developers_cli
-  Distros: openshift-enterprise,openshift-dedicated,openshift-origin
+  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,faktorz
 - Name: Setting Up a Cluster
   File: administrators
   Distros: openshift-origin
@@ -705,7 +705,7 @@ Topics:
 ---
 Name: CLI Reference
 Dir: cli_reference
-Distros: openshift-*,atomic-*
+Distros: openshift-*,atomic-*,faktorz,digital-garage
 Topics:
 - Name: Overview
   File: index
@@ -715,7 +715,7 @@ Topics:
   File: manage_cli_profiles
 - Name: Developer CLI Operations
   File: basic_cli_operations
-  Distros: openshift-*
+  Distros: openshift-*,digital-garage,faktorz
 - Name: Administrator CLI Operations
   File: admin_cli_operations
   Distros: openshift-enterprise,openshift-dedicated,openshift-origin
@@ -728,7 +728,7 @@ Topics:
 ---
 Name: Developer Guide
 Dir: dev_guide
-Distros: openshift-*
+Distros: openshift-*,digital-garage,faktorz
 Topics:
 - Name: Overview
   File: index
@@ -931,7 +931,7 @@ Topics:
   File: s2i_testing
 - Name: Custom Builder
   File: custom
-  Distros: openshift-enterprise,openshift-dedicated,openshift-origin
+  Distros: openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage,faktorz
 - Name: Revision History
   File: revhistory_creating_images
   Distros: openshift-enterprise,openshift-dedicated
@@ -1023,6 +1023,7 @@ Topics:
 ---
 Name: Go Client Library Reference
 Dir: go_client
+Distros: openshift-enterprise,openshift-origin
 Topics:
 - Name: Getting Started
   File: getting_started
@@ -1041,6 +1042,7 @@ Topics:
 ---
 Name: REST API Reference
 Dir: rest_api
+Distros: openshift-enterprise,openshift-origin
 Topics:
 - Name: Overview
   File: index
