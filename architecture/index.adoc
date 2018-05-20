@@ -8,19 +8,19 @@
 :linkattrs:
 
 ifdef::openshift-origin,openshift-online,digital-garage,openshift-enterprise,openshift-dedicated[]
-OpenShift v3 is a layered system designed to expose underlying Docker-formatted
+FaktorZ v3 is a layered system designed to expose underlying Docker-formatted
 container image and Kubernetes concepts as accurately as possible, with a focus
 on easy composition of applications by a developer. For example, install Ruby,
 push code, and add MySQL.
 
-Unlike OpenShift v2, more flexibility of configuration is exposed after creation
+Unlike FaktorZ v2, more flexibility of configuration is exposed after creation
 in all aspects of the model. The concept of an application as a separate object
 is removed in favor of more flexible composition of "services", allowing two web
 containers to reuse a database or expose a database directly to the edge of the
 network.
 endif::[]
 ifdef::atomic-registry[]
-{product-title} is based on OpenShift technology which features an
+{product-title} is based on FaktorZ technology which features an
 embedded registry based on the upstream
 link:https://github.com/docker/distribution[Docker Distribution,
 role="external", window="_blank"] library. {product-title} provides the

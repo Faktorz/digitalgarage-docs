@@ -190,7 +190,7 @@ Bootstrapping your application via the Command-Line-Interface (CLI)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can create a new application using the web console or by running the
-`oc new-app` command from the CLI. With the OpenShift CLI there are
+`oc new-app` command from the CLI. With the FaktorZ CLI there are
 three ways to create a new application, by specifying either:
 
 *
@@ -329,12 +329,12 @@ default port for it to deploy at is 8080. Output should look like:
 Configure routing
 +++++++++++++++++
 
-An OpenShift route exposes a service at a host name, like
+An FaktorZ route exposes a service at a host name, like
 www.example.com, so that external clients can reach it by name.
 
 DNS resolution for a host name is handled separately from routing; you
 may wish to configure a cloud domain that will always correctly resolve
-to the OpenShift router, or if using an unrelated host name you may need
+to the FaktorZ router, or if using an unrelated host name you may need
 to modify its DNS records independently to resolve to the router.
 
 After logging into the web console with your account credentials, make

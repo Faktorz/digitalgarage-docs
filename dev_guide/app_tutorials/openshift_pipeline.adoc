@@ -1,5 +1,5 @@
 [[dev-guide-openshift-pipeline-builds]]
-= OpenShift Pipeline Builds
+= FaktorZ Pipeline Builds
 {product-author}
 {product-version}
 :data-uri:
@@ -15,17 +15,17 @@ toc::[]
 == Introduction
 
 Whether you are creating a simple website or a complex web of microservices, use
-OpenShift Pipelines to build, test, deploy, and promote your applications on
-OpenShift.
+FaktorZ Pipelines to build, test, deploy, and promote your applications on
+FaktorZ.
 
-In addition to standard Jenkins Pipeline Syntax, the OpenShift Jenkins image
-provides the OpenShift Domain Specific Language (DSL) (through the OpenShift Jenkins
+In addition to standard Jenkins Pipeline Syntax, the FaktorZ Jenkins image
+provides the FaktorZ Domain Specific Language (DSL) (through the FaktorZ Jenkins
 Client Plug-in), which aims to provide a readable, concise, comprehensive, and
-fluent syntax for rich interactions with an OpenShift API server, allowing for
+fluent syntax for rich interactions with an FaktorZ API server, allowing for
 even more control over the build, deployment, and promotion of applications on
-your OpenShift cluster.
+your FaktorZ cluster.
 
-This example demonstrates how to create an OpenShift Pipeline that will build,
+This example demonstrates how to create an FaktorZ Pipeline that will build,
 deploy, and verify a `Node.js/MongoDB` application using the
 link:https://github.com/openshift/nodejs-ex/blob/master/openshift/templates/nodejs-mongodb.json[`nodejs-mongodb.json`]
 template.
@@ -91,13 +91,13 @@ Once you create a BuildConfig with a `jenkinsPipelineStrategy`, tell the
 pipeline what to do by using an inline `jenkinsfile`. This example does not set
 up a Git repository for the application.
 
-The following `jenkinsfile` content is written in Groovy using the OpenShift
+The following `jenkinsfile` content is written in Groovy using the FaktorZ
 DSL. For this example, include inline content in the BuildConfig using the
 link:http://www.yaml.org/spec/1.2/spec.html#id2795688[YAML Literal Style],
 though including a `jenkinsfile` in your source repository is the preferred
 method.
 
-The completed BuildConfig can be viewed in the OpenShift Origin repository in
+The completed BuildConfig can be viewed in the FaktorZ Origin repository in
 the examples directory,
 link:https://github.com/openshift/origin/tree/master/examples/jenkins/pipeline/nodejs-sample-pipeline.yaml[`nodejs-sample-pipeline.yaml`].
 
@@ -186,7 +186,7 @@ but the older *scripted pipeline* style is also supported.
 [[creating-the-pipeline]]
 == Creating the Pipeline
 
-You can create the BuildConfig in your OpenShift cluster by running:
+You can create the BuildConfig in your FaktorZ cluster by running:
 
 [source]
 
@@ -203,8 +203,8 @@ Origin repository by running:
 $ oc create -f https://raw.githubusercontent.com/openshift/origin/master/examples/jenkins/pipeline/nodejs-sample-pipeline.yaml
 ----
 
-For more information about the OpenShift DSL syntax used here, see
-https://github.com/openshift/jenkins-client-plugin/blob/master/README.md[OpenShift
+For more information about the FaktorZ DSL syntax used here, see
+https://github.com/openshift/jenkins-client-plugin/blob/master/README.md[FaktorZ
 Jenkins Client Plug-in].
 
 [[starting-the-pipeline]]
@@ -220,7 +220,7 @@ $ oc start-build nodejs-sample-pipeline
 
 [NOTE]
 ====
-Alternatively, you can start your pipeline with the OpenShift Web Console by
+Alternatively, you can start your pipeline with the FaktorZ Web Console by
 navigating to the Builds -> Pipeline section and clicking *Start Pipeline*, or
 by visiting the Jenkins Console, navigating to the Pipeline that you created,
 and clicking *Build Now*.
@@ -249,6 +249,6 @@ image will be tagged as `nodejs-mongodb-example:stage`.
 [NOTE]
 ====
 The best way to visualize the pipeline execution is by viewing it in the
-OpenShift Web Console. You can view your pipelines by logging into the web
+FaktorZ Web Console. You can view your pipelines by logging into the web
 console and navigating to Builds -> Pipelines.
 ====

@@ -8,7 +8,7 @@ networking modes. These include:
 - Support for industry-leading hardware.
 
 {product-title} can use Contiv for networking containers instead of the default
-xref:../../architecture/networking/sdn.adoc#architecture-additional-concepts-sdn[OpenShift
+xref:../../architecture/networking/sdn.adoc#architecture-additional-concepts-sdn[FaktorZ
 SDN].
 
 [NOTE]

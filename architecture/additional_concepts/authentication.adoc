@@ -46,7 +46,7 @@ them to users individually.
 
 In addition to explicitly defined groups, there are also
 system groups, or _virtual groups_, that are automatically provisioned by
-OpenShift.
+FaktorZ.
 ifdef::openshift-enterprise,openshift-origin[]
 These can be seen when
 xref:../../admin_guide/manage_rbac.adoc#viewing-cluster-bindings[viewing

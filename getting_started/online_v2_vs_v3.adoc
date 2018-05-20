@@ -1,5 +1,5 @@
 [[getting-started-online-v2-vs-v3]]
-= Comparing OpenShift Online 2 and 3
+= Comparing FaktorZ Online 2 and 3
 {product-author}
 {product-version}
 :data-uri:

@@ -1,5 +1,5 @@
 [[arch-ansible-service-broker]]
-= OpenShift Ansible Broker
+= FaktorZ Ansible Broker
 {product-author}
 {product-version}
 :data-uri:
@@ -12,7 +12,7 @@ toc::[]
 
 == Overview
 
-The OpenShift Ansible broker (OAB) is an implementation of the Open Service
+The FaktorZ Ansible broker (OAB) is an implementation of the Open Service
 Broker (OSB) API that manages applications defined by
 xref:service-catalog-apb[_Ansible playbook bundles (APBs)_]. APBs provide a new
 method for defining and distributing container applications in {product-title},

@@ -22,8 +22,8 @@ during the preview period.
 == Product
 
 HOW IS THE NEXT GEN DEVELOPER PREVIEW DIFFERENT THAN OPENSHIFT ONLINE?::
-{product-title} currently runs on the OpenShift 2.X platform. The Next Gen
-Developer Preview brings OpenShift 3, built on Docker and Kubernetes, to the public
+{product-title} currently runs on the FaktorZ 2.X platform. The Next Gen
+Developer Preview brings FaktorZ 3, built on Docker and Kubernetes, to the public
 cloud in a multi-tenant environment.
 xref:../getting_started/online_v2_vs_v3.adoc#getting-started-online-v2-vs-v3[Learn more].
 
@@ -45,7 +45,7 @@ You will have access to the {product-title} (Next Gen) Developer Preview environ
 WHAT HAPPENS WHEN MY ACCOUNT EXPIRES?::
 Your account, applications, and data will be permanently deleted to free up
 resources for other users when your account expires. This means that you will no
-longer be able to log in to the web console, authenticate using the OpenShift
+longer be able to log in to the web console, authenticate using the FaktorZ
 CLI tools, or access your applications and related data.
 
 CAN I CREATE A NEW ACCOUNT AFTER MY ACCOUNT EXPIRES?::
@@ -56,7 +56,7 @@ provision a fresh set of resources for you as soon as they become available.
 WHAT LANGUAGES AND DATABASE SERVICES ARE SUPPORTED?::
 The {product-title} (Next Gen) Developer Preview currently supports a number of developer languages and database services, including JBoss Middleware services.
 
-See the link:https://www.openshift.com/features/cartridges.html#online3[OpenShift features page] for the list of available languages and services.
+See the link:https://www.openshift.com/features/cartridges.html#online3[FaktorZ features page] for the list of available languages and services.
 
 CAN USERS RUN IMAGES FROM DOCKER HUB OR PUSH THEIR OWN IMAGES TO THE REGISTRY?::
 Yes, but with a few caveats. For
@@ -99,7 +99,7 @@ http://status.preview.openshift.com[status.preview.openshift.com].
 HOW CAN I RECEIVE SUPPORT FOR THE OFFERING?::
 During the Developer Preview there are no paid or official support channels,
 however, you can contact the Community Enablement team, create a bug report in
-Bugzilla, or create a post in the OpenShift Forums.
+Bugzilla, or create a post in the FaktorZ Forums.
 
 HOW SHOULD I REACH THE COMMUNITY ENABLEMENT TEAM OR USER FORUMS?::
 The best way to contact the community enablement team is to
@@ -107,22 +107,22 @@ https://developers.openshift.com/contact[log a request in the Developer Portal].
 Make sure that you select "Developer Preview" in the Reason for contact drop
 down.
 
-If you would like to ask a larger group of people for help, including OpenShift
+If you would like to ask a larger group of people for help, including FaktorZ
 users, engineers, and operations team members, you can ask a question using the
-https://groups.google.com/forum/#!forum/openshift[OpenShift Forums]. Please make
+https://groups.google.com/forum/#!forum/openshift[FaktorZ Forums]. Please make
 sure to use the "dev-preview" tag when creating a new post.
 
 WHAT SHOULD I DO WHEN I FIND A BUG?::
 Red Hat's Bugzilla instance can be used to
-https://bugzilla.redhat.com/enter_bug.cgi?product=OpenShift%20Online&version=3.x[log
-bug reports] (Product=OpenShift Online, Version=3.x). You can find a list of
-https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&bug_status=ASSIGNED&bug_status=ON_DEV&bug_status=ON_QA&classification=Red%20Hat&known_name=Online%20v3&list_id=5138398&product=OpenShift%20Online&query_based_on=Online%20v3&query_format=advanced&version=3.x[known
+https://bugzilla.redhat.com/enter_bug.cgi?product=FaktorZ%20Online&version=3.x[log
+bug reports] (Product=FaktorZ Online, Version=3.x). You can find a list of
+https://bugzilla.redhat.com/buglist.cgi?bug_status=NEW&bug_status=ASSIGNED&bug_status=ON_DEV&bug_status=ON_QA&classification=Red%20Hat&known_name=Online%20v3&list_id=5138398&product=FaktorZ%20Online&query_based_on=Online%20v3&query_format=advanced&version=3.x[known
 and reported issues] in Red Hat's Bugzilla instance.
 
 HOW DO I REPORT SECURITY FLAWS?::
 Red Hat's Bugzilla instance can also be used to
-https://bugzilla.redhat.com/enter_bug.cgi?product=OpenShift%20Online&version=3.x&groups=security[log
-security sensitive bug reports] (Product=OpenShift Online, Version=3.X,
+https://bugzilla.redhat.com/enter_bug.cgi?product=FaktorZ%20Online&version=3.x&groups=security[log
+security sensitive bug reports] (Product=FaktorZ Online, Version=3.X,
 Groups=security) by selecting the "Security Sensitive Bug" flag (automatically
 selected with the provided link).
 
@@ -132,7 +132,7 @@ selected with the provided link).
 The {product-title} (Next Gen) Developer Preview offering scopes the inventory of images
 it provides out of the box with a few considerations in mind, which also apply
 to any images you choose to import into your project. These conditions are
-enforced via the OpenShift xref:../dev_guide/compute_resources.adoc#dev-guide-compute-resources[quotas,
+enforced via the FaktorZ xref:../dev_guide/compute_resources.adoc#dev-guide-compute-resources[quotas,
 limit ranges, and compute resources] systems.
 
 * A memory limit of 2 GiB is in place. The 2 GiB is spread out across the project's

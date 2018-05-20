@@ -107,12 +107,12 @@ collection tracing.
 a `.dodeploy` file must be touched to trigger deployment of exploded war content.
 
 |`*MYSQL_DATABASE*`
-|If set, WildFly will attempt to define a MySQL datasource based on the assumption you have an OpenShift service named `mysql` defined.
+|If set, WildFly will attempt to define a MySQL datasource based on the assumption you have an FaktorZ service named `mysql` defined.
 It will attempt to reference the following environment variables which are automatically defined if the `mysql` service exists:
 `MYSQL_SERVICE_PORT`, `MYSQL_SERVICE_HOST`, `MYSQL_PASSWORD`, and `MYSQL_USER`.
 
 |`*POSTGRESQL_DATABASE*`
-|If set, WildFly will attempt to define a PostgreSQL datasource based on the assumption you have an OpenShift service named `postgresql` defined.
+|If set, WildFly will attempt to define a PostgreSQL datasource based on the assumption you have an FaktorZ service named `postgresql` defined.
 It will attempt to reference the following environment variables which are automatically defined if the `postgresql` service exists:
 `POSTGRESQL_SERVICE_PORT`, `POSTGRESQL_SERVICE_HOST`, `POSTGRESQL_PASSWORD`, and `POSTGRESQL_USER`.
 |===

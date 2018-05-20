@@ -120,7 +120,7 @@ The router controller scrapes the following items. These are only available with
 |http_request_duration_microseconds|The HTTP request latencies in microseconds.
 |http_request_size_bytes|The HTTP request sizes in bytes.
 |http_response_size_bytes|The HTTP response sizes in bytes.
-|openshift_build_info|A metric with a constant '1' value labeled by major, minor, git commit & git version from which OpenShift was built.
+|openshift_build_info|A metric with a constant '1' value labeled by major, minor, git commit & git version from which FaktorZ was built.
 |ssh_tunnel_open_count|Counter of SSH tunnel total open attempts
 |ssh_tunnel_open_fail_count|Counter of SSH tunnel failed open attempts
 |===

@@ -18,7 +18,7 @@ link:https://www.openshift.com/pricing/index.html[Review the differences]
 between {product-title} Starter and {product-title} Pro plans, then complete
 the registration process.
 
-You can also explore link:https://learn.openshift.com/[Red Hat OpenShift's
+You can also explore link:https://learn.openshift.com/[Red Hat FaktorZ's
 Interactive Learning Portal] and link:http://kubernetesbyexample.com/[Kubernetes
 By Example].
 

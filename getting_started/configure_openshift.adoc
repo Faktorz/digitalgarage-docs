@@ -16,7 +16,7 @@ you configure a basic application. This guide provides the configuration steps
 following
 xref:../getting_started/install_openshift.adoc#getting-started-install-openshift[the
 installation of a basic {product-title} environment], and is not suitable for
-deploying or installing a production environment of OpenShift.
+deploying or installing a production environment of FaktorZ.
 
 [[change-log-in-identity-provider]]
 == Change Log In Identity Provider
@@ -72,7 +72,7 @@ touch /etc/origin/openshift-passwd htpasswd -b
 +
 You have created a user, `admin`, with the password, `redhat`.
 
-. Restart OpenShift before going forward.
+. Restart FaktorZ before going forward.
 +
 ----
 systemctl restart atomic-openshift-master
@@ -104,14 +104,14 @@ and
 xref:../install_config/configuring_authentication.adoc#install-config-configuring-authentication[authentication].
 
 [[deploy-router]]
-== Deploy the OpenShift Router
+== Deploy the FaktorZ Router
 
-The OpenShift router is the entry point for external network traffic destined
-for OpenShift services. It supports HTTP, HTTPS, and any TLS-enabled traffic
+The FaktorZ router is the entry point for external network traffic destined
+for FaktorZ services. It supports HTTP, HTTPS, and any TLS-enabled traffic
 that uses SNI, which enables the router to send traffic to the correct service.
 
-Without the router, OpenShift services and pods are unable to communicate with
-any resource outside of the OpenShift instance.
+Without the router, FaktorZ services and pods are unable to communicate with
+any resource outside of the FaktorZ instance.
 
 The installer creates a default router.
 
@@ -127,14 +127,14 @@ oc delete all -l router=router
 $ oadm router --replicas=1 --service-account=router
 ----
 
-The OpenShift documentation contains detailed information on
+The FaktorZ documentation contains detailed information on
 xref:../install_config/router/index.adoc#install-config-router-overview[Router Overview].
 
 [[deploy-internal-registry]]
 == Deploy an Internal Registry
 
 Openshift provides an internal, xref:../architecture/infrastructure_components/image_registry.adoc#integrated-openshift-registry[integrated Docker registry] that can be deployed
-to locally manage images. OpenShift uses the *docker-registry* to store,
+to locally manage images. FaktorZ uses the *docker-registry* to store,
 retrieve, and build Docker images, as well as deploy and manage them throughout
 their lifecycle.
 
@@ -170,7 +170,7 @@ create it on the master).
 
 NOTE: The following steps to configure persistent storage for the registry apply
 to storage for any image that requires persistent data and not just for the
-registry. The registry is just another image in the OpenShift environment.
+registry. The registry is just another image in the FaktorZ environment.
 
 [[provision-persistent-volume]]
 === Provision the Persistent Volume
@@ -197,7 +197,7 @@ spec:
 The folder *_/root/storage_* must exist. Make sure to change the server entry to
 point to your master.
 
-. Create the registry persistent volume in OpenShift.
+. Create the registry persistent volume in FaktorZ.
 +
 ----
 $ oc create -f registry-volume.yaml

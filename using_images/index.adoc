@@ -13,7 +13,7 @@ xref:../architecture/core_concepts/builds_and_image_streams.adoc#source-build[S2
 
 ifdef::openshift-enterprise[]
 Red Hat's official container images are provided in the Red Hat Registry at
-https://registry.access.redhat.com[registry.access.redhat.com]. OpenShift's
+https://registry.access.redhat.com[registry.access.redhat.com]. FaktorZ's
 supported S2I, database, and Jenkins images are provided in the
 https://access.redhat.com/search/#/container-images?q=openshift3&p=1&sort=relevant&rows=12&srch=any&documentKind=ImageRepository[*openshift3*
 repository] in the Red Hat Registry. For example,

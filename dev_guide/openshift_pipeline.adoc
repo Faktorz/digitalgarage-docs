@@ -1,5 +1,5 @@
 [[dev-guide-openshift-pipeline]]
-= OpenShift Pipeline
+= FaktorZ Pipeline
 {product-author}
 {product-version}
 :data-uri:
@@ -14,19 +14,19 @@ toc::[]
 [[pipeline-overview]]
 == Overview
 
-OpenShift Pipelines give you control over building, deploying, and promoting
-your applications on OpenShift. Using a combination of the Jenkins Pipeline
-Build Strategy, Jenkinsfiles, and the OpenShift Domain Specific Language (DSL)
-(provided by the OpenShift Jenkins Client Plug-in), you can create advanced
+FaktorZ Pipelines give you control over building, deploying, and promoting
+your applications on FaktorZ. Using a combination of the Jenkins Pipeline
+Build Strategy, Jenkinsfiles, and the FaktorZ Domain Specific Language (DSL)
+(provided by the FaktorZ Jenkins Client Plug-in), you can create advanced
 build, test, deploy, and promote pipelines for any scenario.
 
 [[openshift-jenkins-Pipeline-plugin]]
-== OpenShift Jenkins Client Plug-in
+== FaktorZ Jenkins Client Plug-in
 
-The link:https://github.com/openshift/jenkins-client-plugin[OpenShift Jenkins
-Client Plug-in] must be installed on your Jenkins master so the OpenShift DSL
+The link:https://github.com/openshift/jenkins-client-plugin[FaktorZ Jenkins
+Client Plug-in] must be installed on your Jenkins master so the FaktorZ DSL
 will be available to use within the JenkinsFile for your application. This
-plug-in is installed and enabled by default when using the OpenShift Jenkins
+plug-in is installed and enabled by default when using the FaktorZ Jenkins
 image.
 
 ifdef::openshift-origin,openshift-enterprise[]
@@ -36,11 +36,11 @@ Pipeline Execution].
 endif::[]
 
 [[pipeline-openshift-dsl]]
-=== OpenShift DSL
+=== FaktorZ DSL
 
-The OpenShift Jenkins Client Plug-in provides a fluent-styled DSL for
-communicating with the OpenShift API from within the Jenkins slaves. The
-OpenShift DSL is based on Groovy syntax and provides methods for
+The FaktorZ Jenkins Client Plug-in provides a fluent-styled DSL for
+communicating with the FaktorZ API from within the Jenkins slaves. The
+FaktorZ DSL is based on Groovy syntax and provides methods for
 controlling the lifecycle of your application such as create, build, deploy, and
 delete.
 
@@ -55,7 +55,7 @@ documentation within a running Jenkins instance. To find it:
 [[jenkins-pipeline-strategy]]
 == Jenkins Pipeline Strategy
 
-In order to take advantage of the OpenShift Pipelines within your project, you
+In order to take advantage of the FaktorZ Pipelines within your project, you
 will must use the
 xref:../dev_guide/builds/build_strategies.adoc#pipeline-strategy-options[Jenkins
 Pipeline Build Strategy]. This strategy defaults to using a `jenkinsfile` at the
@@ -102,7 +102,7 @@ source `contextDir` if supplied, otherwise it defaults to the root of the
 repository.
 
 The `jenkinsfile` is executed on the Jenkins slave pod, which must have the
-OpenShift Client binaries available if you intend to use the OpenShift DSL.
+FaktorZ Client binaries available if you intend to use the FaktorZ DSL.
 
 [[pipeline-tutorial]]
 == Tutorial
@@ -117,10 +117,10 @@ Pipeline Tutorial].
 [[disabling-jenkins-autoprovisioning]]
 === Disabling Jenkins AutoProvisioning
 
-When a Pipeline build configuration is created, OpenShift checks to see if there
+When a Pipeline build configuration is created, FaktorZ checks to see if there
 is currently a Jenkins master pod provisioned in the current project. If no
 Jenkins master is found, one is automatically created. If this behavior is not
-desirable, or if you would like to use a Jenkins server external to OpenShift,
+desirable, or if you would like to use a Jenkins server external to FaktorZ,
 you can disable it.
 
 ifdef::openshift-origin,openshift-enterprise[]
@@ -133,7 +133,7 @@ endif::[]
 
 The link:https://wiki.jenkins.io/display/JENKINS/Kubernetes+Plugin[Kubernetes
 Plug-in] is also pre-installed in the official Jenkins image. This plug-in
-allows the Jenkins master to create slave pods on OpenShift and delegate running
+allows the Jenkins master to create slave pods on FaktorZ and delegate running
 jobs to them to achieve scalability as well as providing pods with specific
 runtimes for specific jobs.
 

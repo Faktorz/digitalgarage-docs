@@ -11,7 +11,7 @@ toc::[]
 [[binary-builds-introduction]]
 == Introduction
 
-The binary build feature in OpenShift allows developers to upload source or
+The binary build feature in FaktorZ allows developers to upload source or
 artifacts directly to a build instead of having the build pull source from a Git
 repository URL. Any BuildConfig with a strategy of source, Docker, or custom may
 be started as a binary build. When starting a build from local artifacts, the
@@ -35,7 +35,7 @@ source already exists. The archive may be in either `tar`, `tar.gz`, or `zip` fo
 
 * From a Git repository (`--from-repo`): This is for source that is currently part
 of a Git repository on the user's local machine. The HEAD commit of the current
-repository will be archived and sent to OpenShift for building.
+repository will be archived and sent to FaktorZ for building.
 
 [[binary-builds-use-cases]]
 === Use Cases
@@ -44,12 +44,12 @@ Binary builds remove the requirement for a build to pull source from an existing
 Git repository. Reasons to use binary builds include:
 
 * Building and testing local code changes. Source from a public repository can be
-cloned and local changes can be uploaded to OpenShift for building. Local
+cloned and local changes can be uploaded to FaktorZ for building. Local
 changes do not have to be committed or pushed anywhere.
 
 * Building private code. New builds can be started from scratch as binary builds.
 The source can then be uploaded directly from your local workstation to
-OpenShift without having to check it in to an SCM.
+FaktorZ without having to check it in to an SCM.
 
 * Building images with artifacts from other sources. With Jenkins pipelines,
 binary builds are useful to combine artifacts built with tools such as Maven or C
@@ -59,7 +59,7 @@ compiler, and runtime images that make use of those builds.
 === Limitations
 
 * Binary builds are not repeatable. Because binary builds rely on the user
-uploading artifacts at build start, OpenShift cannot repeat the same build
+uploading artifacts at build start, FaktorZ cannot repeat the same build
 without the user repeating the same upload every time.
 
 * Binary builds cannot be triggered automatically. They can only be started
@@ -76,7 +76,7 @@ the last time the build ran.
 [[binary-builds-tutorial-overview]]
 == Tutorials Overview
 
-The following tutorials assume that you have an OpenShift cluster available and
+The following tutorials assume that you have an FaktorZ cluster available and
 that you have a project where you can create artifacts. It requires that you
 have both `git` and `oc` available locally.
 
@@ -202,7 +202,7 @@ changes will be reflected in your browser when you refresh the page.
 [[binary-builds-pipeline-binary-artifacts]]
 === Tutorial: Binary artifacts from pipeline
 
-Jenkins on OpenShift allows using slave images with the appropriate tools to
+Jenkins on FaktorZ allows using slave images with the appropriate tools to
 build your code. For example, you can use the `maven` slave to build a WAR from
 your code repository. However, once this artifact is built, you need to commit
 it to an image that contains the right runtime artifacts to run your code. A

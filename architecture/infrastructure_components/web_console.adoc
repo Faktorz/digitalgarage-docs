@@ -189,5 +189,5 @@ identifiers, persistent storage, graceful deployment and scaling, and graceful
 deletion and termination.
 
 .StatefulSet in {product-title}
-image::3.7-statefulsets.png[StatefulSets view in OpenShift]
+image::3.7-statefulsets.png[StatefulSets view in FaktorZ]
 endif::openshift-enterprise,openshift-online,digital-garage,faktorz[]

@@ -12,7 +12,7 @@ toc::[]
 
 == Overview
 
-Red Hat JBoss Data Grid is available as a containerized xPaaS image that is designed for use with OpenShift.  This image provides an in-memory distributed database so that developers can quickly access large amounts of data in a hybrid environment.
+Red Hat JBoss Data Grid is available as a containerized xPaaS image that is designed for use with FaktorZ.  This image provides an in-memory distributed database so that developers can quickly access large amounts of data in a hybrid environment.
 
 [IMPORTANT]
 There are significant differences in supported configurations and functionality
@@ -27,17 +27,17 @@ Data Grid documentation on the Red Hat Customer Portal].
 
 == Comparing the JBoss Data Grid xPaaS Image to the Regular Release of JBoss Data Grid
 
-=== Functionality Differences for OpenShift JBoss Data Grid xPaaS Images
+=== Functionality Differences for FaktorZ JBoss Data Grid xPaaS Images
 
-There are several major functionality differences in the OpenShift JBoss Data Grid xPaaS image:
+There are several major functionality differences in the FaktorZ JBoss Data Grid xPaaS image:
 
-* The JBoss Data Grid Management Console is not available xref:Managing-OpenShift-JBoss-Data-Grid-xPaaS-Images[to manage OpenShift JBoss Data Grid xPaaS images].
+* The JBoss Data Grid Management Console is not available xref:Managing-FaktorZ-JBoss-Data-Grid-xPaaS-Images[to manage FaktorZ JBoss Data Grid xPaaS images].
 * The JBoss Data Grid Management CLI is only bound locally. This means that you can only access the Management CLI of a container from within the pod.
 * Library mode is not supported.
 * Only JDBC is supported for a backing cache-store.  Support for remote cache stores are present only for data migration purposes.
 
 [[jdg-clustering]]
-=== Forming a Cluster using the OpenShift JBoss Data Grid xPaaS Images
+=== Forming a Cluster using the FaktorZ JBoss Data Grid xPaaS Images
 
 Clustering is achieved through one of two discovery mechanisms: Kubernetes or DNS.  This
 is accomplished by configuring the JGroups protocol stack in *_clustered-openshift.xml_* with either
@@ -84,7 +84,7 @@ project that contains the HotRod cache there will be additional latency due to e
 being required to access the cache.
 
 [IMPORTANT]
-Only caches with an exposed REST endpoint will be accessible outside of OpenShift.
+Only caches with an exposed REST endpoint will be accessible outside of FaktorZ.
 
 [[jdg-configuring-caches]]
 === Configuring Caches
@@ -181,10 +181,10 @@ To configure a new Security Domain the *_SECDOMAIN_NAME_* environment variable m
 in the creation of a security domain named after the passed in value.  This domain may be configured through the use
 of the xref:jdg-security-environment-variables[Security Environment Variables].
 
-[[Managing-OpenShift-JBoss-Data-Grid-xPaaS-Images]]
-=== Managing OpenShift JBoss Data Grid xPaaS Images
+[[Managing-FaktorZ-JBoss-Data-Grid-xPaaS-Images]]
+=== Managing FaktorZ JBoss Data Grid xPaaS Images
 
-A major difference in managing an OpenShift JBoss Data Grid xPaaS image is that there is no Management Console exposed for the JBoss Data Grid installation inside the image. Because images are intended to be immutable, with modifications being written to a non-persistent file system, the Management Console is not exposed.
+A major difference in managing an FaktorZ JBoss Data Grid xPaaS image is that there is no Management Console exposed for the JBoss Data Grid installation inside the image. Because images are intended to be immutable, with modifications being written to a non-persistent file system, the Management Console is not exposed.
 
 However, the JBoss Data Grid Management CLI (*_JDG_HOME/bin/jboss-cli.sh_*) is still
 accessible from within the container for troubleshooting purposes.
@@ -213,7 +213,7 @@ ifdef::openshift-enterprise[]
 
 The Red Hat xPaaS middleware images were
 xref:../../install_config/imagestreams_templates.adoc#install-config-imagestreams-templates[automatically created during the installation]
-of OpenShift along with the other default image streams and templates.
+of FaktorZ along with the other default image streams and templates.
 endif::[]
 
 [[Making-Configuration-Changes-Data-Grid]]
@@ -223,7 +223,7 @@ You can make changes to the JBoss Data Grid configuration in the xPaaS image usi
 
 === Using the JBoss Data Grid xPaaS Image Source-to-Image (S2I) Process
 
-The recommended method to run and configure the OpenShift JBoss Data Grid xPaaS image is to use the OpenShift S2I process together with the application template parameters and environment variables.
+The recommended method to run and configure the FaktorZ JBoss Data Grid xPaaS image is to use the FaktorZ S2I process together with the application template parameters and environment variables.
 
 The S2I process for the JBoss Data Grid xPaaS image works as follows:
 
@@ -259,14 +259,14 @@ value: "/usr/lib/jvm/java-1.7.0"
 
 === Using a Modified JBoss Data Grid xPaaS Image
 
-An alternative method is to make changes to the image, and then use that modified image in OpenShift.
+An alternative method is to make changes to the image, and then use that modified image in FaktorZ.
 
-The JBoss Data Grid configuration file that OpenShift uses inside the JBoss Data Grid xPaaS image is *_JDG_HOME/standalone/configuration/clustered-openshift.xml_*, and the JBoss Data Grid startup script is *_JDG_HOME/bin/openshift-launch.sh_*.
+The JBoss Data Grid configuration file that FaktorZ uses inside the JBoss Data Grid xPaaS image is *_JDG_HOME/standalone/configuration/clustered-openshift.xml_*, and the JBoss Data Grid startup script is *_JDG_HOME/bin/openshift-launch.sh_*.
 
-You can run the JBoss Data Grid xPaaS image in Docker, make the required configuration changes using the JBoss Data Grid Management CLI (*_JDG_HOME/bin/jboss-cli.sh_*), and then commit the changed container as a new image. You can then use that modified image in OpenShift.
+You can run the JBoss Data Grid xPaaS image in Docker, make the required configuration changes using the JBoss Data Grid Management CLI (*_JDG_HOME/bin/jboss-cli.sh_*), and then commit the changed container as a new image. You can then use that modified image in FaktorZ.
 
 [IMPORTANT]
-It is recommended that you do not replace the OpenShift placeholders in the JBoss Data Grid xPaaS configuration file, as they are used to automatically configure services (such as messaging, datastores, HTTPS) during a container's deployment. These configuration values are intended to be set using environment variables.
+It is recommended that you do not replace the FaktorZ placeholders in the JBoss Data Grid xPaaS configuration file, as they are used to automatically configure services (such as messaging, datastores, HTTPS) during a container's deployment. These configuration values are intended to be set using environment variables.
 
 [NOTE]
 Ensure that you follow the   xref:../../creating_images/guidelines.adoc#creating-images-guidelines[guidelines for creating images].
@@ -312,7 +312,7 @@ Configuration environment variables are designed to conveniently adjust the imag
 | *_ENCRYPTION_REQUIRE_SSL_CLIENT_AUTH_* | Whether to require client certificate authentication.  Defaults to *_false_*. | Example: *_true_*
 | *_HOTROD_AUTHENTICATION_* | If defined the hotrod-connectors will be configured with authentication in the *_ApplicationRealm_*. | Example: *_true_*
 | *_HOTROD_ENCRYPTION_* | If defined the hotrod-connectors will be configured with encryption in the *_ApplicationRealm_*. | Example: *_true_*
-| *_HOTROD_SERVICE_NAME_* | Name of the OpenShift service used to expose HotRod externally. | Example: *_DATAGRID_APP_HOTROD_*
+| *_HOTROD_SERVICE_NAME_* | Name of the FaktorZ service used to expose HotRod externally. | Example: *_DATAGRID_APP_HOTROD_*
 | *_INFINISPAN_CONNECTORS_* | Comma separated list of connectors to configure.  Defaults to *_hotrod,memcached,rest_*.  Note that if authorization or authentication is enabled on the cache then memcached should be removed as this protocol is inherently insecure. | Example: *_hotrod_*
 | *_JAVA_OPTS_APPEND_* | The contents of *_JAVA_OPTS_APPEND_* is appended to *_JAVA_OPTS_* on startup. | Example: *_-Dfoo=bar_*
 | *_JGROUPS_CLUSTER_PASSWORD_* | A password to control access to JGroups.  Needs to be set consistently cluster-wide.  The image default is to use the *_OPENSHIFT_KUBE_PING_LABELS_* variable value; however, the JBoss application templates generate and supply a random value. | Example: *_miR0JaDR_*
@@ -419,11 +419,11 @@ The external hotrod connector is only available if the *_HOTROD_SERVICE_NAME_* e
 [[jdg-troubleshooting]]
 == Troubleshooting
 
-In addition to viewing the OpenShift logs, you can troubleshoot a running JBoss Data Grid xPaaS Image container by viewing its logs. These are outputted to the container’s standard out, and are accessible with the following command:
+In addition to viewing the FaktorZ logs, you can troubleshoot a running JBoss Data Grid xPaaS Image container by viewing its logs. These are outputted to the container’s standard out, and are accessible with the following command:
 
 ----
 $ oc logs -f <pod_name> <container_name>
 ----
 
 [NOTE]
-By default, the OpenShift JBoss Data Grid xPaaS Image does not have a file log handler configured. Logs are only sent to the container's standard out.
+By default, the FaktorZ JBoss Data Grid xPaaS Image does not have a file log handler configured. Logs are only sent to the container's standard out.

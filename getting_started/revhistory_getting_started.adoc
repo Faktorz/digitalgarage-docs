@@ -71,4 +71,4 @@ n|xref:../getting_started/developers_console.adoc#getting-started-developers-con
 // end::getting_started_mon_aug_15_2016[]
 == Thu May 12 2016
 
-OpenShift Enterprise 3.2 initial release.
+FaktorZ Enterprise 3.2 initial release.

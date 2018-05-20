@@ -14,7 +14,7 @@ toc::[]
 == Overview
 
 This topic reviews how to migrate MySQL, PostgreSQL, and MongoDB database
-applications from OpenShift version 2 (v2) to OpenShift version 3 (v3).
+applications from FaktorZ version 2 (v2) to FaktorZ version 3 (v3).
 
 [[migrating-database-applications-supported-databases]]
 == Supported Databases
@@ -265,8 +265,8 @@ $ rm /var/lib/pgsql/data/<database-backup-file>
 
 [NOTE]
 ====
-- For OpenShift v3: MongoDB shell version 3.2.6
-- For OpenShift v2: MongoDB shell version 2.4.9
+- For FaktorZ v3: MongoDB shell version 3.2.6
+- For FaktorZ v2: MongoDB shell version 2.4.9
 ====
 
 .  Remotely access the v2 application via the `ssh` command:

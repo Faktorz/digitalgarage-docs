@@ -55,7 +55,7 @@ You can find https://github.com/thedigitalgarage/examples/tree/master/v1.3/image
 
 You can manage Jenkins authentication in two ways:
 
-* {product-title} OAuth authentication provided by the OpenShift Login plug-in.
+* {product-title} OAuth authentication provided by the FaktorZ Login plug-in.
 
 * Standard authentication provided by Jenkins
 
@@ -66,7 +66,7 @@ xref:../architecture/additional_concepts/other_api_objects.html#oauth-objects[OA
 authentication] is activated by configuring the `*Configure Global Security*`
 panel in the Jenkins UI, or by setting the `*OPENSHIFT_ENABLE_OAUTH*`
 environment variable on the Jenkins `*Deployment Config*` to anything other than
-`false`. This activates the OpenShift Login plug-in, which retrieves the
+`false`. This activates the FaktorZ Login plug-in, which retrieves the
 configuration information from pod data or by interacting with the
 {product-title} API server.
 
@@ -90,7 +90,7 @@ Users with the `admin` role will have the traditional Jenkins administrative
 user permissions. Users with the `edit` or `view` role will have progressively
 less permissions.  See the
 https://github.com/thedigitalgarage/jenkins#jenkins-admin-user[Jenkins image source
-repository README] for the specifics on the OpenShift roles to Jenkins
+repository README] for the specifics on the FaktorZ roles to Jenkins
 permissions mappings.
 
 
@@ -109,7 +109,7 @@ assigns the `admin` role to the user.
 endif::[]
 ====
 Jenkins' users permissions can be changed after the users are initially
-established. The OpenShift Login plug-in polls the {product-title} API server
+established. The FaktorZ Login plug-in polls the {product-title} API server
 for permissions and updates the permissions stored in Jenkins for each user with
 the permissions retrieved from {product-title}. If the Jenkins UI is used to
 update permissions for a Jenkins user, the permission changes are overwritten
@@ -159,12 +159,12 @@ The Jenkins server can be configured with the following environment variables:
 Not applicable when using {product-title} OAuth authentication.
 
 |`*OPENSHIFT_ENABLE_OAUTH*`
-|Determines whether the OpenShift Login plug-in manages authentication when
+|Determines whether the FaktorZ Login plug-in manages authentication when
 logging into Jenkins. Enabled when set to any non-empty value other than
 "false".
 
 |`*OPENSHIFT_PERMISSIONS_POLL_INTERVAL*`
-|Specifies in seconds how often the OpenShift Login plug-in polls {product-title}
+|Specifies in seconds how often the FaktorZ Login plug-in polls {product-title}
 for the permissions associated with each user defined in Jenkins.
 
 |`*OVERRIDE_PV_CONFIG_WITH_IMAGE_CONFIG*`
@@ -430,7 +430,7 @@ Kubernetes plug-in. The Jenkins image searches for these in the existing image s
 
 
 After startup, the
-link:https://github.com/openshift/jenkins-sync-plugin[OpenShift Sync plug-in]
+link:https://github.com/openshift/jenkins-sync-plugin[FaktorZ Sync plug-in]
 monitors the API server of {product-title} for updates to `ImageStreams`,
 `ImageStreamTags`, and `ConfigMaps` and adjusts the configuration of the
 Kubernetes plug-in.
@@ -464,7 +464,7 @@ For more details on the sample job included in this image, see this link:https:/
 [[pipeline-plug-in]]
 == {product-title} Pipeline Plug-in
 
-The Jenkins image's list of pre-installed plug-ins includes the OpenShift
+The Jenkins image's list of pre-installed plug-ins includes the FaktorZ
 Pipeline plug-in, which assists in the creation of CI/CD workflows in Jenkins
 that run against an {product-title} server. A series of build steps, post-build
 actions, and SCM-style polling are provided, which equate to administrative and
@@ -474,10 +474,10 @@ there.
 In addition to being accessible from the classic "freestyle" form of Jenkins
 job, the build steps as of version 1.0.14 of the {product-title} Pipeline
 Plug-in are also available to Jenkins Pipeline jobs via the DSL extension points
-provided by the Jenkins Pipeline Plug-in. The https://github.com/openshift/origin/tree/master/examples/jenkins/pipeline[OpenShift Jenkins Pipeline build strategy sample]
-illustrates how to use the OpenShift Pipeline plugin DSL versions of its steps.
+provided by the Jenkins Pipeline Plug-in. The https://github.com/openshift/origin/tree/master/examples/jenkins/pipeline[FaktorZ Jenkins Pipeline build strategy sample]
+illustrates how to use the FaktorZ Pipeline plugin DSL versions of its steps.
 
-The https://github.com/thedigitalgarage/jenkins/tree/master/1/contrib/openshift/configuration/jobs/OpenShift%20Sample[sample Jenkins job] that is pre-configured in the Jenkins image utilizes the OpenShift pipeline plug-in and serves as an example of
+The https://github.com/thedigitalgarage/jenkins/tree/master/1/contrib/openshift/configuration/jobs/FaktorZ%20Sample[sample Jenkins job] that is pre-configured in the Jenkins image utilizes the FaktorZ pipeline plug-in and serves as an example of
 how to leverage the plug-in for creating CI/CD flows for {product-title} in Jenkins.
 
 See the link:https://github.com/openshift/jenkins-plugin/[the plug-in's README] for a
@@ -486,19 +486,19 @@ detailed description of what is available.
 [[client-plugin-in]]
 == {product-title} Client Plug-in
 
-The experiences gained working with users of the OpenShift Pipeline plug-in,
-coupled with the rapid evolution of both Jenkins and OpenShift, have provided
+The experiences gained working with users of the FaktorZ Pipeline plug-in,
+coupled with the rapid evolution of both Jenkins and FaktorZ, have provided
 valuable insight into how to integrate {product-title} from Jenkins jobs.
 
 As such, the new experimental
-link:https://github.com/openshift/jenkins-client-plugin[OpenShift Client Plug-in
+link:https://github.com/openshift/jenkins-client-plugin[FaktorZ Client Plug-in
 for Jenkins] is now offered as a technical preview and is included in the
-OpenShift Jenkins images on CentOS
+FaktorZ Jenkins images on CentOS
 (*docker.io/openshift/jenkins-1-centos7:latest* and
 *docker.io/openshift/jenkins-2-centos7:latest*). The plug-in is also available
-from the Jenkins Update Center. The OpenShift Client plug-in will eventually
-replace the OpenShift Pipeline plug-in as the tool for OpenShift integration
-from Jenkins jobs. The OpenShift Client Plug-in provides:
+from the Jenkins Update Center. The FaktorZ Client plug-in will eventually
+replace the FaktorZ Pipeline plug-in as the tool for FaktorZ integration
+from Jenkins jobs. The FaktorZ Client Plug-in provides:
 
 - A Fluent-style syntax for use in Jenkins Pipelines.
 - Use of and exposure to any option available with `oc`.
@@ -509,7 +509,7 @@ from Jenkins jobs. The OpenShift Client Plug-in provides:
 == {product-title} Sync Plug-in
 
 To facilitate {product-title} xref:../../dev_guide/builds/build_strategies.adoc#pipeline-strategy-options[Pipeline build strategy] for integration
-between Jenkins and {product-title}, the link:https://github.com/openshift/jenkins-sync-plugin[OpenShift Sync plug-in] monitors the
+between Jenkins and {product-title}, the link:https://github.com/openshift/jenkins-sync-plugin[FaktorZ Sync plug-in] monitors the
 API server of {product-title} for updates to `BuildConfigs` and `Builds` that employ the Pipeline strategy and either creates
 Jenkins Pipeline projects (when a `BuildConfig` is created) or starts jobs in the resulting projects (when a `Build` is started).
 
@@ -527,7 +527,7 @@ The default memory allocation for the Jenkins container is 512Mi, regardless of
 whether you are using the Jenkins Ephemeral or Jenkins Persistent template.
 While Jenkins can easily operate within this limit, you will need to be
 mindful of any `sh` invocations that you might be making from your pipelines,
-such as shell scripts, invoking the `oc` command through the OpenShift DSL,
+such as shell scripts, invoking the `oc` command through the FaktorZ DSL,
 or monitoring PIDs, as these can quickly use your memory allocation.
 
 You can increase the amount of memory available to Jenkins by overriding

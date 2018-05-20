@@ -180,4 +180,4 @@ spec:
 catalog.
 
 - xref:../../architecture/service_catalog/template_service_broker.adoc#arch-template-service-broker[Template Service Broker]
-- xref:../../architecture/service_catalog/ansible_service_broker.adoc#arch-ansible-service-broker[OpenShift Ansible Broker]
+- xref:../../architecture/service_catalog/ansible_service_broker.adoc#arch-ansible-service-broker[FaktorZ Ansible Broker]

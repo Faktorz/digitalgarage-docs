@@ -1,4 +1,4 @@
-//  OpenShift sample Node application
+//  FaktorZ sample Node application
 var express = require('express'),
     fs      = require('fs'),
     app     = express(),

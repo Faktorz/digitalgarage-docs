@@ -67,7 +67,7 @@ present if defined.
 |The Git reference to be built.
 
 |`*ORIGIN_VERSION*`
-|The version of the OpenShift master that created this build object.
+|The version of the FaktorZ master that created this build object.
 
 |`*OUTPUT_REGISTRY*`
 |The Docker registry to push the image to.
@@ -87,7 +87,7 @@ enabled in the build configuration (if `*exposeDockerSocket*` was set to
 
 It is recommended that you write your Custom builder image to only read the
 information provided by the `*BUILD*` environment variable, which conforms to an
-OpenShift API version. You can then parse the required information from the
+FaktorZ API version. You can then parse the required information from the
 build definition JSON instead of relying on the other individual environment
 variables provided to the builder image. However, the individual environment
 variables are provided for convenience if you do not want to parse the build
@@ -98,7 +98,7 @@ definition.
 
 Although Custom builder image authors have great flexibility in defining the
 build process, your builder image must still adhere to the following required
-steps necessary for seamlessly running a build inside of OpenShift:
+steps necessary for seamlessly running a build inside of FaktorZ:
 
 . Read the `*Build*` xref:../rest_api/openshift_v1.adoc#rest-api-openshift-v1[object
 definition], which contains all the necessary information about input parameters

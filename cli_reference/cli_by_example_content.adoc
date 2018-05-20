@@ -1,5 +1,5 @@
 [[cli-reference-cli-by-example-content]]
-== An introduction to the concepts and types in OpenShift
+== An introduction to the concepts and types in FaktorZ
 
 ====
 
@@ -20,7 +20,7 @@
 ====
 
 
-== Log in to an OpenShift server
+== Log in to an FaktorZ server
 
 ====
 

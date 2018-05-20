@@ -205,7 +205,7 @@ Name:			python
 Namespace:		imagestream
 Created:		25 hours ago
 Labels:			app=python
-Annotations:		openshift.io/generated-by=OpenShiftWebConsole
+Annotations:		openshift.io/generated-by=FaktorZWebConsole
 			openshift.io/image.dockerRepositoryCheck=2017-10-03T19:48:00Z
 Docker Pull Spec:	docker-registry.default.svc:5000/imagestream/python
 Image Lookup:		local=false
@@ -245,7 +245,7 @@ If the source image has changed, that change is picked up and reflected in the i
 
 
 For a curated set of image streams, see the
-link:https://github.com/openshift/library[OpenShift Image Streams and Templates
+link:https://github.com/openshift/library[FaktorZ Image Streams and Templates
 library].
 
 When using image streams, it is important to understand what the image stream tag is pointing to and how changes to tags and images can affect you. For example:
@@ -258,7 +258,7 @@ When using image streams, it is important to understand what the image stream ta
 
 Docker repository::
 A collection of related docker images and tags identifying them.
-For example, the OpenShift Jenkins images are in a Docker repository:
+For example, the FaktorZ Jenkins images are in a Docker repository:
 +
 ----
 docker.io/openshift/jenkins-2-centos7
@@ -307,7 +307,7 @@ created. Builds and deployments can watch an image stream to receive
 notifications when new images are added and react by performing a build or
 deployment, respectively. For a
 curated set of image streams, see the
-link:https://github.com/openshift/library[OpenShift Image Streams and Templates
+link:https://github.com/openshift/library[FaktorZ Image Streams and Templates
 library].
 
 ifdef::openshift-origin,openshift-online,openshift-enterprise,openshift-dedicated[]
@@ -355,7 +355,7 @@ apiVersion: v1
 kind: ImageStream
 metadata:
   annotations:
-    openshift.io/generated-by: OpenShiftNewApp
+    openshift.io/generated-by: FaktorZNewApp
   creationTimestamp: 2017-09-29T13:33:49Z
   generation: 1
   labels:

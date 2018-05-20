@@ -119,7 +119,7 @@ subnets created via the developer workflow by *nuage-openshift-monitor*.
 =====
 In the operations workflow, the administrator is responsible for pre-creating
 the VSD constructs to map the pods into a specific zone/subnet as well as allow
-communication between OpenShift entities (ACL rules, policy groups, network
+communication between FaktorZ entities (ACL rules, policy groups, network
 macros, and network macro groups). Detailed description of how to use Nuage
 labels is provided in the link:http://support.alcatel-lucent.com[Nuage VSP
 Openshift Integration Guide].

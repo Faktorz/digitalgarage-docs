@@ -42,10 +42,10 @@ You can find https://github.com/thedigitalgarage/examples/tree/master/v1.3/image
 
 [[wordpress-installation]]
 === Installation
-If you are planning to use Worpress for your personal blog or in a development environment, the easiest way to get WordPress up and running on the Digital Garage is to use the Official Digital Garage WordPress Instant App.
+If you are planning to use Worpress for your personal blog or in a development environment, the easiest way to get WordPress up and running on FaktorZ is to use the Official FaktorZ WordPress Instant App.
  In the Add to Project screen, simply click the Wordpress Instant App card, enter a few details and you’ll be up and running in no time.
 
-If you would like to add the Wordpress Instant App to your project via the Digital Garage CLI, simply verify that you are in the correct
+If you would like to add the Wordpress Instant App to your project via FaktorZ CLI, simply verify that you are in the correct
 project namespace by typing the following command.
 
 ----
@@ -57,14 +57,14 @@ $ oc new-app wordpress-instant-app
 ----
 [NOTE]
 ====
-The Digital Garage Wordpress Instant App is preconfigured with an ephemeral MySQL database. For information on configuring a persistent
+FaktorZ Wordpress Instant App is preconfigured with an ephemeral MySQL database. For information on configuring a persistent
 MySQL database and/or scaling MySQL, see the xref:../../dev_guide/using_images/db_images/mysql.adoc [MySQL Image Guide].
 ====
 
 [TIP]
 ====
 If you need more control over your WordPress installation or want to manage all
-of the files through git, you can try using the Digital Garage WordPress Developer QuickStart
+of the files through git, you can try using FaktorZ WordPress Developer QuickStart
 ====
 
 [[wordpress-installing-themes-and-plugins]]
@@ -73,7 +73,7 @@ of the files through git, you can try using the Digital Garage WordPress Develop
 There are two ways that you can add Themes and Plugins to your WordPress application.
 
 * You can use the WordPress Admin section of your application (located at /wp-admin) and use the standard Theme and Plugin installation procedures.
-* If you are deploying Wordpress via the Digital Garage Wordpress Developer Quickstart, you can download Themes and Plugins to your workstation
+* If you are deploying Wordpress via FaktorZ Wordpress Developer Quickstart, you can download Themes and Plugins to your workstation
 and then copy them into your git repository in the wp-content/themes and wp-content/plugins directories.
 
 [[wordpress-advanced-configuration-via-developer-quickstart]]

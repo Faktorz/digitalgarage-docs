@@ -52,8 +52,8 @@ For example:
 
 ----
 $ oc new-project hello-openshift \
-    --description="This is an example project to demonstrate OpenShift v3" \
-    --display-name="Hello OpenShift"
+    --description="This is an example project to demonstrate FaktorZ v3" \
+    --display-name="Hello FaktorZ"
 ----
 
 [NOTE]

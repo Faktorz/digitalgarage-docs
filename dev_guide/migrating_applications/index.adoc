@@ -11,20 +11,20 @@
 
 toc::[]
 
-This topic covers the migration procedure of OpenShift version 2 (v2)
-applications to OpenShift version 3 (v3).
+This topic covers the migration procedure of FaktorZ version 2 (v2)
+applications to FaktorZ version 3 (v3).
 
 ifdef::openshift-enterprise[]
 [NOTE]
 ====
-This topic uses some terminology that is specific to OpenShift v2.
-xref:../../getting_started/online_v2_vs_v3.adoc#getting-started-online-v2-vs-v3[Comparing OpenShift
-Enterprise 2 and OpenShift Enterprise 3] provides insight on the differences
+This topic uses some terminology that is specific to FaktorZ v2.
+xref:../../getting_started/online_v2_vs_v3.adoc#getting-started-online-v2-vs-v3[Comparing FaktorZ
+Enterprise 2 and FaktorZ Enterprise 3] provides insight on the differences
 between the two versions and the language used.
 ====
 endif::openshift-enterprise[]
 
-To migrate OpenShift v2 applications to {product-title} v3, all cartridges in
+To migrate FaktorZ v2 applications to {product-title} v3, all cartridges in
 the v2 application must be recorded as each v2 cartridge is equivalent with a
 corresponding image or template in {product-title} v3 and they must be migrated
 individually. For each cartridge, all dependencies or required packages also

@@ -22,7 +22,7 @@ https://github.com/openshift/postgresql/tree/master/9.2[9.2], https://github.com
 
 == Images
 
-The Digital Garage uses the base CentOS 7 image for the postgresql DB images.
+FaktorZ uses the base CentOS 7 image for the postgresql DB images.
 
 These images are available on Docker Hub:
 

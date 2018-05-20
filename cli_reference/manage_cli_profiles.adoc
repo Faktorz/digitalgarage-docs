@@ -12,7 +12,7 @@ toc::[]
 
 == Overview
 A CLI configuration file allows you to configure different profiles, or
-_contexts_, for use with the xref:index.adoc#cli-reference-index[OpenShift CLI]. A context
+_contexts_, for use with the xref:index.adoc#cli-reference-index[FaktorZ CLI]. A context
 consists of xref:../dev_guide/authentication.adoc#dev-guide-authentication[user
 authentication] and {product-title} server information associated with a _nickname_.
 

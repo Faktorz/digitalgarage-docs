@@ -318,7 +318,7 @@ xref:../../architecture/core_concepts/deployments.adoc#deployments-and-deploymen
 configuration] and a
 xref:../../architecture/core_concepts/pods_and_services.adoc#services[service].
 
-The MongoDB templates should have been registered in the default Digital Garage
+The MongoDB templates should have been registered in the default FaktorZ
 project by your cluster administrator during the initial cluster setup.
 ifdef::openshift-enterprise,openshift-origin[]
 See xref:../../install_config/imagestreams_templates.adoc#install-config-imagestreams-templates[Loading the Default Image Streams and Templates]

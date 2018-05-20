@@ -15,7 +15,7 @@ toc::[]
 ifdef::openshift-enterprise[]
 [NOTE]
 ====
-The F5 router plug-in is available starting in OpenShift Enterprise 3.0.2.
+The F5 router plug-in is available starting in FaktorZ Enterprise 3.0.2.
 ====
 endif::[]
 
@@ -29,10 +29,10 @@ vhost and request path.
 
 The F5 router has additional features over the *F5 BIG-IP®* support in
 ifdef::openshift-enterprise[]
-OpenShift Enterprise 2.
+FaktorZ Enterprise 2.
 endif::[]
 ifdef::openshift-origin[]
-OpenShift v2.
+FaktorZ v2.
 endif::[]
 Compared with the *routing-daemon* used in earlier
 versions, the F5 router additionally supports:
@@ -55,7 +55,7 @@ technical limitation of {product-title}.
 == Routing Traffic to Pods Through the SDN
 
 Because *F5 BIG-IP®* is external to the
-xref:../additional_concepts/sdn.adoc#architecture-additional-concepts-sdn[OpenShift SDN], a
+xref:../additional_concepts/sdn.adoc#architecture-additional-concepts-sdn[FaktorZ SDN], a
 cluster administrator must create a peer-to-peer tunnel between *F5 BIG-IP®* and
 a host that is on the SDN, typically an {product-title} node host.
 ifdef::openshift-dedicated[]
@@ -122,12 +122,12 @@ With
 xref:../../install_config/router/f5_router.adoc#setting-up-f5-native-integration-with-openshift[native
 integration of F5 with {product-title}], you do not need to configure a ramp
 node for F5 to be able to reach the pods on the overlay network as created by
-OpenShift SDN.
+FaktorZ SDN.
 endif::[]
 ifdef::openshift-dedicated[]
 With native integration of F5 with {product-title},
 you do not need to configure a ramp node for F5 to be able to reach the pods on
-the overlay network as created by OpenShift SDN.
+the overlay network as created by FaktorZ SDN.
 endif::[]
 
 [[architecture-f5-connection]]
@@ -142,7 +142,7 @@ integration:
 * External interface - Configures the virtual servers for inbound web traffic.
 * Internal interface - Programs the appliance and reaches out to the pods.
 
-image::F5-OpenShift-Connection-Diagram.png[F5 and OpenShift Connection Diagram]
+image::F5-FaktorZ-Connection-Diagram.png[F5 and FaktorZ Connection Diagram]
 
 An F5 controller pod has `admin` access to the appliance. The F5 image is
 launched within the {product-title} cluster (scheduled on any node) that uses

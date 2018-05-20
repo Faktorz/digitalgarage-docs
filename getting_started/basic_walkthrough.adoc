@@ -69,12 +69,12 @@ the web console.
 
 . Navigate to the https://apps.thedigitalgarage.io:8443/console/[welcome
 page] of the {product-title} web console. If you have not created a project, you will
-see a welcome message from the Digital Garage with instructions to "open your account settings"
+see a welcome message from  with instructions to "open your account settings"
 and create a new project. You can click the link provided in the message or
 choose the drop down menu for your profile in the upper right corner of the screen. In the
 dropdown menu choose `Account` to be directed to your account dashboard.
 +
-image::dg-no-projects.png[Welcome to Digital Garage]
+image::dg-no-projects.png[Welcome to ]
 
 
 . In your account dashboard, click the Create a Project button to configure the

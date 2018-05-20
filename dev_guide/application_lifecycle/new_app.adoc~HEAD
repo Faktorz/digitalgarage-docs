@@ -13,7 +13,7 @@ toc::[]
 == Overview
 
 You can create a new {product-title} application from components including
-source or binary code, images and/or templates by using either the OpenShift CLI
+source or binary code, images and/or templates by using either the FaktorZ CLI
 or web console.
 
 [[using-the-cli]]

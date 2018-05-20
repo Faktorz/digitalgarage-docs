@@ -21,9 +21,9 @@ the CNI interface can be added as needed.
 
 The following network plug-ins are currently supported by {product-title}:
 
-- xref:../../architecture/networking/sdn.adoc#architecture-additional-concepts-sdn[OpenShift SDN]
+- xref:../../architecture/networking/sdn.adoc#architecture-additional-concepts-sdn[FaktorZ SDN]
 
-- xref:../../architecture/networking/sdn.adoc#network-isolation-multitenant[OpenShift Network Isolation SDN]
+- xref:../../architecture/networking/sdn.adoc#network-isolation-multitenant[FaktorZ Network Isolation SDN]
 
 ifndef::openshift-online,digital-garage,faktorz[]
 - xref:../../architecture/networking/network_plugins.adoc#flannel-sdn[Flannel SDN]
@@ -39,15 +39,15 @@ endif::[]
 
 [[openshift-sdn]]
 
-== OpenShift SDN
+== FaktorZ SDN
 
 {product-title} deploys a software-defined networking (SDN) approach for
-connecting pods in an {product-title} cluster. The OpenShift SDN connects all
+connecting pods in an {product-title} cluster. The FaktorZ SDN connects all
 pods across all node hosts, providing a unified cluster network.
 
-OpenShift SDN is installed and configured by default as part of the
+FaktorZ SDN is installed and configured by default as part of the
 Ansible-based installation procedure. See the
-xref:../../architecture/networking/sdn.adoc#architecture-additional-concepts-sdn[OpenShift SDN] section
+xref:../../architecture/networking/sdn.adoc#architecture-additional-concepts-sdn[FaktorZ SDN] section
 for more information.
 
 ifndef::openshift-online,digital-garage,faktorz[]

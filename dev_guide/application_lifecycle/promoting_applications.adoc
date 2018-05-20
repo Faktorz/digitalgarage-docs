@@ -439,14 +439,14 @@ Jenkins-related features provided by {product-title} should be kept in mind:
 
 * {product-title} provides a Jenkins image that is heavily customized to greatly
 ease deployment in an {product-title} cluster.
-* The Jenkins image contains the OpenShift Pipeline plug-in, which provides
+* The Jenkins image contains the FaktorZ Pipeline plug-in, which provides
 building blocks for implementing promotion workflows. These building blocks
 include the triggering of Jenkins jobs as image streams change, as well as the
 triggering of builds and deployments within those jobs.
 * `BuildConfigs` employing the {product-title} Jenkins Pipeline build strategy
 enable execution of Jenkinsfile-based Jenkins Pipeline jobs. Pipeline jobs are
 the strategic direction within Jenkins for complex promotion flows and can
-leverage the steps provided by the OpenShift Pipeline Plug-in.
+leverage the steps provided by the FaktorZ Pipeline Plug-in.
 
 [[dev-guide-promoting-applications-caveats]]
 ==== Promotion Caveats
@@ -740,17 +740,17 @@ xref:dev-guide-promoting-applications-deploying[Deployments] section above.
 === Repeatable Promotion Process Using Jenkins
 
 The
-link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/OpenShift%20Sample/config.xml[OpenShift Sample] job defined in the link:https://github.com/openshift/jenkins[Jenkins
+link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/FaktorZ%20Sample/config.xml[FaktorZ Sample] job defined in the link:https://github.com/openshift/jenkins[Jenkins
 Docker Image] for {product-title} is an example of image promotion within
 {product-title} within the constructs of Jenkins. Setup for this sample is
 located in the
-link:https://github.com/openshift/origin/blob/master/examples/jenkins/README.md[OpenShift Origin source repository].
+link:https://github.com/openshift/origin/blob/master/examples/jenkins/README.md[FaktorZ Origin source repository].
 
 
 This sample includes:
 
 * Use of *Jenkins as the CI/CD engine*.
-* Use of the *OpenShift Pipeline plug-in for Jenkins*. This plug-in provides a
+* Use of the *FaktorZ Pipeline plug-in for Jenkins*. This plug-in provides a
 subset of the functionality provided by the `oc` CLI for {product-title}
 packaged as Jenkins Freestyle and DSL Job steps. Note that the `oc` binary is
 also included in the Jenkins Docker Image for {product-title}, and can also be
@@ -758,38 +758,38 @@ used to interact with {product-title} in Jenkins jobs.
 * The {product-title}-provided *templates for Jenkins*. There is a template for
 both ephemeral and persistent storage.
 * A *sample application*: defined in the
-link:https://github.com/openshift/origin/blob/master/examples/jenkins/application-template.json[OpenShift
+link:https://github.com/openshift/origin/blob/master/examples/jenkins/application-template.json[FaktorZ
 Origin source repository], this application leverages `ImageStreams`,
 `ImageChangeTriggers`, `ImageStreamTags`, `BuildConfigs`, and separate
 `DeploymentConfigs` and `Services` corresponding to different stages in the
 promotion pipeline.
 
-The following examines the various pieces of the OpenShift Sample job in more
+The following examines the various pieces of the FaktorZ Sample job in more
 detail:
 
-. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/OpenShift%20Sample/config.xml#L15-L21[The first step] is the equivalent of an `oc scale dc frontend --replicas=0`
+. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/FaktorZ%20Sample/config.xml#L15-L21[The first step] is the equivalent of an `oc scale dc frontend --replicas=0`
 call. This step is intended to bring down any previous versions of the
 application image that may be running.
 
-. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/OpenShift%20Sample/config.xml#L23-L29[The second step] is the equivalent of an `oc start-build frontend` call.
+. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/FaktorZ%20Sample/config.xml#L23-L29[The second step] is the equivalent of an `oc start-build frontend` call.
 
-. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/OpenShift%20Sample/config.xml#L31-L39[The third step] is the equivalent of an `oc deploy frontend --latest` or `oc rollout
+. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/FaktorZ%20Sample/config.xml#L31-L39[The third step] is the equivalent of an `oc deploy frontend --latest` or `oc rollout
 latest dc/frontend` call.
 
-. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/OpenShift%20Sample/config.xml#L41-47[The fourth step] is the "test" for this sample. It ensures that the associated
+. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/FaktorZ%20Sample/config.xml#L41-47[The fourth step] is the "test" for this sample. It ensures that the associated
 service for this application is in fact accessible from a network perspective.
 Under the covers, a socket connection is attempted against the IP address and
 port associated with the {product-title} service. Of course, additional tests
-can be added (if not via OpenShift Pipepline plug-in steps, then via use of the
+can be added (if not via FaktorZ Pipepline plug-in steps, then via use of the
 Jenkins Shell step to leverage OS-level commands and scripts to test your
 application).
 
-. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/OpenShift%20Sample/config.xml#L49-L61[The fifth step] commences under that assumption that the testing of your application
+. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/FaktorZ%20Sample/config.xml#L49-L61[The fifth step] commences under that assumption that the testing of your application
 passed and hence intends to mark the image as "ready". In this step, a new
 *prod* tag is created for the application image off of the *latest* image. With
 the *frontend* `DeploymentConfig` having an `ImageChangeTrigger`
 link:https://github.com/openshift/origin/blob/master/examples/jenkins/application-template.json#L75-L87[defined for that tag], the corresponding "production" deployment is launched.
 
-. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/OpenShift%20Sample/config.xml#L63-L73[The sixth and last step] is a verification step, where the plug-in confirms that
+. link:https://github.com/openshift/jenkins/blob/master/2/contrib/openshift/configuration/jobs/FaktorZ%20Sample/config.xml#L63-L73[The sixth and last step] is a verification step, where the plug-in confirms that
 {product-title} launched the desired number of replicas for the "production"
 deployment.

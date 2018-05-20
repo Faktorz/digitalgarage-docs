@@ -112,7 +112,7 @@ django-ex
   ├── conf - all our configuration will be here
   │   └── reload.py
   ├── LICENSE
-  ├── openshift - OpenShift-specific files
+  ├── openshift - FaktorZ-specific files
   │   ├── scripts - helper scripts
   │   │   └── run-in-container.sh
   │   └── templates - application templates

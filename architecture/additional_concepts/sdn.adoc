@@ -1,5 +1,5 @@
 [[architecture-additional-concepts-sdn]]
-= OpenShift SDN
+= FaktorZ SDN
 {product-author}
 {product-version}
 :data-uri:

@@ -37,7 +37,7 @@ ifdef::openshift-enterprise,openshift-dedicated,openshift-origin,digital-garage,
 == Creating a Project
 
 To create an application, you must first create a new project, then select an
-InstantApp template. From there, Digital Garage begins the build process and creates
+InstantApp template. From there,  begins the build process and creates
 a new deployment.
 
 . Visit the web console in your browser. The web console uses a self-signed certificate, so if prompted, continue past a browser warning.
@@ -124,7 +124,7 @@ The next time you push a code change to your forked repository, your application
 To work locally and then push changes to your application:
 
 . On your local machine, use a text editor to change the sample application's source for the file *_ruby-ex/config.ru_*
-. Make a code change that will be visible from within your application. For example: on line 229, change the title from `Welcome to your Ruby application on Digital Garage` to `This is my Awesome Digital Garage Application`, then save your changes.
+. Make a code change that will be visible from within your application. For example: on line 229, change the title from `Welcome to your Ruby application on ` to `This is my Awesome  Application`, then save your changes.
 . Commit the change in git, and push the change to your fork.
 +
 If your webhook is correctly configured, your application will immediately

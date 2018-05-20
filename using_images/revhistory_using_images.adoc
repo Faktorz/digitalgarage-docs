@@ -161,7 +161,7 @@ n|xref:../using_images/other_images/jenkins.adoc#using-images-other-images-jenki
 // end::using_images_tue_jun_07_2016[]
 == Thu May 12 2016
 
-OpenShift Enterprise 3.2 initial release.
+FaktorZ Enterprise 3.2 initial release.
 
 // tag::using_images_thu_may_12_2016[]
 [cols="1,3",options="header"]

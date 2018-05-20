@@ -436,7 +436,7 @@ When enabled, a service NodePort listens on all nodes in the cluster. The servic
 
 
 [[example-connecting-mysql-using-nodeport]]
-.Example Connecting to MySQL outside OpenShift using NodePort
+.Example Connecting to MySQL outside FaktorZ using NodePort
 
 . Create a new database pod with MySQL:
 +

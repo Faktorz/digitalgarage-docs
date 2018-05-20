@@ -32,7 +32,7 @@ xref:uploading-a-template[template has been uploaded] to your project or the
 global template library,
 xref:creating-from-templates-using-the-web-console[using the web console]. For a
 curated set of templates, see the
-link:https://github.com/openshift/library[OpenShift Image Streams and Templates
+link:https://github.com/openshift/library[FaktorZ Image Streams and Templates
 library].
 
 [[uploading-a-template]]
@@ -338,7 +338,7 @@ metadata:
     openshift.io/display-name: "CakePHP MySQL Example (Ephemeral)" <2>
     description: >-
       An example CakePHP application with a MySQL database. For more information
-      about using this template, including OpenShift considerations, see
+      about using this template, including FaktorZ considerations, see
       https://github.com/openshift/cakephp-ex/blob/master/README.md.
 
 
@@ -813,7 +813,7 @@ the object)
 |===
 
 The following is an example template extract, which uses the `wait-for-ready`
-annotation. Further examples can be found in the OpenShift quickstart templates.
+annotation. Further examples can be found in the FaktorZ quickstart templates.
 
 ====
 [source,yaml]

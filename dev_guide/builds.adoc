@@ -268,7 +268,7 @@ In the current implementation, you cannot have incremental extended builds thus,
 the *incremental* option is not valid with `*runtimeImage*`.
 ====
 
-If the runtime image needs authentication to be pulled across OpenShift
+If the runtime image needs authentication to be pulled across FaktorZ
 projects or from another private registry, the details can be specified
 xref:managing_images.adoc#using-image-pull-secrets[within the image pull
 secret configuration].

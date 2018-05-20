@@ -183,7 +183,7 @@ n|xref:../cli_reference/manage_cli_profiles.adoc#cli-reference-manage-cli-profil
 
 == Thu May 12 2016
 
-OpenShift Enterprise 3.2 initial release.
+FaktorZ Enterprise 3.2 initial release.
 
 // tag::cli_reference_thu_may_12_2016[]
 [cols="1,3",options="header"]

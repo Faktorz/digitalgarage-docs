@@ -17,7 +17,7 @@ This image is currently in https://access.redhat.com/support/offerings/techprevi
 
 == Overview
 
-Red Hat Single Sign-On (SSO) is an integrated sign-on solution available as a containerized xPaaS image designed for use with OpenShift. This image provides an authentication server for users to centrally log in, log out, register, and manage user accounts for web applications, mobile applications, and RESTful web services.
+Red Hat Single Sign-On (SSO) is an integrated sign-on solution available as a containerized xPaaS image designed for use with FaktorZ. This image provides an authentication server for users to centrally log in, log out, register, and manage user accounts for web applications, mobile applications, and RESTful web services.
 
 Red Hat offers five SSO application templates:
 
@@ -38,14 +38,14 @@ The SSO xPaaS application is based on Keycloak, a JBoss community project. There
 * The SSO xPaaS Technical Preview Application includes all of the functionality of Keycloak 1.8.1. In addition, the SSO-enabled JBoss EAP image automatically handles OpenID Connect or SAML client registration and configuration for *_.war_* deployments that contain *<auth-method>KEYCLOAK</auth-method>* or *<auth-method>KEYCLOAK-SAML</auth-method>* in their respective *web.xml* files.
 
 == Versioning for xPaaS Images
-See the xPaaS part of the https://access.redhat.com/articles/2176281[OpenShift and Atomic Platform Tested Integrations page] for details about OpenShift image version compatibility.
+See the xPaaS part of the https://access.redhat.com/articles/2176281[FaktorZ and Atomic Platform Tested Integrations page] for details about FaktorZ image version compatibility.
 
 == Prerequisites for Deploying the SSO xPaaS Image
 The following is a list of prerequisites for using the SSO xPaaS image:
 
-. *Acquire Red Hat Subscriptions*: Ensure that you have the relevant OpenShift subscriptions as well as a subscription for xPaaS Middleware.
-. *Install OpenShift*: Before using the OpenShift xPaaS images, you must have an OpenShift environment installed and configured. The
-xref:../../install_config/install/advanced_install.adoc#install-config-install-advanced-install[Advanced Installation] method allows you to install OpenShift using a reference
+. *Acquire Red Hat Subscriptions*: Ensure that you have the relevant FaktorZ subscriptions as well as a subscription for xPaaS Middleware.
+. *Install FaktorZ*: Before using the FaktorZ xPaaS images, you must have an FaktorZ environment installed and configured. The
+xref:../../install_config/install/advanced_install.adoc#install-config-install-advanced-install[Advanced Installation] method allows you to install FaktorZ using a reference
 configuration.
 . Ensure the *DNS* has been configured. This is required for communication between JBoss EAP and SSO, and for the requisite redirection. See xref:../../install_config/install/prerequisites.adoc#prereq-dns[DNS] for more information.
 . *Install and Deploy Docker Registry*: Install the Docker Registry and then ensure that the Docker Registry is deployed to locally manage images:
@@ -61,10 +61,10 @@ For more information, see xref:../../install_config/registry/index.adoc#install-
 == Using the SSO Image Streams and Application Templates
 The Red Hat xPaaS middleware images were
 xref:../../install_config/imagestreams_templates.adoc#install-config-imagestreams-templates[automatically created during the installation]
-of OpenShift along with the other default image streams and templates.
+of FaktorZ along with the other default image streams and templates.
 
 == Preparing and Deploying the SSO xPaaS Application Templates
-=== Using the OpenShift CLI
+=== Using the FaktorZ CLI
 
 . Prepare the JBoss EAP and SSO application service accounts and their associated secrets.
 +
@@ -87,8 +87,8 @@ Or, if the template has been imported into common namespace:
 $ oc new-app --template=sso70-postgresql -n <project-name>
 ----
 
-=== Using the OpenShift Web Console
-Log in to the OpenShift web console:
+=== Using the FaktorZ Web Console
+Log in to the FaktorZ web console:
 
 . Click *Add to project* to list all of the default image streams and templates.
 . Use the *Filter by keyword* search bar to limit the list to those that match _sso_. You may need to click *See all* to show the desired application template.
@@ -104,11 +104,11 @@ Once deployed, two pods will be created: one for the SSO web servers and one for
 The default login username/password credentials are _admin_/_admin_.
 
 == Quickstart Example: Using the SSO xPaaS Image with the SSO-enabled JBoss EAP xPaaS Image
-This example uses the OpenShift web console to deploy SSO xPaaS backed by a PostgreSQL database. Once deployed, an SSO realm, role, and user will be created to be used when configuring the SSO-enabled JBoss EAP xPaaS Image deployment. Once successfully deployed, the SSO user can then be used to authenticate and access JBoss EAP.
+This example uses the FaktorZ web console to deploy SSO xPaaS backed by a PostgreSQL database. Once deployed, an SSO realm, role, and user will be created to be used when configuring the SSO-enabled JBoss EAP xPaaS Image deployment. Once successfully deployed, the SSO user can then be used to authenticate and access JBoss EAP.
 
 === Deploy the SSO Application Template
 
-. Log in to the OpenShift web console and select the <project-name> project space.
+. Log in to the FaktorZ web console and select the <project-name> project space.
 . Click *Add to project* to list all of the default image streams and templates.
 . Use the *Filter by keyword* search bar to limit the list to those that match _sso_. You may need to click *See all* to show the desired application template.
 . Click the *_sso70-postgresql_* application template to list all of the deployment parameters. These parameters will be left as default for this example.
@@ -150,7 +150,7 @@ Create the _application user_:
 
 === Deploy the SSO-enabled JBoss EAP Image
 
-. Return to the OpenShift web console and click *Add to project* to list all of the default image streams and templates.
+. Return to the FaktorZ web console and click *Add to project* to list all of the default image streams and templates.
 . Use the *Filter by keyword* search bar to limit the list to those that match _sso_. You may need to click *See all* to show the desired application template.
 . Click the *_eap64-sso-s2i_* image to list all of the deployment parameters. Edit the configuration of the following SSO parameters:
 +

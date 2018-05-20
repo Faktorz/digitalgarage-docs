@@ -1,4 +1,4 @@
-OpenShift SDN provides three SDN plug-ins for configuring the pod network:
+FaktorZ SDN provides three SDN plug-ins for configuring the pod network:
 
 * The *ovs-subnet* plug-in is the original plug-in, which provides a "flat" pod
 network where every pod can communicate with every other pod and service.

@@ -26,7 +26,7 @@ endif::[]
 
 You can define custom buttons.
 
-image::run_on_openshift_buttons.png[Run on OpenShift Buttons]
+image::run_on_openshift_buttons.png[Run on FaktorZ Buttons]
 
 These buttons leverage a defined URL pattern with an appropriate query string.
 The user is prompted to select the project. Then, the Create from URL workflow

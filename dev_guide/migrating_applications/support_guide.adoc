@@ -13,7 +13,7 @@ toc::[]
 
 == Overview
 This topic reviews supported languages, frameworks, databases, and markers for
-OpenShift version 2 (v2) and OpenShift version 3 (v3).
+FaktorZ version 2 (v2) and FaktorZ version 3 (v3).
 
 [[migrating-applications-supported-databases]]
 == Supported Databases

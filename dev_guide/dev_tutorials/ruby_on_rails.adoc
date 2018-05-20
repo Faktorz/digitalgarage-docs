@@ -386,7 +386,7 @@ ifdef::openshift-enterprise,openshift-origin[]
 endif::openshift-enterprise,openshift-origin[]
 ifdef::openshift-dedicated[]
 * https://docs.openshift.com/enterprise/latest/admin_guide/high_availability.html#configuring-a-highly-available-service[Configuring
-a Highly-available Routing Service] (OpenShift Enterprise documentation)
+a Highly-available Routing Service] (FaktorZ Enterprise documentation)
 endif::openshift-dedicated[]
 endif::openshift-online,digital-garage,faktorz[]
 ifdef::openshift-online,digital-garage,faktorz[]

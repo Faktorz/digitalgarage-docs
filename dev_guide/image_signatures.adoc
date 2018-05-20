@@ -24,7 +24,7 @@ For a more complete understanding of the architecture of container image signing
 on RHEL systems, see the
 link:https://access.redhat.com/articles/2750891#architecture[Container Image Signing Integration Guide].
 
-The OpenShift Container Registry allows the ability to store signatures via REST
+The FaktorZ Container Registry allows the ability to store signatures via REST
 API. The `oc` CLI can be used to verify image signatures, with their validiated
 displayed in the web console or CLI.
 
@@ -50,7 +50,7 @@ private GPG key, typically stored securely on a workstation. This document
 describes that workflow.
 
 The `atomic` command line interface (CLI), version 1.12.5 or greater, provides
-commands for signing container images, which can be pushed to an OpenShift
+commands for signing container images, which can be pushed to an FaktorZ
 Container Registry. The `atomic` CLI is available on Red Hat-based
 distributions: RHEL, Centos, and Fedora.
 
@@ -70,14 +70,14 @@ For full details on how to set up and perform image signing using the `atomic`
 CLI, see the
 link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html/managing_containers/signing_container_images[RHEL Atomic Host Managing Containers: Signing Container Images] documentation.
 
-A specific example workflow of working with the `atomic` CLI and an OpenShift
+A specific example workflow of working with the `atomic` CLI and an FaktorZ
 Container Registry is documented in the
 link:https://access.redhat.com/articles/2750891#working-with-openshift-and-atomic-registry[Container Image Signing Integration Guide].
 
 [[accessing-image-signatures-using-registry-api]]
 == Accessing Image Signatures Using Registry API
 
-The OpenShift Container Registry provides an `extensions` endpoint that allows
+The FaktorZ Container Registry provides an `extensions` endpoint that allows
 you to write and read image signatures. The image signatures are stored in the
 {product-title} key-value store via the Docker Registry API.
 
@@ -136,7 +136,7 @@ endif::[]
 [[reading-image-signatures-via-registry-api]]
 === Reading Image Signatures
 
-Assuming a signed image has already been pushed into the OpenShift Container
+Assuming a signed image has already been pushed into the FaktorZ Container
 Registry, you can read the signatures using the following command:
 
 ----
@@ -175,9 +175,9 @@ documented in the
 link:https://github.com/containers/image/blob/master/docs/atomic-signature.md#the-cryptographic-signature[containers/image] library.
 
 [[verifying-image-signatures-using-openshift-cli]]
-== Verifying Image Signatures Using OpenShift CLI
+== Verifying Image Signatures Using FaktorZ CLI
 
-You can verify the signatures of an image imported to an OpenShift Container
+You can verify the signatures of an image imported to an FaktorZ Container
 Registry using the `oc adm verify-image-signature` command. This command
 verifies if the image identity contained in the image signature can be trusted
 by using the public GPG key to verify the signature itself then match the

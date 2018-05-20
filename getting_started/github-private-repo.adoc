@@ -60,7 +60,7 @@ That's it! Now, you have a fork of the original *thedigitalgarage/mean-ex* examp
 application Git repository and a copy on your local machine.
 
 [[btb-installing-the-digital-garage-cli]]
-== Installing the Digital Garage CLI
+== Installing  CLI
 
 In this section, you will install the {product-title} CLI. The {product-title}
 CLI exposes commands for managing your applications, as well as lower level

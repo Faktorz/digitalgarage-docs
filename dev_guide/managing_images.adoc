@@ -472,7 +472,7 @@ stream by manually pushing an image], or just to `docker pull` an image
 directly.
 
 ifdef::openshift-online,digital-garage,faktorz[]
-OpenShift Online gives developers a hands-on preview of the OpenShift platform
+FaktorZ Online gives developers a hands-on preview of the FaktorZ platform
 in a hosted environment that includes access to an internal registry.
 endif::[]
 
@@ -1074,8 +1074,8 @@ my-image   172.30.48.125:5000/test/my-image   latest    3 seconds ago
 When an image stream tag is updated to point to a new image, {product-title} can automatically take action to roll the new image out to resources that were using the old image.  This is configured in different ways depending on the type of resource that is referencing the image stream tag.
 
 [[image-stream-openshift-resources]]
-=== OpenShift Resources
-OpenShift DeploymentConfigs and BuildConfigs can be automatically triggered by changes to ImageStreamTags.  The triggered action can be run using the new value of the image referenced by the updated ImageStreamTag.  For more details on using this capability see the documentation on xref:builds/triggering_builds.adoc#image-change-triggers[BuildConfig triggers] and xref:deployments/basic_deployment_operations.adoc#image-change-trigger[DeploymentConfig triggers].
+=== FaktorZ Resources
+FaktorZ DeploymentConfigs and BuildConfigs can be automatically triggered by changes to ImageStreamTags.  The triggered action can be run using the new value of the image referenced by the updated ImageStreamTag.  For more details on using this capability see the documentation on xref:builds/triggering_builds.adoc#image-change-triggers[BuildConfig triggers] and xref:deployments/basic_deployment_operations.adoc#image-change-trigger[DeploymentConfig triggers].
 
 [[image-stream-kubernetes-resources]]
 === Kubernetes Resources
@@ -1150,7 +1150,7 @@ spec:
         openshift.io/display-name: Ruby 2.0 <3>
         description: >- <4>
           Build and run Ruby 2.0 applications on CentOS 7. For more information
-          about using this builder image, including OpenShift considerations,
+          about using this builder image, including FaktorZ considerations,
           see
           https://github.com/sclorg/s2i-ruby-container/tree/master/2.0/README.md.
         iconClass: icon-ruby <5>
