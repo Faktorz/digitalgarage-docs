@@ -20,7 +20,7 @@ ifdef::openshift-dedicated,digital-garage,faktorz[]
 as an **application developer**.
 endif::[]
 
-ifdef::openshift-online,digital-garage,faktorz[]
+ifdef::openshift-online[]
 [IMPORTANT]
 ====
 {product-title} Starter is community supported only.
