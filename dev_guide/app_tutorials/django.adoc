@@ -62,11 +62,11 @@ Bootstrapping your Django Application.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a project that you can use as the starting point to develop your
-own and deploy it on the http://thedigitalgarage.io[Digital Garage]. In
+own and deploy it on the http://thedigitalgarage.io[FaktorZ]. In
 this brief tutorial we are going combine Django with best practices in
 both application architecture and deployment, namely, Microservices and
 Linux Containers. We will bootstrap our Django application on the
-popular PaaS provider, Digital Garage. Digital Garage utilizes Red Hat
+popular PaaS provider, FaktorZ. FaktorZ utilizes Red Hat
 Openshift, Google Kubernetes and Docker Containers to create an open and
 efficient way to incorporate these best practices into our project.
 
@@ -77,9 +77,9 @@ Prerequisites
 * A Github account. If you do not already have a Github account, you can
 follow https://github.com/join?source=header-home[this link] to sign up
 for free.
-* A Digital Garage Account. If you do not already have a Digital Garage
+* A FaktorZ Account. If you do not already have a FaktorZ
 account, you can sign up for free at
-http://cochera.thedigitalgarage.io/free-signup[www.thedigitalgarage.io].
+http://cochera.faktorz.com/free-signup[www.thedigitalgarage.io].
 
 [[what-has-been-done-for-you]]
 What has been done for you
@@ -140,19 +140,19 @@ django-ex
 --------------------------------------------------------------------------
 
 [[deploying-to-digital-garage-via-the-web-console.]]
-Deploying to Digital Garage via the web console.
+Deploying to FaktorZ via the web console.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We will be:
 
-* Forking the Django seed project on the Digital Garage Github
+* Forking the Django seed project on FaktorZ Github
 Organization to your private repository.
-* Creating a Django application workspace on the Digital Garage
+* Creating a Django application workspace on FaktorZ
 platform.
-* Bootstrapping Django in your Digital Garage project/workspace with the
+* Bootstrapping Django in your FaktorZ project/workspace with the
 PostgreSQL container from Docker Hub.
 * Building the application from the source in the forked repository and
-deploying the application to Digital Garage.
+deploying the application to FaktorZ.
 
 After signing into your Github account, go to:
 link:https://github.com/thedigitalgarage/django-ex[www.github.com/thdigitalgarage/django-ex]
@@ -160,10 +160,10 @@ and fork the repository into your own account. This repository contains
 some files and a file structure that will give you a quick start on your
 Django application. I go into more detail on the files and file
 structure a little further into the tutorial. For now, let's complete
-our setup by logging into your Digital Garage account and set up our
+our setup by logging into your FaktorZ account and set up our
 application.
 
-After signing into your Digital Garage account, Choose the Add to
+After signing into your FaktorZ account, Choose the Add to
 Project link in the top menu bar to go to the template catalog.
 
 image:http://assets-digitalgarage-infra.apps.thedigitalgarage.io/images/screenshots/add_to_project.png[Add
@@ -188,7 +188,7 @@ accept the defaults for the remaining parameters and click "Create"
 image:http://assets-digitalgarage-infra.apps.thedigitalgarage.io/images/screenshots/quickstart-configure-django-psql.png[Add
 To Project]
 
-That's it. Digital Garage is now setting up your Django application. On
+That's it. FaktorZ is now setting up your Django application. On
 the next page you'll be presented with some information about your new
 application. When you are ready, click "Continue to Overview". You will
 be taken to the Project Overview screen where you can watch Digital
@@ -204,17 +204,17 @@ Bootstrapping your application via the Command-Line-Interface (CLI)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can create a new application using the web console or by running the
-`oc new-app` command from the CLI. With the Digital Garage CLI there are
+`oc new-app` command from the CLI. With FaktorZ CLI there are
 three ways to create a new application, by specifying either:
 
 *
-http://docs.thedigitalgarage.io/dev_guide/application_lifecycle/new_app.html#specifying-source-code[With
+http://faktorz.com/dev_guide/application_lifecycle/new_app.html#specifying-source-code[With
 source code]
 *
-http://docs.thedigitalgarage.io/dev_guide/application_lifecycle/new_app.html#specifying-a-template[Via
+http://faktorz.com/dev_guide/application_lifecycle/new_app.html#specifying-a-template[Via
 templates]
 *
-http://docs.thedigitalgarage.io/dev_guide/application_lifecycle/new_app.html#specifying-an-image[DockerHub
+http://faktorz.com/dev_guide/application_lifecycle/new_app.html#specifying-an-image[DockerHub
 images]
 
 [[using-an-application-template]]
@@ -222,14 +222,14 @@ Using an application template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The directory `openshift/templates/` contains application templates that
-you can add to your Digital Garage project with:
+you can add to your FaktorZ project with:
 
 -----------------------------------------------------
 oc create -f openshift/templates/<TEMPLATE_NAME>.json
 -----------------------------------------------------
 
 The template `django.json` contains just a minimal set of components to
-get your Django application into Digital Garage.
+get your Django application into FaktorZ.
 
 The template `django-postgresql.json` contains all of the components
 from `django.json`, plus a PostgreSQL database service and an Image
@@ -237,7 +237,7 @@ Stream for the Python base image. For simplicity, the PostgreSQL
 database in this template uses ephemeral storage and, therefore, is not
 production ready.
 
-After adding your templates, you can go to your Digital Garage web
+After adding your templates, you can go to your FaktorZ web
 console, browse to your project and click the create button. Create a
 new app from one of the templates that you have just added.
 
@@ -247,7 +247,7 @@ set the `GIT_REPOSITORY` parameter to point to your fork and the
 `DATABASE_*` parameters to match your database configuration.
 
 Alternatively, you can use the command line to create your new app,
-assuming your Digital Garage deployment has the default set of
+assuming your FaktorZ deployment has the default set of
 ImageStreams defined. Instructions for installing the default
 ImageStreams are available
 https://docs.openshift.org/latest/install_config/imagestreams_templates.html[here].
@@ -285,7 +285,7 @@ Without an application template
 
 Templates give you full control of each component of your application.
 Sometimes your application is simple enough and you don't want to bother
-with templates. In that case, you can let Digital Garage inspect your
+with templates. In that case, you can let FaktorZ inspect your
 source code and create the required components automatically for you:
 
 -----------------------------------------------------------------------------------
@@ -345,11 +345,11 @@ One-off command execution
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 At times you might want to manually execute some command in the context
-of a running application in Digital Garage. You can drop into a Python
+of a running application in FaktorZ. You can drop into a Python
 shell for debugging, create a new user for the Django Admin interface,
 or perform any other task.
 
-You can do all that by using regular CLI commands from Digital Garage.
+You can do all that by using regular CLI commands from FaktorZ.
 To make it a little more convenient, you can use the script
 `openshift/scripts/run-in-container.sh` that wraps some calls to `oc`.
 In the future, the `oc` CLI tool might incorporate changes that make
@@ -407,12 +407,12 @@ Data persistence
 ^^^^^^^^^^^^^^^^
 
 You can deploy this application without a configured database in your
-Digital Garage project, in which case Django will use a temporary SQLite
+FaktorZ project, in which case Django will use a temporary SQLite
 database that will live inside your application's container, and persist
 only until you redeploy your application.
 
 After each deploy you get a fresh, empty, SQLite database. That is fine
-for a first contact with Digital Garage and perhaps Django, but sooner
+for a first contact with FaktorZ and perhaps Django, but sooner
 or later you will want to persist your data across deployments.
 
 To do that, you should add a properly configured database server. Then

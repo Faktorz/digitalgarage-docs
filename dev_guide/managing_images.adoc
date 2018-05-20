@@ -477,7 +477,7 @@ in a hosted environment that includes access to an internal registry.
 endif::[]
 
 The internal registry authenticates using the same
-http://docs.thedigitalgarage.io/dev_guide/authentication.html[tokens]
+http://faktorz.com/dev_guide/authentication.html[tokens]
 as the {product-title} API. To perform a `docker login` against the internal registry,
 you can choose any user name and email, but the password must be a valid
 {product-title} token.

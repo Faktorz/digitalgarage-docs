@@ -11,7 +11,7 @@
 
 toc::[]
 
-= The MEAN Stack on Digital Garage
+= The MEAN Stack on FaktorZ
 
 == Overview
 
@@ -60,7 +60,7 @@ related community grew, the "*P*" which originally just stood for *Perl*
 was redefined and expanded to represent *PHP* and *Python* as well.
 
 [[_getting_started]]
-MEAN Stack sample app on Digital Garage!
+MEAN Stack sample app on FaktorZ!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The MEAN stack is a popular, open-source, full-stack JavaScript
@@ -75,7 +75,7 @@ development.
 In this brief tutorial we combine the MEAN Stack with best practices in
 both application architecture and deployment, namely, Microservices and
 Linux Containers. We will bootstrap our MEAN Stack application on the
-popular PaaS provider, the Digital Garage. Digital Garage utilizes Red
+popular PaaS provider, FaktorZ. FaktorZ utilizes Red
 Hat Openshift, Google Kubernetes and Docker Containers to create an open
 and efficient way to incorporate these best practices into our project.
 
@@ -86,9 +86,9 @@ Prerequisites
 * A Github account. If you do not already have a Github account, you can
 follow https://github.com/join?source=header-home[this link] to sign up
 for free.
-* A Digital Garage Account. If you do not already have a Digital Garage
+* A FaktorZ Account. If you do not already have a FaktorZ
 account, you can sign up for free at
-http://cochera.thedigitalgarage.io/free-signup/mean[www.thedigitalgarage.io].
+http://cochera.faktorz.com/free-signup/mean[www.thedigitalgarage.io].
 
 [[bootstrapping-the-mean-stack]]
 Bootstrapping the MEAN Stack
@@ -96,9 +96,9 @@ Bootstrapping the MEAN Stack
 
 We will be:
 
-* Forking the MEAN seed project on the Digital Garage Github
+* Forking the MEAN seed project on FaktorZ Github
 Organization to your private repository.
-* Creating a MEAN Stack application workspace on the Digital Garage
+* Creating a MEAN Stack application workspace on FaktorZ
 platform.
 * Bootstrapping the MEAN Stack in your MEAN Stack Application workspace
 with MongoDB and Node.js containers from Docker Hub.
@@ -111,9 +111,9 @@ and fork the repository into your own account. This repository contains
 some files and a file structure that will give you a quick start on your
 MEAN application. I go into more detail on the files and file structure
 a little further into the tutorial. For now, let's complete our setup by
-logging into your Digital Garage account and set up the MEAN stack.
+logging into your FaktorZ account and set up the MEAN stack.
 
-After signing into your Digital Garage account, Choose the Add to
+After signing into your FaktorZ account, Choose the Add to
 Project link in the top menu bar to go to the template catalog.
 
 image:http://assets-digitalgarage-infra.apps.thedigitalgarage.io/images/screenshots/add_to_project.png[Add
@@ -138,7 +138,7 @@ simply accept the defaults for the remaining parameters and click
 image:http://assets-digitalgarage-infra.apps.thedigitalgarage.io/images/screenshots/quickstart-configure.png[Add
 To Project]
 
-That's it. Digital Garage is now setting up your MEAN Stack. On the next
+That's it. FaktorZ is now setting up your MEAN Stack. On the next
 page you'll be presented with some information about your new
 application. When you are ready, click "Continue to Overview". You will
 be taken to the Project Overview screen where you can watch Digital
@@ -194,13 +194,13 @@ You can create a new application using the web console or by running the
 three ways to create a new application, by specifying either:
 
 *
-http://docs.thedigitalgarage.io/dev_guide/application_lifecycle/new_app.html#specifying-source-code[With
+http://faktorz.com/dev_guide/application_lifecycle/new_app.html#specifying-source-code[With
 source code]
 *
-http://docs.thedigitalgarage.io/dev_guide/application_lifecycle/new_app.html#specifying-a-template[Via
+http://faktorz.com/dev_guide/application_lifecycle/new_app.html#specifying-a-template[Via
 templates]
 *
-http://docs.thedigitalgarage.io/dev_guide/application_lifecycle/new_app.html#specifying-an-image[DockerHub
+http://faktorz.com/dev_guide/application_lifecycle/new_app.html#specifying-an-image[DockerHub
 images]
 
 [[create-a-new-app-from-source-code-method-1]]
@@ -227,7 +227,7 @@ Create a new app from a template (method 2)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We can also
-http://docs.thedigitalgarage.io/dev_guide/application_lifecycle/new_app.html#specifying-a-template[create
+http://faktorz.com/dev_guide/application_lifecycle/new_app.html#specifying-a-template[create
 new apps using template files]. Clone the demo app source code from
 https://github.com/thedigitalgarage/mean-ex[GitHub repo] (fork if you
 like).
