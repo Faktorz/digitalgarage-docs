@@ -41,11 +41,12 @@ endif::openshift-origin,openshift-enterprise,openshift-dedicated[]
 ifdef::digital-garage,faktorz[]
 [.lead]
 {product-title} is based on the following technologies an service providers:
-- Openshift Origin version 3, Red Hat's container development platform that makes it easy for developers to quickly build and launch,
+
+* OpenShift Origin v3, Red Hat's container development platform that makes it easy for developers to quickly build and launch,
 and scale container-based web apps in a public cloud environment.
-- Kubernetes, AUTOMATED DEPLOYMENT, SCALING AND APPLICATION HEALTH. Created by Google, Kubernetes is an open-source system for automating deployment, operations and scaling of containerized applications.
-- Docker Containers, TINY, LIGHTER AND FASTER THAN VIRTUAL MACHINES. We use Docker to encapsulate and run applications, bringing more agility and consistency when deploying applications.
-- Amazon Web Services, WORLD LEADER IN CLOUD INFRASTRUCTURE.
+* Kubernetes, automated deployment, scaling and application health. Created by Google, Kubernetes is an open-source system for automating deployment, operations and scaling of containerized applications.
+* Docker Containers, tiny, lighter and faster than virtual machines. We use Docker to encapsulate and run applications, bringing more agility and consistency when deploying applications.
+* Amazon Web Services, world leader in cloud infrastructure.
 
 Check out the following topics to get started as an *application developer*
 trying out {product-title}:
