@@ -749,6 +749,7 @@ Topics:
   File: projects
 - Name: Migrating Applications
   Dir: migrating_applications
+  Distros: openshift-*
   Topics:
   - Name: Overview
     File: index
@@ -777,7 +778,7 @@ Topics:
     File: ruby_on_rails
   - Name: Setting Up a Nexus Mirror
     File: maven_tutorial
-  - Name: OpenShift Pipeline Builds
+  - Name: Pipeline Builds
     File: openshift_pipeline
   - Name: Binary Builds
     File: binary_builds
